@@ -67,6 +67,49 @@ module core_top
 
   // 2. 命令デコード
   
+  core_decode u_core_decode
+  (
+    .RST (RST),
+    .CLK (CLK),
+
+    .I_ADDI (i_addi),
+    .I_SLTI (i_slti),
+    .I_SLTIU (i_sltiu),
+    .I_XORI (i_xori),
+    .I_ORI (i_ori),
+    .I_ANDI (i_andi),
+    .I_SLLI (i_slli),
+    .I_SRLI (i_srli),
+    .I_SRAI (i_srai),
+    .I_ADD (i_add),
+    .I_SUB (i_sub),
+    .I_SLL (i_sll),
+    .I_SLT (i_slt),
+    .I_SLTU (i_sltu),
+    .I_XOR (i_xor),
+    .I_SRL (i_srl),
+    .I_SRA (i_sra),
+    .I_OR (i_or),
+    .I_AND (i_and),
+
+    .I_BEQ (i_beq),
+    .I_BNE (i_bne),
+    .I_BLT (i_blt),
+    .I_BGE (i_bge),
+    .I_BLTU (i_bltu),
+    .I_BGEU (i_bgeu),
+
+    .I_LB (i_lb),
+    .I_LH (i_lh),
+    .I_LW (i_lw),
+    .I_LBU (i_lbu),
+    .I_LHU (i_lhu),
+    .I_SB (i_sb),
+    .I_SH (i_sh),
+    .I_SW (i_sw)
+
+  );
+  
   // 3. 実行
   
   core_alu u_core_alu
@@ -115,5 +158,27 @@ module core_top
  // 4. メモリアクセス
  
   // 5. 書き戻し
+  
+
+  // レジスタ
+
+  core_reg u_core_reg
+  (
+    .RST_N (RST_N),
+    .CLK (CLK),
+
+    .WADDR (wr_addr),
+    .WE (wr_we),
+    .WDATA (wr_data),
+
+    .RS1ADDR (rs1_num),
+    .RS1 (rs1),
+    .RS2ADDR (rs2_num),
+    .RS2 (id_rs2),
+
+    .PC_WE (wr_pc_we),
+    .PC_WDATA (wr_pc),
+    .PC (pc)
+  );
 
 endmodule
