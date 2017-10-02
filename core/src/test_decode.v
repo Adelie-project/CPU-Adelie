@@ -51,13 +51,13 @@ module test_decode();
   wire N_INST;
 
   wire [31:0] inst;
-  wire clk, rst;
+  wire clk, rst_n;
 
   assign inst = INST;
   assign clk = CLK;
-  assign rst = RST_N;
+  assign rst_n = RST_N;
 
-core_decode de(rst, clk, inst, RD_NUM, RS1_NUM, RS2_NUM, IMM,  I_ADDI, I_SLTI, I_SLTIU, I_XORI, I_ORI, I_ANDI, I_SLLI, I_SRLI, I_SRAI, I_ADD, I_SUB, I_SLL, I_SLT, I_SLTU, I_XOR, I_SRL, I_SRA, I_OR, I_AND, I_BEQ, I_BNE, I_BLT, I_BGE, I_BLTU, I_BGEU, I_LB, I_LH, I_LW, I_LBU, I_LHU, I_SB, I_SH, I_SW, N_INST);
+core_decode de(rst_n, clk, inst, RD_NUM, RS1_NUM, RS2_NUM, IMM,  I_ADDI, I_SLTI, I_SLTIU, I_XORI, I_ORI, I_ANDI, I_SLLI, I_SRLI, I_SRAI, I_ADD, I_SUB, I_SLL, I_SLT, I_SLTU, I_XOR, I_SRL, I_SRA, I_OR, I_AND, I_BEQ, I_BNE, I_BLT, I_BGE, I_BLTU, I_BGEU, I_LB, I_LH, I_LW, I_LBU, I_LHU, I_SB, I_SH, I_SW, N_INST);
 
 initial begin
   // U型テスト

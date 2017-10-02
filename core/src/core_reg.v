@@ -12,9 +12,9 @@ module core_reg
    input [4:0] RS2ADDR,
    output reg [31:0] RS2,
 
-   input 			 PC_WE,
-   input [31:0] 	 PC_WDATA,
-   output reg [31:0]  PC
+   input PC_WE,
+   input [31:0] PC_WDATA,
+   output reg [31:0] PC
    );
 
    reg [31:0] reg1, reg2, reg3, reg4, reg5, reg6, reg7, reg8, reg9, reg10, reg11, reg12, reg13, reg14, reg15, reg16, reg17, reg18, reg19, reg20, reg21, reg22, reg23, reg24, reg25, reg26, reg27, reg28, reg29, reg30, reg31;
@@ -124,7 +124,7 @@ module core_reg
          5'd30: RS1 <= reg30;
          5'd31: RS1 <= reg31;
 		   default: RS1 <= 32'd0;
-	     endcase // case (RS1ADDR)
+	     endcase
       end
    end
 
@@ -166,7 +166,7 @@ module core_reg
          5'd31: RS2 <= reg31;
 		   default: RS2 <= 32'd0;
 	     endcase
-      end // else: !if(!RST_N)
+      end
    end
 
    always @(posedge CLK) begin
