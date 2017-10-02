@@ -1,12 +1,16 @@
-### CPU実験の6班です。
+## Adelie CPU
 
+This is a repository of CPU experiment group 6 at the University of Tokyo Information Science major 2017.
 
-* よく使うコマンド
+### Core
+
+Source codes are under core/src directory and core_top.v is a topmodule.
+
+You can run the test cases by running
 ```
-git clone git@github.com:Adelie-project/CPU-Adelie.git
-git status
-git add README.md
-git commit -a
-git show
-git push origin master
+$ cd CPU-Adelie/core
+$ mkdir debug
+$ cd debug
+$ ../debug.sh
 ```
+You will need xvlog, xelog and xsim to run the test.
