@@ -72,6 +72,12 @@ module core_top
     .RST (RST),
     .CLK (CLK),
 
+    .INST (I_MEM_RDATA),
+
+    .RD_NUM (rd_num),
+    .RS1_NUM (rs1_num),
+    .RS2_NUM (rs2_num),
+
     .I_ADDI (i_addi),
     .I_SLTI (i_slti),
     .I_SLTIU (i_sltiu),
