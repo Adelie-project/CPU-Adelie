@@ -368,5 +368,6 @@ int main(int argc, char *argv[]) {
   while(1) {
     if (run() < 0) break;
   }
+  fclose(fp);
   return 0;
 }
