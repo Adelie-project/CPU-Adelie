@@ -21,9 +21,9 @@ options:
 うまく行けば難なく.binが生成される  
 (0文字目から4byteずつ命令が並ぶ)
 
-    $ make ass
+    $ make asm
     ...
-    $ ./ass <assembly file>
+    $ ./asm <assembly file>
 
 ＜エラー処理＞
 
@@ -56,7 +56,7 @@ vimをいまいち使いこなせていないための悲しい産物
     $ make b_handler
     ...
     $ ./b_handler <mode> <binary file>
- 
+
 mode:  
 -r: ひたすら読む  
 -rs: 256バイトごとに一度止まる
