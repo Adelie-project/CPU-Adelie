@@ -60,7 +60,8 @@ void jmp_fread(int a) {
 }
 
 void exec() {
-  int rs1, rs2, rd, imm, shamt, l_mem, s_mem;
+  int imm;
+  unsigned int rs1, rs2, rd, shamt, l_mem, s_mem;
   unsigned int inst = rbuf[rbuf_p];
   bool branch = false;
   switch (inst & 0x7F) {
@@ -68,6 +69,7 @@ void exec() {
       rd = (inst & 0xF80) >> 7;
       imm = (inst & 0xFFFFF000) >> 12;
       reg[rd] = imm << 12;
+      printf("lui r%d %d\n", rd, imm);
       break;
     case 0b0010111: //AUIPC
       rd = (inst & 0xF80) >> 7;
@@ -75,62 +77,77 @@ void exec() {
       reg[rd] = pc + (imm << 12);
       branch = true;
       jmp_fread(pc + (imm << 12));
+      printf("auipc r%d %d\n", rd, imm);
       break;
     case 0b1101111: //JAL
       rd = (inst & 0xF80) >> 7;
       imm = (inst & 0x80000000) >> 11 | (inst & 0xFF000) | (inst & 0x100000) >> 9 | (inst & 0x7FE00000) >> 20;
+      //20th bit = sign
+      if (imm & 0x100000) imm = imm | 0xFFE00000;
       reg[rd] = pc + 4;
       branch = true;
       jmp_fread(pc + imm);
+      printf("jal r%d %d\n", rd, imm);
       break;
     case 0b1100111: //JALR
       rd = (inst & 0xF80) >> 7;
       rs1 = (inst & 0x00F8000) >> 15;
       imm = (inst & 0xFFF00000) >> 25;
+      //11th bit = sign
+      if (imm & 0x800) imm = imm | 0xFFFFF000;
       reg[rd] = pc + 4;
       branch = true;
       jmp_fread(reg[rd] + imm);
+      printf("jalr r%d r%d %d\n", rd, rs1, imm);
       break;
     case 0b1100011: //分岐命令
       rs1 = (inst & 0x00F8000) >> 15;
       rs2 = (inst & 0x1F00000) >> 20;
       imm = (inst & 0x80000000) >> 19 | (inst & 0x80) << 4 | (inst & 0x7E000000) >> 20 | (inst & 0xF00) >> 7;
+      //12th bit = sign
+      if (imm & 0x1000) imm = imm | 0xFFFFE000;
       switch (inst & 0x7000) {
         case 0x0000: //BEQ
           if (reg[rs1] == reg[rs2]) {
             branch = true;
             jmp_fread(imm);
           }
+          printf("beq r%d r%d %d\n", rs1, rs2, imm);
           break;
         case 0x1000: //BNE
           if (reg[rs1] != reg[rs2]) {
             branch = true;
             jmp_fread(imm);
           }
+          printf("bne r%d r%d %d\n", rs1, rs2, imm);
           break;
         case 0x4000: //BLT
           if (reg[rs1] < reg[rs2]) {
             branch = true;
             jmp_fread(imm);
           }
+          printf("blt r%d r%d %d\n", rs1, rs2, imm);
           break;
         case 0x5000: //BGE
           if (reg[rs1] >= reg[rs2]) {
             branch = true;
             jmp_fread(imm);
           }
+          printf("bge r%d r%d %d\n", rs1, rs2, imm);
           break;
         case 0x6000: //BLTU
           if (reg[rs1] < reg[rs2]) {
             branch = true;
             jmp_fread(imm);
           }
+          printf("bltu r%d r%d %d\n", rs1, rs2, imm);
           break;
         case 0x7000: //BGEU
           if (reg[rs1] >= reg[rs2]) {
             branch = true;
             jmp_fread(imm);
           }
+          printf("bgeu r%d r%d %d\n", rs1, rs2, imm);
           break;
         default:
           printf("error$470: unknown instruction of %08X.\n", inst);
@@ -142,23 +159,30 @@ void exec() {
       rs1 = (inst & 0x00F8000) >> 15;
       rd = (inst & 0xF80) >> 7;
       imm = (inst & 0xFFF00000) >> 20;
+      //11th bit = sign
+      if (imm & 0x800) imm = imm | 0xFFFFF000;
       l_mem = reg[rs1] + imm;
       switch (inst & 0x7000) {
         case 0x0000: //LB
           reg[rd] = (int)mem[l_mem];
+          printf("lb r%d r%d %d\n", rd, rs1, imm);
           break;
         case 0x1000: //LH
           reg[rd] = (int)((unsigned short)mem[l_mem] + ((unsigned short)mem[l_mem + 1] << 8));
+          printf("lh r%d r%d %d\n", rd, rs1, imm);
           break;
         case 0x2000: //LW
           reg[rd] = (unsigned int)mem[l_mem] + ((unsigned int)mem[l_mem + 1] << 8)
             + ((unsigned int)mem[l_mem + 2] << 16) + ((unsigned int)mem[l_mem + 3] << 24);
+          printf("lw r%d r%d %d\n", rd, rs1, imm);
           break;
         case 0x4000: //LBU
           reg[rd] = (unsigned int)mem[l_mem];
+          printf("lbu r%d r%d %d\n", rd, rs1, imm);
           break;
         case 0x5000: //LHU
           reg[rd] = (unsigned short)mem[l_mem] + (unsigned short)mem[l_mem + 1] * 0x100;
+          printf("lhu r%d r%d %d\n", rd, rs1, imm);
           break;
         default:
           printf("error$570: unknown instruction of %08X.\n", inst);
@@ -170,16 +194,26 @@ void exec() {
       rs1 = (inst & 0x00F8000) >> 15;
       rs2 = (inst & 0x1F00000) >> 20;
       imm = (inst & 0xFE000000) >> 20 | (inst & 0xF80) >> 7;
+      //11th bit = sign
+      if (imm & 0x800) imm = imm | 0xFFFFF000;
       s_mem = reg[rs1] + imm;
       switch (inst & 0x7000) {
-        case 0x2000: //SW
-          mem[s_mem + 3] = (char)(reg[rs2] >> 24);
-          mem[s_mem + 2] = (char)(reg[rs2] >> 16);
-        case 0x1000: //SH
-          mem[s_mem + 1] = (char)(reg[rs2] >> 8);
         case 0x0000: //SB
           mem[s_mem] = (char)reg[rs2];
-          break;
+          printf("sb r%d r%d %d\n", rs1, rs2, imm);
+        break;
+        case 0x1000: //SH
+          mem[s_mem] = (char)reg[rs2];
+          mem[s_mem + 1] = (char)(reg[rs2] >> 8);
+          printf("sh r%d r%d %d\n", rs1, rs2, imm);
+        break;
+        case 0x2000: //SW
+          mem[s_mem] = (char)reg[rs2];
+          mem[s_mem + 1] = (char)(reg[rs2] >> 8);
+          mem[s_mem + 2] = (char)(reg[rs2] >> 16);
+          mem[s_mem + 3] = (char)(reg[rs2] >> 24);
+          printf("sw r%d r%d %d\n", rs1, rs2, imm);
+        break;
         default:
           printf("error$670: unknown instruction of %08X.\n", inst);
           exit(EXIT_FAILURE);
@@ -189,39 +223,56 @@ void exec() {
       rs1 = (inst & 0x00F8000) >> 15;
       rd = (inst & 0xF80) >> 7;
       imm = (inst & 0xFFF00000) >> 20;
+      //11th bit = sign
+      if (imm & 0x800) imm = imm | 0xFFFFF000;
       shamt = (inst & 0x1F00000) >> 20;
       switch (inst & 0x7000) {
         case 0x0000: //ADDI
           reg[rd] = reg[rs1] + imm;
+          printf("addi r%d r%d %d\n", rd, rs1, imm);
           break;
         case 0x2000: //SLTI
           reg[rd] = reg[rs1] < imm ? 1 : 0;
+          printf("slti r%d r%d %d\n", rd, rs1, imm);
           break;
         case 0x3000: //SLTIU
         /* SLTIU is similar but compares the values as unsigned numbers
         (i.e., the immediate is first sign-extended to 32-bits
         then treated as an unsigned number. */
           reg[rd] = (unsigned int)reg[rs1] < (unsigned int)imm ? 1 : 0;
+          printf("sltiu r%d r%d %d\n", rd, rs1, imm);
           break;
         case 0x4000: //XORI
           reg[rd] = reg[rs1] ^ imm;
+          printf("xori r%d r%d %d\n", rd, rs1, imm);
           break;
         case 0x6000: //ORI
           reg[rd] = reg[rs1] | imm;
+          printf("ori r%d r%d %d\n", rd, rs1, imm);
           break;
         case 0x7000: //ANDI
           reg[rd] = reg[rs1] & imm;
+          printf("andi r%d r%d %d\n", rd, rs1, imm);
           break;
         case 0x1000: //SLLI?
-          if (inst >> 25 == 0b0000000) reg[rd] = (unsigned int)reg[rs1] << shamt;
+          if (inst >> 25 == 0b0000000) {
+            reg[rd] = (unsigned int)reg[rs1] << shamt;
+            printf("slti r%d r%d %d\n", rd, rs1, shamt);
+          }
           else {
             printf("error$768: unknown instruction of %08X.\n", inst);
             exit(EXIT_FAILURE);
           }
           break;
         case 0x5000: //SRLI or SRAI?
-          if (inst >> 25 == 0b0000000) reg[rd] = (unsigned int)reg[rs1] >> shamt;
-          else if (inst >> 25 == 0b0100000) reg[rd] = (int)reg[rs1] >> shamt;
+          if (inst >> 25 == 0b0000000) {
+            reg[rd] = (unsigned int)reg[rs1] >> shamt;
+            printf("srli r%d r%d %d\n", rd, rs1, shamt);
+          }
+          else if (inst >> 25 == 0b0100000) {
+            reg[rd] = (int)reg[rs1] >> shamt;
+            printf("srai r%d r%d %d\n", rd, rs1, shamt);
+          }
           else {
             printf("error$769: unknown instruction of %08X.\n", inst);
             exit(EXIT_FAILURE);
@@ -230,16 +281,22 @@ void exec() {
         default:
           printf("error$770: unknown instruction of %08X.\n", inst);
           exit(EXIT_FAILURE);
+      }
       break;
-    }
     case 0b0110011: //即値を用いない演算命令
       rs1 = (inst & 0x00F8000) >> 15;
       rs2 = (inst & 0x1F00000) >> 20;
       rd = (inst & 0xF80) >> 7;
       switch (inst & 0x7000) {
         case 0x0000: //ADD or SUB?
-          if (inst >> 25 == 0b0000000) reg[rd] = reg[rs1] + reg[rs2];
-          else if (inst >> 25 == 0b0100000) reg[rd] = reg[rs1] - reg[rs2];
+          if (inst >> 25 == 0b0000000) {
+            reg[rd] = reg[rs1] + reg[rs2];
+            printf("add r%d r%d r%d\n", rd, rs1, rs2);
+          }
+          else if (inst >> 25 == 0b0100000) {
+            reg[rd] = reg[rs1] - reg[rs2];
+            printf("add r%d r%d r%d\n", rd, rs1, rs2);
+          }
           else {
             printf("error$861: unknown instruction of %08X.\n", inst);
             exit(EXIT_FAILURE);
@@ -249,49 +306,73 @@ void exec() {
         and arithmetic right shifts on the value in register rs1
         by the shift amount held in the lower 5 bits of register rs2.*/
         case 0x1000: //SLL?
-          if (inst >> 25 == 0b0000000) reg[rd] = (unsigned)reg[rs1] << (reg[rs2] & 0b11111);
+          if (inst >> 25 == 0b0000000) {
+            reg[rd] = (unsigned)reg[rs1] << (reg[rs2] & 0b11111);
+            printf("add r%d r%d r%d\n", rd, rs1, rs2);
+          }
           else {
             printf("error$862: unknown instruction of %08X.\n", inst);
             exit(EXIT_FAILURE);
           }
           break;
         case 0x2000: //SLT
-          if (inst >> 25 == 0b0000000) reg[rd] = reg[rs1] < reg[rs2] ? 1 : 0;
+          if (inst >> 25 == 0b0000000) {
+            reg[rd] = reg[rs1] < reg[rs2] ? 1 : 0;
+            printf("slt r%d r%d r%d\n", rd, rs1, rs2);
+          }
           else {
             printf("error$863: unknown instruction of %08X.\n", inst);
             exit(EXIT_FAILURE);
           }
           break;
         case 0x3000: //SLTU
-          if (inst >> 25 == 0b0000000) reg[rd] = (unsigned int)reg[rs1] < (unsigned int)reg[rs2] ? 1 : 0;
+          if (inst >> 25 == 0b0000000) {
+            reg[rd] = (unsigned int)reg[rs1] < (unsigned int)reg[rs2] ? 1 : 0;
+            printf("sltu r%d r%d r%d\n", rd, rs1, rs2);
+          }
           else {
             printf("error$865: unknown instruction of %08X.\n", inst);
             exit(EXIT_FAILURE);
           }
           break;
         case 0x4000: //XOR
-          if (inst >> 25 == 0b0000000) reg[rd] = reg[rs1] ^ reg[rs2];
+          if (inst >> 25 == 0b0000000) {
+            reg[rd] = reg[rs1] ^ reg[rs2];
+            printf("xor r%d r%d r%d\n", rd, rs1, rs2);
+          }
           else {
             printf("error$866: unknown instruction of %08X.\n", inst);
             exit(EXIT_FAILURE);
           }
           break;
         case 0x5000: //SRL or SRA?
-          if (inst >> 25 == 0b0000000) reg[rd] = (unsigned int)reg[rs1] >> (reg[rs2] & 0b11111);
-          else if (inst >> 25 == 0b0100000) reg[rd] = (int)reg[rs1] >> (reg[rs2] & 0b11111);
+          if (inst >> 25 == 0b0000000) {
+            reg[rd] = (unsigned int)reg[rs1] >> (reg[rs2] & 0b11111);
+            printf("srl r%d r%d r%d\n", rd, rs1, rs2);
+          }
+          else if (inst >> 25 == 0b0100000) {
+            reg[rd] = (int)reg[rs1] >> (reg[rs2] & 0b11111);
+            printf("sra r%d r%d r%d\n", rd, rs1, rs2);
+          }
           else {
             printf("error$867: unknown instruction of %08X.\n", inst);
             exit(EXIT_FAILURE);
           }
         case 0x6000: //OR
-          if (inst >> 25 == 0b0000000) reg[rd] = reg[rs1] | reg[rs2];
+          if (inst >> 25 == 0b0000000) {
+            reg[rd] = reg[rs1] | reg[rs2];
+            printf("or r%d r%d r%d\n", rd, rs1, rs2);
+          }
           else {
             printf("error$868: unknown instruction of %08X.\n", inst);
             exit(EXIT_FAILURE);
           }
           break;
         case 0x7000: //AND
-          if (inst >> 25 == 0b0000000) reg[rd] = reg[rs1] & reg[rs2];
+          if (inst >> 25 == 0b0000000) {
+            reg[rd] = reg[rs1] & reg[rs2];
+            printf("and r%d r%d r%d\n", rd, rs1, rs2);
+          }
           else {
             printf("error$869: unknown instruction of %08X.\n", inst);
             exit(EXIT_FAILURE);
@@ -320,7 +401,7 @@ int run() {
   else if (rbuf_p >= rsize) {
     return -1;
   }
-  printf("%08X ", pc);
+  printf("\n\nPC = %08X ", pc);
   if (opt_flags[1] || (opt_flags[0] && breakpoint == pc)) {
     Loop(i, 32) {
       if (i % 8 == 0) printf("\n");
@@ -368,6 +449,7 @@ int main(int argc, char *argv[]) {
   while(1) {
     if (run() < 0) break;
   }
+  printf("\n\nreach end of file\n");
   fclose(fp);
   return 0;
 }
