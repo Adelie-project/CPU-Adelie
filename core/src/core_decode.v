@@ -46,6 +46,11 @@ module core_decode
   output reg I_SB,
   output reg I_SH,
   output reg I_SW,
+  
+  output reg I_JALR,
+  output reg I_JAL,
+  output reg I_AUIPC,
+  output reg I_LUI,
 
   output wire N_INST
 );
@@ -122,6 +127,11 @@ module core_decode
       I_SB <= 1'b0;
       I_SH <= 1'b0;
       I_SW <= 1'b0;
+
+      I_JALR <= 1'b0;
+      I_JAL <= 1'b0;
+      I_AUIPC <= 1'b0;
+      I_LUI <= 1'b0;
     end else begin
       I_ADDI <= (INST[6:0] == 7'b0010011) && (func3 == 3'b000);
       I_SLTI  <= (INST[6:0] == 7'b0010011) && (func3 == 3'b010);
@@ -159,6 +169,11 @@ module core_decode
       I_SB <= type_s && (func3 == 3'b000);
       I_SH <= type_s && (func3 == 3'b001);
       I_SW <= type_s && (func3 == 3'b010);
+
+      I_LUI <= (INST[6:0] == 7'b0110111);
+      I_AUIPC <= (INST[6:0] == 7'b0010111);
+      I_JAL <= (INST[6:0] == 7'b1101111);
+      I_JALR <= (INST[6:0] == 7'b1100111);
     end
   end
   assign N_INST = ~( I_ADDI | I_SLTI| I_SLTIU| I_XORI| I_ORI| I_ANDI| I_SLLI| I_SRLI| I_SRAI| I_ADD| I_SUB| I_SLL| I_SLT| I_SLTU| I_XOR| I_SRL| I_SRA| I_OR| I_AND| I_BEQ| I_BNE| I_BLT| I_BGE| I_BLTU| I_BGEU| I_LB| I_LH| I_LW| I_LBU| I_LHU| I_SB| I_SH| I_SW);
