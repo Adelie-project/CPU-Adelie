@@ -462,3 +462,65 @@ void exec() {
   }
   return;
 }
+<<<<<<< HEAD
+
+int run() {
+  if (rbuf_p == RBUFSIZE) {
+    jmp_fread(pc);
+  }
+  else if (rbuf_p >= rsize) {
+    return -1;
+  }
+  printf("%08X ", pc);
+  if (opt_flags[1] || (opt_flags[0] && breakpoint == pc)) {
+    Loop(i, 32) {
+      if (i % 8 == 0) printf("\n");
+      printf("r%d:%08X ", i, reg[i]);
+    }
+    auto itr = mem.begin();
+    int j = 0;
+    for(; itr != mem.end(); itr++) {
+      if (j % 8 == 0) printf("\n");
+      printf("M[%d]:%02X", (*itr).first, (*itr).second);
+      j++;
+    }
+    printf("\npress 's' to step-in, others to run. ");
+    char c; cin >> c;
+    if (c == 's') opt_flags[1] = true;
+    else opt_flags[1] = false;
+  }
+  exec();
+  Loop(i, 32) {
+    if (i % 8 == 0) printf("\n");
+    printf("r%d:%08X ", i, reg[i]);
+  }
+  return 0;
+}
+
+int main(int argc, char *argv[]) {
+  Loop1(i, argc - 1) {
+    string strbuf = argv[i];
+    if (strbuf.substr(0,7) == "-break=") {
+      breakpoint = strtol((strbuf.substr(7,strbuf.size()-7)).c_str(), NULL, 0);
+      opt_flags[0] = true;
+    }
+    else if (strbuf == "-step") {
+      opt_flags[1] = true;
+    }
+    else {
+      if (opt_flags[2]) { printf("error: unknown option\n"); exit(EXIT_FAILURE); }
+      fp = fopen(argv[i], "rb");
+      if (fp == NULL) { perror("fopen error"); exit(EXIT_FAILURE); }
+      opt_flags[2] = true;
+    }
+  }
+  if (fp == NULL) { printf("error: specify a file\n"); exit(EXIT_FAILURE); }
+  jmp_fread(0);
+  while(1) {
+    if (run() < 0) break;
+  }
+  fclose(fp);
+  return 0;
+}
+=======
+>>>>>>> 00b0730a04fff936bcb7bb7ea873d50e0cae3279
