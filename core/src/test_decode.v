@@ -132,6 +132,7 @@ initial begin
     $display("ERROR!!: R RD_NUM %b\n",RD_NUM);
     $finish;
   end
+  $display("Test passed!\n");
 
 $finish;
 end

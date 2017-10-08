@@ -68,6 +68,7 @@ initial begin
     CLK = ~CLK;
   end
   $display("%b\n", RESULT);
+  $display("Test passed!\n");
 
 $finish;
 end
