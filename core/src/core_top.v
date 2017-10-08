@@ -4,12 +4,15 @@ module core_top
     input CLK,
     // Memory input and output
 
-    // メモリからのデータをMEM_ADDRで受け取り、欲しいアドレスをMEM_DATAで出力
+    input [31:0] I_MEM_IN,
+    output [31:0] I_MEM_ADDR,
+    // メモリからのデータをMEM_INで受け取り、欲しいアドレスをMEM_ADDRで出力
     // する
-    input [31:0] MEM_OUT,
-    output [31:0] MEM_IN,
+    input [31:0] MEM_IN,
+    output [31:0] MEM_DATA,
     output [31:0] MEM_ADDR,
     output MEM_WE
+
   );
 
   // PC
@@ -24,6 +27,7 @@ module core_top
        i_blt, i_bge, i_bltu, i_bgeu, i_lb, i_lh, i_lw, i_lbu, i_lhu, i_sb, i_sh,
        i_sw, i_addi, i_slti, i_sltiu, i_xori, i_ori, i_andi, i_slli, i_srli, i_srai,
        i_add, i_sub, i_sll, i_slt, i_sltu, i_xor, i_srl, i_sra, i_or, i_and;
+  wire n_inst;
   // 乗除算はまだ
 
   assign r0 = 32'b0;
@@ -54,6 +58,10 @@ module core_top
         begin
           cpu_state <= EXECUTE;
         end
+        EXECUTE:
+        begin
+          cpu_state <= MEMORY;
+        end
         MEMORY:
         begin
           cpu_state <= WRITEBACK;
@@ -69,7 +77,7 @@ module core_top
   // それぞれの段階ごとのアサインをする
   // 1. 命令フェッチ Instruction Fetch
   
-  assign MEM_ADDR = pc;
+  assign I_MEM_ADDR = pc;
 
   // 2. 命令デコード
   
@@ -78,11 +86,13 @@ module core_top
     .RST_N (RST_N),
     .CLK (CLK),
 
-    .INST (I_MEM_RDATA),
+    .INST (I_MEM_IN),
 
     .RD_NUM (rd_num),
     .RS1_NUM (rs1_num),
     .RS2_NUM (rs2_num),
+
+    .IMM (imm),
 
     .I_ADDI (i_addi),
     .I_SLTI (i_slti),
@@ -118,7 +128,9 @@ module core_top
     .I_LHU (i_lhu),
     .I_SB (i_sb),
     .I_SH (i_sh),
-    .I_SW (i_sw)
+    .I_SW (i_sw),
+
+    .N_INST (n_inst)
 
   );
   
@@ -164,16 +176,35 @@ module core_top
     .I_SB (i_sb),
     .I_SH (i_sh),
     .I_SW (i_sw),
+
+    .RS1 (rs1),
+    .RS2 (rs2),
+    .IMM (imm),
     
     .RESULT (alu_result)
 
   );
+
+  // PC
+  reg [31:0] ex_pc_add_imm, ex_pc_add_4, ex_pc_jalr;
+  always @(posedge CLK) begin
+    ex_pc_add_imm <= pc + imm; // AUIPC, BRANCH, JAL
+    ex_pc_jalr <= rs1 + imm;
+    ex_pc_add_4 <= pc + 4;
+  end
   
   // メモリアクセスの前に実行と切り分ける
 
   reg [31:0] ex_rs2, ex_imm;
   reg [4:0] ex_rd_num;
   reg ex_sb, ex_sh, ex_sw, ex_lbu, ex_lhu, ex_lb, ex_lh, ex_lw, ex_lui, is_ex_load, ex_auipc, ex_jal, ex_jalr, ex_beq, ex_bne, ex_blt, ex_bge, ex_bltu, ex_bgeu;
+
+  reg [4:0] wr_addr;
+  wire  wr_we;
+  wire [31:0] wr_data;
+
+  wire wr_pc_we;
+  wire [31:0] wr_pc;
 
   always @(posedge CLK) begin
     if(!RST_N) begin
@@ -199,6 +230,7 @@ module core_top
       ex_bge <= 0;
       ex_bltu <= 0;
       ex_bgeu <= 0;
+      wr_addr <= 0;
     end else begin
       ex_rs2 <= rs2;
       ex_imm <= imm;
@@ -222,13 +254,14 @@ module core_top
       ex_bge <= i_bge;
       ex_bltu <= i_bltu;
       ex_bgeu <= i_bgeu;
+      wr_addr <= rd_num;
     end
   end
 
   // 4. メモリアクセス
 
   assign MEM_ADDR = alu_result;
-  assign MEM_OUT = (ex_sb) ? {4{ex_rs2[7:0]}}:
+  assign MEM_DATA = (ex_sb) ? {4{ex_rs2[7:0]}}:
                    (ex_sh) ? {2{ex_rs2[15:0]}}:
                    (ex_sw) ? {ex_rs2}:
                    32'd0;
@@ -238,6 +271,14 @@ module core_top
   
 
   // レジスタ
+
+  assign wr_pc_we = (cpu_state == MEMORY);
+  assign wr_pc = (((ex_beq | ex_bne | ex_blt | ex_bge | ex_bltu | ex_bgeu)
+                 & (alu_result == 32'd1)) | ex_jal) ? ex_pc_add_imm:
+                 (ex_jalr) ? ex_pc_jalr:
+                 ex_pc_add_4;
+  assign wr_we = (cpu_state == WRITEBACK);
+  assign wr_data = alu_result;
 
   core_reg u_core_reg
   (
@@ -251,7 +292,7 @@ module core_top
     .RS1ADDR (rs1_num),
     .RS1 (rs1),
     .RS2ADDR (rs2_num),
-    .RS2 (id_rs2),
+    .RS2 (rs2),
 
     .PC_WE (wr_pc_we),
     .PC_WDATA (wr_pc),
