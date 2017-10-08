@@ -17,7 +17,6 @@ module core_top
 
   // PC
   wire [31:0] pc;
-  wire [31:0] r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r30, r31;
   wire [4:0] rd_num, rs1_num, rs2_num;
   wire [31:0] rs1, rs2, imm;
 
@@ -129,6 +128,11 @@ module core_top
     .I_SB (i_sb),
     .I_SH (i_sh),
     .I_SW (i_sw),
+
+    .I_JALR (i_jalr),
+    .I_JAL (i_jal),
+    .I_AUIPC (i_auipc),
+    .I_LUI (i_lui),
 
     .N_INST (n_inst)
 
@@ -273,8 +277,7 @@ module core_top
   // レジスタ
 
   assign wr_pc_we = (cpu_state == MEMORY);
-  assign wr_pc = (((ex_beq | ex_bne | ex_blt | ex_bge | ex_bltu | ex_bgeu)
-                 & (alu_result == 32'd1)) | ex_jal) ? ex_pc_add_imm:
+  assign wr_pc = (((ex_beq | ex_bne | ex_blt | ex_bge | ex_bltu | ex_bgeu) & (alu_result == 32'd1)) | ex_jal) ? ex_pc_add_imm:
                  (ex_jalr) ? ex_pc_jalr:
                  ex_pc_add_4;
   assign wr_we = (cpu_state == WRITEBACK);

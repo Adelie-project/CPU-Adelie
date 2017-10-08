@@ -67,8 +67,8 @@ initial begin
     RST_N <= 1'b1;
     CLK = ~CLK;
   end
-    if(RESULT != 32'b0000_1001_1001_0110_1011_0010_0110_1000) begin
-   $display("ERROR!!: R RESULT %b\n",RESULT);
+    if(RESULT != 32'b0000_0000_0000_0000_0000_0000_1111_1111) begin
+   $display("ADDI ERROR!!: R RESULT %b\n",RESULT);
    $finish;
   end
 
@@ -86,7 +86,7 @@ initial begin
     CLK = ~CLK;
   end
   if(RESULT != 32'b0000_0000_0000_0000_0000_0000_0000_0001) begin
-   $display("ERROR!!: R RESULT %b\n",RESULT);
+   $display("SLTI ERROR!!: R RESULT %b\n",RESULT);
    $finish;
   end
   // SLTIUのテスト
@@ -103,7 +103,7 @@ initial begin
     CLK = ~CLK;
   end
   if(RESULT != 32'b0000_0000_0000_0000_0000_0000_0000_0000) begin
-   $display("ERROR!!: R RESULT %b\n",RESULT);
+   $display("SLTIU ERROR!!: R RESULT %b\n",RESULT);
    $finish;
   end
   // XORIのテスト
