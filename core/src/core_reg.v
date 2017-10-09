@@ -18,6 +18,7 @@ module core_reg
   );
 
    reg [31:0] reg1, reg2, reg3, reg4, reg5, reg6, reg7, reg8, reg9, reg10, reg11, reg12, reg13, reg14, reg15, reg16, reg17, reg18, reg19, reg20, reg21, reg22, reg23, reg24, reg25, reg26, reg27, reg28, reg29, reg30, reg31;
+   reg _WE;
 
    always @(posedge CLK) begin
       if(!RST_N) begin
@@ -53,37 +54,38 @@ module core_reg
 				reg30 <= 0;
 				reg31 <= 0;
       end else begin
-        if(WE && (WADDR == 5'd1)) reg1 <= WDATA;
-        if(WE && (WADDR == 5'd2)) reg2 <= WDATA;
-        if(WE && (WADDR == 5'd3)) reg3 <= WDATA;
-        if(WE && (WADDR == 5'd4)) reg4 <= WDATA;
-        if(WE && (WADDR == 5'd5)) reg5 <= WDATA;
-        if(WE && (WADDR == 5'd6)) reg6 <= WDATA;
-        if(WE && (WADDR == 5'd7)) reg7 <= WDATA;
-        if(WE && (WADDR == 5'd8)) reg8 <= WDATA;
-        if(WE && (WADDR == 5'd9)) reg9 <= WDATA;
-        if(WE && (WADDR == 5'd10)) reg10 <= WDATA;
-        if(WE && (WADDR == 5'd11)) reg11 <= WDATA;
-        if(WE && (WADDR == 5'd12)) reg12 <= WDATA;
-        if(WE && (WADDR == 5'd13)) reg13 <= WDATA;
-        if(WE && (WADDR == 5'd14)) reg14 <= WDATA;
-        if(WE && (WADDR == 5'd15)) reg15 <= WDATA;
-        if(WE && (WADDR == 5'd16)) reg16 <= WDATA;
-        if(WE && (WADDR == 5'd17)) reg17 <= WDATA;
-        if(WE && (WADDR == 5'd18)) reg18 <= WDATA;
-        if(WE && (WADDR == 5'd19)) reg19 <= WDATA;
-        if(WE && (WADDR == 5'd20)) reg20 <= WDATA;
-        if(WE && (WADDR == 5'd21)) reg21 <= WDATA;
-        if(WE && (WADDR == 5'd22)) reg22 <= WDATA;
-        if(WE && (WADDR == 5'd23)) reg23 <= WDATA;
-        if(WE && (WADDR == 5'd24)) reg24 <= WDATA;
-        if(WE && (WADDR == 5'd25)) reg25 <= WDATA;
-        if(WE && (WADDR == 5'd26)) reg26 <= WDATA;
-        if(WE && (WADDR == 5'd27)) reg27 <= WDATA;
-        if(WE && (WADDR == 5'd28)) reg28 <= WDATA;
-        if(WE && (WADDR == 5'd29)) reg29 <= WDATA;
-        if(WE && (WADDR == 5'd30)) reg30 <= WDATA;
-        if(WE && (WADDR == 5'd31)) reg31 <= WDATA;
+        _WE <= WE;
+        if(_WE && (WADDR == 5'd1)) reg1 <= WDATA;
+        if(_WE && (WADDR == 5'd2)) reg2 <= WDATA;
+        if(_WE && (WADDR == 5'd3)) reg3 <= WDATA;
+        if(_WE && (WADDR == 5'd4)) reg4 <= WDATA;
+        if(_WE && (WADDR == 5'd5)) reg5 <= WDATA;
+        if(_WE && (WADDR == 5'd6)) reg6 <= WDATA;
+        if(_WE && (WADDR == 5'd7)) reg7 <= WDATA;
+        if(_WE && (WADDR == 5'd8)) reg8 <= WDATA;
+        if(_WE && (WADDR == 5'd9)) reg9 <= WDATA;
+        if(_WE && (WADDR == 5'd10)) reg10 <= WDATA;
+        if(_WE && (WADDR == 5'd11)) reg11 <= WDATA;
+        if(_WE && (WADDR == 5'd12)) reg12 <= WDATA;
+        if(_WE && (WADDR == 5'd13)) reg13 <= WDATA;
+        if(_WE && (WADDR == 5'd14)) reg14 <= WDATA;
+        if(_WE && (WADDR == 5'd15)) reg15 <= WDATA;
+        if(_WE && (WADDR == 5'd16)) reg16 <= WDATA;
+        if(_WE && (WADDR == 5'd17)) reg17 <= WDATA;
+        if(_WE && (WADDR == 5'd18)) reg18 <= WDATA;
+        if(_WE && (WADDR == 5'd19)) reg19 <= WDATA;
+        if(_WE && (WADDR == 5'd20)) reg20 <= WDATA;
+        if(_WE && (WADDR == 5'd21)) reg21 <= WDATA;
+        if(_WE && (WADDR == 5'd22)) reg22 <= WDATA;
+        if(_WE && (WADDR == 5'd23)) reg23 <= WDATA;
+        if(_WE && (WADDR == 5'd24)) reg24 <= WDATA;
+        if(_WE && (WADDR == 5'd25)) reg25 <= WDATA;
+        if(_WE && (WADDR == 5'd26)) reg26 <= WDATA;
+        if(_WE && (WADDR == 5'd27)) reg27 <= WDATA;
+        if(_WE && (WADDR == 5'd28)) reg28 <= WDATA;
+        if(_WE && (WADDR == 5'd29)) reg29 <= WDATA;
+        if(_WE && (WADDR == 5'd30)) reg30 <= WDATA;
+        if(_WE && (WADDR == 5'd31)) reg31 <= WDATA;
       end
    end
 
