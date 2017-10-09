@@ -176,5 +176,5 @@ module core_decode
       I_JALR <= (INST[6:0] == 7'b1100111);
     end
   end
-  assign N_INST = ~( I_ADDI | I_SLTI| I_SLTIU| I_XORI| I_ORI| I_ANDI| I_SLLI| I_SRLI| I_SRAI| I_ADD| I_SUB| I_SLL| I_SLT| I_SLTU| I_XOR| I_SRL| I_SRA| I_OR| I_AND| I_BEQ| I_BNE| I_BLT| I_BGE| I_BLTU| I_BGEU| I_LB| I_LH| I_LW| I_LBU| I_LHU| I_SB| I_SH| I_SW);
+  assign N_INST = ~( I_ADDI | I_SLTI| I_SLTIU| I_XORI| I_ORI| I_ANDI| I_SLLI| I_SRLI| I_SRAI| I_ADD| I_SUB| I_SLL| I_SLT| I_SLTU| I_XOR| I_SRL| I_SRA| I_OR| I_AND| I_BEQ| I_BNE| I_BLT| I_BGE| I_BLTU| I_BGEU| I_LB| I_LH| I_LW| I_LBU| I_LHU| I_SB| I_SH| I_SW | I_LUI | I_AUIPC | I_JAL | I_JALR);
 endmodule

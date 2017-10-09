@@ -286,7 +286,8 @@ module core_top
                  (ex_jalr) ? ex_pc_jalr:
                  ex_pc_add_4;
   assign wr_we = (cpu_state == WRITEBACK);
-  assign wr_data = alu_result;
+  assign wr_data = (i_lui) ? ex_imm:
+                     alu_result;
 
   core_reg u_core_reg
   (
