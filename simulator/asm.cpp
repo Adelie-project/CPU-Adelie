@@ -32,6 +32,7 @@ using namespace std;
 #define bitmanip(m,val) static_cast<bitset<(int)m>>(val)
 
 #define BUFSIZE 128
+vector<bool> opt_flags(8, false); //オプションフラグ
 
 string readline;
 vector<string> buf;
@@ -238,24 +239,47 @@ void parse() {
   }
   else {
     check_mnemonic();
-    if (fwrite(&result, sizeof(unsigned int), 1, fp) != 1) {
-      perror("fwrite error"); exit(EXIT_FAILURE);
+    if(opt_flags[1]) {
+      if (fprintf(fp, "%08X\n", result) < 0) {
+        perror("fprintf error"); exit(EXIT_FAILURE);
+      }
+    }
+    else {
+      if (fwrite(&result, sizeof(unsigned int), 1, fp) != 1) {
+        perror("fwrite error"); exit(EXIT_FAILURE);
+      }
     }
     pc += 4;
   }
 }
 
 int main(int argc, char *argv[]) {
-  if(argc != 2) {
-    printf("illegal arguments.\n");
-    exit(EXIT_FAILURE);
+  string filename;
+  Loop1(i, argc - 1) {
+    string strbuf = argv[i];
+    if (strbuf == "-x") {
+      opt_flags[1] = true;
+    }
+    else {
+      if (opt_flags[7]) { printf("error: unknown option\n"); exit(EXIT_FAILURE); }
+      filename = argv[i];
+      opt_flags[7] = true;
+    }
   }
-  ifstream ifs(argv[1]);
+  if (!opt_flags[7]) { printf("error: specify a file\n"); exit(EXIT_FAILURE); }
+  ifstream ifs(filename);
   if (!ifs.is_open()) { perror("fopen error\n"); exit(EXIT_FAILURE); }
-  string filename = argv[1];
-  filename = filename.substr(0, filename.find(".", 0)) + ".bin";
-  fp = fopen(filename.c_str(), "wb");
-  if (fp == NULL) { perror("fopen error\n"); exit(EXIT_FAILURE); }
+  if (opt_flags[1]) {
+    filename = filename.substr(0, filename.find(".", 0)) + ".coe";
+    fp = fopen(filename.c_str(), "w");
+    if (fp == NULL) { perror("fopen error\n"); exit(EXIT_FAILURE); }
+    fprintf(fp, "memory_initialization_radix=16;\nmemory_initialization_vector=\n");
+  }
+  else {
+    filename = filename.substr(0, filename.find(".", 0)) + ".bin";
+    fp = fopen(filename.c_str(), "wb");
+    if (fp == NULL) { perror("fopen error\n"); exit(EXIT_FAILURE); }
+  }
   while(getline(ifs, readline)) {
       lineno++;
       parse();
