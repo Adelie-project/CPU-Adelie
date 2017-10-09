@@ -199,7 +199,7 @@ module core_top
   always @(posedge CLK) begin
     ex_pc_add_imm <= pc + imm; // AUIPC, BRANCH, JAL
     ex_pc_jalr <= rs1 + imm;
-    ex_pc_add_4 <= pc + 4;
+    ex_pc_add_4 <= pc + 1;
   end
   
   // メモリアクセスの前に実行と切り分ける
