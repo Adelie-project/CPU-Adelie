@@ -37,6 +37,7 @@ module core_top
   localparam FETCH = 7'b0000010;
   localparam DECODE = 7'b0000100;
   localparam EXECUTE = 7'b0001000;
+  localparam EXECUTE2 = 7'b0001001;
   localparam MEMORY = 7'b0100000;
   localparam WRITEBACK = 7'b1000000;
 
@@ -58,6 +59,10 @@ module core_top
           cpu_state <= EXECUTE;
         end
         EXECUTE:
+        begin
+          cpu_state <= EXECUTE2;
+        end
+        EXECUTE2:
         begin
           cpu_state <= MEMORY;
         end
