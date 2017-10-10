@@ -68,7 +68,8 @@ int run() {
     return -1;
   }
   if (!opt_flags[2]) {
-    printf("\n\nPC = %08X ", pc);
+    if (!opt_flags[0]) printf("\n\n");
+    printf("PC = %08X ", pc);
     if (opt_flags[1] || (opt_flags[0] && breakpoint == pc)) {
       Loop(i, 32) {
         if (i % 8 == 0) printf("\n");
@@ -88,7 +89,7 @@ int run() {
     }
   }
   exec();
-  if (!opt_flags[2] && !opt_flags[1]) {
+  if (!opt_flags[2] && !opt_flags[1] && !opt_flags[0]) {
     Loop(i, 32) {
       if (i % 8 == 0) printf("\n");
       printf("r%02d:%08X ", i, reg[i]);
