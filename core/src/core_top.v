@@ -274,7 +274,7 @@ module core_top
                    (ex_sh) ? {2{ex_rs2[15:0]}}:
                    (ex_sw) ? {ex_rs2}:
                    32'd0;
-  assign MEM_WE = ex_sb | ex_sh | ex_sw;
+  assign MEM_WE = (ex_sb | ex_sh | ex_sw) && (cpu_state == MEMORY);
  
   // 5. 書き戻し
   

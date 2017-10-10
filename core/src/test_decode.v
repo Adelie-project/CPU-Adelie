@@ -132,6 +132,32 @@ initial begin
     $display("ERROR!!: R RD_NUM %b\n",RD_NUM);
     $finish;
   end
+
+  // S型テスト SW
+  #1;
+  RST_N <= 1'b0;
+  CLK <= 1'b1;
+  INST <= 32'b11000000010001000100011;
+  repeat(3) begin
+    #1;
+    RST_N <= 1'b1;
+    CLK = ~CLK;
+  end
+  // Immediate
+  if(IMM != 32'd4) begin
+    $display("ERROR!!: R IMM %b\n",IMM);
+    $finish;
+  end
+  // rs2 
+  if(RS2_NUM != 5'd6) begin
+    $display("ERROR!!: R RS2_NUM %b\n",RS2_NUM);
+    $finish;
+  end
+  // rs1 
+  if(RS1_NUM != 5'd0) begin
+    $display("ERROR!!: R RS1_NUM %b\n",RS1_NUM);
+    $finish;
+  end
   $display("Test passed!\n");
 
 $finish;
