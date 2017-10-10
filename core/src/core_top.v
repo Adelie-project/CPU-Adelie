@@ -224,8 +224,9 @@ module core_top
   assign wr_pc = (((i_beq | i_bne | i_blt | i_bge | i_bltu | i_bgeu) & (alu_result == 32'd1)) | i_jal) ? pc_add_imm:
                  (i_jalr) ? pc_jalr:
                  pc_add_4;
-  assign wr_we = (cpu_state == WRITEBACK);
+  assign wr_we = (cpu_state == MEMORY);
   assign wr_data = (i_lui) ? imm:
+                   (i_lw | i_lh | i_lb | i_lbu | i_lhu) ? MEM_IN:
                      alu_result;
   assign wr_addr = rd_num;
 
