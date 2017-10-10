@@ -9,5 +9,5 @@ addi r4, r4, $1   ; r4: r4 + 1 //i++
 add r12, r11, r0  ; r12: (pre)r11
 add r11, r11, r10 ; r11: r11 + r10
 add r10, r12, r0  ; r10: (pre)r11
-blt r4, r6, $-24   ; if(i < 20) loop
+blt r4, r6, $-6   ; if(i < 20) loop
 jal r20, $48       ; stop at here
