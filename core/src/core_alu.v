@@ -75,21 +75,21 @@ module core_alu (
     if(!RST_N) begin
       RESULT <= 0;
     end else begin
-      RESULT <= (I_ADDI | I_ADD | I_LB | I_LH | I_LW | I_LBU | I_LHU | I_SB | I_SH | I_SW) ? alu_add:
-        I_SUB ? alu_sub:
-        (I_SLTI | I_SLT) ? alu_lts:
-        (I_SLTIU | I_SLTU) ? alu_ltu:
-        (I_SLLI | I_SLL) ? alu_shl:
-        (I_SRLI | I_SRAI | I_SRL | I_SRA) ? alu_shr:
-        (I_XORI | I_XOR) ? alu_xor:
-        (I_ORI | I_OR) ? alu_or:
-        (I_ANDI | I_AND) ? alu_and:
-        I_BEQ ? alu_eq:
-        I_BNE ? !alu_eq:
-        I_BGE ? !alu_lts:
-        I_BGEU ? !alu_ltu:
-        I_BLT ? alu_lts:
-        I_BLTU ? alu_ltu:
+      RESULT <= (I_ADDI | I_ADD | I_LB | I_LH | I_LW | I_LBU | I_LHU | I_SB | I_SH | I_SW) ? RS1 + op2:
+        I_SUB ? RS1 - op2:
+        (I_SLTI | I_SLT) ? ($signed(RS1) < $signed(op2)):
+        (I_SLTIU | I_SLTU) ? RS1 < op2:
+        (I_SLLI | I_SLL) ? RS1 << op2[4:0]:
+        (I_SRLI | I_SRAI | I_SRL | I_SRA) ? $signed({(I_SRA | I_SRAI) ? RS1[31] : 1'b0, RS1}) >>> op2[4:0]:
+        (I_XORI | I_XOR) ? RS1 ^ op2:
+        (I_ORI | I_OR) ? RS1 | op2:
+        (I_ANDI | I_AND) ? RS1 & op2:
+        I_BEQ ? (RS1 == op2):
+        I_BNE ? !(RS1 == op2):
+        I_BGE ? !($signed(RS1) < $signed(op2)):
+        I_BGEU ? !(RS1 < op2):
+        I_BLT ? ($signed(RS1) < $signed(op2)):
+        I_BLTU ? (RS1 < op2):
         32'd0;
     end
   end

@@ -37,7 +37,6 @@ module core_top
   localparam FETCH = 7'b0000010;
   localparam DECODE = 7'b0000100;
   localparam EXECUTE = 7'b0001000;
-  localparam EXECUTE2 = 7'b0001001;
   localparam MEMORY = 7'b0100000;
   localparam WRITEBACK = 7'b1000000;
 
@@ -59,10 +58,6 @@ module core_top
           cpu_state <= EXECUTE;
         end
         EXECUTE:
-        begin
-          cpu_state <= EXECUTE2;
-        end
-        EXECUTE2:
         begin
           cpu_state <= MEMORY;
         end
@@ -195,18 +190,14 @@ module core_top
   );
 
   // PC
-  reg [31:0] ex_pc_add_imm, ex_pc_add_4, ex_pc_jalr;
+  reg [31:0] pc_add_imm, pc_add_4, pc_jalr;
   always @(posedge CLK) begin
-    ex_pc_add_imm <= pc + imm; // AUIPC, BRANCH, JAL
-    ex_pc_jalr <= rs1 + imm;
-    ex_pc_add_4 <= pc + 1;
+    pc_add_imm <= pc + imm; // AUIPC, BRANCH, JAL
+    pc_jalr <= rs1 + imm;
+    pc_add_4 <= pc + 1;
   end
   
   // メモリアクセスの前に実行と切り分ける
-
-  reg [31:0] ex_rs2, ex_imm;
-  reg [4:0] ex_rd_num;
-  reg ex_sb, ex_sh, ex_sw, ex_lbu, ex_lhu, ex_lb, ex_lh, ex_lw, ex_lui, is_ex_load, ex_auipc, ex_jal, ex_jalr, ex_beq, ex_bne, ex_blt, ex_bge, ex_bltu, ex_bgeu;
 
   reg [4:0] wr_addr;
   wire  wr_we;
@@ -215,66 +206,14 @@ module core_top
   wire wr_pc_we;
   wire [31:0] wr_pc;
 
-  always @(posedge CLK) begin
-    if(!RST_N) begin
-      ex_rs2 <= 0;
-      ex_imm <= 0;
-      ex_rd_num <= 0;
-      ex_sb <= 0;
-      ex_sh <= 0;
-      ex_sw <= 0;
-      ex_lbu <= 0;
-      ex_lhu <= 0;
-      ex_lb <= 0;
-      ex_lh <= 0;
-      ex_lw <= 0;
-      ex_lui <= 0;
-      is_ex_load <= 0;
-      ex_auipc <= 0;
-      ex_jal <= 0;
-      ex_jalr <= 0;
-      ex_beq <= 0;
-      ex_bne <= 0;
-      ex_blt <= 0;
-      ex_bge <= 0;
-      ex_bltu <= 0;
-      ex_bgeu <= 0;
-      wr_addr <= 0;
-    end else begin
-      ex_rs2 <= rs2;
-      ex_imm <= imm;
-      ex_rd_num <= rd_num;
-      ex_sb <= i_sb;
-      ex_sh <= i_sh;
-      ex_sw <= i_sw;
-      ex_lbu <= i_lbu;
-      ex_lhu <= i_lhu;
-      ex_lb <= i_lb;
-      ex_lh <= i_lh;
-      ex_lw <= i_lw;
-      is_ex_load <= i_lb | i_lh | i_lw | i_lbu | i_lhu;
-      ex_lui <= i_lui;
-      ex_auipc <= i_auipc;
-      ex_jal <= i_jal;
-      ex_jalr <= i_jalr;
-      ex_beq <= i_beq;
-      ex_bne <= i_bne;
-      ex_blt <= i_blt;
-      ex_bge <= i_bge;
-      ex_bltu <= i_bltu;
-      ex_bgeu <= i_bgeu;
-      wr_addr <= rd_num;
-    end
-  end
-
   // 4. メモリアクセス
 
   assign MEM_ADDR = alu_result;
-  assign MEM_DATA = (ex_sb) ? {4{ex_rs2[7:0]}}:
-                   (ex_sh) ? {2{ex_rs2[15:0]}}:
-                   (ex_sw) ? {ex_rs2}:
+  assign MEM_DATA = (i_sb) ? {4{rs2[7:0]}}:
+                   (i_sh) ? {2{rs2[15:0]}}:
+                   (i_sw) ? {rs2}:
                    32'd0;
-  assign MEM_WE = (ex_sb | ex_sh | ex_sw) && (cpu_state == MEMORY);
+  assign MEM_WE = (i_sb | i_sh | i_sw) && (cpu_state == MEMORY);
  
   // 5. 書き戻し
   
@@ -282,11 +221,11 @@ module core_top
   // レジスタ
 
   assign wr_pc_we = (cpu_state == MEMORY);
-  assign wr_pc = (((ex_beq | ex_bne | ex_blt | ex_bge | ex_bltu | ex_bgeu) & (alu_result == 32'd1)) | ex_jal) ? ex_pc_add_imm:
-                 (ex_jalr) ? ex_pc_jalr:
-                 ex_pc_add_4;
+  assign wr_pc = (((i_beq | i_bne | i_blt | i_bge | i_bltu | i_bgeu) & (alu_result == 32'd1)) | i_jal) ? pc_add_imm:
+                 (i_jalr) ? pc_jalr:
+                 pc_add_4;
   assign wr_we = (cpu_state == WRITEBACK);
-  assign wr_data = (i_lui) ? ex_imm:
+  assign wr_data = (i_lui) ? imm:
                      alu_result;
 
   core_reg u_core_reg
