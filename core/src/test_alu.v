@@ -23,7 +23,7 @@ module test_alu();
   reg I_SRA;
   reg I_OR;
   reg I_AND;
-  
+
   reg I_BEQ;
   reg I_BNE;
   reg I_BLT;
@@ -126,6 +126,7 @@ initial begin
    $display("XORI ERROR!!: R RESULT %b\n",RESULT);
    $finish;
   end
+  I_XORI <= 1'b0;
   // ORIのテスト
   #1;
   RST_N <= 1'b0;
@@ -143,6 +144,7 @@ initial begin
    $display("ERROR!!: R RESULT %b\n",RESULT);
    $finish;
   end
+  I_ORI <= 1'b0;
   // ANDIのテスト
   #1;
   RST_N <= 1'b0;
