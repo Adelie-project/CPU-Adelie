@@ -54,36 +54,23 @@ module core_decode
 
   output wire N_INST
 );
-
-  reg type_r, type_i, type_s, type_b, type_u, type_j;
-
-  // タイプに分ける
-  always @(posedge CLK) begin
-    type_j <= INST[6:0] == 7'b1101111;
-    type_u <= INST[4:0] == 5'b10111;
-    type_s <= INST[6:0] == 7'b0100011;
-    type_b <= INST[6:0] == 7'b1100011;
-    type_r <= INST[6:2] == 5'b01100;
-    type_i <= (INST[6:0] == 7'b1100111) || (INST[6:0] == 7'b0000011) || (INST[6:0] == 7'b0010011);
-  end
-
   // IMM
   always @(posedge CLK) begin
     if(!RST_N) begin
       IMM <= 0;
     end else begin
-      IMM <= (type_i) ? {{21{INST[31]}}, INST[30:20]} :
-             (type_s) ? {{21{INST[31]}}, INST[30:25], INST[11:7]} :
-             (type_b) ? {{20{INST[31]}}, INST[7], INST[30:25], INST[11:8], 1'b0} :
-             (type_u) ? {INST[31:12], 12'b0000_0000_0000} :
-             (type_j) ? {{12{INST[31]}}, INST[19:12], INST[20], INST[30:21], 1'b0} :
+      IMM <= (((INST[6:0] == 7'b1100111) || (INST[6:0] == 7'b0000011) || (INST[6:0] == 7'b0010011))) ? {{21{INST[31]}}, INST[30:20]} :
+             ((INST[6:0] == 7'b0100011)) ? {{21{INST[31]}}, INST[30:25], INST[11:7]} :
+             ((INST[6:0] == 7'b1100011)) ? {{20{INST[31]}}, INST[7], INST[30:25], INST[11:8], 1'b0} :
+             ((INST[4:0] == 5'b10111)) ? {INST[31:12], 12'b0000_0000_0000} :
+             ((INST[6:0] == 7'b1101111)) ? {{12{INST[31]}}, INST[19:12], INST[20], INST[30:21], 1'b0} :
              32'd0;
     end
   end
 
-  assign RD_NUM = (type_r | type_i | type_u | type_j) ? INST[11:7] : 5'd0;
-  assign RS1_NUM = (type_r | type_i | type_s | type_b) ? INST[19:15] : 5'd0;
-  assign RS2_NUM = (type_r | type_s | type_b) ? INST[24:20] : 5'd0;
+  assign RD_NUM = ((INST[6:2] == 5'b01100) | ((INST[6:0] == 7'b1100111) || (INST[6:0] == 7'b0000011) || (INST[6:0] == 7'b0010011)) | (INST[4:0] == 5'b10111) | (INST[6:0] == 7'b1101111)) ? INST[11:7] : 5'd0;
+  assign RS1_NUM = ((INST[6:2] == 5'b01100) | ((INST[6:0] == 7'b1100111) || (INST[6:0] == 7'b0000011) || (INST[6:0] == 7'b0010011)) | (INST[6:0] == 7'b0100011) | (INST[6:0] == 7'b1100011)) ? INST[19:15] : 5'd0;
+  assign RS2_NUM = ((INST[6:2] == 5'b01100) | (INST[6:0] == 7'b0100011) | (INST[6:0] == 7'b1100011)) ? INST[24:20] : 5'd0;
 
   wire [2:0] func3;
   wire [6:0] func7;
@@ -142,23 +129,23 @@ module core_decode
       I_SLLI  <=  (INST[6:0] == 7'b0010011) && (func3 == 3'b001);
       I_SRLI  <= (INST[6:0] == 7'b0010011) && (func3 == 3'b101) && (func7 == 7'b0000000);
       I_SRAI  <= (INST[6:0] == 7'b0010011) && (func3 == 3'b101) && (func7 == 7'b0100000);
-      I_ADD  <= type_r && (func3 == 3'b000) && (func7 == 7'b0000000);
-      I_SUB  <= type_r && (func3 == 3'b000) && (func7 == 7'b0100000);
-      I_SLL  <= type_r && (func3 == 3'b001);
-      I_SLT  <= type_r && (func3 == 3'b010);
-      I_SLTU  <= type_r && (func3 == 3'b011);
-      I_XOR  <= type_r && (func3 == 3'b100);
-      I_SRL  <= type_r && (func3 == 3'b101) && (func7 == 7'b0000000);
-      I_SRA  <= type_r && (func3 == 3'b101) && (func7 == 7'b0100000);
-      I_OR  <= type_r && (func3 == 3'b110);
-      I_AND  <= type_r && (func3 == 3'b111);
+      I_ADD  <= (INST[6:2] == 5'b01100) && (func3 == 3'b000) && (func7 == 7'b0000000);
+      I_SUB  <= (INST[6:2] == 5'b01100) && (func3 == 3'b000) && (func7 == 7'b0100000);
+      I_SLL  <= (INST[6:2] == 5'b01100) && (func3 == 3'b001);
+      I_SLT  <= (INST[6:2] == 5'b01100) && (func3 == 3'b010);
+      I_SLTU  <= (INST[6:2] == 5'b01100) && (func3 == 3'b011);
+      I_XOR  <= (INST[6:2] == 5'b01100) && (func3 == 3'b100);
+      I_SRL  <= (INST[6:2] == 5'b01100) && (func3 == 3'b101) && (func7 == 7'b0000000);
+      I_SRA  <= (INST[6:2] == 5'b01100) && (func3 == 3'b101) && (func7 == 7'b0100000);
+      I_OR  <= (INST[6:2] == 5'b01100) && (func3 == 3'b110);
+      I_AND  <= (INST[6:2] == 5'b01100) && (func3 == 3'b111);
       
-      I_BEQ <= type_b && (func3 == 3'b000);
-      I_BNE <= type_b && (func3 == 3'b001);
-      I_BLT <= type_b && (func3 == 3'b100);
-      I_BGE <= type_b && (func3 == 3'b101);
-      I_BLTU <= type_b && (func3 == 3'b110);
-      I_BGEU <= type_b && (func3 == 3'b111);
+      I_BEQ <= (INST[6:0] == 7'b1100011) && (func3 == 3'b000);
+      I_BNE <= (INST[6:0] == 7'b1100011) && (func3 == 3'b001);
+      I_BLT <= (INST[6:0] == 7'b1100011) && (func3 == 3'b100);
+      I_BGE <= (INST[6:0] == 7'b1100011) && (func3 == 3'b101);
+      I_BLTU <= (INST[6:0] == 7'b1100011) && (func3 == 3'b110);
+      I_BGEU <= (INST[6:0] == 7'b1100011) && (func3 == 3'b111);
 
       I_LB <= (INST[6:0] == 7'b0000011) && (func3 == 3'b000);
       I_LH <= (INST[6:0] == 7'b0000011) && (func3 == 3'b001);
@@ -166,9 +153,9 @@ module core_decode
       I_LBU <= (INST[6:0] == 7'b0000011) && (func3 == 3'b100);
       I_LHU <= (INST[6:0] == 7'b0000011) && (func3 == 3'b101);
 
-      I_SB <= type_s && (func3 == 3'b000);
-      I_SH <= type_s && (func3 == 3'b001);
-      I_SW <= type_s && (func3 == 3'b010);
+      I_SB <= (INST[6:0] == 7'b0100011) && (func3 == 3'b000);
+      I_SH <= (INST[6:0] == 7'b0100011) && (func3 == 3'b001);
+      I_SW <= (INST[6:0] == 7'b0100011) && (func3 == 3'b010);
 
       I_LUI <= (INST[6:0] == 7'b0110111);
       I_AUIPC <= (INST[6:0] == 7'b0010111);

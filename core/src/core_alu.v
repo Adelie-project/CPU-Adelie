@@ -49,47 +49,33 @@ module core_alu (
 
 // 即値だったらop2に即値、レジスタだったらレジスタの値を代入する。
 
-  reg [31:0] op2;
-  
-  always @(posedge CLK) begin
-    op2 <= (I_ADDI | I_SLTI | I_SLTIU | I_XORI | I_ANDI | I_ORI | I_SLLI | I_SRLI | I_SRAI | I_LB | I_LH | I_LW | I_LBU | I_LHU | I_SB | I_SH | I_SW) ? IMM : RS2;
-  end
-
-  reg [31:0] alu_add, alu_sub, alu_shl, alu_shr, alu_xor, alu_or, alu_and;
-  reg alu_eq, alu_ltu, alu_lts;
-
-  always @(posedge CLK) begin
-    alu_add <= RS1 + op2;
-    alu_sub <= RS1 - op2;
-    alu_shl <= RS1 << op2[4:0];
-    alu_shr <= $signed({(I_SRA | I_SRAI) ? RS1[31] : 1'b0, RS1}) >>> op2[4:0];
-    alu_eq <= (RS1 == op2);
-    alu_lts <= ($signed(RS1) < $signed(op2));
-    alu_ltu <= RS1 < op2;
-    alu_xor <= RS1 ^ op2;
-    alu_or <= RS1 | op2;
-    alu_and <= RS1 & op2;
-  end
-
   always @(posedge CLK) begin
     if(!RST_N) begin
       RESULT <= 0;
     end else begin
-      RESULT <= (I_ADDI | I_ADD | I_LB | I_LH | I_LW | I_LBU | I_LHU | I_SB | I_SH | I_SW) ? RS1 + op2:
-        I_SUB ? RS1 - op2:
-        (I_SLTI | I_SLT) ? ($signed(RS1) < $signed(op2)):
-        (I_SLTIU | I_SLTU) ? RS1 < op2:
-        (I_SLLI | I_SLL) ? RS1 << op2[4:0]:
-        (I_SRLI | I_SRAI | I_SRL | I_SRA) ? $signed({(I_SRA | I_SRAI) ? RS1[31] : 1'b0, RS1}) >>> op2[4:0]:
-        (I_XORI | I_XOR) ? RS1 ^ op2:
-        (I_ORI | I_OR) ? RS1 | op2:
-        (I_ANDI | I_AND) ? RS1 & op2:
-        I_BEQ ? (RS1 == op2):
-        I_BNE ? !(RS1 == op2):
-        I_BGE ? !($signed(RS1) < $signed(op2)):
-        I_BGEU ? !(RS1 < op2):
-        I_BLT ? ($signed(RS1) < $signed(op2)):
-        I_BLTU ? (RS1 < op2):
+      RESULT <= (I_ADDI | I_LB | I_LH | I_LW | I_LBU | I_LHU | I_SB | I_SH | I_SW) ? RS1 + IMM:
+        (I_ADD) ? RS1 + RS2: 
+        I_SUB ? RS1 - RS2:
+        (I_SLTI) ? ($signed(RS1) < $signed(IMM)):
+        (I_SLT) ? ($signed(RS1) < $signed(RS2)):
+        (I_SLTIU) ? RS1 < IMM:
+        (I_SLTU) ? RS1 < RS2:
+        (I_SLLI) ? RS1 << IMM[4:0]:
+        (I_SLL) ? RS1 << RS2[4:0]:
+        (I_SRLI | I_SRAI) ? $signed({(I_SRAI ? RS1[31] : 1'b0), RS1}) >>> IMM[4:0]:
+        (I_SRL | I_SRA) ? $signed({(I_SRA ? RS1[31] : 1'b0), RS1}) >>> RS2[4:0]:
+        (I_XORI) ? RS1 ^ IMM:
+        (I_XOR) ? RS1 ^ RS2:
+        (I_ORI) ? RS1 | IMM:
+        (I_OR) ? RS1 | RS2:
+        (I_ANDI) ? RS1 & IMM:
+        (I_AND) ? RS1 & RS2:
+        I_BEQ ? (RS1 == RS2):
+        I_BNE ? !(RS1 == RS2):
+        I_BGE ? !($signed(RS1) < $signed(RS2)):
+        I_BGEU ? !(RS1 < RS2):
+        I_BLT ? ($signed(RS1) < $signed(RS2)):
+        I_BLTU ? (RS1 < RS2):
         32'd0;
     end
   end

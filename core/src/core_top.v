@@ -199,7 +199,7 @@ module core_top
   
   // メモリアクセスの前に実行と切り分ける
 
-  reg [4:0] wr_addr;
+  wire [4:0] wr_addr;
   wire  wr_we;
   wire [31:0] wr_data;
 
@@ -227,6 +227,7 @@ module core_top
   assign wr_we = (cpu_state == WRITEBACK);
   assign wr_data = (i_lui) ? imm:
                      alu_result;
+  assign wr_addr = rd_num;
 
   core_reg u_core_reg
   (
