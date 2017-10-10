@@ -398,6 +398,7 @@ void exec() {
   return;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 int run() {
   if (rbuf_p == RBUFSIZE) {
@@ -457,5 +458,3 @@ int main(int argc, char *argv[]) {
   fclose(fp);
   return 0;
 }
-=======
->>>>>>> 00b0730a04fff936bcb7bb7ea873d50e0cae3279
