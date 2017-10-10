@@ -71,6 +71,7 @@ initial begin
    $display("ADDI ERROR!!: R RESULT %b\n",RESULT);
    $finish;
   end
+  I_ADDI <= 1'b0;
 
   // SLTIのテスト
   #1;
@@ -89,6 +90,7 @@ initial begin
    $display("SLTI ERROR!!: R RESULT %b\n",RESULT);
    $finish;
   end
+  I_SLTI <= 1'b0;
   // SLTIUのテスト
   #1;
   RST_N <= 1'b0;
@@ -106,6 +108,7 @@ initial begin
    $display("SLTIU ERROR!!: R RESULT %b\n",RESULT);
    $finish;
   end
+  I_SLTIU <= 1'b0;
   // XORIのテスト
   #1;
   RST_N <= 1'b0;
@@ -120,7 +123,7 @@ initial begin
     CLK = ~CLK;
   end
   if(RESULT != 32'b0000_0000_1101_0011_0111_1010_1000_1011) begin
-   $display("ERROR!!: R RESULT %b\n",RESULT);
+   $display("XORI ERROR!!: R RESULT %b\n",RESULT);
    $finish;
   end
   // ORIのテスト
