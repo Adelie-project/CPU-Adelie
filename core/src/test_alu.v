@@ -141,7 +141,7 @@ initial begin
     CLK = ~CLK;
   end
   if(RESULT != 32'b0000_1101_0101_0111_1111_1010_1011_1111) begin
-   $display("ERROR!!: R RESULT %b\n",RESULT);
+   $display("ORI ERROR!!: R RESULT %b\n",RESULT);
    $finish;
   end
   I_ORI <= 1'b0;
@@ -159,9 +159,10 @@ initial begin
     CLK = ~CLK;
   end
   if(RESULT != 32'b0000_0000_0101_0100_1000_0000_0011_0100) begin
-   $display("ERROR!!: R RESULT %b\n",RESULT);
+   $display("ANDI ERROR!!: R RESULT %b\n",RESULT);
    $finish;
   end
+  I_ANDI <= 1'b0;
   // SLLIのテスト
   #1;
   RST_N <= 1'b0;
@@ -176,9 +177,10 @@ initial begin
     CLK = ~CLK;
   end
   if(RESULT != 32'b1110_0101_0100_0110_0000_1111_0101_0000) begin
-   $display("ERROR!!: R RESULT %b\n",RESULT);
+   $display("SLLI ERROR!!: R RESULT %b\n",RESULT);
    $finish;
   end
+  I_SLLI <= 1'b0;
   // SRLIのテスト
   #1;
   RST_N <= 1'b0;
@@ -193,9 +195,10 @@ initial begin
     CLK = ~CLK;
   end
   if(RESULT != 32'b0000_1000_1110_0101_0100_0110_0000_1111) begin
-   $display("ERROR!!: R RESULT %b\n",RESULT);
+   $display("SRLI ERROR!!: R RESULT %b\n",RESULT);
    $finish;
   end
+  I_SRLI <= 1'b0;
   // SRAIのテスト
   #1;
   RST_N <= 1'b0;
@@ -210,9 +213,10 @@ initial begin
     CLK = ~CLK;
   end
   if(RESULT != 32'b1111_1000_1110_0101_0100_0110_0000_1111) begin
-   $display("ERROR!!: R RESULT %b\n",RESULT);
+   $display("SRAI ERROR!!: R RESULT %b\n",RESULT);
    $finish;
   end
+  I_SRAI <= 1'b0;
   // ADDのテスト
   #1;
   RST_N <= 1'b0;
@@ -227,9 +231,10 @@ initial begin
     CLK = ~CLK;
   end
   if(RESULT != 32'b0000_1001_1001_0110_1011_0010_0110_1000) begin
-   $display("ERROR!!: R RESULT %b\n",RESULT);
+   $display("ADD ERROR!!: R RESULT %b\n",RESULT);
    $finish;
   end
+  I_ADD <= 1'b0;
   // SUBのテスト
   #1;
   RST_N <= 1'b0;
@@ -244,9 +249,10 @@ initial begin
     CLK = ~CLK;
   end
   if(RESULT != 32'b0000_1000_1111_0000_1000_0011_0100_0000) begin
-   $display("ERROR!!: R RESULT %b\n",RESULT);
+   $display("SUB ERROR!!: R RESULT %b\n",RESULT);
    $finish;
   end
+  I_SUB <= 1'b0;
   // SLLのテスト
   #1;
   RST_N <= 1'b0;
@@ -261,9 +267,10 @@ initial begin
     CLK = ~CLK;
   end
   if(RESULT != 32'b1110_0101_0100_0110_0000_1111_0101_0000) begin
-   $display("ERROR!!: R RESULT %b\n",RESULT);
+   $display("SLL ERROR!!: R RESULT %b\n",RESULT);
    $finish;
   end
+  I_SLL <= 1'b0;
   // SLTのテスト
   #1;
   RST_N <= 1'b0;
@@ -278,9 +285,10 @@ initial begin
     CLK = ~CLK;
   end
   if(RESULT != 32'b0000_0000_0000_0000_0000_0000_0000_0001) begin
-   $display("ERROR!!: R RESULT %b\n",RESULT);
+   $display("SLT ERROR!!: R RESULT %b\n",RESULT);
    $finish;
   end
+  I_SLT <= 1'b0;
   // SLTUのテスト
   #1;
   RST_N <= 1'b0;
@@ -295,9 +303,10 @@ initial begin
     CLK = ~CLK;
   end
   if(RESULT != 32'b0000_0000_0000_0000_0000_0000_0000_0000) begin
-   $display("ERROR!!: R RESULT %b\n",RESULT);
+   $display("SLTU ERROR!!: R RESULT %b\n",RESULT);
    $finish;
   end
+  I_SLTU <= 1'b0;
   // XORのテスト
   #1;
   RST_N <= 1'b0;
@@ -312,9 +321,10 @@ initial begin
     CLK = ~CLK;
   end
   if(RESULT != 32'b0000_0000_1101_0011_0111_1010_1000_1011) begin
-   $display("ERROR!!: R RESULT %b\n",RESULT);
+   $display("XOR ERROR!!: R RESULT %b\n",RESULT);
    $finish;
   end
+  I_XOR <= 1'b0;
   // SRLのテスト
   #1;
   RST_N <= 1'b0;
@@ -329,9 +339,10 @@ initial begin
     CLK = ~CLK;
   end
   if(RESULT != 32'b0000_1000_1110_0101_0100_0110_0000_1111) begin
-   $display("ERROR!!: R RESULT %b\n",RESULT);
+   $display("SRL ERROR!!: R RESULT %b\n",RESULT);
    $finish;
   end
+  I_SRL <= 1'b0;
   // SRAのテスト
   #1;
   RST_N <= 1'b0;
@@ -346,9 +357,10 @@ initial begin
     CLK = ~CLK;
   end
   if(RESULT != 32'b1111_1000_1110_0101_0100_0110_0000_1111) begin
-   $display("ERROR!!: R RESULT %b\n",RESULT);
+   $display("SRA ERROR!!: R RESULT %b\n",RESULT);
    $finish;
   end
+  I_SRA <= 1'b0;
   // ORのテスト
   #1;
   RST_N <= 1'b0;
@@ -363,9 +375,10 @@ initial begin
     CLK = ~CLK;
   end
   if(RESULT != 32'b0000_1101_0101_0111_1111_1010_1011_1111) begin
-   $display("ERROR!!: R RESULT %b\n",RESULT);
+   $display("OR ERROR!!: R RESULT %b\n",RESULT);
    $finish;
   end
+  I_OR <= 1'b0;
   // ANDのテスト
   #1;
   RST_N <= 1'b0;
@@ -380,9 +393,10 @@ initial begin
     CLK = ~CLK;
   end
   if(RESULT != 32'b0000_0000_0101_0100_1000_0000_0011_0100) begin
-   $display("ERROR!!: R RESULT %b\n",RESULT);
+   $display("AND ERROR!!: R RESULT %b\n",RESULT);
    $finish;
   end
+  I_AND <= 1'b0;
 
 $finish;
 end
