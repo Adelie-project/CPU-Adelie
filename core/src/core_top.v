@@ -199,7 +199,7 @@ module core_top
   always @(posedge CLK) begin
     ex_pc_add_imm <= pc + imm; // AUIPC, BRANCH, JAL
     ex_pc_jalr <= rs1 + imm;
-    ex_pc_add_4 <= pc + 4;
+    ex_pc_add_4 <= pc + 1;
   end
   
   // メモリアクセスの前に実行と切り分ける
@@ -286,7 +286,8 @@ module core_top
                  (ex_jalr) ? ex_pc_jalr:
                  ex_pc_add_4;
   assign wr_we = (cpu_state == WRITEBACK);
-  assign wr_data = alu_result;
+  assign wr_data = (i_lui) ? ex_imm:
+                     alu_result;
 
   core_reg u_core_reg
   (
