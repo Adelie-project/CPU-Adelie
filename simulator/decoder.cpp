@@ -22,7 +22,7 @@ using namespace std;
 #define INT_MAX 0xFFFFFFFF
 
 
-void decode_sb_type(unsigned int inst, unsigned int *rs1, unsigned int *rs2, int *imm) {
+void decode_sb_type(unsigned inst, unsigned* rs1, unsigned* rs2, int* imm) {
   *rs1 = (inst & 0x00F8000) >> 15;
   *rs2 = (inst & 0x1F00000) >> 20;
   *imm = (inst & 0x80000000) >> 19 | (inst & 0x80) << 4 | (inst & 0x7E000000) >> 20 | (inst & 0xF00) >> 7;
@@ -30,7 +30,7 @@ void decode_sb_type(unsigned int inst, unsigned int *rs1, unsigned int *rs2, int
   if (*imm & 0x1000) *imm = *imm | 0xFFFFE000;
 }
 
-void decode_i_type(unsigned int inst, unsigned int *rd, unsigned int *rs1, int *imm) {
+void decode_i_type(unsigned inst, unsigned* rd, unsigned* rs1, int* imm) {
   *rd = (inst & 0xF80) >> 7;
   *rs1 = (inst & 0x00F8000) >> 15;
   *imm = (inst & 0xFFF00000) >> 20;
@@ -38,7 +38,7 @@ void decode_i_type(unsigned int inst, unsigned int *rd, unsigned int *rs1, int *
   if (*imm & 0x800) *imm = *imm | 0xFFFFF000;
 }
 
-void decode_s_type(unsigned int inst, unsigned int *rs1, unsigned int *rs2, int *imm) {
+void decode_s_type(unsigned inst, unsigned* rs1, unsigned* rs2, int* imm) {
   *rs1 = (inst & 0x00F8000) >> 15;
   *rs2 = (inst & 0x1F00000) >> 20;
   *imm = (inst & 0xFE000000) >> 20 | (inst & 0xF80) >> 7;
@@ -46,13 +46,8 @@ void decode_s_type(unsigned int inst, unsigned int *rs1, unsigned int *rs2, int 
   if (*imm & 0x800) *imm = *imm | 0xFFFFF000;
 }
 
-void decode_r_type(unsigned int inst, unsigned int *rd, unsigned int *rs1, unsigned int *rs2) {
+void decode_r_type(unsigned inst, unsigned* rd, unsigned* rs1, unsigned* rs2) {
   *rd = (inst & 0xF80) >> 7;
   *rs1 = (inst & 0x00F8000) >> 15;
   *rs2 = (inst & 0x1F00000) >> 20;
-}
-
-void print_unknown_inst(int x, unsigned int inst) {
-  printf("error$%d: unknown instruction of %08X.\n", x, inst);
-  exit(EXIT_FAILURE);
 }
