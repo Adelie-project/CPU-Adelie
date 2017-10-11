@@ -34,7 +34,7 @@ void exec_branch(param_t* param, bool b, bool *branch, int *imm, const char *mne
 void exec_main(param_t* param) {
   unsigned inst = (param->rbuf)[param->rbuf_p];
   bool branch = false;
-  int imm;
+  int imm, evac;
   unsigned rs1, rs2, rd, shamt, l_mem, s_mem;
   switch (inst & 0x7F) {
     case 0b0110111: //LUI
@@ -63,9 +63,10 @@ void exec_main(param_t* param) {
       break;
     case 0b1100111: //JALR
       decode_i_type(inst, &rd, &rs1, &imm);
-      param->reg[rd] = param->pc + param->pc_interval;
+      evac = param->pc + param->pc_interval;
       branch = true;
       exec_jmp_fread(param, param->reg[rs1] + imm);
+      param->reg[rd] = evac;
       if(param->step) printf("jalr r%d r%d $%d\n", rd, rs1, imm);
       break;
     case 0b1100011: //分岐命令

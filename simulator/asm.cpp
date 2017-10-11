@@ -52,7 +52,7 @@ map<string, unsigned int> i_type =
   { {"addi", 0}, {"slti", 2}, {"sltiu", 3},
     {"xori", 4}, {"ori", 6}, {"andi", 7} };
 map<string, unsigned int> i_type1 =
-  { {"jajr", 0}, {"lb", 0}, {"lh", 1},
+  { {"jalr", 0}, {"lb", 0}, {"lh", 1},
     {"lw", 2}, {"lbu", 4}, {"lhu", 5} };
 map<string, unsigned int> s_type =
   { {"sb", 0}, {"sh", 1}, {"sw", 2} };
@@ -69,17 +69,17 @@ map<string, unsigned int> uj_type =
 void divide(){
   int k = 0, i = 0;
   for(; i < (int)readline.length(); i++) {
-    if (readline[i] == ';') break;
-    else if (readline[i] == ':') {
+    char c = readline[i];
+    if (c == ';') break;
+    else if (c == ':') {
+      if (k != i) buf.push_back(":");
+      return;
+    }
+    else if (c == ' ') {
       if (k != i) buf.push_back(readline.substr(k, i - k));
-      else { printf("error: syntax error of labeling in line %d\n", lineno); exit(EXIT_FAILURE); }
       k = i + 1;
     }
-    else if (readline[i] == ' ') {
-      if (k != i) buf.push_back(readline.substr(k, i - k));
-      k = i + 1;
-    }
-    else if (readline[i] == ',') {
+    else if (c == ',') {
       buf.push_back(readline.substr(k, i - k));
       k = i + 1;
     }
@@ -154,7 +154,7 @@ void check_mnemonic(){
       rs1 = strtol((buf[2].substr(1,buf[2].size()-1)).c_str(), NULL, 0);
       imm = strtol((buf[3].substr(1,buf[3].size()-1)).c_str(), NULL, 0);
       funct3 = itr->second;
-      if (buf[0] == "JALR") opcode = 0b1100111;
+      if (buf[0] == "jalr") opcode = 0b1100111;
       else opcode = 0b0000011;
       if (rd >= 32 || rs1 >= 32 || rd < 0 || rs1 < 0) {
         printf("error: register number is out of range in line %d\n", lineno); exit(EXIT_FAILURE);
@@ -194,6 +194,7 @@ void check_mnemonic(){
         auto itr = labels.find(buf[3]);
         if (itr == labels.end()) { printf("error: could not find the label: %s", buf[3].c_str()); exit(EXIT_FAILURE); }
         else imm = itr->second - pc;
+        if (pc_interval == 1 && imm % 2 == 1) printf("warning: imm in line %d will be an odd number\n", lineno);
       }
       funct3 = itr->second;
       opcode = 0b1100011;
@@ -222,9 +223,15 @@ void check_mnemonic(){
   }
   //UJ-type
   else if ((itr = uj_type.find(buf[0])) != uj_type.end()) {
-    if (buf[1][0] == 'r' && buf[2][0] == '$') {
+    if (buf[1][0] == 'r') {
       rd = strtol((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
-      imm = strtol((buf[2].substr(1,buf[2].size()-1)).c_str(), NULL, 0);
+      if (buf[2][0] == '$') imm = strtol((buf[2].substr(1,buf[2].size()-1)).c_str(), NULL, 0);
+      else {
+        auto itr = labels.find(buf[2]);
+        if (itr == labels.end()) { printf("error: could not find the label: %s", buf[3].c_str()); exit(EXIT_FAILURE); }
+        else imm = itr->second - pc;
+        if (pc_interval == 1 && imm % 2 == 1) printf("warning: imm in line %d will be an odd number\n", lineno);
+      }
       opcode = itr->second;
       if (rd >= 32 || rd < 0) {
         printf("error: register number is out of range in line %d\n", lineno); exit(EXIT_FAILURE);
@@ -246,7 +253,6 @@ void parse() {
   buf = {};
   divide();
   if (buf[0].back() == ':') {
-    labels[buf[0].substr(0,buf[0].size()-1)] = pc;
     result = 0b0010011; // nop
   }
   else check_mnemonic();
@@ -260,7 +266,30 @@ void parse() {
       perror("fwrite error"); exit(EXIT_FAILURE);
     }
   }
-  pc += pc_interval;
+}
+
+void get_label() {
+  Loopr(i, readline.size()) {
+    char c1 = readline[i];
+    if(c1 == ' ') continue;
+    if(c1 == ':') {
+      if (i < 1 || readline[i - 1] == ' ') { printf("error: syntax error of labeling in line %d\n", lineno); exit(EXIT_FAILURE); }
+      Loop(j, readline.size()) {
+        char c2 = readline[j];
+        if(c2 == ' ') continue;
+        else {
+          string labelname = readline.substr(j, i - j);
+          if (labels.find(labelname) == labels.end()) {
+            labels[labelname] = pc;
+          }
+          else { printf("error: multi definition of label: %s in %d\n", labelname.c_str(), lineno); exit(EXIT_FAILURE); }
+          break;
+        }
+      }
+      break;
+    }
+  }
+  return;
 }
 
 int main(int argc, char *argv[]) {
@@ -298,10 +327,29 @@ int main(int argc, char *argv[]) {
     fp = fopen(filename.c_str(), "wb");
     if (fp == NULL) { perror("fopen error\n"); exit(EXIT_FAILURE); }
   }
+
+  //まずはラベル探し、デバッグしやすさを考えて最初のうちは、ファイルにおける行数（ただし0始め）とPCを一対一させる
   while(getline(ifs, readline)) {
-      lineno++;
-      parse();
+    if (readline.size() == 0) break;
+    lineno++;
+    get_label();
+    pc += pc_interval;
   }
+
+  ifs.clear();
+  ifs.seekg(0, ios_base::beg);
+  lineno = 0;
+  pc = 0;
+
+  //ラベル以外
+  while(getline(ifs, readline)) {
+    if (readline.size() == 0) break;
+    lineno++;
+    parse();
+    pc += pc_interval;
+  }
+
+  ifs.close();
   fclose(fp);
   printf("%s generated\n", filename.c_str());
   return 0;
