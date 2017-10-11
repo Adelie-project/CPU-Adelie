@@ -194,8 +194,8 @@ void check_mnemonic(){
         auto itr = labels.find(buf[3]);
         if (itr == labels.end()) { printf("error: could not find the label: %s", buf[3].c_str()); exit(EXIT_FAILURE); }
         else imm = itr->second - pc;
-        if (pc_interval == 1 && imm % 2 == 1) printf("warning: imm in line %d will be an odd number\n", lineno);
       }
+      if (pc_interval == 1 && imm % 2 == 1) printf("warning: imm in line %d will be an odd number\n", lineno);
       funct3 = itr->second;
       opcode = 0b1100011;
       if (rs1 >= 32 || rs2 >= 32 || rs1 < 0 || rs2 < 0) {
@@ -230,8 +230,8 @@ void check_mnemonic(){
         auto itr = labels.find(buf[2]);
         if (itr == labels.end()) { printf("error: could not find the label: %s", buf[3].c_str()); exit(EXIT_FAILURE); }
         else imm = itr->second - pc;
-        if (pc_interval == 1 && imm % 2 == 1) printf("warning: imm in line %d will be an odd number\n", lineno);
       }
+      if (pc_interval == 1 && imm % 2 == 1) printf("warning: imm in line %d will be an odd number\n", lineno);
       opcode = itr->second;
       if (rd >= 32 || rd < 0) {
         printf("error: register number is out of range in line %d\n", lineno); exit(EXIT_FAILURE);

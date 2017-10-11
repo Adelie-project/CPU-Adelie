@@ -3,7 +3,10 @@
     $ cd simulator
     $ make
     ...
-    $ ./asm test/test.s
+    $ ./asm test/test.s -pc1
+    Now additional value of PC is '1'.
+    If this is as intended, enter 'r', others to terminate.
+    r
     test/test.bin generated
     $ ./sim test/test.bin -breakpoint=11 -pc1 -wave
     Now additional value of PC is '1'.
@@ -52,6 +55,7 @@ options:
 
 options:  
 -x: コア係向け、一行ごとに命令が16進表示で並ぶ
+-pc1: PC加算値を1ずつにする、このオプションをつけても付けなくてもシミュレーション前に確認メッセージが入る、また、ジャンプ命令の時に奇数となってしまい正しく動作できないときに警告が出る
 
 ＜エラー処理＞
 
