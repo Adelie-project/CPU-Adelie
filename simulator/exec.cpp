@@ -10,7 +10,7 @@ void exec_jmp_fread(param_t* param, unsigned newpc) {
     param->rbuf_p = newpc  / param->pc_interval - param->rbuf_begin;
   }
   else {
-    if (fseek(param->fp, newpc * 4 / param->pc_interval, SEEK_SET) != 0) { perror("fseek error"); exit(EXIT_FAILURE); } ;
+    if (fseek(param->fp, newpc * 4 / param->pc_interval, SEEK_SET) != 0) { perror("fseek error"); exit(EXIT_FAILURE); }
     param->rsize = fread(param->rbuf, sizeof(unsigned), RBUFSIZE, param->fp);
     if (param->rsize < 0) { perror("fread error"); exit(EXIT_FAILURE); }
     param->rbuf_begin = newpc;
@@ -99,15 +99,15 @@ void exec_main(param_t* param) {
       l_mem = param->reg[rs1] + imm;
       switch (inst & 0x7000) {
         case 0x0000: //LB
-          param->reg[rd] = (char)(param->mem[l_mem]);
+          param->reg[rd] = (int)(param->mem[l_mem]);
           if(param->step) printf("lb r%d r%d $%d\n", rd, rs1, imm);
           break;
         case 0x1000: //LH
-          param->reg[rd] = (char)(param->mem[l_mem] + (param->mem[l_mem + 1] << 8));
+          param->reg[rd] = (int)(param->mem[l_mem] + (param->mem[l_mem + 1] << 8));
           if(param->step) printf("lh r%d r%d $%d\n", rd, rs1, imm);
           break;
         case 0x2000: //LW
-          param->reg[rd] = (char)(param->mem[l_mem] + (param->mem[l_mem + 1] << 8) + (param->mem[l_mem + 2] << 16) + (param->mem[l_mem + 3] << 24));
+          param->reg[rd] = (int)(param->mem[l_mem] + (param->mem[l_mem + 1] << 8) + (param->mem[l_mem + 2] << 16) + (param->mem[l_mem + 3] << 24));
           if(param->step) printf("lw r%d r%d $%d\n", rd, rs1, imm);
           break;
         case 0x4000: //LBU
