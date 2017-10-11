@@ -16,5 +16,5 @@ addi r0, r0, $0 ; nop
 lw r10, r3, $100 ; r10 = M[r3+100]
 addi r3, r3, $4 ; k += 4
 addi r4, r4, $1 ; i += 1
-blt r4, r6, $-4 ; if (k < 2000) loop
+blt r4, r6, $-4 ; if (k < 20) loop
 addi r0, r0, $0  ; stop at here

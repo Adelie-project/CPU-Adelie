@@ -190,11 +190,12 @@ module core_top
   );
 
   // PC
-  reg [31:0] pc_add_imm, pc_add_4, pc_jalr;
+  reg [31:0] pc_add_imm, pc_add_4, pc_jalr, pc_before;
   always @(posedge CLK) begin
-    pc_add_imm <= pc + imm; // AUIPC, BRANCH, JAL
+    pc_add_imm <= pc_before + imm; // AUIPC, BRANCH, JAL
     pc_jalr <= rs1 + imm;
-    pc_add_4 <= pc + 1;
+    pc_add_4 <= pc_before + 1;
+    pc_before <= pc;
   end
   
   // メモリアクセスの前に実行と切り分ける
@@ -224,9 +225,11 @@ module core_top
   assign wr_pc = (((i_beq | i_bne | i_blt | i_bge | i_bltu | i_bgeu) & (alu_result == 32'd1)) | i_jal) ? pc_add_imm:
                  (i_jalr) ? pc_jalr:
                  pc_add_4;
-  assign wr_we = (cpu_state == MEMORY);
+  assign wr_we = (cpu_state == WRITEBACK);
   assign wr_data = (i_lui) ? imm:
                    (i_lw | i_lh | i_lb | i_lbu | i_lhu) ? MEM_IN:
+                   (i_auipc) ? pc_add_imm:
+                   (i_jal | i_jalr) ? pc_add_4:
                      alu_result;
   assign wr_addr = rd_num;
 
