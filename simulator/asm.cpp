@@ -36,9 +36,10 @@ vector<bool> opt_flags(8, false); //オプションフラグ
 
 string readline;
 vector<string> buf;
-unsigned int result;
+unsigned result;
 FILE *fp;
-int lineno, pc;
+unsigned lineno, pc;
+unsigned pc_interval = 4;
 map<string, unsigned int> labels;
 
 //funct3との対応
@@ -69,6 +70,11 @@ void divide(){
   int k = 0, i = 0;
   for(; i < (int)readline.length(); i++) {
     if (readline[i] == ';') break;
+    else if (readline[i] == ':') {
+      if (k != i) buf.push_back(readline.substr(k, i - k));
+      else { printf("error: syntax error of labeling in line %d\n", lineno); exit(EXIT_FAILURE); }
+      k = i + 1;
+    }
     else if (readline[i] == ' ') {
       if (k != i) buf.push_back(readline.substr(k, i - k));
       k = i + 1;
@@ -180,10 +186,15 @@ void check_mnemonic(){
   }
   //SB-type
   else if ((itr = sb_type.find(buf[0])) != sb_type.end()) {
-    if (buf[1][0] == 'r' && buf[2][0] == 'r' && buf[3][0] == '$') {
+    if (buf[1][0] == 'r' && buf[2][0] == 'r') {
       rs1 = strtol((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
       rs2 = strtol((buf[2].substr(1,buf[2].size()-1)).c_str(), NULL, 0);
-      imm = strtol((buf[3].substr(1,buf[3].size()-1)).c_str(), NULL, 0);
+      if (buf[3][0] == '$') imm = strtol((buf[3].substr(1,buf[3].size()-1)).c_str(), NULL, 0);
+      else {
+        auto itr = labels.find(buf[3]);
+        if (itr == labels.end()) { printf("error: could not find the label: %s", buf[3].c_str()); exit(EXIT_FAILURE); }
+        else imm = itr->second - pc;
+      }
       funct3 = itr->second;
       opcode = 0b1100011;
       if (rs1 >= 32 || rs2 >= 32 || rs1 < 0 || rs2 < 0) {
@@ -235,22 +246,21 @@ void parse() {
   buf = {};
   divide();
   if (buf[0].back() == ':') {
-    //labels[buf[0].substr(0,buf[0].size()-1)] = pc;
+    labels[buf[0].substr(0,buf[0].size()-1)] = pc;
+    result = 0b0010011; // nop
+  }
+  else check_mnemonic();
+  if(opt_flags[1]) {
+    if (fprintf(fp, "%08X\n", result) < 0) {
+      perror("fprintf error"); exit(EXIT_FAILURE);
+    }
   }
   else {
-    check_mnemonic();
-    if(opt_flags[1]) {
-      if (fprintf(fp, "%08X\n", result) < 0) {
-        perror("fprintf error"); exit(EXIT_FAILURE);
-      }
+    if (fwrite(&result, sizeof(unsigned int), 1, fp) != 1) {
+      perror("fwrite error"); exit(EXIT_FAILURE);
     }
-    else {
-      if (fwrite(&result, sizeof(unsigned int), 1, fp) != 1) {
-        perror("fwrite error"); exit(EXIT_FAILURE);
-      }
-    }
-    pc += 4;
   }
+  pc += pc_interval;
 }
 
 int main(int argc, char *argv[]) {
@@ -259,6 +269,9 @@ int main(int argc, char *argv[]) {
     string strbuf = argv[i];
     if (strbuf == "-x") {
       opt_flags[1] = true;
+    }
+    else if (strbuf == "-pc1") {
+      pc_interval = 1;
     }
     else {
       if (opt_flags[7]) { printf("error: unknown option\n"); exit(EXIT_FAILURE); }
@@ -269,6 +282,11 @@ int main(int argc, char *argv[]) {
   if (!opt_flags[7]) { printf("error: specify a file\n"); exit(EXIT_FAILURE); }
   ifstream ifs(filename);
   if (!ifs.is_open()) { perror("fopen error\n"); exit(EXIT_FAILURE); }
+  //最近ややこしいので確認メッセージは必須
+  printf("Now additional value of PC is '%d'.\nIf this is as intended, enter 'r', others to terminate.\n", pc_interval);
+  char c; cin >> c;
+  if (c != 'r') return 0;
+
   if (opt_flags[1]) {
     filename = filename.substr(0, filename.find(".", 0)) + ".coe";
     fp = fopen(filename.c_str(), "w");

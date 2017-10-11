@@ -2,23 +2,27 @@
 #define GLOBALPARAM_HPP
 
 #include <climits>
-#include <map>
+#include <unordered_map>
 using namespace std;
 
 #define RBUFSIZE 256
 
-extern unsigned pc_interval;
-extern unsigned breakpoint;
-extern unsigned wave;
-extern bool step;
-extern FILE *fp;
-extern unsigned rbuf[RBUFSIZE];
-extern unsigned rbuf_p;
-extern unsigned rsize;
-extern unsigned rbuf_begin;
-extern unsigned pc;
-extern unsigned prepc;
-extern int reg[32];
-extern map<int, unsigned char> mem;
+struct param_t {
+  unsigned pc_interval;
+  unsigned breakpoint;
+  unsigned wave;
+  bool step;
+  FILE *fp;
+  unsigned rbuf[RBUFSIZE];
+  unsigned rbuf_p;
+  unsigned rsize;
+  unsigned rbuf_begin;
+  unsigned pc;
+  unsigned prepc;
+  int reg[32];
+  unordered_map<int, unsigned char> mem;
+};
+
+void init_param(param_t* param);
 
 #endif

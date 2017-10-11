@@ -26,10 +26,10 @@ using namespace std;
 
 void print_unknown_inst(int x, unsigned inst);
 
-void exec_jmp_fread(unsigned newpc);
+void exec_jmp_fread(param_t*, unsigned newpc);
 
-void exec_branch(bool b, bool *branch, int *imm, const char *mnemonic, unsigned *rs1, unsigned *rs2);
+void exec_branch(param_t* param, bool b, bool *branch, int *imm, const char *mnemonic, unsigned *rs1, unsigned *rs2);
 
-void exec_main();
+void exec_main(param_t* param);
 
 #endif
