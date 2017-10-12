@@ -2,14 +2,9 @@
 
 # Navigate to our project dir
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd "$DIR"
+cd ..
 
 # Test build simulator
-cd "$DIR/.."
 cd simulator/
-make -j2
-
-# Test build the compiler
-cd "$DIR/.."
-cd compiler/min-caml/
-bash ./to_sparc
 make -j2
