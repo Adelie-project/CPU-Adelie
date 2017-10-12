@@ -11,4 +11,5 @@ make -j2
 # Test build the compiler
 cd "$DIR/.."
 cd compiler/min-caml/
+bash ./to_sparc
 make -j2
