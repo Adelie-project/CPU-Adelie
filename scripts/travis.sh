@@ -9,7 +9,8 @@ cd simulator/
 make -j2
 
 # Test build the compiler
-cd "$DIR/.."
-cd compiler/min-caml/
-bash ./to_sparc
-make -j2
+# Enable when we figure out what our min-caml is doing.
+#cd "$DIR/.."
+#cd compiler/min-caml/
+#bash ./to_sparc
+#make -j2
