@@ -6,7 +6,13 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Test build simulator
 cd "$DIR/.."
 cd simulator/
-make -j2
+rm -rf build
+mkdir build
+cd build
+cmake ..
+make -j2 VERBOSE=1
+cd ..
+
 
 # Fun each bin file through the simulator and check the command line output.
 for f in test/*.bin
@@ -20,8 +26,8 @@ do
     test_expected="test/outputs/`basename $f`.expected"
     echo "Output is $test_out"
     # Uncommend this line to update the reference files:
-   #echo "r" | /usr/bin/time -v ./sim "$f" | tee "$test_expected"
-    echo "r" | /usr/bin/time -v ./sim "$f" | tee "$test_out"
+   #echo "r" | /usr/bin/time -v ./build/sim "$f" | tee "$test_expected"
+    echo "r" | /usr/bin/time -v ./build/sim "$f" | tee "$test_out"
     diff -U1 "$test_out" "$test_expected"
     if [ $? -eq 0 ]; then
         echo "Test $f passed"
