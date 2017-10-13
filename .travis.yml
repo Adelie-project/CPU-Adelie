@@ -1,4 +1,4 @@
-language: cpp
+sudo: required
 
 branches:
   only:
@@ -7,33 +7,22 @@ branches:
 notifications:
   email: false
 
-matrix:
-  include:
-    - os: linux
-      dist: trusty
-      compiler: gcc
-      addons:
-        apt:
-          sources: ['ubuntu-toolchain-r-test']
-          packages: ['g++-7', 'ocaml-nox']
-      env:
-        - CXX1=g++-7
-        - CC1=gcc-7
+env:
+  - ARCH_TRAVIS_CONFIRM_YES=1
 
-    - os: linux
-      dist: trusty
-      compiler: clang
-      addons:
-        apt:
-          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-trusty-5.0']
-          packages: ['clang-5.0', 'g++-7', 'ocaml-nox']
-      env:
-        - CXX1=clang++-5.0
-        - CC1=clang-5.0
-
-install:
-  - export CXX="$CXX1" CC="$CC1"
+arch:
+  packages:
+    - ocaml
+    - cmake
+    - clang
+    # for the timing in the test script
+    - time
+  script:
+    # Replaces normal gcc and needs extra confirmation
+    - yes | sudo pacman -S gcc-multilib
+    - ./scripts/travis.sh
 
 script:
-  - ./scripts/travis.sh
+  - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
+
 
