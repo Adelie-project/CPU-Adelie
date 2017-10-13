@@ -6,6 +6,11 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
   add_definitions(-Wall)
 endif()
 
+option(sanitize "compile with sanitizers" OFF)
+if(sanitize AND "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-sanitize-recover=undefined,integer")
+endif()
+
 add_executable(asm asm.cpp)
 
 add_executable(sim sim.cpp exec.cpp decoder.cpp globalparam.cpp)
