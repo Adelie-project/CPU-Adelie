@@ -9,7 +9,7 @@ cd simulator/
 rm -rf build
 mkdir build
 cd build
-cmake ..
+cmake -DCMAKE_BUILD_TYPE=Debug -Dsanitize=On ..
 make -j2 VERBOSE=1
 cd ..
 
