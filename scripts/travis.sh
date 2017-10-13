@@ -40,7 +40,7 @@ done
 
 # Test build the compiler
 # Enable when we figure out what our min-caml is doing.
-#cd "$DIR/.."
-#cd compiler/min-caml/
-#bash ./to_sparc
-#make -j2
+cd "$DIR/.."
+cd compiler/min-caml/
+bash ./to_x86
+make -j2
