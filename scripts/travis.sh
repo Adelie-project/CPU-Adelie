@@ -42,3 +42,10 @@ cd "$DIR/.."
 cd compiler/min-caml/
 ./to_x86
 make -j2
+
+echo "Running RISC-V tests"
+git clean -fdx
+cd "$DIR/.."
+cd compiler/min-caml/
+./to_riscv
+make -j2
