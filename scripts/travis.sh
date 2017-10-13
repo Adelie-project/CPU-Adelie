@@ -14,7 +14,7 @@ make -j2 VERBOSE=1
 cd ..
 
 
-# Fun each bin file through the simulator and check the command line output.
+# For each bin file through the simulator and check the command line output.
 for f in test/*.bin
 do
     # This tests takes really long, let's skip it for now...
