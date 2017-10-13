@@ -16,6 +16,23 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-7', 'ocaml-nox']
+      env:
+        - CXX1=g++-7
+        - CC1=gcc-7
+
+    - os: linux
+      dist: trusty
+      compiler: clang
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-trusty-5.0']
+          packages: ['clang-5.0', 'g++-7', 'ocaml-nox']
+      env:
+        - CXX1=clang++-5.0
+        - CC1=clang-5.0
+
+install:
+  - export CXX="$CXX1" CC="$CC1"
 
 script:
   - ./scripts/travis.sh
