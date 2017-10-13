@@ -40,5 +40,5 @@ done
 # Test build the compiler
 cd "$DIR/.."
 cd compiler/min-caml/
-bash ./to_x86
+./to_x86
 make -j2
