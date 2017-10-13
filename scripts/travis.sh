@@ -24,9 +24,8 @@ do
     echo "Running test $f"
     test_out="`basename $f`.output"
     test_expected="test/outputs/`basename $f`.expected"
-    echo "Output is $test_out"
     # Uncommend this line to update the reference files:
-   #echo "r" | /usr/bin/time -v ./build/sim "$f" | tee "$test_expected"
+    # test_out="$test_expected"
     echo "r" | /usr/bin/time -v ./build/sim "$f" | tee "$test_out"
     diff -U1 "$test_out" "$test_expected"
     if [ $? -eq 0 ]; then
@@ -39,7 +38,6 @@ done
 
 
 # Test build the compiler
-# Enable when we figure out what our min-caml is doing.
 cd "$DIR/.."
 cd compiler/min-caml/
 bash ./to_x86
