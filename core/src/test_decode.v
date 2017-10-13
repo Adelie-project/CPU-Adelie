@@ -31,7 +31,7 @@ module test_decode();
   wire I_SRA;
   wire I_OR;
   wire I_AND;
-  
+
   wire I_BEQ;
   wire I_BNE;
   wire I_BLT;
@@ -60,6 +60,482 @@ module test_decode();
 core_decode de(rst_n, clk, inst, RD_NUM, RS1_NUM, RS2_NUM, IMM,  I_ADDI, I_SLTI, I_SLTIU, I_XORI, I_ORI, I_ANDI, I_SLLI, I_SRLI, I_SRAI, I_ADD, I_SUB, I_SLL, I_SLT, I_SLTU, I_XOR, I_SRL, I_SRA, I_OR, I_AND, I_BEQ, I_BNE, I_BLT, I_BGE, I_BLTU, I_BGEU, I_LB, I_LH, I_LW, I_LBU, I_LHU, I_SB, I_SH, I_SW, N_INST);
 
 initial begin
+//I型 ADDIテスト
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b1100_0000_0001_0011_1000_1010_1001_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// Immediate
+if(IMM != 32'b1111_1111_1111_1111_1111_1100_0000_0001) begin
+  $display("ERROR!!: ADDI IMM %b\n",IMM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: ADDI RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// rd
+if(RD_NUM != 5'b10101) begin
+  $display("ERROR!!: ADDI RD_NUM %b\n",RD_NUM);
+  $finish;
+end
+//I型 SLTIテスト
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b1100_0000_0001_0011_1010_1010_1001_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// Immediate
+if(IMM != 32'b1111_1111_1111_1111_1111_1100_0000_0001) begin
+  $display("ERROR!!: SLTI IMM %b\n",IMM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: SLTI RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// rd
+if(RD_NUM != 5'b10101) begin
+  $display("ERROR!!: SLTI RD_NUM %b\n",RD_NUM);
+  $finish;
+end
+
+//I型 SLTIUテスト
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b1100_0000_0001_0011_1011_1010_1001_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// Immediate
+if(IMM != 32'b1111_1111_1111_1111_1111_1100_0000_0001) begin
+  $display("ERROR!!: SLTIU IMM %b\n",IMM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: SLTIU RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// rd
+if(RD_NUM != 5'b10101) begin
+  $display("ERROR!!: SLTIU RD_NUM %b\n",RD_NUM);
+  $finish;
+end
+//I型 XORIテスト
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b1100_0000_0001_0011_1100_1010_1001_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// Immediate
+if(IMM != 32'b1111_1111_1111_1111_1111_1100_0000_0001) begin
+  $display("ERROR!!: XORI IMM %b\n",IMM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: XORI RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// rd
+if(RD_NUM != 5'b10101) begin
+  $display("ERROR!!: XORI RD_NUM %b\n",RD_NUM);
+  $finish;
+end
+//I型 ORIテスト
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b1100_0000_0001_0011_1110_1010_1001_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// Immediate
+if(IMM != 32'b1111_1111_1111_1111_1111_1100_0000_0001) begin
+  $display("ERROR!!: ORI IMM %b\n",IMM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: ORI RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// rd
+if(RD_NUM != 5'b10101) begin
+  $display("ERROR!!: ORI RD_NUM %b\n",RD_NUM);
+  $finish;
+end
+//I型 ANDIテスト
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b1100_0000_0001_0011_1111_1010_1001_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// Immediate
+if(IMM != 32'b1111_1111_1111_1111_1111_1100_0000_0001) begin
+  $display("ERROR!!: ANDI IMM %b\n",IMM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: ANDI RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// rd
+if(RD_NUM != 5'b10101) begin
+  $display("ERROR!!: ANDI RD_NUM %b\n",RD_NUM);
+  $finish;
+end
+//I型 SLLIテスト
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b0000_0000_0001_0011_1001_1010_1001_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// Immediate
+if(IMM != 32'b0000_0000_0000_0000_0000_0000_0000_0001) begin
+  $display("ERROR!!: SLLI IMM %b\n",IMM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: SLLI RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// rd
+if(RD_NUM != 5'b10101) begin
+  $display("ERROR!!: SLLI RD_NUM %b\n",RD_NUM);
+  $finish;
+end
+//I型 SRLIテスト
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b0000_0000_0001_0011_1101_1010_1001_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// Immediate
+if(IMM != 32'b0000_0000_0000_0000_0000_0000_0000_0001) begin
+  $display("ERROR!!: SRLI IMM %b\n",IMM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: SRLI RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// rd
+if(RD_NUM != 5'b10101) begin
+  $display("ERROR!!: SRLI RD_NUM %b\n",RD_NUM);
+  $finish;
+end
+//I型 SRAIテスト
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b0100_0000_0001_0011_1101_1010_1001_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// Immediate
+if(IMM != 32'b0000_0000_0000_0000_0000_0100_0000_0001) begin
+  $display("ERROR!!: SRAI IMM %b\n",IMM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: SRAI RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// rd
+if(RD_NUM != 5'b10101) begin
+  $display("ERROR!!: SRAI RD_NUM %b\n",RD_NUM);
+  $finish;
+end
+//R型 ADDテスト
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b0000_0000_0001_0011_1000_1010_1011_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// rs2
+if(RS2_NUM != 5'b00001) begin
+  $display("ERROR!!: ADD RS2_NUM %b\n",RS2_NUM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: ADD RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// rd
+if(RD_NUM != 5'b10101) begin
+  $display("ERROR!!: ADD RD_NUM %b\n",RD_NUM);
+  $finish;
+end
+//R型 SUBテスト
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b0100_0000_0001_0011_1000_1010_1011_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// rs2
+if(RS2_NUM != 5'b00001) begin
+  $display("ERROR!!: SUB RS2_NUM %b\n",RS2_NUM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: SUB RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// rd
+if(RD_NUM != 5'b10101) begin
+  $display("ERROR!!: SUB RD_NUM %b\n",RD_NUM);
+  $finish;
+end
+//R型 SLLテスト
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b0000_0000_0001_0011_1001_1010_1011_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// rs2
+if(RS2_NUM != 5'b00001) begin
+  $display("ERROR!!: SLL RS2_NUM %b\n",RS2_NUM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: SLL RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// rd
+if(RD_NUM != 5'b10101) begin
+  $display("ERROR!!: SLL RD_NUM %b\n",RD_NUM);
+  $finish;
+end
+//R型 SLTテスト
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b0000_0000_0001_0011_1010_1010_1011_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// rs2
+if(RS2_NUM != 5'b00001) begin
+  $display("ERROR!!: SLT RS2_NUM %b\n",RS2_NUM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: SLT RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// rd
+if(RD_NUM != 5'b10101) begin
+  $display("ERROR!!: SLT RD_NUM %b\n",RD_NUM);
+  $finish;
+end
+//R型 SLTUテスト
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b0000_0000_0001_0011_1011_1010_1011_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// rs2
+if(RS2_NUM != 5'b00001) begin
+  $display("ERROR!!: SLTU RS2_NUM %b\n",RS2_NUM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: SLTU RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// rd
+if(RD_NUM != 5'b10101) begin
+  $display("ERROR!!: SLTU RD_NUM %b\n",RD_NUM);
+  $finish;
+end
+//R型 XORテスト
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b0000_0000_0001_0011_1100_1010_1011_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// rs2
+if(RS2_NUM != 5'b00001) begin
+  $display("ERROR!!: XOR RS2_NUM %b\n",RS2_NUM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: XOR RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// rd
+if(RD_NUM != 5'b10101) begin
+  $display("ERROR!!: XOR RD_NUM %b\n",RD_NUM);
+  $finish;
+end
+//R型 SRLテスト
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b0000_0000_0001_0011_1101_1010_1011_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// rs2
+if(RS2_NUM != 5'b00001) begin
+  $display("ERROR!!: SRL RS2_NUM %b\n",RS2_NUM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: SRL RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// rd
+if(RD_NUM != 5'b10101) begin
+  $display("ERROR!!: SRL RD_NUM %b\n",RD_NUM);
+  $finish;
+end
+// R型テスト SRA
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b0100_0000_0001_0011_1101_1010_1011_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// rs2
+if(RS2_NUM != 5'b00001) begin
+  $display("ERROR!!: SRA RS2_NUM %b\n",RS2_NUM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: SRA RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// rd
+if(RD_NUM != 5'b10101) begin
+  $display("ERROR!!: SRA RD_NUM %b\n",RD_NUM);
+  $finish;
+end
+// R型テスト OR
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b0100_0000_0001_0011_1110_1010_1011_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// rs2
+if(RS2_NUM != 5'b00001) begin
+  $display("ERROR!!: OR RS2_NUM %b\n",RS2_NUM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: OR RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// rd
+if(RD_NUM != 5'b10101) begin
+  $display("ERROR!!: OR RD_NUM %b\n",RD_NUM);
+  $finish;
+end
+// R型テスト AND
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b0100_0000_0001_0011_1111_1010_1011_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// rs2
+if(RS2_NUM != 5'b00001) begin
+  $display("ERROR!!: AND RS2_NUM %b\n",RS2_NUM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: AND RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// rd
+if(RD_NUM != 5'b10101) begin
+  $display("ERROR!!: AND RD_NUM %b\n",RD_NUM);
+  $finish;
+end
   // U型テスト
   #1;
   RST_N <= 1'b0;
@@ -75,7 +551,7 @@ initial begin
     $display("ERROR!!: U IMM %b\n",IMM);
     $finish;
   end
-  // rd 
+  // rd
   if(RD_NUM != 5'b00001) begin
     $display("ERROR!!: U RD_NUM %b\n",RD_NUM);
     $finish;
@@ -96,7 +572,7 @@ initial begin
     $display("ERROR!!: J IMM %b\n",IMM);
     $finish;
   end
-  // rd 
+  // rd
   if(RD_NUM != 5'b00011) begin
     $display("ERROR!!: J RD_NUM %b\n",RD_NUM);
     $finish;
@@ -117,17 +593,17 @@ initial begin
     $display("ERROR!!: R IMM %b\n",IMM);
     $finish;
   end
-  // rs2 
+  // rs2
   if(RS2_NUM != 5'b00001) begin
     $display("ERROR!!: R RS2_NUM %b\n",RS2_NUM);
     $finish;
   end
-  // rs1 
+  // rs1
   if(RS1_NUM != 5'b00111) begin
     $display("ERROR!!: R RS1_NUM %b\n",RS1_NUM);
     $finish;
   end
-  // rd 
+  // rd
   if(RD_NUM != 5'b10101) begin
     $display("ERROR!!: R RD_NUM %b\n",RD_NUM);
     $finish;
@@ -148,12 +624,12 @@ initial begin
     $display("ERROR!!: R IMM %b\n",IMM);
     $finish;
   end
-  // rs2 
+  // rs2
   if(RS2_NUM != 5'd6) begin
     $display("ERROR!!: R RS2_NUM %b\n",RS2_NUM);
     $finish;
   end
-  // rs1 
+  // rs1
   if(RS1_NUM != 5'd0) begin
     $display("ERROR!!: R RS1_NUM %b\n",RS1_NUM);
     $finish;
