@@ -536,6 +536,358 @@ if(RD_NUM != 5'b10101) begin
   $display("ERROR!!: AND RD_NUM %b\n",RD_NUM);
   $finish;
 end
+
+// SB型テスト BEQ
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b0100_0000_0001_0011_1000_1010_1110_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// rs2
+if(RS2_NUM != 5'b00001) begin
+  $display("ERROR!!: BEQ RS2_NUM %b\n",RS2_NUM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: BEQ RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// IMM
+if(IMM != 32'b0000_0000_0000_0000_0000_1100_0001_0100) begin
+  $display("ERROR!!: BEQ IMM %b\n",IMM);
+  $finish;
+end
+// SB型テスト BNE
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b0100_0000_0001_0011_1001_1010_1110_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// rs2
+if(RS2_NUM != 5'b00001) begin
+  $display("ERROR!!: BNE RS2_NUM %b\n",RS2_NUM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: BNE RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// IMM
+if(IMM != 32'b0000_0000_0000_0000_0000_1100_0001_0100) begin
+  $display("ERROR!!: BNE IMM %b\n",IMM);
+  $finish;
+end
+// SB型テスト BLT
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b0100_0000_0001_0011_1100_1010_1110_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// rs2
+if(RS2_NUM != 5'b00001) begin
+  $display("ERROR!!: BLT RS2_NUM %b\n",RS2_NUM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: BLT RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// IMM
+if(IMM != 32'b0000_0000_0000_0000_0000_1100_0001_0100) begin
+  $display("ERROR!!: BLT IMM %b\n",IMM);
+  $finish;
+end
+// SB型テスト BGE
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b0100_0000_0001_0011_1101_1010_1110_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// rs2
+if(RS2_NUM != 5'b00001) begin
+  $display("ERROR!!: BGE RS2_NUM %b\n",RS2_NUM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: BGE RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// IMM
+if(IMM != 32'b0000_0000_0000_0000_0000_1100_0001_0100) begin
+  $display("ERROR!!: BGE IMM %b\n",IMM);
+  $finish;
+end
+// SB型テスト BLTU
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b0100_0000_0001_0011_1110_1010_1110_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// rs2
+if(RS2_NUM != 5'b00001) begin
+  $display("ERROR!!: BLTU RS2_NUM %b\n",RS2_NUM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: BLTU RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// IMM
+if(IMM != 32'b0000_0000_0000_0000_0000_1100_0001_0100) begin
+  $display("ERROR!!: BLTU IMM %b\n",IMM);
+  $finish;
+end
+// SB型テスト BGEU
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b0100_0000_0001_0011_1111_1010_1110_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// rs2
+if(RS2_NUM != 5'b00001) begin
+  $display("ERROR!!: BGEU RS2_NUM %b\n",RS2_NUM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: BGEU RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// IMM
+if(IMM != 32'b0000_0000_0000_0000_0000_1100_0001_0100) begin
+  $display("ERROR!!: BGEU IMM %b\n",IMM);
+  $finish;
+end
+//I型 LBテスト
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b1100_0000_0001_0011_1000_1010_1000_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// Immediate
+if(IMM != 32'b1111_1111_1111_1111_1111_1100_0000_0001) begin
+  $display("ERROR!!: LB IMM %b\n",IMM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: LB RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// rd
+if(RD_NUM != 5'b10101) begin
+  $display("ERROR!!: LB RD_NUM %b\n",RD_NUM);
+  $finish;
+end
+//I型 LHテスト
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b1100_0000_0001_0011_1001_1010_1000_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// Immediate
+if(IMM != 32'b1111_1111_1111_1111_1111_1100_0000_0001) begin
+  $display("ERROR!!: LH IMM %b\n",IMM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: LH RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// rd
+if(RD_NUM != 5'b10101) begin
+  $display("ERROR!!: LH RD_NUM %b\n",RD_NUM);
+  $finish;
+end
+//I型 LWテスト
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b1100_0000_0001_0011_1010_1010_1000_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// Immediate
+if(IMM != 32'b1111_1111_1111_1111_1111_1100_0000_0001) begin
+  $display("ERROR!!: LW IMM %b\n",IMM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: LW RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// rd
+if(RD_NUM != 5'b10101) begin
+  $display("ERROR!!: LW RD_NUM %b\n",RD_NUM);
+  $finish;
+end
+//I型 LBUテスト
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b1100_0000_0001_0011_1100_1010_1000_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// Immediate
+if(IMM != 32'b1111_1111_1111_1111_1111_1100_0000_0001) begin
+  $display("ERROR!!: LBU IMM %b\n",IMM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: LBU RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// rd
+if(RD_NUM != 5'b10101) begin
+  $display("ERROR!!: LBU RD_NUM %b\n",RD_NUM);
+  $finish;
+end
+//I型 LHUテスト
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b1100_0000_0001_0011_1101_1010_1000_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// Immediate
+if(IMM != 32'b1111_1111_1111_1111_1111_1100_0000_0001) begin
+  $display("ERROR!!: LHU IMM %b\n",IMM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: LHU RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// rd
+if(RD_NUM != 5'b10101) begin
+  $display("ERROR!!: LHU RD_NUM %b\n",RD_NUM);
+  $finish;
+end
+// S型テスト SB
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b0100_0000_0001_0011_1000_1010_1010_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// rs2
+if(RS2_NUM != 5'b00001) begin
+  $display("ERROR!!: SB RS2_NUM %b\n",RS2_NUM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: SB RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// IMM
+if(IMM != 32'b0000_0000_0000_0000_0000_0100_0001_0101) begin
+  $display("ERROR!!: SB IMM %b\n",IMM);
+  $finish;
+end
+// S型テスト SH
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b0100_0000_0001_0011_1001_1010_1010_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// rs2
+if(RS2_NUM != 5'b00001) begin
+  $display("ERROR!!: SH RS2_NUM %b\n",RS2_NUM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: SH RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// IMM
+if(IMM != 32'b0000_0000_0000_0000_0000_0100_0001_0101) begin
+  $display("ERROR!!: SH IMM %b\n",IMM);
+  $finish;
+end
+// S型テスト SW
+#1;
+RST_N <= 1'b0;
+CLK <= 1'b1;
+INST <= 32'b0100_0000_0001_0011_1010_1010_1010_0011;
+repeat(3) begin
+  #1;
+  RST_N <= 1'b1;
+  CLK = ~CLK;
+end
+// rs2
+if(RS2_NUM != 5'b00001) begin
+  $display("ERROR!!: SW RS2_NUM %b\n",RS2_NUM);
+  $finish;
+end
+// rs1
+if(RS1_NUM != 5'b00111) begin
+  $display("ERROR!!: SW RS1_NUM %b\n",RS1_NUM);
+  $finish;
+end
+// IMM
+if(IMM != 32'b0000_0000_0000_0000_0000_0100_0001_0101) begin
+  $display("ERROR!!: SW IMM %b\n",IMM);
+  $finish;
+end
+
   // U型テスト
   #1;
   RST_N <= 1'b0;
