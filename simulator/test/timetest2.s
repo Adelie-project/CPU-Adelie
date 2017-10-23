@@ -1,6 +1,6 @@
 addi r6, r0, $0 ; x = 0
 addi r10, r0, $2000 ; const int 2000
-addi r11, r0, $50  ; const int 50
+addi r11, r0, $100 ; const int 50
 addi r7, r0, $0 ; i = 0
 addi r8, r0, $0 ; j = 0
 addi r9, r0, $0 ; k = 0
@@ -12,5 +12,5 @@ blt r9, r10, $-16 ; if (k < 2000) loop
 addi r8, r8, $1 ; j++
 blt r8, r10, $-28 ; if (j < 2000) loop
 addi r7, r7 $1 ; i++
-blt r7, r11, $-40 ; if (i < 25) loop
-jal r20, $0     ; stop at here
+blt r7, r11, $-40 ; if (i < 100) loop
+jal r20, $0 ; stop at here
