@@ -32,6 +32,7 @@ using namespace std;
 #define bitmanip(m,val) static_cast<bitset<(int)m>>(val)
 
 #define BUFSIZE 128
+
 vector<bool> opt_flags(8, false); //オプションフラグ
 
 string readline;
@@ -88,16 +89,36 @@ void divide(){
   return;
 }
 
+inline int check_immediate(unsigned k, int digit) {
+  int imm;
+  if(buf[k].size() > 2 && buf[k][1] == '0' && buf[k][2] == 'x') {
+    //16進数
+    imm = strtol((buf[k].substr(1,buf[k].size()-1)).c_str(), NULL, 16);
+    if (errno == EINVAL) printf("warning: improper representation of immediate in line %d\n", lineno);
+    if (digit < 32 && (unsigned)imm >> digit) printf("warning: immediate is out of range (%d bit) in line %d\n", digit, lineno);
+  }
+  else {
+    //それ以外は10進数とみなす
+    imm = strtol((buf[k].substr(1,buf[k].size()-1)).c_str(), NULL, 10);
+    if (errno == EINVAL) printf("warning: improper representation of immediate in line %d\n", lineno);
+    if (imm >= (1 << (digit - 1)) || imm < -1 * (1 << (digit - 1))) {
+      printf("warning: immediate is out of range (%d bit) in line %d\n", digit, lineno);
+    }
+  }
+  return imm;
+}
+
 void check_mnemonic(){
-  unsigned int rs1, rs2, rd, imm, opcode, funct3;
+  unsigned int rs1, rs2, rd, opcode, funct3;
+  int imm;
   map<string , unsigned int>::iterator itr;
   //R-type (exclude slli, srli, srai)
   if ((itr = r_type.find(buf[0])) != r_type.end()) {
     unsigned int funct7 = 0;
     if (buf[1][0] == 'r' && buf[2][0] == 'r' && buf[3][0] == 'r') {
-      rd = strtol((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
-      rs1 = strtol((buf[2].substr(1,buf[2].size()-1)).c_str(), NULL, 0);
-      rs2 = strtol((buf[3].substr(1,buf[3].size()-1)).c_str(), NULL, 0);
+      rd = strtoul((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
+      rs1 = strtoul((buf[2].substr(1,buf[2].size()-1)).c_str(), NULL, 0);
+      rs2 = strtoul((buf[3].substr(1,buf[3].size()-1)).c_str(), NULL, 0);
       funct3 = itr->second;
       if (buf[0] == "sub" || buf[0] == "sra") {
         funct7 = 0b0100000;
@@ -114,9 +135,9 @@ void check_mnemonic(){
   else if ((itr = r_type1.find(buf[0])) != r_type1.end()) {
     unsigned int funct7 = 0, shamt;
     if (buf[1][0] == 'r' && buf[2][0] == 'r' && buf[3][0] == '$') {
-      rd = strtol((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
-      rs1 = strtol((buf[2].substr(1,buf[2].size()-1)).c_str(), NULL, 0);
-      shamt = strtol((buf[3].substr(1,buf[3].size()-1)).c_str(), NULL, 0);
+      rd = strtoul((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
+      rs1 = strtoul((buf[2].substr(1,buf[2].size()-1)).c_str(), NULL, 0);
+      shamt = strtoul((buf[3].substr(1,buf[3].size()-1)).c_str(), NULL, 0);
       funct3 = itr->second;
       if (buf[0] == "srai") {
         funct7 = 0b0100000;
@@ -132,16 +153,13 @@ void check_mnemonic(){
   //I-type arithmetic
   else if ((itr = i_type.find(buf[0])) != i_type.end()) {
     if (buf[1][0] == 'r' && buf[2][0] == 'r' && buf[3][0] == '$') {
-      rd = strtol((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
-      rs1 = strtol((buf[2].substr(1,buf[2].size()-1)).c_str(), NULL, 0);
-      imm = strtol((buf[3].substr(1,buf[3].size()-1)).c_str(), NULL, 0);
+      rd = strtoul((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
+      rs1 = strtoul((buf[2].substr(1,buf[2].size()-1)).c_str(), NULL, 0);
+      imm = check_immediate(3, 12);
       funct3 = itr->second;
       opcode = 0b0010011;
       if (rd >= 32 || rs1 >= 32 || rd < 0 || rs1 < 0) {
         printf("error: register number is out of range in line %d\n", lineno); exit(EXIT_FAILURE);
-      }
-      if ((int)imm >= 2048 || (int)imm < -2048) {
-        printf("warning: immediate is out of range in line %d\n", lineno);
       }
       result = opcode | rd << 7 | funct3 << 12 | rs1 << 15 | imm << 20 ;
     }
@@ -150,17 +168,14 @@ void check_mnemonic(){
   //I-type rest
   else if ((itr = i_type1.find(buf[0])) != i_type1.end()) {
     if (buf[1][0] == 'r' && buf[2][0] == 'r' && buf[3][0] == '$') {
-      rd = strtol((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
-      rs1 = strtol((buf[2].substr(1,buf[2].size()-1)).c_str(), NULL, 0);
-      imm = strtol((buf[3].substr(1,buf[3].size()-1)).c_str(), NULL, 0);
+      rd = strtoul((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
+      rs1 = strtoul((buf[2].substr(1,buf[2].size()-1)).c_str(), NULL, 0);
+      imm = check_immediate(3, 12);
       funct3 = itr->second;
       if (buf[0] == "jalr") opcode = 0b1100111;
       else opcode = 0b0000011;
       if (rd >= 32 || rs1 >= 32 || rd < 0 || rs1 < 0) {
         printf("error: register number is out of range in line %d\n", lineno); exit(EXIT_FAILURE);
-      }
-      if ((int)imm >= 2048 || (int)imm < -2048) {
-        printf("warning: immediate is out of range in line %d\n", lineno);
       }
       result = opcode | rd << 7 | funct3 << 12 | rs1 << 15 | imm << 20 ;
     }
@@ -169,16 +184,13 @@ void check_mnemonic(){
   //S-type
   else if ((itr = s_type.find(buf[0])) != s_type.end()) {
     if (buf[1][0] == 'r' && buf[2][0] == 'r' && buf[3][0] == '$') {
-      rs1 = strtol((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
-      rs2 = strtol((buf[2].substr(1,buf[2].size()-1)).c_str(), NULL, 0);
-      imm = strtol((buf[3].substr(1,buf[3].size()-1)).c_str(), NULL, 0);
+      rs1 = strtoul((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
+      rs2 = strtoul((buf[2].substr(1,buf[2].size()-1)).c_str(), NULL, 0);
+      imm = check_immediate(3, 12);
       funct3 = itr->second;
       opcode = 0b0100011;
       if (rs1 >= 32 || rs2 >= 32 || rs1 < 0 || rs2 < 0) {
         printf("error: register number is out of range in line %d\n", lineno); exit(EXIT_FAILURE);
-      }
-      if ((int)imm >= 2048 || (int)imm < -2048) {
-        printf("warning: immediate is out of range in line %d\n", lineno);
       }
       result = opcode | (imm & 0x1f) << 7 | funct3 << 12 | rs1 << 15 | rs2 << 20 | (imm & 0xfe0) << 20;
     }
@@ -187,9 +199,9 @@ void check_mnemonic(){
   //SB-type
   else if ((itr = sb_type.find(buf[0])) != sb_type.end()) {
     if (buf[1][0] == 'r' && buf[2][0] == 'r') {
-      rs1 = strtol((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
-      rs2 = strtol((buf[2].substr(1,buf[2].size()-1)).c_str(), NULL, 0);
-      if (buf[3][0] == '$') imm = strtol((buf[3].substr(1,buf[3].size()-1)).c_str(), NULL, 0);
+      rs1 = strtoul((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
+      rs2 = strtoul((buf[2].substr(1,buf[2].size()-1)).c_str(), NULL, 0);
+      if (buf[3][0] == '$') imm = check_immediate(3, 13);
       else {
         auto itr = labels.find(buf[3]);
         if (itr == labels.end()) { printf("error: could not find the label: %s", buf[3].c_str()); exit(EXIT_FAILURE); }
@@ -201,9 +213,6 @@ void check_mnemonic(){
       if (rs1 >= 32 || rs2 >= 32 || rs1 < 0 || rs2 < 0) {
         printf("error: register number is out of range in line %d\n", lineno); exit(EXIT_FAILURE);
       }
-      if ((int)imm >= 4096 || (int)imm < -4096) {
-        printf("warning: immediate is out of range in line %d\n", lineno);
-      }
       result = opcode | (imm & 0x800) >> 4 | (imm & 0x1e) << 7 | funct3 << 12 | rs1 << 15 | rs2 << 20 | (imm & 0x7e0) << 20 | (imm & 0x1000) << 19;
     }
     else { printf("error: syntax error of sb-type in line %d\n", lineno); exit(EXIT_FAILURE); }
@@ -211,8 +220,9 @@ void check_mnemonic(){
   //U-type
   else if ((itr = u_type.find(buf[0])) != u_type.end()) {
     if (buf[1][0] == 'r' && buf[2][0] == '$') {
-      rd = strtol((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
-      imm = strtol((buf[2].substr(1,buf[2].size()-1)).c_str(), NULL, 0);
+      rd = strtoul((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
+      imm = check_immediate(2, 32);
+      if (imm & 0xfff) printf("warning: lower 12 bits of immediate will be ignored in line %d\n", lineno);
       opcode = itr->second;
       if (rd >= 32 || rd < 0) {
         printf("error: register number is out of range in line %d\n", lineno); exit(EXIT_FAILURE);
@@ -224,8 +234,8 @@ void check_mnemonic(){
   //UJ-type
   else if ((itr = uj_type.find(buf[0])) != uj_type.end()) {
     if (buf[1][0] == 'r') {
-      rd = strtol((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
-      if (buf[2][0] == '$') imm = strtol((buf[2].substr(1,buf[2].size()-1)).c_str(), NULL, 0);
+      rd = strtoul((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
+      if (buf[2][0] == '$') imm = check_immediate(2, 21);
       else {
         auto itr = labels.find(buf[2]);
         if (itr == labels.end()) { printf("error: could not find the label: %s", buf[3].c_str()); exit(EXIT_FAILURE); }
@@ -235,9 +245,6 @@ void check_mnemonic(){
       opcode = itr->second;
       if (rd >= 32 || rd < 0) {
         printf("error: register number is out of range in line %d\n", lineno); exit(EXIT_FAILURE);
-      }
-      if ((int)imm >= 1048576 || (int)imm < -1048576) {
-        printf("warning: immediate is out of range in line %d\n", lineno);
       }
       result = opcode | rd << 7 | (imm & 0xff000) | (imm & 0x800) << 9 | (imm & 0x7fe) << 20 | (imm & 0x100000) << 11;
     }

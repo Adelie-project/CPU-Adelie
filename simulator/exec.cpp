@@ -1,8 +1,9 @@
 #include "exec.hpp"
 
-void print_unknown_inst(int x, unsigned inst) {
-  printf("error$%d: unknown instruction of %08X.\n", x, inst);
-  exit(EXIT_FAILURE);
+inline void pc_inclement(param_t* param){
+  (param->rbuf_p)++;
+  param->prepc = param->pc;
+  (param->pc) += (param->pc_interval);
 }
 
 void exec_jmp_fread(param_t* param, unsigned newpc) {
@@ -13,6 +14,7 @@ void exec_jmp_fread(param_t* param, unsigned newpc) {
     if (fseek(param->fp, newpc * 4 / param->pc_interval, SEEK_SET) != 0) { perror("fseek error"); exit(EXIT_FAILURE); }
     param->rsize = fread(param->rbuf, sizeof(unsigned), RBUFSIZE, param->fp);
     if (param->rsize < 0) { perror("fread error"); exit(EXIT_FAILURE); }
+    decode_all(param);
     param->rbuf_begin = newpc;
     param->rbuf_p = 0;
   }
@@ -22,265 +24,284 @@ void exec_jmp_fread(param_t* param, unsigned newpc) {
   return;
 }
 
-void exec_branch(param_t* param, bool b, bool *branch, int *imm, const char *mnemonic, unsigned *rs1, unsigned *rs2) {
-  if(b) {
-    *branch = true;
-    exec_jmp_fread(param, param->pc + *imm);
-  }
+inline void exec_branch(param_t* param, bool b, int *imm, const char *mnemonic, unsigned *rs1, unsigned *rs2) {
+  if(b) exec_jmp_fread(param, param->pc + *imm);
+  else pc_inclement(param);
   if(param->step) printf("%s r%d r%d $%d\n", mnemonic, *rs1, *rs2, *imm);
   return;
 }
 
+inline void set_sb_type(param_t* param, unsigned* rs1, unsigned* rs2, int* imm) {
+  *rs1 = (param->decoded)[param->rbuf_p][1];
+  *rs2 = (param->decoded)[param->rbuf_p][2];
+  *imm = (param->decoded)[param->rbuf_p][3];
+  //12th bit = sign
+  if ((param->decoded)[param->rbuf_p][3] & 0x1000) (param->decoded)[param->rbuf_p][3] = (param->decoded)[param->rbuf_p][3] | 0xFFFFE000;
+}
+
+inline void set_i_type(param_t* param, unsigned* rd, unsigned* rs1, int* imm) {
+  *rd = (param->decoded)[param->rbuf_p][1];
+  *rs1 = (param->decoded)[param->rbuf_p][2];
+  *imm = (param->decoded)[param->rbuf_p][3];
+  //11th bit = sign
+  if ((param->decoded)[param->rbuf_p][3] & 0x800) (param->decoded)[param->rbuf_p][3] = (param->decoded)[param->rbuf_p][3] | 0xFFFFF000;
+}
+
+inline void set_s_type(param_t* param, unsigned* rs1, unsigned* rs2, int* imm) {
+  *rs1 = (param->decoded)[param->rbuf_p][1];
+  *rs2 = (param->decoded)[param->rbuf_p][2];
+  *imm = (param->decoded)[param->rbuf_p][3];
+  //11th bit = sign
+  if ((param->decoded)[param->rbuf_p][3] & 0x800) (param->decoded)[param->rbuf_p][3] = (param->decoded)[param->rbuf_p][3] | 0xFFFFF000;
+}
+
+inline void set_r_type(param_t* param, unsigned* rd, unsigned* rs1, unsigned*rs2) {
+  *rd = (param->decoded)[param->rbuf_p][1];
+  *rs1 = (param->decoded)[param->rbuf_p][2];
+  *rs2 = (param->decoded)[param->rbuf_p][3];
+}
+
+inline void set_u_type(param_t* param, unsigned* rd, int* imm) {
+  *rd = (param->decoded)[param->rbuf_p][1];
+  *imm = (param->decoded)[param->rbuf_p][2];
+}
+
+inline void set_uj_type(param_t* param, unsigned* rd, int* imm) {
+  *rd = (param->decoded)[param->rbuf_p][1];
+  *imm = (param->decoded)[param->rbuf_p][2];
+}
+
+//param->rbuf_p
+int imm, evac;
+unsigned rs1, rs2, rd;
+
 void exec_main(param_t* param) {
-  unsigned inst = (param->rbuf)[param->rbuf_p];
-  bool branch = false;
-  int imm, evac;
-  unsigned rs1, rs2, rd, shamt, l_mem, s_mem;
-  switch (inst & 0x7F) {
-    case 0b0110111: //LUI
-      rd = (inst & 0xF80) >> 7;
-      imm = inst & 0xFFFFF000;
+  switch((param->decoded)[param->rbuf_p][0]) {
+    case LUI:
+      set_u_type(param, &rd, &imm);
       param->reg[rd] = imm;
+      pc_inclement(param);
       if(param->step) printf("lui r%d $%d\n", rd, imm);
-      break;
-    case 0b0010111: //AUIPC
-      rd = (inst & 0xF80) >> 7;
-      imm = inst & 0xFFFFF000;
+      return;
+    case AUIPC:
+      set_u_type(param, &rd, &imm);
       param->reg[rd] = param->pc + imm;
-      branch = true;
       exec_jmp_fread(param, param->pc + imm);
       if(param->step) printf("auipc r%d $%d\n", rd, imm);
-      break;
-    case 0b1101111: //JAL
-      rd = (inst & 0xF80) >> 7;
-      imm = (inst & 0x80000000) >> 11 | (inst & 0xFF000) | (inst & 0x100000) >> 9 | (inst & 0x7FE00000) >> 20;
-      //20th bit = sign
-      if (imm & 0x100000) imm = imm | 0xFFE00000;
+      return;
+    case JAL:
+      set_uj_type(param, &rd, &imm);
       param->reg[rd] = param->pc + param->pc_interval;
-      branch = true;
       exec_jmp_fread(param, param->pc + imm);
       if(param->step) printf("jal r%d $%d\n", rd, imm);
-      break;
-    case 0b1100111: //JALR
-      decode_i_type(inst, &rd, &rs1, &imm);
+      return;
+    case JALR:
+      set_i_type(param, &rd, &rs1, &imm);
       evac = param->pc + param->pc_interval;
-      branch = true;
       exec_jmp_fread(param, param->reg[rs1] + imm);
       param->reg[rd] = evac;
       if(param->step) printf("jalr r%d r%d $%d\n", rd, rs1, imm);
-      break;
-    case 0b1100011: //分岐命令
-      decode_sb_type(inst, &rs1, &rs2, &imm);
-      switch (inst & 0x7000) {
-        case 0x0000: //BEQ
-          exec_branch(param, param->reg[rs1] == param->reg[rs2], &branch, &imm, "beq", &rs1, &rs2);
-          break;
-        case 0x1000: //BNE
-          exec_branch(param, param->reg[rs1] != param->reg[rs2], &branch, &imm, "bne", &rs1, &rs2);
-          break;
-        case 0x4000: //BLT
-          exec_branch(param, param->reg[rs1] < param->reg[rs2], &branch, &imm, "blt", &rs1, &rs2);
-          break;
-        case 0x5000: //BGE
-          exec_branch(param, param->reg[rs1] >= param->reg[rs2], &branch, &imm, "bge", &rs1, &rs2);
-          break;
-        case 0x6000: //BLTU
-          exec_branch(param, (unsigned)(param->reg[rs1]) < (unsigned)(param->reg[rs2]), &branch, &imm, "bltu", &rs1, &rs2);
-          break;
-        case 0x7000: //BGEU
-          exec_branch(param, (unsigned)(param->reg[rs1]) >= (unsigned)(param->reg[rs2]), &branch, &imm, "bgeu", &rs1, &rs2);
-          break;
-        default:
-          print_unknown_inst(470, inst);
-        break;
-      }
-      break;
-    case 0b0000011: //ロード命令
-      decode_i_type(inst, &rd, &rs1, &imm);
-      l_mem = param->reg[rs1] + imm;
-      switch (inst & 0x7000) {
-        case 0x0000: //LB
-          param->reg[rd] = (int)(param->mem[l_mem]);
-          if(param->step) printf("lb r%d r%d $%d\n", rd, rs1, imm);
-          break;
-        case 0x1000: //LH
-          param->reg[rd] = (int)(param->mem[l_mem] + (param->mem[l_mem + 1] << 8));
-          if(param->step) printf("lh r%d r%d $%d\n", rd, rs1, imm);
-          break;
-        case 0x2000: //LW
-          param->reg[rd] = (int)(param->mem[l_mem] + (param->mem[l_mem + 1] << 8) + (param->mem[l_mem + 2] << 16) + (param->mem[l_mem + 3] << 24));
-          if(param->step) printf("lw r%d r%d $%d\n", rd, rs1, imm);
-          break;
-        case 0x4000: //LBU
-          param->reg[rd] = param->mem[l_mem];
-          if(param->step) printf("lbu r%d r%d $%d\n", rd, rs1, imm);
-          break;
-        case 0x5000: //LHU
-          param->reg[rd] = param->mem[l_mem] + (param->mem[l_mem + 1] << 8);
-          if(param->step) printf("lhu r%d r%d $%d\n", rd, rs1, imm);
-          break;
-        default:
-          print_unknown_inst(570, inst);
-        break;
-      }
-      break;
-    case 0b0100011: //ストア命令
-      decode_s_type(inst, &rs1, &rs2, &imm);
-      s_mem = param->reg[rs1] + imm;
-      switch (inst & 0x7000) {
-        case 0x0000: //SB
-          param->mem[s_mem] = param->reg[rs2];
-          if(param->step) printf("sb r%d r%d $%d\n", rs1, rs2, imm);
-        break;
-        case 0x1000: //SH
-          param->mem[s_mem] = param->reg[rs2];
-          param->mem[s_mem + 1] = (param->reg[rs2] >> 8);
-          if(param->step) printf("sh r%d r%d $%d\n", rs1, rs2, imm);
-        break;
-        case 0x2000: //SW
-          param->mem[s_mem] = param->reg[rs2];
-          param->mem[s_mem + 1] = (param->reg[rs2] >> 8);
-          param->mem[s_mem + 2] = (param->reg[rs2] >> 16);
-          param->mem[s_mem + 3] = (param->reg[rs2] >> 24);
-          if(param->step) printf("sw r%d r%d $%d\n", rs1, rs2, imm);
-        break;
-        default:
-          print_unknown_inst(670, inst);
-      }
-      break;
-    case 0b0010011: //即値を用いた演算命令
-      decode_i_type(inst, &rd, &rs1, &imm);
-      shamt = (inst & 0x1F00000) >> 20;
-      switch (inst & 0x7000) {
-        case 0x0000: //ADDI
-          param->reg[rd] = param->reg[rs1] + imm;
-          if(param->step) printf("addi r%d r%d $%d\n", rd, rs1, imm);
-          break;
-        case 0x2000: //SLTI
-          param->reg[rd] = param->reg[rs1] < imm ? 1 : 0;
-          if(param->step) printf("slti r%d r%d $%d\n", rd, rs1, imm);
-          break;
-        case 0x3000: //SLTIU
-        /* SLTIU is similar but compares the values as unsigned numbers
-        (i.e., the immediate is first sign-extended to 32-bits
-        then treated as an unsigned number. */
-          param->reg[rd] = (unsigned)(param->reg[rs1]) < (unsigned)imm ? 1 : 0;
-          if(param->step) printf("sltiu r%d r%d $%d\n", rd, rs1, imm);
-          break;
-        case 0x4000: //XORI
-          param->reg[rd] = param->reg[rs1] ^ imm;
-          if(param->step) printf("xori r%d r%d $%d\n", rd, rs1, imm);
-          break;
-        case 0x6000: //ORI
-          param->reg[rd] = param->reg[rs1] | imm;
-          if(param->step) printf("ori r%d r%d $%d\n", rd, rs1, imm);
-          break;
-        case 0x7000: //ANDI
-          param->reg[rd] = param->reg[rs1] & imm;
-          if(param->step) printf("andi r%d r%d $%d\n", rd, rs1, imm);
-          break;
-        case 0x1000: //SLLI?
-          if (inst >> 25 == 0b0000000) {
-            param->reg[rd] = (unsigned)(param->reg[rs1]) << shamt;
-            if(param->step) printf("slti r%d r%d $%d\n", rd, rs1, shamt);
-          }
-          else print_unknown_inst(768, inst);
-          break;
-        case 0x5000: //SRLI or SRAI?
-          if (inst >> 25 == 0b0000000) {
-            param->reg[rd] = (unsigned)(param->reg[rs1]) >> shamt;
-            if(param->step) printf("srli r%d r%d $%d\n", rd, rs1, shamt);
-          }
-          else if (inst >> 25 == 0b0100000) {
-            param->reg[rd] = param->reg[rs1] >> shamt;
-            if(param->step) printf("srai r%d r%d $%d\n", rd, rs1, shamt);
-          }
-          else print_unknown_inst(769, inst);
-          break;
-        default:
-          print_unknown_inst(770, inst);
-      }
-      break;
-    case 0b0110011: //即値を用いない演算命令
-      decode_r_type(inst, &rd, &rs1, &rs2);
-      switch (inst & 0x7000) {
-        case 0x0000: //ADD or SUB?
-          if (inst >> 25 == 0b0000000) {
-            param->reg[rd] = param->reg[rs1] + param->reg[rs2];
-            if(param->step) printf("add r%d r%d r%d\n", rd, rs1, rs2);
-          }
-          else if (inst >> 25 == 0b0100000) {
-            param->reg[rd] = param->reg[rs1] - param->reg[rs2];
-            if(param->step) printf("add r%d r%d r%d\n", rd, rs1, rs2);
-          }
-          else print_unknown_inst(861, inst);
-          break;
-        /* SLL, SRL, and SRA perform logical left, logical right,
-        and arithmetic right shifts on the value in register rs1
-        by the shift amount held in the lower 5 bits of register rs2.*/
-        case 0x1000: //SLL?
-          if (inst >> 25 == 0b0000000) {
-            param->reg[rd] = (unsigned)(param->reg[rs1]) << (param->reg[rs2] & 0b11111);
-            if(param->step) printf("add r%d r%d r%d\n", rd, rs1, rs2);
-          }
-          else print_unknown_inst(862, inst);
-          break;
-        case 0x2000: //SLT
-          if (inst >> 25 == 0b0000000) {
-            param->reg[rd] = param->reg[rs1] < param->reg[rs2] ? 1 : 0;
-            if(param->step) printf("slt r%d r%d r%d\n", rd, rs1, rs2);
-          }
-          else print_unknown_inst(863, inst);
-          break;
-        case 0x3000: //SLTU
-          if (inst >> 25 == 0b0000000) {
-            param->reg[rd] = (unsigned)(param->reg[rs1]) < (unsigned)(param->reg[rs2]) ? 1 : 0;
-            if(param->step) printf("sltu r%d r%d r%d\n", rd, rs1, rs2);
-          }
-          else print_unknown_inst(865, inst);
-          break;
-        case 0x4000: //XOR
-          if (inst >> 25 == 0b0000000) {
-            param->reg[rd] = param->reg[rs1] ^ param->reg[rs2];
-            if(param->step) printf("xor r%d r%d r%d\n", rd, rs1, rs2);
-          }
-          else print_unknown_inst(866, inst);
-          break;
-        case 0x5000: //SRL or SRA?
-          if (inst >> 25 == 0b0000000) {
-            param->reg[rd] = (unsigned)(param->reg[rs1]) >> (param->reg[rs2] & 0b11111);
-            if(param->step) printf("srl r%d r%d r%d\n", rd, rs1, rs2);
-          }
-          else if (inst >> 25 == 0b0100000) {
-            param->reg[rd] = param->reg[rs1] >> (param->reg[rs2] & 0b11111);
-            if(param->step) printf("sra r%d r%d r%d\n", rd, rs1, rs2);
-          }
-          else print_unknown_inst(867, inst);
-        case 0x6000: //OR
-          if (inst >> 25 == 0b0000000) {
-            param->reg[rd] = param->reg[rs1] | param->reg[rs2];
-            if(param->step) printf("or r%d r%d r%d\n", rd, rs1, rs2);
-          }
-          else print_unknown_inst(868, inst);
-          break;
-        case 0x7000: //AND
-          if (inst >> 25 == 0b0000000) {
-            param->reg[rd] = param->reg[rs1] & param->reg[rs2];
-            if(param->step) printf("and r%d r%d r%d\n", rd, rs1, rs2);
-          }
-          else print_unknown_inst(869, inst);
-          break;
-        default:
-          print_unknown_inst(870, inst);
-      }
-      break;
+      return;
+    case BEQ:
+      set_sb_type(param, &rs1, &rs2, &imm);
+      exec_branch(param, param->reg[rs1] == param->reg[rs2], &imm, "beq", &rs1, &rs2);
+      return;
+    case BNE:
+      set_sb_type(param, &rs1, &rs2, &imm);
+      exec_branch(param, param->reg[rs1] != param->reg[rs2], &imm, "bne", &rs1, &rs2);
+      return;
+    case BLT:
+      set_sb_type(param, &rs1, &rs2, &imm);
+      exec_branch(param, param->reg[rs1] < param->reg[rs2], &imm, "blt", &rs1, &rs2);
+      return;
+    case BGE:
+      set_sb_type(param, &rs1, &rs2, &imm);
+      exec_branch(param, param->reg[rs1] >= param->reg[rs2], &imm, "bge", &rs1, &rs2);
+      return;
+    case BLTU:
+      set_sb_type(param, &rs1, &rs2, &imm);
+      exec_branch(param, (unsigned)(param->reg[rs1]) < (unsigned)(param->reg[rs2]), &imm, "bltu", &rs1, &rs2);
+      return;
+    case BGEU:
+      set_sb_type(param, &rs1, &rs2, &imm);
+      exec_branch(param, (unsigned)(param->reg[rs1]) >= (unsigned)(param->reg[rs2]), &imm, "bgeu", &rs1, &rs2);
+      return;
+    case LB:
+      set_i_type(param, &rd, &rs1, &imm);
+      evac = param->reg[rs1] + imm;
+      param->reg[rd] = (int)(param->mem[evac]);
+      pc_inclement(param);
+      if(param->step) printf("lb r%d r%d $%d\n", rd, rs1, imm);
+      return;
+    case LH:
+      set_i_type(param, &rd, &rs1, &imm);
+      evac = param->reg[rs1] + imm;
+      param->reg[rd] = (int)(param->mem[evac] + (param->mem[evac + 1] << 8));
+      pc_inclement(param);
+      if(param->step) printf("lh r%d r%d $%d\n", rd, rs1, imm);
+      return;
+    case LW:
+      set_i_type(param, &rd, &rs1, &imm);
+      evac = param->reg[rs1] + imm;
+      param->reg[rd] = (int)(param->mem[evac] + (param->mem[evac + 1] << 8) + (param->mem[evac + 2] << 16) + (param->mem[evac + 3] << 24));
+      pc_inclement(param);
+      if(param->step) printf("lw r%d r%d $%d\n", rd, rs1, imm);
+      return;
+    case LBU:
+      set_i_type(param, &rd, &rs1, &imm);
+      evac = param->reg[rs1] + imm;
+      param->reg[rd] = param->mem[evac];
+      pc_inclement(param);
+      if(param->step) printf("lbu r%d r%d $%d\n", rd, rs1, imm);
+      return;
+    case LHU:
+      set_i_type(param, &rd, &rs1, &imm);
+      evac = param->reg[rs1] + imm;
+      param->reg[rd] = param->mem[evac] + (param->mem[evac + 1] << 8);
+      pc_inclement(param);
+      if(param->step) printf("lhu r%d r%d $%d\n", rd, rs1, imm);
+      return;
+    case SB:
+      set_s_type(param, &rs1, &rs2, &imm);
+      evac = param->reg[rs1] + imm;
+      param->mem[evac] = param->reg[rs2];
+      pc_inclement(param);
+      if(param->step) printf("sb r%d r%d $%d\n", rs1, rs2, imm);
+      return;
+    case SH:
+      set_s_type(param, &rs1, &rs2, &imm);
+      evac = param->reg[rs1] + imm;
+      param->mem[evac] = param->reg[rs2];
+      param->mem[evac + 1] = (param->reg[rs2] >> 8);
+      pc_inclement(param);
+      if(param->step) printf("sh r%d r%d $%d\n", rs1, rs2, imm);
+      return;
+    case SW:
+      set_s_type(param, &rs1, &rs2, &imm);
+      evac = param->reg[rs1] + imm;
+      param->mem[evac] = param->reg[rs2];
+      param->mem[evac + 1] = (param->reg[rs2] >> 8);
+      param->mem[evac + 2] = (param->reg[rs2] >> 16);
+      param->mem[evac + 3] = (param->reg[rs2] >> 24);
+      pc_inclement(param);
+      if(param->step) printf("sw r%d r%d $%d\n", rs1, rs2, imm);
+      return;
+    case ADDI:
+      set_i_type(param, &rd, &rs1, &imm);
+      param->reg[rd] = param->reg[rs1] + imm;
+      pc_inclement(param);
+      if(param->step) printf("addi r%d r%d $%d\n", rd, rs1, imm);
+      return;
+    case SLTI:
+      set_i_type(param, &rd, &rs1, &imm);
+      param->reg[rd] = param->reg[rs1] < imm ? 1 : 0;
+      pc_inclement(param);
+      if(param->step) printf("slti r%d r%d $%d\n", rd, rs1, imm);
+      return;
+    case SLTIU:
+      set_i_type(param, &rd, &rs1, &imm);
+      param->reg[rd] = (unsigned)(param->reg[rs1]) < (unsigned)imm ? 1 : 0;
+      pc_inclement(param);
+      if(param->step) printf("sltiu r%d r%d $%d\n", rd, rs1, imm);
+      return;
+    case XORI:
+      set_i_type(param, &rd, &rs1, &imm);
+      param->reg[rd] = param->reg[rs1] ^ imm;
+      pc_inclement(param);
+      if(param->step) printf("xori r%d r%d $%d\n", rd, rs1, imm);
+      return;
+    case ORI:
+      set_i_type(param, &rd, &rs1, &imm);
+      param->reg[rd] = param->reg[rs1] | imm;
+      pc_inclement(param);
+      if(param->step) printf("ori r%d r%d $%d\n", rd, rs1, imm);
+      return;
+    case ANDI:
+      set_i_type(param, &rd, &rs1, &imm);
+      param->reg[rd] = param->reg[rs1] & imm;
+      pc_inclement(param);
+      if(param->step) printf("andi r%d r%d $%d\n", rd, rs1, imm);
+      return;
+    case SLLI:
+      set_i_type(param, &rd, &rs1, &imm);
+      param->reg[rd] = (unsigned)(param->reg[rs1]) << imm;
+      pc_inclement(param);
+      if(param->step) printf("slti r%d r%d $%d\n", rd, rs1, imm);
+      return;
+    case SRLI:
+      set_i_type(param, &rd, &rs1, &imm);
+      param->reg[rd] = (unsigned)(param->reg[rs1]) >> imm;
+      pc_inclement(param);
+      if(param->step) printf("srli r%d r%d $%d\n", rd, rs1, imm);
+      return;
+    case SRAI:
+      set_i_type(param, &rd, &rs1, &imm);
+      param->reg[rd] = param->reg[rs1] >> imm;
+      pc_inclement(param);
+      if(param->step) printf("srai r%d r%d $%d\n", rd, rs1, imm);
+      return;
+    case ADD:
+      set_r_type(param, &rd, &rs1, &rs2);
+      param->reg[rd] = param->reg[rs1] + param->reg[rs2];
+      pc_inclement(param);
+      if(param->step) printf("add r%d r%d r%d\n", rd, rs1, rs2);
+      return;
+    case SUB:
+      set_r_type(param, &rd, &rs1, &rs2);
+      param->reg[rd] = param->reg[rs1] - param->reg[rs2];
+      pc_inclement(param);
+      if(param->step) printf("sub r%d r%d r%d\n", rd, rs1, rs2);
+      return;
+    case SLL:
+      set_r_type(param, &rd, &rs1, &rs2);
+      param->reg[rd] = (unsigned)(param->reg[rs1]) << (param->reg[rs2] & 0b11111);
+      pc_inclement(param);
+      if(param->step) printf("sll r%d r%d r%d\n", rd, rs1, rs2);
+      return;
+    case SLT:
+      set_r_type(param, &rd, &rs1, &rs2);
+      param->reg[rd] = param->reg[rs1] < param->reg[rs2] ? 1 : 0;
+      pc_inclement(param);
+      if(param->step) printf("slt r%d r%d r%d\n", rd, rs1, rs2);
+      return;
+    case SLTU:
+      set_r_type(param, &rd, &rs1, &rs2);
+      param->reg[rd] = (unsigned)(param->reg[rs1]) < (unsigned)(param->reg[rs2]) ? 1 : 0;
+      pc_inclement(param);
+      if(param->step) printf("sltu r%d r%d r%d\n", rd, rs1, rs2);
+      return;
+    case XOR:
+      set_r_type(param, &rd, &rs1, &rs2);
+      param->reg[rd] = param->reg[rs1] ^ param->reg[rs2];
+      pc_inclement(param);
+      if(param->step) printf("xor r%d r%d r%d\n", rd, rs1, rs2);
+      return;
+    case SRL:
+      set_r_type(param, &rd, &rs1, &rs2);
+      param->reg[rd] = (unsigned)(param->reg[rs1]) >> (param->reg[rs2] & 0b11111);
+      pc_inclement(param);
+      if(param->step) printf("srl r%d r%d r%d\n", rd, rs1, rs2);
+      return;
+    case SRA:
+      set_r_type(param, &rd, &rs1, &rs2);
+      param->reg[rd] = param->reg[rs1] >> (param->reg[rs2] & 0b11111);
+      pc_inclement(param);
+      if(param->step) printf("sra r%d r%d r%d\n", rd, rs1, rs2);
+      return;
+    case OR:
+      set_r_type(param, &rd, &rs1, &rs2);
+      param->reg[rd] = param->reg[rs1] | param->reg[rs2];
+      pc_inclement(param);
+      if(param->step) printf("or r%d r%d r%d\n", rd, rs1, rs2);
+      return;
+    case AND:
+      set_r_type(param, &rd, &rs1, &rs2);
+      param->reg[rd] = param->reg[rs1] & param->reg[rs2];
+      pc_inclement(param);
+      if(param->step) printf("and r%d r%d r%d\n", rd, rs1, rs2);
     default:
-      print_unknown_inst(900, inst);
-  }
-  if (!branch) {
-    (param->rbuf_p)++;
-    param->prepc = param->pc;
-    (param->pc) += (param->pc_interval);
+      printf("unknown fatal error, exit\n");
+      exit(EXIT_FAILURE);
   }
   return;
 }

@@ -24,11 +24,7 @@ using namespace std;
 #define Loop(i, n) for(int i = 0; i < (int)n; i++)
 #define Loop1(i, n) for(int i = 1; i <= (int)n; i++)
 
-void print_unknown_inst(int x, unsigned inst);
-
 void exec_jmp_fread(param_t*, unsigned newpc);
-
-void exec_branch(param_t* param, bool b, bool *branch, int *imm, const char *mnemonic, unsigned *rs1, unsigned *rs2);
 
 void exec_main(param_t* param);
 
