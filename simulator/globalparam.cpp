@@ -12,5 +12,5 @@ void init_param (param_t* param) {
   param->rbuf_begin = UINT_MAX - RBUFSIZE; //rbufが何命令目から始まっているか
   param->pc = 0; //大域プログラムカウンタ、0から pc_interval ずつスタート
   param->prepc = UINT_MAX; //直前のプログラムカウンタ、pc = prepcとなったときシミュレータは終了
-  param->mem = {}; //バイトアドレス
+  fill_n(param->mem, HASHWIDTH, (hash_list_t*)NULL); //バイトアドレス
 }

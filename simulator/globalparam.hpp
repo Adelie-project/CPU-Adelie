@@ -1,11 +1,19 @@
 #ifndef GLOBALPARAM_HPP
 #define GLOBALPARAM_HPP
 
+#include <iostream>
 #include <climits>
-#include <unordered_map>
+#include <algorithm>
 using namespace std;
 
 #define RBUFSIZE 256
+#define HASHWIDTH 1000003
+
+struct hash_list_t {
+  int key;
+  unsigned int val;
+  hash_list_t* next_p;
+};
 
 struct param_t {
   unsigned pc_interval;
@@ -21,7 +29,7 @@ struct param_t {
   unsigned pc;
   unsigned prepc;
   int reg[32];
-  unordered_map<int, unsigned char> mem;
+  hash_list_t *mem[HASHWIDTH];
 };
 
 enum inst_t {

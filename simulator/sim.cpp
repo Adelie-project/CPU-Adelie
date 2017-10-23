@@ -1,6 +1,29 @@
-#include "sim.hpp"
+#include "globalparam.hpp"
+#include "exec.hpp"
+using namespace std;
+#define Loop(i, n) for(int i = 0; i < (int)n; i++)
+#define Loop1(i, n) for(int i = 1; i <= (int)n; i++)
+#define Loopr(i, n) for(int i = (int)n - 1; i >= 0; i--)
+
+deque<int> record_pc;
+vector<deque<int>> record_reg(32);
+
+//functions
+inline void preprocess_of_run(param_t* param);
+inline void postprocess_of_run(param_t* param);
+inline void update_wave(param_t* param);
+inline int hash_func(int k);
+inline unsigned read_hash_list(param_t* param, int k);
+void run(param_t* param);
+void run_break(param_t* param);
+void run_wave(param_t* param);
+void run_step(param_t* param);
+void print_wave();
+void print_standard_reg(param_t* param);
+
 
 int main(int argc, char *argv[]) {
+
   //各種パラメータ
   param_t *param = new param_t;
   init_param(param);
@@ -119,6 +142,19 @@ void run_wave(param_t* param) {
   }
 }
 
+inline int hash_func(int k) {
+  return k % HASHWIDTH;
+}
+
+inline unsigned read_hash_list(param_t* param, int k) {
+  hash_list_t* p = param->mem[hash_func(k)];
+  while(p != NULL) {
+    if(k == p->key) return p->val;
+    else p = p->next_p;
+  }
+  return 0;
+}
+
 void run_step(param_t* param){
   while(1) {
     preprocess_of_run(param);
@@ -135,16 +171,14 @@ void run_step(param_t* param){
       if (s == "s") break;
       else if (s == "r") {
         param->step = false;
-        if (param->breakpoint != UINT_MAX) run_break(param);
+        if (param->breakpoint != UINT_MAX) { postprocess_of_run(param); run_break(param); }
         else run(param);
         break;
       }
       else {
         int a = stoi(s, NULL, 0);
         printf("\n");
-        Loopr(i, 4) {
-          printf("M[%d]:%02X ", a + i, param->mem[a + i]);
-        }
+        printf("M[%d]:%08X ", a, read_hash_list(param, a));
       }
     }
     postprocess_of_run(param);

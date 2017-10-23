@@ -3,7 +3,7 @@ main:
   addi r2, r2, $-64 ; SP -= 64
   addi r3, r2, $64  ; FP = SP + 64, main()のフレームの出来上がり
   addi r9, r0, $2   ; const int 1
-  addi r5, r0, $35  ; fib_rec(35) を呼びたい
+  addi r5, r0, $38  ; fib_rec(35) を呼びたい
   jal r1, fib_rec   ; r1 = 7 * pc_interval
   jal r1, finish
 fib_rec:
@@ -84,9 +84,11 @@ fib[28] = 317811 = 0x4d973
 fib[29] = 514229 = 0x7d8b5
 fib[30] = 832040 = 0xcb228
 fib[31] = 1346269 = 0x148add
-fib[32] = 2178309 = 0x213d05 <- シミュレータで2秒
+fib[32] = 2178309 = 0x213d05
 fib[33] = 3524578 = 0x35c7e2
 fib[34] = 5702887 = 0x5704e7
-fib[35] = 9227465 = 0x8cccc9 <- シミュレータで9秒
-
+fib[35] = 9227465 = 0x8cccc9 <- 2秒
+fib[36] = 14930352 = 0xe3d1b0
+fib[37] = 24157817 = 0x1709e79
+fib[38] = 39088169 = 0x2547029 <- 9秒
 */
