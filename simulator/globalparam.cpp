@@ -3,7 +3,7 @@
 void init_param (param_t* param) {
   //parameters
   param->pc_interval = 4; // default
-  param->breakpoint = -1;
+  param->breakpoint = UINT_MAX;
   param->wave = 0;
   param->step = false;
   param->fp = NULL; // 読み取りファイル記述子

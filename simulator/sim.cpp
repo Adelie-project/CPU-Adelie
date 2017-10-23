@@ -1,33 +1,4 @@
-#include <iostream>
-#include <climits>
-#include <algorithm>
-#include <vector>
-#include <deque>
-#include <list>
-#include <stack>
-#include <string>
-#include <functional>
-#include <numeric>
-#define _USE_MATH_DEFINES
-#include <math.h>
-#include <map>
-#include <set>
-#include <stdio.h>
-#include <stdlib.h>
-#include <errno.h>
-#include <bitset>
-#include "globalparam.hpp"
-#include "exec.hpp"
-using namespace std;
-#define Loop(i, n) for(int i = 0; i < (int)n; i++)
-#define Loop1(i, n) for(int i = 1; i <= (int)n; i++)
-
-deque<int> record_pc;
-vector<deque<int>> record_reg(32);
-
-void print_standard_reg(param_t* param);
-void print_wave();
-int run(param_t* param);
+#include "sim.hpp"
 
 int main(int argc, char *argv[]) {
   //各種パラメータ
@@ -65,69 +36,120 @@ int main(int argc, char *argv[]) {
   //0バイト目から読んで初期化
   exec_jmp_fread(param, 0);
 
-  while(1) {
-    if (run(param) < 0) break;
+  if (param->step) run_step(param);
+  else {
+    if (param->wave > 0) {
+      run_wave(param);
+    }
+    else {
+      if (param->breakpoint != UINT_MAX) run_break(param);
+      else run(param);
+    }
   }
+
   fclose(param->fp);
   return 0;
 }
 
-int run(param_t* param) {
-  if (param->rbuf_p == RBUFSIZE) {
-    exec_jmp_fread(param, param->pc);
-  }
-  else if (param->rbuf_p >= param->rsize) {
-    printf("\n\nPC = %08X\n", param->pc);
-    if (param->wave) print_wave();
-    else print_standard_reg(param);
-    printf("\n\nreach end of file\n");
-    return -1;
-  }
-
-  if (param->breakpoint == param->pc) param->step = true;
-  if (param->step) printf("\nPC = %08X : ", param->pc);
-
-  //命令実行
-  exec_main(param);
-
-  if (param->wave) {
-    record_pc.push_back(param->prepc);
-    Loop(i, 32) {
-      record_reg[i].push_back(param->reg[i]);
+inline void preprocess_of_run(param_t* param) {
+  if (param->rbuf_p >= param->rsize) {
+    if (param->rbuf_p == RBUFSIZE) {
+      exec_jmp_fread(param, param->pc);
     }
-    if (record_reg[0].size() > param->wave) {
-      record_pc.pop_front();
-      Loop(i, 32) record_reg[i].pop_front();
+    else {
+      printf("\n\nPC = %08X\n", param->pc);
+      if (param->wave) print_wave();
+      else print_standard_reg(param);
+      printf("\n\nreach end of file\n");
+      fclose(param->fp);
+      exit(EXIT_SUCCESS);
     }
   }
+}
 
-  //ステップ実行ならばメモリ含めて出力、安全のためメモリは最大64byteのみ表示
-  if (param->step) {
-    if (param->wave) print_wave();
-    else print_standard_reg(param);
-    auto itr = (param->mem).begin();
-    //安全のため最初64bytesのみの出力
-    int j = 0;
-    for(; itr != (param->mem).end(); itr++) {
-      if (j % 8 == 0) printf("\n");
-      printf("M[%d]:%02X ", (*itr).first, (*itr).second);
-      j++;
-      if (j == 64) break;
-    }
-    printf("\npress 's' to step-in, others to run. ");
-    char c; cin >> c;
-    if (c != 's') param->step = false;
-  }
-
-  //無限ループならば終了
+inline void postprocess_of_run(param_t* param) {
   if (param->prepc == param->pc) {
     printf("\n\nPC = %08X\n", param->pc);
     if (param->wave) print_wave();
     else print_standard_reg(param);
     printf("\n\nprogram infinitely loops at pc %d, simulation stops\n", param->pc);
-    return -1;
+    fclose(param->fp);
+    exit(EXIT_SUCCESS);
   }
-  return 0;
+}
+
+inline void update_wave(param_t* param) {
+  record_pc.push_back(param->prepc);
+  Loop(i, 32) {
+    record_reg[i].push_back(param->reg[i]);
+  }
+  if (record_reg[0].size() > param->wave) {
+    record_pc.pop_front();
+    Loop(i, 32) record_reg[i].pop_front();
+  }
+}
+
+void run(param_t* param) {
+  while(1) {
+    preprocess_of_run(param);
+    exec_main(param);
+    postprocess_of_run(param);
+  }
+}
+
+void run_break(param_t* param) {
+  while(1) {
+    if(param->breakpoint == param->pc) {
+      param->step = true;
+      run_step(param);
+    }
+    preprocess_of_run(param);
+    exec_main(param);
+    postprocess_of_run(param);
+  }
+}
+
+void run_wave(param_t* param) {
+  while(1) {
+    preprocess_of_run(param);
+    exec_main(param);
+    update_wave(param);
+    postprocess_of_run(param);
+    if(param->breakpoint == param->prepc) run_step(param);
+  }
+}
+
+void run_step(param_t* param){
+  while(1) {
+    preprocess_of_run(param);
+    printf("\nPC = %08X : ", param->pc);
+    exec_main(param);
+    if (param->wave) {
+      update_wave(param);
+      print_wave();
+    }
+    else print_standard_reg(param);
+    while(1) {
+      printf("\nenter 's' to step-in, 'r' to run with breakpoint, or a number to show the value of the memory address. ");
+      string s; cin >> s;
+      if (s == "s") break;
+      else if (s == "r") {
+        param->step = false;
+        if (param->breakpoint != UINT_MAX) run_break(param);
+        else run(param);
+        break;
+      }
+      else {
+        int a = stoi(s, NULL, 0);
+        printf("\n");
+        Loopr(i, 4) {
+          printf("M[%d]:%02X ", a + i, param->mem[a + i]);
+        }
+      }
+    }
+    postprocess_of_run(param);
+  }
+
 }
 
 void print_wave() {
