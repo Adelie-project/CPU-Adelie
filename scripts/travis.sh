@@ -14,7 +14,7 @@ make -j2 VERBOSE=1
 cd ..
 
 
-# Fun each bin file through the simulator and check the command line output.
+# For each bin file through the simulator and check the command line output.
 for f in test/*.bin
 do
     # This tests takes really long, let's skip it for now...
@@ -40,5 +40,12 @@ done
 # Test build the compiler
 cd "$DIR/.."
 cd compiler/min-caml/
-bash ./to_x86
+./to_x86
+make -j2
+
+echo "Running RISC-V tests"
+git clean -fdx
+cd "$DIR/.."
+cd compiler/min-caml/
+./to_riscv
 make -j2
