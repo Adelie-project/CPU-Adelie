@@ -131,28 +131,33 @@ let rec iter n e = (* 最適化処理をくりかえす (caml2html: main_iter) *)
 let lexbuf outchan l glb_l= (* バッファをコンパイルしてチャンネルへ出力する (caml2html: main_lexbuf) *)
   Id.counter := 0;
   Typing.extenv := M.empty;
-  let s = (Typing.f
-
-
-            (Joinglb.f
-              (Parser.exp Lexer.token l)
-              (Parser.exp Lexer.token glb_l))
-              ) in
+  (*min-rtのときはここから*)
+  let s = Typing.f
+              (Parser.exp Lexer.token l) in
   let k = KNormal.f s in
   print_string "---syntax_t---\n";
   print_syntax_t s 0;
   print_string "---knormal_t---\n";
   print_knormal_t k 0;
+  (*ここまでcomment out すること*)
+  (*
   print_string "---common subexpression elimination---\n";
   print_knormal_t (CommonSubexp.f k) 0;
+  *)
   Emit.f outchan
     (RegAlloc.f
        (Simm.f
           (Virtual.f
              (Closure.f
                 (iter !limit
-                   (Alpha.f k
-                      ))))))
+                   (Alpha.f
+                     k(*いつもはこっち*)
+                     (*(KNormal.f
+                       (Typing.f
+                         (Joinglb.f
+                           (Parser.exp Lexer.token l)
+                           (Parser.exp Lexer.token glb_l))*)(*min-rtのときだけこっち*)
+                            ))))))
 
 let string s glbchan= lexbuf stdout (Lexing.from_string s) (Lexing.from_channel glbchan)(* 文字列をコンパイルして標準出力に表示する (caml2html: main_string) *)
 
