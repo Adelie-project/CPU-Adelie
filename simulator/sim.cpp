@@ -6,12 +6,14 @@ using namespace std;
 #define Loopr(i, n) for(int i = (int)n - 1; i >= 0; i--)
 
 deque<int> record_pc;
+deque<int> record_inst;
 vector<deque<int>> record_reg(32);
 
 //functions
 inline void preprocess_of_run(param_t* param);
 inline void postprocess_of_run(param_t* param);
-inline void update_wave(param_t* param);
+inline void update_wave1(param_t* param);
+inline void update_wave2(param_t* param);
 inline int hash_func(int k);
 inline unsigned read_hash_list(param_t* param, int k);
 void run(param_t* param);
@@ -101,13 +103,18 @@ inline void postprocess_of_run(param_t* param) {
   }
 }
 
-inline void update_wave(param_t* param) {
+inline void update_wave1(param_t* param) {
   record_pc.push_back(param->prepc);
+  record_inst.push_back((param->rbuf)[param->rbuf_p]);
+}
+
+inline void update_wave2(param_t* param) {
   Loop(i, 32) {
     record_reg[i].push_back(param->reg[i]);
   }
   if (record_reg[0].size() > param->wave) {
     record_pc.pop_front();
+    record_inst.pop_front();
     Loop(i, 32) record_reg[i].pop_front();
   }
 }
@@ -135,8 +142,9 @@ void run_break(param_t* param) {
 void run_wave(param_t* param) {
   while(1) {
     preprocess_of_run(param);
+    update_wave1(param);
     exec_main(param);
-    update_wave(param);
+    update_wave2(param);
     postprocess_of_run(param);
     if(param->breakpoint == param->prepc) run_step(param);
   }
@@ -158,10 +166,13 @@ inline unsigned read_hash_list(param_t* param, int k) {
 void run_step(param_t* param){
   while(1) {
     preprocess_of_run(param);
-    printf("\nPC = %08X : ", param->pc);
+    printf("\nPC = %08X : \n", param->pc);
+    if (param->wave) {
+      update_wave1(param);
+    }
     exec_main(param);
     if (param->wave) {
-      update_wave(param);
+      update_wave2(param);
       print_wave();
     }
     else print_standard_reg(param);
@@ -187,10 +198,19 @@ void run_step(param_t* param){
 }
 
 void print_wave() {
-  printf("PC: ");
+  printf("  PC: ");
   Loop(i, record_pc.size()) {
     printf("%08x ", record_pc[i]);
     if (i == (int)record_pc.size() - 1 || record_pc[i] != record_pc[i + 1]) {
+      printf("| ");
+    }
+    else printf("  ");
+  }
+  printf("\n");
+  printf("inst: ");
+  Loop(i, record_inst.size()) {
+    printf("%08x ", record_inst[i]);
+    if (i == (int)record_inst.size() - 1 || record_inst[i] != record_inst[i + 1]) {
       printf("| ");
     }
     else printf("  ");
