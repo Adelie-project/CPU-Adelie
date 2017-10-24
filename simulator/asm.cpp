@@ -115,10 +115,10 @@ void check_mnemonic(){
   //R-type (exclude slli, srli, srai)
   if ((itr = r_type.find(buf[0])) != r_type.end()) {
     unsigned int funct7 = 0;
-    if (buf[1][0] == 'r' && buf[2][0] == 'r' && buf[3][0] == 'r') {
-      rd = strtoul((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
-      rs1 = strtoul((buf[2].substr(1,buf[2].size()-1)).c_str(), NULL, 0);
-      rs2 = strtoul((buf[3].substr(1,buf[3].size()-1)).c_str(), NULL, 0);
+    if (buf[1][0] == '%' && buf[2][0] == '%' && buf[3][0] == '%') {
+      rd = strtoul((buf[1].substr(2,buf[1].size()-1)).c_str(), NULL, 0);
+      rs1 = strtoul((buf[2].substr(2,buf[2].size()-1)).c_str(), NULL, 0);
+      rs2 = strtoul((buf[3].substr(2,buf[3].size()-1)).c_str(), NULL, 0);
       funct3 = itr->second;
       if (buf[0] == "sub" || buf[0] == "sra") {
         funct7 = 0b0100000;
@@ -134,9 +134,9 @@ void check_mnemonic(){
   //R-type rest (slli, srli, srai)
   else if ((itr = r_type1.find(buf[0])) != r_type1.end()) {
     unsigned int funct7 = 0, shamt;
-    if (buf[1][0] == 'r' && buf[2][0] == 'r' && buf[3][0] == '$') {
-      rd = strtoul((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
-      rs1 = strtoul((buf[2].substr(1,buf[2].size()-1)).c_str(), NULL, 0);
+    if (buf[1][0] == '%' && buf[2][0] == '%' && buf[3][0] == '$') {
+      rd = strtoul((buf[1].substr(2,buf[1].size()-1)).c_str(), NULL, 0);
+      rs1 = strtoul((buf[2].substr(2,buf[2].size()-1)).c_str(), NULL, 0);
       shamt = strtoul((buf[3].substr(1,buf[3].size()-1)).c_str(), NULL, 0);
       funct3 = itr->second;
       if (buf[0] == "srai") {
@@ -152,9 +152,9 @@ void check_mnemonic(){
   }
   //I-type arithmetic
   else if ((itr = i_type.find(buf[0])) != i_type.end()) {
-    if (buf[1][0] == 'r' && buf[2][0] == 'r' && buf[3][0] == '$') {
-      rd = strtoul((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
-      rs1 = strtoul((buf[2].substr(1,buf[2].size()-1)).c_str(), NULL, 0);
+    if (buf[1][0] == '%' && buf[2][0] == '%' && buf[3][0] == '$') {
+      rd = strtoul((buf[1].substr(2,buf[1].size()-1)).c_str(), NULL, 0);
+      rs1 = strtoul((buf[2].substr(2,buf[2].size()-1)).c_str(), NULL, 0);
       imm = check_immediate(3, 12);
       funct3 = itr->second;
       opcode = 0b0010011;
@@ -167,9 +167,9 @@ void check_mnemonic(){
   }
   //I-type rest
   else if ((itr = i_type1.find(buf[0])) != i_type1.end()) {
-    if (buf[1][0] == 'r' && buf[2][0] == 'r' && buf[3][0] == '$') {
-      rd = strtoul((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
-      rs1 = strtoul((buf[2].substr(1,buf[2].size()-1)).c_str(), NULL, 0);
+    if (buf[1][0] == '%' && buf[2][0] == '%' && buf[3][0] == '$') {
+      rd = strtoul((buf[1].substr(2,buf[1].size()-1)).c_str(), NULL, 0);
+      rs1 = strtoul((buf[2].substr(2,buf[2].size()-1)).c_str(), NULL, 0);
       imm = check_immediate(3, 12);
       funct3 = itr->second;
       if (buf[0] == "jalr") opcode = 0b1100111;
@@ -183,9 +183,9 @@ void check_mnemonic(){
   }
   //S-type
   else if ((itr = s_type.find(buf[0])) != s_type.end()) {
-    if (buf[1][0] == 'r' && buf[2][0] == 'r' && buf[3][0] == '$') {
-      rs1 = strtoul((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
-      rs2 = strtoul((buf[2].substr(1,buf[2].size()-1)).c_str(), NULL, 0);
+    if (buf[1][0] == '%' && buf[2][0] == '%' && buf[3][0] == '$') {
+      rs1 = strtoul((buf[1].substr(2,buf[1].size()-1)).c_str(), NULL, 0);
+      rs2 = strtoul((buf[2].substr(2,buf[2].size()-1)).c_str(), NULL, 0);
       imm = check_immediate(3, 12);
       funct3 = itr->second;
       opcode = 0b0100011;
@@ -198,9 +198,9 @@ void check_mnemonic(){
   }
   //SB-type
   else if ((itr = sb_type.find(buf[0])) != sb_type.end()) {
-    if (buf[1][0] == 'r' && buf[2][0] == 'r') {
-      rs1 = strtoul((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
-      rs2 = strtoul((buf[2].substr(1,buf[2].size()-1)).c_str(), NULL, 0);
+    if (buf[1][0] == '%' && buf[2][0] == '%') {
+      rs1 = strtoul((buf[1].substr(2,buf[1].size()-1)).c_str(), NULL, 0);
+      rs2 = strtoul((buf[2].substr(2,buf[2].size()-1)).c_str(), NULL, 0);
       if (buf[3][0] == '$') imm = check_immediate(3, 13);
       else {
         auto itr = labels.find(buf[3]);
@@ -219,8 +219,8 @@ void check_mnemonic(){
   }
   //U-type
   else if ((itr = u_type.find(buf[0])) != u_type.end()) {
-    if (buf[1][0] == 'r' && buf[2][0] == '$') {
-      rd = strtoul((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
+    if (buf[1][0] == '%' && buf[2][0] == '$') {
+      rd = strtoul((buf[1].substr(2,buf[1].size()-1)).c_str(), NULL, 0);
       imm = check_immediate(2, 32);
       if (imm & 0xfff) printf("warning: lower 12 bits of immediate will be ignored in line %d\n", lineno);
       opcode = itr->second;
@@ -233,8 +233,8 @@ void check_mnemonic(){
   }
   //UJ-type
   else if ((itr = uj_type.find(buf[0])) != uj_type.end()) {
-    if (buf[1][0] == 'r') {
-      rd = strtoul((buf[1].substr(1,buf[1].size()-1)).c_str(), NULL, 0);
+    if (buf[1][0] == '%') {
+      rd = strtoul((buf[1].substr(2,buf[1].size()-1)).c_str(), NULL, 0);
       if (buf[2][0] == '$') imm = check_immediate(2, 21);
       else {
         auto itr = labels.find(buf[2]);
