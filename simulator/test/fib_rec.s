@@ -1,36 +1,36 @@
 main:
-  lui r2, $0x00008000 ; SP、スタックとして32KB*8B=256KBを確保
-  addi r2, r2, $-64 ; SP -= 64
-  addi r3, r2, $64  ; FP = SP + 64, main()のフレームの出来上がり
-  addi r9, r0, $2   ; const int 1
-  addi r5, r0, $38  ; fib_rec(35) を呼びたい
-  jal r1, fib_rec   ; r1 = 7 * pc_interval
-  jal r1, finish
+  lui %r2, $0x00008000 ; SP、スタックとして32KB*8B=256KBを確保
+  addi %r2, %r2, $-64 ; SP -= 64
+  addi %r3, %r2, $64  ; FP = SP + 64, main()のフレームの出来上がり
+  addi %r9, %r0, $2   ; const int 1
+  addi %r5, %r0, $35  ; fib_rec(35) を呼びたい
+  jal %r1, fib_rec   ; r1 = 7 * pc_interval
+  jal %r1, finish
 fib_rec:
-  addi r2, r2, $-64 ; SP -= 64
-  sw r2, r1, $16    ; LR退避
-  sw r2, r3, $20    ; FP退避
-  addi r3, r2, $64  ; FP = SP + 64
-  sw r2, r5, $0     ; 第一引数
-  bge r9, r5, fib_rec_bge1   ; if (1 >= x) -> bge1
-  addi r5, r5, $-1  ; else { val1 = x - 1;
-  jal r1, fib_rec   ; fib_rec(val1);
-  sw r2, r4, $32    ; a[8] = fib_rec(a);
-  lw r5, r2, $0     ; 第一引数読み戻し
-  addi r5, r5, $-2  ; val2 = x - 2;
-  jal r1, fib_rec   ; fib_rec(val2);
-  lw r10, r2, $32   ; r10 = a[8]
-  add r4, r10, r4   ; return fib_rec(val1) + fib_rec(val2)!
+  addi %r2, %r2, $-64 ; SP -= 64
+  sw %r2, %r1, $16    ; LR退避
+  sw %r2, %r3, $20    ; FP退避
+  addi %r3, %r2, $64  ; FP = SP + 64
+  sw %r2, %r5, $0     ; 第一引数
+  bge %r9, %r5, fib_rec_bge1   ; if (1 >= x) -> bge1
+  addi %r5, %r5, $-1  ; else { val1 = x - 1;
+  jal %r1, fib_rec   ; fib_rec(val1);
+  sw %r2, %r4, $32    ; a[8] = fib_rec(a);
+  lw %r5, %r2, $0     ; 第一引数読み戻し
+  addi %r5, %r5, $-2  ; val2 = x - 2;
+  jal %r1, fib_rec   ; fib_rec(val2);
+  lw %r10, %r2, $32   ; r10 = a[8]
+  add %r4, %r10, %r4   ; return fib_rec(val1) + fib_rec(val2)!
 fib_rec_ret:
-  lw r1, r2, $16    ; 退避したLRの読み戻し
-  lw r3, r2, $20    ; 退避したFPの読み戻し
-  addi r2, r2, $64 ; SP += 64
-  jalr r1, r1, $0   ; 呼び出し元の関数に戻る
+  lw %r1, %r2, $16    ; 退避したLRの読み戻し
+  lw %r3, %r2, $20    ; 退避したFPの読み戻し
+  addi %r2, %r2, $64 ; SP += 64
+  jalr %r1, %r1, $0   ; 呼び出し元の関数に戻る
 fib_rec_bge1:
-  addi r4, r0, $1   ; if (x == 0 || x == 1) return 1
-  beq r0, r0, fib_rec_ret ; go back
+  addi %r4, %r0, $1   ; if (x == 0 || x == 1) return 1
+  beq %r0, %r0, fib_rec_ret ; go back
 finish:
-  addi r0, r0, $0   ; 終了
+  addi %r0, %r0, $0   ; 終了
 
 
 /*
