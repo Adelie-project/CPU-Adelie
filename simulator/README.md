@@ -67,12 +67,12 @@ e.g. jal r1, $1048576  ;1048576は符号付き21ビットでは表せない
     error: register number is out of range in line x
 
 regにおいて、存在しないレジスタを指定した  
-e.g. add r33, r-3, r10
+e.g. add %r33, %r-3, %r10
 
     error: syntax error of t-type in line x
 
 mnemonicは存在しているが、そのmnemonicの形式に符合しない  
-e.g. sra r11, r0, $12  ;正しくは sra r11, r0, r21 等
+e.g. sra %r11, %r0, $12  ;正しくは sra %r11, %r0, %r21 等
 
     error: unknown mnemonic in line x
 

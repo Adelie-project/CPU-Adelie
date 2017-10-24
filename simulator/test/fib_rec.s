@@ -18,7 +18,8 @@ fib_rec:
   sw %r2, %r4, $32    ; a[8] = fib_rec(a);
   lw %r5, %r2, $0     ; 第一引数読み戻し
   addi %r5, %r5, $-2  ; val2 = x - 2;
-  jal %r1, fib_rec   ; fib_rec(val2);
+  jal %r1, fib
+  _rec   ; fib_rec(val2);
   lw %r10, %r2, $32   ; r10 = a[8]
   add %r4, %r10, %r4   ; return fib_rec(val1) + fib_rec(val2)!
 fib_rec_ret:
