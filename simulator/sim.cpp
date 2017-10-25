@@ -177,19 +177,28 @@ void run_step(param_t* param){
     }
     else print_standard_reg(param);
     while(1) {
-      printf("\nenter 's' to step-in, 'r' to run with breakpoint, or a number to show the value of the memory address. ");
-      string s; cin >> s;
-      if (s == "s") break;
-      else if (s == "r") {
-        param->step = false;
-        if (param->breakpoint != UINT_MAX) { postprocess_of_run(param); run_break(param); }
-        else run(param);
-        break;
+      printf("\npress enter to step-in, enter 'r' to run (with breakpoint), or a number to show the value of the memory address. ");
+      string s;
+      if (getline(cin, s)) {
+        if (s == "") break;
+        else if (s == "r") {
+          param->step = false;
+          if (param->breakpoint != UINT_MAX) { postprocess_of_run(param); run_break(param); }
+          else run(param);
+          break;
+        }
+        else {
+          int a;
+          try { a = stoi(s.c_str(), NULL, 0); }
+          catch (invalid_argument err) {
+            printf("error: invalid argument, please redo");
+            continue;
+          }
+          printf("M[%d]:%08X", a, read_hash_list(param, a));
+        }
       }
       else {
-        int a = stoi(s, NULL, 0);
-        printf("\n");
-        printf("M[%d]:%08X ", a, read_hash_list(param, a));
+        perror("getline failed"); continue;
       }
     }
     postprocess_of_run(param);
