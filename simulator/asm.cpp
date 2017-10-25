@@ -76,7 +76,7 @@ void divide(){
       if (k != i) buf.push_back(":");
       return;
     }
-    else if (c == ' ') {
+    else if (c == ' ' || c == '\t') {
       if (k != i) buf.push_back(readline.substr(k, i - k));
       k = i + 1;
     }
@@ -204,7 +204,7 @@ void check_mnemonic(){
       if (buf[3][0] == '$') imm = check_immediate(3, 13);
       else {
         auto itr = labels.find(buf[3]);
-        if (itr == labels.end()) { printf("error: could not find the label: %s", buf[3].c_str()); exit(EXIT_FAILURE); }
+        if (itr == labels.end()) { printf("error: could not find the label: %s used in line %d\n", buf[3].c_str(), lineno); exit(EXIT_FAILURE); }
         else imm = itr->second - pc;
       }
       if (pc_interval == 1 && imm % 2 == 1) printf("warning: imm in line %d will be an odd number\n", lineno);
@@ -238,7 +238,7 @@ void check_mnemonic(){
       if (buf[2][0] == '$') imm = check_immediate(2, 21);
       else {
         auto itr = labels.find(buf[2]);
-        if (itr == labels.end()) { printf("error: could not find the label: %s", buf[3].c_str()); exit(EXIT_FAILURE); }
+        if (itr == labels.end()) { printf("error: could not find the label: %s used in line %d\n", buf[2].c_str(), lineno); exit(EXIT_FAILURE); }
         else imm = itr->second - pc;
       }
       if (pc_interval == 1 && imm % 2 == 1) printf("warning: imm in line %d will be an odd number\n", lineno);
