@@ -68,7 +68,7 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | NonTail(x), FMovD(y) when x = y -> ()
   | NonTail(x), FMovD(y) ->
       Printf.fprintf oc "\tfadd\t%s, %%f0, %s\n" x y(*"\tfmovs\t%s, %s\n" y x;
-      Printf.fprintf oc "\tfmovs\t%s, %s\n" (co_freg y) (co_freg x)*) (*doubleだと2命令になるみたい*)
+      Printf.fprintf oc "\tfmovs\t%s, %s\n" (co_freg y) (co_freg x)*) (*doubleだと2命令になるみたい*)(*fmv的なのあったんだけどどうしよっか*)(*3*)
   | NonTail(x), FNegD(y) ->
       Printf.fprintf oc "\tfsub\t%s, %%f0, %s\n" x y;(*"\tfnegs\t%s, %s\n" y x;
       if x <> y then Printf.fprintf oc "\tfmovs\t%s, %s\n" (co_freg y) (co_freg x)*)
@@ -85,33 +85,33 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       Printf.fprintf oc "\tsw\t%s, %s, $%d\n" reg_sp x (offset y)(*"\tst\t%s, [%s + %d]\n" x reg_sp (offset y)*)
   | NonTail(_), Save(x, y) when List.mem x allfregs && not (S.mem y !stackset) ->
       savef y;
-      Printf.fprintf oc "\tfsw\t%s, %s, $%d\n" reg_sp x (offset y)(*"\tstd\t%s, [%s + %d]\n" x reg_sp (offset y)*)(*flating pointだと違いそう*)
+      Printf.fprintf oc "\tfsw\t%s, %s, $%d\n" reg_sp x (offset y)(*"\tstd\t%s, [%s + %d]\n" x reg_sp (offset y)*)
   | NonTail(_), Save(x, y) -> assert (S.mem y !stackset); ()
   (* 復帰の仮想命令の実装 (caml2html: emit_restore) *)
   | NonTail(x), Restore(y) when List.mem x allregs ->
       Printf.fprintf oc "\tlw\t%s, %s, $%d\n" x reg_sp (offset y)(*"\tld\t[%s + %d], %s\n" reg_sp (offset y) x*)
   | NonTail(x), Restore(y) ->
       assert (List.mem x allfregs);
-      Printf.fprintf oc "\tflw\t%s, %s, $%d\n" x reg_sp (offset y)(*"\tldd\t[%s + %d], %s\n" reg_sp (offset y) x*)(*同じく違いそう*)
+      Printf.fprintf oc "\tflw\t%s, %s, $%d\n" x reg_sp (offset y)(*"\tldd\t[%s + %d], %s\n" reg_sp (offset y) x*)
   (* 末尾だったら計算結果を第一レジスタにセットしてリターン (caml2html: emit_tailret) *)
   | Tail, (Nop | St _ | StDF _ | Comment _ | Save _ as exp) ->
       g' oc (NonTail(Id.gentmp Type.Unit), exp);
-      Printf.fprintf oc "\tjalr\t%%r0, %s, $4\n" reg_lnk;
+      Printf.fprintf oc "\tjalr\t%%r0, %s, $0\n" reg_lnk;
       (*Printf.fprintf oc "\tnop\n"*)
   | Tail, (Set _ | SetL _ | Mov _ | Neg _ | Add _ | Sub _ | Mul _ | Div _ | SLL _ | Ld _ as exp) ->
       g' oc (NonTail(regs.(0)), exp);
-      Printf.fprintf oc "\tjalr\t%%r0, %s, $4\n" reg_lnk;
+      Printf.fprintf oc "\tjalr\t%%r0, %s, $0\n" reg_lnk;
       (*Printf.fprintf oc "\tnop\n"*)
   | Tail, (FMovD _ | FNegD _ | FAddD _ | FSubD _ | FMulD _ | FDivD _ | LdDF _ as exp) ->
       g' oc (NonTail(fregs.(0)), exp);
-      Printf.fprintf oc "\tjalr\t%%r0, %s, $4\n" reg_lnk;
+      Printf.fprintf oc "\tjalr\t%%r0, %s, $0\n" reg_lnk;
       (*Printf.fprintf oc "\tnop\n"*)
   | Tail, (Restore(x) as exp) ->
       (match locate x with
       | [i] -> g' oc (NonTail(regs.(0)), exp)
       | [i; j] when i + 1 = j -> g' oc (NonTail(fregs.(0)), exp)
       | _ -> assert false);
-      Printf.fprintf oc "\tjalr\t%%r0, %s, $4\n" reg_lnk
+      Printf.fprintf oc "\tjalr\t%%r0, %s, $0\n" reg_lnk
       (*Printf.fprintf oc "\tnop\n"*)
   | Tail, IfEq(x, y', e1, e2) ->
       (*Printf.fprintf oc "\tcmp\t%s, %s\n" x (pp_id_or_imm y');*)
@@ -125,7 +125,7 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | Tail, IfFEq(x, y, e1, e2) ->
       (*Printf.fprintf oc "\tfcmpd\t%s, %s\n" x y;*)
       (*Printf.fprintf oc "\tnop\n";*)
-      g'_tail_if oc e1 e2 "fbe" "fbne" x y(*ここらへん対処不明*)
+      g'_tail_if oc e1 e2 "fbe" "fbne" x y(*ここらへん対処不明*)(*2*)
   | Tail, IfFLE(x, y, e1, e2) ->
       (*Printf.fprintf oc "\tfcmpd\t%s, %s\n" x y;*)
       (*Printf.fprintf oc "\tnop\n";*)
@@ -155,7 +155,7 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       (*Printf.fprintf oc "\tnop\n"*)
   | Tail, CallDir(Id.L(x), ys, zs) -> (* 末尾呼び出し *)
       g'_args oc [] ys zs;
-      Printf.fprintf oc "\tb\t%s\n" x(*bってなんやねん,jmpと違う?*)
+      Printf.fprintf oc "\tjal\t%%r0, %s\n" x(*"\tb\t%s\n" x*)(*bってなんやねん,jmpと違う?*)(*1*)
       (*Printf.fprintf oc "\tnop\n"*)
   | NonTail(a), CallCls(x, ys, zs) ->
       g'_args oc [(x, reg_cl)] ys zs;
@@ -167,10 +167,11 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       Printf.fprintf oc "\taddi\t%s, %s, $-%d\n" reg_sp reg_sp ss;(*"\tsub\t%s, %d, %s\n" reg_sp ss reg_sp;*)
       Printf.fprintf oc "\tlw\t%s, %s, $%d\n" reg_lnk reg_sp (ss - 4);
       if List.mem a allregs && a <> regs.(0) then
-        Printf.fprintf oc "\tadd\t%s, %s, %%r0\n" regs.(0) a(*"\tmov\t%s, %s\n" regs.(0) a*)
+        Printf.fprintf oc "\tadd\t%s, %%r0, %s\n" a regs.(0)(*"\tmov\t%s, %s\n" regs.(0) a*)
       else if List.mem a allfregs && a <> fregs.(0) then
-        (Printf.fprintf oc "\tfmovs\t%s, %s\n" fregs.(0) a;
-         Printf.fprintf oc "\tfmovs\t%s, %s\n" (co_freg fregs.(0)) (co_freg a))
+        Printf.fprintf oc "\tfadd\t%s, %%f0, %s\n" a fregs.(0)
+        (*(Printf.fprintf oc "\tfmovs\t%s, %s\n" fregs.(0) a;
+         Printf.fprintf oc "\tfmovs\t%s, %s\n" (co_freg fregs.(0)) (co_freg a))*)
   | NonTail(a), CallDir(Id.L(x), ys, zs) ->
       g'_args oc [] ys zs;
       let ss = stacksize () in
@@ -180,10 +181,11 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       Printf.fprintf oc "\taddi\t%s, %s, $-%d\n" reg_sp reg_sp ss;(*Printf.fprintf oc "\tsub\t%s, %d, %s\n" reg_sp ss reg_sp;*)
       Printf.fprintf oc "\tlw\t%s, %s, $%d\n" reg_lnk reg_sp (ss - 4);(*Printf.fprintf oc "\tld\t[%s + %d], %s\n" reg_sp (ss - 4) reg_lnk;*)
       if List.mem a allregs && a <> regs.(0) then
-        Printf.fprintf oc "\tadd\t%s, %s, %%r0\n" regs.(0) a(*"\tmov\t%s, %s\n" regs.(0) a*)
+        Printf.fprintf oc "\tadd\t%s, %%r0, %s\n" a regs.(0)(*"\tmov\t%s, %s\n" regs.(0) a*)
       else if List.mem a allfregs && a <> fregs.(0) then
-        (Printf.fprintf oc "\tfmovs\t%s, %s\n" fregs.(0) a;
-         Printf.fprintf oc "\tfmovs\t%s, %s\n" (co_freg fregs.(0)) (co_freg a))
+        Printf.fprintf oc "\tfadd\t%s, %%f0, %s\n" a fregs.(0)
+        (*(Printf.fprintf oc "\tfmovs\t%s, %s\n" fregs.(0) a;
+         Printf.fprintf oc "\tfmovs\t%s, %s\n" (co_freg fregs.(0)) (co_freg a))*)
 and g'_tail_if oc e1 e2 b bn x y=
   let b_else = Id.genid (b ^ "_else") in
   Printf.fprintf oc "\t%s\t%s, %s, %s\n" bn x y b_else;
@@ -216,7 +218,7 @@ and g'_args oc x_reg_cl ys zs =
       (0, x_reg_cl)
       ys in
   List.iter
-    (fun (y, r) -> Printf.fprintf oc "\tadd\t%s, %s, %%r0\n" y r(*"\tmov\t%s, %s\n" y r*))
+    (fun (y, r) -> Printf.fprintf oc "\tadd\t%s, %%r0, %s\n" r y(*"\tmov\t%s, %s\n" y r*))
     (shuffle reg_sw yrs);
   let (d, zfrs) =
     List.fold_left
@@ -225,8 +227,9 @@ and g'_args oc x_reg_cl ys zs =
       zs in
   List.iter
     (fun (z, fr) ->
-      Printf.fprintf oc "\tfmovs\t%s, %s\n" z fr;
-      Printf.fprintf oc "\tfmovs\t%s, %s\n" (co_freg z) (co_freg fr))
+      Printf.fprintf oc "\tfadd\t%s, %%f0, %s\n" fr z
+      (*Printf.fprintf oc "\tfmovs\t%s, %s\n" z fr;
+      Printf.fprintf oc "\tfmovs\t%s, %s\n" (co_freg z) (co_freg fr)*))
     (shuffle reg_fsw zfrs)
 
 let h oc { name = Id.L(x); args = _; fargs = _; body = e; ret = _ } =
@@ -252,9 +255,12 @@ let f oc (Prog(data, fundefs, e)) =
   Printf.fprintf oc ".align\t8\n";*)(*いらない*)
   List.iter
     (fun (Id.L(x), d) ->
-      Printf.fprintf oc "%s:\t! %f\n" x d;
+      Printf.fprintf oc "%s:\t; %f\n" x d;
       Printf.fprintf oc "\t.long\t0x%lx\n" (gethi d);
       Printf.fprintf oc "\t.long\t0x%lx\n" (getlo d))
     data;
   (*Printf.fprintf oc ".section\t\".text\"\n";*)(*いらない*)
-  List.iter (fun fundef -> h oc fundef) fundefs
+  List.iter (fun fundef -> h oc fundef) fundefs;
+
+  Printf.fprintf oc "min_caml_print_int:\n";
+  Printf.fprintf oc "\tjalr\t%%r0, %s, $0\n" reg_lnk
