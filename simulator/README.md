@@ -4,9 +4,6 @@
     $ make
     ...
     $ ./asm test/test.s -pc1
-    Now additional value of PC is '1'.
-    If this is as intended, enter 'r', others to terminate.
-    r
     test/test.bin generated
     $ ./sim test/test.bin -breakpoint=11 -pc1 -wave
     Now additional value of PC is '1'.
