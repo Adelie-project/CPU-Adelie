@@ -11,6 +11,6 @@ if(sanitize AND "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-sanitize-recover=undefined,integer")
 endif()
 
-add_executable(asm asm.cpp)
+add_executable(asm asm_source/asm.cpp)
 
-add_executable(sim sim.cpp exec.cpp decoder.cpp globalparam.cpp)
+add_executable(sim sim_source/sim.cpp sim_source/exec.cpp sim_source/decoder.cpp sim_source/globalparam.cpp)
