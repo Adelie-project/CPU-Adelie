@@ -3,12 +3,9 @@
     $ cd simulator
     $ make
     ...
-    $ ./asm test/test.s -pc1
+    $ ./asm test/test.s
     test/test.bin generated
-    $ ./sim test/test.bin -breakpoint=11 -pc1 -wave
-    Now additional value of PC is '1'.
-    If this is as intended, enter 'r', others to terminate.
-    r
+    $ ./sim test/test.bin -breakpoint=11 -wave
 
     PC = 0000000b
     ...(wave-like output)
