@@ -208,13 +208,16 @@ initial begin
   RS1 <= 32'b1000_1110_0101_0100_0110_0000_1111_0101;
   RS2 <= 32'b0000_0000_0000_0000_0000_0000_0000_0001;
   IMM <= 32'b0000_0000_0000_0000_0000_0000_0000_0100;
-  repeat(5) begin
+  repeat(10) begin
     #1;
     RST_N <= 1'b1;
     CLK = ~CLK;
   end
   if(RESULT != 32'b1111_1000_1110_0101_0100_0110_0000_1111) begin
-   $display("SRAI ERROR!!: R RESULT %b\n",RESULT);
+   $display("SRAI ERROR!!: R RESULT %b\n", RESULT);
+   $display("SRAI ERROR!!: RS1 %b\n", RS1);
+   $display("SRAI ERROR!!: RS2 %b\n", RS2);
+   $display("SRAI ERROR!!: IMM %b\n", IMM);
    $finish;
   end
   I_SRAI <= 1'b0;

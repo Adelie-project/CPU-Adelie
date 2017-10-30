@@ -1,1 +1,1 @@
-x86/manyargs.ml
+Risc5/manyargs.ml

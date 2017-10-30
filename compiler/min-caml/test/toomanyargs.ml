@@ -1,1 +1,1 @@
-x86/toomanyargs.ml
+Risc5/toomanyargs.ml

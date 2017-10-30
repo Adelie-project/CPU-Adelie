@@ -1,1 +1,1 @@
-x86/globals.s
+Risc5/globals.s

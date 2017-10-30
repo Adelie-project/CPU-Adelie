@@ -62,8 +62,10 @@ module core_alu (
         (I_SLTU) ? RS1 < RS2:
         (I_SLLI) ? RS1 << IMM[4:0]:
         (I_SLL) ? RS1 << RS2[4:0]:
-        (I_SRLI | I_SRAI) ? $signed({(I_SRAI ? RS1[31] : 1'b0), RS1}) >>> IMM[4:0]:
-        (I_SRL | I_SRA) ? $signed({(I_SRA ? RS1[31] : 1'b0), RS1}) >>> RS2[4:0]:
+        (I_SRLI) ? ($signed({1'b0, RS1}) >>> IMM[4:0]):
+        (I_SRAI) ? ($signed({RS1[31], RS1}) >>> IMM[4:0]):
+        (I_SRL) ? ($signed({1'b0, RS1}) >>> RS2[4:0]):
+        (I_SRA) ? ($signed({RS1[31], RS1}) >>> RS2[4:0]):
         (I_XORI) ? RS1 ^ IMM:
         (I_XOR) ? RS1 ^ RS2:
         (I_ORI) ? RS1 | IMM:
