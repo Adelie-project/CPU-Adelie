@@ -76,7 +76,7 @@ module core_top
   // それぞれの段階ごとのアサインをする
   // 1. 命令フェッチ Instruction Fetch
   
-  assign I_MEM_ADDR = pc;
+  assign I_MEM_ADDR = (pc >> 2);
 
   // 2. 命令デコード
   
@@ -194,7 +194,7 @@ module core_top
   always @(posedge CLK) begin
     pc_add_imm <= pc_before + imm; // AUIPC, BRANCH, JAL
     pc_jalr <= rs1 + imm;
-    pc_add_4 <= pc_before + 1;
+    pc_add_4 <= pc_before + 4;
     pc_before <= pc;
   end
   

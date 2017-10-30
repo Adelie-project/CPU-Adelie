@@ -1,1 +1,1 @@
-x86/asm.ml
+Risc5/asm.ml

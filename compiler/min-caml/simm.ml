@@ -1,1 +1,1 @@
-x86/simm.ml
+Risc5/simm.ml

@@ -1,1 +1,1 @@
-x86/Makefile
+Risc5/Makefile
