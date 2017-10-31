@@ -11,7 +11,22 @@ module core_top
     input [31:0] MEM_IN,
     output [31:0] MEM_DATA,
     output [31:0] MEM_ADDR,
-    output MEM_WE
+    output MEM_WE,
+
+    // 浮動小数点
+    output [31:0] A_TDATA,
+    input A_TREADY,
+    output A_TVALID,
+    output [31:0] B_TDATA,
+    input B_TREADY,
+    output B_TVALID,
+    output [7:0] OP_TDATA,
+    input OP_TREADY,
+    output OP_TVALID,
+
+    input [31:0] R_TDATA,
+    output R_TREADY,
+    input R_TVALID
 
   );
 
@@ -26,7 +41,16 @@ module core_top
        i_blt, i_bge, i_bltu, i_bgeu, i_lb, i_lh, i_lw, i_lbu, i_lhu, i_sb, i_sh,
        i_sw, i_addi, i_slti, i_sltiu, i_xori, i_ori, i_andi, i_slli, i_srli, i_srai,
        i_add, i_sub, i_sll, i_slt, i_sltu, i_xor, i_srl, i_sra, i_or, i_and;
+  wire i_flw, i_fsw, i_fadds, i_fsubs, i_fmuls, i_fdivs, i_feqs, i_flts, i_fles;
   wire n_inst;
+  reg [31:0] a_tdata, b_tdata;
+  reg a_tvalid, b_tvalid, op_tready;
+  assign A_TDATA = a_tdata;
+  assign B_TDATA = b_tdata;
+  assign A_TVALID = a_tvalid;
+  assign B_TVALID = b_tvalid;
+  assign OP_TREADY = op_tready;
+
   // 乗除算はまだ
 
   assign r0 = 32'b0;
@@ -134,6 +158,16 @@ module core_top
     .I_AUIPC (i_auipc),
     .I_LUI (i_lui),
 
+    .I_FLW (i_flw),
+    .I_FSW (i_fsw),
+    .I_FADDS (i_fadds),
+    .I_FSUBS (i_fsubs),
+    .I_FMULS (i_fmuls),
+    .I_FDIVS (i_fdivs),
+    .I_FEQS (i_feqs),
+    .I_FLTS (i_flts),
+    .I_FLES (i_fles),
+
     .N_INST (n_inst)
 
   );
@@ -181,6 +215,9 @@ module core_top
     .I_SH (i_sh),
     .I_SW (i_sw),
 
+    .I_FLW (i_flw),
+    .I_FSW (i_fsw),
+
     .RS1 (rs1),
     .RS2 (rs2),
     .IMM (imm),
@@ -188,6 +225,23 @@ module core_top
     .RESULT (alu_result)
 
   );
+
+  // 浮動小数点実行
+  always @(posedge CLK) begin
+    if(!RST_N) begin
+      a_tdata <= 1'b0;
+      a_tvalid <= 1'b0;
+      b_tdata <= 1'b0;
+      b_tvalid <= 1'b0;
+      op_tready <= 1'b0;
+    end else begin
+      a_tdata <= (i_fadds | i_fsubs | i_fmuls | i_fdivs | i_feqs | i_flts | i_fles) ? rs1 : 0;
+      a_tvalid <= (i_fadds | i_fsubs | i_fmuls | i_fdivs | i_feqs | i_flts | i_fles);
+      b_tdata <= (i_fadds | i_fsubs | i_fmuls | i_fdivs | i_feqs | i_flts | i_fles) ? rs2 : 0;
+      b_tvalid <= (i_fadds | i_fsubs | i_fmuls | i_fdivs | i_feqs | i_flts | i_fles);
+      op_tready <= (i_fadds | i_fsubs | i_fmuls | i_fdivs | i_feqs | i_flts | i_fles);
+    end
+  end
 
   // PC
   reg [31:0] pc_add_imm, pc_add_4, pc_jalr, pc_before;
