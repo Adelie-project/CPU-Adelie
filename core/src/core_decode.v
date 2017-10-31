@@ -52,6 +52,16 @@ module core_decode
   output reg I_AUIPC,
   output reg I_LUI,
 
+  output reg I_FLW,
+  output reg I_FSW,
+  output reg I_FADDS,
+  output reg I_FSUBS,
+  output reg I_FMULS,
+  output reg I_FDIVS,
+  output reg I_FEQS,
+  output reg I_FLTS,
+  output reg I_FLES,
+
   output wire N_INST
 );
   // IMM
@@ -59,8 +69,8 @@ module core_decode
     if(!RST_N) begin
       IMM <= 0;
     end else begin
-      IMM <= (((INST[6:0] == 7'b1100111) || (INST[6:0] == 7'b0000011) || (INST[6:0] == 7'b0010011))) ? {{21{INST[31]}}, INST[30:20]} :
-             ((INST[6:0] == 7'b0100011)) ? {{21{INST[31]}}, INST[30:25], INST[11:7]} :
+      IMM <= (((INST[6:0] == 7'b1100111) || (INST[6:0] == 7'b0000011) || (INST[6:0] == 7'b0010011) || (INST[6:0] == 7'b0000111))) ? {{21{INST[31]}}, INST[30:20]} :
+             ((INST[6:0] == 7'b0100011) || (INST[6:0] == 7'b0100111)) ? {{21{INST[31]}}, INST[30:25], INST[11:7]} :
              ((INST[6:0] == 7'b1100011)) ? {{20{INST[31]}}, INST[7], INST[30:25], INST[11:8], 1'b0} :
              ((INST[4:0] == 5'b10111)) ? {INST[31:12], 12'b0000_0000_0000} :
              ((INST[6:0] == 7'b1101111)) ? {{12{INST[31]}}, INST[19:12], INST[20], INST[30:21], 1'b0} :
@@ -68,9 +78,9 @@ module core_decode
     end
   end
 
-  assign RD_NUM = ((INST[6:2] == 5'b01100) | ((INST[6:0] == 7'b1100111) || (INST[6:0] == 7'b0000011) || (INST[6:0] == 7'b0010011)) | (INST[4:0] == 5'b10111) | (INST[6:0] == 7'b1101111)) ? INST[11:7] : 5'd0;
-  assign RS1_NUM = ((INST[6:2] == 5'b01100) | ((INST[6:0] == 7'b1100111) || (INST[6:0] == 7'b0000011) || (INST[6:0] == 7'b0010011)) | (INST[6:0] == 7'b0100011) | (INST[6:0] == 7'b1100011)) ? INST[19:15] : 5'd0;
-  assign RS2_NUM = ((INST[6:2] == 5'b01100) | (INST[6:0] == 7'b0100011) | (INST[6:0] == 7'b1100011)) ? INST[24:20] : 5'd0;
+  assign RD_NUM = ((INST[6:2] == 5'b01100) | (INST[6:2] == 5'b10100) |((INST[6:0] == 7'b1100111) || (INST[6:0] == 7'b0000011) ||  (INST[6:0] == 7'b0000111) ||(INST[6:0] == 7'b0010011)) | (INST[4:0] == 5'b10111) | (INST[6:0] == 7'b1101111)) ? INST[11:7] : 5'd0;
+  assign RS1_NUM = ((INST[6:2] == 5'b01100) | (INST[6:2] == 5'b10100) | ((INST[6:0] == 7'b1100111) || (INST[6:0] == 7'b0000011) ||  (INST[6:0] == 7'b0000111) ||(INST[6:0] == 7'b0010011)) | (INST[6:0] == 7'b0100011) | (INST[6:0] == 7'b0100111) | (INST[6:0] == 7'b1100011)) ? INST[19:15] : 5'd0;
+  assign RS2_NUM = ((INST[6:2] == 5'b01100) | (INST[6:2] == 5'b10100) | (INST[6:0] == 7'b0100011) | (INST[6:0] == 7'b1100011) | (INST[6:0] == 7'b0100111)) ? INST[24:20] : 5'd0;
 
   wire [2:0] func3;
   wire [6:0] func7;
@@ -119,6 +129,16 @@ module core_decode
       I_JAL <= 1'b0;
       I_AUIPC <= 1'b0;
       I_LUI <= 1'b0;
+
+      I_FLW <= 1'b0;
+      I_FSW <= 1'b0;
+      I_FADDS <= 1'b0;
+      I_FSUBS <= 1'b0;
+      I_FMULS <= 1'b0;
+      I_FDIVS <= 1'b0;
+      I_FEQS <= 1'b0;
+      I_FLTS <= 1'b0;
+      I_FLES <= 1'b0;
     end else begin
       I_ADDI <= (INST[6:0] == 7'b0010011) && (func3 == 3'b000);
       I_SLTI  <= (INST[6:0] == 7'b0010011) && (func3 == 3'b010);
@@ -161,6 +181,16 @@ module core_decode
       I_AUIPC <= (INST[6:0] == 7'b0010111);
       I_JAL <= (INST[6:0] == 7'b1101111);
       I_JALR <= (INST[6:0] == 7'b1100111);
+
+      I_FLW <= (INST[6:0] == 7'b0000111) && (func3 == 3'b010);
+      I_FSW <= (INST[6:0] == 7'b0100111) && (func3 == 3'b010);
+      I_FADDS <= (INST[6:2] == 5'b10100) && (func7 == 7'b0000000);
+      I_FSUBS <= (INST[6:2] == 5'b10100) && (func7 == 7'b0000100);
+      I_FMULS <= (INST[6:2] == 5'b10100) && (func7 == 7'b0001000);
+      I_FDIVS <= (INST[6:2] == 5'b10100) && (func7 == 7'b0001100);
+      I_FEQS <= (INST[6:2] == 5'b10100) && (func7 == 7'b1010000) && (func3 == 3'b010);
+      I_FLTS <= (INST[6:2] == 5'b10100) && (func7 == 7'b1010000) && (func3 == 3'b001);
+      I_FLES <= (INST[6:2] == 5'b10100) && (func7 == 7'b1010000) && (func3 == 3'b000);
     end
   end
   assign N_INST = ~( I_ADDI | I_SLTI| I_SLTIU| I_XORI| I_ORI| I_ANDI| I_SLLI| I_SRLI| I_SRAI| I_ADD| I_SUB| I_SLL| I_SLT| I_SLTU| I_XOR| I_SRL| I_SRA| I_OR| I_AND| I_BEQ| I_BNE| I_BLT| I_BGE| I_BLTU| I_BGEU| I_LB| I_LH| I_LW| I_LBU| I_LHU| I_SB| I_SH| I_SW | I_LUI | I_AUIPC | I_JAL | I_JALR);

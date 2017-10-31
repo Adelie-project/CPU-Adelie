@@ -39,6 +39,9 @@ module core_alu (
   input I_SH,
   input I_SW,
 
+  input I_FLW,
+  input I_FSW,
+
   input [31:0]  RS1,
   input [31:0]  RS2,
   input [31:0]  IMM,
@@ -53,7 +56,7 @@ module core_alu (
     if(!RST_N) begin
       RESULT <= 0;
     end else begin
-      RESULT <= (I_ADDI | I_LB | I_LH | I_LW | I_LBU | I_LHU | I_SB | I_SH | I_SW) ? RS1 + IMM:
+      RESULT <= (I_ADDI | I_LB | I_LH | I_LW | I_LBU | I_LHU | I_SB | I_SH | I_SW | I_FLW | I_FSW) ? RS1 + IMM:
         (I_ADD) ? RS1 + RS2: 
         I_SUB ? RS1 - RS2:
         (I_SLTI) ? ($signed(RS1) < $signed(IMM)):
