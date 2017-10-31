@@ -1,3 +1,27 @@
+10/27追記
+
+追加命令
+
+---RV32M Standard Extension---
+MUL
+MULH
+(MULHSU)
+(MULHU)
+DIV
+(DIVU)
+---RV32F Standard Extension---
+FLW
+FSW
+FADDS
+FSUBS
+FMULS
+FDIVS
+FEQS
+FLTS
+FLES
+
+==================================================================
+
 誤りがあるとまずいので点検がてら
 結果さえ同じならば問題はない（例えば内部ではプログラムカウンタは1ずつ増えている、等）
 

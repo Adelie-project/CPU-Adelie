@@ -64,7 +64,7 @@ let reg_z = "%r0" (*zero register(new!)*)
 let reg_lnk = "%r1" (*link register(new!)*)
 let reg_sp = "%r2"(*"%i0"*) (* stack pointer *)
 let reg_hp = "%r3"(*"%i1"*) (* heap pointer (caml2html: sparcasm_reghp) *)
-let reg_ra = "%r4"(*"%o7"*) (* return address *) (*これどうしよう*)
+(*let reg_ra = "%r4"(*"%o7"*) (* return address *) (*これはlink registerのことらしい*) *)
 let is_reg x = (x.[0] = '%')
 let co_freg_table =
   let ht = Hashtbl.create 16 in
