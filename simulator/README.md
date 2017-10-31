@@ -3,15 +3,9 @@
     $ cd simulator
     $ make
     ...
-    $ ./asm test/test.s -pc1
-    Now additional value of PC is '1'.
-    If this is as intended, enter 'r', others to terminate.
-    r
+    $ ./asm test/test.s
     test/test.bin generated
-    $ ./sim test/test.bin -breakpoint=11 -pc1 -wave
-    Now additional value of PC is '1'.
-    If this is as intended, enter 'r', others to terminate.
-    r
+    $ ./sim test/test.bin -breakpoint=11 -wave
 
     PC = 0000000b
     ...(wave-like output)
@@ -40,10 +34,10 @@ options:
 
 ## アセンブラ仕様
 
-とりあえずLUI~ANDの直訳しかできない
-・レジスタは"r31"等  
+対応命令：LUI~AND,MUL,浮動小数点演算命令  
+・レジスタは"%r31"等  
 ・即値などは"$123456"あるいは"$0xabc"等  
-.align とかも今はなし  
+.align とかも今はなし
 ・デバグのために現在はラベルの行をnopで埋めている
 
 うまく行けば難なく.binが生成される(optionsによっては異なる形式が作れる)  
@@ -55,26 +49,3 @@ options:
 
 options:  
 -x: コア係向け、一行ごとに命令が16進表示で並ぶ
--pc1: PC加算値を1ずつにする、このオプションをつけても付けなくてもシミュレーション前に確認メッセージが入る、また、ジャンプ命令の時に奇数となってしまい正しく動作できないときに警告が出る
-
-＜エラー処理＞
-
-    warning: immediate is out of range in line x
-
-immにおいて、U-type以外では正常に取り扱える範囲を超えた場合 warning が出る（処理は続ける）  
-e.g. jal r1, $1048576  ;1048576は符号付き21ビットでは表せない
-
-    error: register number is out of range in line x
-
-regにおいて、存在しないレジスタを指定した  
-e.g. add r33, r-3, r10
-
-    error: syntax error of t-type in line x
-
-mnemonicは存在しているが、そのmnemonicの形式に符合しない  
-e.g. sra r11, r0, $12  ;正しくは sra r11, r0, r21 等
-
-    error: unknown mnemonic in line x
-
-未知のmnemonic  
-e.g. unknown r11, $10
