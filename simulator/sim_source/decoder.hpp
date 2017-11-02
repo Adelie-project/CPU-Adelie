@@ -23,6 +23,8 @@ using namespace std;
 #define Loop(i, n) for(int i = 0; i < (int)n; i++)
 #define Loop1(i, n) for(int i = 1; i <= (int)n; i++)
 
+#define RM 0b000
+
 void decode_all(param_t* param);
 
 #endif

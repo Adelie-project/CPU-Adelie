@@ -20,9 +20,10 @@ unordered_map<string, struct r_factors> r_type = {
   { "fmuls", {0b0001000,    RM, 0b1010011, FSTD} },
   { "fsubs", {0b0000100,    RM, 0b1010011, FSTD} },
   { "fdivs", {0b0001100,    RM, 0b1010011, FSTD} },
-  {  "feqs", {0b1010000, 0b010, 0b1010011, FSTD} },
-  {  "flts", {0b1010000, 0b001, 0b1010011, FSTD} },
-  {  "fles", {0b1010000, 0b000, 0b1010011, FSTD} },
+  {  "feqs", {0b1010000, 0b010, 0b1010011, FCMP} },
+  {  "flts", {0b1010000, 0b001, 0b1010011, FCMP} },
+  {  "fles", {0b1010000, 0b000, 0b1010011, FCMP} },
+  { "fmvsx", {0b1111000, 0b000, 0b1010011, FMVSX} }
 };
 
 unordered_map<string, struct i_factors> i_type = {
@@ -38,14 +39,14 @@ unordered_map<string, struct i_factors> i_type = {
   {    "lw", {0b010, 0b0000011, STD} },
   {   "lbu", {0b100, 0b0000011, STD} },
   {   "lhu", {0b101, 0b0000011, STD} },
-  {   "flw", {0b010, 0b0000111, FSTD} }
+  {   "flw", {0b010, 0b0000111, FL} }
 };
 
 unordered_map<string, struct i_factors> s_type = {
   {    "sb", {0b000, 0b0100011, STD} },
   {    "sh", {0b001, 0b0100011, STD} },
   {    "sw", {0b010, 0b0100011, STD} },
-  {   "fsw", {0b010, 0b0100111, FSTD} }
+  {   "fsw", {0b010, 0b0100111, FS} }
 };
 
 unordered_map<string, struct i_factors> sb_type = {
@@ -64,13 +65,23 @@ unordered_map<string, struct u_factors> uj_type = {
   {   "jal", {0b1101111, STD} }
 };
 
-inline unsigned set_regn(param_t *param, unsigned k, char regtype) {
+const char reg_pattern[10][4] = {
+  { 'r', 'r', 'r', 'r' }, //STD
+  { 'r', 'r', 'r', 'r' }, //SHIFT
+  { 'f', 'f', 'f', 'f' }, //FSTD
+  { 'r', 'f', 'f', 'f'}, //FCMP
+  { 'f', 'r', 'r', 'f' }, //FL
+  { 'r', 'f', 'r', 'f' }, //FS
+  { 'f', 'r', 'r', 'f' }  //FMVSX
+};
+
+inline unsigned set_regn(param_t *param, unsigned k, proc_t proc) {
   if (param->buf[k][0] != '%') {
     printf("error: syntax error in line %d: register name should begin with '%%'.\n", param->lineno); exit(EXIT_FAILURE);
   }
-  if (param->buf[k][1] != regtype) {
-    printf("error: syntax error in line %d: %d th argument should be a %s register.\n"
-      , param->lineno, k + 1, regtype == 'r' ? "integer" : "floating point");
+  if (param->buf[k][1] != reg_pattern[proc][k-1]) {
+    printf("error: syntax error in line %d: %dth argument should be a %s register.\n"
+      , param->lineno, k + 1, reg_pattern[proc][k-1] == 'r' ? "integer" : "floating point");
     exit(EXIT_FAILURE);
   }
   int regn = strtoul((param->buf[k]).substr(2,(param->buf[k]).size()-1).c_str(), NULL, 0);
@@ -81,7 +92,7 @@ inline unsigned set_regn(param_t *param, unsigned k, char regtype) {
 
 inline int set_imm(param_t *param, unsigned k, int digit) {
   if(param->buf[k][0] != '$') {
-    printf("error: syntax error in line %d: immediate should begin with '%%'.\n", param->lineno); exit(EXIT_FAILURE);
+    printf("error: syntax error in line %d: immediate should begin with '$'.\n", param->lineno); exit(EXIT_FAILURE);
   }
   int imm;
   if(param->buf[k].size() > 2 && param->buf[k][1] == '0' && param->buf[k][2] == 'x') {
@@ -114,7 +125,6 @@ inline int set_shamt(param_t *param, unsigned k) {
 unsigned result;
 unsigned rd, rs1, rs2;
 int imm;
-char regtype;
 unordered_map<string , struct r_factors>::iterator itr_r;
 unordered_map<string , struct i_factors>::iterator itr_i;
 unordered_map<string , struct u_factors>::iterator itr_u;
@@ -122,37 +132,38 @@ unordered_map<string , struct u_factors>::iterator itr_u;
 unsigned encoding(param_t *param) {
   //R-type
   if ((itr_r = r_type.find(param->buf[0])) != r_type.end()) {
-    regtype = (itr_r->second).proc == FSTD ? 'f' : 'r';
-    rd = set_regn(param, 1, regtype);
-    rs1 = set_regn(param, 2, regtype);
-    if ((itr_r->second).proc == SHIFT) rs2 = set_shamt(param, 3);
-    else rs2 = set_regn(param, 3, regtype);
+    proc_t proc = (itr_r->second).proc;
+    rd = set_regn(param, 1, proc);
+    rs1 = set_regn(param, 2, proc);
+    if (proc == SHIFT) rs2 = set_shamt(param, 3);
+    else if (proc == FMVSX) rs2 = 0;
+    else rs2 = set_regn(param, 3, proc);
     result = (itr_r->second).funct7 << 25 | rs2 << 20 | rs1 << 15
            | (itr_r->second).funct3 << 12 | rd << 7 | (itr_r->second).opcode;
   }
   //I-type
   else if ((itr_i = i_type.find(param->buf[0])) != i_type.end()) {
-    regtype = (itr_i->second).proc == FSTD ? 'f' : 'r';
-    rd = set_regn(param, 1, regtype);
-    rs1 = set_regn(param, 2, regtype);
+    proc_t proc = (itr_i->second).proc;
+    rd = set_regn(param, 1, proc);
+    rs1 = set_regn(param, 2, proc);
     imm = set_imm(param, 3, 12);
     result = imm << 20 | rs1 << 15
            | (itr_i->second).funct3 << 12 | rd << 7 | (itr_i->second).opcode;
   }
   //S-type
   else if ((itr_i = s_type.find(param->buf[0])) != s_type.end()) {
-    regtype = (itr_i->second).proc == FSTD ? 'f' : 'r';
-    rs1 = set_regn(param, 1, regtype);
-    rs2 = set_regn(param, 2, regtype);
+    proc_t proc = (itr_i->second).proc;
+    rs1 = set_regn(param, 1, proc);
+    rs2 = set_regn(param, 2, proc);
     imm = set_imm(param, 3, 12);
     result = (imm & 0xfe0) << 20 | rs2 << 20 | rs1 << 15
            | (itr_i->second).funct3 << 12 | (imm & 0x1f) << 7 | (itr_i->second).opcode;
   }
   //SB-type
   else if ((itr_i = sb_type.find(param->buf[0])) != sb_type.end()) {
-    regtype = (itr_i->second).proc == FSTD ? 'f' : 'r';
-    rs1 = set_regn(param, 1, regtype);
-    rs2 = set_regn(param, 2, regtype);
+    proc_t proc = (itr_i->second).proc;
+    rs1 = set_regn(param, 1, proc);
+    rs2 = set_regn(param, 2, proc);
     if (param->buf[3][0] == '$') imm = set_imm(param, 3, 13);
     else {
       auto itr = (param->labels).find(param->buf[3]);
@@ -165,16 +176,16 @@ unsigned encoding(param_t *param) {
   }
   //U-type
   else if ((itr_u = u_type.find(param->buf[0])) != u_type.end()) {
-    regtype = (itr_u->second).proc == FSTD ? 'f' : 'r';
-    rd = set_regn(param, 1, regtype);
+    proc_t proc = (itr_u->second).proc;
+    rd = set_regn(param, 1, proc);
     imm = set_imm(param, 2, 32);
     if (imm & 0xfff) printf("warning: lower 12 bits of immediate will be ignored in line %d\n", param->lineno);
     result = (imm & 0xfffff000) | rd << 7 | (itr_u->second).opcode;
   }
   //UJ-type
   else if ((itr_u = uj_type.find(param->buf[0])) != uj_type.end()) {
-    regtype = (itr_u->second).proc == FSTD ? 'f' : 'r';
-    rd = set_regn(param, 1, regtype);
+    proc_t proc = (itr_u->second).proc;
+    rd = set_regn(param, 1, proc);
     if (param->buf[2][0] == '$') imm = set_imm(param, 2, 21);
     else {
       auto itr = (param->labels).find(param->buf[2]);

@@ -36,14 +36,14 @@ int main(int argc, char *argv[]) {
     if (strbuf.substr(0,12) == "-breakpoint=") {
       param->breakpoint = strtol((strbuf.substr(12,strbuf.size()-12)).c_str(), NULL, 0);
     }
-    else if (strbuf == "-pc1") {
-      param->pc_interval = 1;
-    }
     else if (strbuf == "-wave") {
       param->wave = 8;
     }
     else if (strbuf == "-step") {
       param->step = true;
+    }
+    else if (strbuf == "-f") {
+      param->f_display = true;
     }
     else {
       if (param->fp != NULL) { printf("error: unknown option of %s\n", strbuf.c_str()); exit(EXIT_FAILURE); }
@@ -52,11 +52,6 @@ int main(int argc, char *argv[]) {
     }
   }
   if (param->fp == NULL) { printf("error: specify a file\n"); exit(EXIT_FAILURE); }
-
-  //最近ややこしいので確認メッセージは必須
-  printf("Now additional value of PC is '%d'.\nIf this is as intended, enter 'r', others to terminate.\n", param->pc_interval);
-  char c; cin >> c;
-  if (c != 'r') return 0;
 
   //0バイト目から読んで初期化
   exec_jmp_fread(param, 0);
@@ -243,6 +238,16 @@ void print_standard_reg(param_t* param) {
   Loop(i, 32) {
     if (i % 8 == 0) printf("\n");
     printf("r%02d:%08X ", i, param->reg[i]);
+  }
+  printf("\n");
+  Loop(i, 32) {
+    if (i % 8 == 0) printf("\n");
+    if(param->f_display) printf("f%02d:%8f ", i, param->freg[i]);
+    else {
+      int_float_mover ifm;
+      ifm.f = param->freg[i];
+      printf("f%02d:%08X ", i, ifm.i);
+    }
   }
   return;
 }
