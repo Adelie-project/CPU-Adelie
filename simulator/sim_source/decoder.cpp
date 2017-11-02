@@ -1,7 +1,7 @@
 #include "decoder.hpp"
 
 inline void print_unknown_inst(param_t* param, int x, int i, unsigned inst) {
-  printf("error$%d: unknown %08Xth instruction of %08X.\n", x, param->rbuf_begin + i, inst);
+  printf("error$%d: unknown %dth instruction of %08X.\n", x, param->rbuf_begin + i, inst);
   exit(EXIT_FAILURE);
 }
 
@@ -45,6 +45,13 @@ inline void decode_uj_type(param_t* param, int i, int inst) {
   (param->decoded)[i][2] = (inst & 0x80000000) >> 11 | (inst & 0xFF000) | (inst & 0x100000) >> 9 | (inst & 0x7FE00000) >> 20;
   //20th bit = sign
   if ((param->decoded)[i][2] & 0x100000) (param->decoded)[i][2] = (param->decoded)[i][2] | 0xFFE00000;
+}
+
+inline void check_rm(unsigned inst) {
+  if((inst & 0x7000) >> 12 != RM) {
+    printf("simulator does not correspond to RM except for 0b000.\n");
+    exit(EXIT_FAILURE);
+  }
 }
 
 void decode_all(param_t* param) {
@@ -171,9 +178,10 @@ void decode_all(param_t* param) {
       case 0b0110011: //即値を用いない演算命令
         decode_r_type(param, i, inst);
         switch (inst & 0x7000) {
-          case 0x0000: //ADD or SUB?
+          case 0x0000: //ADD or SUB or MUL?
             if (inst >> 25 == 0b0000000) (param->decoded)[i][0] = ADD;
             else if (inst >> 25 == 0b0100000) (param->decoded)[i][0] = SUB;
+            else if (inst >> 25 == 0b0000001) (param->decoded)[i][0] = MUL;
             else print_unknown_inst(param, 861, i, inst);
             break;
           case 0x1000: //SLL?
@@ -188,8 +196,9 @@ void decode_all(param_t* param) {
             if (inst >> 25 == 0b0000000) (param->decoded)[i][0] = SLTU;
             else print_unknown_inst(param, 865, i, inst);
             break;
-          case 0x4000: //XOR
+          case 0x4000: //XOR or DIV?
             if (inst >> 25 == 0b0000000) (param->decoded)[i][0] = XOR;
+            else if (inst >> 25 == 0b0000001) (param->decoded)[i][0] = DIV;
             else print_unknown_inst(param, 866, i, inst);
             break;
           case 0x5000: //SRL or SRA?
@@ -208,8 +217,53 @@ void decode_all(param_t* param) {
             print_unknown_inst(param, 870, i, inst);
         }
         break;
+      case 0b0000111: //FLW
+        if ((inst & 0x7000) == 0x2000) {
+          (param->decoded)[i][0] = FLW;
+          decode_i_type(param, i, inst);
+        }
+        else print_unknown_inst(param, 910, i, inst);
+        break;
+      case 0b0100111: //FSW
+        if ((inst & 0x7000) == 0x2000) {
+          (param->decoded)[i][0] = FSW;
+          decode_s_type(param, i, inst);
+        }
+        else print_unknown_inst(param, 1010, i, inst);
+        break;
+      case 0b1010011: //単精度浮動小数点数2項演算命令
+        decode_r_type(param, i, inst);
+        switch (inst >> 25) {
+          case 0b0000000: //FADDS
+            check_rm(inst);
+            (param->decoded)[i][0] = FADDS;
+            break;
+          case 0b0000100: //FSUBS
+            check_rm(inst);
+            (param->decoded)[i][0] = FSUBS;
+            break;
+          case 0b0001000: //FMULS
+            (param->decoded)[i][0] = FMULS;
+            break;
+          case 0b0001100: //FDIVS
+            (param->decoded)[i][0] = FDIVS;
+            break;
+          case 0b1010000: //FEQS or FLTS or FLES?
+            if ((inst & 0x7000) == 0x2000) (param->decoded)[i][0] = FEQS;
+            else if ((inst & 0x7000) == 0x1000) (param->decoded)[i][0] = FLTS;
+            else if ((inst & 0x7000) == 0x0000) (param->decoded)[i][0] = FLES;
+            else print_unknown_inst(param, 1110, i, inst);
+            break;
+          case 0b1111000: //FMVSX
+            if ((inst & 0x7000) == 0x0000 && (param->decoded)[i][3] == 0) (param->decoded)[i][0] = FMVSX;
+            else print_unknown_inst(param, 1150, i, inst);
+            break;
+          default:
+            print_unknown_inst(param, 1199, i, inst);
+        }
+        break;
       default:
-        print_unknown_inst(param, 900, i, inst);
+        print_unknown_inst(param, 1500, i, inst);
       }
   }
 }
