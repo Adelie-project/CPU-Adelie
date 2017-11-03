@@ -25,8 +25,7 @@ let locate x =
     | y :: zs -> List.map succ (loc zs) in
   loc !stackmap
 let offset x = 4 * List.hd (locate x)
-let stacksize () = align ((List.length !stackmap + 1) * 4)
-
+let stacksize () = (List.length !stackmap + 1) * 4(*align()いらないので消した.*)
 let pp_id_or_imm = function (*prettyprint(いい感じにprintする)っぽい*)
   | V(x) -> x
   | C(i) -> string_of_int i
@@ -55,11 +54,11 @@ let rec g oc = function (* 命令列のアセンブリ生成 (caml2html: emit_g) *)
 and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   (* 末尾でなかったら計算結果をdestにセット (caml2html: emit_nontail) *)
   | NonTail(_), Nop -> ()
-  | NonTail(x), Set(i) -> Printf.fprintf oc "\taddi\t%s, %%r0, $%d\n" x i(*"\tset\t%d, %s\n" i x*)
-  | NonTail(x), SetL(Id.L(y)) -> Printf.fprintf oc "\tlui\t%s, %s\n\tori\t%s, %s, %s\n" x y x x y(*Printf.fprintf oc "\taddi\t%s, %%r0, %s\n" x y*)(*"\tset\t%s, %s\n" y x*)(*なんだこれ?setlってなに?*)
+  | NonTail(x), Set(i) -> Printf.fprintf oc "\tset\t%s, $%d\n" x i(*"\tset\t%d, %s\n" i x*)
+  | NonTail(x), SetL(Id.L(y)) -> Printf.fprintf oc "\tset\t%s, %s\n" x y(*Printf.fprintf oc "\taddi\t%s, %%r0, %s\n" x y*)(*"\tset\t%s, %s\n" y x*)(*なんだこれ?setlってなに?*)
   | NonTail(x), Fmv(y) -> Printf.fprintf oc "\tfmv\t%s, %s\n" x y
   | NonTail(x), Mov(y) when x = y -> ()
-  | NonTail(x), Mov(y) -> Printf.fprintf oc "\tadd\t%s, %%r0, %s ; mov\n" x y(*"\tmov\t%s, %s\n" y x*)
+  | NonTail(x), Mov(y) -> Printf.fprintf oc "\tadd\t%s, %%r0, %s\n" x y(*"\tmov\t%s, %s\n" y x*)
   | NonTail(x), Neg(y) -> Printf.fprintf oc "\tsub\t%s, %%r0, %s\n" x y(*"\tneg\t%s, %s\n" y x*)
   | NonTail(x), Add(y, z') -> Printf.fprintf oc "\tadd\t%s, %s, %s\n" x y (pp_id_or_imm z') (*immきたらやばくね*)
   | NonTail(x), Addi(y, z') -> Printf.fprintf oc "\taddi\t%s, %s, $%s\n" x y (pp_id_or_imm z')
@@ -269,7 +268,7 @@ let f oc (Prog(data, fundefs, e)) =
 
   (*Printf.fprintf oc ".global\tmin_caml_start\n";*)
   Printf.fprintf oc "min_caml_start:\n";
-  Printf.fprintf oc "\taddi\t%s, %%r0, $1024 ; ad hoc\n" reg_hp;
+  Printf.fprintf oc "\tset\t%s, $1024 ; ad hoc\n" reg_hp;
   (*Printf.fprintf oc "\tsave\t%%sp, -112, %%sp\n"; (* from gcc; why 112? *)*)
   stackset := S.empty;
   stackmap := [];

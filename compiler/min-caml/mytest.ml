@@ -37,18 +37,20 @@ let rec ack x y =
 print_int (ack 3 10)
 *)
 
+(*
 let rec g x k =
   k x in
 g 2 (let rec f r = print_int r in f)
+*)
 
-(*
+
 let rec ack x y k =
   if x <= 0 then k (y+1) else
   if y <= 0 then ack (x-1) x k
   else           ack x (y-1) (let rec f r = ack (x-1) r k in f)
 in
-  ack 3 1 (let rec f r = print_int r in f)
-*)
+  ack 3 5 (let rec f r = print_int r in f)
+
 
 (*
 type t = {
