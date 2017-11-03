@@ -156,8 +156,8 @@ let lexbuf outchan l glb_l= (* バッファをコンパイルしてチャンネルへ出力する (cam
                        (Typing.f
                          (Joinglb.f
                            (Parser.exp Lexer.token l)
-                           (Parser.exp Lexer.token glb_l))*)(*min-rtのときだけこっち*)
-                            )))))(*)*)
+                           (Parser.exp Lexer.token glb_l)))*)(*min-rtのときだけこっち*)
+                            )))))
 
 let string s glbchan= lexbuf stdout (Lexing.from_string s) (Lexing.from_channel glbchan)(* 文字列をコンパイルして標準出力に表示する (caml2html: main_string) *)
 
