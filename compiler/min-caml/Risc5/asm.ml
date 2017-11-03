@@ -50,7 +50,7 @@ let regs = (* Array.init 16 (fun i -> Printf.sprintf "%%r%d" i) *)
   [| "%r4"; "%r5"; "%r6"; "%r7"; "%r8"; "%r9"; "%r10"; "%r11";
       "%r12"; "%r13"; "%r14"; "%r15"; "%r16"; "%r17"; "%r18"; "%r19";
       "%r20"; "%r21"; "%r22"; "%r23"; "%r24"; "%r25"; "%r26"; "%r27";
-      "%r28"; "%r29"; "%r30"; "%r31" |]
+      "%r28"; "%r29"; "%r30" |]
 (*
   [| "%i2"; "%i3"; "%i4"; "%i5";
      "%l0"; "%l1"; "%l2"; "%l3"; "%l4"; "%l5"; "%l6"; "%l7";
@@ -112,6 +112,7 @@ let rec concat e1 xt e2 =
   | Ans(exp) -> Let(xt, exp, e2)
   | Let(yt, exp, e1') -> Let(yt, exp, concat e1' xt e2)
 
-
+(*
 let align i = (if i mod 8 = 0 then i else i + 4)
-(*いらないらしい,alignは4でよい*)
+(*いらないらしい,alignは4の倍数でよい*)
+*)
