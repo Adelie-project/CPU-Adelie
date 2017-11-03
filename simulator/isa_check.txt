@@ -44,8 +44,8 @@ lui rd, imm
   32bit定数(ただし上位20bitのみ,下位12bitはゼロ埋め)の生成
 auipc rd, imm
   (add upper immediate to pc)
-  pcに32bit定数(ただし下位12bitはゼロ埋め)を加える
-  新たなpcの値をrdに入れる
+  pcに32bit定数(ただし下位12bitはゼロ埋め)を加えたものをrdに入れる
+  すなわち、rd=pc+imm
   (auipcとjajrを組み合わせて任意のpcを取ることができるようになる)
 jal rd, imm
   (jump and link)
