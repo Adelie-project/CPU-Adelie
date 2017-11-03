@@ -17,7 +17,8 @@ struct param_t {
   unsigned pc_interval;
   unsigned lineno;
   unsigned pc;
-  map<string, unsigned int> labels;
+  map<string, unsigned> labels;
+  map<unsigned, pair<string,bool>> irregular;
 };
 
 void init_param(param_t* param);

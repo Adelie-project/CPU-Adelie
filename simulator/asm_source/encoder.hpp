@@ -34,4 +34,6 @@ struct u_factors {
 
 unsigned encoding(param_t *param);
 
+unsigned set_regn(param_t *param, unsigned k, proc_t proc);
+
 #endif
