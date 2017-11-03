@@ -117,7 +117,7 @@ void exec_main(param_t* param) {
     case AUIPC:
       set_u_type(param, &rd, &imm);
       if(rd != 0) param->reg[rd] = param->pc + imm;
-      exec_jmp_fread(param, param->pc + imm);
+      pc_inclement(param);
       if(param->step) printf("auipc %%r%d, $%d\n", rd, imm);
       return;
     case JAL:
