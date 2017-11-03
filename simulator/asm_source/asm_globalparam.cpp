@@ -9,4 +9,5 @@ void init_param(param_t* param) {
   param->lineno = 0;
   param->pc = 0;
   param->labels = {};
+  param->irregular = {};
 }

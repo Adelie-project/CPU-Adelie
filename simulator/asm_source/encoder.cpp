@@ -75,7 +75,7 @@ const char reg_pattern[10][4] = {
   { 'f', 'r', 'r', 'f' }  //FMVSX
 };
 
-inline unsigned set_regn(param_t *param, unsigned k, proc_t proc) {
+unsigned set_regn(param_t *param, unsigned k, proc_t proc) {
   if (param->buf[k][0] != '%') {
     printf("error: syntax error in line %d: register name should begin with '%%'.\n", param->lineno); exit(EXIT_FAILURE);
   }
@@ -105,7 +105,7 @@ inline int set_imm(param_t *param, unsigned k, int digit) {
     //それ以外は10進数とみなす
     imm = strtol((param->buf[k]).substr(1, (param->buf[k]).size()-1).c_str(), NULL, 10);
     if (errno == EINVAL) printf("warning: improper representation of immediate in line %d\n", param->lineno);
-    if (imm >= (1 << (digit - 1)) || imm < -1 * (1 << (digit - 1))) {
+    if (digit != 32 && (imm >= (1 << (digit - 1)) || imm < -1 * (1 << (digit - 1)))) {
       printf("warning: immediate is out of range (%d bit) in line %d\n", digit, param->lineno);
     }
   }
