@@ -10,4 +10,5 @@ void init_param(param_t* param) {
   param->pc = 0;
   param->labels = {};
   param->irregular = {};
+  param->comment_mode = 0;
 }

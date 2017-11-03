@@ -1,9 +1,9 @@
 main:
-  lui %r2, $0x00008000 ; SP、スタックとして32KB*8B=256KBを確保
+  set %r2, $0x00008000 ; SP、スタックとして32KB*8B=256KBを確保
   addi %r2, %r2, $-64 ; SP -= 64
   addi %r3, %r2, $64  ; FP = SP + 64, main()のフレームの出来上がり
-  addi %r9, %r0, $2   ; const int 1
-  addi %r5, %r0, $35  ; fib_rec(5) を呼びたい
+  set %r9, $2   ; const int 1
+  set %r5, $35  ; fib_rec(5) を呼びたい
   jal %r1, fib_rec   ; r1 = 7 * pc_interval
   jal %r1, finish
 fib_rec:
@@ -27,7 +27,7 @@ fib_rec_ret:
   addi %r2, %r2, $64 ; SP += 64
   jalr %r1, %r1, $0   ; 呼び出し元の関数に戻る
 fib_rec_bge1:
-  addi %r4, %r0, $1   ; if (x == 0 || x == 1) return 1
+  set %r4, $1   ; if (x == 0 || x == 1) return 1
   beq %r0, %r0, fib_rec_ret ; go back
 finish:
   addi %r0, %r0, $0   ; 終了
