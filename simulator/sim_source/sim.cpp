@@ -49,6 +49,10 @@ int main(int argc, char *argv[]) {
       if (param->fp != NULL) { printf("error: unknown option of %s\n", strbuf.c_str()); exit(EXIT_FAILURE); }
       param->fp = fopen(argv[i], "rb");
       if (param->fp == NULL) { perror("fopen error"); exit(EXIT_FAILURE); }
+      if (strbuf.substr(strbuf.length() - 4, 4) != ".bin") {
+        printf("error: specify an assembly file \"*.bin\".\n");
+        exit(EXIT_FAILURE);
+      }
     }
   }
   if (param->fp == NULL) { printf("error: specify a file\n"); exit(EXIT_FAILURE); }

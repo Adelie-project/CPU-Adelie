@@ -19,6 +19,7 @@ struct param_t {
   unsigned pc;
   map<string, unsigned> labels;
   map<unsigned, pair<string,bool>> irregular;
+  int comment_mode;
 };
 
 void init_param(param_t* param);

@@ -35,23 +35,47 @@ vector<bool> opt_flags(8, false); //オプションフラグ
 void divide(param_t *param) {
   param->buf = {};
   unsigned k = 0, i = 0;
+  int syntax_mode = 0;
   for(; i < (param->readline).length(); i++) {
     char c = param->readline[i];
+    // comment mode
+    if (param->comment_mode == 0 && c == '/') { param->comment_mode = 1; c = ' '; }
+    else if (param->comment_mode == 1) {
+      if (c == '*') { param->comment_mode = 2; c = ' '; }
+      else { printf("error: syntax error in character %d, line %d\n", i+1, param->lineno); exit(EXIT_FAILURE); }
+    }
+    else if (param->comment_mode == 2) {
+      if (c == '*') { param->comment_mode = 3; c = ' '; }
+      else c = ' ';
+    }
+    else if (param->comment_mode == 3) {
+      if (c == '/') { param->comment_mode = 0; c = ' '; }
+      else { param->comment_mode = 2; c = ' '; }
+    }
+    //
     if (c == ';') break;
-    else if (c == ':') {
-      if (k != i) (param->buf).push_back(":");
-      return;
-    }
     else if (c == ' ' || c == '\t') {
-      if (k != i) (param->buf).push_back(param->readline.substr(k, i - k));
+      if (k != i) {
+        (param->buf).push_back(param->readline.substr(k, i - k));
+        if (syntax_mode == 0) syntax_mode = 1;
+        else if (syntax_mode == 1) syntax_mode = 2;
+      }
       k = i + 1;
     }
-    else if (c == ',') {
-      (param->buf).push_back(param->readline.substr(k, i - k));
-      k = i + 1;
+    else {
+      if (syntax_mode == 2) { printf("error: syntax error in character %d, line %d\n", i+1, param->lineno); exit(EXIT_FAILURE); }
+      if (c == ':') {
+        (param->buf).push_back(param->readline.substr(k, i - k + 1));
+        syntax_mode = 2;
+      }
+      else if (c == ',') {
+        if (syntax_mode == 0) { printf("error: syntax error in character %d, line %d\n", i+1, param->lineno); exit(EXIT_FAILURE); }
+        (param->buf).push_back(param->readline.substr(k, i - k));
+        k = i + 1;
+      }
     }
   }
-  (param->buf).push_back(param->readline.substr(k, i - k));
+  if (k != i) (param->buf).push_back(param->readline.substr(k, i - k));
   return;
 }
 
@@ -71,7 +95,7 @@ void write_result(param_t *param, int result) {
 void parse(param_t *param) {
   int result;
   divide(param);
-  if ((param->buf[0]).back() == ':') return;
+  if ((param->buf).size() == 0 || (param->buf[0]).back() == ':') return;
   auto itr = (param->irregular).find(param->pc);
   if (itr == (param->irregular).end()) {
     result = encoding(param);
@@ -117,10 +141,11 @@ void pre_parse(param_t *param) {
   //ラベリング
   if (s.back() == ':') {
     string labelname = s.substr(0, s.length() - 1);
+    if (labelname.length() == 0) { printf("error: illegal definition of label: %s in line %d\n", labelname.c_str(), param->lineno); exit(EXIT_FAILURE); }
     if ((param->labels).find(labelname) == (param->labels).end()) {
       param->labels[labelname] = param->pc;
     }
-    else { printf("error: multi definition of label: %s in %d\n", labelname.c_str(), param->lineno); exit(EXIT_FAILURE); }
+    else { printf("error: multi definition of label: %s in line %d\n", labelname.c_str(), param->lineno); exit(EXIT_FAILURE); }
     return;
   }
   //特殊処理
@@ -170,6 +195,10 @@ int main(int argc, char *argv[]) {
     }
   }
   if (!opt_flags[7]) { printf("error: specify a file\n"); exit(EXIT_FAILURE); }
+  if (filename.substr(filename.length() - 2, 2) != ".s") {
+    printf("error: specify an assembly file \"*.s\".\n");
+    exit(EXIT_FAILURE);
+  }
   ifstream ifs(filename);
   if (!ifs.is_open()) { perror("fopen error\n"); exit(EXIT_FAILURE); }
 
@@ -184,10 +213,8 @@ int main(int argc, char *argv[]) {
     param->fp = fopen(filename.c_str(), "wb");
     if (param->fp == NULL) { perror("fopen error\n"); exit(EXIT_FAILURE); }
   }
-
   //まずはラベル探しと糖衣構文の分解、デバッグしやすさを考えて最初のうちは、ファイルにおける行数（ただし0始め）とPCを一対一させる
   while(getline(ifs, param->readline)) {
-    if (param->readline.size() == 0) break;
     param->lineno++;
     pre_parse(param);
   }
@@ -198,11 +225,9 @@ int main(int argc, char *argv[]) {
 
   //ラベル以外
   while(getline(ifs, param->readline)) {
-    if (param->readline.size() == 0) break;
     param->lineno++;
     parse(param);
   }
-
   ifs.close();
   fclose(param->fp);
   printf("%s generated\n", filename.c_str());
