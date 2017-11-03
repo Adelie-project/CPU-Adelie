@@ -2,7 +2,9 @@
 
 open Asm
 
-let data = ref [] (* 浮動小数点数の定数テーブル (caml2html: virtual_data) *)
+external getf : float -> int32 = "getf"(*emit.mlで処理するのではなくここで処理してしまう*)
+
+let data = ref [] (* 浮動小数点数の定数テーブル (caml2html: virtual_data) *)(*いらない*)
 
 let classify xts ini addf addi =
   List.fold_left
@@ -35,6 +37,10 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
   | Closure.Unit -> Ans(Nop)
   | Closure.Int(i) -> Ans(Set(i))
   | Closure.Float(d) ->
+      let z = Id.genid "i" in
+      let n = Id.L("$"^(Int32.to_string(getf d))) in
+      Let((z, Type.Int), SetL(n), Ans(Fmv(z)))(*新仮想命令Fmv*)(*SetLをset longと解釈*)(*そしたら0xにcastしないとね*)
+  (*(*以下はdataをつかって浮動小数点数のsetをしているがこれは却下*)
       let l =
         try
           (* すでに定数テーブルにあったら再利用 *)
@@ -45,7 +51,7 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
           data := (l, d) :: !data;
           l in
       let x = Id.genid "l" in
-      Let((x, Type.Int), SetL(l), Ans(LdDF(x, C(0))))
+      Let((x, Type.Int), SetL(l), Ans(LdDF(x, C(0)))) *)
   | Closure.Neg(x) -> Ans(Neg(x))
   | Closure.Add(x, y) -> Ans(Add(x, V(y)))
   | Closure.Sub(x, y) -> Ans(Sub(x, V(y)))
@@ -59,12 +65,16 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
   | Closure.IfEq(x, y, e1, e2) ->
       (match M.find x env with
       | Type.Bool | Type.Int -> Ans(IfEq(x, V(y), g env e1, g env e2))
-      | Type.Float -> Ans(IfFEq(x, y, g env e1, g env e2))
+      | Type.Float ->
+        let z = Id.genid "i" in (*feqなどの結果を格納するための%rxxの確保のため.*)
+        Let((z, Type.Int), Set(0), Ans(IfFEq(x, y, z, g env e1, g env e2))) (*z:int = "hoge"はなんでもいいんだけど,やっつけでSet(0)*)
       | _ -> failwith "equality supported only for bool, int, and float")
   | Closure.IfLE(x, y, e1, e2) ->
       (match M.find x env with
       | Type.Bool | Type.Int -> Ans(IfLE(x, V(y), g env e1, g env e2))
-      | Type.Float -> Ans(IfFLE(x, y, g env e1, g env e2))
+      | Type.Float ->
+        let z = Id.genid "i" in
+        Let((z, Type.Int), Set(0), Ans(IfFLE(x, y, z, g env e1, g env e2))) (*同じく*)
       | _ -> failwith "inequality supported only for bool, int, and float")
   | Closure.Let((x, t1), e1, e2) ->
       let e1' = g env e1 in
@@ -85,7 +95,7 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
           (fun y offset store_fv -> seq(StDF(y, x, C(offset)), store_fv))
           (fun y _ offset store_fv -> seq(St(y, x, C(offset)), store_fv)) in
       Let((x, t), Mov(reg_hp),
-          Let((reg_hp, Type.Int), Add(reg_hp, C(align offset)),
+          Let((reg_hp, Type.Int), Addi(reg_hp, C(align offset)),
               let z = Id.genid "l" in
               Let((z, Type.Int), SetL(l),
                   seq(St(z, x, C(0)),
@@ -105,7 +115,7 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
           (fun x offset store -> seq(StDF(x, y, C(offset)), store))
           (fun x _ offset store -> seq(St(x, y, C(offset)), store)) in
       Let((y, Type.Tuple(List.map (fun x -> M.find x env) xs)), Mov(reg_hp),
-          Let((reg_hp, Type.Int), Add(reg_hp, C(align offset)),
+          Let((reg_hp, Type.Int), Addi(reg_hp, C(align offset)),
               store))
   | Closure.LetTuple(xts, y, e2) ->
       let s = Closure.fv e2 in
@@ -126,7 +136,7 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
       | Type.Array(Type.Unit) -> Ans(Nop)
       | Type.Array(Type.Float) ->
           Let((offset, Type.Int), SLL(y, C(3)),
-              Ans(LdDF(x, V(offset))))
+              Ans(LdDF(x, V(offset)))) (*ここ危険な予感*)
       | Type.Array(_) ->
           Let((offset, Type.Int), SLL(y, C(2)),
               Ans(Ld(x, V(offset))))
@@ -137,7 +147,7 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
       | Type.Array(Type.Unit) -> Ans(Nop)
       | Type.Array(Type.Float) ->
           Let((offset, Type.Int), SLL(y, C(3)),
-              Ans(StDF(z, x, V(offset))))
+              Ans(StDF(z, x, V(offset))))(*ここ危険な予感*)
       | Type.Array(_) ->
           Let((offset, Type.Int), SLL(y, C(2)),
               Ans(St(z, x, V(offset))))
@@ -160,7 +170,7 @@ let h { Closure.name = (Id.L(x), t); Closure.args = yts; Closure.formal_fv = zts
 
 (* プログラム全体の仮想マシンコード生成 (caml2html: virtual_f) *)
 let f (Closure.Prog(fundefs, e)) =
-  data := [];
+  data := [];(*dataはいらない*)
   let fundefs = List.map h fundefs in
   let e = g M.empty e in
-  Prog(!data, fundefs, e)
+  Prog(!data, fundefs, e)(*dataはいらない*)
