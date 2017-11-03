@@ -1,43 +1,22 @@
 min_caml_start:
-	addi	%r4, %r0, $20
+	addi	%r3, %r0, $1024 ; ad hoc
+	addi	%r4, %r0, $2
+	add	%r5, %r0, %r3 ; mov
+	addi	%r3, %r3, $8
+	lui	%r6, f.8
+	ori	%r6, %r6, f.8
+	sw	%r5, %r6, $0
 	sw	%r2, %r1, $4
 	addi	%r2, %r2, $8
-	jal	%r1, fib.10
-	addi	%r2, %r2, $-8
-	lw	%r1, %r2, $4
-	sw	%r2, %r1, $4
-	addi	%r2, %r2, $8
-	jal	%r1, min_caml_print_int
+	jal	%r1, g.3
 	addi	%r2, %r2, $-8
 	lw	%r1, %r2, $4
 	jal	%r0, $0	; end
-fib.10:
-	addi	%r5, %r0, $2
-	blt	%r4, %r5, bge_else.24
-	addi	%r5, %r0, $1
-	sub	%r5, %r4, %r5
-	sw	%r2, %r4, $0
-	add	%r4, %r0, %r5
-	sw	%r2, %r1, $4
-	addi	%r2, %r2, $8
-	jal	%r1, fib.10
-	addi	%r2, %r2, $-8
-	lw	%r1, %r2, $4
-	addi	%r5, %r0, $2
-	lw	%r6, %r2, $0
-	sub	%r5, %r6, %r5
-	sw	%r2, %r4, $4
-	add	%r4, %r0, %r5
-	sw	%r2, %r1, $12
-	addi	%r2, %r2, $16
-	jal	%r1, fib.10
-	addi	%r2, %r2, $-16
-	lw	%r1, %r2, $12
-	lw	%r5, %r2, $4
-	add	%r4, %r5, %r4
-	jalr	%r0, %r1, $0
-bge_else.24:
-	addi	%r4, %r0, $1
-	jalr	%r0, %r1, $0
+g.3:
+	add	%r31, %r0, %r5
+	lw	%r30, %r31, $0
+	jalr	%r0, %r30, $0
+f.8:
+	jal	%r0, min_caml_print_int
 min_caml_print_int:
 	jalr	%r0, %r1, $0
