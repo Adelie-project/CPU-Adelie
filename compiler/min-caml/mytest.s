@@ -1,7 +1,7 @@
 min_caml_start:
 	set	%r3, $1024 ; ad hoc
 	set	%r4, $3
-	set	%r5, $7
+	set	%r5, $5
 	add	%r6, %r0, %r3
 	addi	%r3, %r3, $4
 	set	%r7, f.22

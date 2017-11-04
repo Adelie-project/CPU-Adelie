@@ -29,7 +29,7 @@ let expand xts ini addf addi =
     ini
     (fun (offset, acc) x ->
       (*let offset = align offset in*)
-      (offset + 8, addf x offset acc))
+      (offset + 8, addf x offset acc)) (*変更: +8 -> +4 =>やっぱり変更しない*)(*ここ原因じゃないらしい*)
     (fun (offset, acc) x t ->
       (offset + 4, addi x t offset acc))
 
