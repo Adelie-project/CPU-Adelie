@@ -404,6 +404,25 @@ void exec_main(param_t* param) {
       pc_inclement(param);
       if(param->step) printf("fmvsx %%f%d, %%r%d\n", rd, rs1);
       return;
+    case FMVXS:
+      set_r_type(param, &rd, &rs1, &rs2);
+      ifm.f = param->freg[rs1];
+      if(rd != 0) param->reg[rd] = ifm.i;
+      pc_inclement(param);
+      if(param->step) printf("fmvxs %%r%d, %%f%d\n", rd, rs1);
+      return;
+    case FCVTSW:
+      set_r_type(param, &rd, &rs1, &rs2);
+      if(rd != 0) param->freg[rd] = param->reg[rs1];
+      pc_inclement(param);
+      if(param->step) printf("fcvtsw %%f%d, %%r%d\n", rd, rs1);
+      return;
+    case FCVTWS:
+      set_r_type(param, &rd, &rs1, &rs2);
+      if(rd != 0) param->reg[rd] = param->freg[rs1];
+      pc_inclement(param);
+      if(param->step) printf("fcvtws %%r%d, %%f%d\n", rd, rs1);
+      return;
     default:
       printf("unknown fatal error, exit\n");
       exit(EXIT_FAILURE);

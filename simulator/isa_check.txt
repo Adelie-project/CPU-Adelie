@@ -19,7 +19,10 @@ FDIVS
 FEQS
 FLTS
 FLES
-FMVSX
+FMVSX // move int to float
+FMVXS // move float to int
+FCVTSW // convert int to float
+FCVTWS // convert float to int
 
 ==================================================================
 

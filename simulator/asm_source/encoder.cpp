@@ -23,7 +23,10 @@ unordered_map<string, struct r_factors> r_type = {
   {  "feqs", {0b1010000, 0b010, 0b1010011, FCMP} },
   {  "flts", {0b1010000, 0b001, 0b1010011, FCMP} },
   {  "fles", {0b1010000, 0b000, 0b1010011, FCMP} },
-  { "fmvsx", {0b1111000, 0b000, 0b1010011, FMVSX} }
+  { "fmvsx", {0b1111000, 0b000, 0b1010011, FSX} },
+  { "fmvxs", {0b1110000, 0b000, 0b1010011, FXS} },
+  {"fcvtsw", {0b1101000,    RM, 0b1010011, FSX} },
+  {"fcvtws", {0b1100000,    RM, 0b1010011, FXS} }
 };
 
 unordered_map<string, struct i_factors> i_type = {
@@ -69,10 +72,12 @@ const char reg_pattern[10][4] = {
   { 'r', 'r', 'r', 'r' }, //STD
   { 'r', 'r', 'r', 'r' }, //SHIFT
   { 'f', 'f', 'f', 'f' }, //FSTD
-  { 'r', 'f', 'f', 'f'}, //FCMP
-  { 'f', 'r', 'r', 'f' }, //FL
-  { 'r', 'f', 'r', 'f' }, //FS
-  { 'f', 'r', 'r', 'f' }  //FMVSX
+  { 'r', 'f', 'f', 'r' }, //FCMP
+  { 'f', 'r', 'r', 'r' }, //FL
+  { 'r', 'f', 'r', 'r' }, //FS
+  { 'f', 'r', 'r', 'r' }, //FSX
+  { 'r', 'f', 'r', 'r' }  //FXS
+
 };
 
 unsigned set_regn(param_t *param, unsigned k, proc_t proc) {
@@ -133,7 +138,7 @@ unsigned encoding(param_t *param) {
     rd = set_regn(param, 1, proc);
     rs1 = set_regn(param, 2, proc);
     if (proc == SHIFT) rs2 = set_shamt(param, 3);
-    else if (proc == FMVSX) rs2 = 0;
+    else if (proc == FSX || proc == FXS) rs2 = 0;
     else rs2 = set_regn(param, 3, proc);
     result = (itr_r->second).funct7 << 25 | rs2 << 20 | rs1 << 15
            | (itr_r->second).funct3 << 12 | rd << 7 | (itr_r->second).opcode;

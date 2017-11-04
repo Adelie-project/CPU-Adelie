@@ -243,9 +243,11 @@ void decode_all(param_t* param) {
             (param->decoded)[i][0] = FSUBS;
             break;
           case 0b0001000: //FMULS
+            check_rm(inst);
             (param->decoded)[i][0] = FMULS;
             break;
           case 0b0001100: //FDIVS
+            check_rm(inst);
             (param->decoded)[i][0] = FDIVS;
             break;
           case 0b1010000: //FEQS or FLTS or FLES?
@@ -257,6 +259,20 @@ void decode_all(param_t* param) {
           case 0b1111000: //FMVSX
             if ((inst & 0x7000) == 0x0000 && (param->decoded)[i][3] == 0) (param->decoded)[i][0] = FMVSX;
             else print_unknown_inst(param, 1150, i, inst);
+            break;
+          case 0b1110000: //FMVXS
+            if ((inst & 0x7000) == 0x0000 && (param->decoded)[i][3] == 0) (param->decoded)[i][0] = FMVXS;
+            else print_unknown_inst(param, 1160, i, inst);
+            break;
+          case 0b1101000: //fcvtsw
+            check_rm(inst);
+            if ((param->decoded)[i][3] == 0) (param->decoded)[i][0] = FCVTSW;
+            else print_unknown_inst(param, 1170, i, inst);
+            break;
+          case 0b1100000: //fcvtws
+            check_rm(inst);
+            if ((param->decoded)[i][3] == 0) (param->decoded)[i][0] = FCVTWS;
+            else print_unknown_inst(param, 1180, i, inst);
             break;
           default:
             print_unknown_inst(param, 1199, i, inst);
