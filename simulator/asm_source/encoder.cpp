@@ -77,36 +77,33 @@ const char reg_pattern[10][4] = {
 
 unsigned set_regn(param_t *param, unsigned k, proc_t proc) {
   if (param->buf[k][0] != '%') {
-    printf("error: syntax error in line %d: register name should begin with '%%'.\n", param->lineno); exit(EXIT_FAILURE);
+    printf("\x1b[31merror\x1b[39m: syntax error in line %d: register name should begin with '%%'.\n", param->lineno); exit(EXIT_FAILURE);
   }
   if (param->buf[k][1] != reg_pattern[proc][k-1]) {
-    printf("error: syntax error in line %d: %dth argument should be a %s register.\n"
+    printf("\x1b[31merror\x1b[39m: syntax error in line %d: %dth argument should be a %s register.\n"
       , param->lineno, k + 1, reg_pattern[proc][k-1] == 'r' ? "integer" : "floating point");
     exit(EXIT_FAILURE);
   }
   int regn = strtoul((param->buf[k]).substr(2,(param->buf[k]).size()-1).c_str(), NULL, 0);
-  if (errno == EINVAL) printf("warning: improper representation of register number in line %d\n", param->lineno);
-  if (regn >> 5) printf("warning: register number is out of range (0~31) in line %d\n", param->lineno);
+  if (regn >> 5) printf("\x1b[35mwarning\x1b[39m: register number is out of range (0~31) in line %d\n", param->lineno);
   return regn;
 }
 
 inline int set_imm(param_t *param, unsigned k, int digit) {
   if(param->buf[k][0] != '$') {
-    printf("error: syntax error in line %d: immediate should begin with '$'.\n", param->lineno); exit(EXIT_FAILURE);
+    printf("\x1b[31merror\x1b[39m: syntax error in line %d: immediate should begin with '$'.\n", param->lineno); exit(EXIT_FAILURE);
   }
   int imm;
   if(param->buf[k].size() > 2 && param->buf[k][1] == '0' && param->buf[k][2] == 'x') {
     //16進数
     imm = strtol((param->buf[k]).substr(1, (param->buf[k]).size()-1).c_str(), NULL, 16);
-    if (errno == EINVAL) printf("warning: improper representation of immediate in line %d\n", param->lineno);
-    if (digit < 32 && (unsigned)imm >> digit) printf("warning: immediate is out of range (%d bit) in line %d\n", digit, param->lineno);
+    if (digit < 32 && (unsigned)imm >> digit) printf("\x1b[35mwarning\x1b[39m: immediate is out of range (%d bit) in line %d\n", digit, param->lineno);
   }
   else {
     //それ以外は10進数とみなす
     imm = strtol((param->buf[k]).substr(1, (param->buf[k]).size()-1).c_str(), NULL, 10);
-    if (errno == EINVAL) printf("warning: improper representation of immediate in line %d\n", param->lineno);
     if (digit != 32 && (imm >= (1 << (digit - 1)) || imm < -1 * (1 << (digit - 1)))) {
-      printf("warning: immediate is out of range (%d bit) in line %d\n", digit, param->lineno);
+      printf("\x1b[35mwarning\x1b[39m: immediate is out of range (%d bit) in line %d\n", digit, param->lineno);
     }
   }
   return imm;
@@ -114,11 +111,11 @@ inline int set_imm(param_t *param, unsigned k, int digit) {
 
 inline int set_shamt(param_t *param, unsigned k) {
   if(param->buf[k][0] != '$') {
-    printf("error: syntax error in line %d: shamt should begin with '%%'.\n", param->lineno); exit(EXIT_FAILURE);
+    printf("\x1b[31merror\x1b[39m: syntax error in line %d: shamt should begin with '%%'.\n", param->lineno); exit(EXIT_FAILURE);
   }
   unsigned shamt = strtoul((param->buf[k]).substr(1,param->buf[k].size()-1).c_str(), NULL, 0);
-  if (errno == EINVAL) printf("warning: improper representation of shamt in line %d\n", param->lineno);
-  if (shamt >> 5) printf("warning: shamt is out of range (5 bit) in line %d\n", param->lineno);
+  if (errno == EINVAL) printf("\x1b[35mwarning\x1b[39m: improper representation of shamt in line %d\n", param->lineno);
+  if (shamt >> 5) printf("\x1b[35mwarning\x1b[39m: shamt is out of range (5 bit) in line %d\n", param->lineno);
   return shamt;
 }
 
@@ -167,7 +164,7 @@ unsigned encoding(param_t *param) {
     if (param->buf[3][0] == '$') imm = set_imm(param, 3, 13);
     else {
       auto itr = (param->labels).find(param->buf[3]);
-      if (itr == (param->labels).end()) { printf("error: could not find the label: %s used in line %d\n", (param->buf[3]).c_str(), param->lineno); exit(EXIT_FAILURE); }
+      if (itr == (param->labels).end()) { printf("\x1b[31merror\x1b[39m: could not find the label: %s used in line %d\n", (param->buf[3]).c_str(), param->lineno); exit(EXIT_FAILURE); }
       else imm = itr->second - param->pc;
     }
     result = (imm & 0x1000) << 19 | (imm & 0x7e0) << 20 | rs2 << 20 | rs1 << 15
@@ -179,7 +176,7 @@ unsigned encoding(param_t *param) {
     proc_t proc = (itr_u->second).proc;
     rd = set_regn(param, 1, proc);
     imm = set_imm(param, 2, 32);
-    if (imm & 0xfff) printf("warning: lower 12 bits of immediate will be ignored in line %d\n", param->lineno);
+    if (imm & 0xfff) printf("\x1b[35mwarning\x1b[39m: lower 12 bits of immediate will be ignored in line %d\n", param->lineno);
     result = (imm & 0xfffff000) | rd << 7 | (itr_u->second).opcode;
   }
   //UJ-type
@@ -189,14 +186,14 @@ unsigned encoding(param_t *param) {
     if (param->buf[2][0] == '$') imm = set_imm(param, 2, 21);
     else {
       auto itr = (param->labels).find(param->buf[2]);
-      if (itr == (param->labels).end()) { printf("error: could not find the label: %s used in line %d\n", (param->buf[2]).c_str(), param->lineno); exit(EXIT_FAILURE); }
+      if (itr == (param->labels).end()) { printf("\x1b[31merror\x1b[39m: could not find the label: %s used in line %d\n", (param->buf[2]).c_str(), param->lineno); exit(EXIT_FAILURE); }
       else imm = itr->second - param->pc;
     }
     result = (imm & 0x100000) << 11 | (imm & 0x7fe) << 20 | (imm & 0x800) << 9
            | (imm & 0xff000) | rd << 7 | (itr_u->second).opcode;
   }
   else {
-    printf("error: unknown mnemonic in line %d\n", param->lineno); exit(EXIT_FAILURE);
+    printf("\x1b[31merror\x1b[39m: unknown mnemonic in line %d\n", param->lineno); exit(EXIT_FAILURE);
   }
   return result;
 }
