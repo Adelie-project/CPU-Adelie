@@ -49,7 +49,7 @@ enum inst_t {
   ADDI, SLTI, SLTIU, XORI, ORI, ANDI, SLLI, SRLI, SRAI,
   ADD, SUB, SLL, SLT, SLTU, XOR, SRL, SRA, OR, AND,
   MUL, DIV, FLW, FSW, FADDS, FSUBS, FMULS, FDIVS,
-  FEQS, FLTS, FLES, FMVSX
+  FEQS, FLTS, FLES, FMVSX, FMVXS, FCVTSW, FCVTWS
 };
 
 void init_param(param_t* param);
