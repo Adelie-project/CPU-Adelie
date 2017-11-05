@@ -104,7 +104,7 @@ inline void set_uj_type(param_t* param, unsigned* rd, int* imm) {
 //param->rbuf_p
 int imm, evac;
 unsigned rs1, rs2, rd;
-int_float_mover ifm;
+int_float_mover ifm, ifm2;
 
 void exec_main(param_t* param) {
   switch((param->decoded)[param->rbuf_p][0]) {
@@ -117,7 +117,7 @@ void exec_main(param_t* param) {
     case AUIPC:
       set_u_type(param, &rd, &imm);
       if(rd != 0) param->reg[rd] = param->pc + imm;
-      pc_inclement(param);
+      exec_jmp_fread(param, param->pc + imm);
       if(param->step) printf("auipc %%r%d, $%d\n", rd, imm);
       return;
     case JAL:
@@ -422,6 +422,21 @@ void exec_main(param_t* param) {
       if(rd != 0) param->reg[rd] = param->freg[rs1];
       pc_inclement(param);
       if(param->step) printf("fcvtws %%r%d, %%f%d\n", rd, rs1);
+      return;
+    case FSQRTS:
+      set_r_type(param, &rd, &rs1, &rs2);
+      if(rd != 0) param->freg[rd] = sqrt(param->freg[rs1]);
+      pc_inclement(param);
+      if(param->step) printf("fsqrts %%f%d, %%f%d\n", rd, rs1);
+      return;
+    case FSGNJXS:
+      set_r_type(param, &rd, &rs1, &rs2);
+      ifm.f = param->freg[rs1];
+      ifm2.f = param->freg[rs2];
+      ifm.i = (ifm.i & 0x7fffffff) | ((ifm.i ^ ifm2.i) & 0x800000000);
+      if(rd != 0) param->freg[rd] = ifm.f;
+      pc_inclement(param);
+      if(param->step) printf("fsgnjxs %%f%d, %%f%d, %%f%d\n", rd, rs1, rs2);
       return;
     default:
       printf("unknown fatal error, exit\n");

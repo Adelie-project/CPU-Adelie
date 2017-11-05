@@ -1,32 +1,34 @@
 #include "encoder.hpp"
 
 unordered_map<string, struct r_factors> r_type = {
-  {   "add", {0b0000000, 0b000, 0b0110011, STD} },
-  {   "sub", {0b0100000, 0b000, 0b0110011, STD} },
-  {   "sll", {0b0000000, 0b001, 0b0110011, STD} },
-  {   "slt", {0b0000000, 0b010, 0b0110011, STD} },
-  {  "sltu", {0b0000000, 0b011, 0b0110011, STD} },
-  {   "xor", {0b0000000, 0b100, 0b0110011, STD} },
-  {   "srl", {0b0000000, 0b101, 0b0110011, STD} },
-  {   "sra", {0b0100000, 0b101, 0b0110011, STD} },
-  {    "or", {0b0000000, 0b110, 0b0110011, STD} },
-  {   "and", {0b0000000, 0b111, 0b0110011, STD} },
-  {  "slli", {0b0000000, 0b001, 0b0010011, SHIFT} },
-  {  "srli", {0b0000000, 0b101, 0b0010011, SHIFT} },
-  {  "srai", {0b0100000, 0b101, 0b0010011, SHIFT} },
-  {   "mul", {0b0000001, 0b000, 0b0110011, STD} },
-  {   "div", {0b0000001, 0b100, 0b0110011, STD} },
-  { "fadds", {0b0000000,    RM, 0b1010011, FSTD} },
-  { "fmuls", {0b0001000,    RM, 0b1010011, FSTD} },
-  { "fsubs", {0b0000100,    RM, 0b1010011, FSTD} },
-  { "fdivs", {0b0001100,    RM, 0b1010011, FSTD} },
-  {  "feqs", {0b1010000, 0b010, 0b1010011, FCMP} },
-  {  "flts", {0b1010000, 0b001, 0b1010011, FCMP} },
-  {  "fles", {0b1010000, 0b000, 0b1010011, FCMP} },
-  { "fmvsx", {0b1111000, 0b000, 0b1010011, FSX} },
-  { "fmvxs", {0b1110000, 0b000, 0b1010011, FXS} },
-  {"fcvtsw", {0b1101000,    RM, 0b1010011, FSX} },
-  {"fcvtws", {0b1100000,    RM, 0b1010011, FXS} }
+  {     "add", {0b0000000, 0b000, 0b0110011, STD} },
+  {     "sub", {0b0100000, 0b000, 0b0110011, STD} },
+  {     "sll", {0b0000000, 0b001, 0b0110011, STD} },
+  {     "slt", {0b0000000, 0b010, 0b0110011, STD} },
+  {    "sltu", {0b0000000, 0b011, 0b0110011, STD} },
+  {     "xor", {0b0000000, 0b100, 0b0110011, STD} },
+  {     "srl", {0b0000000, 0b101, 0b0110011, STD} },
+  {     "sra", {0b0100000, 0b101, 0b0110011, STD} },
+  {      "or", {0b0000000, 0b110, 0b0110011, STD} },
+  {     "and", {0b0000000, 0b111, 0b0110011, STD} },
+  {    "slli", {0b0000000, 0b001, 0b0010011, SHIFT} },
+  {    "srli", {0b0000000, 0b101, 0b0010011, SHIFT} },
+  {    "srai", {0b0100000, 0b101, 0b0010011, SHIFT} },
+  {     "mul", {0b0000001, 0b000, 0b0110011, STD} },
+  {     "div", {0b0000001, 0b100, 0b0110011, STD} },
+  {   "fadds", {0b0000000,    RM, 0b1010011, FSTD} },
+  {   "fmuls", {0b0001000,    RM, 0b1010011, FSTD} },
+  {   "fsubs", {0b0000100,    RM, 0b1010011, FSTD} },
+  {   "fdivs", {0b0001100,    RM, 0b1010011, FSTD} },
+  {    "feqs", {0b1010000, 0b010, 0b1010011, FCMP} },
+  {    "flts", {0b1010000, 0b001, 0b1010011, FCMP} },
+  {    "fles", {0b1010000, 0b000, 0b1010011, FCMP} },
+  {   "fmvsx", {0b1111000, 0b000, 0b1010011, FSX} },
+  {   "fmvxs", {0b1110000, 0b000, 0b1010011, FXS} },
+  {  "fcvtsw", {0b1101000,    RM, 0b1010011, FSX} },
+  {  "fcvtws", {0b1100000,    RM, 0b1010011, FXS} },
+  {  "fsqrts", {0b0101100,    RM, 0b1010011, FSQRT} },
+  { "fsgnjxs", {0b0010000, 0b010, 0b1010011, FSTD} }
 };
 
 unordered_map<string, struct i_factors> i_type = {
@@ -76,8 +78,8 @@ const char reg_pattern[10][4] = {
   { 'f', 'r', 'r', 'r' }, //FL
   { 'r', 'f', 'r', 'r' }, //FS
   { 'f', 'r', 'r', 'r' }, //FSX
-  { 'r', 'f', 'r', 'r' }  //FXS
-
+  { 'r', 'f', 'r', 'r' }, //FXS
+  { 'f', 'f', 'f', 'f' }  //FSQRT
 };
 
 unsigned set_regn(param_t *param, unsigned k, proc_t proc) {
@@ -138,7 +140,7 @@ unsigned encoding(param_t *param) {
     rd = set_regn(param, 1, proc);
     rs1 = set_regn(param, 2, proc);
     if (proc == SHIFT) rs2 = set_shamt(param, 3);
-    else if (proc == FSX || proc == FXS) rs2 = 0;
+    else if (proc == FSX || proc == FXS || proc == FSQRT) rs2 = 0;
     else rs2 = set_regn(param, 3, proc);
     result = (itr_r->second).funct7 << 25 | rs2 << 20 | rs1 << 15
            | (itr_r->second).funct3 << 12 | rd << 7 | (itr_r->second).opcode;
