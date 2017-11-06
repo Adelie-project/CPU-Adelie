@@ -231,7 +231,7 @@ void decode_all(param_t* param) {
         }
         else print_unknown_inst(param, 1010, i, inst);
         break;
-      case 0b1010011: //単精度浮動小数点数2項演算命令
+      case 0b1010011: //単精度浮動小数点数単項or二項演算命令
         decode_r_type(param, i, inst);
         switch (inst >> 25) {
           case 0b0000000: //FADDS
@@ -264,18 +264,27 @@ void decode_all(param_t* param) {
             if ((inst & 0x7000) == 0x0000 && (param->decoded)[i][3] == 0) (param->decoded)[i][0] = FMVXS;
             else print_unknown_inst(param, 1160, i, inst);
             break;
-          case 0b1101000: //fcvtsw
+          case 0b1101000: //FCVTSW
             check_rm(inst);
             if ((param->decoded)[i][3] == 0) (param->decoded)[i][0] = FCVTSW;
             else print_unknown_inst(param, 1170, i, inst);
             break;
-          case 0b1100000: //fcvtws
+          case 0b1100000: //FCVTWS
             check_rm(inst);
             if ((param->decoded)[i][3] == 0) (param->decoded)[i][0] = FCVTWS;
             else print_unknown_inst(param, 1180, i, inst);
             break;
+          case 0b0101100: //FSQRTS
+            check_rm(inst);
+            if ((param->decoded)[i][3] == 0) (param->decoded)[i][0] = FSQRTS;
+            else print_unknown_inst(param, 1190, i, inst);
+            break;
+          case 0b0010000: //FSGNJXS?
+            if ((inst & 0x7000) == 0x2000) (param->decoded)[i][0] = FSGNJXS;
+            else print_unknown_inst(param, 1200, i, inst);
+            break;
           default:
-            print_unknown_inst(param, 1199, i, inst);
+            print_unknown_inst(param, 1299, i, inst);
         }
         break;
       default:

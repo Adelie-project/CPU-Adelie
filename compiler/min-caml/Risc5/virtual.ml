@@ -135,8 +135,8 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
       (match M.find x env with
       | Type.Array(Type.Unit) -> Ans(Nop)
       | Type.Array(Type.Float) ->
-          Let((offset, Type.Int), SLL(y, C(3)),
-              Ans(LdDF(x, V(offset)))) (*ここ危険な予感*)
+          Let((offset, Type.Int), SLL(y, C(2)),(*C(3)から変更*)
+              Ans(LdDF(x, V(offset))))(*ここ危険な予感->対応済*)
       | Type.Array(_) ->
           Let((offset, Type.Int), SLL(y, C(2)),
               Ans(Ld(x, V(offset))))
@@ -146,8 +146,8 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
       (match M.find x env with
       | Type.Array(Type.Unit) -> Ans(Nop)
       | Type.Array(Type.Float) ->
-          Let((offset, Type.Int), SLL(y, C(3)),
-              Ans(StDF(z, x, V(offset))))(*ここ危険な予感*)
+          Let((offset, Type.Int), SLL(y, C(2)),(*C(3)から変更*)
+              Ans(StDF(z, x, V(offset))))(*ここ危険な予感->対応済*)
       | Type.Array(_) ->
           Let((offset, Type.Int), SLL(y, C(2)),
               Ans(St(z, x, V(offset))))

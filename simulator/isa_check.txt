@@ -1,14 +1,10 @@
-10/27追記
+11/5追記
 
 追加命令
 
 ---RV32M Standard Extension---
 MUL
-MULH
-(MULHSU)
-(MULHU)
 DIV
-(DIVU)
 ---RV32F Standard Extension---
 FLW
 FSW
@@ -20,9 +16,11 @@ FEQS
 FLTS
 FLES
 FMVSX // move int to float
-FMVXS // move float to int
+  (FMVXS // move float to int)
 FCVTSW // convert int to float
 FCVTWS // convert float to int
+FSQRTS
+FSGNJXS
 
 ==================================================================
 
@@ -32,9 +30,11 @@ lui rd, imm
   32bit定数(ただし上位20bitのみ,下位12bitはゼロ埋め)の生成
 auipc rd, imm
   (add upper immediate to pc)
-  pcに32bit定数(ただし下位12bitはゼロ埋め)を加えたものをrdに入れる
-  すなわち、rd=pc+imm
-  (auipcとjajrを組み合わせて任意のpcを取ることができるようになる)
+  pcに32bit定数(ただし下位12bitはゼロ埋め)を加え、その結果をrdに入れる
+  すなわち、
+  次のpc=今のpc+imm
+  rd=次のpc
+  (auipcとjalrを組み合わせて任意のpcの絶対アドレスを取ることができるようになるというけど、pcが飛ぶのでluiとjalrのほうがわかりやすい)
 jal rd, imm
   (jump and link)
   immは符号付きオフセット,2(バイト)の倍数を取るためimm[0]はフェッチしてきた命令にはない
