@@ -1,6 +1,4 @@
-.section ".text"
-.global min_caml_print_newline
-min_caml_print_newline:
+min_caml_print_newline: ; muri
 	set	10, %o0
 	st	%o7, [%i0]
 	call	putchar
@@ -8,8 +6,7 @@ min_caml_print_newline:
 	ld	[%i0], %o7
 	retl
 	nop
-.global min_caml_print_int
-min_caml_print_int:
+min_caml_print_int: ; muri
 	set	format_int, %o0
 	mov	%i2, %o1
 	st	%o7, [%i0]
@@ -18,8 +15,7 @@ min_caml_print_int:
 	ld	[%i0], %o7
 	retl
 	nop
-.global min_caml_print_byte
-min_caml_print_byte:
+min_caml_print_byte: ; muri
 	mov	%i2, %o0
 	st	%o7, [%i0]
 	call	putchar
@@ -27,8 +23,7 @@ min_caml_print_byte:
 	ld	[%i0], %o7
 	retl
 	nop
-.global min_caml_prerr_int
-min_caml_prerr_int:
+min_caml_prerr_int: ; muri
 	set	min_caml_stderr, %o0
 	set	format_int, %o1
 	mov	%i2, %o2
@@ -38,8 +33,7 @@ min_caml_prerr_int:
 	ld	[%i0], %o7
 	retl
 	nop
-.global min_caml_prerr_byte
-min_caml_prerr_byte:
+min_caml_prerr_byte: ; muri
 	mov	%i2, %o0
 	set	min_caml_stderr, %o1
 	st	%o7, [%i0]
@@ -48,8 +42,7 @@ min_caml_prerr_byte:
 	ld	[%i0], %o7
 	retl
 	nop
-.global min_caml_prerr_float
-min_caml_prerr_float:
+min_caml_prerr_float: ; muri
 	set	min_caml_stderr, %o0
 	set	format_float, %o1
 	std	%f0, [%i0]
@@ -60,8 +53,7 @@ min_caml_prerr_float:
 	ld	[%i0], %o7
 	retl
 	nop
-.global min_caml_read_int
-min_caml_read_int:
+min_caml_read_int: ; muri
 	set	format_int, %o0
 	st	%o7, [%i0]
 	call	scanf, 0
@@ -70,8 +62,7 @@ min_caml_read_int:
 	ld	[%fp-20], %i2
 	retl
 	nop
-.global min_caml_read_float
-min_caml_read_float:
+min_caml_read_float: ; muri
 	set	format_float, %o0
 	st	%o7, [%i0]
 	call	scanf, 0
@@ -80,81 +71,53 @@ min_caml_read_float:
 	ldd	[%fp-24], %f0
 	retl
 	nop
-.global min_caml_create_array
-min_caml_create_array:
-	mov	%i2, %i4
-	mov	%i1, %i2
+min_caml_create_array: ; probably muri これはknormal.mlで生産される ;r4=length r5=中身
+	add %r3, %r0, %r6 ;hp退避
 create_array_loop:
-	tst	%i4
-	bnz	create_array_cont
-	nop
-	andcc	%i1, 4, %g0
-	bz	create_array_exit
-	nop
-	add	%i1, 4, %i1
+	beq %r4, %r0, create_array_exit
+	sw	%r3, %r5, $0
+	addi	%r4, %r4, $-1
+	addi	%r3, %r3, $4
+	jal	%r0, create_array_loop
 create_array_exit:
-	retl
-	nop
-create_array_cont:
-	st	%i3, [%i1]
-	dec	%i4
-	add	%i1, 4, %i1
-	b	create_array_loop
-	nop
-.global min_caml_create_float_array
-min_caml_create_float_array:
-	mov	%i2, %i3
-	mov	%i1, %i2
+	add %r4, %r0, %r6 ;戻してあげる
+	jalr	%r0, %r1, $0 ; exit sparcだとalign 8 になるようにandccとかしているけど我々は不要
+min_caml_create_float_array: ; probably muri ;r4=length f1=中身
+	add %r3, %r0, %r5 ;hp退避
 create_float_array_loop:
-	tst	%i3
-	bnz	create_float_array_cont
-	nop
-	retl
-	nop
-create_float_array_cont:
-	std	%f0, [%i1]
-	dec	%i3
-	add	%i1, 8, %i1
-	b	create_float_array_loop
-	nop
-.global min_caml_abs_float
-min_caml_abs_float:
-	fabss	%f0, %f0
-	retl
-	nop
-.global min_caml_sqrt
-min_caml_sqrt:
-	fsqrtd	%f0, %f0
-	retl
-	nop
-.global min_caml_floor
-min_caml_floor:
-	std	%f0, [%i0]
-	ldd	[%i0], %o0
-	st	%o7, [%i0]
-	call	floor
-	nop
-	ld	[%i0], %o7
-	retl
-	nop
-.global min_caml_int_of_float
-min_caml_int_of_float:
-.global min_caml_truncate
-min_caml_truncate:
-	fdtoi	%f0, %f0
-	st	%f0, [%i0]
-	ld	[%i0], %i2
-	retl
-	nop
-.global min_caml_float_of_int
-min_caml_float_of_int:
-	st	%i2, [%i0]
-	ld	[%i0], %f0
-	fitod	%f0, %f0
-	retl
-	nop
-.global min_caml_cos
-min_caml_cos:
+	beq %r4, %r0, create_float_array_exit
+	fsw	%r3, %f1, $0
+	addi	%r4, %r4, $-1
+	addi	%r3, %r3, $4
+	jal	%r0, create_float_array_loop
+create_float_array_exit:
+	add %r4, %r0, %r5 ;戻してあげる
+	jalr	%r0, %r1, $0
+min_caml_abs_float: ; te de tukuru
+	fsgnjxs	%f1, %f1, %f1
+	jalr	%r0, %r1, $0
+min_caml_sqrt: ; te de tukuru
+	fsqrt	%f1, %f1
+	jalr	%r0, %r1, $0
+min_caml_floor: ; tukuru
+	set	%r4, $0
+	fmvsx	%f2, %r4
+	fles	%r4, %f2, %f1
+	beq	%r4, %r0, bne_else
+	fcvtws	%r4, %f1
+	fcvtsw	%f1, %r4
+bne_else:
+	fcvtws	%r4, %f1
+	addi	%r4, %r4, $-1
+	fcvtsw	%f1, %r4
+min_caml_int_of_float: ; te de tukuru
+min_caml_truncate: ; nanikore
+	fcvtws	%r4, %f1
+	jalr	%r0, %r1, $0
+min_caml_float_of_int: ; te de tukuru
+	fcvtsw	%f1, %r4
+	jalr	%r0, %r1, $0
+min_caml_cos: ; muzukashi
 	std	%f0, [%i0]
 	ldd	[%i0], %o0
 	st	%o7, [%i0]
@@ -163,8 +126,7 @@ min_caml_cos:
 	ld	[%i0], %o7
 	retl
 	nop
-.global min_caml_sin
-min_caml_sin:
+min_caml_sin: ; muzukashi
 	std	%f0, [%i0]
 	ldd	[%i0], %o0
 	st	%o7, [%i0]
@@ -173,8 +135,7 @@ min_caml_sin:
 	ld	[%i0], %o7
 	retl
 	nop
-.global min_caml_atan
-min_caml_atan:
+min_caml_atan: ; muzukashi
 	std	%f0, [%i0]
 	ldd	[%i0], %o0
 	st	%o7, [%i0]
@@ -183,6 +144,7 @@ min_caml_atan:
 	ld	[%i0], %o7
 	retl
 	nop
+ ; よくわからないので以下は放置
 .section ".rodata"
 format_int:
 	.asciz	"%d"
