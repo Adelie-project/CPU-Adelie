@@ -5,12 +5,13 @@ let rec f x =
   pi + x + x in
 print_int (f 2 + y)
 *)
-(*
+
+
 let rec fib x =
   if x < 2 then 1
   else fib (x-1) + fib (x-2) in
 print_int (fib 34)
-*)
+
 
 (*
 let x = 1. in
@@ -43,14 +44,14 @@ let rec g x k =
 g 2 (let rec f r = print_int r in f)
 *)
 
-
+(*
 let rec ack x y k =
   if x <= 0 then k (y+1) else
   if y <= 0 then ack (x-1) x k
   else           ack x (y-1) (let rec f r = ack (x-1) r k in f)
 in
   ack 3 5 (let rec f r = print_int r in f)
-
+*)
 
 (*
 type t = {
@@ -73,4 +74,11 @@ type ilist =
 Nil;
 Cons(3,Nil);
 Cons(3,Cons(4,Nil))
+*)
+(*
+let rec min_caml_floor x =
+  if (x >= 0.)
+  then float_of_int (int_of_float x)
+  else float_of_int (int_of_float x - 1) in
+print_int (min_caml_floor (-3.4))
 *)
