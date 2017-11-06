@@ -121,6 +121,8 @@ and print_id_t_list idtt n =
 
 let limit = ref 1000
 
+let gflag = ref 0(*for "-g" option*)
+
 let rec iter n e = (* 最適化処理をくりかえす (caml2html: main_iter) *)
   Format.eprintf "iteration %d@." n;
   if n = 0 then e else
@@ -131,33 +133,40 @@ let rec iter n e = (* 最適化処理をくりかえす (caml2html: main_iter) *)
 let lexbuf outchan l glb_l= (* バッファをコンパイルしてチャンネルへ出力する (caml2html: main_lexbuf) *)
   Id.counter := 0;
   Typing.extenv := M.empty;
-  (*min-rtのときはここから*)
-  let s = Typing.f
-              (Parser.exp Lexer.token l) in
-  let k = KNormal.f s in
-  print_string "---syntax_t---\n";
-  print_syntax_t s 0;
-  print_string "---knormal_t---\n";
-  print_knormal_t k 0;
-  (*ここまでcomment out すること*)
-  (*
-  print_string "---common subexpression elimination---\n";
-  print_knormal_t (CommonSubexp.f k) 0;
-  *)
-  Emit.f outchan
-    (RegAlloc.f
-       (*(Simm.f*)
-          (Virtual.f
-             (Closure.f
-                (iter !limit
-                   (Alpha.f
-                     k(*いつもはこっち*)
-                     (*(KNormal.f
-                       (Typing.f
-                         (Joinglb.f
-                           (Parser.exp Lexer.token l)
-                           (Parser.exp Lexer.token glb_l)))*)(*min-rtのときだけこっち*)
-                            )))))
+  if (!gflag = 0) then
+    let s = Typing.f
+                (Parser.exp Lexer.token l) in
+    let k = KNormal.f s in
+    print_string "---syntax_t---\n";
+    print_syntax_t s 0;
+    print_string "---knormal_t---\n";
+    print_knormal_t k 0;
+    (*
+    print_string "---common subexpression elimination---\n";
+    print_knormal_t (CommonSubexp.f k) 0;
+    *)
+    Emit.f outchan
+      (RegAlloc.f
+         (Simm.f
+            (Virtual.f
+               (Closure.f
+                  (iter !limit
+                     (Alpha.f
+                       k))))))
+  else
+    Emit.f outchan
+      (RegAlloc.f
+         (Simm.f
+            (Virtual.f
+               (Closure.f
+                  (iter !limit
+                     (Alpha.f
+                       (KNormal.f
+                         (Typing.f
+                           (Joinglb.f
+                             (Parser.exp Lexer.token l)
+                             (Parser.exp Lexer.token glb_l))))
+                              ))))))
 
 let string s glbchan= lexbuf stdout (Lexing.from_string s) (Lexing.from_channel glbchan)(* 文字列をコンパイルして標準出力に表示する (caml2html: main_string) *)
 
@@ -175,10 +184,11 @@ let () = (* ここからコンパイラの実行が開始される (caml2html: main_entry) *)
   let files = ref [] in
   Arg.parse
     [("-inline", Arg.Int(fun i -> Inline.threshold := i), "maximum size of functions inlined");
-     ("-iter", Arg.Int(fun i -> limit := i), "maximum number of optimizations iterated")]
+     ("-iter", Arg.Int(fun i -> limit := i), "maximum number of optimizations iterated");
+     ("-g", Arg.Unit(fun _ -> gflag := 1), "include or not globals.ml")](*Unitって怪しいけど-gをつけたとき,globals.mlをincludeしてmin-rtをコンパイルできるようになる*)
     (fun s -> files := !files @ [s])
     ("Mitou Min-Caml Compiler (C) Eijiro Sumii\n" ^
-     Printf.sprintf "usage: %s [-inline m] [-iter n] ...filenames without \".ml\"..." Sys.argv.(0));
+     Printf.sprintf "usage: %s [-inline m] [-iter n] [-g] ...filenames without \".ml\"..." Sys.argv.(0));
   List.iter
     (fun f -> ignore (file f))
     !files
