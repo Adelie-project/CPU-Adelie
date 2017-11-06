@@ -26,7 +26,30 @@ module core_top
 
     input [31:0] R_TDATA,
     output R_TREADY,
-    input R_TVALID
+    input R_TVALID,
+
+    // In/Out
+    output [3:0] S_AXI_AWADDR,
+    output S_AXI_AWVALID,
+    input S_AXI_AWREADY,
+
+    output [31:0] S_AXI_WDATA,
+    output [3:0] S_AXI_WSTB,
+    output S_AXI_WVALID,
+    input S_AXI_WREADY,
+
+    input [1:0] S_AXI_BRESP,
+    input S_AXI_BVALID,
+    output S_AXI_BREADY,
+
+    output [3:0] S_AXI_ARADDR,
+    output S_AXI_ARVALID,
+    input S_AXI_ARREADY,
+
+    input [31:0] S_AXI_RDATA,
+    input [1:0] S_AXI_RRESP,
+    input S_AXI_RVALID,
+    output S_AXI_RREADY
 
   );
 
@@ -42,6 +65,7 @@ module core_top
        i_sw, i_addi, i_slti, i_sltiu, i_xori, i_ori, i_andi, i_slli, i_srli, i_srai,
        i_add, i_sub, i_sll, i_slt, i_sltu, i_xor, i_srl, i_sra, i_or, i_and;
   wire i_flw, i_fsw, i_fadds, i_fsubs, i_fmuls, i_fdivs, i_feqs, i_flts, i_fles;
+  wire i_in, i_out;
   wire n_inst;
   reg [31:0] a_tdata, b_tdata;
   reg a_tvalid, b_tvalid, op_tready;
@@ -168,6 +192,9 @@ module core_top
     .I_FLTS (i_flts),
     .I_FLES (i_fles),
 
+    .I_IN (i_in),
+    .I_OUT (i_out),
+
     .N_INST (n_inst)
 
   );
@@ -240,6 +267,15 @@ module core_top
       b_tdata <= (i_fadds | i_fsubs | i_fmuls | i_fdivs | i_feqs | i_flts | i_fles) ? rs2 : 0;
       b_tvalid <= (i_fadds | i_fsubs | i_fmuls | i_fdivs | i_feqs | i_flts | i_fles);
       op_tready <= (i_fadds | i_fsubs | i_fmuls | i_fdivs | i_feqs | i_flts | i_fles);
+    end
+  end
+
+  // in/out実行
+  // inならrdに書き込むだけ    
+  always @(posedge CLK) begin
+    if (!RST_N) begin
+
+    end else begin
     end
   end
 

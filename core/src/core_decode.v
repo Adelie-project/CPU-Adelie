@@ -62,6 +62,9 @@ module core_decode
   output reg I_FLTS,
   output reg I_FLES,
 
+  output reg I_IN,
+  output reg I_OUT,
+
   output wire N_INST
 );
   // IMM
@@ -78,7 +81,7 @@ module core_decode
     end
   end
 
-  assign RD_NUM = ((INST[6:2] == 5'b01100) | (INST[6:2] == 5'b10100) |((INST[6:0] == 7'b1100111) || (INST[6:0] == 7'b0000011) ||  (INST[6:0] == 7'b0000111) ||(INST[6:0] == 7'b0010011)) | (INST[4:0] == 5'b10111) | (INST[6:0] == 7'b1101111)) ? INST[11:7] : 5'd0;
+  assign RD_NUM = ((INST[6:2] == 5'b01100) | (INST[6:2] == 5'b10100) |((INST[6:0] == 7'b1100111) || (INST[6:0] == 7'b0000011) ||  (INST[6:0] == 7'b0000111) ||(INST[6:0] == 7'b0010011)) | (INST[4:0] == 5'b10111) | (INST[6:0] == 7'b1101111) | (INST[6:0] == 7'b0000001)) ? INST[11:7] : 5'd0;
   assign RS1_NUM = ((INST[6:2] == 5'b01100) | (INST[6:2] == 5'b10100) | ((INST[6:0] == 7'b1100111) || (INST[6:0] == 7'b0000011) ||  (INST[6:0] == 7'b0000111) ||(INST[6:0] == 7'b0010011)) | (INST[6:0] == 7'b0100011) | (INST[6:0] == 7'b0100111) | (INST[6:0] == 7'b1100011)) ? INST[19:15] : 5'd0;
   assign RS2_NUM = ((INST[6:2] == 5'b01100) | (INST[6:2] == 5'b10100) | (INST[6:0] == 7'b0100011) | (INST[6:0] == 7'b1100011) | (INST[6:0] == 7'b0100111)) ? INST[24:20] : 5'd0;
 
@@ -139,6 +142,8 @@ module core_decode
       I_FEQS <= 1'b0;
       I_FLTS <= 1'b0;
       I_FLES <= 1'b0;
+      I_IN <= 1'b0;
+      I_OUT <= 1'b0;
     end else begin
       I_ADDI <= (INST[6:0] == 7'b0010011) && (func3 == 3'b000);
       I_SLTI  <= (INST[6:0] == 7'b0010011) && (func3 == 3'b010);
@@ -191,6 +196,8 @@ module core_decode
       I_FEQS <= (INST[6:2] == 5'b10100) && (func7 == 7'b1010000) && (func3 == 3'b010);
       I_FLTS <= (INST[6:2] == 5'b10100) && (func7 == 7'b1010000) && (func3 == 3'b001);
       I_FLES <= (INST[6:2] == 5'b10100) && (func7 == 7'b1010000) && (func3 == 3'b000);
+      I_IN <= (INST[6:0] == 7'b0000001) && (func3 == 3'b000);
+      I_OUT <= (INST[6:0] == 7'b0000001) && (func3 == 3'b001);
     end
   end
   assign N_INST = ~( I_ADDI | I_SLTI| I_SLTIU| I_XORI| I_ORI| I_ANDI| I_SLLI| I_SRLI| I_SRAI| I_ADD| I_SUB| I_SLL| I_SLT| I_SLTU| I_XOR| I_SRL| I_SRA| I_OR| I_AND| I_BEQ| I_BNE| I_BLT| I_BGE| I_BLTU| I_BGEU| I_LB| I_LH| I_LW| I_LBU| I_LHU| I_SB| I_SH| I_SW | I_LUI | I_AUIPC | I_JAL | I_JALR);
