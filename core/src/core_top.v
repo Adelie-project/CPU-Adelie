@@ -271,10 +271,11 @@ module core_top
   end
 
   // in/out実行
-  // inならrdに書き込むだけ    
+  // inならrdに書き込むだけ
+  // ineをほげする
+  // outならr1からoutする
   always @(posedge CLK) begin
     if (!RST_N) begin
-
     end else begin
     end
   end
@@ -331,6 +332,8 @@ module core_top
     .WADDR (wr_addr),
     .WE (wr_we),
     .WDATA (wr_data),
+    .INE (ine),
+    .INDATA (S_AXI_RDATA),
 
     .RS1ADDR (rs1_num),
     .RS1 (rs1),
