@@ -6,6 +6,8 @@ module core_reg
    input [4:0] WADDR,
    input  WE,
    input [31:0] WDATA,
+   input  INE,
+   input [7:0] INDATA,
 
    input [4:0] RS1ADDR,
    output reg [31:0] RS1,
@@ -86,6 +88,37 @@ module core_reg
         if(_WE && (WADDR == 5'd29)) reg29 <= WDATA;
         if(_WE && (WADDR == 5'd30)) reg30 <= WDATA;
         if(_WE && (WADDR == 5'd31)) reg31 <= WDATA;
+        if(INE && (WADDR == 5'd1)) reg1 <= {reg1[31:8],INDATA};
+        if(INE && (WADDR == 5'd2)) reg2 <= {reg2[31:8],INDATA};
+        if(INE && (WADDR == 5'd3)) reg3 <= {reg3[31:8],INDATA};
+        if(INE && (WADDR == 5'd4)) reg4 <= {reg4[31:8],INDATA};
+        if(INE && (WADDR == 5'd5)) reg5 <= {reg5[31:8],INDATA};
+        if(INE && (WADDR == 5'd6)) reg6 <= {reg6[31:8],INDATA};
+        if(INE && (WADDR == 5'd7)) reg7 <= {reg7[31:8],INDATA};
+        if(INE && (WADDR == 5'd8)) reg8 <= {reg8[31:8],INDATA};
+        if(INE && (WADDR == 5'd9)) reg9 <= {reg9[31:8],INDATA};
+        if(INE && (WADDR == 5'd10)) reg10 <= {reg10[31:8],INDATA};
+        if(INE && (WADDR == 5'd11)) reg11 <= {reg11[31:8],INDATA};
+        if(INE && (WADDR == 5'd12)) reg12 <= {reg12[31:8],INDATA};
+        if(INE && (WADDR == 5'd13)) reg13 <= {reg13[31:8],INDATA};
+        if(INE && (WADDR == 5'd14)) reg14 <= {reg14[31:8],INDATA};
+        if(INE && (WADDR == 5'd15)) reg15 <= {reg15[31:8],INDATA};
+        if(INE && (WADDR == 5'd16)) reg16 <= {reg16[31:8],INDATA};
+        if(INE && (WADDR == 5'd17)) reg17 <= {reg17[31:8],INDATA};
+        if(INE && (WADDR == 5'd18)) reg18 <= {reg18[31:8],INDATA};
+        if(INE && (WADDR == 5'd19)) reg19 <= {reg19[31:8],INDATA};
+        if(INE && (WADDR == 5'd20)) reg20 <= {reg20[31:8],INDATA};
+        if(INE && (WADDR == 5'd21)) reg21 <= {reg21[31:8],INDATA};
+        if(INE && (WADDR == 5'd22)) reg22 <= {reg22[31:8],INDATA};
+        if(INE && (WADDR == 5'd23)) reg23 <= {reg23[31:8],INDATA};
+        if(INE && (WADDR == 5'd24)) reg24 <= {reg24[31:8],INDATA};
+        if(INE && (WADDR == 5'd25)) reg25 <= {reg25[31:8],INDATA};
+        if(INE && (WADDR == 5'd26)) reg26 <= {reg26[31:8],INDATA};
+        if(INE && (WADDR == 5'd27)) reg27 <= {reg27[31:8],INDATA};
+        if(INE && (WADDR == 5'd28)) reg28 <= {reg28[31:8],INDATA};
+        if(INE && (WADDR == 5'd29)) reg29 <= {reg29[31:8],INDATA};
+        if(INE && (WADDR == 5'd30)) reg30 <= {reg30[31:8],INDATA};
+        if(INE && (WADDR == 5'd31)) reg31 <= {reg31[31:8],INDATA};
       end
    end
 
