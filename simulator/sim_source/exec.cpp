@@ -105,6 +105,7 @@ inline void set_uj_type(param_t* param, unsigned* rd, int* imm) {
 int imm, evac;
 unsigned rs1, rs2, rd;
 int_float_mover ifm, ifm2;
+unsigned char in_data, out_data;
 
 void exec_main(param_t* param) {
   switch((param->decoded)[param->rbuf_p][0]) {
@@ -437,6 +438,34 @@ void exec_main(param_t* param) {
       if(rd != 0) param->freg[rd] = ifm.f;
       pc_inclement(param);
       if(param->step) printf("fsgnjxs %%f%d, %%f%d, %%f%d\n", rd, rs1, rs2);
+      return;
+    case ROT:
+      set_r_type(param, &rd, &rs1, &rs2);
+      if(rd != 0) param->reg[rd] =
+        ((unsigned)(param->reg[rs1] & 0xff000000) >> 24)
+      | ((unsigned)(param->reg[rs1] & 0x00ff0000) >> 8)
+      | ((unsigned)(param->reg[rs1] & 0x0000ff00) << 8)
+      | ((unsigned)(param->reg[rs1] & 0x000000ff) << 24);
+      pc_inclement(param);
+      if(param->step) printf("rot %%r%d, %%r%d\n", rd, rs1);
+      return;
+    case IN:
+      set_i_type(param, &rd, &rs1, &imm);
+      if(param->ifp == NULL) { printf("error: no input file though \"in\" is called.\n"); exit(EXIT_FAILURE); }
+      if((int)fread(&in_data, sizeof(unsigned char), 1, param->ifp) < 0) { perror("fread error"); exit(EXIT_FAILURE); }
+      if(rd != 0) param->reg[rd] = (param->reg[rd] & 0xffffff00) | (unsigned)in_data;
+      pc_inclement(param);
+      if(param->step) printf("in %%r%d\n", rd);
+      return;
+    case OUT:
+      set_s_type(param, &rs1, &rs2, &imm);
+      if(param->ofp == NULL) { printf("error: no output file though \"out\" is called.\n"); exit(EXIT_FAILURE); }
+      out_data = param->reg[rs1] & 0x000000ff;
+      if (fwrite(&out_data, sizeof(unsigned char), 1, param->ofp) != 1) {
+        perror("fwrite error"); exit(EXIT_FAILURE);
+      }
+      pc_inclement(param);
+      if(param->step) printf("out %%r%d\n", rs1);
       return;
     default:
       printf("unknown fatal error, exit\n");

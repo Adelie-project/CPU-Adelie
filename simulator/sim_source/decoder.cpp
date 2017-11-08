@@ -1,7 +1,7 @@
 #include "decoder.hpp"
 
 inline void print_unknown_inst(param_t* param, int x, int i, unsigned inst) {
-  printf("error$%d: unknown %dth instruction of %08X.\n", x, param->rbuf_begin + i, inst);
+  printf("error$%d: unknown %dth instruction of 0x%08X.\n", x, param->rbuf_begin + i, inst);
   exit(EXIT_FAILURE);
 }
 
@@ -285,6 +285,26 @@ void decode_all(param_t* param) {
             break;
           default:
             print_unknown_inst(param, 1299, i, inst);
+        }
+        break;
+      case 0b0001011: // custom-0
+        if ((inst & 0x7000) == 0x1000) {
+          decode_r_type(param, i, inst);
+          if((param->decoded)[i][3] == 0) (param->decoded)[i][0] = ROT;
+          else print_unknown_inst(param, 1310, i, inst);
+        }
+        else print_unknown_inst(param, 1399, i, inst);
+        break;
+      case 0b0000001: // IN or OUT
+        if ((inst & 0x7000) == 0x0000) {
+          decode_i_type(param, i, inst);
+          if((param->decoded)[i][2] == 0 && (param->decoded)[i][3] == 0) (param->decoded)[i][0] = IN;
+          else print_unknown_inst(param, 1410, i, inst);
+        }
+        else if ((inst & 0x7000) == 0x1000) {
+          decode_s_type(param, i, inst);
+          if((param->decoded)[i][2] == 0 && (param->decoded)[i][3] == 0) (param->decoded)[i][0] = OUT;
+          else print_unknown_inst(param, 1420, i, inst);
         }
         break;
       default:

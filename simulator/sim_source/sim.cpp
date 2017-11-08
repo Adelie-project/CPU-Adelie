@@ -45,18 +45,35 @@ int main(int argc, char *argv[]) {
     else if (strbuf == "-f") {
       param->f_display = true;
     }
-    else {
-      if (param->fp != NULL) { printf("error: unknown option of %s\n", strbuf.c_str()); exit(EXIT_FAILURE); }
-      param->fp = fopen(argv[i], "rb");
-      if (param->fp == NULL) { perror("fopen error"); exit(EXIT_FAILURE); }
+    else if (strbuf == "-i") {
+      ++i;
+      if (i >= argc) { printf("error: specify an input file after option \"-i\".\n"); exit(EXIT_FAILURE); }
+      string strbuf = argv[i];
       if (strbuf.substr(strbuf.length() - 4, 4) != ".bin") {
-        printf("error: specify an assembly file \"*.bin\".\n");
+        printf("error: specify a binary file \"*.bin\" for an input file.\n");
         exit(EXIT_FAILURE);
       }
+      param->ifp = fopen(argv[i], "rb");
+      if (param->ifp == NULL) { perror("fopen error"); exit(EXIT_FAILURE); }
+    }
+    else if (strbuf == "-o") {
+      ++i;
+      if (i >= argc) { printf("error: specify an output file after option \"-o\".\n"); exit(EXIT_FAILURE); }
+      strbuf = argv[i];
+      param->ofp = fopen(argv[i], "w");
+      if (param->ofp == NULL) { perror("fopen error"); exit(EXIT_FAILURE); }
+    }
+    else {
+      if (param->fp != NULL) { printf("error: unknown option of %s\n", strbuf.c_str()); exit(EXIT_FAILURE); }
+      if (strbuf.substr(strbuf.length() - 4, 4) != ".bin") {
+        printf("error: specify a binary file \"*.bin\".\n");
+        exit(EXIT_FAILURE);
+      }
+      param->fp = fopen(argv[i], "rb");
+      if (param->fp == NULL) { perror("fopen error"); exit(EXIT_FAILURE); }
     }
   }
   if (param->fp == NULL) { printf("error: specify a file\n"); exit(EXIT_FAILURE); }
-
   //0バイト目から読んで初期化
   exec_jmp_fread(param, 0);
 

@@ -11,7 +11,7 @@
 using namespace std;
 
 enum proc_t {
-  STD, SHIFT, FSTD, FCMP, FL, FS, FSX, FXS, FSQRT
+  STD, SHIFT, FSTD, FCMP, FL, FS, FSX, FXS, FUNARY, UNARY, IN, OUT
 };
 
 struct r_factors {

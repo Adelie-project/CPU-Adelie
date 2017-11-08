@@ -28,6 +28,7 @@ struct param_t {
   unsigned wave;
   bool step;
   FILE *fp;
+  FILE *ifp, *ofp;
   unsigned rbuf[RBUFSIZE];
   unsigned decoded[RBUFSIZE][4];
   unsigned rbuf_p;
@@ -49,7 +50,7 @@ enum inst_t {
   ADDI, SLTI, SLTIU, XORI, ORI, ANDI, SLLI, SRLI, SRAI,
   ADD, SUB, SLL, SLT, SLTU, XOR, SRL, SRA, OR, AND,
   MUL, DIV, FLW, FSW, FADDS, FSUBS, FMULS, FDIVS,
-  FEQS, FLTS, FLES, FMVSX, FMVXS, FCVTSW, FCVTWS, FSQRTS, FSGNJXS
+  FEQS, FLTS, FLES, FMVSX, FMVXS, FCVTSW, FCVTWS, FSQRTS, FSGNJXS, ROT, IN, OUT
 };
 
 void init_param(param_t* param);
