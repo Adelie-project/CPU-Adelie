@@ -69,23 +69,10 @@ void parse(param_t *param) {
 }
 
 void pre_parse(param_t *param) {
-  //トリミング
-  int a = INT_MAX, b = 0;
-  Loop(i, (param->readline).size()) {
-    char c1 = param->readline[i];
-    if (c1 == ' ' || c1 == '\t') continue;
-    else { a = i; break; }
-  }
-  if (a == INT_MAX) return;
-  Loopr(i, (param->readline).size()) {
-    char c1 = param->readline[i];
-    if (c1 == ' ' || c1 == '\t') continue;
-    else { b = i; break; }
-  }
-  string s = (param->readline).substr(a, b - a + 1);
+  divide(param);
   //ラベリング
-  if (s.back() == ':') {
-    string labelname = s.substr(0, s.length() - 1);
+  if ((param->buf).size() == 0 || (param->buf[0]).back() == ':') {
+    string labelname = (param->buf[0]).substr(0, (param->buf[0]).length() - 1);
     if (labelname.length() == 0) { printf("\x1b[31merror\x1b[39m: illegal definition of label: %s in line %d\n", labelname.c_str(), param->lineno); exit(EXIT_FAILURE); }
     if ((param->labels).find(labelname) == (param->labels).end()) {
       param->labels[labelname] = param->pc;
@@ -94,7 +81,7 @@ void pre_parse(param_t *param) {
     return;
   }
   //特殊処理
-  pre_parce_irregular(param, s);
+  pre_parce_irregular(param);
   param->pc += param->pc_interval;
   return;
 }

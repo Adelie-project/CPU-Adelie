@@ -1,3 +1,4 @@
+label0:
 set %r2, $-9 ;1命令0
 label1:
 labelother1:

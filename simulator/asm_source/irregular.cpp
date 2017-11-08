@@ -22,7 +22,7 @@ void divide(param_t *param) {
     }
     //
     if (c == ';') break;
-    else if (c == ' ' || c == '\t') {
+    else if (c <= ' ' || c == '\t') {
       if (k != i) {
         (param->buf).push_back(param->readline.substr(k, i - k));
         if (syntax_mode == 0) syntax_mode = 1;
@@ -35,6 +35,7 @@ void divide(param_t *param) {
       if (c == ':') {
         (param->buf).push_back(param->readline.substr(k, i - k + 1));
         syntax_mode = 2;
+        k = i + 1;
       }
       else if (c == ',') {
         if (syntax_mode == 0) { printf("\x1b[31merror\x1b[39m: syntax error in character %d, line %d\n", i+1, param->lineno); exit(EXIT_FAILURE); }
@@ -48,7 +49,6 @@ void divide(param_t *param) {
 }
 
 void type_i_irregular(param_t *param, unsigned k, int digit, string inst) {
-  divide(param);
   if(param->buf[k][0] != '$') { printf("\x1b[31merror\x1b[39m: syntax error in line %d: immediate should begin with '$'.\n", param->lineno); exit(EXIT_FAILURE); }
   pair<int, int> imms;
   if(param->buf[k].size() > 2 && param->buf[k][1] == '0' && param->buf[k][2] == 'x') {
@@ -80,9 +80,8 @@ void type_i_irregular(param_t *param, unsigned k, int digit, string inst) {
   }
 }
 
-void pre_parce_irregular(param_t* param, string s) {
-  if(s.substr(0, 3) == "set") {
-    divide(param);
+void pre_parce_irregular(param_t* param) {
+  if(param->buf[0] == "set") {
     unsigned rd = set_regn(param, 1, STD);
     if(param->buf[2][0] == '$') {
       int imm = strtol((param->buf[2]).substr(1, (param->buf[2]).size()-1).c_str(), NULL, 0);
@@ -105,12 +104,12 @@ void pre_parce_irregular(param_t* param, string s) {
         param->irregular[param->pc] = { "ori %r" + to_string(rd) + ", %r" + to_string(rd) + ", " + param->buf[2], false };
     }
   }
-  else if (s.substr(0, 4) == "addi") type_i_irregular(param, 3, 12, "add");
-  else if (s.substr(0, 5) == "sltiu") type_i_irregular(param, 3, 12, "sltu");
-  else if (s.substr(0, 4) == "slti") type_i_irregular(param, 3, 12, "slt");
-  else if (s.substr(0, 4) == "xori") type_i_irregular(param, 3, 12, "xor");
-  else if (s.substr(0, 3) == "ori") type_i_irregular(param, 3, 12, "or");
-  else if (s.substr(0, 4) == "andi") type_i_irregular(param, 3, 12, "and");
+  else if (param->buf[0] == "addi") type_i_irregular(param, 3, 12, "add");
+  else if (param->buf[0] == "sltiu") type_i_irregular(param, 3, 12, "sltu");
+  else if (param->buf[0] == "slti") type_i_irregular(param, 3, 12, "slt");
+  else if (param->buf[0] == "xori") type_i_irregular(param, 3, 12, "xor");
+  else if (param->buf[0] == "ori") type_i_irregular(param, 3, 12, "or");
+  else if (param->buf[0] == "andi") type_i_irregular(param, 3, 12, "and");
 }
 
 void parce_irregular(param_t* param) {
