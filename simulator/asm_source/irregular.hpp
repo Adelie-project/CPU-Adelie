@@ -12,7 +12,7 @@
 
 void divide(param_t *param);
 
-void pre_parce_irregular(param_t* param, string s);
+void pre_parce_irregular(param_t* param);
 
 void parce_irregular(param_t* param);
 
