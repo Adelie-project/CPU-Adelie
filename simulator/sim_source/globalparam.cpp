@@ -6,7 +6,9 @@ void init_param (param_t* param) {
   param->breakpoint = UINT_MAX;
   param->wave = 0;
   param->step = false;
-  param->fp = NULL; // 読み取りファイル記述子
+  param->fp = NULL; // 命令列ファイル記述子
+  param->ifp = NULL; // 入力ファイル記述子
+  param->ofp = NULL; // 出力ファイル記述子
   param->rbuf_p = 0; //rbuf中の何命令目
   param->rsize = 0; //rbuf中の有効なサイズ
   param->rbuf_begin = UINT_MAX - RBUFSIZE; //rbufが何命令目から始まっているか

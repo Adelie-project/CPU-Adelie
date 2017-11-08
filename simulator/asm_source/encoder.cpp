@@ -27,8 +27,9 @@ unordered_map<string, struct r_factors> r_type = {
   {   "fmvxs", {0b1110000, 0b000, 0b1010011, FXS} },
   {  "fcvtsw", {0b1101000,    RM, 0b1010011, FSX} },
   {  "fcvtws", {0b1100000,    RM, 0b1010011, FXS} },
-  {  "fsqrts", {0b0101100,    RM, 0b1010011, FSQRT} },
-  { "fsgnjxs", {0b0010000, 0b010, 0b1010011, FSTD} }
+  {  "fsqrts", {0b0101100,    RM, 0b1010011, FUNARY} },
+  { "fsgnjxs", {0b0010000, 0b010, 0b1010011, FSTD} },
+  {     "rot", {0b0000000, 0b001, 0b0001011, UNARY} }
 };
 
 unordered_map<string, struct i_factors> i_type = {
@@ -44,14 +45,16 @@ unordered_map<string, struct i_factors> i_type = {
   {    "lw", {0b010, 0b0000011, STD} },
   {   "lbu", {0b100, 0b0000011, STD} },
   {   "lhu", {0b101, 0b0000011, STD} },
-  {   "flw", {0b010, 0b0000111, FL} }
+  {   "flw", {0b010, 0b0000111, FL} },
+  {    "in", {0b000, 0b0000001, IN} }
 };
 
 unordered_map<string, struct i_factors> s_type = {
   {    "sb", {0b000, 0b0100011, STD} },
   {    "sh", {0b001, 0b0100011, STD} },
   {    "sw", {0b010, 0b0100011, STD} },
-  {   "fsw", {0b010, 0b0100111, FS} }
+  {   "fsw", {0b010, 0b0100111, FS} },
+  {   "out", {0b001, 0b0000001, OUT} }
 };
 
 unordered_map<string, struct i_factors> sb_type = {
@@ -70,7 +73,7 @@ unordered_map<string, struct u_factors> uj_type = {
   {   "jal", {0b1101111, STD} }
 };
 
-const char reg_pattern[10][4] = {
+const char reg_pattern[16][4] = {
   { 'r', 'r', 'r', 'r' }, //STD
   { 'r', 'r', 'r', 'r' }, //SHIFT
   { 'f', 'f', 'f', 'f' }, //FSTD
@@ -79,7 +82,10 @@ const char reg_pattern[10][4] = {
   { 'r', 'f', 'r', 'r' }, //FS
   { 'f', 'r', 'r', 'r' }, //FSX
   { 'r', 'f', 'r', 'r' }, //FXS
-  { 'f', 'f', 'f', 'f' }  //FSQRT
+  { 'f', 'f', 'f', 'f' }, //FUNARY
+  { 'r', 'r', 'r', 'r' }, //UNARY
+  { 'r', 'r', 'r', 'r' }, //IN
+  { 'r', 'r', 'r', 'r' }  //OUT
 };
 
 unsigned set_regn(param_t *param, unsigned k, proc_t proc) {
@@ -140,7 +146,7 @@ unsigned encoding(param_t *param) {
     rd = set_regn(param, 1, proc);
     rs1 = set_regn(param, 2, proc);
     if (proc == SHIFT) rs2 = set_shamt(param, 3);
-    else if (proc == FSX || proc == FXS || proc == FSQRT) rs2 = 0;
+    else if (proc == FSX || proc == FXS || proc == FUNARY || proc == UNARY) rs2 = 0;
     else rs2 = set_regn(param, 3, proc);
     result = (itr_r->second).funct7 << 25 | rs2 << 20 | rs1 << 15
            | (itr_r->second).funct3 << 12 | rd << 7 | (itr_r->second).opcode;
@@ -149,8 +155,11 @@ unsigned encoding(param_t *param) {
   else if ((itr_i = i_type.find(param->buf[0])) != i_type.end()) {
     proc_t proc = (itr_i->second).proc;
     rd = set_regn(param, 1, proc);
-    rs1 = set_regn(param, 2, proc);
-    imm = set_imm(param, 3, 12);
+    if (proc == IN) { rs1 = 0; imm = 0; }
+    else {
+      rs1 = set_regn(param, 2, proc);
+      imm = set_imm(param, 3, 12);
+    }
     result = imm << 20 | rs1 << 15
            | (itr_i->second).funct3 << 12 | rd << 7 | (itr_i->second).opcode;
   }
@@ -158,8 +167,11 @@ unsigned encoding(param_t *param) {
   else if ((itr_i = s_type.find(param->buf[0])) != s_type.end()) {
     proc_t proc = (itr_i->second).proc;
     rs1 = set_regn(param, 1, proc);
-    rs2 = set_regn(param, 2, proc);
-    imm = set_imm(param, 3, 12);
+    if (proc == OUT) { rs2 = 0; imm = 0; }
+    else {
+      rs2 = set_regn(param, 2, proc);
+      imm = set_imm(param, 3, 12);
+    }
     result = (imm & 0xfe0) << 20 | rs2 << 20 | rs1 << 15
            | (itr_i->second).funct3 << 12 | (imm & 0x1f) << 7 | (itr_i->second).opcode;
   }
