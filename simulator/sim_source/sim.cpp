@@ -49,8 +49,8 @@ int main(int argc, char *argv[]) {
       ++i;
       if (i >= argc) { printf("error: specify an input file after option \"-i\".\n"); exit(EXIT_FAILURE); }
       string strbuf = argv[i];
-      if (strbuf.substr(strbuf.length() - 4, 4) != ".bin") {
-        printf("error: specify a binary file \"*.bin\" for an input file.\n");
+      if (strbuf.substr(strbuf.length() - 3, 3) != ".in") {
+        printf("error: specify a binary input file \"*.in\".\n");
         exit(EXIT_FAILURE);
       }
       param->ifp = fopen(argv[i], "rb");
