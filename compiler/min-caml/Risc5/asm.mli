@@ -23,6 +23,8 @@ and exp =
   | FSubD of Id.t * Id.t
   | FMulD of Id.t * Id.t
   | FDivD of Id.t * Id.t
+  | Feq of Id.t * Id.t
+  | Fle of Id.t * Id.t
   | LdDF of Id.t * id_or_imm
   | StDF of Id.t * Id.t * id_or_imm
   | Comment of string
@@ -30,8 +32,8 @@ and exp =
   | IfEq of Id.t * id_or_imm * t * t
   | IfLE of Id.t * id_or_imm * t * t
   | IfGE of Id.t * id_or_imm * t * t
-  | IfFEq of Id.t * Id.t * Id.t * t * t
-  | IfFLE of Id.t * Id.t * Id.t * t * t
+  (*| IfFEq of Id.t * Id.t * Id.t * t * t
+  | IfFLE of Id.t * Id.t * Id.t * t * t*)
   (* closure address, integer arguments, and float arguments *)
   | CallCls of Id.t * Id.t list * Id.t list
   | CallDir of Id.l * Id.t list * Id.t list

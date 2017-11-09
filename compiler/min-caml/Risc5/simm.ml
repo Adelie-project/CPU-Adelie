@@ -32,8 +32,8 @@ and g' env = function (* 各命令の13bit即値最適化 (caml2html: simm13_gprime) *)
   | IfEq(x, y', e1, e2) -> IfEq(x, y', g env e1, g env e2)
   | IfLE(x, y', e1, e2) -> IfLE(x, y', g env e1, g env e2)
   | IfGE(x, y', e1, e2) -> IfGE(x, y', g env e1, g env e2)
-  | IfFEq(x, y, z, e1, e2) -> IfFEq(x, y, z, g env e1, g env e2)
-  | IfFLE(x, y, z, e1, e2) -> IfFLE(x, y, z, g env e1, g env e2)
+  (*| IfFEq(x, y, z, e1, e2) -> IfFEq(x, y, z, g env e1, g env e2)
+  | IfFLE(x, y, z, e1, e2) -> IfFLE(x, y, z, g env e1, g env e2)*)
   | e -> e
 
 let h { name = l; args = xs; fargs = ys; body = e; ret = t } = (* トップレベル関数の13bit即値最適化 *)

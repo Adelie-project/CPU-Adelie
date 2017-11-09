@@ -25,6 +25,8 @@ and exp = (* 一つ一つの命令に対応する式 (caml2html: sparcasm_exp) *)
   | FSubD of Id.t * Id.t
   | FMulD of Id.t * Id.t
   | FDivD of Id.t * Id.t
+  | Feq of Id.t * Id.t
+  | Fle of Id.t * Id.t
   | LdDF of Id.t * id_or_imm
   | StDF of Id.t * Id.t * id_or_imm
   | Comment of string
@@ -32,8 +34,8 @@ and exp = (* 一つ一つの命令に対応する式 (caml2html: sparcasm_exp) *)
   | IfEq of Id.t * id_or_imm * t * t
   | IfLE of Id.t * id_or_imm * t * t
   | IfGE of Id.t * id_or_imm * t * t (* 左右対称ではないので必要 *) (*我々にとっては不要*)
-  | IfFEq of Id.t * Id.t * Id.t * t * t
-  | IfFLE of Id.t * Id.t * Id.t * t * t
+  (*| IfFEq of Id.t * Id.t * Id.t * t * t
+  | IfFLE of Id.t * Id.t * Id.t * t * t*)
   (* closure address, integer arguments, and float arguments *)
   | CallCls of Id.t * Id.t list * Id.t list
   | CallDir of Id.l * Id.t list * Id.t list
@@ -96,9 +98,9 @@ let rec fv_exp = function
   | Fmv(x) | Mov(x) | Neg(x) | FMovD(x) | FNegD(x) | Save(x, _) -> [x]
   | Add(x, y') | Addi(x, y') | Sub(x, y') | Mul(x, y') | Div(x, y') | SLL(x, y') | Ld(x, y') | LdDF(x, y') -> x :: fv_id_or_imm y'
   | St(x, y, z') | StDF(x, y, z') -> x :: y :: fv_id_or_imm z'
-  | FAddD(x, y) | FSubD(x, y) | FMulD(x, y) | FDivD(x, y) -> [x; y]
+  | FAddD(x, y) | FSubD(x, y) | FMulD(x, y) | FDivD(x, y) | Feq(x, y) | Fle(x, y)-> [x; y]
   | IfEq(x, y', e1, e2) | IfLE(x, y', e1, e2) | IfGE(x, y', e1, e2) -> x :: fv_id_or_imm y' @ remove_and_uniq S.empty (fv e1 @ fv e2) (* uniq here just for efficiency *)
-  | IfFEq(x, y, z, e1, e2) | IfFLE(x, y, z, e1, e2) -> x :: y :: z :: remove_and_uniq S.empty (fv e1 @ fv e2) (* uniq here just for efficiency *)
+  (*| IfFEq(x, y, z, e1, e2) | IfFLE(x, y, z, e1, e2) -> x :: y :: z :: remove_and_uniq S.empty (fv e1 @ fv e2) (* uniq here just for efficiency *)*)
   | CallCls(x, ys, zs) -> x :: ys @ zs
   | CallDir(_, ys, zs) -> ys @ zs
 and fv = function
