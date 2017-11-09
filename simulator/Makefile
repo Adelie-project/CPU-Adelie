@@ -1,4 +1,4 @@
-all: sim asm
+all: sim asm bcvt
 
 sim: sim.o exec.o decoder.o globalparam.o
 	g++ -std=c++1y -Ofast -Wall -o sim sim_source/sim.o sim_source/exec.o sim_source/decoder.o sim_source/globalparam.o
@@ -30,5 +30,8 @@ encoder.o: asm_source/encoder.cpp
 asm_globalparam.o: asm_source/asm_globalparam.cpp
 	g++ -std=c++1y -Ofast -Wall -o asm_source/asm_globalparam.o -c asm_source/asm_globalparam.cpp
 
+bcvt: bcvt_source/bcvt.cpp
+	g++ -std=c++1y -O3 -Wall -o bcvt bcvt_source/bcvt.cpp
+
 clean:
-	rm -f asm_source/*.o sim_source/*.o asm sim
+	rm -f asm_source/*.o sim_source/*.o asm sim bcvt
