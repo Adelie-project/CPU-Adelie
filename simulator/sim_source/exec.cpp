@@ -6,11 +6,11 @@ inline void pc_inclement(param_t* param){
   (param->pc) += (param->pc_interval);
 }
 
-inline int hash_func(int k) {
+inline int hash_func(unsigned k) {
   return k % HASHWIDTH;
 }
 
-inline unsigned read_hash_list(param_t* param, int k) {
+inline unsigned read_hash_list(param_t* param, unsigned k) {
   hash_list_t* p = param->mem[hash_func(k)];
   while(p != NULL) {
     if(k == p->key) return p->val;
@@ -19,7 +19,7 @@ inline unsigned read_hash_list(param_t* param, int k) {
   return 0;
 }
 
-inline void write_hash_list(param_t* param, int k, unsigned int v) {
+inline void write_hash_list(param_t* param, unsigned k, unsigned int v) {
   hash_list_t** p = &(param->mem[hash_func(k)]);
   while(*p != NULL) {
     if(k == (*p)->key) {
@@ -55,9 +55,9 @@ void exec_jmp_fread(param_t* param, unsigned newpc) {
 }
 
 inline void exec_branch(param_t* param, bool b, int *imm, const char *mnemonic, unsigned *rs1, unsigned *rs2) {
+  if(param->step) printf("%s %%r%d, %%r%d, $%d\n", mnemonic, *rs1, *rs2, *imm);
   if(b) exec_jmp_fread(param, param->pc + *imm);
   else pc_inclement(param);
-  if(param->step) printf("%s %%r%d, %%r%d, $%d\n", mnemonic, *rs1, *rs2, *imm);
   return;
 }
 
@@ -112,28 +112,28 @@ void exec_main(param_t* param) {
   switch((param->decoded)[param->rbuf_p][0]) {
     case LUI:
       set_u_type(param, &rd, &imm);
+      if(param->step) printf("lui %%r%d, $%d\n", rd, imm);
       if(rd != 0) param->reg[rd] = imm;
       pc_inclement(param);
-      if(param->step) printf("lui %%r%d, $%d\n", rd, imm);
       return;
     case AUIPC:
       set_u_type(param, &rd, &imm);
+      if(param->step) printf("auipc %%r%d, $%d\n", rd, imm);
       if(rd != 0) param->reg[rd] = param->pc + imm;
       exec_jmp_fread(param, param->pc + imm);
-      if(param->step) printf("auipc %%r%d, $%d\n", rd, imm);
       return;
     case JAL:
       set_uj_type(param, &rd, &imm);
+      if(param->step) printf("jal %%r%d, $%d\n", rd, imm);
       if(rd != 0) param->reg[rd] = param->pc + param->pc_interval;
       exec_jmp_fread(param, param->pc + imm);
-      if(param->step) printf("jal %%r%d, $%d\n", rd, imm);
       return;
     case JALR:
       set_i_type(param, &rd, &rs1, &imm);
+      if(param->step) printf("jalr %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       evac = param->pc + param->pc_interval;
       exec_jmp_fread(param, param->reg[rs1] + imm);
       if(rd != 0) param->reg[rd] = evac;
-      if(param->step) printf("jalr %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       return;
     case BEQ:
       set_sb_type(param, &rs1, &rs2, &imm);
@@ -161,312 +161,312 @@ void exec_main(param_t* param) {
       return;
     case LB:
       set_i_type(param, &rd, &rs1, &imm);
+      if(param->step) printf("lb %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       evac = param->reg[rs1] + imm;
       if(rd != 0) param->reg[rd] = (char)(0x000000ff & read_hash_list(param, evac));
       pc_inclement(param);
-      if(param->step) printf("lb %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       return;
     case LH:
       set_i_type(param, &rd, &rs1, &imm);
+      if(param->step) printf("lh %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       evac = param->reg[rs1] + imm;
       if(rd != 0) param->reg[rd] = (short)(0x0000ffff & read_hash_list(param, evac));
       pc_inclement(param);
-      if(param->step) printf("lh %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       return;
     case LW:
       set_i_type(param, &rd, &rs1, &imm);
+      if(param->step) printf("lw %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       evac = param->reg[rs1] + imm;
       if(rd != 0) param->reg[rd] = (int)(read_hash_list(param, evac));
       pc_inclement(param);
-      if(param->step) printf("lw %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       return;
     case LBU:
       set_i_type(param, &rd, &rs1, &imm);
+      if(param->step) printf("lbu %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       evac = param->reg[rs1] + imm;
       if(rd != 0) param->reg[rd] = (0x000000ff & read_hash_list(param, evac));
       pc_inclement(param);
-      if(param->step) printf("lbu %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       return;
     case LHU:
       set_i_type(param, &rd, &rs1, &imm);
+      if(param->step) printf("lhu %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       evac = param->reg[rs1] + imm;
       if(rd != 0) param->reg[rd] = (0x0000ffff & read_hash_list(param, evac));
       pc_inclement(param);
-      if(param->step) printf("lhu %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       return;
     case SB:
       set_s_type(param, &rs1, &rs2, &imm);
+      if(param->step) printf("sb %%r%d, %%r%d, $%d\n", rs1, rs2, imm);
       evac = param->reg[rs1] + imm;
       write_hash_list(param, evac, 0x000000ff & param->reg[rs2]);
       pc_inclement(param);
-      if(param->step) printf("sb %%r%d, %%r%d, $%d\n", rs1, rs2, imm);
       return;
     case SH:
       set_s_type(param, &rs1, &rs2, &imm);
+      if(param->step) printf("sh %%r%d, %%r%d, $%d\n", rs1, rs2, imm);
       evac = param->reg[rs1] + imm;
       write_hash_list(param, evac, 0x0000ffff & param->reg[rs2]);
       pc_inclement(param);
-      if(param->step) printf("sh %%r%d, %%r%d, $%d\n", rs1, rs2, imm);
       return;
     case SW:
       set_s_type(param, &rs1, &rs2, &imm);
+      if(param->step) printf("sw %%r%d, %%r%d, $%d\n", rs1, rs2, imm);
       evac = param->reg[rs1] + imm;
       write_hash_list(param, evac, param->reg[rs2]);
       pc_inclement(param);
-      if(param->step) printf("sw %%r%d, %%r%d, $%d\n", rs1, rs2, imm);
       return;
     case ADDI:
       set_i_type(param, &rd, &rs1, &imm);
+      if(param->step) printf("addi %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       if(rd != 0) param->reg[rd] = param->reg[rs1] + imm;
       pc_inclement(param);
-      if(param->step) printf("addi %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       return;
     case SLTI:
       set_i_type(param, &rd, &rs1, &imm);
+      if(param->step) printf("slti %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       if(rd != 0) param->reg[rd] = param->reg[rs1] < imm ? 1 : 0;
       pc_inclement(param);
-      if(param->step) printf("slti %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       return;
     case SLTIU:
       set_i_type(param, &rd, &rs1, &imm);
+      if(param->step) printf("sltiu %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       if(rd != 0) param->reg[rd] = (unsigned)(param->reg[rs1]) < (unsigned)imm ? 1 : 0;
       pc_inclement(param);
-      if(param->step) printf("sltiu %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       return;
     case XORI:
       set_i_type(param, &rd, &rs1, &imm);
+      if(param->step) printf("xori %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       if(rd != 0) param->reg[rd] = param->reg[rs1] ^ (imm & 0xfff);
       pc_inclement(param);
-      if(param->step) printf("xori %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       return;
     case ORI:
       set_i_type(param, &rd, &rs1, &imm);
+      if(param->step) printf("ori %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       if(rd != 0) param->reg[rd] = param->reg[rs1] | (imm & 0xfff);
       pc_inclement(param);
-      if(param->step) printf("ori %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       return;
     case ANDI:
       set_i_type(param, &rd, &rs1, &imm);
+      if(param->step) printf("andi %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       if(rd != 0) param->reg[rd] = param->reg[rs1] & (imm & 0xfff);
       pc_inclement(param);
-      if(param->step) printf("andi %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       return;
     case SLLI:
       set_i_type(param, &rd, &rs1, &imm);
+      if(param->step) printf("slti %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       if(rd != 0) param->reg[rd] = (unsigned)(param->reg[rs1]) << imm;
       pc_inclement(param);
-      if(param->step) printf("slti %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       return;
     case SRLI:
       set_i_type(param, &rd, &rs1, &imm);
+      if(param->step) printf("srli %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       if(rd != 0) param->reg[rd] = (unsigned)(param->reg[rs1]) >> imm;
       pc_inclement(param);
-      if(param->step) printf("srli %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       return;
     case SRAI:
       set_i_type(param, &rd, &rs1, &imm);
+      if(param->step) printf("srai %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       if(rd != 0) param->reg[rd] = param->reg[rs1] >> imm;
       pc_inclement(param);
-      if(param->step) printf("srai %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       return;
     case ADD:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("add %%r%d, %%r%d, %%r%d\n", rd, rs1, rs2);
       if(rd != 0) param->reg[rd] = param->reg[rs1] + param->reg[rs2];
       pc_inclement(param);
-      if(param->step) printf("add %%r%d, %%r%d, %%r%d\n", rd, rs1, rs2);
       return;
     case SUB:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("sub %%r%d, %%r%d, %%r%d\n", rd, rs1, rs2);
       if(rd != 0) param->reg[rd] = param->reg[rs1] - param->reg[rs2];
       pc_inclement(param);
-      if(param->step) printf("sub %%r%d, %%r%d, %%r%d\n", rd, rs1, rs2);
       return;
     case SLL:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("sll %%r%d, %%r%d, %%r%d\n", rd, rs1, rs2);
       if(rd != 0) param->reg[rd] = (unsigned)(param->reg[rs1]) << (param->reg[rs2] & 0b11111);
       pc_inclement(param);
-      if(param->step) printf("sll %%r%d, %%r%d, %%r%d\n", rd, rs1, rs2);
       return;
     case SLT:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("slt %%r%d, %%r%d, %%r%d\n", rd, rs1, rs2);
       if(rd != 0) param->reg[rd] = param->reg[rs1] < param->reg[rs2] ? 1 : 0;
       pc_inclement(param);
-      if(param->step) printf("slt %%r%d, %%r%d, %%r%d\n", rd, rs1, rs2);
       return;
     case SLTU:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("sltu %%r%d, %%r%d, %%r%d\n", rd, rs1, rs2);
       if(rd != 0) param->reg[rd] = (unsigned)(param->reg[rs1]) < (unsigned)(param->reg[rs2]) ? 1 : 0;
       pc_inclement(param);
-      if(param->step) printf("sltu %%r%d, %%r%d, %%r%d\n", rd, rs1, rs2);
       return;
     case XOR:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("xor %%r%d, %%r%d, %%r%d\n", rd, rs1, rs2);
       if(rd != 0) param->reg[rd] = param->reg[rs1] ^ param->reg[rs2];
       pc_inclement(param);
-      if(param->step) printf("xor %%r%d, %%r%d, %%r%d\n", rd, rs1, rs2);
       return;
     case SRL:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("srl %%r%d, %%r%d, %%r%d\n", rd, rs1, rs2);
       if(rd != 0) param->reg[rd] = (unsigned)(param->reg[rs1]) >> (param->reg[rs2] & 0b11111);
       pc_inclement(param);
-      if(param->step) printf("srl %%r%d, %%r%d, %%r%d\n", rd, rs1, rs2);
       return;
     case SRA:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("sra %%r%d, %%r%d, %%r%d\n", rd, rs1, rs2);
       if(rd != 0) param->reg[rd] = param->reg[rs1] >> (param->reg[rs2] & 0b11111);
       pc_inclement(param);
-      if(param->step) printf("sra %%r%d, %%r%d, %%r%d\n", rd, rs1, rs2);
       return;
     case OR:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("or %%r%d, %%r%d, %%r%d\n", rd, rs1, rs2);
       if(rd != 0) param->reg[rd] = param->reg[rs1] | param->reg[rs2];
       pc_inclement(param);
-      if(param->step) printf("or %%r%d, %%r%d, %%r%d\n", rd, rs1, rs2);
       return;
     case AND:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("and %%r%d, %%r%d, %%r%d\n", rd, rs1, rs2);
       if(rd != 0) param->reg[rd] = param->reg[rs1] & param->reg[rs2];
       pc_inclement(param);
-      if(param->step) printf("and %%r%d, %%r%d, %%r%d\n", rd, rs1, rs2);
       return;
     case MUL:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("mul %%r%d, %%r%d, %%r%d\n", rd, rs1, rs2);
       if(rd != 0) param->reg[rd] = param->reg[rs1] * param->reg[rs2];
       pc_inclement(param);
-      if(param->step) printf("mul %%r%d, %%r%d, %%r%d\n", rd, rs1, rs2);
       return;
     case DIV:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("div %%r%d, %%r%d, %%r%d\n", rd, rs1, rs2);
       if(rd != 0) param->reg[rd] = param->reg[rs1] / param->reg[rs2];
       pc_inclement(param);
-      if(param->step) printf("div %%r%d, %%r%d, %%r%d\n", rd, rs1, rs2);
       return;
     case FLW:
       set_i_type(param, &rd, &rs1, &imm);
+      if(param->step) printf("flw %%f%d, %%r%d, $%d\n", rd, rs1, imm);
       evac = param->reg[rs1] + imm;
       ifm.u = (read_hash_list(param, evac));
       if(rd != 0) param->freg[rd] = ifm.f;
       pc_inclement(param);
-      if(param->step) printf("flw %%f%d, %%r%d, $%d\n", rd, rs1, imm);
       return;
     case FSW:
       set_s_type(param, &rs1, &rs2, &imm);
+      if(param->step) printf("fsw %%r%d, %%f%d, $%d\n", rs1, rs2, imm);
       evac = param->reg[rs1] + imm;
       ifm.f = param->freg[rs2];
       write_hash_list(param, evac, ifm.u);
       pc_inclement(param);
-      if(param->step) printf("fsw %%r%d, %%f%d, $%d\n", rs1, rs2, imm);
       return;
     case FADDS:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("fadds %%f%d, %%f%d, %%f%d\n", rd, rs1, rs2);
       if(rd != 0) param->freg[rd] = param->freg[rs1] + param->freg[rs2];
       pc_inclement(param);
-      if(param->step) printf("fadds %%f%d, %%f%d, %%f%d\n", rd, rs1, rs2);
       return;
     case FSUBS:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("fsubs %%f%d, %%f%d, %%f%d\n", rd, rs1, rs2);
       if(rd != 0) param->freg[rd] = param->freg[rs1] - param->freg[rs2];
       pc_inclement(param);
-      if(param->step) printf("fsubs %%f%d, %%f%d, %%f%d\n", rd, rs1, rs2);
       return;
     case FMULS:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("fmuls %%f%d, %%f%d, %%f%d\n", rd, rs1, rs2);
       if(rd != 0) param->freg[rd] = param->freg[rs1] * param->freg[rs2];
       pc_inclement(param);
-      if(param->step) printf("fmuls %%f%d, %%f%d, %%f%d\n", rd, rs1, rs2);
       return;
     case FDIVS:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("fdivs %%f%d, %%f%d, %%f%d\n", rd, rs1, rs2);
       if(rd != 0) param->freg[rd] = param->freg[rs1] / param->freg[rs2];
       pc_inclement(param);
-      if(param->step) printf("fdivs %%f%d, %%f%d, %%f%d\n", rd, rs1, rs2);
       return;
     case FLTS:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("flts %%r%d, %%f%d, %%f%d\n", rd, rs1, rs2);
       if(rd != 0) param->reg[rd] = param->freg[rs1] < param->freg[rs2] ? 1 : 0;
       pc_inclement(param);
-      if(param->step) printf("flts %%r%d, %%f%d, %%f%d\n", rd, rs1, rs2);
       return;
     case FLES:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("fles %%r%d, %%f%d, %%f%d\n", rd, rs1, rs2);
       if(rd != 0) param->reg[rd] = param->freg[rs1] <= param->freg[rs2] ? 1 : 0;
       pc_inclement(param);
-      if(param->step) printf("fles %%r%d, %%f%d, %%f%d\n", rd, rs1, rs2);
       return;
     case FEQS:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("feqs %%r%d, %%f%d, %%f%d\n", rd, rs1, rs2);
       if(rd != 0) param->reg[rd] = param->freg[rs1] == param->freg[rs2] ? 1 : 0;
       pc_inclement(param);
-      if(param->step) printf("feqs %%r%d, %%f%d, %%f%d\n", rd, rs1, rs2);
       return;
     case FMVSX:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("fmvsx %%f%d, %%r%d\n", rd, rs1);
       ifm.i = param->reg[rs1];
       if(rd != 0) param->freg[rd] = ifm.f;
       pc_inclement(param);
-      if(param->step) printf("fmvsx %%f%d, %%r%d\n", rd, rs1);
       return;
     case FMVXS:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("fmvxs %%r%d, %%f%d\n", rd, rs1);
       ifm.f = param->freg[rs1];
       if(rd != 0) param->reg[rd] = ifm.i;
       pc_inclement(param);
-      if(param->step) printf("fmvxs %%r%d, %%f%d\n", rd, rs1);
       return;
     case FCVTSW:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("fcvtsw %%f%d, %%r%d\n", rd, rs1);
       if(rd != 0) param->freg[rd] = param->reg[rs1];
       pc_inclement(param);
-      if(param->step) printf("fcvtsw %%f%d, %%r%d\n", rd, rs1);
       return;
     case FCVTWS:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("fcvtws %%r%d, %%f%d\n", rd, rs1);
       if(rd != 0) param->reg[rd] = param->freg[rs1];
       pc_inclement(param);
-      if(param->step) printf("fcvtws %%r%d, %%f%d\n", rd, rs1);
       return;
     case FSQRTS:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("fsqrts %%f%d, %%f%d\n", rd, rs1);
       if(rd != 0) param->freg[rd] = sqrt(param->freg[rs1]);
       pc_inclement(param);
-      if(param->step) printf("fsqrts %%f%d, %%f%d\n", rd, rs1);
       return;
     case FSGNJXS:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("fsgnjxs %%f%d, %%f%d, %%f%d\n", rd, rs1, rs2);
       ifm.f = param->freg[rs1];
       ifm2.f = param->freg[rs2];
       ifm.i = (ifm.i & 0x7fffffff) | ((ifm.i ^ ifm2.i) & 0x800000000);
       if(rd != 0) param->freg[rd] = ifm.f;
       pc_inclement(param);
-      if(param->step) printf("fsgnjxs %%f%d, %%f%d, %%f%d\n", rd, rs1, rs2);
       return;
     case ROT:
       set_r_type(param, &rd, &rs1, &rs2);
+      if(param->step) printf("rot %%r%d, %%r%d\n", rd, rs1);
       if(rd != 0) param->reg[rd] =
         ((unsigned)(param->reg[rs1] & 0xff000000) >> 24)
       | ((unsigned)(param->reg[rs1] & 0x00ff0000) >> 8)
       | ((unsigned)(param->reg[rs1] & 0x0000ff00) << 8)
       | ((unsigned)(param->reg[rs1] & 0x000000ff) << 24);
       pc_inclement(param);
-      if(param->step) printf("rot %%r%d, %%r%d\n", rd, rs1);
       return;
     case IN:
       set_i_type(param, &rd, &rs1, &imm);
+      if(param->step) printf("in %%r%d\n", rd);
       if(param->ifp == NULL) { printf("error: no input file though \"in\" is called.\n"); exit(EXIT_FAILURE); }
       if((int)fread(&in_data, sizeof(unsigned char), 1, param->ifp) < 0) { perror("fread error"); exit(EXIT_FAILURE); }
       if(rd != 0) param->reg[rd] = (param->reg[rd] & 0xffffff00) | (unsigned)in_data;
       pc_inclement(param);
-      if(param->step) printf("in %%r%d\n", rd);
       return;
     case OUT:
       set_s_type(param, &rs1, &rs2, &imm);
+      if(param->step) printf("out %%r%d\n", rs1);
       if(param->ofp == NULL) { printf("error: no output file though \"out\" is called.\n"); exit(EXIT_FAILURE); }
       out_data = param->reg[rs1] & 0x000000ff;
       if (fwrite(&out_data, sizeof(unsigned char), 1, param->ofp) != 1) {
         perror("fwrite error"); exit(EXIT_FAILURE);
       }
       pc_inclement(param);
-      if(param->step) printf("out %%r%d\n", rs1);
       return;
     default:
       printf("unknown fatal error, exit\n");
