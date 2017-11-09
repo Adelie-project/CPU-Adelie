@@ -20,7 +20,7 @@ int main() {
     }
     else if(s == "f") {
       cin >> u.f;
-      cout << u.i << endl;
+      cout << dec << u.i << endl;
       cout << "0x" << hex << u.i << endl;
     }
     else {
