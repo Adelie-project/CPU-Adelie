@@ -20,7 +20,7 @@ inline void postprocess_of_run(param_t* param);
 inline void update_wave1(param_t* param);
 inline void update_wave2(param_t* param);
 inline int hash_func(int k);
-inline unsigned read_hash_list(param_t* param, int k);
+inline unsigned read_hash_list(param_t* param, unsigned k);
 void run(param_t* param);
 void run_break(param_t* param);
 void run_wave(param_t* param);
@@ -190,7 +190,7 @@ inline int hash_func(int k) {
   return k % HASHWIDTH;
 }
 
-inline unsigned read_hash_list(param_t* param, int k) {
+inline unsigned read_hash_list(param_t* param, unsigned k) {
   hash_list_t* p = param->mem[hash_func(k)];
   while(p != NULL) {
     if(k == p->key) return p->val;

@@ -11,7 +11,7 @@ using namespace std;
 #define HASHWIDTH 1000003
 
 struct hash_list_t {
-  int key;
+  unsigned key;
   unsigned val;
   hash_list_t* next_p;
 };
