@@ -10,6 +10,7 @@ using namespace std;
 deque<int> record_pc;
 deque<int> record_inst;
 vector<deque<int>> record_reg(32);
+vector<deque<float>> record_freg(32);
 //各種パラメータ
 param_t *param = new param_t;
 
@@ -24,12 +25,15 @@ void run(param_t* param);
 void run_break(param_t* param);
 void run_wave(param_t* param);
 void run_step(param_t* param);
-void print_wave();
+void print_wave(int mode);
 void print_standard_reg(param_t* param);
 
 void sigsegv_handler(int signo) {
   printf("\n\nPC = %08X\n", param->pc);
-  if(param->wave) print_wave();
+  if(param->wave) {
+    print_wave(0);
+    print_wave(1);
+  }
   else print_standard_reg(param);
   printf("\n\nerror: segmentation fault\n\n");
   exit(EXIT_FAILURE);
@@ -108,7 +112,10 @@ inline void preprocess_of_run(param_t* param) {
     }
     else {
       printf("\n\nPC = %08X\n", param->pc);
-      if (param->wave) print_wave();
+      if (param->wave) {
+        print_wave(0);
+        print_wave(1);
+      }
       else print_standard_reg(param);
       printf("\n\nreach end of file.\n");
       printf("inst_cnt = %d\n", param->cnt);
@@ -121,7 +128,10 @@ inline void preprocess_of_run(param_t* param) {
 inline void postprocess_of_run(param_t* param) {
   if (param->prepc == param->pc) {
     printf("\n\nPC = %08X\n", param->pc);
-    if (param->wave) print_wave();
+    if (param->wave) {
+      print_wave(0);
+      print_wave(1);
+    }
     else print_standard_reg(param);
     printf("\n\nprogram infinitely loops at pc %d, simulation stops.\n", param->pc);
     printf("inst_cnt = %d\n", param->cnt);
@@ -131,18 +141,20 @@ inline void postprocess_of_run(param_t* param) {
 }
 
 inline void update_wave1(param_t* param) {
-  record_pc.push_back(param->prepc);
+  record_pc.push_back(param->pc);
   record_inst.push_back((param->rbuf)[param->rbuf_p]);
 }
 
 inline void update_wave2(param_t* param) {
   Loop(i, 32) {
     record_reg[i].push_back(param->reg[i]);
+    record_freg[i].push_back(param->freg[i]);
   }
   if (record_reg[0].size() > param->wave) {
     record_pc.pop_front();
     record_inst.pop_front();
     Loop(i, 32) record_reg[i].pop_front();
+    Loop(i, 32) record_freg[i].pop_front();
   }
 }
 
@@ -200,7 +212,8 @@ void run_step(param_t* param){
     exec_main(param);
     if (param->wave) {
       update_wave2(param);
-      print_wave();
+      print_wave(0);
+      print_wave(1);
     }
     else print_standard_reg(param);
     while(1) {
@@ -211,6 +224,7 @@ void run_step(param_t* param){
         else if (s == "r") {
           param->step = false;
           if (param->breakpoint != UINT_MAX) { postprocess_of_run(param); run_break(param); }
+          else if (param->wave) run_wave(param);
           else run(param);
           break;
         }
@@ -233,7 +247,8 @@ void run_step(param_t* param){
 
 }
 
-void print_wave() {
+// mode = 1 -> float, 0 -> int
+void print_wave(int mode) {
   printf("  PC: ");
   Loop(i, record_pc.size()) {
     printf("%08x ", record_pc[i]);
@@ -252,16 +267,33 @@ void print_wave() {
     else printf("  ");
   }
   printf("\n");
-  Loop(i, 32) {
-    printf("reg[%02d]: ", i);
-    Loop(j, record_reg[i].size()) {
-      printf("%08x ", record_reg[i][j]);
-      if (j == (int)record_reg[i].size() - 1 || record_reg[i][j] != record_reg[i][j + 1]) {
-        printf("| ");
+  if (mode) {
+    Loop(i, 32) {
+      printf("freg[%02d]: ", i);
+      int_float_mover ifm;
+      Loop(j, record_freg[i].size()) {
+        ifm.f = record_freg[i][j];
+        printf("%08x ", ifm.i);
+        if (j == (int)record_freg[i].size() - 1 || record_freg[i][j] != record_freg[i][j + 1]) {
+          printf("| ");
+        }
+        else printf("  ");
       }
-      else printf("  ");
+      printf("\n");
     }
-  printf("\n");
+  }
+  else {
+    Loop(i, 32) {
+      printf(" reg[%02d]: ", i);
+      Loop(j, record_reg[i].size()) {
+        printf("%08x ", record_reg[i][j]);
+        if (j == (int)record_reg[i].size() - 1 || record_reg[i][j] != record_reg[i][j + 1]) {
+          printf("| ");
+        }
+        else printf("  ");
+      }
+      printf("\n");
+    }
   }
   return;
 }
