@@ -1,78 +1,125 @@
-min_caml_print_newline: ; muri
-	set	10, %o0
-	st	%o7, [%i0]
-	call	putchar
-	nop
-	ld	[%i0], %o7
-	retl
-	nop
-min_caml_print_int: ; muri
-	set	format_int, %o0
-	mov	%i2, %o1
-	st	%o7, [%i0]
-	call	printf
-	nop
-	ld	[%i0], %o7
-	retl
-	nop
-min_caml_print_byte: ; muri
-	mov	%i2, %o0
-	st	%o7, [%i0]
-	call	putchar
-	nop
-	ld	[%i0], %o7
-	retl
-	nop
-min_caml_prerr_int: ; muri
-	set	min_caml_stderr, %o0
-	set	format_int, %o1
-	mov	%i2, %o2
-	st	%o7, [%i0]
-	call	fprintf
-	nop
-	ld	[%i0], %o7
-	retl
-	nop
-min_caml_prerr_byte: ; muri
-	mov	%i2, %o0
-	set	min_caml_stderr, %o1
-	st	%o7, [%i0]
-	call	fputc
-	nop
-	ld	[%i0], %o7
-	retl
-	nop
-min_caml_prerr_float: ; muri
-	set	min_caml_stderr, %o0
-	set	format_float, %o1
-	std	%f0, [%i0]
-	ldd	[%i0], %o2
-	st	%o7, [%i0]
-	call	fprintf
-	nop
-	ld	[%i0], %o7
-	retl
-	nop
-min_caml_read_int: ; muri
-	set	format_int, %o0
-	st	%o7, [%i0]
-	call	scanf, 0
-	add	%fp, -20, %o1	! delay slot
-	ld	[%i0], %o7
-	ld	[%fp-20], %i2
-	retl
-	nop
-min_caml_read_float: ; muri
-	set	format_float, %o0
-	st	%o7, [%i0]
-	call	scanf, 0
-	add	%fp, -24, %o1	! delay slot
-	ld	[%i0], %o7
-	ldd	[%fp-24], %f0
-	retl
-	nop
-min_caml_create_array: ; probably muri これはknormal.mlで生産される ;r4=length r5=中身
-	add %r3, %r0, %r6 ;hp退避
+min_caml_print_newline:
+	set %r4, $10
+	out	%r4
+	jalr	%r0, %r1, $0
+min_caml_print_int:
+	set	%r6, $10
+	bge	%r4, %r0, p_10
+	sub %r4, %r0, %r4
+	set	%r5, $45
+	out %r5
+p_10:
+	div	%r5, %r4, %r6
+	beq	%r5, %r0, p_0
+	div	%r5, %r5, %r6
+	beq	%r5, %r0, p_1
+	div	%r5, %r5, %r6
+	beq	%r5, %r0, p_2
+	div	%r5, %r5, %r6
+	beq	%r5, %r0, p_3
+	div	%r5, %r5, %r6
+	beq	%r5, %r0, p_4
+	div	%r5, %r5, %r6
+	beq	%r5, %r0, p_5
+	div	%r5, %r5, %r6
+	beq	%r5, %r0, p_6
+	div	%r5, %r5, %r6
+	beq	%r5, %r0, p_7
+	div	%r5, %r5, %r6
+	beq	%r5, %r0, p_8
+p_9:
+	set	%r6, $1000000000
+	div	%r5, %r4, %r6
+	addi	%r7, %r5, $48
+	out	%r7
+	mul	%r5, %r6, %r5
+	sub	%r4, %r4, %r5
+p_8:
+	set	%r6, $100000000
+	div	%r5, %r4, %r6
+	addi	%r7, %r5, $48
+	out	%r7
+	mul	%r5, %r6, %r5
+	sub	%r4, %r4, %r5
+p_7:
+	set	%r6, $10000000
+	div	%r5, %r4, %r6
+	addi	%r7, %r5, $48
+	out	%r7
+	mul	%r5, %r6, %r5
+	sub	%r4, %r4, %r5
+p_6:
+	set	%r6, $1000000
+	div	%r5, %r4, %r6
+	addi	%r7, %r5, $48
+	out	%r7
+	mul	%r5, %r6, %r5
+	sub	%r4, %r4, %r5
+p_5:
+	set	%r6, $100000
+	div	%r5, %r4, %r6
+	addi	%r7, %r5, $48
+	out	%r7
+	mul	%r5, %r6, %r5
+	sub	%r4, %r4, %r5
+p_4:
+	set	%r6, $10000
+	div	%r5, %r4, %r6
+	addi	%r7, %r5, $48
+	out	%r7
+	mul	%r5, %r6, %r5
+	sub	%r4, %r4, %r5
+p_3:
+	set	%r6, $1000
+	div	%r5, %r4, %r6
+	addi	%r7, %r5, $48
+	out	%r7
+	mul	%r5, %r6, %r5
+	sub	%r4, %r4, %r5
+p_2:
+	set	%r6, $100
+	div	%r5, %r4, %r6
+	addi	%r7, %r5, $48
+	out	%r7
+	mul	%r5, %r6, %r5
+	sub	%r4, %r4, %r5
+p_1:
+	set	%r6, $10
+	div	%r5, %r4, %r6
+	addi	%r7, %r5, $48
+	out	%r7
+	mul	%r5, %r6, %r5
+	sub	%r4, %r4, %r5
+p_0:
+	addi	%r4, %r4, $48
+	out	%r4
+	jalr	%r0, %r1, $0
+min_caml_print_char:
+	out	%r4
+	jalr	%r0, %r1, $0
+min_caml_read_int:
+	in	%r4
+	slli	%r4, %r4, $8
+	in	%r4
+	slli	%r4, %r4, $8
+	in	%r4
+	slli	%r4, %r4, $8
+	in	%r4
+	rot %r4, %r4
+	jalr	%r0, %r1, $0
+min_caml_read_float:
+	in	%r4
+	slli	%r4, %r4, $8
+	in	%r4
+	slli	%r4, %r4, $8
+	in	%r4
+	slli	%r4, %r4, $8
+	in	%r4
+	rot %r4, %r4
+	fmvsx	%f1, %r4
+	jalr	%r0, %r1, $0
+min_caml_create_array: ; これはknormal.mlで生産される ; r4=length r5=中身
+	add %r6, %r0, %r3 ;hp退避
 create_array_loop:
 	beq %r4, %r0, create_array_exit
 	sw	%r3, %r5, $0
@@ -82,8 +129,8 @@ create_array_loop:
 create_array_exit:
 	add %r4, %r0, %r6 ;戻してあげる
 	jalr	%r0, %r1, $0 ; exit sparcだとalign 8 になるようにandccとかしているけど我々は不要
-min_caml_create_float_array: ; probably muri ;r4=length f1=中身
-	add %r3, %r0, %r5 ;hp退避
+min_caml_create_float_array: ; r4=length f1=中身
+	add %r5, %r0, %r3 ;hp退避
 create_float_array_loop:
 	beq %r4, %r0, create_float_array_exit
 	fsw	%r3, %f1, $0
@@ -93,67 +140,35 @@ create_float_array_loop:
 create_float_array_exit:
 	add %r4, %r0, %r5 ;戻してあげる
 	jalr	%r0, %r1, $0
-min_caml_abs_float: ; te de tukuru
+min_caml_fabs:
 	fsgnjxs	%f1, %f1, %f1
 	jalr	%r0, %r1, $0
-min_caml_sqrt: ; te de tukuru
-	fsqrt	%f1, %f1
+min_caml_sqrt:
+	fsqrts	%f1, %f1
 	jalr	%r0, %r1, $0
-min_caml_floor: ; tukuru
+min_caml_floor:
 	set	%r4, $0
 	fmvsx	%f2, %r4
 	fles	%r4, %f2, %f1
 	beq	%r4, %r0, bne_else
 	fcvtws	%r4, %f1
 	fcvtsw	%f1, %r4
+	jalr	%r0, %r1, $0
 bne_else:
 	fcvtws	%r4, %f1
 	addi	%r4, %r4, $-1
 	fcvtsw	%f1, %r4
-min_caml_int_of_float: ; te de tukuru
-min_caml_truncate: ; nanikore
+	jalr	%r0, %r1, $0
+min_caml_int_of_float: ;int_of_floatは四捨五入
+	set	%r4, $1056964608 ; 0.5
+	fmvsx	%f2, %r4
+	fsubs	%f1, %f1, %f2
+	fcvtws	%r4, %f1
+	addi	%r4, %r4, $1
+	jalr	%r0, %r1, $0
+min_caml_truncate:
 	fcvtws	%r4, %f1
 	jalr	%r0, %r1, $0
-min_caml_float_of_int: ; te de tukuru
+min_caml_float_of_int:
 	fcvtsw	%f1, %r4
 	jalr	%r0, %r1, $0
-min_caml_cos: ; muzukashi
-	std	%f0, [%i0]
-	ldd	[%i0], %o0
-	st	%o7, [%i0]
-	call	cos
-	nop
-	ld	[%i0], %o7
-	retl
-	nop
-min_caml_sin: ; muzukashi
-	std	%f0, [%i0]
-	ldd	[%i0], %o0
-	st	%o7, [%i0]
-	call	sin
-	nop
-	ld	[%i0], %o7
-	retl
-	nop
-min_caml_atan: ; muzukashi
-	std	%f0, [%i0]
-	ldd	[%i0], %o0
-	st	%o7, [%i0]
-	call	atan
-	nop
-	ld	[%i0], %o7
-	retl
-	nop
- ; よくわからないので以下は放置
-.section ".rodata"
-format_int:
-	.asciz	"%d"
-format_float:
-	.asciz	"%lf"
-.align 8
-float_0:
-	.long	0x0
-	.long	0x0
-float_1:
-	.long	0x3ff00000
-	.long	0x0

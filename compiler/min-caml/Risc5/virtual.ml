@@ -67,14 +67,14 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
       | Type.Bool | Type.Int -> Ans(IfEq(x, V(y), g env e1, g env e2))
       | Type.Float ->
         let z = Id.genid "i" in (*feqなどの結果を格納するための%rxxの確保のため.*)
-        Let((z, Type.Int), Set(0), Ans(IfFEq(x, y, z, g env e1, g env e2))) (*z:int = "hoge"はなんでもいいんだけど,やっつけでSet(0)*)
+        Let((z, Type.Int), Feq(x, y), Ans(IfEq(z, V("%r0"), g env e2, g env e1)))
       | _ -> failwith "equality supported only for bool, int, and float")
   | Closure.IfLE(x, y, e1, e2) ->
       (match M.find x env with
       | Type.Bool | Type.Int -> Ans(IfLE(x, V(y), g env e1, g env e2))
       | Type.Float ->
         let z = Id.genid "i" in
-        Let((z, Type.Int), Set(0), Ans(IfFLE(x, y, z, g env e1, g env e2))) (*同じく*)
+        Let((z, Type.Int), Fle(x, y), Ans(IfEq(z, V("%r0"), g env e2, g env e1)))
       | _ -> failwith "inequality supported only for bool, int, and float")
   | Closure.Let((x, t1), e1, e2) ->
       let e1' = g env e1 in

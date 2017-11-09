@@ -4,7 +4,7 @@ open Asm
 (* [XXX] Callがあったら、そこから先は無意味というか逆効果なので追わない。
          そのために「Callがあったかどうか」を返り値の第1要素に含める。 *)
 let rec target' src (dest, t) = function
-  | Mov(x) when x = src && is_reg dest ->(*fmvの処理方法分からない*)
+  | Mov(x) when x = src && is_reg dest ->(*fmv,feq,fleはここで処理する必要はないはず...*)
       assert (t <> Type.Unit);
       assert (t <> Type.Float);
       false, [dest]
@@ -12,7 +12,8 @@ let rec target' src (dest, t) = function
       assert (t = Type.Float);
       false, [dest]
   | IfEq(_, _, e1, e2) | IfLE(_, _, e1, e2) | IfGE(_, _, e1, e2)
-  | IfFEq(_, _, _, e1, e2) | IfFLE(_, _, _, e1, e2) ->
+  (*
+  | IfFEq(_, _, _, e1, e2) | IfFLE(_, _, _, e1, e2)*) ->
       let c1, rs1 = target src (dest, t) e1 in
       let c2, rs2 = target src (dest, t) e2 in
       c1 && c2, rs1 @ rs2
@@ -135,13 +136,15 @@ and g' dest cont regenv = function (* 各命令のレジスタ割り当て (caml2html: regal
   | FSubD(x, y) -> (Ans(FSubD(find x Type.Float regenv, find y Type.Float regenv)), regenv)
   | FMulD(x, y) -> (Ans(FMulD(find x Type.Float regenv, find y Type.Float regenv)), regenv)
   | FDivD(x, y) -> (Ans(FDivD(find x Type.Float regenv, find y Type.Float regenv)), regenv)
+  | Feq(x, y) -> (Ans(Feq(find x Type.Float regenv, find y Type.Float regenv)), regenv)
+  | Fle(x, y) -> (Ans(Fle(find x Type.Float regenv, find y Type.Float regenv)), regenv)
   | LdDF(x, y') -> (Ans(LdDF(find x Type.Int regenv, find' y' regenv)), regenv)
   | StDF(x, y, z') -> (Ans(StDF(find x Type.Float regenv, find y Type.Int regenv, find' z' regenv)), regenv)
   | IfEq(x, y', e1, e2) as exp -> g'_if dest cont regenv exp (fun e1' e2' -> IfEq(find x Type.Int regenv, find' y' regenv, e1', e2')) e1 e2
   | IfLE(x, y', e1, e2) as exp -> g'_if dest cont regenv exp (fun e1' e2' -> IfLE(find x Type.Int regenv, find' y' regenv, e1', e2')) e1 e2
   | IfGE(x, y', e1, e2) as exp -> g'_if dest cont regenv exp (fun e1' e2' -> IfGE(find x Type.Int regenv, find' y' regenv, e1', e2')) e1 e2
-  | IfFEq(x, y, z, e1, e2) as exp -> g'_if dest cont regenv exp (fun e1' e2' -> IfFEq(find x Type.Float regenv, find y Type.Float regenv, find z Type.Int regenv, e1', e2')) e1 e2
-  | IfFLE(x, y, z, e1, e2) as exp -> g'_if dest cont regenv exp (fun e1' e2' -> IfFLE(find x Type.Float regenv, find y Type.Float regenv, find z Type.Int regenv, e1', e2')) e1 e2
+  (*| IfFEq(x, y, z, e1, e2) as exp -> g'_if dest cont regenv exp (fun e1' e2' -> IfFEq(find x Type.Float regenv, find y Type.Float regenv, find z Type.Int regenv, e1', e2')) e1 e2
+  | IfFLE(x, y, z, e1, e2) as exp -> g'_if dest cont regenv exp (fun e1' e2' -> IfFLE(find x Type.Float regenv, find y Type.Float regenv, find z Type.Int regenv, e1', e2')) e1 e2*)
   | CallCls(x, ys, zs) as exp ->
       if List.length ys > Array.length regs - 2 || List.length zs > Array.length fregs - 1 then
         failwith (Format.sprintf "cannot allocate registers for arugments to %s" x)

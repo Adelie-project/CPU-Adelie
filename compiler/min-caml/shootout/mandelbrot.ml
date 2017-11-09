@@ -39,6 +39,7 @@
 *)
 (*MINCAML*)     xloop (x + 1) y in
 (*MINCAML*)   xloop 0 y;
+              print_newline ();
 (*NOMINCAML   done; *)
 (*MINCAML*)   yloop (y + 1) in
 (*MINCAML*) yloop 0
