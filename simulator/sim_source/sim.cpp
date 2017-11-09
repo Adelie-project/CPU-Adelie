@@ -1,5 +1,7 @@
 #include "globalparam.hpp"
 #include "exec.hpp"
+#include <signal.h>
+#include <unistd.h>
 using namespace std;
 #define Loop(i, n) for(int i = 0; i < (int)n; i++)
 #define Loop1(i, n) for(int i = 1; i <= (int)n; i++)
@@ -8,6 +10,8 @@ using namespace std;
 deque<int> record_pc;
 deque<int> record_inst;
 vector<deque<int>> record_reg(32);
+//各種パラメータ
+param_t *param = new param_t;
 
 //functions
 inline void preprocess_of_run(param_t* param);
@@ -23,12 +27,17 @@ void run_step(param_t* param);
 void print_wave();
 void print_standard_reg(param_t* param);
 
+void sigsegv_handler(int signo) {
+  printf("\n\nPC = %08X\n", param->pc);
+  if(param->wave) print_wave();
+  else print_standard_reg(param);
+  printf("\n\nerror: segmentation fault\n\n");
+  exit(EXIT_FAILURE);
+}
 
 int main(int argc, char *argv[]) {
-
-  //各種パラメータ
-  param_t *param = new param_t;
   init_param(param);
+  signal(SIGSEGV, sigsegv_handler);
 
   //入力処理
   Loop1(i, argc - 1) {
@@ -101,7 +110,8 @@ inline void preprocess_of_run(param_t* param) {
       printf("\n\nPC = %08X\n", param->pc);
       if (param->wave) print_wave();
       else print_standard_reg(param);
-      printf("\n\nreach end of file\n");
+      printf("\n\nreach end of file.\n");
+      printf("inst_cnt = %d\n", param->cnt);
       fclose(param->fp);
       exit(EXIT_SUCCESS);
     }
@@ -113,7 +123,8 @@ inline void postprocess_of_run(param_t* param) {
     printf("\n\nPC = %08X\n", param->pc);
     if (param->wave) print_wave();
     else print_standard_reg(param);
-    printf("\n\nprogram infinitely loops at pc %d, simulation stops\n", param->pc);
+    printf("\n\nprogram infinitely loops at pc %d, simulation stops.\n", param->pc);
+    printf("inst_cnt = %d\n", param->cnt);
     fclose(param->fp);
     exit(EXIT_SUCCESS);
   }

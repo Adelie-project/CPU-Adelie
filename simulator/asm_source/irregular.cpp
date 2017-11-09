@@ -119,7 +119,11 @@ void parce_irregular(param_t* param) {
     if (itr == (param->labels).end()) { printf("\x1b[31merror\x1b[39m: could not find the label: %s used in line %d\n", (param->buf.back()).c_str(), param->lineno); exit(EXIT_FAILURE); }
     else {
       if (param->buf[0] == "lui") param->buf.back() = '$' + to_string(itr->second & 0xfffff000);
-      else param->buf.back() = '$' + to_string(itr->second & 0xfff);
+      else {
+        int a = itr->second & 0xfff;
+        if (a & 0x800) a = a | 0xfffff000;
+        param->buf.back() = '$' + to_string(a);
+      }
     }
   }
 }

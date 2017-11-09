@@ -108,6 +108,7 @@ int_float_mover ifm, ifm2;
 unsigned char in_data, out_data;
 
 void exec_main(param_t* param) {
+  param->cnt++;
   switch((param->decoded)[param->rbuf_p][0]) {
     case LUI:
       set_u_type(param, &rd, &imm);

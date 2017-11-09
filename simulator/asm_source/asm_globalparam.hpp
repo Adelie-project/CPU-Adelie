@@ -13,7 +13,7 @@ using namespace std;
 struct param_t {
   string readline;
   vector<string> buf;
-  FILE *fp;
+  FILE *fp, *mfp;
   unsigned pc_interval;
   unsigned lineno;
   unsigned pc;
