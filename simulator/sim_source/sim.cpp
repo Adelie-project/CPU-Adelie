@@ -29,7 +29,7 @@ void print_wave(int mode);
 void print_standard_reg(param_t* param);
 
 void sigsegv_handler(int signo) {
-  printf("\n\nPC = %08X\n", param->pc);
+  printf("\nPC = %08X\n", param->pc);
   if(param->wave) {
     print_wave(0);
     print_wave(1);
@@ -168,10 +168,7 @@ void run(param_t* param) {
 
 void run_break(param_t* param) {
   while(1) {
-    if(param->breakpoint == param->pc) {
-      param->step = true;
-      run_step(param);
-    }
+    if(param->breakpoint == param->pc) run_step(param);
     preprocess_of_run(param);
     exec_main(param);
     postprocess_of_run(param);
@@ -180,12 +177,12 @@ void run_break(param_t* param) {
 
 void run_wave(param_t* param) {
   while(1) {
+    if(param->breakpoint == param->pc) run_step(param);
     preprocess_of_run(param);
     update_wave1(param);
     exec_main(param);
     update_wave2(param);
     postprocess_of_run(param);
-    if(param->breakpoint == param->prepc) run_step(param);
   }
 }
 
@@ -203,6 +200,7 @@ inline unsigned read_hash_list(param_t* param, int k) {
 }
 
 void run_step(param_t* param){
+  param->step = true;
   while(1) {
     preprocess_of_run(param);
     printf("\nPC = %08X : \n", param->pc);
@@ -223,9 +221,15 @@ void run_step(param_t* param){
         if (s == "") break;
         else if (s == "r") {
           param->step = false;
-          if (param->breakpoint != UINT_MAX) { postprocess_of_run(param); run_break(param); }
-          else if (param->wave) run_wave(param);
-          else run(param);
+          postprocess_of_run(param);
+          if (param->breakpoint != UINT_MAX) {
+            if (param->wave) run_wave(param);
+            else run_break(param);
+          }
+          else {
+            if (param->wave) run_wave(param);
+            else run(param);
+          }
           break;
         }
         else {
@@ -251,7 +255,7 @@ void run_step(param_t* param){
 void print_wave(int mode) {
   printf("  PC: ");
   Loop(i, record_pc.size()) {
-    printf("%08x ", record_pc[i]);
+    printf("%08X ", record_pc[i]);
     if (i == (int)record_pc.size() - 1 || record_pc[i] != record_pc[i + 1]) {
       printf("| ");
     }
@@ -260,7 +264,7 @@ void print_wave(int mode) {
   printf("\n");
   printf("inst: ");
   Loop(i, record_inst.size()) {
-    printf("%08x ", record_inst[i]);
+    printf("%08X ", record_inst[i]);
     if (i == (int)record_inst.size() - 1 || record_inst[i] != record_inst[i + 1]) {
       printf("| ");
     }
@@ -273,7 +277,7 @@ void print_wave(int mode) {
       int_float_mover ifm;
       Loop(j, record_freg[i].size()) {
         ifm.f = record_freg[i][j];
-        printf("%08x ", ifm.i);
+        printf("%08X ", ifm.i);
         if (j == (int)record_freg[i].size() - 1 || record_freg[i][j] != record_freg[i][j + 1]) {
           printf("| ");
         }
@@ -286,7 +290,7 @@ void print_wave(int mode) {
     Loop(i, 32) {
       printf(" reg[%02d]: ", i);
       Loop(j, record_reg[i].size()) {
-        printf("%08x ", record_reg[i][j]);
+        printf("%08X ", record_reg[i][j]);
         if (j == (int)record_reg[i].size() - 1 || record_reg[i][j] != record_reg[i][j + 1]) {
           printf("| ");
         }
