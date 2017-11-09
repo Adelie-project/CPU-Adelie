@@ -34,20 +34,21 @@ vector<bool> opt_flags(8, false); //オプションフラグ
 
 void write_result(param_t *param, int result) {
   if(opt_flags[1]) {
-    if (fprintf(param->fp, "%08X\n", result) < 0) {
-      perror("fprintf error"); exit(EXIT_FAILURE);
-    }
+    if (fprintf(param->fp, "%08X\n", result) < 0) { perror("fprintf error"); exit(EXIT_FAILURE); }
   }
   else {
-    if (fwrite(&result, sizeof(unsigned int), 1, param->fp) != 1) {
-      perror("fwrite error"); exit(EXIT_FAILURE);
-    }
+    if (fwrite(&result, sizeof(unsigned int), 1, param->fp) != 1) { perror("fwrite error"); exit(EXIT_FAILURE); }
   }
 }
 
 void parse(param_t *param) {
   int result;
   divide(param);
+  if(opt_flags[2]) {
+    if (fprintf(param->mfp, "%s  ; pc = 0x%08X = %d\n", param->readline.c_str(), param->pc, param->pc) < 0) {
+      perror("fprintf error"); exit(EXIT_FAILURE);
+    }
+  }
   if ((param->buf).size() == 0 || (param->buf[0]).back() == ':') return;
   auto itr = (param->irregular).find(param->pc);
   if (itr == (param->irregular).end()) {
@@ -91,11 +92,15 @@ int main(int argc, char *argv[]) {
   param_t *param = new param_t;
   init_param(param);
 
-  string filename;
+  string filename, mfilename;
+
   Loop1(i, argc - 1) {
     string strbuf = argv[i];
     if (strbuf == "-x") {
       opt_flags[1] = true;
+    }
+    else if (strbuf == "-m") {
+      opt_flags[2] = true;
     }
     else {
       if (opt_flags[7]) { printf("\x1b[31merror\x1b[39m: unknown option\n"); exit(EXIT_FAILURE); }
@@ -111,6 +116,12 @@ int main(int argc, char *argv[]) {
   ifstream ifs(filename);
   if (!ifs.is_open()) { perror("fopen error\n"); exit(EXIT_FAILURE); }
 
+  if (opt_flags[2]) {
+    mfilename = filename.substr(0, filename.find(".", 0)) + "_m.s";
+    param->mfp = fopen(mfilename.c_str(), "w");
+    if (param->mfp == NULL) { perror("fopen error\n"); exit(EXIT_FAILURE); }
+  }
+
   if (opt_flags[1]) {
     filename = filename.substr(0, filename.find(".", 0)) + ".coe";
     param->fp = fopen(filename.c_str(), "w");
@@ -122,6 +133,7 @@ int main(int argc, char *argv[]) {
     param->fp = fopen(filename.c_str(), "wb");
     if (param->fp == NULL) { perror("fopen error\n"); exit(EXIT_FAILURE); }
   }
+
   //まずはラベル探しと糖衣構文の分解、デバッグしやすさを考えて最初のうちは、ファイルにおける行数（ただし0始め）とPCを一対一させる
   while(getline(ifs, param->readline)) {
     param->lineno++;
@@ -138,6 +150,10 @@ int main(int argc, char *argv[]) {
     parse(param);
   }
   ifs.close();
+  if (opt_flags[2]) {
+    fclose(param->mfp);
+    printf("commented file: %s generated\n", mfilename.c_str());
+  }
   fclose(param->fp);
   printf("%s generated\n", filename.c_str());
   return 0;

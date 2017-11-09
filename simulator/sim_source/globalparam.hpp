@@ -40,6 +40,7 @@ struct param_t {
   int reg[32];
   float freg[32];
   hash_list_t *mem[HASHWIDTH];
+  int cnt;
 };
 
 enum inst_t {
