@@ -6,6 +6,7 @@ void init_param (param_t* param) {
   param->breakpoint = UINT_MAX;
   param->wave = 0;
   param->step = false;
+  param->trace = ULLONG_MAX;
   param->fp = NULL; // 命令列ファイル記述子
   param->ifp = NULL; // 入力ファイル記述子
   param->ofp = NULL; // 出力ファイル記述子
