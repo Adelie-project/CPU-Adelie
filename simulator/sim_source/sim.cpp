@@ -55,6 +55,10 @@ int main(int argc, char *argv[]) {
     else if (strbuf == "-step") {
       param->step = true;
     }
+    else if (strbuf.substr(0,7) == "-trace=") {
+      param->trace = strtol((strbuf.substr(7,strbuf.size()-7)).c_str(), NULL, 0);
+      param->trace = true;
+    }
     else if (strbuf == "-f") {
       param->f_display = true;
     }
@@ -118,7 +122,7 @@ inline void preprocess_of_run(param_t* param) {
       }
       else print_standard_reg(param);
       printf("\n\nreach end of file.\n");
-      printf("inst_cnt = %d\n", param->cnt);
+      printf("inst_cnt = %lld\n", param->cnt);
       fclose(param->fp);
       exit(EXIT_SUCCESS);
     }
@@ -134,7 +138,7 @@ inline void postprocess_of_run(param_t* param) {
     }
     else print_standard_reg(param);
     printf("\n\nprogram infinitely loops at pc %d, simulation stops.\n", param->pc);
-    printf("inst_cnt = %d\n", param->cnt);
+    printf("inst_cnt = %lld\n", param->cnt);
     fclose(param->fp);
     exit(EXIT_SUCCESS);
   }

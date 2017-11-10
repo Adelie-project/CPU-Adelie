@@ -27,6 +27,7 @@ struct param_t {
   unsigned breakpoint;
   unsigned wave;
   bool step;
+  unsigned long long trace;
   FILE *fp;
   FILE *ifp, *ofp;
   unsigned rbuf[RBUFSIZE];
@@ -40,7 +41,7 @@ struct param_t {
   int reg[32];
   float freg[32];
   hash_list_t *mem[HASHWIDTH];
-  int cnt;
+  unsigned long long cnt;
 };
 
 enum inst_t {
