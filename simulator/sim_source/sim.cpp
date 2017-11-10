@@ -57,7 +57,6 @@ int main(int argc, char *argv[]) {
     }
     else if (strbuf.substr(0,7) == "-trace=") {
       param->trace = strtol((strbuf.substr(7,strbuf.size()-7)).c_str(), NULL, 0);
-      param->trace = true;
     }
     else if (strbuf == "-f") {
       param->f_display = true;
