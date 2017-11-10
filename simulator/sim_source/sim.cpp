@@ -277,11 +277,13 @@ void print_wave(int mode) {
   if (mode) {
     Loop(i, 32) {
       printf("freg[%02d]: ", i);
-      int_float_mover ifm;
+	  int_float_mover ifm, ifm2;
       Loop(j, record_freg[i].size()) {
         ifm.f = record_freg[i][j];
         printf("%08X ", ifm.i);
-        if (j == (int)record_freg[i].size() - 1 || record_freg[i][j] != record_freg[i][j + 1]) {
+		if (j < (int)record_freg[i].size() - 1) ifm2.f = record_freg[i][j + 1];
+		else ifm2.f = 0;
+        if (j == (int)record_freg[i].size() - 1 || ifm.i != ifm2.i) {
           printf("| ");
         }
         else printf("  ");
