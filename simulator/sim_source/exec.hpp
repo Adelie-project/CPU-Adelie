@@ -24,6 +24,8 @@ using namespace std;
 #define Loop(i, n) for(int i = 0; i < (int)n; i++)
 #define Loop1(i, n) for(int i = 1; i <= (int)n; i++)
 
+#define TRACE_SIZE 1e6
+
 void exec_jmp_fread(param_t*, unsigned newpc);
 
 void exec_main(param_t* param);

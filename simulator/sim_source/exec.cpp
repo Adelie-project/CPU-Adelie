@@ -109,7 +109,10 @@ unsigned char in_data, out_data;
 
 void exec_main(param_t* param) {
   param->cnt++;
-  if(param->trace <= param->cnt && param->cnt < param->trace + 1e6) printf("%lld, %d\n", param->cnt, param->pc);
+  if(param->trace <= param->cnt) {
+    printf("%lld, %d\n", param->cnt, param->pc);
+    if(param->trace + TRACE_SIZE <= param->cnt) exit(EXIT_SUCCESS);
+  }
   switch((param->decoded)[param->rbuf_p][0]) {
     case LUI:
       set_u_type(param, &rd, &imm);
