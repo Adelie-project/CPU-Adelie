@@ -206,7 +206,7 @@ void run_step(param_t* param){
   param->step = true;
   while(1) {
     preprocess_of_run(param);
-    printf("\nPC = %08X : \n", param->pc);
+	printf("\nPC = %08X, inst_cnt = %lld : \n", param->pc, param->cnt + 1);
     if (param->wave) {
       update_wave1(param);
     }
