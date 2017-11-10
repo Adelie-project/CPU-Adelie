@@ -71,13 +71,16 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | NonTail(x), Ld(y, z') ->
       (match z' with
       | V(_) ->
-        Printf.fprintf oc "\tadd\t%s, %s, %s\n\tlw\t%s, %s, $0\n\tsub\t%s, %s, %s\n" y y (pp_id_or_imm z') x y y y (pp_id_or_imm z')
+        if (x = y) then
+          Printf.fprintf oc "\tadd\t%s, %s, %s\n\tlw\t%s, %s, $0\n" y y (pp_id_or_imm z') x y(*コーナーケースか,lwで起こりうるが,flw,fswでは起こり得ない,swでそれもないはず*)
+        else
+          Printf.fprintf oc "\tadd\t%s, %s, %s\n\tlw\t%s, %s, $0\n\tsub\t%s, %s, %s\n" y y (pp_id_or_imm z') x y y y (pp_id_or_imm z')
       | _ ->
         Printf.fprintf oc "\tlw\t%s, %s, $%s\n" x y (pp_id_or_imm z') (*"\tld\t[%s + %s], %s\n" y (pp_id_or_imm z') x*)(*z'にid来たらやばくね->virtualのget,putでやばそうなことをしている*))
   | NonTail(_), St(x, y, z') ->
       (match z' with
       | V(_) ->
-        Printf.fprintf oc "\tadd\t%s, %s, %s\n\tsw\t%s, %s, $0\n\tsub\t%s, %s, %s\n" x x (pp_id_or_imm z') y x x x (pp_id_or_imm z')
+        Printf.fprintf oc "\tadd\t%s, %s, %s\n\tsw\t%s, %s, $0\n\tsub\t%s, %s, %s\n" y y (pp_id_or_imm z') y x y y (pp_id_or_imm z')
       | _ ->Printf.fprintf oc "\tsw\t%s, %s, $%s\n" y x (pp_id_or_imm z')(*"\tst\t%s, [%s + %s]\n" x y (pp_id_or_imm z')*)(*同じく*)(*これ順序あってる?*))
   | NonTail(x), FMovD(y) when x = y -> ()
   | NonTail(x), FMovD(y) ->
