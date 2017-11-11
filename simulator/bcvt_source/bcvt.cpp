@@ -67,7 +67,7 @@ int main(int argc, char *argv[]) {
   string filename = argv[1];
   ifstream ifs(filename);
   if (!ifs.is_open()) { perror("fopen error\n"); exit(EXIT_FAILURE); }
-  filename = filename.substr(0, filename.find(".", 0)) + ".in";
+  filename = filename.substr(0, filename.rfind(".")) + ".in";
   FILE *ofp = fopen(filename.c_str(), "wb");
   if (ofp == NULL) { perror("fopen error\n"); exit(EXIT_FAILURE); }
   string readline;
@@ -80,5 +80,8 @@ int main(int argc, char *argv[]) {
       }
     }
   }
+  ifs.close();
+  fclose(ofp);
+  printf("%s generated\n", filename.c_str());
   return 0;
 }

@@ -117,19 +117,19 @@ int main(int argc, char *argv[]) {
   if (!ifs.is_open()) { perror("fopen error\n"); exit(EXIT_FAILURE); }
 
   if (opt_flags[2]) {
-    mfilename = filename.substr(0, filename.find(".", 0)) + "_m.s";
+    mfilename = filename.substr(0, filename.length() - 2) + "_m.s";
     param->mfp = fopen(mfilename.c_str(), "w");
     if (param->mfp == NULL) { perror("fopen error\n"); exit(EXIT_FAILURE); }
   }
 
   if (opt_flags[1]) {
-    filename = filename.substr(0, filename.find(".", 0)) + ".coe";
+    filename = filename.substr(0, filename.length() - 2) + ".coe";
     param->fp = fopen(filename.c_str(), "w");
     if (param->fp == NULL) { perror("fopen error\n"); exit(EXIT_FAILURE); }
     fprintf(param->fp, "memory_initialization_radix=16;\nmemory_initialization_vector=\n");
   }
   else {
-    filename = filename.substr(0, filename.find(".", 0)) + ".bin";
+    filename = filename.substr(0, filename.length() - 2) + ".bin";
     param->fp = fopen(filename.c_str(), "wb");
     if (param->fp == NULL) { perror("fopen error\n"); exit(EXIT_FAILURE); }
   }

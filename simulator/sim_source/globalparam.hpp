@@ -38,10 +38,12 @@ struct param_t {
   unsigned pc;
   unsigned prepc;
   bool f_display;
+  bool warn;
   int reg[32];
   float freg[32];
   hash_list_t *mem[HASHWIDTH];
   unsigned long long cnt;
+  unsigned long long breakcnt;
 };
 
 enum inst_t {
