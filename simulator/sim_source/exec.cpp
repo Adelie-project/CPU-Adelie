@@ -108,7 +108,7 @@ int_float_mover ifm, ifm2;
 unsigned char in_data, out_data;
 
 inline void warn_nan(param_t* param) {
-  if (isnan(param->freg[rd]) && param->warn) {
+  if (isnanf(param->freg[rd]) && param->warn) {
     printf("\x1b[35mwarning\x1b[39m: nan is written in freg[%d], when PC = %d, cnt = %lld\n", rd, param->pc, param->cnt);
   }
 }
@@ -116,8 +116,8 @@ inline void warn_nan(param_t* param) {
 void exec_main(param_t* param) {
   param->cnt++;
   if(param->trace <= param->cnt) {
-    printf("%lld, %d\n", param->cnt, param->pc);
     if(param->trace + TRACE_SIZE <= param->cnt) exit(EXIT_SUCCESS);
+    printf("%lld, %d\n", param->cnt, param->pc);
   }
   switch((param->decoded)[param->rbuf_p][0]) {
     case LUI:
