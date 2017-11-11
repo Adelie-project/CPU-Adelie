@@ -263,7 +263,7 @@ void exec_main(param_t* param) {
       return;
     case SLLI:
       set_i_type(param, &rd, &rs1, &imm);
-      if(param->step) printf("slti %%r%d, %%r%d, $%d\n", rd, rs1, imm);
+      if(param->step) printf("slli %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       if(rd != 0) param->reg[rd] = (unsigned)(param->reg[rs1]) << imm;
       pc_inclement(param);
       return;
