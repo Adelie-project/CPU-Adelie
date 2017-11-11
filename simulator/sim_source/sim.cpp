@@ -29,7 +29,7 @@ void print_wave(int mode);
 void print_standard_reg(param_t* param);
 
 void sigsegv_handler(int signo) {
-  printf("\nPC = %08X\n", param->pc);
+  printf("\nPC = %08X, cnt = %lld\n", param->pc, param->cnt);
   if(param->wave) {
     print_wave(0);
     print_wave(1);
@@ -49,6 +49,9 @@ int main(int argc, char *argv[]) {
     if (strbuf.substr(0,12) == "-breakpoint=") {
       param->breakpoint = strtol((strbuf.substr(12,strbuf.size()-12)).c_str(), NULL, 0);
     }
+    else if (strbuf.substr(0,10) == "-breakcnt=") {
+      param->breakcnt = strtol((strbuf.substr(10,strbuf.size()-10)).c_str(), NULL, 0);
+    }
     else if (strbuf == "-wave") {
       param->wave = 8;
     }
@@ -57,6 +60,9 @@ int main(int argc, char *argv[]) {
     }
     else if (strbuf.substr(0,7) == "-trace=") {
       param->trace = strtol((strbuf.substr(7,strbuf.size()-7)).c_str(), NULL, 0);
+    }
+    else if (strbuf == "-warn") {
+      param->warn = true;
     }
     else if (strbuf == "-f") {
       param->f_display = true;
@@ -80,7 +86,7 @@ int main(int argc, char *argv[]) {
       if (param->ofp == NULL) { perror("fopen error"); exit(EXIT_FAILURE); }
     }
     else {
-      if (param->fp != NULL) { printf("error: unknown option of %s\n", strbuf.c_str()); exit(EXIT_FAILURE); }
+      if (param->fp != NULL) { printf("error: unknown option of %s\n, use -help option to check options", strbuf.c_str()); exit(EXIT_FAILURE); }
       if (strbuf.substr(strbuf.length() - 4, 4) != ".bin") {
         printf("error: specify a binary file \"*.bin\".\n");
         exit(EXIT_FAILURE);
@@ -99,7 +105,7 @@ int main(int argc, char *argv[]) {
       run_wave(param);
     }
     else {
-      if (param->breakpoint != UINT_MAX) run_break(param);
+      if (param->breakpoint != UINT_MAX || param->breakpoint != ULLONG_MAX) run_break(param);
       else run(param);
     }
   }
@@ -121,7 +127,7 @@ inline void preprocess_of_run(param_t* param) {
       }
       else print_standard_reg(param);
       printf("\n\nreach end of file.\n");
-      printf("inst_cnt = %lld\n", param->cnt);
+      printf("cnt = %lld\n", param->cnt);
       fclose(param->fp);
       exit(EXIT_SUCCESS);
     }
@@ -137,7 +143,7 @@ inline void postprocess_of_run(param_t* param) {
     }
     else print_standard_reg(param);
     printf("\n\nprogram infinitely loops at pc %d, simulation stops.\n", param->pc);
-    printf("inst_cnt = %lld\n", param->cnt);
+    printf("cnt = %lld\n", param->cnt);
     fclose(param->fp);
     exit(EXIT_SUCCESS);
   }
@@ -171,22 +177,34 @@ void run(param_t* param) {
 
 void run_break(param_t* param) {
   while(1) {
-    if(param->breakpoint == param->pc) run_step(param);
+    if(param->breakpoint == param->pc) {
+      if(param->breakcnt == ULLONG_MAX || param->breakcnt <= param->cnt + 1) {
+        run_step(param); return;
+      }
+    }
+    if(param->breakcnt == param->cnt + 1) { run_step(param); return; }
     preprocess_of_run(param);
     exec_main(param);
     postprocess_of_run(param);
   }
+  return;
 }
 
 void run_wave(param_t* param) {
   while(1) {
-    if(param->breakpoint == param->pc) run_step(param);
+    if(param->breakpoint == param->pc) {
+      if(param->breakcnt == ULLONG_MAX || param->breakcnt <= param->cnt + 1) {
+        run_step(param); return;
+      }
+    }
+    if(param->breakcnt == param->cnt + 1) { run_step(param); return; }
     preprocess_of_run(param);
     update_wave1(param);
     exec_main(param);
     update_wave2(param);
     postprocess_of_run(param);
   }
+  return;
 }
 
 inline int hash_func(int k) {
@@ -206,7 +224,7 @@ void run_step(param_t* param){
   param->step = true;
   while(1) {
     preprocess_of_run(param);
-	printf("\nPC = %08X, inst_cnt = %lld : \n", param->pc, param->cnt + 1);
+	printf("\nPC = %08X, cnt = %lld : \n", param->pc, param->cnt + 1);
     if (param->wave) {
       update_wave1(param);
     }
@@ -221,17 +239,20 @@ void run_step(param_t* param){
       printf("\npress enter to step-in, enter 'r' to run (with breakpoint), or a number to show the value of the memory address. ");
       string s;
       if (getline(cin, s)) {
-        if (s == "") break;
+        if (s == "") {
+          postprocess_of_run(param);
+          break;
+        }
         else if (s == "r") {
           param->step = false;
           postprocess_of_run(param);
-          if (param->breakpoint != UINT_MAX) {
-            if (param->wave) run_wave(param);
-            else run_break(param);
+          if (param->breakpoint != UINT_MAX || param->breakcnt != ULLONG_MAX) {
+            if (param->wave) { run_wave(param); return; }
+            else { run_break(param); return; }
           }
           else {
-            if (param->wave) run_wave(param);
-            else run(param);
+            if (param->wave) { run_wave(param); return; }
+            else { run(param); return; }
           }
           break;
         }
@@ -249,9 +270,7 @@ void run_step(param_t* param){
         perror("getline failed"); continue;
       }
     }
-    postprocess_of_run(param);
   }
-
 }
 
 // mode = 1 -> float, 0 -> int

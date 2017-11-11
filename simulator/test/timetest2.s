@@ -11,6 +11,6 @@ addi %r9, %r9, $1 ; k++
 blt %r9, %r10, $-16 ; if (k < 2000) loop
 addi %r8, %r8, $1 ; j++
 blt %r8, %r10, $-28 ; if (j < 2000) loop
-addi %r7, %r7 $1 ; i++
+addi %r7, %r7, $1 ; i++
 blt %r7, %r11, $-40 ; if (i < 100) loop
 jal %r20, $0 ; stop at here

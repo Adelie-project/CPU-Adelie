@@ -107,6 +107,12 @@ unsigned rs1, rs2, rd;
 int_float_mover ifm, ifm2;
 unsigned char in_data, out_data;
 
+inline void warn_nan(param_t* param) {
+  if (isnan(param->freg[rd]) && param->warn) {
+    printf("\x1b[35mwarning\x1b[39m: nan is written in freg[%d], when PC = %d, cnt = %lld\n", rd, param->pc, param->cnt);
+  }
+}
+
 void exec_main(param_t* param) {
   param->cnt++;
   if(param->trace <= param->cnt) {
@@ -350,7 +356,7 @@ void exec_main(param_t* param) {
       if(param->step) printf("flw %%f%d, %%r%d, $%d\n", rd, rs1, imm);
       evac = param->reg[rs1] + imm;
       ifm.u = (read_hash_list(param, evac));
-      if(rd != 0) param->freg[rd] = ifm.f;
+      if(rd != 0) { param->freg[rd] = ifm.f; warn_nan(param); }
       pc_inclement(param);
       return;
     case FSW:
@@ -364,25 +370,25 @@ void exec_main(param_t* param) {
     case FADDS:
       set_r_type(param, &rd, &rs1, &rs2);
       if(param->step) printf("fadds %%f%d, %%f%d, %%f%d\n", rd, rs1, rs2);
-      if(rd != 0) param->freg[rd] = param->freg[rs1] + param->freg[rs2];
+      if(rd != 0) { param->freg[rd] = param->freg[rs1] + param->freg[rs2]; warn_nan(param); }
       pc_inclement(param);
       return;
     case FSUBS:
       set_r_type(param, &rd, &rs1, &rs2);
       if(param->step) printf("fsubs %%f%d, %%f%d, %%f%d\n", rd, rs1, rs2);
-      if(rd != 0) param->freg[rd] = param->freg[rs1] - param->freg[rs2];
+      if(rd != 0) { param->freg[rd] = param->freg[rs1] - param->freg[rs2]; warn_nan(param); }
       pc_inclement(param);
       return;
     case FMULS:
       set_r_type(param, &rd, &rs1, &rs2);
       if(param->step) printf("fmuls %%f%d, %%f%d, %%f%d\n", rd, rs1, rs2);
-      if(rd != 0) param->freg[rd] = param->freg[rs1] * param->freg[rs2];
+      if(rd != 0) { param->freg[rd] = param->freg[rs1] * param->freg[rs2]; warn_nan(param); }
       pc_inclement(param);
       return;
     case FDIVS:
       set_r_type(param, &rd, &rs1, &rs2);
       if(param->step) printf("fdivs %%f%d, %%f%d, %%f%d\n", rd, rs1, rs2);
-      if(rd != 0) param->freg[rd] = param->freg[rs1] / param->freg[rs2];
+      if(rd != 0) { param->freg[rd] = param->freg[rs1] / param->freg[rs2]; warn_nan(param); }
       pc_inclement(param);
       return;
     case FLTS:
@@ -407,7 +413,7 @@ void exec_main(param_t* param) {
       set_r_type(param, &rd, &rs1, &rs2);
       if(param->step) printf("fmvsx %%f%d, %%r%d\n", rd, rs1);
       ifm.i = param->reg[rs1];
-      if(rd != 0) param->freg[rd] = ifm.f;
+      if(rd != 0) { param->freg[rd] = ifm.f; warn_nan(param); }
       pc_inclement(param);
       return;
     case FMVXS:
@@ -420,7 +426,7 @@ void exec_main(param_t* param) {
     case FCVTSW:
       set_r_type(param, &rd, &rs1, &rs2);
       if(param->step) printf("fcvtsw %%f%d, %%r%d\n", rd, rs1);
-      if(rd != 0) param->freg[rd] = param->reg[rs1];
+      if(rd != 0) { param->freg[rd] = param->reg[rs1]; warn_nan(param); }
       pc_inclement(param);
       return;
     case FCVTWS:
@@ -432,7 +438,7 @@ void exec_main(param_t* param) {
     case FSQRTS:
       set_r_type(param, &rd, &rs1, &rs2);
       if(param->step) printf("fsqrts %%f%d, %%f%d\n", rd, rs1);
-      if(rd != 0) param->freg[rd] = sqrt(param->freg[rs1]);
+      if(rd != 0) { param->freg[rd] = sqrt(param->freg[rs1]); warn_nan(param); }
       pc_inclement(param);
       return;
     case FSGNJXS:
