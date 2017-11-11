@@ -73,6 +73,8 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       | V(_) ->
         if (x = y) then
           Printf.fprintf oc "\tadd\t%s, %s, %s\n\tlw\t%s, %s, $0\n" y y (pp_id_or_imm z') x y(*コーナーケースか,lwで起こりうるが,flw,fswでは起こり得ない,swでそれもないはず*)
+        else if (x = (pp_id_or_imm z')) then
+          Printf.fprintf oc "\tadd\t%s, %s, %s\n\tlw\t%s, %s, $0\n" (pp_id_or_imm z') y (pp_id_or_imm z') x (pp_id_or_imm z')
         else
           Printf.fprintf oc "\tadd\t%s, %s, %s\n\tlw\t%s, %s, $0\n\tsub\t%s, %s, %s\n" y y (pp_id_or_imm z') x y y y (pp_id_or_imm z')
       | _ ->
