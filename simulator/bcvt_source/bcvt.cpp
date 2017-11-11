@@ -33,35 +33,6 @@ union int_float_mover {
   float f;
 };
 
-vector<int> fi_parse(string s) {
-  vector<string> sbuf;
-  //devide
-  unsigned k = 0, i = 0;
-  for(; i < s.length(); i++) {
-    char c = s[i];
-    if (c <= ' ' || c == '\t') {
-      if (k != i) sbuf.push_back(s.substr(k, i - k));
-      k = i + 1;
-    }
-  }
-  if (k != i) sbuf.push_back(s.substr(k, i - k));
-  vector<int> ret;
-  //convert
-  Loop(i, sbuf.size()) {
-    //整数
-    if(sbuf[i].find(".", 0) == string::npos) {
-      ret.push_back(strtol(sbuf[i].c_str(), NULL, 0));
-    }
-    //浮動小数点
-    else {
-      int_float_mover ifm;
-      ifm.f = strtof(sbuf[i].c_str(), NULL);
-      ret.push_back(ifm.i);
-    }
-  }
-  return ret;
-}
-
 int main(int argc, char *argv[]) {
   if(argc != 2) { printf("error: illegal arguments.\n"); exit(EXIT_FAILURE); }
   string filename = argv[1];
@@ -72,12 +43,61 @@ int main(int argc, char *argv[]) {
   if (ofp == NULL) { perror("fopen error\n"); exit(EXIT_FAILURE); }
   string readline;
   vector<int> vals;
-  while(getline(ifs, readline)) {
-    vals = fi_parse(readline);
-    Loop(i, vals.size()) {
-      if (fwrite(&(vals[i]), sizeof(int), 1, ofp) != 1) {
-        perror("fwrite error"); exit(EXIT_FAILURE);
+
+  //parse_sld start
+
+  //read_sld_env
+  Loop(i, 9) {
+    int_float_mover ifm; ifs >> ifm.f;
+    vals.push_back(ifm.i);
+  }
+
+  //read_objects
+  while(1) {
+    int a; ifs >> a;
+    vals.push_back(a);
+    if (a == -1) break;
+    else {
+      Loop(i, 2) {
+        int b; ifs >> b;
+        vals.push_back(b);
       }
+      int c; ifs >> c;
+      vals.push_back(c);
+      Loop(i, 12) {
+        int_float_mover ifm; ifs >> ifm.f;
+        vals.push_back(ifm.i);
+      }
+      if(c) {
+        Loop(i, 3) {
+          int_float_mover ifm; ifs >> ifm.f;
+          vals.push_back(ifm.i);
+        }
+      }
+    }
+  }
+
+  //read_and_network, read_or_network
+  Loop(i, 2) {
+    while(1) {
+      int a; ifs >> a;
+      vals.push_back(a);
+      if (a == -1) break;
+      else {
+        while(1) {
+          int b; ifs >> b;
+          vals.push_back(b);
+          if (b == -1) break;
+        }
+      }
+    }
+  }
+
+  //parse_sld finish
+
+  Loop(i, vals.size()) {
+    if (fwrite(&(vals[i]), sizeof(int), 1, ofp) != 1) {
+      perror("fwrite error"); exit(EXIT_FAILURE);
     }
   }
   ifs.close();
