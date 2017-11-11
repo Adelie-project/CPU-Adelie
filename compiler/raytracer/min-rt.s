@@ -408,7 +408,7 @@ min_caml_start:
 	set	%r7, $0
 	fmvsx	%f1, %r7
 	add	%r7, %r0, %r3
-	addi	%r3, %r3, $16
+	addi	%r3, %r3, $12
 	fsw	%r7, %f1, $8
 	sw	%r7, %r4, $4
 	sw	%r7, %r6, $0
@@ -2588,9 +2588,9 @@ beq_cont.9266:
 	lw	%r9, %r2, $4
 	slli	%r9, %r9, $2
 	lw	%r10, %r2, $0
-	add	%r5, %r5, %r9
+	add	%r10, %r10, %r9
 	sw	%r10, %r5, $0
-	sub	%r5, %r5, %r9
+	sub	%r10, %r10, %r9
 	set	%r5, $3
 	bne	%r8, %r5, beq_else.9267
 	flw	%f1, %r6, $0
@@ -2786,9 +2786,9 @@ beq_else.9285:
 	lw	%r5, %r2, $0
 	slli	%r5, %r5, $2
 	lw	%r6, %r2, $4
-	add	%r6, %r6, %r5
+	add	%r4, %r4, %r5
 	sw	%r4, %r6, $0
-	sub	%r6, %r6, %r5
+	sub	%r4, %r4, %r5
 	jalr	%r0, %r1, $0
 read_or_network.2777:
 	set	%r5, $0
@@ -2819,9 +2819,9 @@ beq_else.9286:
 	lw	%r5, %r2, $0
 	slli	%r5, %r5, $2
 	lw	%r6, %r2, $4
-	add	%r6, %r6, %r5
+	add	%r4, %r4, %r5
 	sw	%r4, %r6, $0
-	sub	%r6, %r6, %r5
+	sub	%r4, %r4, %r5
 	jalr	%r0, %r1, $0
 read_and_network.2779:
 	lw	%r5, %r30, $4
@@ -2843,9 +2843,9 @@ beq_else.9287:
 	lw	%r5, %r2, $8
 	slli	%r6, %r5, $2
 	lw	%r7, %r2, $4
-	add	%r4, %r4, %r6
+	add	%r7, %r7, %r6
 	sw	%r7, %r4, $0
-	sub	%r4, %r4, %r6
+	sub	%r7, %r7, %r6
 	addi	%r4, %r5, $1
 	lw	%r30, %r2, $0
 	lw	%r29, %r30, $0
@@ -3529,9 +3529,8 @@ solver.2823:
 	lw	%r9, %r30, $8
 	lw	%r10, %r30, $4
 	slli	%r4, %r4, $2
-	add	%r10, %r10, %r4
-	lw	%r4, %r10, $0
-	sub	%r10, %r10, %r4
+	add	%r4, %r10, %r4
+	lw	%r4, %r4, $0
 	flw	%f1, %r6, $0
 	sw	%r2, %r8, $0
 	sw	%r2, %r7, $4
@@ -4055,7 +4054,6 @@ solver_fast.2846:
 	slli	%r11, %r4, $2
 	add	%r10, %r10, %r11
 	lw	%r10, %r10, $0
-	sub	%r10, %r10, %r11
 	flw	%f1, %r6, $0
 	sw	%r2, %r8, $0
 	sw	%r2, %r7, $4
@@ -4109,7 +4107,6 @@ solver_fast.2846:
 	slli	%r5, %r5, $2
 	add	%r4, %r4, %r5
 	lw	%r4, %r4, $0
-	sub	%r4, %r4, %r5
 	lw	%r5, %r2, $20
 	sw	%r2, %r4, $52
 	add	%r4, %r0, %r5
@@ -4285,7 +4282,6 @@ solver_fast2.2864:
 	slli	%r10, %r4, $2
 	add	%r9, %r9, %r10
 	lw	%r9, %r9, $0
-	sub	%r9, %r9, %r10
 	sw	%r2, %r7, $0
 	sw	%r2, %r6, $4
 	sw	%r2, %r8, $8
@@ -4316,7 +4312,6 @@ solver_fast2.2864:
 	slli	%r5, %r5, $2
 	add	%r4, %r4, %r5
 	lw	%r4, %r4, $0
-	sub	%r4, %r4, %r5
 	lw	%r5, %r2, $12
 	sw	%r2, %r4, $40
 	add	%r4, %r0, %r5
@@ -4913,7 +4908,6 @@ iter_setup_dirvec_constants.2876:
 	slli	%r7, %r5, $2
 	add	%r6, %r6, %r7
 	lw	%r6, %r6, $0
-	sub	%r6, %r6, %r7
 	sw	%r2, %r30, $0
 	sw	%r2, %r5, $4
 	sw	%r2, %r6, $8
@@ -4951,9 +4945,9 @@ iter_setup_dirvec_constants.2876:
 	lw	%r5, %r2, $4
 	slli	%r6, %r5, $2
 	lw	%r7, %r2, $16
-	add	%r4, %r4, %r6
+	add	%r7, %r7, %r6
 	sw	%r7, %r4, $0
-	sub	%r4, %r4, %r6
+	sub	%r7, %r7, %r6
 	jal	%r0, beq_cont.9358
 beq_else.9357:
 	set	%r5, $2
@@ -4968,9 +4962,9 @@ beq_else.9357:
 	lw	%r5, %r2, $4
 	slli	%r6, %r5, $2
 	lw	%r7, %r2, $16
-	add	%r4, %r4, %r6
+	add	%r7, %r7, %r6
 	sw	%r7, %r4, $0
-	sub	%r4, %r4, %r6
+	sub	%r7, %r7, %r6
 	jal	%r0, beq_cont.9360
 beq_else.9359:
 	lw	%r4, %r2, $20
@@ -4983,9 +4977,9 @@ beq_else.9359:
 	lw	%r5, %r2, $4
 	slli	%r6, %r5, $2
 	lw	%r7, %r2, $16
-	add	%r4, %r4, %r6
+	add	%r7, %r7, %r6
 	sw	%r7, %r4, $0
-	sub	%r4, %r4, %r6
+	sub	%r7, %r7, %r6
 beq_cont.9360:
 beq_cont.9358:
 	addi	%r5, %r5, $-1
@@ -5009,7 +5003,6 @@ setup_startp_constants.2881:
 	slli	%r7, %r5, $2
 	add	%r6, %r6, %r7
 	lw	%r6, %r6, $0
-	sub	%r6, %r6, %r7
 	sw	%r2, %r30, $0
 	sw	%r2, %r5, $4
 	sw	%r2, %r4, $8
@@ -5403,9 +5396,8 @@ beq_else.9381:
 check_all_inside.2906:
 	lw	%r6, %r30, $4
 	slli	%r7, %r4, $2
-	add	%r5, %r5, %r7
-	lw	%r7, %r5, $0
-	sub	%r5, %r5, %r7
+	add	%r7, %r5, %r7
+	lw	%r7, %r7, $0
 	set	%r8, $-1
 	bne	%r7, %r8, beq_else.9382
 	set	%r4, $1
@@ -5414,7 +5406,6 @@ beq_else.9382:
 	slli	%r7, %r7, $2
 	add	%r6, %r6, %r7
 	lw	%r6, %r6, $0
-	sub	%r6, %r6, %r7
 	fsw	%r2, %f3, $0
 	fsw	%r2, %f2, $4
 	fsw	%r2, %f1, $8
@@ -5450,18 +5441,16 @@ shadow_check_and_group.2912:
 	lw	%r11, %r30, $8
 	lw	%r12, %r30, $4
 	slli	%r13, %r4, $2
-	add	%r5, %r5, %r13
-	lw	%r13, %r5, $0
-	sub	%r5, %r5, %r13
+	add	%r13, %r5, %r13
+	lw	%r13, %r13, $0
 	set	%r14, $-1
 	bne	%r13, %r14, beq_else.9384
 	set	%r4, $0
 	jalr	%r0, %r1, $0
 beq_else.9384:
 	slli	%r13, %r4, $2
-	add	%r5, %r5, %r13
-	lw	%r13, %r5, $0
-	sub	%r5, %r5, %r13
+	add	%r13, %r5, %r13
+	lw	%r13, %r13, $0
 	sw	%r2, %r12, $0
 	sw	%r2, %r11, $4
 	sw	%r2, %r10, $8
@@ -5502,9 +5491,8 @@ beq_cont.9386:
 	lw	%r4, %r2, $28
 	slli	%r4, %r4, $2
 	lw	%r5, %r2, $24
-	add	%r5, %r5, %r4
-	lw	%r4, %r5, $0
-	sub	%r5, %r5, %r4
+	add	%r4, %r5, %r4
+	lw	%r4, %r4, $0
 	sw	%r2, %r1, $40
 	addi	%r2, %r2, $44
 	jal	%r1, o_isinvert.2695
@@ -5568,9 +5556,8 @@ shadow_check_one_or_group.2915:
 	lw	%r6, %r30, $8
 	lw	%r7, %r30, $4
 	slli	%r8, %r4, $2
-	add	%r5, %r5, %r8
-	lw	%r8, %r5, $0
-	sub	%r5, %r5, %r8
+	add	%r8, %r5, %r8
+	lw	%r8, %r8, $0
 	set	%r9, $-1
 	bne	%r8, %r9, beq_else.9390
 	set	%r4, $0
@@ -5579,7 +5566,6 @@ beq_else.9390:
 	slli	%r8, %r8, $2
 	add	%r7, %r7, %r8
 	lw	%r7, %r7, $0
-	sub	%r7, %r7, %r8
 	set	%r8, $0
 	sw	%r2, %r5, $0
 	sw	%r2, %r30, $4
@@ -5611,9 +5597,8 @@ shadow_check_one_or_matrix.2918:
 	lw	%r9, %r30, $8
 	lw	%r10, %r30, $4
 	slli	%r11, %r4, $2
-	add	%r5, %r5, %r11
-	lw	%r11, %r5, $0
-	sub	%r5, %r5, %r11
+	add	%r11, %r5, %r11
+	lw	%r11, %r11, $0
 	lw	%r12, %r11, $0
 	set	%r13, $-1
 	bne	%r12, %r13, beq_else.9392
@@ -5719,9 +5704,8 @@ solve_each_element.2921:
 	lw	%r14, %r30, $8
 	lw	%r15, %r30, $4
 	slli	%r16, %r4, $2
-	add	%r5, %r5, %r16
-	lw	%r16, %r5, $0
-	sub	%r5, %r5, %r16
+	add	%r16, %r5, %r16
+	lw	%r16, %r16, $0
 	set	%r17, $-1
 	bne	%r16, %r17, beq_else.9403
 	jalr	%r0, %r1, $0
@@ -5754,9 +5738,8 @@ beq_else.9403:
 	lw	%r4, %r2, $48
 	slli	%r4, %r4, $2
 	lw	%r5, %r2, $44
-	add	%r5, %r5, %r4
-	lw	%r4, %r5, $0
-	sub	%r5, %r5, %r4
+	add	%r4, %r5, %r4
+	lw	%r4, %r4, $0
 	sw	%r2, %r1, $52
 	addi	%r2, %r2, $56
 	jal	%r1, o_isinvert.2695
@@ -5873,9 +5856,8 @@ solve_one_or_network.2925:
 	lw	%r7, %r30, $8
 	lw	%r8, %r30, $4
 	slli	%r9, %r4, $2
-	add	%r5, %r5, %r9
-	lw	%r9, %r5, $0
-	sub	%r5, %r5, %r9
+	add	%r9, %r5, %r9
+	lw	%r9, %r9, $0
 	set	%r10, $-1
 	bne	%r9, %r10, beq_else.9414
 	jalr	%r0, %r1, $0
@@ -5883,7 +5865,6 @@ beq_else.9414:
 	slli	%r9, %r9, $2
 	add	%r8, %r8, %r9
 	lw	%r8, %r8, $0
-	sub	%r8, %r8, %r9
 	set	%r9, $0
 	sw	%r2, %r6, $0
 	sw	%r2, %r5, $4
@@ -5912,9 +5893,8 @@ trace_or_matrix.2929:
 	lw	%r10, %r30, $8
 	lw	%r11, %r30, $4
 	slli	%r12, %r4, $2
-	add	%r5, %r5, %r12
-	lw	%r12, %r5, $0
-	sub	%r5, %r5, %r12
+	add	%r12, %r5, %r12
+	lw	%r12, %r12, $0
 	lw	%r13, %r12, $0
 	set	%r14, $-1
 	bne	%r13, %r14, beq_else.9416
@@ -6060,9 +6040,8 @@ solve_each_element_fast.2935:
 	lw	%r5, %r2, $48
 	slli	%r6, %r5, $2
 	lw	%r7, %r2, $44
-	add	%r7, %r7, %r6
-	lw	%r6, %r7, $0
-	sub	%r7, %r7, %r6
+	add	%r6, %r7, %r6
+	lw	%r6, %r6, $0
 	set	%r8, $-1
 	bne	%r6, %r8, beq_else.9425
 	jalr	%r0, %r1, $0
@@ -6084,9 +6063,8 @@ beq_else.9425:
 	lw	%r4, %r2, $56
 	slli	%r4, %r4, $2
 	lw	%r5, %r2, $32
-	add	%r5, %r5, %r4
-	lw	%r4, %r5, $0
-	sub	%r5, %r5, %r4
+	add	%r4, %r5, %r4
+	lw	%r4, %r4, $0
 	sw	%r2, %r1, $60
 	addi	%r2, %r2, $64
 	jal	%r1, o_isinvert.2695
@@ -6201,9 +6179,8 @@ solve_one_or_network_fast.2939:
 	lw	%r7, %r30, $8
 	lw	%r8, %r30, $4
 	slli	%r9, %r4, $2
-	add	%r5, %r5, %r9
-	lw	%r9, %r5, $0
-	sub	%r5, %r5, %r9
+	add	%r9, %r5, %r9
+	lw	%r9, %r9, $0
 	set	%r10, $-1
 	bne	%r9, %r10, beq_else.9436
 	jalr	%r0, %r1, $0
@@ -6211,7 +6188,6 @@ beq_else.9436:
 	slli	%r9, %r9, $2
 	add	%r8, %r8, %r9
 	lw	%r8, %r8, $0
-	sub	%r8, %r8, %r9
 	set	%r9, $0
 	sw	%r2, %r6, $0
 	sw	%r2, %r5, $4
@@ -6239,9 +6215,8 @@ trace_or_matrix_fast.2943:
 	lw	%r9, %r30, $8
 	lw	%r10, %r30, $4
 	slli	%r11, %r4, $2
-	add	%r5, %r5, %r11
-	lw	%r11, %r5, $0
-	sub	%r5, %r5, %r11
+	add	%r11, %r5, %r11
+	lw	%r11, %r11, $0
 	lw	%r12, %r11, $0
 	set	%r13, $-1
 	bne	%r12, %r13, beq_else.9438
@@ -7233,7 +7208,6 @@ trace_reflections.2965:
 	slli	%r14, %r4, $2
 	add	%r7, %r7, %r14
 	lw	%r7, %r7, $0
-	sub	%r7, %r7, %r14
 	sw	%r2, %r30, $0
 	sw	%r2, %r4, $4
 	fsw	%r2, %f2, $8
@@ -7432,9 +7406,9 @@ trace_ray.2970:
 	lw	%r5, %r2, $92
 	slli	%r6, %r5, $2
 	lw	%r7, %r2, $104
-	add	%r4, %r4, %r6
+	add	%r7, %r7, %r6
 	sw	%r7, %r4, $0
-	sub	%r4, %r4, %r6
+	sub	%r7, %r7, %r6
 	set	%r4, $0
 	bne	%r5, %r4, beq_else.9489
 	jalr	%r0, %r1, $0
@@ -7490,9 +7464,8 @@ beq_else.9488:
 	lw	%r4, %r4, $0
 	slli	%r5, %r4, $2
 	lw	%r6, %r2, $68
-	add	%r6, %r6, %r5
-	lw	%r5, %r6, $0
-	sub	%r6, %r6, %r5
+	add	%r5, %r6, %r5
+	lw	%r5, %r5, $0
 	sw	%r2, %r4, $112
 	sw	%r2, %r5, $116
 	add	%r4, %r0, %r5
@@ -7546,9 +7519,9 @@ beq_else.9488:
 	lw	%r5, %r2, $92
 	slli	%r6, %r5, $2
 	lw	%r7, %r2, $104
-	add	%r4, %r4, %r6
+	add	%r7, %r7, %r6
 	sw	%r7, %r4, $0
-	sub	%r4, %r4, %r6
+	sub	%r7, %r7, %r6
 	lw	%r4, %r2, $44
 	sw	%r2, %r1, $128
 	addi	%r2, %r2, $132
@@ -7559,7 +7532,6 @@ beq_else.9488:
 	slli	%r6, %r5, $2
 	add	%r4, %r4, %r6
 	lw	%r4, %r4, $0
-	sub	%r4, %r4, %r6
 	lw	%r6, %r2, $56
 	add	%r5, %r0, %r6
 	sw	%r2, %r1, $128
@@ -7594,9 +7566,9 @@ beq_else.9488:
 	lw	%r5, %r2, $92
 	slli	%r6, %r5, $2
 	lw	%r7, %r2, $128
-	add	%r4, %r4, %r6
+	add	%r7, %r7, %r6
 	sw	%r7, %r4, $0
-	sub	%r4, %r4, %r6
+	sub	%r7, %r7, %r6
 	lw	%r4, %r2, $44
 	sw	%r2, %r1, $132
 	addi	%r2, %r2, $136
@@ -7605,9 +7577,8 @@ beq_else.9488:
 	lw	%r1, %r2, $132
 	lw	%r5, %r2, $92
 	slli	%r6, %r5, $2
-	add	%r4, %r4, %r6
-	lw	%r6, %r4, $0
-	sub	%r4, %r4, %r6
+	add	%r6, %r4, %r6
+	lw	%r6, %r6, $0
 	lw	%r7, %r2, $40
 	sw	%r2, %r4, $132
 	add	%r5, %r0, %r7
@@ -7620,9 +7591,8 @@ beq_else.9488:
 	lw	%r4, %r2, $92
 	slli	%r5, %r4, $2
 	lw	%r6, %r2, $132
-	add	%r6, %r6, %r5
-	lw	%r5, %r6, $0
-	sub	%r6, %r6, %r5
+	add	%r5, %r6, %r5
+	lw	%r5, %r5, $0
 	set	%r6, $998244352
 	fmvsx	%f1, %r6
 	flw	%f2, %r2, $124
@@ -7643,7 +7613,6 @@ beq_else.9488:
 	slli	%r6, %r5, $2
 	add	%r4, %r4, %r6
 	lw	%r4, %r4, $0
-	sub	%r4, %r4, %r6
 	lw	%r6, %r2, $36
 	add	%r5, %r0, %r6
 	sw	%r2, %r1, $136
@@ -7657,9 +7626,9 @@ beq_else.9494:
 	lw	%r5, %r2, $92
 	slli	%r6, %r5, $2
 	lw	%r7, %r2, $128
-	add	%r4, %r4, %r6
+	add	%r7, %r7, %r6
 	sw	%r7, %r4, $0
-	sub	%r4, %r4, %r6
+	sub	%r7, %r7, %r6
 beq_cont.9495:
 	set	%r4, $-1073741824
 	fmvsx	%f1, %r4
@@ -7783,9 +7752,9 @@ bge_else.9500:
 	set	%r6, $-1
 	slli	%r4, %r4, $2
 	lw	%r7, %r2, $104
-	add	%r6, %r6, %r4
+	add	%r7, %r7, %r4
 	sw	%r7, %r6, $0
-	sub	%r6, %r6, %r4
+	sub	%r7, %r7, %r4
 bge_cont.9501:
 	set	%r4, $2
 	lw	%r6, %r2, $120
@@ -7859,9 +7828,8 @@ beq_else.9505:
 	lw	%r4, %r4, $0
 	slli	%r4, %r4, $2
 	lw	%r5, %r2, $44
-	add	%r5, %r5, %r4
-	lw	%r4, %r5, $0
-	sub	%r5, %r5, %r4
+	add	%r4, %r5, %r4
+	lw	%r4, %r4, $0
 	lw	%r5, %r2, $40
 	sw	%r2, %r4, $52
 	add	%r4, %r0, %r5
@@ -7947,9 +7915,8 @@ iter_trace_diffuse_rays.2979:
 	set	%r9, $0
 	blt	%r7, %r9, bge_else.9511
 	slli	%r9, %r7, $2
-	add	%r4, %r4, %r9
-	lw	%r9, %r4, $0
-	sub	%r4, %r4, %r9
+	add	%r9, %r4, %r9
+	lw	%r9, %r9, $0
 	sw	%r2, %r6, $0
 	sw	%r2, %r30, $4
 	sw	%r2, %r8, $8
@@ -7979,9 +7946,8 @@ iter_trace_diffuse_rays.2979:
 	lw	%r4, %r2, $16
 	slli	%r5, %r4, $2
 	lw	%r6, %r2, $12
-	add	%r6, %r6, %r5
-	lw	%r5, %r6, $0
-	sub	%r6, %r6, %r5
+	add	%r5, %r6, %r5
+	lw	%r5, %r5, $0
 	set	%r7, $1125515264
 	fmvsx	%f1, %r7
 	flw	%f2, %r2, $24
@@ -8000,9 +7966,8 @@ beq_else.9512:
 	addi	%r5, %r4, $1
 	slli	%r5, %r5, $2
 	lw	%r6, %r2, $12
-	add	%r6, %r6, %r5
-	lw	%r5, %r6, $0
-	sub	%r6, %r6, %r5
+	add	%r5, %r6, %r5
+	lw	%r5, %r5, $0
 	set	%r7, $-1021968384
 	fmvsx	%f1, %r7
 	flw	%f2, %r2, $24
@@ -8183,9 +8148,8 @@ calc_diffuse_using_1point.2992:
 	lw	%r5, %r2, $12
 	slli	%r6, %r5, $2
 	lw	%r7, %r2, $20
-	add	%r7, %r7, %r6
-	lw	%r6, %r7, $0
-	sub	%r7, %r7, %r6
+	add	%r6, %r7, %r6
+	lw	%r6, %r6, $0
 	lw	%r7, %r2, $8
 	sw	%r2, %r4, $32
 	add	%r5, %r0, %r6
@@ -8204,14 +8168,12 @@ calc_diffuse_using_1point.2992:
 	lw	%r5, %r2, $12
 	slli	%r6, %r5, $2
 	lw	%r7, %r2, $24
-	add	%r7, %r7, %r6
-	lw	%r6, %r7, $0
-	sub	%r7, %r7, %r6
+	add	%r6, %r7, %r6
+	lw	%r6, %r6, $0
 	slli	%r7, %r5, $2
 	lw	%r8, %r2, $28
-	add	%r8, %r8, %r7
-	lw	%r7, %r8, $0
-	sub	%r8, %r8, %r7
+	add	%r7, %r8, %r7
+	lw	%r7, %r7, $0
 	lw	%r30, %r2, $4
 	add	%r5, %r0, %r6
 	add	%r6, %r0, %r7
@@ -8226,7 +8188,6 @@ calc_diffuse_using_1point.2992:
 	lw	%r5, %r2, $32
 	add	%r5, %r5, %r4
 	lw	%r5, %r5, $0
-	sub	%r5, %r5, %r4
 	lw	%r4, %r2, $0
 	lw	%r6, %r2, $8
 	jal	%r0, vecaccumv.2685
@@ -8236,7 +8197,6 @@ calc_diffuse_using_5points.2995:
 	slli	%r11, %r4, $2
 	add	%r5, %r5, %r11
 	lw	%r5, %r5, $0
-	sub	%r5, %r5, %r11
 	sw	%r2, %r9, $0
 	sw	%r2, %r10, $4
 	sw	%r2, %r8, $8
@@ -8253,9 +8213,8 @@ calc_diffuse_using_5points.2995:
 	addi	%r6, %r5, $-1
 	slli	%r6, %r6, $2
 	lw	%r7, %r2, $16
-	add	%r7, %r7, %r6
-	lw	%r6, %r7, $0
-	sub	%r7, %r7, %r6
+	add	%r6, %r7, %r6
+	lw	%r6, %r6, $0
 	sw	%r2, %r4, $24
 	add	%r4, %r0, %r6
 	sw	%r2, %r1, $28
@@ -8266,9 +8225,8 @@ calc_diffuse_using_5points.2995:
 	lw	%r5, %r2, $20
 	slli	%r6, %r5, $2
 	lw	%r7, %r2, $16
-	add	%r7, %r7, %r6
-	lw	%r6, %r7, $0
-	sub	%r7, %r7, %r6
+	add	%r6, %r7, %r6
+	lw	%r6, %r6, $0
 	sw	%r2, %r4, $28
 	add	%r4, %r0, %r6
 	sw	%r2, %r1, $32
@@ -8280,9 +8238,8 @@ calc_diffuse_using_5points.2995:
 	addi	%r6, %r5, $1
 	slli	%r6, %r6, $2
 	lw	%r7, %r2, $16
-	add	%r7, %r7, %r6
-	lw	%r6, %r7, $0
-	sub	%r7, %r7, %r6
+	add	%r6, %r7, %r6
+	lw	%r6, %r6, $0
 	sw	%r2, %r4, $32
 	add	%r4, %r0, %r6
 	sw	%r2, %r1, $36
@@ -8293,9 +8250,8 @@ calc_diffuse_using_5points.2995:
 	lw	%r5, %r2, $20
 	slli	%r6, %r5, $2
 	lw	%r7, %r2, $12
-	add	%r7, %r7, %r6
-	lw	%r6, %r7, $0
-	sub	%r7, %r7, %r6
+	add	%r6, %r7, %r6
+	lw	%r6, %r6, $0
 	sw	%r2, %r4, $36
 	add	%r4, %r0, %r6
 	sw	%r2, %r1, $40
@@ -8306,9 +8262,8 @@ calc_diffuse_using_5points.2995:
 	lw	%r5, %r2, $8
 	slli	%r6, %r5, $2
 	lw	%r7, %r2, $24
-	add	%r7, %r7, %r6
-	lw	%r6, %r7, $0
-	sub	%r7, %r7, %r6
+	add	%r6, %r7, %r6
+	lw	%r6, %r6, $0
 	lw	%r7, %r2, $4
 	sw	%r2, %r4, $40
 	add	%r5, %r0, %r6
@@ -8321,9 +8276,8 @@ calc_diffuse_using_5points.2995:
 	lw	%r4, %r2, $8
 	slli	%r5, %r4, $2
 	lw	%r6, %r2, $28
-	add	%r6, %r6, %r5
-	lw	%r5, %r6, $0
-	sub	%r6, %r6, %r5
+	add	%r5, %r6, %r5
+	lw	%r5, %r5, $0
 	lw	%r6, %r2, $4
 	add	%r4, %r0, %r6
 	sw	%r2, %r1, $44
@@ -8334,9 +8288,8 @@ calc_diffuse_using_5points.2995:
 	lw	%r4, %r2, $8
 	slli	%r5, %r4, $2
 	lw	%r6, %r2, $32
-	add	%r6, %r6, %r5
-	lw	%r5, %r6, $0
-	sub	%r6, %r6, %r5
+	add	%r5, %r6, %r5
+	lw	%r5, %r5, $0
 	lw	%r6, %r2, $4
 	add	%r4, %r0, %r6
 	sw	%r2, %r1, $44
@@ -8347,9 +8300,8 @@ calc_diffuse_using_5points.2995:
 	lw	%r4, %r2, $8
 	slli	%r5, %r4, $2
 	lw	%r6, %r2, $36
-	add	%r6, %r6, %r5
-	lw	%r5, %r6, $0
-	sub	%r6, %r6, %r5
+	add	%r5, %r6, %r5
+	lw	%r5, %r5, $0
 	lw	%r6, %r2, $4
 	add	%r4, %r0, %r6
 	sw	%r2, %r1, $44
@@ -8360,9 +8312,8 @@ calc_diffuse_using_5points.2995:
 	lw	%r4, %r2, $8
 	slli	%r5, %r4, $2
 	lw	%r6, %r2, $40
-	add	%r6, %r6, %r5
-	lw	%r5, %r6, $0
-	sub	%r6, %r6, %r5
+	add	%r5, %r6, %r5
+	lw	%r5, %r5, $0
 	lw	%r6, %r2, $4
 	add	%r4, %r0, %r6
 	sw	%r2, %r1, $44
@@ -8373,9 +8324,8 @@ calc_diffuse_using_5points.2995:
 	lw	%r4, %r2, $20
 	slli	%r4, %r4, $2
 	lw	%r5, %r2, $16
-	add	%r5, %r5, %r4
-	lw	%r4, %r5, $0
-	sub	%r5, %r5, %r4
+	add	%r4, %r5, %r4
+	lw	%r4, %r4, $0
 	sw	%r2, %r1, $44
 	addi	%r2, %r2, $48
 	jal	%r1, p_energy.2739
@@ -8383,9 +8333,8 @@ calc_diffuse_using_5points.2995:
 	lw	%r1, %r2, $44
 	lw	%r5, %r2, $8
 	slli	%r5, %r5, $2
-	add	%r4, %r4, %r5
-	lw	%r5, %r4, $0
-	sub	%r4, %r4, %r5
+	add	%r5, %r4, %r5
+	lw	%r5, %r5, $0
 	lw	%r4, %r2, $0
 	lw	%r6, %r2, $4
 	jal	%r0, vecaccumv.2685
@@ -8407,7 +8356,6 @@ do_without_neighbors.3001:
 	slli	%r7, %r6, $2
 	add	%r4, %r4, %r7
 	lw	%r4, %r4, $0
-	sub	%r4, %r4, %r7
 	blt	%r4, %r5, bge_else.9526
 	lw	%r4, %r2, $8
 	sw	%r2, %r1, $16
@@ -8419,7 +8367,6 @@ do_without_neighbors.3001:
 	slli	%r6, %r5, $2
 	add	%r4, %r4, %r6
 	lw	%r4, %r4, $0
-	sub	%r4, %r4, %r6
 	set	%r6, $0
 	bne	%r4, %r6, beq_else.9527
 	jal	%r0, beq_cont.9528
@@ -8480,13 +8427,11 @@ get_surface_id.3008:
 	slli	%r5, %r5, $2
 	add	%r4, %r4, %r5
 	lw	%r4, %r4, $0
-	sub	%r4, %r4, %r5
 	jalr	%r0, %r1, $0
 neighbors_are_available.3011:
 	slli	%r9, %r4, $2
-	add	%r6, %r6, %r9
-	lw	%r9, %r6, $0
-	sub	%r6, %r6, %r9
+	add	%r9, %r6, %r9
+	lw	%r9, %r9, $0
 	sw	%r2, %r6, $0
 	sw	%r2, %r7, $4
 	sw	%r2, %r8, $8
@@ -8502,9 +8447,8 @@ neighbors_are_available.3011:
 	lw	%r5, %r2, $16
 	slli	%r6, %r5, $2
 	lw	%r7, %r2, $12
-	add	%r7, %r7, %r6
-	lw	%r6, %r7, $0
-	sub	%r7, %r7, %r6
+	add	%r6, %r7, %r6
+	lw	%r6, %r6, $0
 	lw	%r7, %r2, $8
 	sw	%r2, %r4, $20
 	add	%r5, %r0, %r7
@@ -8519,9 +8463,8 @@ neighbors_are_available.3011:
 	lw	%r4, %r2, $16
 	slli	%r6, %r4, $2
 	lw	%r7, %r2, $4
-	add	%r7, %r7, %r6
-	lw	%r6, %r7, $0
-	sub	%r7, %r7, %r6
+	add	%r6, %r7, %r6
+	lw	%r6, %r6, $0
 	lw	%r7, %r2, $8
 	add	%r5, %r0, %r7
 	add	%r4, %r0, %r6
@@ -8536,9 +8479,8 @@ neighbors_are_available.3011:
 	addi	%r6, %r4, $-1
 	slli	%r6, %r6, $2
 	lw	%r7, %r2, $0
-	add	%r7, %r7, %r6
-	lw	%r6, %r7, $0
-	sub	%r7, %r7, %r6
+	add	%r6, %r7, %r6
+	lw	%r6, %r6, $0
 	lw	%r8, %r2, $8
 	add	%r5, %r0, %r8
 	add	%r4, %r0, %r6
@@ -8553,9 +8495,8 @@ neighbors_are_available.3011:
 	addi	%r4, %r4, $1
 	slli	%r4, %r4, $2
 	lw	%r6, %r2, $0
-	add	%r6, %r6, %r4
-	lw	%r4, %r6, $0
-	sub	%r6, %r6, %r4
+	add	%r4, %r6, %r4
+	lw	%r4, %r4, $0
 	lw	%r6, %r2, $8
 	add	%r5, %r0, %r6
 	sw	%r2, %r1, $24
@@ -8583,9 +8524,8 @@ try_exploit_neighbors.3017:
 	lw	%r10, %r30, $8
 	lw	%r11, %r30, $4
 	slli	%r12, %r4, $2
-	add	%r7, %r7, %r12
-	lw	%r12, %r7, $0
-	sub	%r7, %r7, %r12
+	add	%r12, %r7, %r12
+	lw	%r12, %r12, $0
 	set	%r13, $4
 	blt	%r13, %r9, bge_else.9539
 	set	%r13, $0
@@ -8624,9 +8564,8 @@ try_exploit_neighbors.3017:
 	lw	%r4, %r2, $36
 	slli	%r4, %r4, $2
 	lw	%r5, %r2, $28
-	add	%r5, %r5, %r4
-	lw	%r4, %r5, $0
-	sub	%r5, %r5, %r4
+	add	%r4, %r5, %r4
+	lw	%r4, %r4, $0
 	lw	%r5, %r2, $20
 	lw	%r30, %r2, $16
 	lw	%r29, %r30, $0
@@ -8642,7 +8581,6 @@ beq_else.9541:
 	slli	%r5, %r8, $2
 	add	%r4, %r4, %r5
 	lw	%r4, %r4, $0
-	sub	%r4, %r4, %r5
 	set	%r5, $0
 	bne	%r4, %r5, beq_else.9542
 	jal	%r0, beq_cont.9543
@@ -8815,7 +8753,6 @@ pretrace_diffuse_rays.3030:
 	slli	%r6, %r5, $2
 	add	%r4, %r4, %r6
 	lw	%r4, %r4, $0
-	sub	%r4, %r4, %r6
 	set	%r6, $0
 	bne	%r4, %r6, beq_else.9552
 	jal	%r0, beq_cont.9553
@@ -8851,19 +8788,16 @@ beq_else.9552:
 	lw	%r5, %r2, $24
 	slli	%r5, %r5, $2
 	lw	%r6, %r2, $8
-	add	%r6, %r6, %r5
-	lw	%r5, %r6, $0
-	sub	%r6, %r6, %r5
+	add	%r5, %r6, %r5
+	lw	%r5, %r5, $0
 	lw	%r6, %r2, $16
 	slli	%r7, %r6, $2
 	lw	%r8, %r2, $28
-	add	%r8, %r8, %r7
-	lw	%r7, %r8, $0
-	sub	%r8, %r8, %r7
+	add	%r7, %r8, %r7
+	lw	%r7, %r7, $0
 	slli	%r8, %r6, $2
 	add	%r4, %r4, %r8
 	lw	%r4, %r4, $0
-	sub	%r4, %r4, %r8
 	lw	%r30, %r2, $4
 	add	%r6, %r0, %r4
 	add	%r4, %r0, %r5
@@ -8884,7 +8818,6 @@ beq_else.9552:
 	slli	%r6, %r5, $2
 	add	%r4, %r4, %r6
 	lw	%r4, %r4, $0
-	sub	%r4, %r4, %r6
 	lw	%r6, %r2, $12
 	add	%r5, %r0, %r6
 	sw	%r2, %r1, $32
@@ -8986,9 +8919,8 @@ pretrace_pixels.3033:
 	lw	%r5, %r2, $20
 	slli	%r6, %r5, $2
 	lw	%r7, %r2, $16
-	add	%r7, %r7, %r6
-	lw	%r6, %r7, $0
-	sub	%r7, %r7, %r6
+	add	%r6, %r7, %r6
+	lw	%r6, %r6, $0
 	set	%r8, $0
 	fmvsx	%f2, %r8
 	lw	%r8, %r2, $44
@@ -9003,9 +8935,8 @@ pretrace_pixels.3033:
 	lw	%r4, %r2, $20
 	slli	%r5, %r4, $2
 	lw	%r6, %r2, $16
-	add	%r6, %r6, %r5
-	lw	%r5, %r6, $0
-	sub	%r6, %r6, %r5
+	add	%r5, %r6, %r5
+	lw	%r5, %r5, $0
 	add	%r4, %r0, %r5
 	sw	%r2, %r1, $60
 	addi	%r2, %r2, $64
@@ -9021,9 +8952,8 @@ pretrace_pixels.3033:
 	lw	%r4, %r2, $20
 	slli	%r5, %r4, $2
 	lw	%r6, %r2, $16
-	add	%r6, %r6, %r5
-	lw	%r5, %r6, $0
-	sub	%r6, %r6, %r5
+	add	%r5, %r6, %r5
+	lw	%r5, %r5, $0
 	lw	%r7, %r2, $8
 	add	%r4, %r0, %r5
 	add	%r5, %r0, %r7
@@ -9035,9 +8965,8 @@ pretrace_pixels.3033:
 	lw	%r4, %r2, $20
 	slli	%r5, %r4, $2
 	lw	%r6, %r2, $16
-	add	%r6, %r6, %r5
-	lw	%r5, %r6, $0
-	sub	%r6, %r6, %r5
+	add	%r5, %r6, %r5
+	lw	%r5, %r5, $0
 	set	%r7, $0
 	lw	%r30, %r2, $4
 	add	%r4, %r0, %r5
@@ -9133,9 +9062,8 @@ scan_pixel.3044:
 	jalr	%r0, %r1, $0
 bge_else.9558:
 	slli	%r13, %r4, $2
-	add	%r7, %r7, %r13
-	lw	%r13, %r7, $0
-	sub	%r7, %r7, %r13
+	add	%r13, %r7, %r13
+	lw	%r13, %r13, $0
 	sw	%r2, %r30, $0
 	sw	%r2, %r9, $4
 	sw	%r2, %r6, $8
@@ -9175,9 +9103,8 @@ bge_else.9558:
 	lw	%r4, %r2, $32
 	slli	%r5, %r4, $2
 	lw	%r6, %r2, $20
-	add	%r6, %r6, %r5
-	lw	%r5, %r6, $0
-	sub	%r6, %r6, %r5
+	add	%r5, %r6, %r5
+	lw	%r5, %r5, $0
 	set	%r7, $0
 	lw	%r30, %r2, $16
 	add	%r4, %r0, %r5
@@ -9438,9 +9365,9 @@ init_line_elements.3060:
 	lw	%r5, %r2, $4
 	slli	%r6, %r5, $2
 	lw	%r7, %r2, $0
-	add	%r4, %r4, %r6
+	add	%r7, %r7, %r6
 	sw	%r7, %r4, $0
-	sub	%r4, %r4, %r6
+	sub	%r7, %r7, %r6
 	addi	%r5, %r5, $-1
 	add	%r4, %r0, %r7
 	jal	%r0, init_line_elements.3060
@@ -9558,14 +9485,12 @@ calc_dirvec.3070:
 	lw	%r4, %r2, $8
 	slli	%r4, %r4, $2
 	lw	%r5, %r2, $4
-	add	%r5, %r5, %r4
-	lw	%r4, %r5, $0
-	sub	%r5, %r5, %r4
+	add	%r4, %r5, %r4
+	lw	%r4, %r4, $0
 	lw	%r5, %r2, $0
 	slli	%r6, %r5, $2
-	add	%r4, %r4, %r6
-	lw	%r6, %r4, $0
-	sub	%r4, %r4, %r6
+	add	%r6, %r4, %r6
+	lw	%r6, %r6, $0
 	sw	%r2, %r4, $24
 	fsw	%r2, %f1, $28
 	fsw	%r2, %f3, $32
@@ -9588,9 +9513,8 @@ calc_dirvec.3070:
 	addi	%r5, %r4, $40
 	slli	%r5, %r5, $2
 	lw	%r6, %r2, $24
-	add	%r6, %r6, %r5
-	lw	%r5, %r6, $0
-	sub	%r6, %r6, %r5
+	add	%r5, %r6, %r5
+	lw	%r5, %r5, $0
 	add	%r4, %r0, %r5
 	sw	%r2, %r1, $40
 	addi	%r2, %r2, $44
@@ -9617,9 +9541,8 @@ calc_dirvec.3070:
 	addi	%r5, %r4, $80
 	slli	%r5, %r5, $2
 	lw	%r6, %r2, $24
-	add	%r6, %r6, %r5
-	lw	%r5, %r6, $0
-	sub	%r6, %r6, %r5
+	add	%r5, %r6, %r5
+	lw	%r5, %r5, $0
 	add	%r4, %r0, %r5
 	sw	%r2, %r1, $44
 	addi	%r2, %r2, $48
@@ -9654,9 +9577,8 @@ calc_dirvec.3070:
 	addi	%r5, %r4, $1
 	slli	%r5, %r5, $2
 	lw	%r6, %r2, $24
-	add	%r6, %r6, %r5
-	lw	%r5, %r6, $0
-	sub	%r6, %r6, %r5
+	add	%r5, %r6, %r5
+	lw	%r5, %r5, $0
 	add	%r4, %r0, %r5
 	sw	%r2, %r1, $52
 	addi	%r2, %r2, $56
@@ -9699,9 +9621,8 @@ calc_dirvec.3070:
 	addi	%r5, %r4, $41
 	slli	%r5, %r5, $2
 	lw	%r6, %r2, $24
-	add	%r6, %r6, %r5
-	lw	%r5, %r6, $0
-	sub	%r6, %r6, %r5
+	add	%r5, %r6, %r5
+	lw	%r5, %r5, $0
 	add	%r4, %r0, %r5
 	sw	%r2, %r1, $64
 	addi	%r2, %r2, $68
@@ -9736,9 +9657,8 @@ calc_dirvec.3070:
 	addi	%r4, %r4, $81
 	slli	%r4, %r4, $2
 	lw	%r5, %r2, $24
-	add	%r5, %r5, %r4
-	lw	%r4, %r5, $0
-	sub	%r5, %r5, %r4
+	add	%r4, %r5, %r4
+	lw	%r4, %r4, $0
 	sw	%r2, %r1, $72
 	addi	%r2, %r2, $76
 	jal	%r1, d_vec.2750
@@ -9969,9 +9889,9 @@ create_dirvec_elements.3089:
 	lw	%r5, %r2, $8
 	slli	%r6, %r5, $2
 	lw	%r7, %r2, $4
-	add	%r4, %r4, %r6
+	add	%r7, %r7, %r6
 	sw	%r7, %r4, $0
-	sub	%r4, %r4, %r6
+	sub	%r7, %r7, %r6
 	addi	%r5, %r5, $-1
 	lw	%r30, %r2, $0
 	add	%r4, %r0, %r7
@@ -10008,13 +9928,12 @@ create_dirvecs.3092:
 	lw	%r5, %r2, $12
 	slli	%r6, %r5, $2
 	lw	%r7, %r2, $8
-	add	%r4, %r4, %r6
+	add	%r7, %r7, %r6
 	sw	%r7, %r4, $0
-	sub	%r4, %r4, %r6
+	sub	%r7, %r7, %r6
 	slli	%r4, %r5, $2
-	add	%r7, %r7, %r4
-	lw	%r4, %r7, $0
-	sub	%r7, %r7, %r4
+	add	%r4, %r7, %r4
+	lw	%r4, %r4, $0
 	set	%r6, $118
 	lw	%r30, %r2, $4
 	add	%r5, %r0, %r6
@@ -10036,9 +9955,8 @@ init_dirvec_constants.3094:
 	set	%r7, $0
 	blt	%r5, %r7, bge_else.9576
 	slli	%r7, %r5, $2
-	add	%r4, %r4, %r7
-	lw	%r7, %r4, $0
-	sub	%r4, %r4, %r7
+	add	%r7, %r4, %r7
+	lw	%r7, %r7, $0
 	sw	%r2, %r4, $0
 	sw	%r2, %r30, $4
 	sw	%r2, %r5, $8
@@ -10066,7 +9984,6 @@ init_vecset_constants.3097:
 	slli	%r7, %r4, $2
 	add	%r6, %r6, %r7
 	lw	%r6, %r6, $0
-	sub	%r6, %r6, %r7
 	set	%r7, $119
 	sw	%r2, %r30, $0
 	sw	%r2, %r4, $4
@@ -10156,7 +10073,7 @@ add_reflection.3101:
 	addi	%r2, %r2, $-40
 	lw	%r1, %r2, $36
 	add	%r4, %r0, %r3
-	addi	%r3, %r3, $16
+	addi	%r3, %r3, $12
 	flw	%f1, %r2, $12
 	fsw	%r4, %f1, $8
 	lw	%r5, %r2, $32
@@ -10166,9 +10083,9 @@ add_reflection.3101:
 	lw	%r5, %r2, $4
 	slli	%r5, %r5, $2
 	lw	%r6, %r2, $0
-	add	%r4, %r4, %r5
+	add	%r6, %r6, %r5
 	sw	%r6, %r4, $0
-	sub	%r4, %r4, %r5
+	sub	%r6, %r6, %r5
 	jalr	%r0, %r1, $0
 setup_rect_reflection.3108:
 	lw	%r6, %r30, $12
@@ -10396,7 +10313,6 @@ setup_reflections.3114:
 	slli	%r8, %r4, $2
 	add	%r7, %r7, %r8
 	lw	%r7, %r7, $0
-	sub	%r7, %r7, %r8
 	sw	%r2, %r5, $0
 	sw	%r2, %r4, $4
 	sw	%r2, %r6, $8
