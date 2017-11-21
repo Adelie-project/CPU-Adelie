@@ -14,6 +14,7 @@ module core_top
     output MEM_WE,
 
     // 浮動小数点
+    // ADD/SUB
     output [31:0] A_TDATA,
     input A_TREADY,
     output A_TVALID,
@@ -23,7 +24,6 @@ module core_top
     output [7:0] OP_TDATA,
     input OP_TREADY,
     output OP_TVALID,
-
     input [31:0] R_TDATA,
     output R_TREADY,
     input R_TVALID,
@@ -67,13 +67,19 @@ module core_top
   wire i_flw, i_fsw, i_fadds, i_fsubs, i_fmuls, i_fdivs, i_feqs, i_flts, i_fles;
   wire i_in, i_out;
   wire n_inst;
-  reg [31:0] a_tdata, b_tdata;
-  reg a_tvalid, b_tvalid, op_tready;
+  reg [31:0] a_tdata, b_tdata,r_tdata;
+  reg [7:0] op_tdata;
+  reg a_tvalid, b_tvalid, op_tvalid, r_tready;
   assign A_TDATA = a_tdata;
   assign B_TDATA = b_tdata;
   assign A_TVALID = a_tvalid;
   assign B_TVALID = b_tvalid;
-  assign OP_TREADY = op_tready;
+  assign OP_TDATA = op_tdata;
+  assign OP_TVALID = op_tvalid;
+  assign R_TREADY = r_tready;
+  assign R_TDATA = r_tdata;
+
+  reg stole;
 
   // 乗除算はまだ
 
@@ -92,32 +98,36 @@ module core_top
     if(!RST_N) begin
       cpu_state <= IDLE;
     end else begin
-      case(cpu_state)
-        IDLE:
-        begin
-          cpu_state <= FETCH;
-        end
-        FETCH:
-        begin
-          cpu_state <= DECODE;
-        end
-        DECODE:
-        begin
-          cpu_state <= EXECUTE;
-        end
-        EXECUTE:
-        begin
-          cpu_state <= MEMORY;
-        end
-        MEMORY:
-        begin
-          cpu_state <= WRITEBACK;
-        end
-        WRITEBACK:
-        begin
-          cpu_state <= FETCH;
-        end
-      endcase
+      if (stole) begin
+        cpu_state <= cpu_state;
+      end else begin
+        case(cpu_state)
+          IDLE:
+          begin
+            cpu_state <= FETCH;
+          end
+          FETCH:
+          begin
+            cpu_state <= DECODE;
+          end
+          DECODE:
+          begin
+            cpu_state <= EXECUTE;
+          end
+          EXECUTE:
+          begin
+            cpu_state <= MEMORY;
+          end
+          MEMORY:
+          begin
+            cpu_state <= WRITEBACK;
+          end
+          WRITEBACK:
+          begin
+            cpu_state <= FETCH;
+          end
+        endcase
+    end
     end
   end
 
@@ -254,19 +264,35 @@ module core_top
   );
 
   // 浮動小数点実行
+  // ADD/SUB
   always @(posedge CLK) begin
     if(!RST_N) begin
-      a_tdata <= 1'b0;
-      a_tvalid <= 1'b0;
-      b_tdata <= 1'b0;
-      b_tvalid <= 1'b0;
-      op_tready <= 1'b0;
+      a_tdata <= 0;
+      a_tvalid <= 0;
+      b_tdata <= 0;
+      b_tvalid <= 0;
+      op_tvalid <= 0;
+      op_tdata <= 0;
+      r_tready <= 0;
     end else begin
-      a_tdata <= (i_fadds | i_fsubs | i_fmuls | i_fdivs | i_feqs | i_flts | i_fles) ? rs1 : 0;
-      a_tvalid <= (i_fadds | i_fsubs | i_fmuls | i_fdivs | i_feqs | i_flts | i_fles);
-      b_tdata <= (i_fadds | i_fsubs | i_fmuls | i_fdivs | i_feqs | i_flts | i_fles) ? rs2 : 0;
-      b_tvalid <= (i_fadds | i_fsubs | i_fmuls | i_fdivs | i_feqs | i_flts | i_fles);
-      op_tready <= (i_fadds | i_fsubs | i_fmuls | i_fdivs | i_feqs | i_flts | i_fles);
+      if (i_fadds | i_fsubs) begin
+        a_tdata <= (i_fadds | i_fsubs)? rs1 : 0;
+        a_tvalid <= (i_fadds | i_fsubs);
+        b_tdata <= (i_fadds | i_fsubs)? rs2 : 0;
+        b_tvalid <= (i_fadds | i_fsubs);
+        op_tdata <= i_fsubs ? 6'b000001 : 6'b000000;
+        op_tvalid <= (i_fadds | i_fsubs);
+        r_tready <= (i_fadds | i_fsubs) ? 1 : 0;
+        stole <= R_TVALID ? 0 : 1;
+      end else begin
+        a_tdata <= 0;
+        a_tvalid <= 0;
+        b_tdata <= 0;
+        b_tvalid <= 0;
+        op_tdata <= 0;
+        op_tvalid <= 0;
+        r_tready <= 0;
+      end
     end
   end
 
@@ -321,6 +347,7 @@ module core_top
                    (i_lw | i_lh | i_lb | i_lbu | i_lhu) ? MEM_IN:
                    (i_auipc) ? pc_add_imm:
                    (i_jal | i_jalr) ? pc_add_4:
+                   (i_fadds | i_fsubs) ? R_TDATA:
                      alu_result;
   assign wr_addr = rd_num;
 
