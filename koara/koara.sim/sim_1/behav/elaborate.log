@@ -1,0 +1,43 @@
+Vivado Simulator 2016.4
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: /opt/Xilinx/Vivado/2016.4/bin/unwrapped/lnx64.o/xelab -wto 8dd88a88723f4be2bff3cff0f7b19799 --debug typical --relax --mt 8 -L xil_defaultlib -L blk_mem_gen_v8_3_5 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot design_1_wrapper_behav xil_defaultlib.design_1_wrapper xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+WARNING: [VRFC 10-1783] select index 62 into current_contents is out of bounds [/wrk/2016.4/nightly/2017_01_23_1756540/packages/customer/vivado/data/ip/xilinx/blk_mem_gen_v8_3/simulation/blk_mem_gen_v8_3.v:2420]
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "/home/yamaguchi/CPU-Adelie/core/src/core_top.v" Line 1. Module core_top doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/yamaguchi/CPU-Adelie/core/src/core_decode.v" Line 1. Module core_decode doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/yamaguchi/CPU-Adelie/core/src/core_alu.v" Line 1. Module core_alu doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/yamaguchi/CPU-Adelie/core/src/core_reg.v" Line 1. Module core_reg doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/yamaguchi/CPU-Adelie/core/src/core_top.v" Line 1. Module core_top doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/yamaguchi/CPU-Adelie/core/src/core_decode.v" Line 1. Module core_decode doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/yamaguchi/CPU-Adelie/core/src/core_alu.v" Line 1. Module core_alu doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/yamaguchi/CPU-Adelie/core/src/core_reg.v" Line 1. Module core_reg doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module blk_mem_gen_v8_3_5.blk_mem_gen_v8_3_5_output_stage(...
+Compiling module blk_mem_gen_v8_3_5.blk_mem_gen_v8_3_5_output_stage(...
+Compiling module blk_mem_gen_v8_3_5.blk_mem_gen_v8_3_5_softecc_outpu...
+Compiling module blk_mem_gen_v8_3_5.blk_mem_gen_v8_3_5_mem_module(C_...
+Compiling module blk_mem_gen_v8_3_5.blk_mem_gen_v8_3_5(C_FAMILY="kin...
+Compiling module xil_defaultlib.design_1_blk_mem_gen_0_0
+Compiling module blk_mem_gen_v8_3_5.blk_mem_gen_v8_3_5_output_stage(...
+Compiling module blk_mem_gen_v8_3_5.blk_mem_gen_v8_3_5_mem_module(C_...
+Compiling module blk_mem_gen_v8_3_5.blk_mem_gen_v8_3_5(C_FAMILY="kin...
+Compiling module xil_defaultlib.design_1_blk_mem_gen_1_0
+Compiling module xil_defaultlib.core_decode
+Compiling module xil_defaultlib.core_alu
+Compiling module xil_defaultlib.core_reg
+Compiling module xil_defaultlib.core_top
+Compiling module xil_defaultlib.design_1_core_top_0_0
+Compiling module xil_defaultlib.sim_clk_gen(CLOCK_PERIOD=10,RESE...
+Compiling module xil_defaultlib.design_1_sim_clk_gen_0_0
+Compiling module xil_defaultlib.xlconstant(CONST_VAL=1'b0)
+Compiling module xil_defaultlib.design_1_xlconstant_0_0
+Compiling module xil_defaultlib.xlconstant(CONST_VAL=1'b1)
+Compiling module xil_defaultlib.design_1_xlconstant_0_1
+Compiling module xil_defaultlib.design_1
+Compiling module xil_defaultlib.design_1_wrapper
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot design_1_wrapper_behav

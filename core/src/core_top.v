@@ -266,33 +266,23 @@ module core_top
   // 浮動小数点実行
   // ADD/SUB
   always @(posedge CLK) begin
-    if(!RST_N) begin
+    if (i_fadds | i_fsubs) begin
+      a_tdata <= rs1;
+      a_tvalid <= 1'b1;
+      b_tdata <= rs2;
+      b_tvalid <= 1'b1;
+      op_tdata <= i_fsubs ? 6'b000001 : 6'b000000;
+      op_tvalid <= 1'b1;
+      r_tready <= 1'b1;
+      stole <= R_TVALID ? 0 : 1;
+    end else begin
       a_tdata <= 0;
       a_tvalid <= 0;
       b_tdata <= 0;
       b_tvalid <= 0;
-      op_tvalid <= 0;
       op_tdata <= 0;
+      op_tvalid <= 0;
       r_tready <= 0;
-    end else begin
-      if (i_fadds | i_fsubs) begin
-        a_tdata <= (i_fadds | i_fsubs)? rs1 : 0;
-        a_tvalid <= (i_fadds | i_fsubs);
-        b_tdata <= (i_fadds | i_fsubs)? rs2 : 0;
-        b_tvalid <= (i_fadds | i_fsubs);
-        op_tdata <= i_fsubs ? 6'b000001 : 6'b000000;
-        op_tvalid <= (i_fadds | i_fsubs);
-        r_tready <= (i_fadds | i_fsubs) ? 1 : 0;
-        stole <= R_TVALID ? 0 : 1;
-      end else begin
-        a_tdata <= 0;
-        a_tvalid <= 0;
-        b_tdata <= 0;
-        b_tvalid <= 0;
-        op_tdata <= 0;
-        op_tvalid <= 0;
-        r_tready <= 0;
-      end
     end
   end
 

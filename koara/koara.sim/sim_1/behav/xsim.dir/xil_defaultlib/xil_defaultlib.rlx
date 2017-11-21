@@ -1,0 +1,19 @@
+0.6
+2016.4
+Jan 23 2017
+19:19:20
+/home/yamaguchi/CPU-Adelie/core/src/core_alu.v,1508828953,verilog,,,,core_alu,,,,,,,,
+/home/yamaguchi/CPU-Adelie/core/src/core_decode.v,1507622972,verilog,,,,core_decode,,,,,,,,
+/home/yamaguchi/CPU-Adelie/core/src/core_reg.v,1507625077,verilog,,,,core_reg,,,,,,,,
+/home/yamaguchi/CPU-Adelie/core/src/core_top.v,1508829646,verilog,,,,core_top,,,,,,,,
+/home/yamaguchi/koara/koara.ip_user_files/bd/design_1/hdl/design_1.v,1507746707,verilog,,,,design_1,,,,,,,,
+/home/yamaguchi/koara/koara.ip_user_files/bd/design_1/ip/design_1_blk_mem_gen_0_0_1/sim/design_1_blk_mem_gen_0_0.v,1507744330,verilog,,,,design_1_blk_mem_gen_0_0,,,,,,,,
+/home/yamaguchi/koara/koara.ip_user_files/bd/design_1/ip/design_1_blk_mem_gen_1_0_1/sim/design_1_blk_mem_gen_1_0.v,1507627998,verilog,,,,design_1_blk_mem_gen_1_0,,,,,,,,
+/home/yamaguchi/koara/koara.ip_user_files/bd/design_1/ip/design_1_core_top_0_0_1/sim/design_1_core_top_0_0.v,1507746707,verilog,,,,design_1_core_top_0_0,,,,,,,,
+/home/yamaguchi/koara/koara.ip_user_files/bd/design_1/ip/design_1_sim_clk_gen_0_0_1/sim/design_1_sim_clk_gen_0_0.v,1507487343,verilog,,,,design_1_sim_clk_gen_0_0,,,,,,,,
+/home/yamaguchi/koara/koara.ip_user_files/bd/design_1/ip/design_1_xlconstant_0_0/sim/design_1_xlconstant_0_0.v,1507497968,verilog,,,,design_1_xlconstant_0_0,,,,,,,,
+/home/yamaguchi/koara/koara.ip_user_files/bd/design_1/ip/design_1_xlconstant_0_1/sim/design_1_xlconstant_0_1.v,1507627835,verilog,,,,design_1_xlconstant_0_1,,,,,,,,
+/home/yamaguchi/koara/koara.ip_user_files/bd/design_1/ipshared/68f7/hdl/sim_clk_gen.v,1507484396,verilog,,,,sim_clk_gen,,,,,,,,
+/home/yamaguchi/koara/koara.ip_user_files/bd/design_1/ipshared/e147/xlconstant.v,1507496644,verilog,,,,xlconstant,,,,,,,,
+/home/yamaguchi/koara/koara.sim/sim_1/behav/glbl.v,1485222234,verilog,,,,glbl,,,,,,,,
+/home/yamaguchi/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.v,1508829683,verilog,,,,design_1_wrapper,,,,,,,,

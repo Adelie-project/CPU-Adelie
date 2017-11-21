@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="design_1_wrapper_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="design_1_wrapper" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="1550867083fs"></ZoomStartTime>
+      <ZoomEndTime time="1915826584fs"></ZoomEndTime>
+      <Cursor1Time time="1796244000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="175"></NameColumnWidth>
+      <ValueColumnWidth column_width="116"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="160" />
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/RST_N">
+      <obj_property name="ElementShortName">RST_N</obj_property>
+      <obj_property name="ObjectShortName">RST_N</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/CLK">
+      <obj_property name="ElementShortName">CLK</obj_property>
+      <obj_property name="ObjectShortName">CLK</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/I_MEM_IN">
+      <obj_property name="ElementShortName">I_MEM_IN[31:0]</obj_property>
+      <obj_property name="ObjectShortName">I_MEM_IN[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/I_MEM_ADDR">
+      <obj_property name="ElementShortName">I_MEM_ADDR[31:0]</obj_property>
+      <obj_property name="ObjectShortName">I_MEM_ADDR[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/MEM_IN">
+      <obj_property name="ElementShortName">MEM_IN[31:0]</obj_property>
+      <obj_property name="ObjectShortName">MEM_IN[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/MEM_DATA">
+      <obj_property name="ElementShortName">MEM_DATA[31:0]</obj_property>
+      <obj_property name="ObjectShortName">MEM_DATA[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/MEM_ADDR">
+      <obj_property name="ElementShortName">MEM_ADDR[31:0]</obj_property>
+      <obj_property name="ObjectShortName">MEM_ADDR[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/MEM_WE">
+      <obj_property name="ElementShortName">MEM_WE</obj_property>
+      <obj_property name="ObjectShortName">MEM_WE</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/pc">
+      <obj_property name="ElementShortName">pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/r0">
+      <obj_property name="ElementShortName">r0</obj_property>
+      <obj_property name="ObjectShortName">r0</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/rd_num">
+      <obj_property name="ElementShortName">rd_num[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rd_num[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/rs1_num">
+      <obj_property name="ElementShortName">rs1_num[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rs1_num[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/rs2_num">
+      <obj_property name="ElementShortName">rs2_num[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rs2_num[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/rs1">
+      <obj_property name="ElementShortName">rs1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rs1[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/rs2">
+      <obj_property name="ElementShortName">rs2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rs2[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/imm">
+      <obj_property name="ElementShortName">imm[31:0]</obj_property>
+      <obj_property name="ObjectShortName">imm[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/alu_result">
+      <obj_property name="ElementShortName">alu_result[31:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_result[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_lui">
+      <obj_property name="ElementShortName">i_lui</obj_property>
+      <obj_property name="ObjectShortName">i_lui</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_auipc">
+      <obj_property name="ElementShortName">i_auipc</obj_property>
+      <obj_property name="ObjectShortName">i_auipc</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_jal">
+      <obj_property name="ElementShortName">i_jal</obj_property>
+      <obj_property name="ObjectShortName">i_jal</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_jalr">
+      <obj_property name="ElementShortName">i_jalr</obj_property>
+      <obj_property name="ObjectShortName">i_jalr</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_beq">
+      <obj_property name="ElementShortName">i_beq</obj_property>
+      <obj_property name="ObjectShortName">i_beq</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_bne">
+      <obj_property name="ElementShortName">i_bne</obj_property>
+      <obj_property name="ObjectShortName">i_bne</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_blt">
+      <obj_property name="ElementShortName">i_blt</obj_property>
+      <obj_property name="ObjectShortName">i_blt</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_bge">
+      <obj_property name="ElementShortName">i_bge</obj_property>
+      <obj_property name="ObjectShortName">i_bge</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_bltu">
+      <obj_property name="ElementShortName">i_bltu</obj_property>
+      <obj_property name="ObjectShortName">i_bltu</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_bgeu">
+      <obj_property name="ElementShortName">i_bgeu</obj_property>
+      <obj_property name="ObjectShortName">i_bgeu</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_lb">
+      <obj_property name="ElementShortName">i_lb</obj_property>
+      <obj_property name="ObjectShortName">i_lb</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_lh">
+      <obj_property name="ElementShortName">i_lh</obj_property>
+      <obj_property name="ObjectShortName">i_lh</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_lw">
+      <obj_property name="ElementShortName">i_lw</obj_property>
+      <obj_property name="ObjectShortName">i_lw</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_lbu">
+      <obj_property name="ElementShortName">i_lbu</obj_property>
+      <obj_property name="ObjectShortName">i_lbu</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_lhu">
+      <obj_property name="ElementShortName">i_lhu</obj_property>
+      <obj_property name="ObjectShortName">i_lhu</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_sb">
+      <obj_property name="ElementShortName">i_sb</obj_property>
+      <obj_property name="ObjectShortName">i_sb</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_sh">
+      <obj_property name="ElementShortName">i_sh</obj_property>
+      <obj_property name="ObjectShortName">i_sh</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_sw">
+      <obj_property name="ElementShortName">i_sw</obj_property>
+      <obj_property name="ObjectShortName">i_sw</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_addi">
+      <obj_property name="ElementShortName">i_addi</obj_property>
+      <obj_property name="ObjectShortName">i_addi</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_slti">
+      <obj_property name="ElementShortName">i_slti</obj_property>
+      <obj_property name="ObjectShortName">i_slti</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_sltiu">
+      <obj_property name="ElementShortName">i_sltiu</obj_property>
+      <obj_property name="ObjectShortName">i_sltiu</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_xori">
+      <obj_property name="ElementShortName">i_xori</obj_property>
+      <obj_property name="ObjectShortName">i_xori</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_ori">
+      <obj_property name="ElementShortName">i_ori</obj_property>
+      <obj_property name="ObjectShortName">i_ori</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_andi">
+      <obj_property name="ElementShortName">i_andi</obj_property>
+      <obj_property name="ObjectShortName">i_andi</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_slli">
+      <obj_property name="ElementShortName">i_slli</obj_property>
+      <obj_property name="ObjectShortName">i_slli</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_srli">
+      <obj_property name="ElementShortName">i_srli</obj_property>
+      <obj_property name="ObjectShortName">i_srli</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_srai">
+      <obj_property name="ElementShortName">i_srai</obj_property>
+      <obj_property name="ObjectShortName">i_srai</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_add">
+      <obj_property name="ElementShortName">i_add</obj_property>
+      <obj_property name="ObjectShortName">i_add</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_sub">
+      <obj_property name="ElementShortName">i_sub</obj_property>
+      <obj_property name="ObjectShortName">i_sub</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_sll">
+      <obj_property name="ElementShortName">i_sll</obj_property>
+      <obj_property name="ObjectShortName">i_sll</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_slt">
+      <obj_property name="ElementShortName">i_slt</obj_property>
+      <obj_property name="ObjectShortName">i_slt</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_sltu">
+      <obj_property name="ElementShortName">i_sltu</obj_property>
+      <obj_property name="ObjectShortName">i_sltu</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_xor">
+      <obj_property name="ElementShortName">i_xor</obj_property>
+      <obj_property name="ObjectShortName">i_xor</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_srl">
+      <obj_property name="ElementShortName">i_srl</obj_property>
+      <obj_property name="ObjectShortName">i_srl</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_sra">
+      <obj_property name="ElementShortName">i_sra</obj_property>
+      <obj_property name="ObjectShortName">i_sra</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_or">
+      <obj_property name="ElementShortName">i_or</obj_property>
+      <obj_property name="ObjectShortName">i_or</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/i_and">
+      <obj_property name="ElementShortName">i_and</obj_property>
+      <obj_property name="ObjectShortName">i_and</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/n_inst">
+      <obj_property name="ElementShortName">n_inst</obj_property>
+      <obj_property name="ObjectShortName">n_inst</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/cpu_state">
+      <obj_property name="ElementShortName">cpu_state[6:0]</obj_property>
+      <obj_property name="ObjectShortName">cpu_state[6:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/wr_addr">
+      <obj_property name="ElementShortName">wr_addr[4:0]</obj_property>
+      <obj_property name="ObjectShortName">wr_addr[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/wr_we">
+      <obj_property name="ElementShortName">wr_we</obj_property>
+      <obj_property name="ObjectShortName">wr_we</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/wr_data">
+      <obj_property name="ElementShortName">wr_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wr_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/wr_pc_we">
+      <obj_property name="ElementShortName">wr_pc_we</obj_property>
+      <obj_property name="ObjectShortName">wr_pc_we</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/wr_pc">
+      <obj_property name="ElementShortName">wr_pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wr_pc[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/IDLE">
+      <obj_property name="ElementShortName">IDLE[6:0]</obj_property>
+      <obj_property name="ObjectShortName">IDLE[6:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/FETCH">
+      <obj_property name="ElementShortName">FETCH[6:0]</obj_property>
+      <obj_property name="ObjectShortName">FETCH[6:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/DECODE">
+      <obj_property name="ElementShortName">DECODE[6:0]</obj_property>
+      <obj_property name="ObjectShortName">DECODE[6:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/EXECUTE">
+      <obj_property name="ElementShortName">EXECUTE[6:0]</obj_property>
+      <obj_property name="ObjectShortName">EXECUTE[6:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/MEMORY">
+      <obj_property name="ElementShortName">MEMORY[6:0]</obj_property>
+      <obj_property name="ObjectShortName">MEMORY[6:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/WRITEBACK">
+      <obj_property name="ElementShortName">WRITEBACK[6:0]</obj_property>
+      <obj_property name="ObjectShortName">WRITEBACK[6:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/blk_mem_gen_0/clka">
+      <obj_property name="ElementShortName">clka</obj_property>
+      <obj_property name="ObjectShortName">clka</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/blk_mem_gen_0/wea">
+      <obj_property name="ElementShortName">wea[0:0]</obj_property>
+      <obj_property name="ObjectShortName">wea[0:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/blk_mem_gen_0/addra">
+      <obj_property name="ElementShortName">addra[10:0]</obj_property>
+      <obj_property name="ObjectShortName">addra[10:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/blk_mem_gen_0/dina">
+      <obj_property name="ElementShortName">dina[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dina[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/blk_mem_gen_0/douta">
+      <obj_property name="ElementShortName">douta[31:0]</obj_property>
+      <obj_property name="ObjectShortName">douta[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/blk_mem_gen_1/clka">
+      <obj_property name="ElementShortName">clka</obj_property>
+      <obj_property name="ObjectShortName">clka</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/blk_mem_gen_1/ena">
+      <obj_property name="ElementShortName">ena</obj_property>
+      <obj_property name="ObjectShortName">ena</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/blk_mem_gen_1/wea">
+      <obj_property name="ElementShortName">wea[0:0]</obj_property>
+      <obj_property name="ObjectShortName">wea[0:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/blk_mem_gen_1/addra">
+      <obj_property name="ElementShortName">addra[10:0]</obj_property>
+      <obj_property name="ObjectShortName">addra[10:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/blk_mem_gen_1/dina">
+      <obj_property name="ElementShortName">dina[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dina[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/blk_mem_gen_1/douta">
+      <obj_property name="ElementShortName">douta[31:0]</obj_property>
+      <obj_property name="ObjectShortName">douta[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/RST_N">
+      <obj_property name="ElementShortName">RST_N</obj_property>
+      <obj_property name="ObjectShortName">RST_N</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/CLK">
+      <obj_property name="ElementShortName">CLK</obj_property>
+      <obj_property name="ObjectShortName">CLK</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/WADDR">
+      <obj_property name="ElementShortName">WADDR[4:0]</obj_property>
+      <obj_property name="ObjectShortName">WADDR[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/WE">
+      <obj_property name="ElementShortName">WE</obj_property>
+      <obj_property name="ObjectShortName">WE</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/WDATA">
+      <obj_property name="ElementShortName">WDATA[31:0]</obj_property>
+      <obj_property name="ObjectShortName">WDATA[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/RS1ADDR">
+      <obj_property name="ElementShortName">RS1ADDR[4:0]</obj_property>
+      <obj_property name="ObjectShortName">RS1ADDR[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/RS1">
+      <obj_property name="ElementShortName">RS1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">RS1[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/RS2ADDR">
+      <obj_property name="ElementShortName">RS2ADDR[4:0]</obj_property>
+      <obj_property name="ObjectShortName">RS2ADDR[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/RS2">
+      <obj_property name="ElementShortName">RS2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">RS2[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/PC_WE">
+      <obj_property name="ElementShortName">PC_WE</obj_property>
+      <obj_property name="ObjectShortName">PC_WE</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/PC_WDATA">
+      <obj_property name="ElementShortName">PC_WDATA[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PC_WDATA[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/PC">
+      <obj_property name="ElementShortName">PC[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PC[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg1">
+      <obj_property name="ElementShortName">reg1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg1[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg2">
+      <obj_property name="ElementShortName">reg2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg2[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg3">
+      <obj_property name="ElementShortName">reg3[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg3[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg4">
+      <obj_property name="ElementShortName">reg4[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg4[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg5">
+      <obj_property name="ElementShortName">reg5[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg5[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg6">
+      <obj_property name="ElementShortName">reg6[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg6[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg7">
+      <obj_property name="ElementShortName">reg7[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg7[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg8">
+      <obj_property name="ElementShortName">reg8[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg8[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg9">
+      <obj_property name="ElementShortName">reg9[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg9[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg10">
+      <obj_property name="ElementShortName">reg10[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg10[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg11">
+      <obj_property name="ElementShortName">reg11[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg11[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg12">
+      <obj_property name="ElementShortName">reg12[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg12[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg13">
+      <obj_property name="ElementShortName">reg13[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg13[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg14">
+      <obj_property name="ElementShortName">reg14[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg14[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg15">
+      <obj_property name="ElementShortName">reg15[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg15[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg16">
+      <obj_property name="ElementShortName">reg16[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg16[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg17">
+      <obj_property name="ElementShortName">reg17[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg17[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg18">
+      <obj_property name="ElementShortName">reg18[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg18[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg19">
+      <obj_property name="ElementShortName">reg19[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg19[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg20">
+      <obj_property name="ElementShortName">reg20[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg20[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg21">
+      <obj_property name="ElementShortName">reg21[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg21[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg22">
+      <obj_property name="ElementShortName">reg22[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg22[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg23">
+      <obj_property name="ElementShortName">reg23[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg23[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg24">
+      <obj_property name="ElementShortName">reg24[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg24[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg25">
+      <obj_property name="ElementShortName">reg25[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg25[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg26">
+      <obj_property name="ElementShortName">reg26[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg26[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg27">
+      <obj_property name="ElementShortName">reg27[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg27[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg28">
+      <obj_property name="ElementShortName">reg28[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg28[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg29">
+      <obj_property name="ElementShortName">reg29[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg29[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg30">
+      <obj_property name="ElementShortName">reg30[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg30[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_reg/reg31">
+      <obj_property name="ElementShortName">reg31[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg31[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/RST_N">
+      <obj_property name="ElementShortName">RST_N</obj_property>
+      <obj_property name="ObjectShortName">RST_N</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/CLK">
+      <obj_property name="ElementShortName">CLK</obj_property>
+      <obj_property name="ObjectShortName">CLK</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_ADDI">
+      <obj_property name="ElementShortName">I_ADDI</obj_property>
+      <obj_property name="ObjectShortName">I_ADDI</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_SLTI">
+      <obj_property name="ElementShortName">I_SLTI</obj_property>
+      <obj_property name="ObjectShortName">I_SLTI</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_SLTIU">
+      <obj_property name="ElementShortName">I_SLTIU</obj_property>
+      <obj_property name="ObjectShortName">I_SLTIU</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_XORI">
+      <obj_property name="ElementShortName">I_XORI</obj_property>
+      <obj_property name="ObjectShortName">I_XORI</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_ORI">
+      <obj_property name="ElementShortName">I_ORI</obj_property>
+      <obj_property name="ObjectShortName">I_ORI</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_ANDI">
+      <obj_property name="ElementShortName">I_ANDI</obj_property>
+      <obj_property name="ObjectShortName">I_ANDI</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_SLLI">
+      <obj_property name="ElementShortName">I_SLLI</obj_property>
+      <obj_property name="ObjectShortName">I_SLLI</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_SRLI">
+      <obj_property name="ElementShortName">I_SRLI</obj_property>
+      <obj_property name="ObjectShortName">I_SRLI</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_SRAI">
+      <obj_property name="ElementShortName">I_SRAI</obj_property>
+      <obj_property name="ObjectShortName">I_SRAI</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_ADD">
+      <obj_property name="ElementShortName">I_ADD</obj_property>
+      <obj_property name="ObjectShortName">I_ADD</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_SUB">
+      <obj_property name="ElementShortName">I_SUB</obj_property>
+      <obj_property name="ObjectShortName">I_SUB</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_SLL">
+      <obj_property name="ElementShortName">I_SLL</obj_property>
+      <obj_property name="ObjectShortName">I_SLL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_SLT">
+      <obj_property name="ElementShortName">I_SLT</obj_property>
+      <obj_property name="ObjectShortName">I_SLT</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_SLTU">
+      <obj_property name="ElementShortName">I_SLTU</obj_property>
+      <obj_property name="ObjectShortName">I_SLTU</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_XOR">
+      <obj_property name="ElementShortName">I_XOR</obj_property>
+      <obj_property name="ObjectShortName">I_XOR</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_SRL">
+      <obj_property name="ElementShortName">I_SRL</obj_property>
+      <obj_property name="ObjectShortName">I_SRL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_SRA">
+      <obj_property name="ElementShortName">I_SRA</obj_property>
+      <obj_property name="ObjectShortName">I_SRA</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_OR">
+      <obj_property name="ElementShortName">I_OR</obj_property>
+      <obj_property name="ObjectShortName">I_OR</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_AND">
+      <obj_property name="ElementShortName">I_AND</obj_property>
+      <obj_property name="ObjectShortName">I_AND</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_BEQ">
+      <obj_property name="ElementShortName">I_BEQ</obj_property>
+      <obj_property name="ObjectShortName">I_BEQ</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_BNE">
+      <obj_property name="ElementShortName">I_BNE</obj_property>
+      <obj_property name="ObjectShortName">I_BNE</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_BLT">
+      <obj_property name="ElementShortName">I_BLT</obj_property>
+      <obj_property name="ObjectShortName">I_BLT</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_BGE">
+      <obj_property name="ElementShortName">I_BGE</obj_property>
+      <obj_property name="ObjectShortName">I_BGE</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_BLTU">
+      <obj_property name="ElementShortName">I_BLTU</obj_property>
+      <obj_property name="ObjectShortName">I_BLTU</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_BGEU">
+      <obj_property name="ElementShortName">I_BGEU</obj_property>
+      <obj_property name="ObjectShortName">I_BGEU</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_LB">
+      <obj_property name="ElementShortName">I_LB</obj_property>
+      <obj_property name="ObjectShortName">I_LB</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_LH">
+      <obj_property name="ElementShortName">I_LH</obj_property>
+      <obj_property name="ObjectShortName">I_LH</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_LW">
+      <obj_property name="ElementShortName">I_LW</obj_property>
+      <obj_property name="ObjectShortName">I_LW</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_LBU">
+      <obj_property name="ElementShortName">I_LBU</obj_property>
+      <obj_property name="ObjectShortName">I_LBU</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_LHU">
+      <obj_property name="ElementShortName">I_LHU</obj_property>
+      <obj_property name="ObjectShortName">I_LHU</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_SB">
+      <obj_property name="ElementShortName">I_SB</obj_property>
+      <obj_property name="ObjectShortName">I_SB</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_SH">
+      <obj_property name="ElementShortName">I_SH</obj_property>
+      <obj_property name="ObjectShortName">I_SH</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/I_SW">
+      <obj_property name="ElementShortName">I_SW</obj_property>
+      <obj_property name="ObjectShortName">I_SW</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/RS1">
+      <obj_property name="ElementShortName">RS1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">RS1[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/RS2">
+      <obj_property name="ElementShortName">RS2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">RS2[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/IMM">
+      <obj_property name="ElementShortName">IMM[31:0]</obj_property>
+      <obj_property name="ObjectShortName">IMM[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/design_1_wrapper/design_1_i/core_top_0/inst/u_core_alu/RESULT">
+      <obj_property name="ElementShortName">RESULT[31:0]</obj_property>
+      <obj_property name="ObjectShortName">RESULT[31:0]</obj_property>
+   </wvobject>
+</wave_config>
