@@ -1,0 +1,41 @@
+#-----------------------------------------------------------
+# Vivado v2016.4 (64-bit)
+# SW Build 1756540 on Mon Jan 23 19:11:19 MST 2017
+# IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+# Start of session at: Mon Oct  9 02:53:58 2017
+# Process ID: 14592
+# Current directory: /home/yamaguchi/koara/koara.runs/synth_1
+# Command line: vivado -log core_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source core_top.tcl
+# Log file: /home/yamaguchi/koara/koara.runs/synth_1/core_top.vds
+# Journal file: /home/yamaguchi/koara/koara.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source core_top.tcl -notrace
+Command: synth_design -top core_top -part xcku040-ffva1156-2-e
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xcku040'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xcku040'
+INFO: [Common 17-1223] The version limit for your license is '2017.03' and will expire in -192 days. A version limit expiration means that, although you may be able to continue to use the current version of tools or IP with this license, you will not be eligible for any updates or new releases.
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 14598 
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1097.340 ; gain = 161.969 ; free physical = 9032 ; free virtual = 28325
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'core_top' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:1]
+	Parameter IDLE bound to: 7'b0000001 
+	Parameter FETCH bound to: 7'b0000010 
+	Parameter DECODE bound to: 7'b0000100 
+	Parameter EXECUTE bound to: 7'b0001000 
+	Parameter MEMORY bound to: 7'b0100000 
+	Parameter WRITEBACK bound to: 7'b1000000 
+INFO: [Synth 8-155] case statement is not full and has no default [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:48]
+ERROR: [Synth 8-439] module 'core_decode' not found [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:84]
+ERROR: [Synth 8-285] failed synthesizing module 'core_top' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:1]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1137.809 ; gain = 202.438 ; free physical = 8991 ; free virtual = 28283
+---------------------------------------------------------------------------------
+synthesize failed
+INFO: [Common 17-83] Releasing license: Synthesis
+6 Infos, 0 Warnings, 0 Critical Warnings and 3 Errors encountered.
+synth_design failed
+ERROR: [Common 17-69] Command failed: Vivado Synthesis failed
+INFO: [Common 17-206] Exiting Vivado at Mon Oct  9 02:54:08 2017...
