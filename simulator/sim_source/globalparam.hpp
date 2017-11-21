@@ -5,10 +5,31 @@
 #include <climits>
 #include <algorithm>
 #include <bitset>
+#include <iostream>
+#include <climits>
+#include <algorithm>
+#include <vector>
+#include <queue>
+#include <list>
+#include <stack>
+#include <string>
+#include <functional>
+#include <numeric>
+#define _USE_MATH_DEFINES
+#include <math.h>
+#include <map>
+#include <set>
+#include <stdio.h>
+#include <stdlib.h>
+#include <errno.h>
+
 using namespace std;
 
 #define RBUFSIZE 16384
 #define HASHWIDTH 1000003
+
+#define Loop(i, n) for(int i = 0; i < (int)n; i++)
+#define Loop1(i, n) for(int i = 1; i <= (int)n; i++)
 
 struct hash_list_t {
   unsigned key;
@@ -44,6 +65,7 @@ struct param_t {
   hash_list_t *mem[HASHWIDTH];
   unsigned long long cnt;
   unsigned long long breakcnt;
+  unsigned call_time[128];
 };
 
 enum inst_t {

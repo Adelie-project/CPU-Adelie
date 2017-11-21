@@ -119,6 +119,7 @@ void exec_main(param_t* param) {
     if(param->trace + TRACE_SIZE <= param->cnt) exit(EXIT_SUCCESS);
     printf("%lld, %d\n", param->cnt, param->pc);
   }
+  param->call_time[(param->decoded)[param->rbuf_p][0]]++;
   switch((param->decoded)[param->rbuf_p][0]) {
     case LUI:
       set_u_type(param, &rd, &imm);
