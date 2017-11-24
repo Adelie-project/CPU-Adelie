@@ -1,7 +1,7 @@
 //Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
-//Date        : Sat Nov 25 04:21:39 2017
+//Date        : Sat Nov 25 05:34:11 2017
 //Host        : ispc2016 running 64-bit Ubuntu 14.04.5 LTS
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=10,numReposBlks=8,numNonXlnxBlks=1,numHierBlks=2,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=1,da_board_cnt=1,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=13,numReposBlks=11,numNonXlnxBlks=1,numHierBlks=2,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=1,da_board_cnt=1,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
 module design_1
    (rs232_uart_rxd,
     rs232_uart_txd);
@@ -26,10 +26,31 @@ module design_1
   wire [31:0]core_top_0_B_TDATA;
   wire core_top_0_B_TREADY;
   wire core_top_0_B_TVALID;
+  wire [31:0]core_top_0_COMP_A_TDATA;
+  wire core_top_0_COMP_A_TREADY;
+  wire core_top_0_COMP_A_TVALID;
+  wire [31:0]core_top_0_COMP_B_TDATA;
+  wire core_top_0_COMP_B_TREADY;
+  wire core_top_0_COMP_B_TVALID;
+  wire [7:0]core_top_0_COMP_OP_TDATA;
+  wire core_top_0_COMP_OP_TREADY;
+  wire core_top_0_COMP_OP_TVALID;
+  wire [31:0]core_top_0_DIV_A_TDATA;
+  wire core_top_0_DIV_A_TREADY;
+  wire core_top_0_DIV_A_TVALID;
+  wire [31:0]core_top_0_DIV_B_TDATA;
+  wire core_top_0_DIV_B_TREADY;
+  wire core_top_0_DIV_B_TVALID;
   wire [31:0]core_top_0_I_MEM_ADDR;
   wire [31:0]core_top_0_MEM_ADDR;
   wire [31:0]core_top_0_MEM_DATA;
   wire core_top_0_MEM_WE;
+  wire [31:0]core_top_0_MUL_A_TDATA;
+  wire core_top_0_MUL_A_TREADY;
+  wire core_top_0_MUL_A_TVALID;
+  wire [31:0]core_top_0_MUL_B_TDATA;
+  wire core_top_0_MUL_B_TREADY;
+  wire core_top_0_MUL_B_TVALID;
   wire [7:0]core_top_0_OP_TDATA;
   wire core_top_0_OP_TREADY;
   wire core_top_0_OP_TVALID;
@@ -68,6 +89,15 @@ module design_1
   wire [31:0]floating_point_0_M_AXIS_RESULT_TDATA;
   wire floating_point_0_M_AXIS_RESULT_TREADY;
   wire floating_point_0_M_AXIS_RESULT_TVALID;
+  wire [7:0]floating_point_1_M_AXIS_RESULT_TDATA;
+  wire floating_point_1_M_AXIS_RESULT_TREADY;
+  wire floating_point_1_M_AXIS_RESULT_TVALID;
+  wire [31:0]floating_point_2_M_AXIS_RESULT_TDATA;
+  wire floating_point_2_M_AXIS_RESULT_TREADY;
+  wire floating_point_2_M_AXIS_RESULT_TVALID;
+  wire [31:0]floating_point_3_M_AXIS_RESULT_TDATA;
+  wire floating_point_3_M_AXIS_RESULT_TREADY;
+  wire floating_point_3_M_AXIS_RESULT_TVALID;
   wire sim_clk_gen_0_clk;
   wire sim_clk_gen_0_sync_rst;
   wire [0:0]xlconstant_0_dout;
@@ -111,26 +141,56 @@ module design_1
         .ena(xlconstant_1_dout),
         .wea(core_top_0_MEM_WE));
   design_1_core_top_0_0 core_top_0
-       (.A_TDATA(core_top_0_A_TDATA),
-        .A_TREADY(core_top_0_A_TREADY),
-        .A_TVALID(core_top_0_A_TVALID),
-        .B_TDATA(core_top_0_B_TDATA),
-        .B_TREADY(core_top_0_B_TREADY),
-        .B_TVALID(core_top_0_B_TVALID),
+       (.ADDSUB_A_TDATA(core_top_0_A_TDATA),
+        .ADDSUB_A_TREADY(core_top_0_A_TREADY),
+        .ADDSUB_A_TVALID(core_top_0_A_TVALID),
+        .ADDSUB_B_TDATA(core_top_0_B_TDATA),
+        .ADDSUB_B_TREADY(core_top_0_B_TREADY),
+        .ADDSUB_B_TVALID(core_top_0_B_TVALID),
+        .ADDSUB_OP_TDATA(core_top_0_OP_TDATA),
+        .ADDSUB_OP_TREADY(core_top_0_OP_TREADY),
+        .ADDSUB_OP_TVALID(core_top_0_OP_TVALID),
+        .ADDSUB_R_TDATA(floating_point_0_M_AXIS_RESULT_TDATA),
+        .ADDSUB_R_TREADY(floating_point_0_M_AXIS_RESULT_TREADY),
+        .ADDSUB_R_TVALID(floating_point_0_M_AXIS_RESULT_TVALID),
         .CLK(sim_clk_gen_0_clk),
+        .COMP_A_TDATA(core_top_0_COMP_A_TDATA),
+        .COMP_A_TREADY(core_top_0_COMP_A_TREADY),
+        .COMP_A_TVALID(core_top_0_COMP_A_TVALID),
+        .COMP_B_TDATA(core_top_0_COMP_B_TDATA),
+        .COMP_B_TREADY(core_top_0_COMP_B_TREADY),
+        .COMP_B_TVALID(core_top_0_COMP_B_TVALID),
+        .COMP_OP_TDATA(core_top_0_COMP_OP_TDATA),
+        .COMP_OP_TREADY(core_top_0_COMP_OP_TREADY),
+        .COMP_OP_TVALID(core_top_0_COMP_OP_TVALID),
+        .COMP_R_TDATA({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,floating_point_1_M_AXIS_RESULT_TDATA}),
+        .COMP_R_TREADY(floating_point_1_M_AXIS_RESULT_TREADY),
+        .COMP_R_TVALID(floating_point_1_M_AXIS_RESULT_TVALID),
+        .DIV_A_TDATA(core_top_0_DIV_A_TDATA),
+        .DIV_A_TREADY(core_top_0_DIV_A_TREADY),
+        .DIV_A_TVALID(core_top_0_DIV_A_TVALID),
+        .DIV_B_TDATA(core_top_0_DIV_B_TDATA),
+        .DIV_B_TREADY(core_top_0_DIV_B_TREADY),
+        .DIV_B_TVALID(core_top_0_DIV_B_TVALID),
+        .DIV_R_TDATA(floating_point_2_M_AXIS_RESULT_TDATA),
+        .DIV_R_TREADY(floating_point_2_M_AXIS_RESULT_TREADY),
+        .DIV_R_TVALID(floating_point_2_M_AXIS_RESULT_TVALID),
         .I_MEM_ADDR(core_top_0_I_MEM_ADDR),
         .I_MEM_IN(blk_mem_gen_0_douta),
         .MEM_ADDR(core_top_0_MEM_ADDR),
         .MEM_DATA(core_top_0_MEM_DATA),
         .MEM_IN(blk_mem_gen_1_douta),
         .MEM_WE(core_top_0_MEM_WE),
-        .OP_TDATA(core_top_0_OP_TDATA),
-        .OP_TREADY(core_top_0_OP_TREADY),
-        .OP_TVALID(core_top_0_OP_TVALID),
+        .MUL_A_TDATA(core_top_0_MUL_A_TDATA),
+        .MUL_A_TREADY(core_top_0_MUL_A_TREADY),
+        .MUL_A_TVALID(core_top_0_MUL_A_TVALID),
+        .MUL_B_TDATA(core_top_0_MUL_B_TDATA),
+        .MUL_B_TREADY(core_top_0_MUL_B_TREADY),
+        .MUL_B_TVALID(core_top_0_MUL_B_TVALID),
+        .MUL_R_TDATA(floating_point_3_M_AXIS_RESULT_TDATA),
+        .MUL_R_TREADY(floating_point_3_M_AXIS_RESULT_TREADY),
+        .MUL_R_TVALID(floating_point_3_M_AXIS_RESULT_TVALID),
         .RST_N(sim_clk_gen_0_sync_rst),
-        .R_TDATA(floating_point_0_M_AXIS_RESULT_TDATA),
-        .R_TREADY(floating_point_0_M_AXIS_RESULT_TREADY),
-        .R_TVALID(floating_point_0_M_AXIS_RESULT_TVALID),
         .S_AXI_ARADDR(core_top_0_S_AXI_ARADDR),
         .S_AXI_ARREADY(core_top_0_S_AXI_ARREADY),
         .S_AXI_ARVALID(core_top_0_S_AXI_ARVALID),
@@ -200,6 +260,42 @@ module design_1
         .s_axis_operation_tdata(core_top_0_OP_TDATA),
         .s_axis_operation_tready(core_top_0_OP_TREADY),
         .s_axis_operation_tvalid(core_top_0_OP_TVALID));
+  design_1_floating_point_0_1 floating_point_1
+       (.aclk(sim_clk_gen_0_clk),
+        .m_axis_result_tdata(floating_point_1_M_AXIS_RESULT_TDATA),
+        .m_axis_result_tready(floating_point_1_M_AXIS_RESULT_TREADY),
+        .m_axis_result_tvalid(floating_point_1_M_AXIS_RESULT_TVALID),
+        .s_axis_a_tdata(core_top_0_COMP_A_TDATA),
+        .s_axis_a_tready(core_top_0_COMP_A_TREADY),
+        .s_axis_a_tvalid(core_top_0_COMP_A_TVALID),
+        .s_axis_b_tdata(core_top_0_COMP_B_TDATA),
+        .s_axis_b_tready(core_top_0_COMP_B_TREADY),
+        .s_axis_b_tvalid(core_top_0_COMP_B_TVALID),
+        .s_axis_operation_tdata(core_top_0_COMP_OP_TDATA),
+        .s_axis_operation_tready(core_top_0_COMP_OP_TREADY),
+        .s_axis_operation_tvalid(core_top_0_COMP_OP_TVALID));
+  design_1_floating_point_0_2 floating_point_2
+       (.aclk(sim_clk_gen_0_clk),
+        .m_axis_result_tdata(floating_point_2_M_AXIS_RESULT_TDATA),
+        .m_axis_result_tready(floating_point_2_M_AXIS_RESULT_TREADY),
+        .m_axis_result_tvalid(floating_point_2_M_AXIS_RESULT_TVALID),
+        .s_axis_a_tdata(core_top_0_DIV_A_TDATA),
+        .s_axis_a_tready(core_top_0_DIV_A_TREADY),
+        .s_axis_a_tvalid(core_top_0_DIV_A_TVALID),
+        .s_axis_b_tdata(core_top_0_DIV_B_TDATA),
+        .s_axis_b_tready(core_top_0_DIV_B_TREADY),
+        .s_axis_b_tvalid(core_top_0_DIV_B_TVALID));
+  design_1_floating_point_0_3 floating_point_3
+       (.aclk(sim_clk_gen_0_clk),
+        .m_axis_result_tdata(floating_point_3_M_AXIS_RESULT_TDATA),
+        .m_axis_result_tready(floating_point_3_M_AXIS_RESULT_TREADY),
+        .m_axis_result_tvalid(floating_point_3_M_AXIS_RESULT_TVALID),
+        .s_axis_a_tdata(core_top_0_MUL_A_TDATA),
+        .s_axis_a_tready(core_top_0_MUL_A_TREADY),
+        .s_axis_a_tvalid(core_top_0_MUL_A_TVALID),
+        .s_axis_b_tdata(core_top_0_MUL_B_TDATA),
+        .s_axis_b_tready(core_top_0_MUL_B_TREADY),
+        .s_axis_b_tvalid(core_top_0_MUL_B_TVALID));
   design_1_sim_clk_gen_0_0 sim_clk_gen_0
        (.clk(sim_clk_gen_0_clk),
         .sync_rst(sim_clk_gen_0_sync_rst));

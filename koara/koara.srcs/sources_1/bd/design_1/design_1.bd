@@ -119,6 +119,48 @@
         </spirit:configurableElementValues>
       </spirit:componentInstance>
       <spirit:componentInstance>
+        <spirit:instanceName>floating_point_1</spirit:instanceName>
+        <spirit:componentRef spirit:library="ip" spirit:name="floating_point" spirit:vendor="xilinx.com" spirit:version="7.1"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">design_1_floating_point_0_1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="Operation_Type">Compare</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="Result_Precision_Type">Custom</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Result_Exponent_Width">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Result_Fraction_Width">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Mult_Usage">No_Usage</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Latency">3</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Rate">1</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>floating_point_2</spirit:instanceName>
+        <spirit:componentRef spirit:library="ip" spirit:name="floating_point" spirit:vendor="xilinx.com" spirit:version="7.1"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">design_1_floating_point_0_2</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="Operation_Type">Divide</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="Result_Precision_Type">Single</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Result_Exponent_Width">8</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Result_Fraction_Width">24</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Mult_Usage">No_Usage</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Latency">29</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Rate">1</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>floating_point_3</spirit:instanceName>
+        <spirit:componentRef spirit:library="ip" spirit:name="floating_point" spirit:vendor="xilinx.com" spirit:version="7.1"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">design_1_floating_point_0_3</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="Operation_Type">Multiply</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="Result_Precision_Type">Single</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Result_Exponent_Width">8</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Result_Fraction_Width">24</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Mult_Usage">Full_Usage</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Latency">9</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Rate">1</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
         <spirit:instanceName>core_top_0</spirit:instanceName>
         <spirit:componentRef spirit:library="module_ref" spirit:name="core_top" spirit:vendor="user.org" spirit:version="1.0"/>
         <spirit:configurableElementValues>
@@ -133,18 +175,18 @@
     <spirit:interconnections>
       <spirit:interconnection>
         <spirit:name>core_top_0_B</spirit:name>
-        <spirit:activeInterface spirit:busRef="B" spirit:componentRef="core_top_0"/>
+        <spirit:activeInterface spirit:busRef="ADDSUB_B" spirit:componentRef="core_top_0"/>
         <spirit:activeInterface spirit:busRef="S_AXIS_B" spirit:componentRef="floating_point_0"/>
       </spirit:interconnection>
       <spirit:interconnection>
         <spirit:name>core_top_0_A</spirit:name>
-        <spirit:activeInterface spirit:busRef="A" spirit:componentRef="core_top_0"/>
+        <spirit:activeInterface spirit:busRef="ADDSUB_A" spirit:componentRef="core_top_0"/>
         <spirit:activeInterface spirit:busRef="S_AXIS_A" spirit:componentRef="floating_point_0"/>
       </spirit:interconnection>
       <spirit:interconnection>
         <spirit:name>core_top_0_OP</spirit:name>
         <spirit:activeInterface spirit:busRef="S_AXIS_OPERATION" spirit:componentRef="floating_point_0"/>
-        <spirit:activeInterface spirit:busRef="OP" spirit:componentRef="core_top_0"/>
+        <spirit:activeInterface spirit:busRef="ADDSUB_OP" spirit:componentRef="core_top_0"/>
       </spirit:interconnection>
       <spirit:interconnection>
         <spirit:name>core_top_0_S_AXI</spirit:name>
@@ -159,7 +201,57 @@
       <spirit:interconnection>
         <spirit:name>floating_point_0_M_AXIS_RESULT</spirit:name>
         <spirit:activeInterface spirit:busRef="M_AXIS_RESULT" spirit:componentRef="floating_point_0"/>
-        <spirit:activeInterface spirit:busRef="R" spirit:componentRef="core_top_0"/>
+        <spirit:activeInterface spirit:busRef="ADDSUB_R" spirit:componentRef="core_top_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>core_top_0_MUL_A</spirit:name>
+        <spirit:activeInterface spirit:busRef="MUL_A" spirit:componentRef="core_top_0"/>
+        <spirit:activeInterface spirit:busRef="S_AXIS_A" spirit:componentRef="floating_point_3"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>core_top_0_MUL_B</spirit:name>
+        <spirit:activeInterface spirit:busRef="MUL_B" spirit:componentRef="core_top_0"/>
+        <spirit:activeInterface spirit:busRef="S_AXIS_B" spirit:componentRef="floating_point_3"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>floating_point_3_M_AXIS_RESULT</spirit:name>
+        <spirit:activeInterface spirit:busRef="MUL_R" spirit:componentRef="core_top_0"/>
+        <spirit:activeInterface spirit:busRef="M_AXIS_RESULT" spirit:componentRef="floating_point_3"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>core_top_0_DIV_A</spirit:name>
+        <spirit:activeInterface spirit:busRef="DIV_A" spirit:componentRef="core_top_0"/>
+        <spirit:activeInterface spirit:busRef="S_AXIS_A" spirit:componentRef="floating_point_2"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>core_top_0_DIV_B</spirit:name>
+        <spirit:activeInterface spirit:busRef="DIV_B" spirit:componentRef="core_top_0"/>
+        <spirit:activeInterface spirit:busRef="S_AXIS_B" spirit:componentRef="floating_point_2"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>floating_point_2_M_AXIS_RESULT</spirit:name>
+        <spirit:activeInterface spirit:busRef="DIV_R" spirit:componentRef="core_top_0"/>
+        <spirit:activeInterface spirit:busRef="M_AXIS_RESULT" spirit:componentRef="floating_point_2"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>core_top_0_COMP_A</spirit:name>
+        <spirit:activeInterface spirit:busRef="S_AXIS_A" spirit:componentRef="floating_point_1"/>
+        <spirit:activeInterface spirit:busRef="COMP_A" spirit:componentRef="core_top_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>core_top_0_COMP_B</spirit:name>
+        <spirit:activeInterface spirit:busRef="S_AXIS_B" spirit:componentRef="floating_point_1"/>
+        <spirit:activeInterface spirit:busRef="COMP_B" spirit:componentRef="core_top_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>core_top_0_COMP_OP</spirit:name>
+        <spirit:activeInterface spirit:busRef="S_AXIS_OPERATION" spirit:componentRef="floating_point_1"/>
+        <spirit:activeInterface spirit:busRef="COMP_OP" spirit:componentRef="core_top_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>floating_point_1_M_AXIS_RESULT</spirit:name>
+        <spirit:activeInterface spirit:busRef="M_AXIS_RESULT" spirit:componentRef="floating_point_1"/>
+        <spirit:activeInterface spirit:busRef="COMP_R" spirit:componentRef="core_top_0"/>
       </spirit:interconnection>
     </spirit:interconnections>
     <spirit:adHocConnections>
@@ -173,6 +265,9 @@
         <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="S00_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="ACLK"/>
         <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="M00_ACLK"/>
+        <spirit:internalPortReference spirit:componentRef="floating_point_3" spirit:portRef="aclk"/>
+        <spirit:internalPortReference spirit:componentRef="floating_point_2" spirit:portRef="aclk"/>
+        <spirit:internalPortReference spirit:componentRef="floating_point_1" spirit:portRef="aclk"/>
         <spirit:internalPortReference spirit:componentRef="core_top_0" spirit:portRef="CLK"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>

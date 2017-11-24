@@ -68,6 +68,9 @@
 -endlib
 -makelib ies/xil_defaultlib \
   "../../../bd/design_1/ip/design_1_axi_uartlite_0_0_1/sim/design_1_axi_uartlite_0_0.vhd" \
+  "../../../bd/design_1/ip/design_1_floating_point_0_1/sim/design_1_floating_point_0_1.vhd" \
+  "../../../bd/design_1/ip/design_1_floating_point_0_2/sim/design_1_floating_point_0_2.vhd" \
+  "../../../bd/design_1/ip/design_1_floating_point_0_3/sim/design_1_floating_point_0_3.vhd" \
 -endlib
 -makelib ies/xil_defaultlib \
   glbl.v
