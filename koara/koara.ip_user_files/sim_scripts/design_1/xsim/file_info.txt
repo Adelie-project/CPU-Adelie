@@ -7,4 +7,6 @@ design_1.v,verilog,xil_defaultlib,../../../bd/design_1/hdl/design_1.v,
 xlconstant.v,verilog,xil_defaultlib,../../../bd/design_1/ipshared/e147/xlconstant.v,
 design_1_xlconstant_0_0.v,verilog,xil_defaultlib,../../../bd/design_1/ip/design_1_xlconstant_0_0/sim/design_1_xlconstant_0_0.v,
 design_1_xlconstant_0_1.v,verilog,xil_defaultlib,../../../bd/design_1/ip/design_1_xlconstant_0_1/sim/design_1_xlconstant_0_1.v,
+design_1_floating_point_0_0.vhd,vhdl,xil_defaultlib,../../../bd/design_1/ip/design_1_floating_point_0_0/sim/design_1_floating_point_0_0.vhd,
+design_1_axi_uartlite_0_0.vhd,vhdl,xil_defaultlib,../../../bd/design_1/ip/design_1_axi_uartlite_0_0_1/sim/design_1_axi_uartlite_0_0.vhd,
 glbl.v,Verilog,xil_defaultlib,glbl.v

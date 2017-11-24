@@ -9,4 +9,4 @@ then
 exit $RETVAL
 fi
 }
-ExecStep $xv_path/bin/xsim design_1_wrapper_behav -key {Behavioral:sim_1:Functional:design_1_wrapper} -tclbatch design_1_wrapper.tcl -view /home/yamaguchi/koara/design_1_wrapper_behav.wcfg -log simulate.log
+ExecStep $xv_path/bin/xsim design_1_wrapper_behav -key {Behavioral:sim_1:Functional:design_1_wrapper} -tclbatch design_1_wrapper.tcl -view /home/yamaguchi/CPU-Adelie/koara/design_1_wrapper_behav.wcfg -log simulate.log

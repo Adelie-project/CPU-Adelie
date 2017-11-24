@@ -20,7 +20,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='/home/yamaguchi/koara/koara.runs/design_1_sim_clk_gen_0_0_synth_1'
+HD_PWD='/home/yamaguchi/CPU-Adelie/koara/koara.runs/design_1_sim_clk_gen_0_0_synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
