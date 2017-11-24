@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="17" Path="/home/yamaguchi/koara/koara.xpr">
+<Project Version="7" Minor="17" Path="/home/yamaguchi/CPU-Adelie/koara/koara.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="8dd88a88723f4be2bff3cff0f7b19799"/>
@@ -29,20 +29,20 @@
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSABoardId" Val="kcu105"/>
     <Option Name="DSANumComputeUnits" Val="16"/>
-    <Option Name="WTXSimLaunchSim" Val="84"/>
+    <Option Name="WTXSimLaunchSim" Val="85"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="37"/>
-    <Option Name="WTModelSimExportSim" Val="37"/>
-    <Option Name="WTQuestaExportSim" Val="37"/>
-    <Option Name="WTIesExportSim" Val="37"/>
-    <Option Name="WTVcsExportSim" Val="37"/>
-    <Option Name="WTRivieraExportSim" Val="37"/>
-    <Option Name="WTActivehdlExportSim" Val="37"/>
+    <Option Name="WTXSimExportSim" Val="38"/>
+    <Option Name="WTModelSimExportSim" Val="38"/>
+    <Option Name="WTQuestaExportSim" Val="38"/>
+    <Option Name="WTIesExportSim" Val="38"/>
+    <Option Name="WTVcsExportSim" Val="38"/>
+    <Option Name="WTRivieraExportSim" Val="38"/>
+    <Option Name="WTActivehdlExportSim" Val="38"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -52,28 +52,28 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
       <Filter Type="Srcs"/>
-      <File Path="$PPRDIR/../CPU-Adelie/core/src/core_reg.v">
+      <File Path="$PPRDIR/../core/src/core_reg.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../CPU-Adelie/core/src/core_alu.v">
+      <File Path="$PPRDIR/../core/src/core_alu.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../CPU-Adelie/core/src/core_decode.v">
+      <File Path="$PPRDIR/../core/src/core_decode.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../CPU-Adelie/core/src/core_top.v">
+      <File Path="$PPRDIR/../core/src/core_top.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -86,109 +86,44 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="design_1_core_top_0_0.xml"/>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_core_top_0_0_1/design_1_core_top_0_0.xci"/>
         <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_xlconstant_0_1/design_1_xlconstant_0_1.xci">
           <Proxy FileSetName="design_1_xlconstant_0_1"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="design_1_ooc.xdc"/>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="hw_handoff/design_1.hwh"/>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="hdl/design_1.hwdef"/>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_0_0_1/design_1_axi_uartlite_0_0.xci"/>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_sim_clk_gen_0_0_1/design_1_sim_clk_gen_0_0.xci">
-          <Proxy FileSetName="design_1_sim_clk_gen_0_0"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_xlconstant_0_0/design_1_xlconstant_0_0.xci">
+          <Proxy FileSetName="design_1_xlconstant_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_floating_point_0_0/design_1_floating_point_0_0.xci">
+          <Proxy FileSetName="design_1_floating_point_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_0_0_1/design_1_axi_uartlite_0_0.xci">
+          <Proxy FileSetName="design_1_axi_uartlite_0_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_blk_mem_gen_0_0_1/design_1_blk_mem_gen_0_0.xci">
           <Proxy FileSetName="design_1_blk_mem_gen_0_0"/>
         </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_core_top_0_0_1/design_1_core_top_0_0.xci">
+          <Proxy FileSetName="design_1_core_top_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="hdl/design_1.v"/>
         <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_blk_mem_gen_1_0_1/design_1_blk_mem_gen_1_0.xci">
           <Proxy FileSetName="design_1_blk_mem_gen_1_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="hdl/design_1.v"/>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_xlconstant_0_0/design_1_xlconstant_0_0.xci">
-          <Proxy FileSetName="design_1_xlconstant_0_0"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_sim_clk_gen_0_0_1/design_1_sim_clk_gen_0_0.xci">
+          <Proxy FileSetName="design_1_sim_clk_gen_0_0"/>
         </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="design_1_core_top_0_0.xml"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="hw_handoff/design_1.hwh"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="design_1_ooc.xdc"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="hdl/design_1.hwdef"/>
         <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="hw_handoff/design_1_bd.tcl"/>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_floating_point_0_0/design_1_floating_point_0_0.xci"/>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_floating_point_0_1/design_1_floating_point_0_1.xci"/>
         <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_core_top_0_axi_periph_0_1/design_1_core_top_0_axi_periph_0.xci"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="synth/design_1_core_top_0_0.v"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="sim/design_1_core_top_0_0.v"/>
       </File>
       <File Path="$PSRCDIR/sources_1/bd/design_1/hdl/design_1_wrapper.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../CPU-Adelie/core/src/memory.coe">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../CPU-Adelie/simulator/test/arithtest1.coe">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../CPU-Adelie/simulator/test/addtest.coe">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../CPU-Adelie/simulator/test/branchtest1.coe">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../CPU-Adelie/simulator/test/pc+=1_ver/fib1.coe">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../CPU-Adelie/simulator/test/pc+=1_ver/looptest2.coe">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../CPU-Adelie/simulator/test/pc+=1_ver/m_access1.coe">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../CPU-Adelie/simulator/test/pc+=1_ver/m_access2.coe">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../CPU-Adelie/simulator/test/pc1/fib1.coe">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../CPU-Adelie/simulator/test/pc1/fib2.coe">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../CPU-Adelie/simulator/test/test_r0.coe">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../CPU-Adelie/simulator/test/fib_rec.coe">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
@@ -205,7 +140,7 @@
     </FileSet>
     <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_1">
       <Filter Type="Srcs"/>
-      <File Path="$PPRDIR/../CPU-Adelie/core/src/core_top.v">
+      <File Path="$PPRDIR/../core/src/core_top.v">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -255,6 +190,24 @@
     <FileSet Name="design_1_blk_mem_gen_1_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/design_1_blk_mem_gen_1_0">
       <Config>
         <Option Name="TopModule" Val="design_1_blk_mem_gen_1_0"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="design_1_core_top_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/design_1_core_top_0_0">
+      <Config>
+        <Option Name="TopModule" Val="design_1_core_top_0_0"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="design_1_floating_point_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/design_1_floating_point_0_0">
+      <Config>
+        <Option Name="TopModule" Val="design_1_floating_point_0_0"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="design_1_axi_uartlite_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/design_1_axi_uartlite_0_0">
+      <Config>
+        <Option Name="TopModule" Val="design_1_axi_uartlite_0_0"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -324,6 +277,36 @@
     <Run Id="design_1_blk_mem_gen_1_0_synth_1" Type="Ft3:Synth" SrcSet="design_1_blk_mem_gen_1_0" Part="xcku040-ffva1156-2-e" ConstrsSet="design_1_blk_mem_gen_1_0" Description="Vivado Synthesis Defaults" Dir="$PRUNDIR/design_1_blk_mem_gen_1_0_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2016"/>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="design_1_core_top_0_0_synth_1" Type="Ft3:Synth" SrcSet="design_1_core_top_0_0" Part="xcku040-ffva1156-2-e" ConstrsSet="design_1_core_top_0_0" Description="Vivado Synthesis Defaults" Dir="$PRUNDIR/design_1_core_top_0_0_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2016">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="design_1_floating_point_0_0_synth_1" Type="Ft3:Synth" SrcSet="design_1_floating_point_0_0" Part="xcku040-ffva1156-2-e" ConstrsSet="design_1_floating_point_0_0" Description="Vivado Synthesis Defaults" Dir="$PRUNDIR/design_1_floating_point_0_0_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2016">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="design_1_axi_uartlite_0_0_synth_1" Type="Ft3:Synth" SrcSet="design_1_axi_uartlite_0_0" Part="xcku040-ffva1156-2-e" ConstrsSet="design_1_axi_uartlite_0_0" Description="Vivado Synthesis Defaults" Dir="$PRUNDIR/design_1_axi_uartlite_0_0_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2016">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -407,6 +390,57 @@
     <Run Id="design_1_blk_mem_gen_1_0_impl_1" Type="Ft2:EntireDesign" Part="xcku040-ffva1156-2-e" ConstrsSet="design_1_blk_mem_gen_1_0" Description="Default settings for Implementation." SynthRun="design_1_blk_mem_gen_1_0_synth_1" IncludeInArchive="false">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2016"/>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="design_1_core_top_0_0_impl_1" Type="Ft2:EntireDesign" Part="xcku040-ffva1156-2-e" ConstrsSet="design_1_core_top_0_0" Description="Default settings for Implementation." SynthRun="design_1_core_top_0_0_synth_1" IncludeInArchive="false">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2016">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="design_1_floating_point_0_0_impl_1" Type="Ft2:EntireDesign" Part="xcku040-ffva1156-2-e" ConstrsSet="design_1_floating_point_0_0" Description="Default settings for Implementation." SynthRun="design_1_floating_point_0_0_synth_1" IncludeInArchive="false">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2016">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="design_1_axi_uartlite_0_0_impl_1" Type="Ft2:EntireDesign" Part="xcku040-ffva1156-2-e" ConstrsSet="design_1_axi_uartlite_0_0" Description="Default settings for Implementation." SynthRun="design_1_axi_uartlite_0_0_synth_1" IncludeInArchive="false">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2016">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
