@@ -1,34 +1,47 @@
 {
    guistr: "# # String gsaved with Nlview 6.6.5b  2016-09-06 bk=1.3687 VDI=39 GEI=35 GUI=JA:1.6
 #  -string -flagsOSRD
-preplace port rs232_uart -pg 1 -y 560 -defaultsOSRD
-preplace inst core_top_0 -pg 1 -lvl 3 -y 240 -defaultsOSRD
-preplace inst floating_point_0 -pg 1 -lvl 2 -y 280 -defaultsOSRD
-preplace inst xlconstant_0 -pg 1 -lvl 1 -y -140 -defaultsOSRD
-preplace inst core_top_0_axi_periph -pg 1 -lvl 4 -y 130 -defaultsOSRD
-preplace inst xlconstant_1 -pg 1 -lvl 1 -y 370 -defaultsOSRD
-preplace inst blk_mem_gen_0 -pg 1 -lvl 4 -y -60 -defaultsOSRD
-preplace inst blk_mem_gen_1 -pg 1 -lvl 4 -y 340 -defaultsOSRD
-preplace inst sim_clk_gen_0 -pg 1 -lvl 1 -y 70 -defaultsOSRD
-preplace inst axi_uartlite_0 -pg 1 -lvl 2 -y 670 -defaultsOSRD
-preplace netloc core_top_0_OP 1 1 3 230 110 NJ 110 930
-preplace netloc xlconstant_1_dout 1 1 3 NJ 370 NJ 370 920J
-preplace netloc core_top_0_MEM_ADDR 1 3 1 950
-preplace netloc core_top_0_MEM_WE 1 3 1 930
-preplace netloc blk_mem_gen_1_douta 1 2 2 600 60 960J
-preplace netloc sim_clk_gen_0_sync_rst 1 1 3 200J 80 560 80 990
-preplace netloc core_top_0_axi_periph_M00_AXI 1 1 4 240 450 NJ 450 NJ 450 1290
-preplace netloc core_top_0_MEM_DATA 1 3 1 940
-preplace netloc core_top_0_A 1 1 3 240 100 NJ 100 920
-preplace netloc xlconstant_0_dout 1 1 3 NJ -140 NJ -140 1010
-preplace netloc sim_clk_gen_0_clk 1 1 3 210 -60 570 -60 1000J
-preplace netloc core_top_0_B 1 1 3 220 70 NJ 70 940
-preplace netloc axi_uartlite_0_UART 1 2 6 NJ 660 NJ 660 NJ 660 NJ 660 NJ 660 1570
-preplace netloc core_top_0_I_MEM_ADDR 1 3 1 970
-preplace netloc blk_mem_gen_0_douta 1 2 2 590 -40 NJ
-preplace netloc floating_point_0_M_AXIS_RESULT 1 2 1 580
-preplace netloc core_top_0_S_AXI 1 3 1 980
-levelinfo -pg 1 0 100 400 760 1150 1310 1360 1550 1730 -top -180 -bot 920
+preplace port rs232_uart -pg 1 -y 550 -defaultsOSRD
+preplace inst core_top_0 -pg 1 -lvl 3 -y 230 -defaultsOSRD
+preplace inst floating_point_0 -pg 1 -lvl 2 -y 800 -defaultsOSRD
+preplace inst floating_point_1 -pg 1 -lvl 2 -y 100 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 3 -y 960 -defaultsOSRD
+preplace inst floating_point_2 -pg 1 -lvl 2 -y 520 -defaultsOSRD
+preplace inst core_top_0_axi_periph -pg 1 -lvl 4 -y 540 -defaultsOSRD
+preplace inst xlconstant_1 -pg 1 -lvl 3 -y 510 -defaultsOSRD
+preplace inst floating_point_3 -pg 1 -lvl 2 -y 640 -defaultsOSRD
+preplace inst blk_mem_gen_0 -pg 1 -lvl 4 -y 890 -defaultsOSRD
+preplace inst blk_mem_gen_1 -pg 1 -lvl 4 -y 300 -defaultsOSRD
+preplace inst sim_clk_gen_0 -pg 1 -lvl 1 -y 900 -defaultsOSRD
+preplace inst axi_uartlite_0 -pg 1 -lvl 5 -y 560 -defaultsOSRD
+preplace netloc floating_point_3_M_AXIS_RESULT 1 2 1 600
+preplace netloc core_top_0_OP 1 1 3 230 720 NJ 720 1050
+preplace netloc xlconstant_1_dout 1 3 1 1130J
+preplace netloc core_top_0_MEM_ADDR 1 3 1 1070
+preplace netloc core_top_0_MEM_WE 1 3 1 N
+preplace netloc blk_mem_gen_1_douta 1 2 2 650 560 1100J
+preplace netloc sim_clk_gen_0_sync_rst 1 1 4 NJ 910 620 580 1110 660 1430
+preplace netloc core_top_0_COMP_OP 1 1 3 240 180 570J 30 1020
+preplace netloc core_top_0_MUL_A 1 1 3 230 450 560J 460 980
+preplace netloc core_top_0_MUL_B 1 1 3 240 710 NJ 710 970
+preplace netloc core_top_0_axi_periph_M00_AXI 1 4 1 N
+preplace netloc core_top_0_MEM_DATA 1 3 1 1090
+preplace netloc floating_point_1_M_AXIS_RESULT 1 2 1 650
+preplace netloc core_top_0_A 1 1 3 240 880 NJ 880 1060
+preplace netloc xlconstant_0_dout 1 3 1 1050J
+preplace netloc sim_clk_gen_0_clk 1 1 4 200 890 630 890 1120 670 1420
+preplace netloc core_top_0_COMP_A 1 1 3 200 10 NJ 10 1040
+preplace netloc core_top_0_B 1 1 3 210 410 610J 430 1010
+preplace netloc core_top_0_COMP_B 1 1 3 240 20 NJ 20 1030
+preplace netloc core_top_0_DIV_A 1 1 3 240 440 NJ 440 1000
+preplace netloc axi_uartlite_0_UART 1 5 1 N
+preplace netloc core_top_0_I_MEM_ADDR 1 3 1 1080
+preplace netloc blk_mem_gen_0_douta 1 2 2 640 910 NJ
+preplace netloc core_top_0_DIV_B 1 1 3 220 430 580J 450 990
+preplace netloc floating_point_0_M_AXIS_RESULT 1 2 1 590
+preplace netloc core_top_0_S_AXI 1 3 1 1140
+preplace netloc floating_point_2_M_AXIS_RESULT 1 2 1 570
+levelinfo -pg 1 0 100 400 810 1280 1530 1650 -top 0 -bot 1000
 ",
 }
 {

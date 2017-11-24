@@ -62,18 +62,48 @@ module design_1_core_top_0_0 (
   MEM_DATA,
   MEM_ADDR,
   MEM_WE,
-  A_TDATA,
-  A_TREADY,
-  A_TVALID,
-  B_TDATA,
-  B_TREADY,
-  B_TVALID,
-  OP_TDATA,
-  OP_TREADY,
-  OP_TVALID,
-  R_TDATA,
-  R_TREADY,
-  R_TVALID,
+  ADDSUB_A_TDATA,
+  ADDSUB_A_TREADY,
+  ADDSUB_A_TVALID,
+  ADDSUB_B_TDATA,
+  ADDSUB_B_TREADY,
+  ADDSUB_B_TVALID,
+  ADDSUB_OP_TDATA,
+  ADDSUB_OP_TREADY,
+  ADDSUB_OP_TVALID,
+  ADDSUB_R_TDATA,
+  ADDSUB_R_TREADY,
+  ADDSUB_R_TVALID,
+  MUL_A_TDATA,
+  MUL_A_TREADY,
+  MUL_A_TVALID,
+  MUL_B_TDATA,
+  MUL_B_TREADY,
+  MUL_B_TVALID,
+  MUL_R_TDATA,
+  MUL_R_TREADY,
+  MUL_R_TVALID,
+  DIV_A_TDATA,
+  DIV_A_TREADY,
+  DIV_A_TVALID,
+  DIV_B_TDATA,
+  DIV_B_TREADY,
+  DIV_B_TVALID,
+  DIV_R_TDATA,
+  DIV_R_TREADY,
+  DIV_R_TVALID,
+  COMP_A_TDATA,
+  COMP_A_TREADY,
+  COMP_A_TVALID,
+  COMP_B_TDATA,
+  COMP_B_TREADY,
+  COMP_B_TVALID,
+  COMP_OP_TDATA,
+  COMP_OP_TREADY,
+  COMP_OP_TVALID,
+  COMP_R_TDATA,
+  COMP_R_TREADY,
+  COMP_R_TVALID,
   S_AXI_AWADDR,
   S_AXI_AWVALID,
   S_AXI_AWREADY,
@@ -103,30 +133,90 @@ input wire [31 : 0] MEM_IN;
 output wire [31 : 0] MEM_DATA;
 output wire [31 : 0] MEM_ADDR;
 output wire MEM_WE;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 A TDATA" *)
-output wire [31 : 0] A_TDATA;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 A TREADY" *)
-input wire A_TREADY;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 A TVALID" *)
-output wire A_TVALID;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 B TDATA" *)
-output wire [31 : 0] B_TDATA;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 B TREADY" *)
-input wire B_TREADY;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 B TVALID" *)
-output wire B_TVALID;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 OP TDATA" *)
-output wire [7 : 0] OP_TDATA;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 OP TREADY" *)
-input wire OP_TREADY;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 OP TVALID" *)
-output wire OP_TVALID;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 R TDATA" *)
-input wire [31 : 0] R_TDATA;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 R TREADY" *)
-output wire R_TREADY;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 R TVALID" *)
-input wire R_TVALID;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 ADDSUB_A TDATA" *)
+output wire [31 : 0] ADDSUB_A_TDATA;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 ADDSUB_A TREADY" *)
+input wire ADDSUB_A_TREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 ADDSUB_A TVALID" *)
+output wire ADDSUB_A_TVALID;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 ADDSUB_B TDATA" *)
+output wire [31 : 0] ADDSUB_B_TDATA;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 ADDSUB_B TREADY" *)
+input wire ADDSUB_B_TREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 ADDSUB_B TVALID" *)
+output wire ADDSUB_B_TVALID;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 ADDSUB_OP TDATA" *)
+output wire [7 : 0] ADDSUB_OP_TDATA;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 ADDSUB_OP TREADY" *)
+input wire ADDSUB_OP_TREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 ADDSUB_OP TVALID" *)
+output wire ADDSUB_OP_TVALID;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 ADDSUB_R TDATA" *)
+input wire [31 : 0] ADDSUB_R_TDATA;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 ADDSUB_R TREADY" *)
+output wire ADDSUB_R_TREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 ADDSUB_R TVALID" *)
+input wire ADDSUB_R_TVALID;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 MUL_A TDATA" *)
+output wire [31 : 0] MUL_A_TDATA;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 MUL_A TREADY" *)
+input wire MUL_A_TREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 MUL_A TVALID" *)
+output wire MUL_A_TVALID;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 MUL_B TDATA" *)
+output wire [31 : 0] MUL_B_TDATA;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 MUL_B TREADY" *)
+input wire MUL_B_TREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 MUL_B TVALID" *)
+output wire MUL_B_TVALID;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 MUL_R TDATA" *)
+input wire [31 : 0] MUL_R_TDATA;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 MUL_R TREADY" *)
+output wire MUL_R_TREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 MUL_R TVALID" *)
+input wire MUL_R_TVALID;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 DIV_A TDATA" *)
+output wire [31 : 0] DIV_A_TDATA;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 DIV_A TREADY" *)
+input wire DIV_A_TREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 DIV_A TVALID" *)
+output wire DIV_A_TVALID;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 DIV_B TDATA" *)
+output wire [31 : 0] DIV_B_TDATA;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 DIV_B TREADY" *)
+input wire DIV_B_TREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 DIV_B TVALID" *)
+output wire DIV_B_TVALID;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 DIV_R TDATA" *)
+input wire [31 : 0] DIV_R_TDATA;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 DIV_R TREADY" *)
+output wire DIV_R_TREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 DIV_R TVALID" *)
+input wire DIV_R_TVALID;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 COMP_A TDATA" *)
+output wire [31 : 0] COMP_A_TDATA;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 COMP_A TREADY" *)
+input wire COMP_A_TREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 COMP_A TVALID" *)
+output wire COMP_A_TVALID;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 COMP_B TDATA" *)
+output wire [31 : 0] COMP_B_TDATA;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 COMP_B TREADY" *)
+input wire COMP_B_TREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 COMP_B TVALID" *)
+output wire COMP_B_TVALID;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 COMP_OP TDATA" *)
+output wire [7 : 0] COMP_OP_TDATA;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 COMP_OP TREADY" *)
+input wire COMP_OP_TREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 COMP_OP TVALID" *)
+output wire COMP_OP_TVALID;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 COMP_R TDATA" *)
+input wire [31 : 0] COMP_R_TDATA;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 COMP_R TREADY" *)
+output wire COMP_R_TREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 COMP_R TVALID" *)
+input wire COMP_R_TVALID;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI AWADDR" *)
 output wire [3 : 0] S_AXI_AWADDR;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI AWVALID" *)
@@ -170,18 +260,48 @@ output wire S_AXI_RREADY;
     .MEM_DATA(MEM_DATA),
     .MEM_ADDR(MEM_ADDR),
     .MEM_WE(MEM_WE),
-    .A_TDATA(A_TDATA),
-    .A_TREADY(A_TREADY),
-    .A_TVALID(A_TVALID),
-    .B_TDATA(B_TDATA),
-    .B_TREADY(B_TREADY),
-    .B_TVALID(B_TVALID),
-    .OP_TDATA(OP_TDATA),
-    .OP_TREADY(OP_TREADY),
-    .OP_TVALID(OP_TVALID),
-    .R_TDATA(R_TDATA),
-    .R_TREADY(R_TREADY),
-    .R_TVALID(R_TVALID),
+    .ADDSUB_A_TDATA(ADDSUB_A_TDATA),
+    .ADDSUB_A_TREADY(ADDSUB_A_TREADY),
+    .ADDSUB_A_TVALID(ADDSUB_A_TVALID),
+    .ADDSUB_B_TDATA(ADDSUB_B_TDATA),
+    .ADDSUB_B_TREADY(ADDSUB_B_TREADY),
+    .ADDSUB_B_TVALID(ADDSUB_B_TVALID),
+    .ADDSUB_OP_TDATA(ADDSUB_OP_TDATA),
+    .ADDSUB_OP_TREADY(ADDSUB_OP_TREADY),
+    .ADDSUB_OP_TVALID(ADDSUB_OP_TVALID),
+    .ADDSUB_R_TDATA(ADDSUB_R_TDATA),
+    .ADDSUB_R_TREADY(ADDSUB_R_TREADY),
+    .ADDSUB_R_TVALID(ADDSUB_R_TVALID),
+    .MUL_A_TDATA(MUL_A_TDATA),
+    .MUL_A_TREADY(MUL_A_TREADY),
+    .MUL_A_TVALID(MUL_A_TVALID),
+    .MUL_B_TDATA(MUL_B_TDATA),
+    .MUL_B_TREADY(MUL_B_TREADY),
+    .MUL_B_TVALID(MUL_B_TVALID),
+    .MUL_R_TDATA(MUL_R_TDATA),
+    .MUL_R_TREADY(MUL_R_TREADY),
+    .MUL_R_TVALID(MUL_R_TVALID),
+    .DIV_A_TDATA(DIV_A_TDATA),
+    .DIV_A_TREADY(DIV_A_TREADY),
+    .DIV_A_TVALID(DIV_A_TVALID),
+    .DIV_B_TDATA(DIV_B_TDATA),
+    .DIV_B_TREADY(DIV_B_TREADY),
+    .DIV_B_TVALID(DIV_B_TVALID),
+    .DIV_R_TDATA(DIV_R_TDATA),
+    .DIV_R_TREADY(DIV_R_TREADY),
+    .DIV_R_TVALID(DIV_R_TVALID),
+    .COMP_A_TDATA(COMP_A_TDATA),
+    .COMP_A_TREADY(COMP_A_TREADY),
+    .COMP_A_TVALID(COMP_A_TVALID),
+    .COMP_B_TDATA(COMP_B_TDATA),
+    .COMP_B_TREADY(COMP_B_TREADY),
+    .COMP_B_TVALID(COMP_B_TVALID),
+    .COMP_OP_TDATA(COMP_OP_TDATA),
+    .COMP_OP_TREADY(COMP_OP_TREADY),
+    .COMP_OP_TVALID(COMP_OP_TVALID),
+    .COMP_R_TDATA(COMP_R_TDATA),
+    .COMP_R_TREADY(COMP_R_TREADY),
+    .COMP_R_TVALID(COMP_R_TVALID),
     .S_AXI_AWADDR(S_AXI_AWADDR),
     .S_AXI_AWVALID(S_AXI_AWVALID),
     .S_AXI_AWREADY(S_AXI_AWREADY),
