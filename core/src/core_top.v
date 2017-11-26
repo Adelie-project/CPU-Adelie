@@ -107,6 +107,11 @@ module core_top
   wire i_in, i_out;
   wire n_inst;
 
+  reg [3:0] s_axi_awaddr, s_axi_araddr;
+  reg [31:0] s_axi_wdata, s_axi_rdata;
+  reg [1:0] s_axi_bresp, s_axi_rresp;
+  reg s_axi_awvalid, s_axi_awready, s_axi_wvalid, s_axi_wready, s_axi_bvalid, s_axi_bready, s_axi_arvalid, s_axi_arready, s_axi_rvalid, s_axi_rready;
+
   // ADDSUB
   reg [31:0] addsub_a_tdata, addsub_b_tdata,addsub_r_tdata;
   reg [7:0] addsub_op_tdata;
@@ -428,7 +433,7 @@ module core_top
   // ineをほげする
   // outならr1からoutする
   always @(posedge CLK) begin
-    if (!RST_N) begin
+    if () begin
     end else begin
     end
   end
@@ -478,6 +483,7 @@ module core_top
                    (i_fmuls) ? MUL_R_TDATA:
                    (i_fdivs) ? DIV_R_TDATA:
                    (i_feqs | i_flts | i_fles) ? COMP_R_TDATA:
+                   (i_in) ? S_AXI_RDATA:
                      alu_result;
   assign wr_addr = rd_num;
 
