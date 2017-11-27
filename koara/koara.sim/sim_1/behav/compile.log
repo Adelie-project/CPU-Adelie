@@ -6,8 +6,8 @@ INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yamaguchi/CPU-Adelie/core/src
 INFO: [VRFC 10-311] analyzing module core_decode
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yamaguchi/CPU-Adelie/core/src/core_top.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module core_top
-INFO: [VRFC 10-2458] undeclared symbol r0, assumed default net type wire [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:160]
-INFO: [VRFC 10-2458] undeclared symbol ine, assumed default net type wire [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:492]
+INFO: [VRFC 10-2458] undeclared symbol r0, assumed default net type wire [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:184]
+INFO: [VRFC 10-2458] undeclared symbol ine, assumed default net type wire [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:517]
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yamaguchi/CPU-Adelie/koara/koara.ip_user_files/bd/design_1/ip/design_1_core_top_0_0_1/sim/design_1_core_top_0_0.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module design_1_core_top_0_0
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yamaguchi/CPU-Adelie/koara/koara.ip_user_files/bd/design_1/ipshared/68f7/hdl/sim_clk_gen.v" into library xil_defaultlib
