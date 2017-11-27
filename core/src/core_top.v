@@ -107,10 +107,29 @@ module core_top
   wire i_in, i_out;
   wire n_inst;
 
-  reg [3:0] s_axi_awaddr, s_axi_araddr;
+  // IO
+  reg [3:0] s_axi_awaddr, s_axi_wstb, s_axi_araddr;
   reg [31:0] s_axi_wdata, s_axi_rdata;
   reg [1:0] s_axi_bresp, s_axi_rresp;
   reg s_axi_awvalid, s_axi_awready, s_axi_wvalid, s_axi_wready, s_axi_bvalid, s_axi_bready, s_axi_arvalid, s_axi_arready, s_axi_rvalid, s_axi_rready;
+
+  assign S_AXI_AWADDR = s_axi_awaddr;
+  assign S_AXI_AWVALID = s_axi_awvalid;
+  assign S_AXI_AWREADY = s_axi_awready;
+  assign S_AXI_WDATA = s_axi_wdata;
+  assign S_AXI_WSTB = s_axi_wstb;
+  assign S_AXI_WVALID = s_axi_wvalid;
+  assign S_AXI_WREADY = s_axi_wready;
+  assign S_AXI_BRESP = s_axi_bresp;
+  assign S_AXI_BVALID = s_axi_bvalid;
+  assign S_AXI_BREADY = s_axi_bready;
+  assign S_AXI_ARADDR = s_axi_araddr;
+  assign S_AXI_ARVALID = s_axi_arvalid;
+  assign S_AXI_ARREADY = s_axi_arready;
+  assign S_AXI_RDATA = s_axi_rdata;
+  assign S_AXI_RRESP = s_axi_rresp;
+  assign S_AXI_RVALID = s_axi_rvalid;
+  assign S_AXI_RREADY = s_axi_rready;
 
   // ADDSUB
   reg [31:0] addsub_a_tdata, addsub_b_tdata,addsub_r_tdata;
@@ -433,7 +452,7 @@ module core_top
   // ineをほげする
   // outならr1からoutする
   always @(posedge CLK) begin
-    if () begin
+    if (i_out) begin
     end else begin
     end
   end
