@@ -1,0 +1,88 @@
+
+*** Running vivado
+    with args -log design_1_axi_uartlite_0_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_axi_uartlite_0_0.tcl
+
+
+****** Vivado v2016.4 (64-bit)
+  **** SW Build 1756540 on Mon Jan 23 19:11:19 MST 2017
+  **** IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+source design_1_axi_uartlite_0_0.tcl -notrace
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1178.348 ; gain = 242.977 ; free physical = 7312 ; free virtual = 27495
+INFO: [Synth 8-638] synthesizing module 'design_1_axi_uartlite_0_0' [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_0/synth/design_1_axi_uartlite_0_0.vhd:86]
+INFO: [Synth 8-638] synthesizing module 'axi_uartlite' [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:2160]
+INFO: [Synth 8-638] synthesizing module 'uartlite_core' [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:1615]
+INFO: [Synth 8-638] synthesizing module 'baudrate' [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:1418]
+INFO: [Synth 8-256] done synthesizing module 'baudrate' (1#1) [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:1418]
+INFO: [Synth 8-638] synthesizing module 'uartlite_rx' [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:909]
+INFO: [Synth 8-638] synthesizing module 'cdc_sync' [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/52cb/hdl/lib_cdc_v1_0_rfs.vhd:106]
+INFO: [Synth 8-256] done synthesizing module 'cdc_sync' (2#1) [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/52cb/hdl/lib_cdc_v1_0_rfs.vhd:106]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_i_f' [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:168]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_i_f' (3#1) [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:168]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_f' [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_rbu_f' [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-638] synthesizing module 'cntr_incr_decr_addn_f' [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:143]
+INFO: [Synth 8-256] done synthesizing module 'cntr_incr_decr_addn_f' (4#1) [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:143]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_f' [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_f' (5#1) [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_rbu_f' (6#1) [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_f' (7#1) [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-256] done synthesizing module 'uartlite_rx' (8#1) [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:909]
+INFO: [Synth 8-638] synthesizing module 'uartlite_tx' [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:408]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_i_f__parameterized0' [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:168]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_i_f__parameterized0' (8#1) [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:168]
+INFO: [Synth 8-256] done synthesizing module 'uartlite_tx' (9#1) [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:408]
+INFO: [Synth 8-256] done synthesizing module 'uartlite_core' (10#1) [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:1615]
+INFO: [Synth 8-638] synthesizing module 'axi_lite_ipif' [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2948]
+INFO: [Synth 8-638] synthesizing module 'slave_attachment' [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2341]
+INFO: [Synth 8-638] synthesizing module 'address_decoder' [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1775]
+INFO: [Synth 8-638] synthesizing module 'pselect_f' [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1534]
+INFO: [Synth 8-256] done synthesizing module 'pselect_f' (11#1) [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1534]
+INFO: [Synth 8-638] synthesizing module 'pselect_f__parameterized0' [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1534]
+INFO: [Synth 8-256] done synthesizing module 'pselect_f__parameterized0' (11#1) [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1534]
+INFO: [Synth 8-638] synthesizing module 'pselect_f__parameterized1' [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1534]
+INFO: [Synth 8-256] done synthesizing module 'pselect_f__parameterized1' (11#1) [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1534]
+INFO: [Synth 8-638] synthesizing module 'pselect_f__parameterized2' [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1534]
+INFO: [Synth 8-256] done synthesizing module 'pselect_f__parameterized2' (11#1) [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1534]
+INFO: [Synth 8-256] done synthesizing module 'address_decoder' (12#1) [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1775]
+INFO: [Synth 8-256] done synthesizing module 'slave_attachment' (13#1) [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2341]
+INFO: [Synth 8-256] done synthesizing module 'axi_lite_ipif' (14#1) [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2948]
+INFO: [Synth 8-256] done synthesizing module 'axi_uartlite' (15#1) [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:2160]
+INFO: [Synth 8-256] done synthesizing module 'design_1_axi_uartlite_0_0' (16#1) [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_0/synth/design_1_axi_uartlite_0_0.vhd:86]
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1219.824 ; gain = 284.453 ; free physical = 7550 ; free virtual = 27733
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1219.824 ; gain = 284.453 ; free physical = 7606 ; free virtual = 27789
+INFO: [Device 21-403] Loading part xcku040-ffva1156-2-e
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 1676.312 ; gain = 0.004 ; free physical = 7028 ; free virtual = 27212
+Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 1676.312 ; gain = 740.941 ; free physical = 6935 ; free virtual = 27119
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 1676.312 ; gain = 740.941 ; free physical = 6935 ; free virtual = 27119
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 1676.312 ; gain = 740.941 ; free physical = 6934 ; free virtual = 27118
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1676.312 ; gain = 740.941 ; free physical = 6930 ; free virtual = 27114
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1676.316 ; gain = 740.945 ; free physical = 6925 ; free virtual = 27108
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1851.406 ; gain = 916.035 ; free physical = 6344 ; free virtual = 26528
+Finished Timing Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:23 . Memory (MB): peak = 1865.418 ; gain = 930.047 ; free physical = 6331 ; free virtual = 26515
+Finished Technology Mapping : Time (s): cpu = 00:00:23 ; elapsed = 00:00:23 . Memory (MB): peak = 1875.434 ; gain = 940.062 ; free physical = 6322 ; free virtual = 26506
+Finished IO Insertion : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1875.438 ; gain = 940.066 ; free physical = 6322 ; free virtual = 26506
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1875.438 ; gain = 940.066 ; free physical = 6322 ; free virtual = 26506
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1875.438 ; gain = 940.066 ; free physical = 6322 ; free virtual = 26506
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1875.438 ; gain = 940.066 ; free physical = 6322 ; free virtual = 26506
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1875.438 ; gain = 940.066 ; free physical = 6322 ; free virtual = 26506
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1875.438 ; gain = 940.066 ; free physical = 6322 ; free virtual = 26506
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |LUT1   |     2|
+|2     |LUT2   |    11|
+|3     |LUT3   |    23|
+|4     |LUT4   |    15|
+|5     |LUT5   |    42|
+|6     |LUT6   |    21|
+|7     |SRL16E |    18|
+|8     |FDR    |     4|
+|9     |FDRE   |    74|
+|10    |FDSE   |    16|
++------+-------+------+
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1875.438 ; gain = 940.066 ; free physical = 6322 ; free virtual = 26506
+synth_design: Time (s): cpu = 00:00:22 ; elapsed = 00:00:22 . Memory (MB): peak = 1899.438 ; gain = 845.555 ; free physical = 6297 ; free virtual = 26481
