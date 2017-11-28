@@ -49,6 +49,11 @@ let rec deref_term = function
   | Array(e1, e2) -> Array(deref_term e1, deref_term e2)
   | Get(e1, e2) -> Get(deref_term e1, deref_term e2)
   | Put(e1, e2, e3) -> Put(deref_term e1, deref_term e2, deref_term e3)
+  | Print(e) -> Print(deref_term e)
+  | Fabs(e) -> Fabs(deref_term e)
+  | Fsqrt(e) -> Fsqrt(deref_term e)
+  | Fcvtsw(e) -> Fcvtsw(deref_term e)
+  | Fcvtws(e) -> Fcvtws(deref_term e)
   | e -> e
 
 let rec occur r1 = function (* occur check (caml2html: typing_occur) *)
@@ -150,6 +155,23 @@ let rec g env e = (* 型推論ルーチン (caml2html: typing_g) *)
         unify (Type.Array(t)) (g env e1);
         unify Type.Int (g env e2);
         Type.Unit
+    | Print(e) ->
+        unify (g env e) Type.Int;
+        Type.Unit
+    | Read -> Type.Int
+    | Fread -> Type.Float
+    | Fabs(e) ->
+        unify (g env e) Type.Float;
+        Type.Float
+    | Fsqrt(e) ->
+        unify (g env e) Type.Float;
+        Type.Float
+    | Fcvtsw(e) ->
+        unify (g env e) Type.Int;
+        Type.Float
+    | Fcvtws(e) ->
+        unify (g env e) Type.Float;
+        Type.Int
   with Unify(t1, t2) -> raise (Error(deref_term e, deref_typ t1, deref_typ t2))
 
 let f e =

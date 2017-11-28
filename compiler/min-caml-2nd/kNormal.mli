@@ -24,6 +24,15 @@ type t =
   | Put of Id.t * Id.t * Id.t
   | ExtArray of Id.t
   | ExtFunApp of Id.t * Id.t list
+  | Array of Id.t * Id.t
+  | Farray of Id.t * Id.t
+  | Print of Id.t
+  | Read
+  | Fread
+  | Fabs of Id.t
+  | Fsqrt of Id.t
+  | Fcvtsw of Id.t
+  | Fcvtws of Id.t
 and fundef = { name : Id.t * Type.t; args : (Id.t * Type.t) list; body : t }
 
 val fv : t -> S.t

@@ -44,5 +44,14 @@ let rec g env = function (* α変換ルーチン本体 (caml2html: alpha_g) *)
   | Put(x, y, z) -> Put(find x env, find y env, find z env)
   | ExtArray(x) -> ExtArray(x)
   | ExtFunApp(x, ys) -> ExtFunApp(x, List.map (fun y -> find y env) ys)
+  | Array(x, y) -> Array(find x env, find y env)
+  | Farray(x, y) -> Farray(find x env, find y env)
+  | Print(x) -> Print(find x env)
+  | Read -> Read
+  | Fread -> Fread
+  | Fabs(x) -> Fabs(find x env)
+  | Fsqrt(x) -> Fsqrt(find x env)
+  | Fcvtsw(x) -> Fcvtsw(find x env)
+  | Fcvtws(x) -> Fcvtws(find x env)
 
 let f = g M.empty

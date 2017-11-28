@@ -25,6 +25,15 @@ type t = (* クロージャ変換後の式 (caml2html: closure_t) *)
   | Get of Id.t * Id.t
   | Put of Id.t * Id.t * Id.t
   | ExtArray of Id.l
+  | Array of Id.t * Id.t
+  | Farray of Id.t * Id.t
+  | Print of Id.t
+  | Read
+  | Fread
+  | Fabs of Id.t
+  | Fsqrt of Id.t
+  | Fcvtsw of Id.t
+  | Fcvtws of Id.t
 type fundef = { name : Id.l * Type.t;
                 args : (Id.t * Type.t) list;
                 formal_fv : (Id.t * Type.t) list;
@@ -32,9 +41,9 @@ type fundef = { name : Id.l * Type.t;
 type prog = Prog of fundef list * t
 
 let rec fv = function
-  | Unit | Int(_) | Float(_) | ExtArray(_) -> S.empty
-  | Neg(x) | FNeg(x) -> S.singleton x
-  | Add(x, y) | Sub(x, y) | Mul(x, y) | Div(x, y) | FAdd(x, y) | FSub(x, y) | FMul(x, y) | FDiv(x, y) | Get(x, y) -> S.of_list [x; y]
+  | Unit | Int(_) | Float(_) | ExtArray(_) | Read | Fread -> S.empty
+  | Neg(x) | FNeg(x) | Print(x) | Fabs(x) | Fsqrt(x) | Fcvtsw(x) | Fcvtws(x) -> S.singleton x
+  | Add(x, y) | Sub(x, y) | Mul(x, y) | Div(x, y) | FAdd(x, y) | FSub(x, y) | FMul(x, y) | FDiv(x, y) | Get(x, y) | Array(x, y) | Farray(x, y) -> S.of_list [x; y]
   | IfEq(x, y, e1, e2)| IfLE(x, y, e1, e2) -> S.add x (S.add y (S.union (fv e1) (fv e2)))
   | Let((x, t), e1, e2) -> S.union (fv e1) (S.remove x (fv e2))
   | Var(x) -> S.singleton x
@@ -103,6 +112,15 @@ let rec g env known = function (* クロージャ変換ルーチン本体 (caml2html: closure
   | KNormal.Put(x, y, z) -> Put(x, y, z)
   | KNormal.ExtArray(x) -> ExtArray(Id.L(x))
   | KNormal.ExtFunApp(x, ys) -> AppDir(Id.L("min_caml_" ^ x), ys)
+  | KNormal.Array(x, y) -> Array(x, y)
+  | KNormal.Farray(x, y) -> Farray(x, y)
+  | KNormal.Print(x) -> Print(x)
+  | KNormal.Read -> Read
+  | KNormal.Fread -> Fread
+  | KNormal.Fabs(x) -> Fabs(x)
+  | KNormal.Fsqrt(x) -> Fsqrt(x)
+  | KNormal.Fcvtsw(x) -> Fcvtsw(x)
+  | KNormal.Fcvtws(x) -> Fcvtws(x)
 
 let f e =
   toplevel := [];

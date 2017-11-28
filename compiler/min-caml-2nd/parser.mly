@@ -32,6 +32,13 @@ let addtyp x = (x, Type.gentyp ())
 %token REC
 %token COMMA
 %token ARRAY_CREATE
+%token PRINT
+%token READ
+%token FREAD
+%token FABS
+%token FSQRT
+%token FCVTSW
+%token FCVTWS
 %token DOT
 %token LESS_MINUS
 %token SEMICOLON
@@ -142,6 +149,27 @@ exp: /* (* ∞Ï»Ã§Œº∞ (caml2html: parser_exp) *) */
 | ARRAY_CREATE simple_exp simple_exp
     %prec prec_app
     { Array($2, $3) }
+| PRINT simple_exp
+    %prec prec_app
+    { Print($2) }
+| READ LPAREN RPAREN
+    %prec prec_app
+    { Read }
+| FREAD LPAREN RPAREN
+    %prec prec_app
+    { Fread }
+| FABS simple_exp
+    %prec prec_app
+    { Fabs($2) }
+| FSQRT simple_exp
+    %prec prec_app
+    { Fsqrt($2) }
+| FCVTSW simple_exp
+    %prec prec_app
+    { Fcvtsw($2) }
+| FCVTWS simple_exp
+    %prec prec_app
+    { Fcvtws($2) }
 | error
     { failwith
         (Printf.sprintf "parse error near characters %d-%d"

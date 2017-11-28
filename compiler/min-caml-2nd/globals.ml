@@ -96,6 +96,20 @@ let rec fisneg x = x < 0. in
 let rec fiszero x = (x = 0.) in
 let rec fneg x = 0. -. x in
 let rec fless x y = x < y in
+let rec print_newline x = print 10 in
+let rec print_char x = print x in
+let rec floor x =
+  if x > 0. then fcvtsw (fcvtws x)
+  else fcvtsw (fcvtws x - 1) in
+let rec int_of_float x =
+  fcvtws (x -. 0.5) + 1 in
+let rec truncate x =
+  fcvtws x in
+let rec float_of_int x =
+  fcvtsw x in
+
+
+
 (*以下コピペ: https://github.com/cpuex2016D/min-caml/blob/dev/2nd/mylib.ml*)
 
 let rec fhalf x = x *. 0.5 in
