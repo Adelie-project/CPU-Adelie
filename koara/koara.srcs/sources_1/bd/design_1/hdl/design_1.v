@@ -1,7 +1,7 @@
 //Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
-//Date        : Tue Nov 28 13:35:07 2017
+//Date        : Tue Nov 28 13:49:55 2017
 //Host        : ispc2016 running 64-bit Ubuntu 14.04.5 LTS
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -11,20 +11,21 @@
 
 (* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=13,numReposBlks=11,numNonXlnxBlks=1,numHierBlks=2,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=1,da_board_cnt=3,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
 module design_1
-   (clock_rtl,
-    reset,
+   (reset,
     rs232_uart_rxd,
-    rs232_uart_txd);
-  input clock_rtl;
+    rs232_uart_txd,
+    sysclk_125_clk_n,
+    sysclk_125_clk_p);
   input reset;
   input rs232_uart_rxd;
   output rs232_uart_txd;
+  input sysclk_125_clk_n;
+  input sysclk_125_clk_p;
 
   wire axi_uartlite_0_UART_RxD;
   wire axi_uartlite_0_UART_TxD;
   wire [31:0]blk_mem_gen_0_douta;
   wire [31:0]blk_mem_gen_1_douta;
-  wire clock_rtl_1;
   wire [31:0]core_top_0_A_TDATA;
   wire core_top_0_A_TREADY;
   wire core_top_0_A_TVALID;
@@ -106,13 +107,16 @@ module design_1
   wire reset_1;
   wire sim_clk_gen_0_clk;
   wire sim_clk_gen_0_sync_rst;
+  wire sysclk_125_1_CLK_N;
+  wire sysclk_125_1_CLK_P;
   wire [0:0]xlconstant_0_dout;
   wire [0:0]xlconstant_1_dout;
 
   assign axi_uartlite_0_UART_RxD = rs232_uart_rxd;
-  assign clock_rtl_1 = clock_rtl;
   assign reset_1 = reset;
   assign rs232_uart_txd = axi_uartlite_0_UART_TxD;
+  assign sysclk_125_1_CLK_N = sysclk_125_clk_n;
+  assign sysclk_125_1_CLK_P = sysclk_125_clk_p;
   design_1_axi_uartlite_0_0 axi_uartlite_0
        (.rx(axi_uartlite_0_UART_RxD),
         .s_axi_aclk(sim_clk_gen_0_clk),
@@ -149,7 +153,8 @@ module design_1
         .ena(xlconstant_1_dout),
         .wea(core_top_0_MEM_WE));
   design_1_clk_wiz_0_0 clk_wiz_0
-       (.clk_in1(clock_rtl_1),
+       (.clk_in1_n(sysclk_125_1_CLK_N),
+        .clk_in1_p(sysclk_125_1_CLK_P),
         .clk_out1(sim_clk_gen_0_clk),
         .locked(sim_clk_gen_0_sync_rst),
         .reset(reset_1));
