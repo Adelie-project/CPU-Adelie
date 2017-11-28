@@ -1,0 +1,285 @@
+#-----------------------------------------------------------
+# Vivado v2016.4 (64-bit)
+# SW Build 1756540 on Mon Jan 23 19:11:19 MST 2017
+# IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+# Start of session at: Tue Nov 28 17:34:19 2017
+# Process ID: 6906
+# Current directory: /home/yamaguchi/CPU-Adelie/loopback/loopback.runs/synth_1
+# Command line: vivado -log design_1_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_wrapper.tcl
+# Log file: /home/yamaguchi/CPU-Adelie/loopback/loopback.runs/synth_1/design_1_wrapper.vds
+# Journal file: /home/yamaguchi/CPU-Adelie/loopback/loopback.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source design_1_wrapper.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2016.4/data/ip'.
+Command: synth_design -top design_1_wrapper -part xcku040-ffva1156-2-e
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xcku040'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xcku040'
+INFO: [Common 17-1223] The version limit for your license is '2017.03' and will expire in -242 days. A version limit expiration means that, although you may be able to continue to use the current version of tools or IP with this license, you will not be eligible for any updates or new releases.
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 6918 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1180.355 ; gain = 244.977 ; free physical = 6761 ; free virtual = 26991
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'design_1_wrapper' [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.v:12]
+INFO: [Synth 8-638] synthesizing module 'design_1' [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/hdl/design_1.v:13]
+INFO: [Synth 8-638] synthesizing module 'design_1_axi_uartlite_0_0' [/home/yamaguchi/CPU-Adelie/loopback/loopback.runs/synth_1/.Xil/Vivado-6906-ispc2016/realtime/design_1_axi_uartlite_0_0_stub.v:6]
+INFO: [Synth 8-256] done synthesizing module 'design_1_axi_uartlite_0_0' (1#1) [/home/yamaguchi/CPU-Adelie/loopback/loopback.runs/synth_1/.Xil/Vivado-6906-ispc2016/realtime/design_1_axi_uartlite_0_0_stub.v:6]
+WARNING: [Synth 8-350] instance 'axi_uartlite_0' of module 'design_1_axi_uartlite_0_0' requires 22 connections, but only 21 given [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/hdl/design_1.v:55]
+INFO: [Synth 8-638] synthesizing module 'design_1_clk_wiz_0_0' [/home/yamaguchi/CPU-Adelie/loopback/loopback.runs/synth_1/.Xil/Vivado-6906-ispc2016/realtime/design_1_clk_wiz_0_0_stub.v:5]
+INFO: [Synth 8-256] done synthesizing module 'design_1_clk_wiz_0_0' (2#1) [/home/yamaguchi/CPU-Adelie/loopback/loopback.runs/synth_1/.Xil/Vivado-6906-ispc2016/realtime/design_1_clk_wiz_0_0_stub.v:5]
+INFO: [Synth 8-638] synthesizing module 'design_1_loopback_top_0_0' [/home/yamaguchi/CPU-Adelie/loopback/loopback.runs/synth_1/.Xil/Vivado-6906-ispc2016/realtime/design_1_loopback_top_0_0_stub.v:6]
+INFO: [Synth 8-256] done synthesizing module 'design_1_loopback_top_0_0' (3#1) [/home/yamaguchi/CPU-Adelie/loopback/loopback.runs/synth_1/.Xil/Vivado-6906-ispc2016/realtime/design_1_loopback_top_0_0_stub.v:6]
+INFO: [Synth 8-256] done synthesizing module 'design_1' (4#1) [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/hdl/design_1.v:13]
+INFO: [Synth 8-256] done synthesizing module 'design_1_wrapper' (5#1) [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.v:12]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1221.832 ; gain = 286.453 ; free physical = 6719 ; free virtual = 26948
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1221.832 ; gain = 286.453 ; free physical = 6719 ; free virtual = 26948
+---------------------------------------------------------------------------------
+WARNING: [Project 1-486] Could not resolve non-primitive black box cell 'design_1_axi_uartlite_0_0' instantiated as 'design_1_i/axi_uartlite_0' [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/hdl/design_1.v:55]
+WARNING: [Project 1-486] Could not resolve non-primitive black box cell 'design_1_clk_wiz_0_0' instantiated as 'design_1_i/clk_wiz_0' [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/hdl/design_1.v:77]
+WARNING: [Project 1-486] Could not resolve non-primitive black box cell 'design_1_loopback_top_0_0' instantiated as 'design_1_i/loopback_top_0' [/home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/hdl/design_1.v:83]
+INFO: [Device 21-403] Loading part xcku040-ffva1156-2-e
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/yamaguchi/CPU-Adelie/loopback/loopback.runs/synth_1/.Xil/Vivado-6906-ispc2016/dcp/design_1_axi_uartlite_0_0_in_context.xdc] for cell 'design_1_i/axi_uartlite_0'
+Finished Parsing XDC File [/home/yamaguchi/CPU-Adelie/loopback/loopback.runs/synth_1/.Xil/Vivado-6906-ispc2016/dcp/design_1_axi_uartlite_0_0_in_context.xdc] for cell 'design_1_i/axi_uartlite_0'
+Parsing XDC File [/home/yamaguchi/CPU-Adelie/loopback/loopback.runs/synth_1/.Xil/Vivado-6906-ispc2016/dcp_2/design_1_loopback_top_0_0_in_context.xdc] for cell 'design_1_i/loopback_top_0'
+Finished Parsing XDC File [/home/yamaguchi/CPU-Adelie/loopback/loopback.runs/synth_1/.Xil/Vivado-6906-ispc2016/dcp_2/design_1_loopback_top_0_0_in_context.xdc] for cell 'design_1_i/loopback_top_0'
+Parsing XDC File [/home/yamaguchi/CPU-Adelie/loopback/loopback.runs/synth_1/.Xil/Vivado-6906-ispc2016/dcp_3/design_1_clk_wiz_0_0_in_context.xdc] for cell 'design_1_i/clk_wiz_0'
+Finished Parsing XDC File [/home/yamaguchi/CPU-Adelie/loopback/loopback.runs/synth_1/.Xil/Vivado-6906-ispc2016/dcp_3/design_1_clk_wiz_0_0_in_context.xdc] for cell 'design_1_i/clk_wiz_0'
+Parsing XDC File [/home/yamaguchi/CPU-Adelie/loopback/loopback.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/home/yamaguchi/CPU-Adelie/loopback/loopback.runs/synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 1606.312 ; gain = 0.000 ; free physical = 6320 ; free virtual = 26566
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1606.312 ; gain = 670.934 ; free physical = 6309 ; free virtual = 26546
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xcku040-ffva1156-2-e
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1606.312 ; gain = 670.934 ; free physical = 6309 ; free virtual = 26546
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property IO_BUFFER_TYPE = NONE for sysclk_125_clk_n. (constraint file  /home/yamaguchi/CPU-Adelie/loopback/loopback.runs/synth_1/.Xil/Vivado-6906-ispc2016/dcp_3/design_1_clk_wiz_0_0_in_context.xdc, line 3).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for sysclk_125_clk_n. (constraint file  /home/yamaguchi/CPU-Adelie/loopback/loopback.runs/synth_1/.Xil/Vivado-6906-ispc2016/dcp_3/design_1_clk_wiz_0_0_in_context.xdc, line 4).
+Applied set_property IO_BUFFER_TYPE = NONE for sysclk_125_clk_p. (constraint file  /home/yamaguchi/CPU-Adelie/loopback/loopback.runs/synth_1/.Xil/Vivado-6906-ispc2016/dcp_3/design_1_clk_wiz_0_0_in_context.xdc, line 5).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for sysclk_125_clk_p. (constraint file  /home/yamaguchi/CPU-Adelie/loopback/loopback.runs/synth_1/.Xil/Vivado-6906-ispc2016/dcp_3/design_1_clk_wiz_0_0_in_context.xdc, line 6).
+Applied set_property DONT_TOUCH = true for design_1_i. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for design_1_i/axi_uartlite_0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for design_1_i/clk_wiz_0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for design_1_i/loopback_top_0. (constraint file  auto generated constraint, line ).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1606.312 ; gain = 670.934 ; free physical = 6309 ; free virtual = 26546
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1606.312 ; gain = 670.934 ; free physical = 6310 ; free virtual = 26546
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1920 (col length:120)
+BRAMs: 1200 (col length: RAMB18 120 RAMB36 60)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1606.312 ; gain = 670.934 ; free physical = 6298 ; free virtual = 26535
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5578] Moved timing constraint from pin 'design_1_i/clk_wiz_0/clk_out1' to pin 'design_1_i/clk_wiz_0/bbstub_clk_out1/O'
+INFO: [Synth 8-5819] Moved 1 constraints on hierarchical pins to their respective driving/loading pins
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1843.727 ; gain = 908.348 ; free physical = 5935 ; free virtual = 26170
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1843.727 ; gain = 908.348 ; free physical = 5935 ; free virtual = 26170
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1853.738 ; gain = 918.359 ; free physical = 5926 ; free virtual = 26162
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1853.742 ; gain = 918.363 ; free physical = 5928 ; free virtual = 26161
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1853.742 ; gain = 918.363 ; free physical = 5928 ; free virtual = 26161
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1853.742 ; gain = 918.363 ; free physical = 5928 ; free virtual = 26161
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1853.742 ; gain = 918.363 ; free physical = 5928 ; free virtual = 26161
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1853.742 ; gain = 918.363 ; free physical = 5928 ; free virtual = 26161
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1853.742 ; gain = 918.363 ; free physical = 5928 ; free virtual = 26161
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------------------+----------+
+|      |BlackBox name             |Instances |
++------+--------------------------+----------+
+|1     |design_1_axi_uartlite_0_0 |         1|
+|2     |design_1_clk_wiz_0_0      |         1|
+|3     |design_1_loopback_top_0_0 |         1|
++------+--------------------------+----------+
+
+Report Cell Usage: 
++------+--------------------------+------+
+|      |Cell                      |Count |
++------+--------------------------+------+
+|1     |design_1_axi_uartlite_0_0 |     1|
+|2     |design_1_clk_wiz_0_0      |     1|
+|3     |design_1_loopback_top_0_0 |     1|
+|4     |IBUF                      |     2|
+|5     |OBUF                      |     1|
++------+--------------------------+------+
+
+Report Instance Areas: 
++------+-------------+---------+------+
+|      |Instance     |Module   |Cells |
++------+-------------+---------+------+
+|1     |top          |         |    97|
+|2     |  design_1_i |design_1 |    94|
++------+-------------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1853.742 ; gain = 918.363 ; free physical = 5928 ; free virtual = 26161
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1853.742 ; gain = 353.902 ; free physical = 5927 ; free virtual = 26160
+Synthesis Optimization Complete : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1853.746 ; gain = 918.367 ; free physical = 5927 ; free virtual = 26160
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 2 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 2 instances were transformed.
+  IBUF => IBUF (IBUFCTRL, INBUF): 2 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+32 Infos, 4 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1874.371 ; gain = 817.480 ; free physical = 5909 ; free virtual = 26142
+INFO: [Common 17-1381] The checkpoint '/home/yamaguchi/CPU-Adelie/loopback/loopback.runs/synth_1/design_1_wrapper.dcp' has been generated.
+report_utilization: Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.09 . Memory (MB): peak = 1874.375 ; gain = 0.000 ; free physical = 5908 ; free virtual = 26141
+INFO: [Common 17-206] Exiting Vivado at Tue Nov 28 17:34:47 2017...
