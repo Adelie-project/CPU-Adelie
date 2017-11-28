@@ -329,24 +329,6 @@ void print_wave(int mode) {
   return;
 }
 
-void print_standard_reg(param_t* param) {
-  Loop(i, 32) {
-    if (i % 8 == 0) printf("\n");
-    printf("r%02d:%08X ", i, param->reg[i]);
-  }
-  printf("\n");
-  Loop(i, 32) {
-    if (i % 8 == 0) printf("\n");
-    if(param->f_display) printf("f%02d:%8f ", i, param->freg[i]);
-    else {
-      int_float_mover ifm;
-      ifm.f = param->freg[i];
-      printf("f%02d:%08X ", i, ifm.i);
-    }
-  }
-  return;
-}
-
 void print_call_time(param_t* param) {
   vector<pair<unsigned, string>> mnemonic_cnts = {
     { param->call_time[LUI], "LUI" },
