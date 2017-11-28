@@ -41,6 +41,15 @@ and exp = (* 一つ一つの命令に対応する式 (caml2html: sparcasm_exp) *)
   | CallDir of Id.l * Id.t list * Id.t list
   | Save of Id.t * Id.t (* レジスタ変数の値をスタック変数へ保存 (caml2html: sparcasm_save) *)
   | Restore of Id.t (* スタック変数から値を復元 (caml2html: sparcasm_restore) *)
+  | Hpsave
+  | Array of Id.t * Id.t * Id.t
+  | Farray of Id.t * Id.t * Id.t
+  | Out of Id.t
+  | In
+  | Fabs of Id.t
+  | Fsqrt of Id.t
+  | Fcvtsw of Id.t
+  | Fcvtws of Id.t
 type fundef = { name : Id.l; args : Id.t list; fargs : Id.t list; body : t; ret : Type.t }
 (* プログラム全体 = 浮動小数点数テーブル + トップレベル関数 + メインの式 (caml2html: sparcasm_prog) *)
 type prog = Prog of (Id.l * float) list * fundef list * t
@@ -94,15 +103,16 @@ let rec remove_and_uniq xs = function
 (* free variables in the order of use (for spilling) (caml2html: sparcasm_fv) *)
 let fv_id_or_imm = function V(x) -> [x] | _(*これはC(x)*) -> []
 let rec fv_exp = function
-  | Nop | Set(_) | SetL(_) | Comment(_) | Restore(_) -> []
-  | Fmv(x) | Mov(x) | Neg(x) | FMovD(x) | FNegD(x) | Save(x, _) -> [x]
-  | Add(x, y') | Addi(x, y') | Sub(x, y') | Mul(x, y') | Div(x, y') | SLL(x, y') | Ld(x, y') | LdDF(x, y') -> x :: fv_id_or_imm y'
+  | Nop | Set(_) | SetL(_) | Comment(_) | Restore(_) | Hpsave | In -> []
+  | Fmv(x) | Mov(x) | Neg(x) | FMovD(x) | FNegD(x) | Save(x, _) | Out(x) | Fabs(x) | Fsqrt(x) | Fcvtsw(x) | Fcvtws(x) -> [x]
+  | Add(x, y') | Addi(x, y') | Sub(x, y') | Mul(x, y') | Div(x, y') | SLL(x, y') | Ld(x, y') | LdDF(x, y')  -> x :: fv_id_or_imm y'
   | St(x, y, z') | StDF(x, y, z') -> x :: y :: fv_id_or_imm z'
-  | FAddD(x, y) | FSubD(x, y) | FMulD(x, y) | FDivD(x, y) | Feq(x, y) | Fle(x, y)-> [x; y]
+  | FAddD(x, y) | FSubD(x, y) | FMulD(x, y) | FDivD(x, y) | Feq(x, y) | Fle(x, y) -> [x; y]
   | IfEq(x, y', e1, e2) | IfLE(x, y', e1, e2) | IfGE(x, y', e1, e2) -> x :: fv_id_or_imm y' @ remove_and_uniq S.empty (fv e1 @ fv e2) (* uniq here just for efficiency *)
   (*| IfFEq(x, y, z, e1, e2) | IfFLE(x, y, z, e1, e2) -> x :: y :: z :: remove_and_uniq S.empty (fv e1 @ fv e2) (* uniq here just for efficiency *)*)
   | CallCls(x, ys, zs) -> x :: ys @ zs
   | CallDir(_, ys, zs) -> ys @ zs
+  | Array(x, y, z) | Farray(x, y, z) -> [x; y; z]
 and fv = function
   | Ans(exp) -> fv_exp exp
   | Let((x, t), exp, e) ->

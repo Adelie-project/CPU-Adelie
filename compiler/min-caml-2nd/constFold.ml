@@ -47,6 +47,10 @@ let rec g env = function (* 定数畳み込みルーチン本体 (caml2html: constfold_g) *)
         xts
         (findt y env)
   | LetTuple(xts, y, e) -> LetTuple(xts, y, g env e)
+  | Fabs(x) when memf x env -> Float(abs_float (findf x env))
+  | Fsqrt(x) when memf x env -> Float(sqrt (findf x env))
+  | Fcvtsw(x) when memi x env -> Float(float_of_int (findi x env))
+  | Fcvtws(x) when memf x env -> Int(int_of_float (findf x env))
   | e -> e
 
 let f = g M.empty

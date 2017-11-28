@@ -38,6 +38,7 @@ let rec print_syntax_t tt n=
   | Array (t1,t2) -> print_string "Array\n"; print_blank (n+1); print_syntax_t t1 (n+1); print_blank (n+1); print_syntax_t t2 (n+1)
   | Get (t1,t2) -> print_string "Get\n"; print_blank (n+1); print_syntax_t t1 (n+1); print_blank (n+1); print_syntax_t t2 (n+1)
   | Put (t1,t2,t3) -> print_string "Put\n"; print_blank (n+1); print_syntax_t t1 (n+1); print_blank (n+1); print_syntax_t t2 (n+1); print_blank (n+1); print_syntax_t t3 (n+1)
+  | _ -> print_string "globals...\n"
 
 and print_id_t tt = print_string tt; print_newline ()
 
@@ -113,6 +114,7 @@ print_blank n;
   | Put (idt1,idt2,idt3) -> print_string "Put\n"; print_blank (n+1); print_id_t idt1; print_blank (n+1); print_id_t idt2; print_blank (n+1); print_id_t idt3
   | ExtArray idt -> print_string "ExtArray\n"; print_blank (n+1); print_id_t idt
   | ExtFunApp (idt1,idt2(*list*)) -> print_string "ExtFunApp\n"; print_blank (n+1); print_id_t idt1; print_id_t_list idt2 (n+1)
+  | _ -> print_string "globals...\n"
 
 and print_id_t_list idtt n =
   match idtt with
@@ -183,12 +185,12 @@ let file f = (* ファイルをコンパイルしてファイルに出力する (caml2html: main_file
 let () = (* ここからコンパイラの実行が開始される (caml2html: main_entry) *)
   let files = ref [] in
   Arg.parse
-    [("-inline", Arg.Int(fun i -> Inline.threshold := i), "maximum size of functions inlined");
+    [(*("-inline", Arg.Int(fun i -> Inline.threshold := i), "maximum size of functions inlined");*)
      ("-iter", Arg.Int(fun i -> limit := i), "maximum number of optimizations iterated");
      ("-g", Arg.Unit(fun _ -> gflag := 1), "include or not globals.ml")](*Unitって怪しいけど-gをつけたとき,globals.mlをincludeしてmin-rtをコンパイルできるようになる*)
     (fun s -> files := !files @ [s])
     ("Mitou Min-Caml Compiler (C) Eijiro Sumii\n" ^
-     Printf.sprintf "usage: %s [-inline m] [-iter n] [-g] ...filenames without \".ml\"..." Sys.argv.(0));
+     Printf.sprintf "usage: %s [-iter n] [-g] ...filenames without \".ml\"..." Sys.argv.(0));(*[-inline m]を削除*)
   List.iter
     (fun f -> ignore (file f))
     !files

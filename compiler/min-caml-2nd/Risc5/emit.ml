@@ -65,8 +65,8 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | NonTail(x), Add(y, z') -> Printf.fprintf oc "\tadd\t%s, %s, %s\n" x y (pp_id_or_imm z') (*immきたらやばくね*)
   | NonTail(x), Addi(y, z') -> Printf.fprintf oc "\taddi\t%s, %s, $%s\n" x y (pp_id_or_imm z')
   | NonTail(x), Sub(y, z') -> Printf.fprintf oc "\tsub\t%s, %s, %s\n" x y (pp_id_or_imm z')
-  | NonTail(x), Mul(y, z') -> Printf.fprintf oc "\tmul\t%s, %s, %s\n" x y (pp_id_or_imm z')
-  | NonTail(x), Div(y, z') -> Printf.fprintf oc "\tdiv\t%s, %s, %s\n" x y (pp_id_or_imm z')
+  | NonTail(x), Mul(y, z') -> (*Printf.fprintf oc "\tmul\t%s, %s, %s\n" x y (pp_id_or_imm z')*)Printf.fprintf oc "\tslli\t%s, %s, $2\n" x y(*ちょっと危険だが多分大丈夫*)
+  | NonTail(x), Div(y, z') -> (*Printf.fprintf oc "\tdiv\t%s, %s, %s\n" x y (pp_id_or_imm z')*)Printf.fprintf oc "\tsrli\t%s, %s, $1\n" x y
   | NonTail(x), SLL(y, z') -> Printf.fprintf oc "\tslli\t%s, %s, $%s\n" x y (pp_id_or_imm z') (*virtual.mlのC(2)のときしかないので*)
   | NonTail(x), Ld(y, z') ->
       (match z' with
@@ -123,16 +123,32 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | NonTail(x), Restore(y) ->
       assert (List.mem x allfregs);
       Printf.fprintf oc "\tflw\t%s, %s, $%d\n" x reg_sp (offset y)(*"\tldd\t[%s + %d], %s\n" reg_sp (offset y) x*)
+  | NonTail(x), Hpsave -> Printf.fprintf oc "\tadd\t%s, %%r0, %s\n" x reg_hp
+  | NonTail(w), Array(x, y, z) ->
+      let loop = Id.genid("create_array_loop") in
+      let exit = Id.genid("create_array_exit") in
+      Printf.fprintf oc "%s:\n\tbeq\t%s, %%r0, %s\n\tsw\t%s, %s, $0\n\taddi\t%s, %s, $-1\n\taddi\t%s, %s, $4\n\tjal\t%%r0, %s\n%s:\n\tadd\t%s, %%r0, %s\n" loop x exit reg_hp y x x reg_hp reg_hp loop exit w z
+  | NonTail(w), Farray(x, y, z) ->
+      let loop = Id.genid("create_float_array_loop") in
+      let exit = Id.genid("create_float_array_exit") in
+      Printf.fprintf oc "%s:\n\tbeq\t%s, %%r0, %s\n\tfsw\t%s, %s, $0\n\taddi\t%s, %s, $-1\n\taddi\t%s, %s, $4\n\tjal\t%%r0, %s\n%s:\n\tadd\t%s, %%r0, %s\n" loop x exit reg_hp y x x reg_hp reg_hp loop exit w z
+  | NonTail(_), Out(x) -> Printf.fprintf oc "\tout\t%s\n" x
+  | NonTail(x), In -> Printf.fprintf oc "\tin\t%s\n\tslli\t%s, %s, $8\n\tin\t%s\n\tslli\t%s, %s, $8\n\tin\t%s\n\tslli\t%s, %s, $8\n\tin\t%s\n\trot\t%s, %s\n" x x x x x x x x x x x x
+  | NonTail(x), Fabs(y) -> Printf.fprintf oc "\tfsgnjxs\t%s, %s, %s\n" x y y
+  | NonTail(x), Fsqrt(y) -> Printf.fprintf oc "\tfsqrts\t%s, %s\n" x y
+  | NonTail(x), Fcvtsw(y) -> Printf.fprintf oc "\tfcvtsw\t%s, %s\n" x y
+  | NonTail(x), Fcvtws(y) -> Printf.fprintf oc "\tfcvtws\t%s, %s\n" x y
+
   (* 末尾だったら計算結果を第一レジスタにセットしてリターン (caml2html: emit_tailret) *)
-  | Tail, (Nop | St _ | StDF _ | Comment _ | Save _ as exp) ->
+  | Tail, (Nop | St _ | StDF _ | Comment _ | Save _ | Out _ as exp) ->
       g' oc (NonTail(Id.gentmp Type.Unit), exp);
       Printf.fprintf oc "\tjalr\t%%r0, %s, $0\n" reg_lnk;
       (*Printf.fprintf oc "\tnop\n"*)
-  | Tail, (Set _ | SetL _ | Mov _ | Neg _ | Add _ | Addi _ | Sub _ | Mul _ | Div _ | SLL _ | Ld _  | Feq _ | Fle _ as exp) -> (*個々での意味は,末尾に来た時に整数or浮動小数点数レジスタに格納するかをきめることなので,feq,fleはこっち,fmvはそっち*)
+  | Tail, (Set _ | SetL _ | Mov _ | Neg _ | Add _ | Addi _ | Sub _ | Mul _ | Div _ | SLL _ | Ld _  | Feq _ | Fle _ | Hpsave | Array _ | Farray _ | In | Fcvtws _ as exp) -> (*個々での意味は,末尾に来た時に整数or浮動小数点数レジスタに格納するかをきめることなので,feq,fleはこっち,fmvはそっち*)
       g' oc (NonTail(regs.(0)), exp);
       Printf.fprintf oc "\tjalr\t%%r0, %s, $0\n" reg_lnk;
       (*Printf.fprintf oc "\tnop\n"*)
-  | Tail, (FMovD _ | FNegD _ | FAddD _ | FSubD _ | FMulD _ | FDivD _ | LdDF _ | Fmv _ as exp) ->
+  | Tail, (FMovD _ | FNegD _ | FAddD _ | FSubD _ | FMulD _ | FDivD _ | LdDF _ | Fmv _ | Fabs _ | Fsqrt _ | Fcvtsw _ as exp) ->
       g' oc (NonTail(fregs.(0)), exp);
       Printf.fprintf oc "\tjalr\t%%r0, %s, $0\n" reg_lnk;
       (*Printf.fprintf oc "\tnop\n"*)
@@ -281,7 +297,7 @@ let f oc (Prog(data, fundefs, e)) =
 
   (*Printf.fprintf oc ".global\tmin_caml_start\n";*)
   Printf.fprintf oc "min_caml_start:\n";
-  Printf.fprintf oc "\tset\t%s, $1024 ; ad hoc\n" reg_hp;
+  Printf.fprintf oc "\tset\t%s, $2047 ; ad hoc\n" reg_hp;
   (*Printf.fprintf oc "\tsave\t%%sp, -112, %%sp\n"; (* from gcc; why 112? *)*)
   stackset := S.empty;
   stackmap := [];

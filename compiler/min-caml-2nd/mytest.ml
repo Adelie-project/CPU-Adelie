@@ -1,18 +1,24 @@
+print_int (Array.create 3 1.)
+
+(*print_int (read_int ())*)
+
 (*
 let x = 0.2 in
 let y = 0.1 in
 print_float (x+.y)
 *)
 
+(*
+print_float (fabs (-1.));
+print_float (fsqrt (10.)
+*)
 
-let rec sgn x =
-  if fiszero x then 0.0
-  else if fispos x then 1.0
-  else -1.0
-in
-let x = sgn 0.2 +. 0.5 in
-print_int x
-
+(*
+print_float (floor (4.5));
+print_int (int_of_float (4.5));
+print_float (float_of_int (4));
+print_int (truncate (4.5))
+*)
 
 (*
 let x = create_array 3 0 in

@@ -26,4 +26,13 @@ type t = (* MinCamlの構文を表現するデータ型 (caml2html: syntax_t) *)
   | Array of t * t
   | Get of t * t
   | Put of t * t * t
+  | Print of t
+  | Read
+  | Fread
+  | Fabs of t
+  | Fsqrt of t
+  | Fcvtsw of t
+  | Fcvtws of t
+
+
 and fundef = { name : Id.t * Type.t; args : (Id.t * Type.t) list; body : t }

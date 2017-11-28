@@ -82,6 +82,22 @@ rule token = parse
     { LESS_MINUS }
 | ';'
     { SEMICOLON }
+(*追記ここから*)
+| "print"
+    { PRINT }
+| "read_int"
+    { READ }
+| "read_float"
+    { FREAD }
+| "fabs"
+    { FABS }
+| "sqrt"
+    { FSQRT }
+| "fcvtsw"
+    { FCVTSW }
+| "fcvtws"
+    { FCVTWS }
+(*ここまで*)
 | eof
     { EOF }
 | lower (digit|lower|upper|'_')* (* 他の「予約語」より後でないといけない *)

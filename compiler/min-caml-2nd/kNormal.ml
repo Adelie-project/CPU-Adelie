@@ -26,12 +26,21 @@ type t = (* K正規化後の式 (caml2html: knormal_t) *)
   | Put of Id.t * Id.t * Id.t
   | ExtArray of Id.t
   | ExtFunApp of Id.t * Id.t list
+  | Array of Id.t * Id.t
+  | Farray of Id.t * Id.t
+  | Print of Id.t
+  | Read
+  | Fread
+  | Fabs of Id.t
+  | Fsqrt of Id.t
+  | Fcvtsw of Id.t
+  | Fcvtws of Id.t
 and fundef = { name : Id.t * Type.t; args : (Id.t * Type.t) list; body : t }
 
 let rec fv = function (* 式に出現する（自由な）変数 (caml2html: knormal_fv) *)
-  | Unit | Int(_) | Float(_) | ExtArray(_) -> S.empty
-  | Neg(x) | FNeg(x) -> S.singleton x
-  | Add(x, y) | Sub(x, y) | Mul(x, y) | Div(x, y) | FAdd(x, y) | FSub(x, y) | FMul(x, y) | FDiv(x, y) | Get(x, y) -> S.of_list [x; y]
+  | Unit | Int(_) | Float(_) | ExtArray(_) | Read | Fread -> S.empty
+  | Neg(x) | FNeg(x) | Print(x) | Fabs(x) | Fsqrt(x) | Fcvtsw(x) | Fcvtws(x) -> S.singleton x
+  | Add(x, y) | Sub(x, y) | Mul(x, y) | Div(x, y) | FAdd(x, y) | FSub(x, y) | FMul(x, y) | FDiv(x, y) | Get(x, y) | Array(x, y) | Farray(x, y) -> S.of_list [x; y]
   | IfEq(x, y, e1, e2) | IfLE(x, y, e1, e2) -> S.add x (S.add y (S.union (fv e1) (fv e2)))
   | Let((x, t), e1, e2) -> S.union (fv e1) (S.remove x (fv e2))
   | Var(x) -> S.singleton x
@@ -162,6 +171,7 @@ let rec g env = function (* K正規化ルーチン本体 (caml2html: knormal_g) *)
         (fun y ->
           let e2', t2 = g (M.add_list xts env) e2 in
           LetTuple(xts, y, e2'), t2)
+(*
   | Syntax.Array(e1, e2) ->
       insert_let (g env e1)
         (fun x ->
@@ -173,6 +183,7 @@ let rec g env = function (* K正規化ルーチン本体 (caml2html: knormal_g) *)
                 | Type.Float -> "create_float_array"
                 | _ -> "create_array" in
               ExtFunApp(l, [x; y]), Type.Array(t2)))
+*)
   | Syntax.Get(e1, e2) ->
       (match g env e1 with
       |        _, Type.Array(t) as g_e1 ->
@@ -185,5 +196,33 @@ let rec g env = function (* K正規化ルーチン本体 (caml2html: knormal_g) *)
         (fun x -> insert_let (g env e2)
             (fun y -> insert_let (g env e3)
                 (fun z -> Put(x, y, z), Type.Unit)))
+
+  | Syntax.Array(e1, e2) ->
+      insert_let (g env e1)
+        (fun x ->
+          let _, t2 as g_e2 = g env e2 in
+          insert_let g_e2
+            (fun y ->
+              (match t2 with
+                | Type.Float -> Farray(x, y), Type.Array(t2)
+                | _ -> Array(x, y), Type.Array(t2))))
+  | Syntax.Print(e) ->
+      insert_let (g env e)
+        (fun x -> Print(x), Type.Unit)
+  | Syntax.Read -> Read, Type.Int
+  | Syntax.Fread -> Fread, Type.Float
+  | Syntax.Fabs(e) ->
+      insert_let (g env e)
+        (fun x -> Fabs(x), Type.Float)
+  | Syntax.Fsqrt(e) ->
+      insert_let (g env e)
+        (fun x -> Fsqrt(x), Type.Float)
+  | Syntax.Fcvtsw(e) ->
+      insert_let (g env e)
+        (fun x -> Fcvtsw(x), Type.Float)
+  | Syntax.Fcvtws(e) ->
+      insert_let (g env e)
+        (fun x -> Fcvtws(x), Type.Int)
+
 
 let f e = fst (g M.empty e)
