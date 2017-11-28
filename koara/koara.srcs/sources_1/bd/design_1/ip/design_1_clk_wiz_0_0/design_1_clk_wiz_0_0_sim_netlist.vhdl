@@ -1,7 +1,7 @@
 -- Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
--- Date        : Tue Nov 28 13:13:57 2017
+-- Date        : Tue Nov 28 13:50:25 2017
 -- Host        : ispc2016 running 64-bit Ubuntu 14.04.5 LTS
 -- Command     : write_vhdl -force -mode funcsim
 --               /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_sim_netlist.vhdl
@@ -19,7 +19,8 @@ entity design_1_clk_wiz_0_0_design_1_clk_wiz_0_0_clk_wiz is
     clk_out1 : out STD_LOGIC;
     reset : in STD_LOGIC;
     locked : out STD_LOGIC;
-    clk_in1 : in STD_LOGIC
+    clk_in1_p : in STD_LOGIC;
+    clk_in1_n : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of design_1_clk_wiz_0_0_design_1_clk_wiz_0_0_clk_wiz : entity is "design_1_clk_wiz_0_0_clk_wiz";
@@ -51,13 +52,13 @@ architecture STRUCTURE of design_1_clk_wiz_0_0_design_1_clk_wiz_0_0_clk_wiz is
   attribute BOX_TYPE of clkf_buf : label is "PRIMITIVE";
   attribute XILINX_LEGACY_PRIM : string;
   attribute XILINX_LEGACY_PRIM of clkf_buf : label is "BUFG";
-  attribute BOX_TYPE of clkin1_ibuf : label is "PRIMITIVE";
+  attribute BOX_TYPE of clkin1_ibufds : label is "PRIMITIVE";
   attribute CAPACITANCE : string;
-  attribute CAPACITANCE of clkin1_ibuf : label is "DONT_CARE";
+  attribute CAPACITANCE of clkin1_ibufds : label is "DONT_CARE";
   attribute IBUF_DELAY_VALUE : string;
-  attribute IBUF_DELAY_VALUE of clkin1_ibuf : label is "0";
+  attribute IBUF_DELAY_VALUE of clkin1_ibufds : label is "0";
   attribute IFD_DELAY_VALUE : string;
-  attribute IFD_DELAY_VALUE of clkin1_ibuf : label is "AUTO";
+  attribute IFD_DELAY_VALUE of clkin1_ibufds : label is "AUTO";
   attribute BOX_TYPE of clkout1_buf : label is "PRIMITIVE";
   attribute XILINX_LEGACY_PRIM of clkout1_buf : label is "BUFG";
   attribute BOX_TYPE of mmcme3_adv_inst : label is "PRIMITIVE";
@@ -71,12 +72,15 @@ clkf_buf: unisim.vcomponents.BUFGCE
       I => clkfbout_design_1_clk_wiz_0_0,
       O => clkfbout_buf_design_1_clk_wiz_0_0
     );
-clkin1_ibuf: unisim.vcomponents.IBUF
+clkin1_ibufds: unisim.vcomponents.IBUFDS
     generic map(
+      DIFF_TERM => false,
+      DQS_BIAS => "FALSE",
       IOSTANDARD => "DEFAULT"
     )
         port map (
-      I => clk_in1,
+      I => clk_in1_p,
+      IB => clk_in1_n,
       O => clk_in1_design_1_clk_wiz_0_0
     );
 clkout1_buf: unisim.vcomponents.BUFGCE
@@ -91,10 +95,10 @@ clkout1_buf: unisim.vcomponents.BUFGCE
 mmcme3_adv_inst: unisim.vcomponents.MMCME3_ADV
     generic map(
       BANDWIDTH => "OPTIMIZED",
-      CLKFBOUT_MULT_F => 10.000000,
+      CLKFBOUT_MULT_F => 8.000000,
       CLKFBOUT_PHASE => 0.000000,
       CLKFBOUT_USE_FINE_PS => "FALSE",
-      CLKIN1_PERIOD => 10.000000,
+      CLKIN1_PERIOD => 8.000000,
       CLKIN2_PERIOD => 0.000000,
       CLKOUT0_DIVIDE_F => 10.000000,
       CLKOUT0_DUTY_CYCLE => 0.500000,
@@ -189,7 +193,8 @@ entity design_1_clk_wiz_0_0 is
     clk_out1 : out STD_LOGIC;
     reset : in STD_LOGIC;
     locked : out STD_LOGIC;
-    clk_in1 : in STD_LOGIC
+    clk_in1_p : in STD_LOGIC;
+    clk_in1_n : in STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of design_1_clk_wiz_0_0 : entity is true;
@@ -199,7 +204,8 @@ architecture STRUCTURE of design_1_clk_wiz_0_0 is
 begin
 inst: entity work.design_1_clk_wiz_0_0_design_1_clk_wiz_0_0_clk_wiz
      port map (
-      clk_in1 => clk_in1,
+      clk_in1_n => clk_in1_n,
+      clk_in1_p => clk_in1_p,
       clk_out1 => clk_out1,
       locked => locked,
       reset => reset

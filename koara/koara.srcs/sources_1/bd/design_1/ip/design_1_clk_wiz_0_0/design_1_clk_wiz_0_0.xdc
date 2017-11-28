@@ -52,9 +52,9 @@
 # input clocks. You can use these to time your system. If required
 # commented constraints can be used in the top level xdc 
 #----------------------------------------------------------------
-# Connect to input port when clock capable pin is selected for input
-create_clock -period 10.0 [get_ports clk_in1]
-set_input_jitter [get_clocks -of_objects [get_ports clk_in1]] 0.10000000000000001
+# Differential clock only needs one constraint
+create_clock -period 8.0 [get_ports clk_in1_p]
+set_input_jitter [get_clocks -of_objects [get_ports clk_in1_p]] 0.080000000000000002
 
 
 set_property PHASESHIFT_MODE WAVEFORM [get_cells -hierarchical *adv*]
