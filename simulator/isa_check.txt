@@ -13,8 +13,8 @@ ROT
 追加命令
 
 ---RV32M Standard Extension---
-MUL
-DIV
+x MUL
+x DIV
 ---RV32F Standard Extension---
 FLW
 FSW
@@ -26,7 +26,7 @@ FEQS
 FLTS
 FLES
 FMVSX // move int to float
-  (FMVXS // move float to int)
+x FMVXS // move float to int)
 FCVTSW // convert int to float
 FCVTWS // convert float to int
 FSQRTS
