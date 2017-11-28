@@ -81,4 +81,8 @@ enum inst_t {
 
 void init_param(param_t* param);
 
+void exit_message(param_t* param);
+
+void print_standard_reg(param_t* param);
+
 #endif
