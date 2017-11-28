@@ -22,3 +22,28 @@ void init_param (param_t* param) {
   Loop(i, 128) param->call_time[i] = 0;
   fill_n(param->mem, HASHWIDTH, (hash_list_t*)NULL); // バイトアドレス
 }
+
+void exit_message(param_t* param) {
+  printf("program terminated in failure, in prePC = %08X, PC = %08X, cnt = %lld\n", param->prepc, param->pc, param->cnt);
+  print_standard_reg(param);
+  printf("\n\n");
+  exit(EXIT_FAILURE);
+}
+
+void print_standard_reg(param_t* param) {
+  Loop(i, 32) {
+    if (i % 8 == 0) printf("\n");
+    printf("r%02d:%08X ", i, param->reg[i]);
+  }
+  printf("\n");
+  Loop(i, 32) {
+    if (i % 8 == 0) printf("\n");
+    if(param->f_display) printf("f%02d:%8f ", i, param->freg[i]);
+    else {
+      int_float_mover ifm;
+      ifm.f = param->freg[i];
+      printf("f%02d:%08X ", i, ifm.i);
+    }
+  }
+  return;
+}

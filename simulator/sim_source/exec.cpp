@@ -29,7 +29,7 @@ inline void write_hash_list(param_t* param, unsigned k, unsigned int v) {
     else *p = (*p)->next_p;
   }
   (*p) = (hash_list_t*)malloc(sizeof(hash_list_t));
-  if((*p) == NULL) { perror("malloc error"); exit(EXIT_FAILURE); }
+  if((*p) == NULL) { perror("malloc error"); exit_message(param); }
   (*p)->key = k;
   (*p)->val = v;
   (*p)->next_p = NULL;
@@ -41,16 +41,16 @@ void exec_jmp_fread(param_t* param, unsigned newpc) {
     param->rbuf_p = newpc  / param->pc_interval - param->rbuf_begin;
   }
   else {
-    if (fseek(param->fp, newpc * 4 / param->pc_interval, SEEK_SET) != 0) { perror("fseek error"); exit(EXIT_FAILURE); }
+    if (fseek(param->fp, newpc * 4 / param->pc_interval, SEEK_SET) != 0) { perror("fseek error"); exit_message(param); }
     param->rsize = fread(param->rbuf, sizeof(unsigned), RBUFSIZE, param->fp);
-    if (param->rsize < 0) { perror("fread error"); exit(EXIT_FAILURE); }
+    if (param->rsize < 0) { perror("fread error"); exit_message(param); }
     param->rbuf_begin = newpc;
     param->rbuf_p = 0;
     decode_all(param);
   }
   param->prepc = param->pc;
   param->pc = newpc;
-  if (param->rsize == 0) { printf("pc %d: no instruction\n", param->pc); exit(EXIT_FAILURE); }
+  if (param->rsize == 0) { printf("pc %d: no instruction\n", param->pc); exit_message(param); }
   return;
 }
 
@@ -465,7 +465,7 @@ void exec_main(param_t* param) {
       set_i_type(param, &rd, &rs1, &imm);
       if(param->step) printf("in %%r%d\n", rd);
       if(param->ifp == NULL) { printf("error: no input file though \"in\" is called.\n"); exit(EXIT_FAILURE); }
-      if((int)fread(&in_data, sizeof(unsigned char), 1, param->ifp) < 0) { perror("fread error"); exit(EXIT_FAILURE); }
+      if((int)fread(&in_data, sizeof(unsigned char), 1, param->ifp) < 0) { perror("fread error"); exit_message(param); }
       if(rd != 0) param->reg[rd] = (param->reg[rd] & 0xffffff00) | (unsigned)in_data;
       pc_inclement(param);
       return;
@@ -475,13 +475,13 @@ void exec_main(param_t* param) {
       if(param->ofp == NULL) { printf("error: no output file though \"out\" is called.\n"); exit(EXIT_FAILURE); }
       out_data = param->reg[rs1] & 0x000000ff;
       if (fwrite(&out_data, sizeof(unsigned char), 1, param->ofp) != 1) {
-        perror("fwrite error"); exit(EXIT_FAILURE);
+        perror("fwrite error"); exit_message(param);
       }
       pc_inclement(param);
       return;
     default:
       printf("unknown fatal error, exit\n");
-      exit(EXIT_FAILURE);
+      exit_message(param);
   }
   return;
 }
