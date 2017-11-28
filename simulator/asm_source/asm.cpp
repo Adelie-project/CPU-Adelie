@@ -72,7 +72,7 @@ void parse(param_t *param) {
 void pre_parse(param_t *param) {
   divide(param);
   //ラベリング
-  if ((param->buf).size() == 0 || (param->buf[0]).back() == ':') {
+  if ((param->buf).size() != 0 && (param->buf[0]).back() == ':') {
     string labelname = (param->buf[0]).substr(0, (param->buf[0]).length() - 1);
     if (labelname.length() == 0) { printf("\x1b[31merror\x1b[39m: illegal definition of label: %s in line %d\n", labelname.c_str(), param->lineno); exit(EXIT_FAILURE); }
     if ((param->labels).find(labelname) == (param->labels).end()) {
