@@ -62,6 +62,12 @@ module core_decode
   output reg I_FLTS,
   output reg I_FLES,
 
+  output reg I_FMVSX,
+  output reg I_FCVTSW,
+  output reg I_FCVTWS,
+  output reg I_FSQRTS,
+  output reg I_FSGNJXS,
+
   output reg I_IN,
   output reg I_OUT,
 

@@ -284,3 +284,163 @@ INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 
 Checksum: PlaceDB: fdd426b9 ConstDB: 0 ShapeSum: 327f17bc RouteDB: 618f0ef
 
 Phase 1 Build RT Design
+Phase 1 Build RT Design | Checksum: 1414e8e3d
+
+Time (s): cpu = 00:00:40 ; elapsed = 00:00:25 . Memory (MB): peak = 2664.227 ; gain = 100.992 ; free physical = 6586 ; free virtual = 26693
+
+Phase 2 Router Initialization
+
+Phase 2.1 Create Timer
+Phase 2.1 Create Timer | Checksum: ffa61bf5
+
+Time (s): cpu = 00:00:40 ; elapsed = 00:00:25 . Memory (MB): peak = 2664.230 ; gain = 100.996 ; free physical = 6586 ; free virtual = 26693
+
+Phase 2.2 Fix Topology Constraints
+Phase 2.2 Fix Topology Constraints | Checksum: ffa61bf5
+
+Time (s): cpu = 00:00:40 ; elapsed = 00:00:25 . Memory (MB): peak = 2664.230 ; gain = 100.996 ; free physical = 6586 ; free virtual = 26693
+
+Phase 2.3 Pre Route Cleanup
+Phase 2.3 Pre Route Cleanup | Checksum: ffa61bf5
+
+Time (s): cpu = 00:00:40 ; elapsed = 00:00:25 . Memory (MB): peak = 2664.230 ; gain = 100.996 ; free physical = 6586 ; free virtual = 26693
+
+Phase 2.4 Global Clock Net Routing
+ Number of Nodes with overlaps = 0
+Phase 2.4 Global Clock Net Routing | Checksum: d0402434
+
+Time (s): cpu = 00:00:42 ; elapsed = 00:00:27 . Memory (MB): peak = 2697.594 ; gain = 134.359 ; free physical = 6552 ; free virtual = 26660
+
+Phase 2.5 Update Timing
+Phase 2.5 Update Timing | Checksum: dcdd5b4c
+
+Time (s): cpu = 00:00:43 ; elapsed = 00:00:28 . Memory (MB): peak = 2697.598 ; gain = 134.363 ; free physical = 6550 ; free virtual = 26660
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=8.514  | TNS=0.000  | WHS=0.034  | THS=0.000  |
+
+Phase 2 Router Initialization | Checksum: 18a5de3c7
+
+Time (s): cpu = 00:00:43 ; elapsed = 00:00:28 . Memory (MB): peak = 2697.598 ; gain = 134.363 ; free physical = 6550 ; free virtual = 26660
+
+Phase 3 Initial Routing
+Phase 3 Initial Routing | Checksum: 19f84858d
+
+Time (s): cpu = 00:00:46 ; elapsed = 00:00:29 . Memory (MB): peak = 2698.594 ; gain = 135.359 ; free physical = 6549 ; free virtual = 26660
+
+Phase 4 Rip-up And Reroute
+
+Phase 4.1 Global Iteration 0
+ Number of Nodes with overlaps = 4
+ Number of Nodes with overlaps = 0
+
+Phase 4.1.1 Update Timing
+Phase 4.1.1 Update Timing | Checksum: fde0016c
+
+Time (s): cpu = 00:00:47 ; elapsed = 00:00:29 . Memory (MB): peak = 2702.598 ; gain = 139.363 ; free physical = 6545 ; free virtual = 26656
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=7.780  | TNS=0.000  | WHS=0.052  | THS=0.000  |
+
+Phase 4.1 Global Iteration 0 | Checksum: fde0016c
+
+Time (s): cpu = 00:00:47 ; elapsed = 00:00:29 . Memory (MB): peak = 2702.598 ; gain = 139.363 ; free physical = 6545 ; free virtual = 26656
+Phase 4 Rip-up And Reroute | Checksum: fde0016c
+
+Time (s): cpu = 00:00:47 ; elapsed = 00:00:29 . Memory (MB): peak = 2702.598 ; gain = 139.363 ; free physical = 6545 ; free virtual = 26656
+
+Phase 5 Delay and Skew Optimization
+
+Phase 5.1 Delay CleanUp
+Phase 5.1 Delay CleanUp | Checksum: fde0016c
+
+Time (s): cpu = 00:00:47 ; elapsed = 00:00:29 . Memory (MB): peak = 2702.598 ; gain = 139.363 ; free physical = 6545 ; free virtual = 26656
+
+Phase 5.2 Clock Skew Optimization
+Phase 5.2 Clock Skew Optimization | Checksum: fde0016c
+
+Time (s): cpu = 00:00:47 ; elapsed = 00:00:29 . Memory (MB): peak = 2702.598 ; gain = 139.363 ; free physical = 6545 ; free virtual = 26656
+Phase 5 Delay and Skew Optimization | Checksum: fde0016c
+
+Time (s): cpu = 00:00:47 ; elapsed = 00:00:29 . Memory (MB): peak = 2702.598 ; gain = 139.363 ; free physical = 6545 ; free virtual = 26656
+
+Phase 6 Post Hold Fix
+
+Phase 6.1 Hold Fix Iter
+
+Phase 6.1.1 Update Timing
+Phase 6.1.1 Update Timing | Checksum: c94a0577
+
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:30 . Memory (MB): peak = 2702.598 ; gain = 139.363 ; free physical = 6547 ; free virtual = 26656
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=7.780  | TNS=0.000  | WHS=0.052  | THS=0.000  |
+
+Phase 6.1 Hold Fix Iter | Checksum: c94a0577
+
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:30 . Memory (MB): peak = 2702.598 ; gain = 139.363 ; free physical = 6547 ; free virtual = 26656
+Phase 6 Post Hold Fix | Checksum: c94a0577
+
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:30 . Memory (MB): peak = 2702.598 ; gain = 139.363 ; free physical = 6547 ; free virtual = 26656
+
+Phase 7 Route finalize
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 0.00355277 %
+  Global Horizontal Routing Utilization  = 0.00100254 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 0
+  Number of Unrouted Nets             = 0
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+Phase 7 Route finalize | Checksum: 1081823a0
+
+Time (s): cpu = 00:00:50 ; elapsed = 00:00:31 . Memory (MB): peak = 2702.598 ; gain = 139.363 ; free physical = 6547 ; free virtual = 26656
+
+Phase 8 Verifying routed nets
+
+ Verification completed successfully
+Phase 8 Verifying routed nets | Checksum: 1081823a0
+
+Time (s): cpu = 00:00:50 ; elapsed = 00:00:31 . Memory (MB): peak = 2705.594 ; gain = 142.359 ; free physical = 6543 ; free virtual = 26652
+
+Phase 9 Depositing Routes
+Phase 9 Depositing Routes | Checksum: 1081823a0
+
+Time (s): cpu = 00:00:50 ; elapsed = 00:00:31 . Memory (MB): peak = 2705.594 ; gain = 142.359 ; free physical = 6543 ; free virtual = 26652
+
+Phase 10 Post Router Timing
+INFO: [Route 35-57] Estimated Timing Summary | WNS=7.780  | TNS=0.000  | WHS=0.052  | THS=0.000  |
+
+INFO: [Route 35-327] The final timing numbers are based on the router estimated timing analysis. For a complete and accurate timing signoff, please run report_timing_summary.
+Phase 10 Post Router Timing | Checksum: 1081823a0
+
+Time (s): cpu = 00:00:50 ; elapsed = 00:00:31 . Memory (MB): peak = 2705.594 ; gain = 142.359 ; free physical = 6543 ; free virtual = 26652
+INFO: [Route 35-16] Router Completed Successfully
+
+Time (s): cpu = 00:00:50 ; elapsed = 00:00:31 . Memory (MB): peak = 2705.598 ; gain = 142.363 ; free physical = 6543 ; free virtual = 26652
+
+Routing Is Done.
+INFO: [Common 17-83] Releasing license: Implementation
+75 Infos, 3 Warnings, 0 Critical Warnings and 0 Errors encountered.
+route_design completed successfully
+route_design: Time (s): cpu = 00:00:52 ; elapsed = 00:00:32 . Memory (MB): peak = 2705.598 ; gain = 142.363 ; free physical = 6543 ; free virtual = 26652
+Writing placer database...
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:00.08 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2705.598 ; gain = 0.000 ; free physical = 6541 ; free virtual = 26652
+INFO: [Common 17-1381] The checkpoint '/home/yamaguchi/CPU-Adelie/koara/koara.runs/impl_1/design_1_wrapper_routed.dcp' has been generated.
+INFO: [DRC 23-27] Running DRC with 4 threads
+INFO: [Coretcl 2-168] The results of DRC are in file /home/yamaguchi/CPU-Adelie/koara/koara.runs/impl_1/design_1_wrapper_drc_routed.rpt.
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [DRC 23-133] Running Methodology with 4 threads
+INFO: [Coretcl 2-1520] The results of Report Methodology are in file /home/yamaguchi/CPU-Adelie/koara/koara.runs/impl_1/design_1_wrapper_methodology_drc_routed.rpt.
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -2, Temperature grade: E, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 4 CPUs
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Command: report_power -file design_1_wrapper_power_routed.rpt -pb design_1_wrapper_power_summary_routed.pb -rpx design_1_wrapper_power_routed.rpx
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+85 Infos, 3 Warnings, 0 Critical Warnings and 0 Errors encountered.
+report_power completed successfully
+INFO: [Common 17-206] Exiting Vivado at Tue Nov 28 14:51:44 2017...
