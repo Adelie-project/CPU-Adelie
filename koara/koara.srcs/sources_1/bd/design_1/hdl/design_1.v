@@ -1,7 +1,7 @@
 //Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
-//Date        : Tue Nov 28 04:56:50 2017
+//Date        : Tue Nov 28 13:35:07 2017
 //Host        : ispc2016 running 64-bit Ubuntu 14.04.5 LTS
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -9,10 +9,14 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=13,numReposBlks=11,numNonXlnxBlks=1,numHierBlks=2,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=1,da_board_cnt=1,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=13,numReposBlks=11,numNonXlnxBlks=1,numHierBlks=2,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=1,da_board_cnt=3,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
 module design_1
-   (rs232_uart_rxd,
+   (clock_rtl,
+    reset,
+    rs232_uart_rxd,
     rs232_uart_txd);
+  input clock_rtl;
+  input reset;
   input rs232_uart_rxd;
   output rs232_uart_txd;
 
@@ -20,6 +24,7 @@ module design_1
   wire axi_uartlite_0_UART_TxD;
   wire [31:0]blk_mem_gen_0_douta;
   wire [31:0]blk_mem_gen_1_douta;
+  wire clock_rtl_1;
   wire [31:0]core_top_0_A_TDATA;
   wire core_top_0_A_TREADY;
   wire core_top_0_A_TVALID;
@@ -98,12 +103,15 @@ module design_1
   wire [31:0]floating_point_3_M_AXIS_RESULT_TDATA;
   wire floating_point_3_M_AXIS_RESULT_TREADY;
   wire floating_point_3_M_AXIS_RESULT_TVALID;
+  wire reset_1;
   wire sim_clk_gen_0_clk;
   wire sim_clk_gen_0_sync_rst;
   wire [0:0]xlconstant_0_dout;
   wire [0:0]xlconstant_1_dout;
 
   assign axi_uartlite_0_UART_RxD = rs232_uart_rxd;
+  assign clock_rtl_1 = clock_rtl;
+  assign reset_1 = reset;
   assign rs232_uart_txd = axi_uartlite_0_UART_TxD;
   design_1_axi_uartlite_0_0 axi_uartlite_0
        (.rx(axi_uartlite_0_UART_RxD),
@@ -140,6 +148,11 @@ module design_1
         .douta(blk_mem_gen_1_douta),
         .ena(xlconstant_1_dout),
         .wea(core_top_0_MEM_WE));
+  design_1_clk_wiz_0_0 clk_wiz_0
+       (.clk_in1(clock_rtl_1),
+        .clk_out1(sim_clk_gen_0_clk),
+        .locked(sim_clk_gen_0_sync_rst),
+        .reset(reset_1));
   design_1_core_top_0_0 core_top_0
        (.ADDSUB_A_TDATA(core_top_0_A_TDATA),
         .ADDSUB_A_TREADY(core_top_0_A_TREADY),
@@ -296,9 +309,6 @@ module design_1
         .s_axis_b_tdata(core_top_0_MUL_B_TDATA),
         .s_axis_b_tready(core_top_0_MUL_B_TREADY),
         .s_axis_b_tvalid(core_top_0_MUL_B_TVALID));
-  design_1_sim_clk_gen_0_0 sim_clk_gen_0
-       (.clk(sim_clk_gen_0_clk),
-        .sync_rst(sim_clk_gen_0_sync_rst));
   design_1_xlconstant_0_0 xlconstant_0
        (.dout(xlconstant_0_dout));
   design_1_xlconstant_0_1 xlconstant_1
