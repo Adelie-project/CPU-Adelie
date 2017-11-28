@@ -361,6 +361,17 @@ module core_top
 
   );
 
+  // Stole
+  always @(posedge CLK) begin
+      stole <= (i_fadds | i_fsubs) & ADDSUB_R_TVALID ? 0 :
+               (i_fmuls) & MUL_R_TVALID ? 0 :
+               (i_fdivs) & DIV_R_TVALID ? 0 :
+               (i_feqs | i_flts | i_fles) & COMP_R_TVALID ? 0 :
+               (i_out) && (S_AXI_BRESP == 00) ? 0 :
+               (i_fadds | i_fsubs | i_fmuls | i_fdivs | i_feqs | i_flts | i_fles | i_out) ? 1 :
+               0;
+  end
+
   // 浮動小数点実行
   // ADD/SUB
   always @(posedge CLK) begin
@@ -372,7 +383,6 @@ module core_top
       addsub_op_tdata <= i_fsubs ? 6'b000001 : 6'b000000;
       addsub_op_tvalid <= 1'b1;
       addsub_r_tready <= 1'b1;
-      stole <= ADDSUB_R_TVALID ? 0 : 1;
     end else begin
       addsub_a_tdata <= 0;
       addsub_a_tvalid <= 0;
@@ -393,7 +403,6 @@ module core_top
       mul_b_tdata <= rs2;
       mul_b_tvalid <= 1'b1;
       mul_r_tready <= 1'b1;
-      stole <= MUL_R_TVALID ? 0 : 1;
     end else begin
       mul_a_tdata <= 0;
       mul_a_tvalid <= 0;
@@ -412,7 +421,6 @@ module core_top
       div_b_tdata <= rs2;
       div_b_tvalid <= 1'b1;
       div_r_tready <= 1'b1;
-      stole <= DIV_R_TVALID ? 0 : 1;
     end else begin
       div_a_tdata <= 0;
       div_a_tvalid <= 0;
@@ -435,7 +443,6 @@ module core_top
                        6'b011100;
       comp_op_tvalid <= 1'b1;
       comp_r_tready <= 1'b1;
-      stole <= COMP_R_TVALID ? 0 : 1;
     end else begin
       comp_a_tdata <= 0;
       comp_a_tvalid <= 0;
@@ -453,7 +460,17 @@ module core_top
   // outならr1からoutする
   always @(posedge CLK) begin
     if (i_out) begin
-    end else begin
+      s_axi_awaddr <= 4'b0100;
+      s_axi_awvalid <= 1;
+      s_axi_wdata <= 32'hDEAD;
+      s_axi_wstb <= 4'b1111;
+      s_axi_wvalid <= 1;
+      s_axi_bready <= 1;
+      end
+    else if (i_in) begin
+      s_axi_araddr <= 4'b0000;
+      s_axi_arvalid <= 1;
+      s_axi_rready <= 1;
     end
   end
 

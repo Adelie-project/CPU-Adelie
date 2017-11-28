@@ -164,6 +164,15 @@ proc create_root_design { parentCell } {
   set rs232_uart [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:uart_rtl:1.0 rs232_uart ]
 
   # Create ports
+  set clock_rtl [ create_bd_port -dir I -type clk clock_rtl ]
+  set_property -dict [ list \
+CONFIG.FREQ_HZ {100000000} \
+CONFIG.PHASE {0.000} \
+ ] $clock_rtl
+  set reset [ create_bd_port -dir I -type rst reset ]
+  set_property -dict [ list \
+CONFIG.POLARITY {ACTIVE_HIGH} \
+ ] $reset
 
   # Create instance: axi_uartlite_0, and set properties
   set axi_uartlite_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_uartlite:2.0 axi_uartlite_0 ]
@@ -205,6 +214,43 @@ CONFIG.Write_Width_A {32} \
 CONFIG.Write_Width_B {32} \
 CONFIG.use_bram_block {Stand_Alone} \
  ] $blk_mem_gen_1
+
+  # Create instance: clk_wiz_0, and set properties
+  set clk_wiz_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:5.3 clk_wiz_0 ]
+  set_property -dict [ list \
+CONFIG.CLKOUT1_DRIVES {Buffer} \
+CONFIG.CLKOUT1_JITTER {130.958} \
+CONFIG.CLKOUT1_PHASE_ERROR {98.575} \
+CONFIG.CLKOUT2_DRIVES {Buffer} \
+CONFIG.CLKOUT3_DRIVES {Buffer} \
+CONFIG.CLKOUT4_DRIVES {Buffer} \
+CONFIG.CLKOUT5_DRIVES {Buffer} \
+CONFIG.CLKOUT6_DRIVES {Buffer} \
+CONFIG.CLKOUT7_DRIVES {Buffer} \
+CONFIG.MMCM_CLKFBOUT_MULT_F {10.000} \
+CONFIG.MMCM_CLKIN1_PERIOD {10.0} \
+CONFIG.MMCM_CLKIN2_PERIOD {10.0} \
+CONFIG.MMCM_CLKOUT0_DIVIDE_F {10.000} \
+CONFIG.RESET_BOARD_INTERFACE {reset} \
+CONFIG.USE_BOARD_FLOW {true} \
+ ] $clk_wiz_0
+
+  # Need to retain value_src of defaults
+  set_property -dict [ list \
+CONFIG.CLKOUT1_DRIVES.VALUE_SRC {DEFAULT} \
+CONFIG.CLKOUT1_JITTER.VALUE_SRC {DEFAULT} \
+CONFIG.CLKOUT1_PHASE_ERROR.VALUE_SRC {DEFAULT} \
+CONFIG.CLKOUT2_DRIVES.VALUE_SRC {DEFAULT} \
+CONFIG.CLKOUT3_DRIVES.VALUE_SRC {DEFAULT} \
+CONFIG.CLKOUT4_DRIVES.VALUE_SRC {DEFAULT} \
+CONFIG.CLKOUT5_DRIVES.VALUE_SRC {DEFAULT} \
+CONFIG.CLKOUT6_DRIVES.VALUE_SRC {DEFAULT} \
+CONFIG.CLKOUT7_DRIVES.VALUE_SRC {DEFAULT} \
+CONFIG.MMCM_CLKFBOUT_MULT_F.VALUE_SRC {DEFAULT} \
+CONFIG.MMCM_CLKIN1_PERIOD.VALUE_SRC {DEFAULT} \
+CONFIG.MMCM_CLKIN2_PERIOD.VALUE_SRC {DEFAULT} \
+CONFIG.MMCM_CLKOUT0_DIVIDE_F.VALUE_SRC {DEFAULT} \
+ ] $clk_wiz_0
 
   # Create instance: core_top_0, and set properties
   set block_name core_top
@@ -277,9 +323,6 @@ CONFIG.Operation_Type {Multiply} \
 CONFIG.Result_Precision_Type {Single} \
  ] $floating_point_3
 
-  # Create instance: sim_clk_gen_0, and set properties
-  set sim_clk_gen_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:sim_clk_gen:1.0 sim_clk_gen_0 ]
-
   # Create instance: xlconstant_0, and set properties
   set xlconstant_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0 ]
   set_property -dict [ list \
@@ -315,12 +358,14 @@ CONFIG.CONST_WIDTH {1} \
   # Create port connections
   connect_bd_net -net blk_mem_gen_0_douta [get_bd_pins blk_mem_gen_0/douta] [get_bd_pins core_top_0/I_MEM_IN]
   connect_bd_net -net blk_mem_gen_1_douta [get_bd_pins blk_mem_gen_1/douta] [get_bd_pins core_top_0/MEM_IN]
+  connect_bd_net -net clock_rtl_1 [get_bd_ports clock_rtl] [get_bd_pins clk_wiz_0/clk_in1]
   connect_bd_net -net core_top_0_I_MEM_ADDR [get_bd_pins blk_mem_gen_0/addra] [get_bd_pins core_top_0/I_MEM_ADDR]
   connect_bd_net -net core_top_0_MEM_ADDR [get_bd_pins blk_mem_gen_1/addra] [get_bd_pins core_top_0/MEM_ADDR]
   connect_bd_net -net core_top_0_MEM_DATA [get_bd_pins blk_mem_gen_1/dina] [get_bd_pins core_top_0/MEM_DATA]
   connect_bd_net -net core_top_0_MEM_WE [get_bd_pins blk_mem_gen_1/wea] [get_bd_pins core_top_0/MEM_WE]
-  connect_bd_net -net sim_clk_gen_0_clk [get_bd_pins axi_uartlite_0/s_axi_aclk] [get_bd_pins blk_mem_gen_0/clka] [get_bd_pins blk_mem_gen_1/clka] [get_bd_pins core_top_0/CLK] [get_bd_pins core_top_0_axi_periph/ACLK] [get_bd_pins core_top_0_axi_periph/M00_ACLK] [get_bd_pins core_top_0_axi_periph/S00_ACLK] [get_bd_pins floating_point_0/aclk] [get_bd_pins floating_point_1/aclk] [get_bd_pins floating_point_2/aclk] [get_bd_pins floating_point_3/aclk] [get_bd_pins sim_clk_gen_0/clk]
-  connect_bd_net -net sim_clk_gen_0_sync_rst [get_bd_pins axi_uartlite_0/s_axi_aresetn] [get_bd_pins core_top_0/RST_N] [get_bd_pins core_top_0_axi_periph/ARESETN] [get_bd_pins core_top_0_axi_periph/M00_ARESETN] [get_bd_pins core_top_0_axi_periph/S00_ARESETN] [get_bd_pins sim_clk_gen_0/sync_rst]
+  connect_bd_net -net reset_1 [get_bd_ports reset] [get_bd_pins clk_wiz_0/reset]
+  connect_bd_net -net sim_clk_gen_0_clk [get_bd_pins axi_uartlite_0/s_axi_aclk] [get_bd_pins blk_mem_gen_0/clka] [get_bd_pins blk_mem_gen_1/clka] [get_bd_pins clk_wiz_0/clk_out1] [get_bd_pins core_top_0/CLK] [get_bd_pins core_top_0_axi_periph/ACLK] [get_bd_pins core_top_0_axi_periph/M00_ACLK] [get_bd_pins core_top_0_axi_periph/S00_ACLK] [get_bd_pins floating_point_0/aclk] [get_bd_pins floating_point_1/aclk] [get_bd_pins floating_point_2/aclk] [get_bd_pins floating_point_3/aclk]
+  connect_bd_net -net sim_clk_gen_0_sync_rst [get_bd_pins axi_uartlite_0/s_axi_aresetn] [get_bd_pins clk_wiz_0/locked] [get_bd_pins core_top_0/RST_N] [get_bd_pins core_top_0_axi_periph/ARESETN] [get_bd_pins core_top_0_axi_periph/M00_ARESETN] [get_bd_pins core_top_0_axi_periph/S00_ARESETN]
   connect_bd_net -net xlconstant_0_dout [get_bd_pins blk_mem_gen_0/wea] [get_bd_pins xlconstant_0/dout]
   connect_bd_net -net xlconstant_1_dout [get_bd_pins blk_mem_gen_1/ena] [get_bd_pins xlconstant_1/dout]
 
@@ -331,46 +376,50 @@ CONFIG.CONST_WIDTH {1} \
    guistr: "# # String gsaved with Nlview 6.6.5b  2016-09-06 bk=1.3687 VDI=39 GEI=35 GUI=JA:1.6
 #  -string -flagsOSRD
 preplace port rs232_uart -pg 1 -y 550 -defaultsOSRD
-preplace inst core_top_0 -pg 1 -lvl 3 -y 230 -defaultsOSRD
+preplace port clock_rtl -pg 1 -y 790 -defaultsOSRD
+preplace port reset -pg 1 -y 770 -defaultsOSRD
+preplace inst core_top_0 -pg 1 -lvl 3 -y 220 -defaultsOSRD
 preplace inst floating_point_0 -pg 1 -lvl 2 -y 800 -defaultsOSRD
 preplace inst floating_point_1 -pg 1 -lvl 2 -y 100 -defaultsOSRD
 preplace inst xlconstant_0 -pg 1 -lvl 3 -y 960 -defaultsOSRD
-preplace inst floating_point_2 -pg 1 -lvl 2 -y 520 -defaultsOSRD
+preplace inst floating_point_2 -pg 1 -lvl 2 -y 480 -defaultsOSRD
 preplace inst core_top_0_axi_periph -pg 1 -lvl 4 -y 540 -defaultsOSRD
 preplace inst xlconstant_1 -pg 1 -lvl 3 -y 510 -defaultsOSRD
 preplace inst floating_point_3 -pg 1 -lvl 2 -y 640 -defaultsOSRD
 preplace inst blk_mem_gen_0 -pg 1 -lvl 4 -y 890 -defaultsOSRD
 preplace inst blk_mem_gen_1 -pg 1 -lvl 4 -y 300 -defaultsOSRD
-preplace inst sim_clk_gen_0 -pg 1 -lvl 1 -y 900 -defaultsOSRD
 preplace inst axi_uartlite_0 -pg 1 -lvl 5 -y 560 -defaultsOSRD
-preplace netloc floating_point_3_M_AXIS_RESULT 1 2 1 600
-preplace netloc core_top_0_OP 1 1 3 230 720 NJ 720 1050
-preplace netloc xlconstant_1_dout 1 3 1 1130J
-preplace netloc core_top_0_MEM_ADDR 1 3 1 1070
-preplace netloc core_top_0_MEM_WE 1 3 1 N
-preplace netloc blk_mem_gen_1_douta 1 2 2 650 560 1100J
-preplace netloc sim_clk_gen_0_sync_rst 1 1 4 NJ 910 620 580 1110 660 1430
-preplace netloc core_top_0_COMP_OP 1 1 3 240 180 570J 30 1020
-preplace netloc core_top_0_MUL_A 1 1 3 230 450 560J 460 980
-preplace netloc core_top_0_MUL_B 1 1 3 240 710 NJ 710 970
+preplace inst clk_wiz_0 -pg 1 -lvl 1 -y 780 -defaultsOSRD
+preplace netloc floating_point_3_M_AXIS_RESULT 1 2 1 840
+preplace netloc core_top_0_OP 1 1 3 390 390 800J 450 1280
+preplace netloc xlconstant_1_dout 1 3 1 1360J
+preplace netloc core_top_0_MEM_ADDR 1 3 1 1310
+preplace netloc sim_clk_gen_0_sync_rst 1 1 4 360J 230 830 790 1390 790 1680
+preplace netloc core_top_0_MEM_WE 1 3 1 1340
+preplace netloc blk_mem_gen_1_douta 1 2 2 890 580 1350J
+preplace netloc core_top_0_COMP_OP 1 1 3 400 560 NJ 560 1300
+preplace netloc core_top_0_MUL_A 1 1 3 430 410 780J 460 1240
+preplace netloc core_top_0_MUL_B 1 1 3 410 400 790J 440 1220
 preplace netloc core_top_0_axi_periph_M00_AXI 1 4 1 N
-preplace netloc core_top_0_MEM_DATA 1 3 1 1090
-preplace netloc floating_point_1_M_AXIS_RESULT 1 2 1 650
-preplace netloc core_top_0_A 1 1 3 240 880 NJ 880 1060
-preplace netloc xlconstant_0_dout 1 3 1 1050J
-preplace netloc sim_clk_gen_0_clk 1 1 4 200 890 630 890 1120 670 1420
-preplace netloc core_top_0_COMP_A 1 1 3 200 10 NJ 10 1040
-preplace netloc core_top_0_B 1 1 3 210 410 610J 430 1010
-preplace netloc core_top_0_COMP_B 1 1 3 240 20 NJ 20 1030
-preplace netloc core_top_0_DIV_A 1 1 3 240 440 NJ 440 1000
+preplace netloc core_top_0_MEM_DATA 1 3 1 1320
+preplace netloc floating_point_1_M_AXIS_RESULT 1 2 1 890
+preplace netloc core_top_0_A 1 1 3 370 0 NJ 0 1280
+preplace netloc sim_clk_gen_0_clk 1 1 4 350 890 870 890 1380 670 1670
+preplace netloc xlconstant_0_dout 1 3 1 1310J
+preplace netloc core_top_0_COMP_A 1 1 3 430 10 NJ 10 1270
+preplace netloc core_top_0_B 1 1 3 380 370 860J 420 1250
+preplace netloc core_top_0_COMP_B 1 1 3 440 20 NJ 20 1260
+preplace netloc core_top_0_DIV_A 1 1 3 440 570 NJ 570 1290
 preplace netloc axi_uartlite_0_UART 1 5 1 N
-preplace netloc core_top_0_I_MEM_ADDR 1 3 1 1080
-preplace netloc blk_mem_gen_0_douta 1 2 2 640 910 NJ
-preplace netloc core_top_0_DIV_B 1 1 3 220 430 580J 450 990
-preplace netloc floating_point_0_M_AXIS_RESULT 1 2 1 590
-preplace netloc core_top_0_S_AXI 1 3 1 1140
-preplace netloc floating_point_2_M_AXIS_RESULT 1 2 1 570
-levelinfo -pg 1 0 100 400 810 1280 1530 1650 -top 0 -bot 1000
+preplace netloc core_top_0_I_MEM_ADDR 1 3 1 1330
+preplace netloc blk_mem_gen_0_douta 1 2 2 880 910 NJ
+preplace netloc core_top_0_DIV_B 1 1 3 420 380 850J 430 1230
+preplace netloc floating_point_0_M_AXIS_RESULT 1 2 1 820
+preplace netloc core_top_0_S_AXI 1 3 1 1370
+preplace netloc clock_rtl_1 1 0 1 N
+preplace netloc reset_1 1 0 1 N
+preplace netloc floating_point_2_M_AXIS_RESULT 1 2 1 810
+levelinfo -pg 1 0 270 620 1060 1530 1780 1900 -top -10 -bot 1000
 ",
 }
 
