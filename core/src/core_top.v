@@ -123,6 +123,8 @@ module core_top
   wire [31:0] pc;
   wire [4:0] rd_num, rs1_num, rs2_num;
   wire [31:0] rs1, rs2, imm;
+  wire [4:0] frd_num, frs1_num, frs2_num;
+  wire [31:0] frs1, frs2;
 
   wire [31:0] alu_result;
   wire i_lui, i_auipc, i_jal, i_jalr, i_beq, i_bne,
@@ -229,7 +231,7 @@ module core_top
 
   reg stole;
 
-  // 乗除算はまだ
+  // 乗除算はしない
 
   assign r0 = 32'b0;
 
@@ -296,6 +298,10 @@ module core_top
     .RD_NUM (rd_num),
     .RS1_NUM (rs1_num),
     .RS2_NUM (rs2_num),
+
+    .FRD_NUM (frd_num),
+    .FRS1_NUM (frs1_num),
+    .FRS2_NUM (frs2_num),
 
     .IMM (imm),
 
@@ -414,21 +420,13 @@ module core_top
     .RS1 (rs1),
     .RS2 (rs2),
     .IMM (imm),
+
+    .FRS1 (frs1),
+    .FRS2 (frs2),
     
     .RESULT (alu_result)
 
   );
-
-  // Stole
-  always @(posedge CLK) begin
-      stole <= (i_fadds | i_fsubs) & ADDSUB_R_TVALID ? 0 :
-               (i_fmuls) & MUL_R_TVALID ? 0 :
-               (i_fdivs) & DIV_R_TVALID ? 0 :
-               (i_feqs | i_flts | i_fles) & COMP_R_TVALID ? 0 :
-               (i_out) && (S_AXI_BRESP == 00) ? 0 :
-               (i_fadds | i_fsubs | i_fmuls | i_fdivs | i_feqs | i_flts | i_fles | i_out) ? 1 :
-               0;
-  end
 
   // 浮動小数点実行
   // ADD/SUB
@@ -574,6 +572,20 @@ module core_top
     end
   end
 
+  // Stole
+  always @(posedge CLK) begin
+      stole <= (i_fadds | i_fsubs) & ADDSUB_R_TVALID ? 0 :
+               (i_fmuls) & MUL_R_TVALID ? 0 :
+               (i_fdivs) & DIV_R_TVALID ? 0 :
+               (i_feqs | i_flts | i_fles) & COMP_R_TVALID ? 0 :
+               (i_fcvtsw) & FCVTSW_R_TVALID ? 0:
+               (i_fcvtws) & FCVTWS_R_TVALID ? 0:
+               (i_fsqrts) & FSQRTS_R_TVALID ? 0:
+               (i_out) && (S_AXI_BRESP == 00) ? 0 :
+               (i_fadds | i_fsubs | i_fmuls | i_fdivs | i_feqs | i_flts | i_fles | i_fcvtsw | i_fcvtws | i_fsqrts | i_out) ? 1 :
+               0;
+  end
+
   // PC
   reg [31:0] pc_add_imm, pc_add_4, pc_jalr, pc_before;
   always @(posedge CLK) begin
@@ -586,6 +598,7 @@ module core_top
   // メモリアクセスの前に実行と切り分ける
 
   wire [4:0] wr_addr;
+  wire [4:0] fwr_addr;
   wire  wr_we;
   wire [31:0] wr_data;
 
@@ -598,8 +611,9 @@ module core_top
   assign MEM_DATA = (i_sb) ? {4{rs2[7:0]}}:
                    (i_sh) ? {2{rs2[15:0]}}:
                    (i_sw) ? {rs2}:
+                   (i_fsw) ? {frs2}:
                    32'd0;
-  assign MEM_WE = (i_sb | i_sh | i_sw) && (cpu_state == MEMORY);
+  assign MEM_WE = (i_sb | i_sh | i_sw | i_fsw) && (cpu_state == MEMORY);
  
   // 5. 書き戻し
   
@@ -612,16 +626,20 @@ module core_top
                  pc_add_4;
   assign wr_we = (cpu_state == WRITEBACK);
   assign wr_data = (i_lui) ? imm:
-                   (i_lw | i_lh | i_lb | i_lbu | i_lhu) ? MEM_IN:
+                   (i_lw | i_lh | i_lb | i_lbu | i_lhu | i_flw) ? MEM_IN:
                    (i_auipc) ? pc_add_imm:
                    (i_jal | i_jalr) ? pc_add_4:
                    (i_fadds | i_fsubs) ? ADDSUB_R_TDATA:
                    (i_fmuls) ? MUL_R_TDATA:
                    (i_fdivs) ? DIV_R_TDATA:
                    (i_feqs | i_flts | i_fles) ? COMP_R_TDATA:
+                   (i_fcvtsw) ? FCVTSW_R_TDATA :
+                   (i_fcvtws) ? FCVTWS_R_TDATA :
+                   (i_fsqrts) ? FSQRTS_R_TDATA :
                    (i_in) ? S_AXI_RDATA:
                      alu_result;
   assign wr_addr = rd_num;
+  assign fwr_addr = frd_num;
 
   core_reg u_core_reg
   (
@@ -629,6 +647,8 @@ module core_top
     .CLK (CLK),
 
     .WADDR (wr_addr),
+    .FWADDR (fwr_addr),
+
     .WE (wr_we),
     .WDATA (wr_data),
     .INE (ine),
@@ -638,6 +658,11 @@ module core_top
     .RS1 (rs1),
     .RS2ADDR (rs2_num),
     .RS2 (rs2),
+
+    .FRS1ADDR (frs1_num),
+    .FRS1 (frs1),
+    .FRS2ADDR (frs2_num),
+    .FRS2 (frs2),
 
     .PC_WE (wr_pc_we),
     .PC_WDATA (wr_pc),
