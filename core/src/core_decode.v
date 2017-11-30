@@ -148,6 +148,11 @@ module core_decode
       I_FEQS <= 1'b0;
       I_FLTS <= 1'b0;
       I_FLES <= 1'b0;
+      I_FMVSX <= 1'b0;
+      I_FCVTSW <= 1'b0;
+      I_FCVTWS <= 1'b0;
+      I_FSQRTS <= 1'b0;
+      I_FSGNJXS <= 1'b0;
       I_IN <= 1'b0;
       I_OUT <= 1'b0;
     end else begin
@@ -202,6 +207,13 @@ module core_decode
       I_FEQS <= (INST[6:2] == 5'b10100) && (func7 == 7'b1010000) && (func3 == 3'b010);
       I_FLTS <= (INST[6:2] == 5'b10100) && (func7 == 7'b1010000) && (func3 == 3'b001);
       I_FLES <= (INST[6:2] == 5'b10100) && (func7 == 7'b1010000) && (func3 == 3'b000);
+
+      I_FMVSX <= (INST[6:2] == 5'b10100) && (func7 == 7'b1110000);
+      I_FCVTSW <= (INST[6:2] == 5'b10100) && (func7 == 7'b1101000);
+      I_FCVTWS <= (INST[6:2] == 5'b10100) && (func7 == 7'b1100000);
+      I_FSQRTS <= (INST[6:2] == 5'b10100) && (func7 == 7'b0101100);
+      I_FSGNJXS <= (INST[6:2] == 5'b10100) && (func7 == 7'b0010000);
+
       I_IN <= (INST[6:0] == 7'b0000001) && (func3 == 3'b000);
       I_OUT <= (INST[6:0] == 7'b0000001) && (func3 == 3'b001);
     end

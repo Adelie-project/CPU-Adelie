@@ -1,0 +1,9 @@
+
+****** Webtalk v2016.4 (64-bit)
+  **** SW Build 1756540 on Mon Jan 23 19:11:19 MST 2017
+  **** IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+source /home/yamaguchi/CPU-Adelie/loopback/loopback.hw/webtalk/labtool_webtalk.tcl -notrace
+INFO: [Common 17-186] '/home/yamaguchi/CPU-Adelie/loopback/loopback.hw/webtalk/usage_statistics_ext_labtool.xml' has been successfully sent to Xilinx on Thu Nov 30 13:57:53 2017. For additional details about this file, please refer to the WebTalk help file at /opt/Xilinx/Vivado/2016.4/doc/webtalk_introduction.html.
+INFO: [Common 17-206] Exiting Webtalk at Thu Nov 30 13:57:53 2017...
