@@ -104,6 +104,24 @@ module design_1_core_top_0_0 (
   COMP_R_TDATA,
   COMP_R_TREADY,
   COMP_R_TVALID,
+  FCVTSW_A_TDATA,
+  FCVTSW_A_TREADY,
+  FCVTSW_A_TVALID,
+  FCVTSW_R_TDATA,
+  FCVTSW_R_TREADY,
+  FCVTSW_R_TVALID,
+  FCVTWS_A_TDATA,
+  FCVTWS_A_TREADY,
+  FCVTWS_A_TVALID,
+  FCVTWS_R_TDATA,
+  FCVTWS_R_TREADY,
+  FCVTWS_R_TVALID,
+  FSQRTS_A_TDATA,
+  FSQRTS_A_TREADY,
+  FSQRTS_A_TVALID,
+  FSQRTS_R_TDATA,
+  FSQRTS_R_TREADY,
+  FSQRTS_R_TVALID,
   S_AXI_AWADDR,
   S_AXI_AWVALID,
   S_AXI_AWREADY,
@@ -217,6 +235,42 @@ input wire [31 : 0] COMP_R_TDATA;
 output wire COMP_R_TREADY;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 COMP_R TVALID" *)
 input wire COMP_R_TVALID;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FCVTSW_A TDATA" *)
+output wire [31 : 0] FCVTSW_A_TDATA;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FCVTSW_A TREADY" *)
+input wire FCVTSW_A_TREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FCVTSW_A TVALID" *)
+output wire FCVTSW_A_TVALID;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FCVTSW_R TDATA" *)
+input wire [31 : 0] FCVTSW_R_TDATA;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FCVTSW_R TREADY" *)
+output wire FCVTSW_R_TREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FCVTSW_R TVALID" *)
+input wire FCVTSW_R_TVALID;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FCVTWS_A TDATA" *)
+output wire [31 : 0] FCVTWS_A_TDATA;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FCVTWS_A TREADY" *)
+input wire FCVTWS_A_TREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FCVTWS_A TVALID" *)
+output wire FCVTWS_A_TVALID;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FCVTWS_R TDATA" *)
+input wire [31 : 0] FCVTWS_R_TDATA;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FCVTWS_R TREADY" *)
+output wire FCVTWS_R_TREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FCVTWS_R TVALID" *)
+input wire FCVTWS_R_TVALID;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FSQRTS_A TDATA" *)
+output wire [31 : 0] FSQRTS_A_TDATA;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FSQRTS_A TREADY" *)
+input wire FSQRTS_A_TREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FSQRTS_A TVALID" *)
+output wire FSQRTS_A_TVALID;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FSQRTS_R TDATA" *)
+input wire [31 : 0] FSQRTS_R_TDATA;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FSQRTS_R TREADY" *)
+output wire FSQRTS_R_TREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FSQRTS_R TVALID" *)
+input wire FSQRTS_R_TVALID;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI AWADDR" *)
 output wire [3 : 0] S_AXI_AWADDR;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI AWVALID" *)
@@ -302,6 +356,24 @@ output wire S_AXI_RREADY;
     .COMP_R_TDATA(COMP_R_TDATA),
     .COMP_R_TREADY(COMP_R_TREADY),
     .COMP_R_TVALID(COMP_R_TVALID),
+    .FCVTSW_A_TDATA(FCVTSW_A_TDATA),
+    .FCVTSW_A_TREADY(FCVTSW_A_TREADY),
+    .FCVTSW_A_TVALID(FCVTSW_A_TVALID),
+    .FCVTSW_R_TDATA(FCVTSW_R_TDATA),
+    .FCVTSW_R_TREADY(FCVTSW_R_TREADY),
+    .FCVTSW_R_TVALID(FCVTSW_R_TVALID),
+    .FCVTWS_A_TDATA(FCVTWS_A_TDATA),
+    .FCVTWS_A_TREADY(FCVTWS_A_TREADY),
+    .FCVTWS_A_TVALID(FCVTWS_A_TVALID),
+    .FCVTWS_R_TDATA(FCVTWS_R_TDATA),
+    .FCVTWS_R_TREADY(FCVTWS_R_TREADY),
+    .FCVTWS_R_TVALID(FCVTWS_R_TVALID),
+    .FSQRTS_A_TDATA(FSQRTS_A_TDATA),
+    .FSQRTS_A_TREADY(FSQRTS_A_TREADY),
+    .FSQRTS_A_TVALID(FSQRTS_A_TVALID),
+    .FSQRTS_R_TDATA(FSQRTS_R_TDATA),
+    .FSQRTS_R_TREADY(FSQRTS_R_TREADY),
+    .FSQRTS_R_TVALID(FSQRTS_R_TVALID),
     .S_AXI_AWADDR(S_AXI_AWADDR),
     .S_AXI_AWVALID(S_AXI_AWVALID),
     .S_AXI_AWREADY(S_AXI_AWREADY),
