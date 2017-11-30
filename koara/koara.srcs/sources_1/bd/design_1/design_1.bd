@@ -442,13 +442,13 @@
         <spirit:internalPortReference spirit:componentRef="floating_point_3" spirit:portRef="aclk"/>
         <spirit:internalPortReference spirit:componentRef="floating_point_2" spirit:portRef="aclk"/>
         <spirit:internalPortReference spirit:componentRef="floating_point_1" spirit:portRef="aclk"/>
+        <spirit:internalPortReference spirit:componentRef="floating_point_5" spirit:portRef="aclk"/>
+        <spirit:internalPortReference spirit:componentRef="floating_point_4" spirit:portRef="aclk"/>
+        <spirit:internalPortReference spirit:componentRef="floating_point_6" spirit:portRef="aclk"/>
         <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="S00_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="ACLK"/>
         <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="M00_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="core_top_0" spirit:portRef="CLK"/>
-        <spirit:internalPortReference spirit:componentRef="floating_point_5" spirit:portRef="aclk"/>
-        <spirit:internalPortReference spirit:componentRef="floating_point_4" spirit:portRef="aclk"/>
-        <spirit:internalPortReference spirit:componentRef="floating_point_6" spirit:portRef="aclk"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>sim_clk_gen_0_sync_rst</spirit:name>

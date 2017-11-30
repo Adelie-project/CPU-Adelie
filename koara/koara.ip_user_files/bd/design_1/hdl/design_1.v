@@ -1,7 +1,7 @@
 //Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
-//Date        : Sat Nov 25 05:34:11 2017
+//Date        : Thu Nov 30 17:35:07 2017
 //Host        : ispc2016 running 64-bit Ubuntu 14.04.5 LTS
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -9,12 +9,18 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=13,numReposBlks=11,numNonXlnxBlks=1,numHierBlks=2,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=1,da_board_cnt=1,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=16,numReposBlks=14,numNonXlnxBlks=1,numHierBlks=2,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=1,da_board_cnt=3,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
 module design_1
-   (rs232_uart_rxd,
-    rs232_uart_txd);
+   (reset,
+    rs232_uart_rxd,
+    rs232_uart_txd,
+    sysclk_125_clk_n,
+    sysclk_125_clk_p);
+  input reset;
   input rs232_uart_rxd;
   output rs232_uart_txd;
+  input sysclk_125_clk_n;
+  input sysclk_125_clk_p;
 
   wire axi_uartlite_0_UART_RxD;
   wire axi_uartlite_0_UART_TxD;
@@ -41,6 +47,15 @@ module design_1
   wire [31:0]core_top_0_DIV_B_TDATA;
   wire core_top_0_DIV_B_TREADY;
   wire core_top_0_DIV_B_TVALID;
+  wire [31:0]core_top_0_FCVTSW_A_TDATA;
+  wire core_top_0_FCVTSW_A_TREADY;
+  wire core_top_0_FCVTSW_A_TVALID;
+  wire [31:0]core_top_0_FCVTWS_A_TDATA;
+  wire core_top_0_FCVTWS_A_TREADY;
+  wire core_top_0_FCVTWS_A_TVALID;
+  wire [31:0]core_top_0_FSQRTS_A_TDATA;
+  wire core_top_0_FSQRTS_A_TREADY;
+  wire core_top_0_FSQRTS_A_TVALID;
   wire [31:0]core_top_0_I_MEM_ADDR;
   wire [31:0]core_top_0_MEM_ADDR;
   wire [31:0]core_top_0_MEM_DATA;
@@ -98,13 +113,28 @@ module design_1
   wire [31:0]floating_point_3_M_AXIS_RESULT_TDATA;
   wire floating_point_3_M_AXIS_RESULT_TREADY;
   wire floating_point_3_M_AXIS_RESULT_TVALID;
+  wire [31:0]floating_point_4_M_AXIS_RESULT_TDATA;
+  wire floating_point_4_M_AXIS_RESULT_TREADY;
+  wire floating_point_4_M_AXIS_RESULT_TVALID;
+  wire [31:0]floating_point_5_M_AXIS_RESULT_TDATA;
+  wire floating_point_5_M_AXIS_RESULT_TREADY;
+  wire floating_point_5_M_AXIS_RESULT_TVALID;
+  wire [31:0]floating_point_6_M_AXIS_RESULT_TDATA;
+  wire floating_point_6_M_AXIS_RESULT_TREADY;
+  wire floating_point_6_M_AXIS_RESULT_TVALID;
+  wire reset_1;
   wire sim_clk_gen_0_clk;
   wire sim_clk_gen_0_sync_rst;
+  wire sysclk_125_1_CLK_N;
+  wire sysclk_125_1_CLK_P;
   wire [0:0]xlconstant_0_dout;
   wire [0:0]xlconstant_1_dout;
 
   assign axi_uartlite_0_UART_RxD = rs232_uart_rxd;
+  assign reset_1 = reset;
   assign rs232_uart_txd = axi_uartlite_0_UART_TxD;
+  assign sysclk_125_1_CLK_N = sysclk_125_clk_n;
+  assign sysclk_125_1_CLK_P = sysclk_125_clk_p;
   design_1_axi_uartlite_0_0 axi_uartlite_0
        (.rx(axi_uartlite_0_UART_RxD),
         .s_axi_aclk(sim_clk_gen_0_clk),
@@ -140,6 +170,12 @@ module design_1
         .douta(blk_mem_gen_1_douta),
         .ena(xlconstant_1_dout),
         .wea(core_top_0_MEM_WE));
+  design_1_clk_wiz_0_0 clk_wiz_0
+       (.clk_in1_n(sysclk_125_1_CLK_N),
+        .clk_in1_p(sysclk_125_1_CLK_P),
+        .clk_out1(sim_clk_gen_0_clk),
+        .locked(sim_clk_gen_0_sync_rst),
+        .reset(reset_1));
   design_1_core_top_0_0 core_top_0
        (.ADDSUB_A_TDATA(core_top_0_A_TDATA),
         .ADDSUB_A_TREADY(core_top_0_A_TREADY),
@@ -175,6 +211,24 @@ module design_1
         .DIV_R_TDATA(floating_point_2_M_AXIS_RESULT_TDATA),
         .DIV_R_TREADY(floating_point_2_M_AXIS_RESULT_TREADY),
         .DIV_R_TVALID(floating_point_2_M_AXIS_RESULT_TVALID),
+        .FCVTSW_A_TDATA(core_top_0_FCVTSW_A_TDATA),
+        .FCVTSW_A_TREADY(core_top_0_FCVTSW_A_TREADY),
+        .FCVTSW_A_TVALID(core_top_0_FCVTSW_A_TVALID),
+        .FCVTSW_R_TDATA(floating_point_4_M_AXIS_RESULT_TDATA),
+        .FCVTSW_R_TREADY(floating_point_4_M_AXIS_RESULT_TREADY),
+        .FCVTSW_R_TVALID(floating_point_4_M_AXIS_RESULT_TVALID),
+        .FCVTWS_A_TDATA(core_top_0_FCVTWS_A_TDATA),
+        .FCVTWS_A_TREADY(core_top_0_FCVTWS_A_TREADY),
+        .FCVTWS_A_TVALID(core_top_0_FCVTWS_A_TVALID),
+        .FCVTWS_R_TDATA(floating_point_5_M_AXIS_RESULT_TDATA),
+        .FCVTWS_R_TREADY(floating_point_5_M_AXIS_RESULT_TREADY),
+        .FCVTWS_R_TVALID(floating_point_5_M_AXIS_RESULT_TVALID),
+        .FSQRTS_A_TDATA(core_top_0_FSQRTS_A_TDATA),
+        .FSQRTS_A_TREADY(core_top_0_FSQRTS_A_TREADY),
+        .FSQRTS_A_TVALID(core_top_0_FSQRTS_A_TVALID),
+        .FSQRTS_R_TDATA(floating_point_6_M_AXIS_RESULT_TDATA),
+        .FSQRTS_R_TREADY(floating_point_6_M_AXIS_RESULT_TREADY),
+        .FSQRTS_R_TVALID(floating_point_6_M_AXIS_RESULT_TVALID),
         .I_MEM_ADDR(core_top_0_I_MEM_ADDR),
         .I_MEM_IN(blk_mem_gen_0_douta),
         .MEM_ADDR(core_top_0_MEM_ADDR),
@@ -296,9 +350,30 @@ module design_1
         .s_axis_b_tdata(core_top_0_MUL_B_TDATA),
         .s_axis_b_tready(core_top_0_MUL_B_TREADY),
         .s_axis_b_tvalid(core_top_0_MUL_B_TVALID));
-  design_1_sim_clk_gen_0_0 sim_clk_gen_0
-       (.clk(sim_clk_gen_0_clk),
-        .sync_rst(sim_clk_gen_0_sync_rst));
+  design_1_floating_point_2_0 floating_point_4
+       (.aclk(sim_clk_gen_0_clk),
+        .m_axis_result_tdata(floating_point_4_M_AXIS_RESULT_TDATA),
+        .m_axis_result_tready(floating_point_4_M_AXIS_RESULT_TREADY),
+        .m_axis_result_tvalid(floating_point_4_M_AXIS_RESULT_TVALID),
+        .s_axis_a_tdata(core_top_0_FCVTSW_A_TDATA),
+        .s_axis_a_tready(core_top_0_FCVTSW_A_TREADY),
+        .s_axis_a_tvalid(core_top_0_FCVTSW_A_TVALID));
+  design_1_floating_point_4_0 floating_point_5
+       (.aclk(sim_clk_gen_0_clk),
+        .m_axis_result_tdata(floating_point_5_M_AXIS_RESULT_TDATA),
+        .m_axis_result_tready(floating_point_5_M_AXIS_RESULT_TREADY),
+        .m_axis_result_tvalid(floating_point_5_M_AXIS_RESULT_TVALID),
+        .s_axis_a_tdata(core_top_0_FCVTWS_A_TDATA),
+        .s_axis_a_tready(core_top_0_FCVTWS_A_TREADY),
+        .s_axis_a_tvalid(core_top_0_FCVTWS_A_TVALID));
+  design_1_floating_point_5_0 floating_point_6
+       (.aclk(sim_clk_gen_0_clk),
+        .m_axis_result_tdata(floating_point_6_M_AXIS_RESULT_TDATA),
+        .m_axis_result_tready(floating_point_6_M_AXIS_RESULT_TREADY),
+        .m_axis_result_tvalid(floating_point_6_M_AXIS_RESULT_TVALID),
+        .s_axis_a_tdata(core_top_0_FSQRTS_A_TDATA),
+        .s_axis_a_tready(core_top_0_FSQRTS_A_TREADY),
+        .s_axis_a_tvalid(core_top_0_FSQRTS_A_TVALID));
   design_1_xlconstant_0_0 xlconstant_0
        (.dout(xlconstant_0_dout));
   design_1_xlconstant_0_1 xlconstant_1

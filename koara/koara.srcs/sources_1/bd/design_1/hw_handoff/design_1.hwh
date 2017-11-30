@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Nov 30 16:04:04 2017" VIVADOVERSION="2016.4">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Nov 30 17:35:08 2017" VIVADOVERSION="2016.4">
 
   <SYSTEMINFO ARCH="kintexu" BOARD="xilinx.com:kcu105:part0:1.1" DEVICE="xcku040" NAME="design_1" PACKAGE="ffva1156" SPEEDGRADE="-2"/>
 
@@ -1188,13 +1188,13 @@
             <CONNECTION INSTANCE="floating_point_3" PORT="aclk"/>
             <CONNECTION INSTANCE="floating_point_2" PORT="aclk"/>
             <CONNECTION INSTANCE="floating_point_1" PORT="aclk"/>
+            <CONNECTION INSTANCE="floating_point_5" PORT="aclk"/>
+            <CONNECTION INSTANCE="floating_point_4" PORT="aclk"/>
+            <CONNECTION INSTANCE="floating_point_6" PORT="aclk"/>
             <CONNECTION INSTANCE="core_top_0_axi_periph" PORT="S00_ACLK"/>
             <CONNECTION INSTANCE="core_top_0_axi_periph" PORT="ACLK"/>
             <CONNECTION INSTANCE="core_top_0_axi_periph" PORT="M00_ACLK"/>
             <CONNECTION INSTANCE="core_top_0" PORT="CLK"/>
-            <CONNECTION INSTANCE="floating_point_5" PORT="aclk"/>
-            <CONNECTION INSTANCE="floating_point_4" PORT="aclk"/>
-            <CONNECTION INSTANCE="floating_point_6" PORT="aclk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="locked" SIGIS="undef" SIGNAME="clk_wiz_0_locked">
