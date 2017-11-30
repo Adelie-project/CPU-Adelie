@@ -4,6 +4,8 @@ module core_reg
    input CLK,
 
    input [4:0] WADDR,
+   input [4:0] FWADDR,
+
    input  WE,
    input [31:0] WDATA,
    input  INE,
@@ -14,15 +16,21 @@ module core_reg
    input [4:0] RS2ADDR,
    output reg [31:0] RS2,
 
+   input [4:0] FRS1ADDR,
+   output reg [31:0] FRS1,
+   input [4:0] FRS2ADDR,
+   output reg [31:0] FRS2,
+
    input PC_WE,
    input [31:0] PC_WDATA,
    output reg [31:0] PC
   );
 
    reg [31:0] reg1, reg2, reg3, reg4, reg5, reg6, reg7, reg8, reg9, reg10, reg11, reg12, reg13, reg14, reg15, reg16, reg17, reg18, reg19, reg20, reg21, reg22, reg23, reg24, reg25, reg26, reg27, reg28, reg29, reg30, reg31;
-   freg [31:0] freg1, freg2, freg3, freg4, freg5, freg6, freg7, freg8, freg9, freg10, freg11, freg12, freg13, freg14, freg15, freg16, freg17, freg18, freg19, freg20, freg21, freg22, freg23, freg24, freg25, freg26, freg27, freg28, freg29, freg30, freg31;
+   reg [31:0] freg1, freg2, freg3, freg4, freg5, freg6, freg7, freg8, freg9, freg10, freg11, freg12, freg13, freg14, freg15, freg16, freg17, freg18, freg19, freg20, freg21, freg22, freg23, freg24, freg25, freg26, freg27, freg28, freg29, freg30, freg31;
    reg _WE;
 
+   // 整数レジスタ write
    always @(posedge CLK) begin
       if(!RST_N) begin
 				reg1 <= 0;
@@ -123,6 +131,108 @@ module core_reg
       end
    end
 
+   // 浮動小数点レジスタ write
+   always @(posedge CLK) begin
+      if(!RST_N) begin
+				freg1 <= 0;
+				freg2 <= 0;
+				freg3 <= 0;
+				freg4 <= 0;
+				freg5 <= 0;
+				freg6 <= 0;
+				freg7 <= 0;
+				freg8 <= 0;
+				freg9 <= 0;
+				freg10 <= 0;
+				freg11 <= 0;
+				freg12 <= 0;
+				freg13 <= 0;
+				freg14 <= 0;
+				freg15 <= 0;
+				freg16 <= 0;
+				freg17 <= 0;
+				freg18 <= 0;
+				freg19 <= 0;
+				freg20 <= 0;
+				freg21 <= 0;
+				freg22 <= 0;
+				freg23 <= 0;
+				freg24 <= 0;
+				freg25 <= 0;
+				freg26 <= 0;
+				freg27 <= 0;
+				freg28 <= 0;
+				freg29 <= 0;
+				freg30 <= 0;
+				freg31 <= 0;
+      end else begin
+        _WE <= WE;
+        if(_WE && (FWADDR == 5'd1)) freg1 <= WDATA;
+        if(_WE && (FWADDR == 5'd2)) freg2 <= WDATA;
+        if(_WE && (FWADDR == 5'd3)) freg3 <= WDATA;
+        if(_WE && (FWADDR == 5'd4)) freg4 <= WDATA;
+        if(_WE && (FWADDR == 5'd5)) freg5 <= WDATA;
+        if(_WE && (FWADDR == 5'd6)) freg6 <= WDATA;
+        if(_WE && (FWADDR == 5'd7)) freg7 <= WDATA;
+        if(_WE && (FWADDR == 5'd8)) freg8 <= WDATA;
+        if(_WE && (FWADDR == 5'd9)) freg9 <= WDATA;
+        if(_WE && (FWADDR == 5'd10)) freg10 <= WDATA;
+        if(_WE && (FWADDR == 5'd11)) freg11 <= WDATA;
+        if(_WE && (FWADDR == 5'd12)) freg12 <= WDATA;
+        if(_WE && (FWADDR == 5'd13)) freg13 <= WDATA;
+        if(_WE && (FWADDR == 5'd14)) freg14 <= WDATA;
+        if(_WE && (FWADDR == 5'd15)) freg15 <= WDATA;
+        if(_WE && (FWADDR == 5'd16)) freg16 <= WDATA;
+        if(_WE && (FWADDR == 5'd17)) freg17 <= WDATA;
+        if(_WE && (FWADDR == 5'd18)) freg18 <= WDATA;
+        if(_WE && (FWADDR == 5'd19)) freg19 <= WDATA;
+        if(_WE && (FWADDR == 5'd20)) freg20 <= WDATA;
+        if(_WE && (FWADDR == 5'd21)) freg21 <= WDATA;
+        if(_WE && (FWADDR == 5'd22)) freg22 <= WDATA;
+        if(_WE && (FWADDR == 5'd23)) freg23 <= WDATA;
+        if(_WE && (FWADDR == 5'd24)) freg24 <= WDATA;
+        if(_WE && (FWADDR == 5'd25)) freg25 <= WDATA;
+        if(_WE && (FWADDR == 5'd26)) freg26 <= WDATA;
+        if(_WE && (FWADDR == 5'd27)) freg27 <= WDATA;
+        if(_WE && (FWADDR == 5'd28)) freg28 <= WDATA;
+        if(_WE && (FWADDR == 5'd29)) freg29 <= WDATA;
+        if(_WE && (FWADDR == 5'd30)) freg30 <= WDATA;
+        if(_WE && (FWADDR == 5'd31)) freg31 <= WDATA;
+        if(INE && (FWADDR == 5'd1)) freg1 <= {freg1[31:8],INDATA};
+        if(INE && (FWADDR == 5'd2)) freg2 <= {freg2[31:8],INDATA};
+        if(INE && (FWADDR == 5'd3)) freg3 <= {freg3[31:8],INDATA};
+        if(INE && (FWADDR == 5'd4)) freg4 <= {freg4[31:8],INDATA};
+        if(INE && (FWADDR == 5'd5)) freg5 <= {freg5[31:8],INDATA};
+        if(INE && (FWADDR == 5'd6)) freg6 <= {freg6[31:8],INDATA};
+        if(INE && (FWADDR == 5'd7)) freg7 <= {freg7[31:8],INDATA};
+        if(INE && (FWADDR == 5'd8)) freg8 <= {freg8[31:8],INDATA};
+        if(INE && (FWADDR == 5'd9)) freg9 <= {freg9[31:8],INDATA};
+        if(INE && (FWADDR == 5'd10)) freg10 <= {freg10[31:8],INDATA};
+        if(INE && (FWADDR == 5'd11)) freg11 <= {freg11[31:8],INDATA};
+        if(INE && (FWADDR == 5'd12)) freg12 <= {freg12[31:8],INDATA};
+        if(INE && (FWADDR == 5'd13)) freg13 <= {freg13[31:8],INDATA};
+        if(INE && (FWADDR == 5'd14)) freg14 <= {freg14[31:8],INDATA};
+        if(INE && (FWADDR == 5'd15)) freg15 <= {freg15[31:8],INDATA};
+        if(INE && (FWADDR == 5'd16)) freg16 <= {freg16[31:8],INDATA};
+        if(INE && (FWADDR == 5'd17)) freg17 <= {freg17[31:8],INDATA};
+        if(INE && (FWADDR == 5'd18)) freg18 <= {freg18[31:8],INDATA};
+        if(INE && (FWADDR == 5'd19)) freg19 <= {freg19[31:8],INDATA};
+        if(INE && (FWADDR == 5'd20)) freg20 <= {freg20[31:8],INDATA};
+        if(INE && (FWADDR == 5'd21)) freg21 <= {freg21[31:8],INDATA};
+        if(INE && (FWADDR == 5'd22)) freg22 <= {freg22[31:8],INDATA};
+        if(INE && (FWADDR == 5'd23)) freg23 <= {freg23[31:8],INDATA};
+        if(INE && (FWADDR == 5'd24)) freg24 <= {freg24[31:8],INDATA};
+        if(INE && (FWADDR == 5'd25)) freg25 <= {freg25[31:8],INDATA};
+        if(INE && (FWADDR == 5'd26)) freg26 <= {freg26[31:8],INDATA};
+        if(INE && (FWADDR == 5'd27)) freg27 <= {freg27[31:8],INDATA};
+        if(INE && (FWADDR == 5'd28)) freg28 <= {freg28[31:8],INDATA};
+        if(INE && (FWADDR == 5'd29)) freg29 <= {freg29[31:8],INDATA};
+        if(INE && (FWADDR == 5'd30)) freg30 <= {freg30[31:8],INDATA};
+        if(INE && (FWADDR == 5'd31)) freg31 <= {freg31[31:8],INDATA};
+      end
+   end
+
+   // 整数レジスタ read from register to RS1
    always @(posedge CLK) begin
       if(!RST_N) begin
          RS1 <= 0;
@@ -164,6 +274,49 @@ module core_reg
       end
    end
 
+   // 浮動小数点レジスタ read from register to FRS1
+   always @(posedge CLK) begin
+      if(!RST_N) begin
+         FRS1 <= 0;
+      end else begin
+	     case(FRS1ADDR)
+         5'd1: FRS1 <= freg1;
+         5'd2: FRS1 <= freg2;
+         5'd3: FRS1 <= freg3;
+         5'd4: FRS1 <= freg4;
+         5'd5: FRS1 <= freg5;
+         5'd6: FRS1 <= freg6;
+         5'd7: FRS1 <= freg7;
+         5'd8: FRS1 <= freg8;
+         5'd9: FRS1 <= freg9;
+         5'd10: FRS1 <= freg10;
+         5'd11: FRS1 <= freg11;
+         5'd12: FRS1 <= freg12;
+         5'd13: FRS1 <= freg13;
+         5'd14: FRS1 <= freg14;
+         5'd15: FRS1 <= freg15;
+         5'd16: FRS1 <= freg16;
+         5'd17: FRS1 <= freg17;
+         5'd18: FRS1 <= freg18;
+         5'd19: FRS1 <= freg19;
+         5'd20: FRS1 <= freg20;
+         5'd21: FRS1 <= freg21;
+         5'd22: FRS1 <= freg22;
+         5'd23: FRS1 <= freg23;
+         5'd24: FRS1 <= freg24;
+         5'd25: FRS1 <= freg25;
+         5'd26: FRS1 <= freg26;
+         5'd27: FRS1 <= freg27;
+         5'd28: FRS1 <= freg28;
+         5'd29: FRS1 <= freg29;
+         5'd30: FRS1 <= freg30;
+         5'd31: FRS1 <= freg31;
+		   default: FRS1 <= 32'd0;
+	     endcase
+      end
+   end
+
+   // 整数レジスタ read from register to RS2
    always @(posedge CLK) begin
       if(!RST_N) begin
          RS2 <= 0;
@@ -201,6 +354,48 @@ module core_reg
          5'd30: RS2 <= reg30;
          5'd31: RS2 <= reg31;
 		   default: RS2 <= 32'd0;
+	     endcase
+      end
+   end
+
+   // 浮動小数点レジスタ read from register to FRS2
+   always @(posedge CLK) begin
+      if(!RST_N) begin
+         FRS2 <= 0;
+      end else begin
+	     case(FRS2ADDR)
+         5'd1: FRS2 <= freg1;
+         5'd2: FRS2 <= freg2;
+         5'd3: FRS2 <= freg3;
+         5'd4: FRS2 <= freg4;
+         5'd5: FRS2 <= freg5;
+         5'd6: FRS2 <= freg6;
+         5'd7: FRS2 <= freg7;
+         5'd8: FRS2 <= freg8;
+         5'd9: FRS2 <= freg9;
+         5'd10: FRS2 <= freg10;
+         5'd11: FRS2 <= freg11;
+         5'd12: FRS2 <= freg12;
+         5'd13: FRS2 <= freg13;
+         5'd14: FRS2 <= freg14;
+         5'd15: FRS2 <= freg15;
+         5'd16: FRS2 <= freg16;
+         5'd17: FRS2 <= freg17;
+         5'd18: FRS2 <= freg18;
+         5'd19: FRS2 <= freg19;
+         5'd20: FRS2 <= freg20;
+         5'd21: FRS2 <= freg21;
+         5'd22: FRS2 <= freg22;
+         5'd23: FRS2 <= freg23;
+         5'd24: FRS2 <= freg24;
+         5'd25: FRS2 <= freg25;
+         5'd26: FRS2 <= freg26;
+         5'd27: FRS2 <= freg27;
+         5'd28: FRS2 <= freg28;
+         5'd29: FRS2 <= freg29;
+         5'd30: FRS2 <= freg30;
+         5'd31: FRS2 <= freg31;
+		   default: FRS2 <= 32'd0;
 	     endcase
       end
    end
