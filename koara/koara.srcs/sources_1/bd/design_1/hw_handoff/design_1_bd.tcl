@@ -327,6 +327,51 @@ CONFIG.Operation_Type {Multiply} \
 CONFIG.Result_Precision_Type {Single} \
  ] $floating_point_3
 
+  # Create instance: floating_point_4, and set properties
+  set floating_point_4 [ create_bd_cell -type ip -vlnv xilinx.com:ip:floating_point:7.1 floating_point_4 ]
+  set_property -dict [ list \
+CONFIG.C_Accum_Input_Msb {32} \
+CONFIG.C_Accum_Lsb {-31} \
+CONFIG.C_Accum_Msb {32} \
+CONFIG.C_Latency {7} \
+CONFIG.C_Mult_Usage {No_Usage} \
+CONFIG.C_Rate {1} \
+CONFIG.C_Result_Exponent_Width {8} \
+CONFIG.C_Result_Fraction_Width {24} \
+CONFIG.Operation_Type {Fixed_to_float} \
+CONFIG.Result_Precision_Type {Single} \
+ ] $floating_point_4
+
+  # Create instance: floating_point_5, and set properties
+  set floating_point_5 [ create_bd_cell -type ip -vlnv xilinx.com:ip:floating_point:7.1 floating_point_5 ]
+  set_property -dict [ list \
+CONFIG.C_Accum_Input_Msb {32} \
+CONFIG.C_Accum_Lsb {-31} \
+CONFIG.C_Accum_Msb {32} \
+CONFIG.C_Latency {7} \
+CONFIG.C_Mult_Usage {No_Usage} \
+CONFIG.C_Rate {1} \
+CONFIG.C_Result_Exponent_Width {32} \
+CONFIG.C_Result_Fraction_Width {0} \
+CONFIG.Operation_Type {Float_to_fixed} \
+CONFIG.Result_Precision_Type {Int32} \
+ ] $floating_point_5
+
+  # Create instance: floating_point_6, and set properties
+  set floating_point_6 [ create_bd_cell -type ip -vlnv xilinx.com:ip:floating_point:7.1 floating_point_6 ]
+  set_property -dict [ list \
+CONFIG.C_Accum_Input_Msb {32} \
+CONFIG.C_Accum_Lsb {-31} \
+CONFIG.C_Accum_Msb {32} \
+CONFIG.C_Latency {29} \
+CONFIG.C_Mult_Usage {No_Usage} \
+CONFIG.C_Rate {1} \
+CONFIG.C_Result_Exponent_Width {8} \
+CONFIG.C_Result_Fraction_Width {24} \
+CONFIG.Operation_Type {Square_root} \
+CONFIG.Result_Precision_Type {Single} \
+ ] $floating_point_6
+
   # Create instance: xlconstant_0, and set properties
   set xlconstant_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0 ]
   set_property -dict [ list \
@@ -349,6 +394,9 @@ CONFIG.CONST_WIDTH {1} \
   connect_bd_intf_net -intf_net core_top_0_COMP_OP [get_bd_intf_pins core_top_0/COMP_OP] [get_bd_intf_pins floating_point_1/S_AXIS_OPERATION]
   connect_bd_intf_net -intf_net core_top_0_DIV_A [get_bd_intf_pins core_top_0/DIV_A] [get_bd_intf_pins floating_point_2/S_AXIS_A]
   connect_bd_intf_net -intf_net core_top_0_DIV_B [get_bd_intf_pins core_top_0/DIV_B] [get_bd_intf_pins floating_point_2/S_AXIS_B]
+  connect_bd_intf_net -intf_net core_top_0_FCVTSW_A [get_bd_intf_pins core_top_0/FCVTSW_A] [get_bd_intf_pins floating_point_4/S_AXIS_A]
+  connect_bd_intf_net -intf_net core_top_0_FCVTWS_A [get_bd_intf_pins core_top_0/FCVTWS_A] [get_bd_intf_pins floating_point_5/S_AXIS_A]
+  connect_bd_intf_net -intf_net core_top_0_FSQRTS_A [get_bd_intf_pins core_top_0/FSQRTS_A] [get_bd_intf_pins floating_point_6/S_AXIS_A]
   connect_bd_intf_net -intf_net core_top_0_MUL_A [get_bd_intf_pins core_top_0/MUL_A] [get_bd_intf_pins floating_point_3/S_AXIS_A]
   connect_bd_intf_net -intf_net core_top_0_MUL_B [get_bd_intf_pins core_top_0/MUL_B] [get_bd_intf_pins floating_point_3/S_AXIS_B]
   connect_bd_intf_net -intf_net core_top_0_OP [get_bd_intf_pins core_top_0/ADDSUB_OP] [get_bd_intf_pins floating_point_0/S_AXIS_OPERATION]
@@ -358,6 +406,9 @@ CONFIG.CONST_WIDTH {1} \
   connect_bd_intf_net -intf_net floating_point_1_M_AXIS_RESULT [get_bd_intf_pins core_top_0/COMP_R] [get_bd_intf_pins floating_point_1/M_AXIS_RESULT]
   connect_bd_intf_net -intf_net floating_point_2_M_AXIS_RESULT [get_bd_intf_pins core_top_0/DIV_R] [get_bd_intf_pins floating_point_2/M_AXIS_RESULT]
   connect_bd_intf_net -intf_net floating_point_3_M_AXIS_RESULT [get_bd_intf_pins core_top_0/MUL_R] [get_bd_intf_pins floating_point_3/M_AXIS_RESULT]
+  connect_bd_intf_net -intf_net floating_point_4_M_AXIS_RESULT [get_bd_intf_pins core_top_0/FCVTSW_R] [get_bd_intf_pins floating_point_4/M_AXIS_RESULT]
+  connect_bd_intf_net -intf_net floating_point_5_M_AXIS_RESULT [get_bd_intf_pins core_top_0/FCVTWS_R] [get_bd_intf_pins floating_point_5/M_AXIS_RESULT]
+  connect_bd_intf_net -intf_net floating_point_6_M_AXIS_RESULT [get_bd_intf_pins core_top_0/FSQRTS_R] [get_bd_intf_pins floating_point_6/M_AXIS_RESULT]
   connect_bd_intf_net -intf_net sysclk_125_1 [get_bd_intf_ports sysclk_125] [get_bd_intf_pins clk_wiz_0/CLK_IN1_D]
 
   # Create port connections
@@ -368,7 +419,7 @@ CONFIG.CONST_WIDTH {1} \
   connect_bd_net -net core_top_0_MEM_DATA [get_bd_pins blk_mem_gen_1/dina] [get_bd_pins core_top_0/MEM_DATA]
   connect_bd_net -net core_top_0_MEM_WE [get_bd_pins blk_mem_gen_1/wea] [get_bd_pins core_top_0/MEM_WE]
   connect_bd_net -net reset_1 [get_bd_ports reset] [get_bd_pins clk_wiz_0/reset]
-  connect_bd_net -net sim_clk_gen_0_clk [get_bd_pins axi_uartlite_0/s_axi_aclk] [get_bd_pins blk_mem_gen_0/clka] [get_bd_pins blk_mem_gen_1/clka] [get_bd_pins clk_wiz_0/clk_out1] [get_bd_pins core_top_0/CLK] [get_bd_pins core_top_0_axi_periph/ACLK] [get_bd_pins core_top_0_axi_periph/M00_ACLK] [get_bd_pins core_top_0_axi_periph/S00_ACLK] [get_bd_pins floating_point_0/aclk] [get_bd_pins floating_point_1/aclk] [get_bd_pins floating_point_2/aclk] [get_bd_pins floating_point_3/aclk]
+  connect_bd_net -net sim_clk_gen_0_clk [get_bd_pins axi_uartlite_0/s_axi_aclk] [get_bd_pins blk_mem_gen_0/clka] [get_bd_pins blk_mem_gen_1/clka] [get_bd_pins clk_wiz_0/clk_out1] [get_bd_pins core_top_0/CLK] [get_bd_pins core_top_0_axi_periph/ACLK] [get_bd_pins core_top_0_axi_periph/M00_ACLK] [get_bd_pins core_top_0_axi_periph/S00_ACLK] [get_bd_pins floating_point_0/aclk] [get_bd_pins floating_point_1/aclk] [get_bd_pins floating_point_2/aclk] [get_bd_pins floating_point_3/aclk] [get_bd_pins floating_point_4/aclk] [get_bd_pins floating_point_5/aclk] [get_bd_pins floating_point_6/aclk]
   connect_bd_net -net sim_clk_gen_0_sync_rst [get_bd_pins axi_uartlite_0/s_axi_aresetn] [get_bd_pins clk_wiz_0/locked] [get_bd_pins core_top_0/RST_N] [get_bd_pins core_top_0_axi_periph/ARESETN] [get_bd_pins core_top_0_axi_periph/M00_ARESETN] [get_bd_pins core_top_0_axi_periph/S00_ARESETN]
   connect_bd_net -net xlconstant_0_dout [get_bd_pins blk_mem_gen_0/wea] [get_bd_pins xlconstant_0/dout]
   connect_bd_net -net xlconstant_1_dout [get_bd_pins blk_mem_gen_1/ena] [get_bd_pins xlconstant_1/dout]
@@ -388,42 +439,45 @@ preplace inst floating_point_1 -pg 1 -lvl 2 -y 100 -defaultsOSRD
 preplace inst xlconstant_0 -pg 1 -lvl 3 -y 960 -defaultsOSRD
 preplace inst floating_point_2 -pg 1 -lvl 2 -y 480 -defaultsOSRD
 preplace inst core_top_0_axi_periph -pg 1 -lvl 4 -y 540 -defaultsOSRD
-preplace inst xlconstant_1 -pg 1 -lvl 3 -y 510 -defaultsOSRD
+preplace inst xlconstant_1 -pg 1 -lvl 3 -y 540 -defaultsOSRD
 preplace inst floating_point_3 -pg 1 -lvl 2 -y 640 -defaultsOSRD
+preplace inst floating_point_4 -pg 1 -lvl 1 -y 200 -defaultsOSRD
+preplace inst floating_point_5 -pg 1 -lvl 1 -y 420 -defaultsOSRD
 preplace inst blk_mem_gen_0 -pg 1 -lvl 4 -y 890 -defaultsOSRD
+preplace inst floating_point_6 -pg 1 -lvl 5 -y 110 -defaultsOSRD
 preplace inst blk_mem_gen_1 -pg 1 -lvl 4 -y 300 -defaultsOSRD
 preplace inst axi_uartlite_0 -pg 1 -lvl 5 -y 560 -defaultsOSRD
-preplace inst clk_wiz_0 -pg 1 -lvl 1 -y 780 -defaultsOSRD
-preplace netloc floating_point_3_M_AXIS_RESULT 1 2 1 840
-preplace netloc core_top_0_OP 1 1 3 410 390 800J 450 1280
-preplace netloc xlconstant_1_dout 1 3 1 1360J
-preplace netloc core_top_0_MEM_ADDR 1 3 1 1310
-preplace netloc sim_clk_gen_0_sync_rst 1 1 4 380J 230 830 790 1390 790 1680
-preplace netloc core_top_0_MEM_WE 1 3 1 1340
-preplace netloc blk_mem_gen_1_douta 1 2 2 890 580 1350J
-preplace netloc core_top_0_COMP_OP 1 1 3 420 560 NJ 560 1300
-preplace netloc core_top_0_MUL_A 1 1 3 450 410 780J 460 1240
-preplace netloc core_top_0_MUL_B 1 1 3 430 400 790J 440 1220
+preplace inst clk_wiz_0 -pg 1 -lvl 1 -y 840 -defaultsOSRD
+preplace netloc floating_point_3_M_AXIS_RESULT 1 2 1 830
+preplace netloc core_top_0_OP 1 1 3 400 410 800J 470 1250
+preplace netloc xlconstant_1_dout 1 3 1 1350J
+preplace netloc core_top_0_MEM_ADDR 1 3 1 1320
+preplace netloc sim_clk_gen_0_sync_rst 1 1 4 380J 260 820 720 1400 720 1690
+preplace netloc core_top_0_MEM_WE 1 3 1 1370
+preplace netloc blk_mem_gen_1_douta 1 2 2 880 480 1360J
+preplace netloc core_top_0_COMP_OP 1 1 3 400 -30 NJ -30 1280
+preplace netloc core_top_0_MUL_A 1 1 3 440 380 850J 450 1230
+preplace netloc core_top_0_MUL_B 1 1 3 450 390 840J 460 1220
 preplace netloc core_top_0_axi_periph_M00_AXI 1 4 1 N
-preplace netloc core_top_0_MEM_DATA 1 3 1 1320
+preplace netloc core_top_0_MEM_DATA 1 3 1 1330
 preplace netloc sysclk_125_1 1 0 1 30
-preplace netloc floating_point_1_M_AXIS_RESULT 1 2 1 890
-preplace netloc core_top_0_A 1 1 3 390 0 NJ 0 1280
-preplace netloc sim_clk_gen_0_clk 1 1 4 370 890 870 890 1380 670 1670
+preplace netloc floating_point_1_M_AXIS_RESULT 1 2 1 880
+preplace netloc core_top_0_A 1 1 3 460 560 800J 590 1310
+preplace netloc sim_clk_gen_0_clk 1 1 4 370 890 860 890 1390 670 1680
 preplace netloc xlconstant_0_dout 1 3 1 1310J
-preplace netloc core_top_0_COMP_A 1 1 3 450 10 NJ 10 1270
-preplace netloc core_top_0_B 1 1 3 400 370 860J 420 1250
-preplace netloc core_top_0_COMP_B 1 1 3 460 20 NJ 20 1260
-preplace netloc core_top_0_DIV_A 1 1 3 460 570 NJ 570 1290
+preplace netloc core_top_0_COMP_A 1 1 3 430 550 850J 490 1240
+preplace netloc core_top_0_B 1 1 3 470 570 790J 600 1300
 preplace netloc axi_uartlite_0_UART 1 5 1 N
-preplace netloc core_top_0_I_MEM_ADDR 1 3 1 1330
-preplace netloc blk_mem_gen_0_douta 1 2 2 880 910 NJ
-preplace netloc core_top_0_DIV_B 1 1 3 440 380 850J 430 1230
-preplace netloc floating_point_0_M_AXIS_RESULT 1 2 1 820
-preplace netloc core_top_0_S_AXI 1 3 1 1370
+preplace netloc core_top_0_COMP_B 1 1 3 390 710 NJ 710 1290
+preplace netloc core_top_0_DIV_A 1 1 3 410 -20 NJ -20 1270
+preplace netloc core_top_0_I_MEM_ADDR 1 3 1 1340
+preplace netloc blk_mem_gen_0_douta 1 2 2 870 910 NJ
+preplace netloc core_top_0_DIV_B 1 1 3 420 -10 NJ -10 1260
+preplace netloc floating_point_0_M_AXIS_RESULT 1 2 1 810
+preplace netloc core_top_0_S_AXI 1 3 1 1380
 preplace netloc reset_1 1 0 1 20
-preplace netloc floating_point_2_M_AXIS_RESULT 1 2 1 810
-levelinfo -pg 1 0 270 620 1060 1530 1780 1900 -top -10 -bot 1000
+preplace netloc floating_point_2_M_AXIS_RESULT 1 2 1 790
+levelinfo -pg 1 0 210 630 1060 1540 1820 1970 -top -40 -bot 1000
 ",
 }
 

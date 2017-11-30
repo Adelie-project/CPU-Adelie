@@ -217,6 +217,57 @@
         </spirit:configurableElementValues>
       </spirit:componentInstance>
       <spirit:componentInstance>
+        <spirit:instanceName>floating_point_4</spirit:instanceName>
+        <spirit:componentRef spirit:library="ip" spirit:name="floating_point" spirit:vendor="xilinx.com" spirit:version="7.1"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">design_1_floating_point_2_0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="Operation_Type">Fixed_to_float</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="Result_Precision_Type">Single</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Result_Exponent_Width">8</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Result_Fraction_Width">24</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Accum_Msb">32</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Accum_Lsb">-31</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Accum_Input_Msb">32</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Mult_Usage">No_Usage</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Latency">7</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Rate">1</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>floating_point_5</spirit:instanceName>
+        <spirit:componentRef spirit:library="ip" spirit:name="floating_point" spirit:vendor="xilinx.com" spirit:version="7.1"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">design_1_floating_point_4_0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="Operation_Type">Float_to_fixed</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="Result_Precision_Type">Int32</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Result_Exponent_Width">32</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Result_Fraction_Width">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Accum_Msb">32</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Accum_Lsb">-31</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Accum_Input_Msb">32</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Mult_Usage">No_Usage</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Latency">7</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Rate">1</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>floating_point_6</spirit:instanceName>
+        <spirit:componentRef spirit:library="ip" spirit:name="floating_point" spirit:vendor="xilinx.com" spirit:version="7.1"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">design_1_floating_point_5_0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="Operation_Type">Square_root</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="Result_Precision_Type">Single</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Result_Exponent_Width">8</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Result_Fraction_Width">24</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Accum_Msb">32</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Accum_Lsb">-31</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Accum_Input_Msb">32</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Mult_Usage">No_Usage</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Latency">29</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_Rate">1</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
         <spirit:instanceName>core_top_0</spirit:instanceName>
         <spirit:componentRef spirit:library="module_ref" spirit:name="core_top" spirit:vendor="user.org" spirit:version="1.0"/>
         <spirit:configurableElementValues>
@@ -309,6 +360,36 @@
         <spirit:activeInterface spirit:busRef="M_AXIS_RESULT" spirit:componentRef="floating_point_1"/>
         <spirit:activeInterface spirit:busRef="COMP_R" spirit:componentRef="core_top_0"/>
       </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>floating_point_5_M_AXIS_RESULT</spirit:name>
+        <spirit:activeInterface spirit:busRef="FCVTWS_R" spirit:componentRef="core_top_0"/>
+        <spirit:activeInterface spirit:busRef="M_AXIS_RESULT" spirit:componentRef="floating_point_5"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>core_top_0_FCVTWS_A</spirit:name>
+        <spirit:activeInterface spirit:busRef="FCVTWS_A" spirit:componentRef="core_top_0"/>
+        <spirit:activeInterface spirit:busRef="S_AXIS_A" spirit:componentRef="floating_point_5"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>floating_point_4_M_AXIS_RESULT</spirit:name>
+        <spirit:activeInterface spirit:busRef="FCVTSW_R" spirit:componentRef="core_top_0"/>
+        <spirit:activeInterface spirit:busRef="M_AXIS_RESULT" spirit:componentRef="floating_point_4"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>core_top_0_FCVTSW_A</spirit:name>
+        <spirit:activeInterface spirit:busRef="FCVTSW_A" spirit:componentRef="core_top_0"/>
+        <spirit:activeInterface spirit:busRef="S_AXIS_A" spirit:componentRef="floating_point_4"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>core_top_0_FSQRTS_A</spirit:name>
+        <spirit:activeInterface spirit:busRef="S_AXIS_A" spirit:componentRef="floating_point_6"/>
+        <spirit:activeInterface spirit:busRef="FSQRTS_A" spirit:componentRef="core_top_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>floating_point_6_M_AXIS_RESULT</spirit:name>
+        <spirit:activeInterface spirit:busRef="M_AXIS_RESULT" spirit:componentRef="floating_point_6"/>
+        <spirit:activeInterface spirit:busRef="FSQRTS_R" spirit:componentRef="core_top_0"/>
+      </spirit:interconnection>
     </spirit:interconnections>
     <spirit:adHocConnections>
       <spirit:adHocConnection>
@@ -358,13 +439,16 @@
         <spirit:internalPortReference spirit:componentRef="blk_mem_gen_1" spirit:portRef="clka"/>
         <spirit:internalPortReference spirit:componentRef="floating_point_0" spirit:portRef="aclk"/>
         <spirit:internalPortReference spirit:componentRef="axi_uartlite_0" spirit:portRef="s_axi_aclk"/>
-        <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="S00_ACLK"/>
-        <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="ACLK"/>
-        <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="M00_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="floating_point_3" spirit:portRef="aclk"/>
         <spirit:internalPortReference spirit:componentRef="floating_point_2" spirit:portRef="aclk"/>
         <spirit:internalPortReference spirit:componentRef="floating_point_1" spirit:portRef="aclk"/>
+        <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="S00_ACLK"/>
+        <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="ACLK"/>
+        <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="M00_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="core_top_0" spirit:portRef="CLK"/>
+        <spirit:internalPortReference spirit:componentRef="floating_point_5" spirit:portRef="aclk"/>
+        <spirit:internalPortReference spirit:componentRef="floating_point_4" spirit:portRef="aclk"/>
+        <spirit:internalPortReference spirit:componentRef="floating_point_6" spirit:portRef="aclk"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>sim_clk_gen_0_sync_rst</spirit:name>

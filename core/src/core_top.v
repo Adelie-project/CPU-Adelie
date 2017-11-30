@@ -67,6 +67,33 @@ module core_top
     output COMP_R_TREADY,
     input COMP_R_TVALID,
 
+    // 浮動小数点
+    // FCVTSW
+    output [31:0] FCVTSW_A_TDATA,
+    input FCVTSW_A_TREADY,
+    output FCVTSW_A_TVALID,
+    input [31:0] FCVTSW_R_TDATA,
+    output FCVTSW_R_TREADY,
+    input FCVTSW_R_TVALID,
+
+    // 浮動小数点
+    // FCVTWS
+    output [31:0] FCVTWS_A_TDATA,
+    input FCVTWS_A_TREADY,
+    output FCVTWS_A_TVALID,
+    input [31:0] FCVTWS_R_TDATA,
+    output FCVTWS_R_TREADY,
+    input FCVTWS_R_TVALID,
+
+    // 浮動小数点
+    // FSQRTS
+    output [31:0] FSQRTS_A_TDATA,
+    input FSQRTS_A_TREADY,
+    output FSQRTS_A_TVALID,
+    input [31:0] FSQRTS_R_TDATA,
+    output FSQRTS_R_TREADY,
+    input FSQRTS_R_TVALID,
+
     // In/Out
     output [3:0] S_AXI_AWADDR,
     output S_AXI_AWVALID,
@@ -98,12 +125,11 @@ module core_top
   wire [31:0] rs1, rs2, imm;
 
   wire [31:0] alu_result;
-  
   wire i_lui, i_auipc, i_jal, i_jalr, i_beq, i_bne,
        i_blt, i_bge, i_bltu, i_bgeu, i_lb, i_lh, i_lw, i_lbu, i_lhu, i_sb, i_sh,
        i_sw, i_addi, i_slti, i_sltiu, i_xori, i_ori, i_andi, i_slli, i_srli, i_srai,
        i_add, i_sub, i_sll, i_slt, i_sltu, i_xor, i_srl, i_sra, i_or, i_and;
-  wire i_flw, i_fsw, i_fadds, i_fsubs, i_fmuls, i_fdivs, i_feqs, i_flts, i_fles;
+  wire i_flw, i_fsw, i_fadds, i_fsubs, i_fmuls, i_fdivs, i_feqs, i_flts, i_fles, i_fmvsx, i_fcvtsw, i_fcvtws, i_fsqrts, i_fsgnjxs;
   wire i_in, i_out;
   wire n_inst;
 
@@ -176,6 +202,30 @@ module core_top
   assign COMP_OP_TVALID = comp_op_tvalid;
   assign COMP_R_TREADY = comp_r_tready;
   assign COMP_R_TDATA = comp_r_tdata;
+
+  // FCVTSW
+  reg [31:0] fcvtsw_a_tdata, fcvtsw_b_tdata,fcvtsw_r_tdata;
+  reg fcvtsw_a_tvalid, fcvtsw_b_tvalid, fcvtsw_r_tready;
+  assign FCVTSW_A_TDATA = fcvtsw_a_tdata;
+  assign FCVTSW_A_TVALID = fcvtsw_a_tvalid;
+  assign FCVTSW_R_TREADY = fcvtsw_r_tready;
+  assign FCVTSW_R_TDATA = fcvtsw_r_tdata;
+
+  // FCVTWS
+  reg [31:0] fcvtws_a_tdata, fcvtws_b_tdata,fcvtws_r_tdata;
+  reg fcvtws_a_tvalid, fcvtws_b_tvalid, fcvtws_r_tready;
+  assign FCVTWS_A_TDATA = fcvtws_a_tdata;
+  assign FCVTWS_A_TVALID = fcvtws_a_tvalid;
+  assign FCVTWS_R_TREADY = fcvtws_r_tready;
+  assign FCVTWS_R_TDATA = fcvtws_r_tdata;
+
+  // FSQRTS
+  reg [31:0] fsqrts_a_tdata, fsqrts_b_tdata,fsqrts_r_tdata;
+  reg fsqrts_a_tvalid, fsqrts_b_tvalid, fsqrts_r_tready;
+  assign FSQRTS_A_TDATA = fsqrts_a_tdata;
+  assign FSQRTS_A_TVALID = fsqrts_a_tvalid;
+  assign FSQRTS_R_TREADY = fsqrts_r_tready;
+  assign FSQRTS_R_TDATA = fsqrts_r_tdata;
 
   reg stole;
 
@@ -300,6 +350,12 @@ module core_top
     .I_FLTS (i_flts),
     .I_FLES (i_fles),
 
+    .I_FMVSX (i_fmvsx),
+    .I_FCVTSW (i_fcvtsw),
+    .I_FCVTWS (i_fcvtws),
+    .I_FSQRTS (i_fsqrts),
+    .I_FSGNJXS (i_fsgnjxs),
+
     .I_IN (i_in),
     .I_OUT (i_out),
 
@@ -352,6 +408,8 @@ module core_top
 
     .I_FLW (i_flw),
     .I_FSW (i_fsw),
+    .I_FMVSX (i_fmvsx),
+    .I_FSGNJXS (i_fsgnjxs),
 
     .RS1 (rs1),
     .RS2 (rs2),
@@ -451,6 +509,48 @@ module core_top
       comp_op_tdata <= 0;
       comp_op_tvalid <= 0;
       comp_r_tready <= 0;
+    end
+  end
+
+  // 浮動小数点実行
+  // FCVTSW int to float
+  always @(posedge CLK) begin
+    if (i_fcvtsw) begin
+      fcvtsw_a_tdata <= rs1;
+      fcvtsw_a_tvalid <= 1'b1;
+      fcvtsw_r_tready <= 1'b1;
+    end else begin
+      fcvtsw_a_tdata <= 0;
+      fcvtsw_a_tvalid <= 0;
+      fcvtsw_r_tready <= 0;
+    end
+  end
+
+  // 浮動小数点実行
+  // FCVTWS float to int
+  always @(posedge CLK) begin
+    if (i_fcvtws) begin
+      fcvtws_a_tdata <= rs1;
+      fcvtws_a_tvalid <= 1'b1;
+      fcvtws_r_tready <= 1'b1;
+    end else begin
+      fcvtws_a_tdata <= 0;
+      fcvtws_a_tvalid <= 0;
+      fcvtws_r_tready <= 0;
+    end
+  end
+
+  // 浮動小数点実行
+  // FSQRTS
+  always @(posedge CLK) begin
+    if (i_fsqrts) begin
+      fsqrts_a_tdata <= rs1;
+      fsqrts_a_tvalid <= 1'b1;
+      fsqrts_r_tready <= 1'b1;
+    end else begin
+      fsqrts_a_tdata <= 0;
+      fsqrts_a_tvalid <= 0;
+      fsqrts_r_tready <= 0;
     end
   end
 
