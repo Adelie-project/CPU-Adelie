@@ -447,7 +447,7 @@ void exec_main(param_t* param) {
       if(param->step) printf("fsgnjxs %%f%d, %%f%d, %%f%d\n", rd, rs1, rs2);
       ifm.f = param->freg[rs1];
       ifm2.f = param->freg[rs2];
-      ifm.i = (ifm.i & 0x7fffffff) | ((ifm.i ^ ifm2.i) & 0x800000000);
+      ifm.i = (ifm.i & 0x7fffffff) | ((ifm.i ^ ifm2.i) & 0x80000000);
       if(rd != 0) param->freg[rd] = ifm.f;
       pc_inclement(param);
       return;
