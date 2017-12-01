@@ -37,20 +37,20 @@ vmap lib_srl_fifo_v1_0_2 msim/lib_srl_fifo_v1_0_2
 vmap lib_cdc_v1_0_2 msim/lib_cdc_v1_0_2
 vmap axi_uartlite_v2_0_15 msim/axi_uartlite_v2_0_15
 
-vlog -work xil_defaultlib -64 -sv "+incdir+../../../../koara.srcs/sources_1/bd/design_1/ipshared/100a" "+incdir+../../../../koara.srcs/sources_1/bd/design_1/ipshared/100a" \
+vlog -work xil_defaultlib -64 -sv \
 "/opt/Xilinx/Vivado/2016.4/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" \
 "/opt/Xilinx/Vivado/2016.4/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
 
 vcom -work xpm -64 -93 \
 "/opt/Xilinx/Vivado/2016.4/data/ip/xpm/xpm_VCOMP.vhd" \
 
-vlog -work xil_defaultlib -64 "+incdir+../../../../koara.srcs/sources_1/bd/design_1/ipshared/100a" "+incdir+../../../../koara.srcs/sources_1/bd/design_1/ipshared/100a" \
+vlog -work xil_defaultlib -64 \
 "../../../bd/design_1/ip/design_1_core_top_0_0_1/sim/design_1_core_top_0_0.v" \
 
-vlog -work blk_mem_gen_v8_3_5 -64 "+incdir+../../../../koara.srcs/sources_1/bd/design_1/ipshared/100a" "+incdir+../../../../koara.srcs/sources_1/bd/design_1/ipshared/100a" \
+vlog -work blk_mem_gen_v8_3_5 -64 \
 "../../../../koara.srcs/sources_1/bd/design_1/ipshared/6273/simulation/blk_mem_gen_v8_3.v" \
 
-vlog -work xil_defaultlib -64 "+incdir+../../../../koara.srcs/sources_1/bd/design_1/ipshared/100a" "+incdir+../../../../koara.srcs/sources_1/bd/design_1/ipshared/100a" \
+vlog -work xil_defaultlib -64 \
 "../../../bd/design_1/ip/design_1_blk_mem_gen_0_0_1/sim/design_1_blk_mem_gen_0_0.v" \
 "../../../bd/design_1/ip/design_1_blk_mem_gen_1_0_1/sim/design_1_blk_mem_gen_1_0.v" \
 "../../../bd/design_1/hdl/design_1.v" \
@@ -108,15 +108,13 @@ vcom -work xil_defaultlib -64 -93 \
 "../../../bd/design_1/ip/design_1_floating_point_0_1/sim/design_1_floating_point_0_1.vhd" \
 "../../../bd/design_1/ip/design_1_floating_point_0_2/sim/design_1_floating_point_0_2.vhd" \
 "../../../bd/design_1/ip/design_1_floating_point_0_3/sim/design_1_floating_point_0_3.vhd" \
-
-vlog -work xil_defaultlib -64 "+incdir+../../../../koara.srcs/sources_1/bd/design_1/ipshared/100a" "+incdir+../../../../koara.srcs/sources_1/bd/design_1/ipshared/100a" \
-"../../../bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_clk_wiz.v" \
-"../../../bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.v" \
-
-vcom -work xil_defaultlib -64 -93 \
 "../../../bd/design_1/ip/design_1_floating_point_2_0/sim/design_1_floating_point_2_0.vhd" \
 "../../../bd/design_1/ip/design_1_floating_point_4_0/sim/design_1_floating_point_4_0.vhd" \
 "../../../bd/design_1/ip/design_1_floating_point_5_0/sim/design_1_floating_point_5_0.vhd" \
+
+vlog -work xil_defaultlib -64 \
+"../../../bd/design_1/ipshared/68f7/hdl/sim_clk_gen.v" \
+"../../../bd/design_1/ip/design_1_sim_clk_gen_0_0_1/sim/design_1_sim_clk_gen_0_0.v" \
 
 vlog -work xil_defaultlib "glbl.v"
 

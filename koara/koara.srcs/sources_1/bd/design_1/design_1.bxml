@@ -2,9 +2,9 @@
 <Root MajorVersion="0" MinorVersion="33">
   <CompositeFile CompositeFileTopName="design_1" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1512106591"/>
-    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1512106591"/>
-    <Generation Name="SIMULATION" State="RESET" Timestamp="1512106591"/>
+    <Generation Name="SYNTHESIS" State="STALE" Timestamp="1512144714"/>
+    <Generation Name="IMPLEMENTATION" State="STALE" Timestamp="1512144713"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1512144714"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip/design_1_core_top_0_0_1/design_1_core_top_0_0.xci" Type="IP">
         <Instance HierarchyPath="core_top_0"/>
@@ -101,14 +101,6 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xci" Type="IP">
-        <Instance HierarchyPath="clk_wiz_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
       <File Name="ip/design_1_floating_point_2_0/design_1_floating_point_2_0.xci" Type="IP">
         <Instance HierarchyPath="floating_point_4"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
@@ -127,6 +119,14 @@
       </File>
       <File Name="ip/design_1_floating_point_5_0/design_1_floating_point_5_0.xci" Type="IP">
         <Instance HierarchyPath="floating_point_6"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip/design_1_sim_clk_gen_0_0_1/design_1_sim_clk_gen_0_0.xci" Type="IP">
+        <Instance HierarchyPath="sim_clk_gen_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>

@@ -240,69 +240,60 @@ CONFIG.NUM_WRITE_OUTSTANDING {1} \
 CONFIG.MAX_BURST_LENGTH {1} \
  ] [get_bd_intf_pins /loopback_top_0/S_AXI]
 
+  # Create instance: system_ila, and set properties
+  set system_ila [ create_bd_cell -type ip -vlnv xilinx.com:ip:system_ila:1.0 system_ila ]
+  set_property -dict [ list \
+CONFIG.C_MON_TYPE {INTERFACE} \
+CONFIG.C_NUM_MONITOR_SLOTS {1} \
+CONFIG.C_SLOT_0_APC_EN {0} \
+CONFIG.C_SLOT_0_AXI_AR_SEL_DATA {1} \
+CONFIG.C_SLOT_0_AXI_AR_SEL_TRIG {1} \
+CONFIG.C_SLOT_0_AXI_AW_SEL_DATA {1} \
+CONFIG.C_SLOT_0_AXI_AW_SEL_TRIG {1} \
+CONFIG.C_SLOT_0_AXI_B_SEL_DATA {1} \
+CONFIG.C_SLOT_0_AXI_B_SEL_TRIG {1} \
+CONFIG.C_SLOT_0_AXI_R_SEL_DATA {1} \
+CONFIG.C_SLOT_0_AXI_R_SEL_TRIG {1} \
+CONFIG.C_SLOT_0_AXI_W_SEL_DATA {1} \
+CONFIG.C_SLOT_0_AXI_W_SEL_TRIG {1} \
+CONFIG.C_SLOT_0_INTF_TYPE {xilinx.com:interface:aximm_rtl:1.0} \
+ ] $system_ila
+
   # Create interface connections
   connect_bd_intf_net -intf_net axi_uartlite_0_UART [get_bd_intf_ports rs232_uart] [get_bd_intf_pins axi_uartlite_0/UART]
   connect_bd_intf_net -intf_net loopback_top_0_S_AXI [get_bd_intf_pins axi_uartlite_0/S_AXI] [get_bd_intf_pins loopback_top_0/S_AXI]
+connect_bd_intf_net -intf_net [get_bd_intf_nets loopback_top_0_S_AXI] [get_bd_intf_pins axi_uartlite_0/S_AXI] [get_bd_intf_pins system_ila/SLOT_0_AXI]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_intf_nets loopback_top_0_S_AXI]
   connect_bd_intf_net -intf_net sysclk_125_1 [get_bd_intf_ports sysclk_125] [get_bd_intf_pins clk_wiz_0/CLK_IN1_D]
 
   # Create port connections
-  connect_bd_net -net axi_uartlite_0_s_axi_arready [get_bd_pins axi_uartlite_0/s_axi_arready] [get_bd_pins loopback_top_0/S_AXI_ARREADY]
-  connect_bd_net -net axi_uartlite_0_s_axi_awready [get_bd_pins axi_uartlite_0/s_axi_awready] [get_bd_pins loopback_top_0/S_AXI_AWREADY]
-  connect_bd_net -net axi_uartlite_0_s_axi_bresp [get_bd_pins axi_uartlite_0/s_axi_bresp] [get_bd_pins loopback_top_0/S_AXI_BRESP]
-  connect_bd_net -net axi_uartlite_0_s_axi_bvalid [get_bd_pins axi_uartlite_0/s_axi_bvalid] [get_bd_pins loopback_top_0/S_AXI_BVALID]
-  connect_bd_net -net axi_uartlite_0_s_axi_rdata [get_bd_pins axi_uartlite_0/s_axi_rdata] [get_bd_pins loopback_top_0/S_AXI_RDATA]
-  connect_bd_net -net axi_uartlite_0_s_axi_rresp [get_bd_pins axi_uartlite_0/s_axi_rresp] [get_bd_pins loopback_top_0/S_AXI_RRESP]
-  connect_bd_net -net axi_uartlite_0_s_axi_rvalid [get_bd_pins axi_uartlite_0/s_axi_rvalid] [get_bd_pins loopback_top_0/S_AXI_RVALID]
-  connect_bd_net -net axi_uartlite_0_s_axi_wready [get_bd_pins axi_uartlite_0/s_axi_wready] [get_bd_pins loopback_top_0/S_AXI_WREADY]
-  connect_bd_net -net clk_wiz_0_clk_out1 [get_bd_pins axi_uartlite_0/s_axi_aclk] [get_bd_pins clk_wiz_0/clk_out1] [get_bd_pins loopback_top_0/CLK]
+  connect_bd_net -net clk_wiz_0_clk_out1 [get_bd_pins axi_uartlite_0/s_axi_aclk] [get_bd_pins clk_wiz_0/clk_out1] [get_bd_pins loopback_top_0/CLK] [get_bd_pins system_ila/clk]
   connect_bd_net -net clk_wiz_0_locked [get_bd_pins axi_uartlite_0/s_axi_aresetn] [get_bd_pins clk_wiz_0/locked] [get_bd_pins loopback_top_0/RST_N]
-  connect_bd_net -net loopback_top_0_S_AXI_ARADDR [get_bd_pins axi_uartlite_0/s_axi_araddr] [get_bd_pins loopback_top_0/S_AXI_ARADDR]
-  connect_bd_net -net loopback_top_0_S_AXI_ARVALID [get_bd_pins axi_uartlite_0/s_axi_arvalid] [get_bd_pins loopback_top_0/S_AXI_ARVALID]
-  connect_bd_net -net loopback_top_0_S_AXI_AWADDR [get_bd_pins axi_uartlite_0/s_axi_awaddr] [get_bd_pins loopback_top_0/S_AXI_AWADDR]
-  connect_bd_net -net loopback_top_0_S_AXI_AWVALID [get_bd_pins axi_uartlite_0/s_axi_awvalid] [get_bd_pins loopback_top_0/S_AXI_AWVALID]
-  connect_bd_net -net loopback_top_0_S_AXI_BREADY [get_bd_pins axi_uartlite_0/s_axi_bready] [get_bd_pins loopback_top_0/S_AXI_BREADY]
-  connect_bd_net -net loopback_top_0_S_AXI_RREADY [get_bd_pins axi_uartlite_0/s_axi_rready] [get_bd_pins loopback_top_0/S_AXI_RREADY]
-  connect_bd_net -net loopback_top_0_S_AXI_WDATA [get_bd_pins axi_uartlite_0/s_axi_wdata] [get_bd_pins loopback_top_0/S_AXI_WDATA]
-  connect_bd_net -net loopback_top_0_S_AXI_WSTRB [get_bd_pins axi_uartlite_0/s_axi_wstrb] [get_bd_pins loopback_top_0/S_AXI_WSTRB]
-  connect_bd_net -net loopback_top_0_S_AXI_WVALID [get_bd_pins axi_uartlite_0/s_axi_wvalid] [get_bd_pins loopback_top_0/S_AXI_WVALID]
   connect_bd_net -net reset_1 [get_bd_ports reset] [get_bd_pins clk_wiz_0/reset]
 
   # Create address segments
+  create_bd_addr_seg -range 0x00010000 -offset 0x40600000 [get_bd_addr_spaces loopback_top_0/S_AXI] [get_bd_addr_segs axi_uartlite_0/S_AXI/Reg] SEG_axi_uartlite_0_Reg
 
   # Perform GUI Layout
   regenerate_bd_layout -layout_string {
    guistr: "# # String gsaved with Nlview 6.6.5b  2016-09-06 bk=1.3687 VDI=39 GEI=35 GUI=JA:1.6
 #  -string -flagsOSRD
-preplace port sysclk_125 -pg 1 -y 220 -defaultsOSRD
-preplace port rs232_uart -pg 1 -y 220 -defaultsOSRD
-preplace port reset -pg 1 -y 240 -defaultsOSRD
-preplace inst loopback_top_0 -pg 1 -lvl 2 -y 210 -defaultsOSRD
-preplace inst axi_uartlite_0 -pg 1 -lvl 3 -y 230 -defaultsOSRD
-preplace inst clk_wiz_0 -pg 1 -lvl 1 -y 230 -defaultsOSRD
-preplace netloc axi_uartlite_0_s_axi_rresp 1 2 1 580
-preplace netloc loopback_top_0_S_AXI_ARVALID 1 2 1 570
-preplace netloc loopback_top_0_S_AXI_WVALID 1 2 1 510
-preplace netloc clk_wiz_0_locked 1 1 2 230 440 640
-preplace netloc axi_uartlite_0_s_axi_arready 1 2 1 530
-preplace netloc loopback_top_0_S_AXI_WSTRB 1 2 1 550
-preplace netloc loopback_top_0_S_AXI_BREADY 1 2 1 600
-preplace netloc loopback_top_0_S_AXI_RREADY 1 2 1 650
+preplace port sysclk_125 -pg 1 -y 110 -defaultsOSRD
+preplace port rs232_uart -pg 1 -y 150 -defaultsOSRD
+preplace port reset -pg 1 -y 130 -defaultsOSRD
+preplace inst loopback_top_0 -pg 1 -lvl 2 -y 100 -defaultsOSRD
+preplace inst system_ila -pg 1 -lvl 3 -y 50 -defaultsOSRD
+preplace inst axi_uartlite_0 -pg 1 -lvl 3 -y 160 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 1 -y 120 -defaultsOSRD
+preplace netloc clk_wiz_0_locked 1 1 2 230 180 N
 preplace netloc sysclk_125_1 1 0 1 NJ
-preplace netloc axi_uartlite_0_s_axi_rdata 1 2 1 610
-preplace netloc axi_uartlite_0_s_axi_awready 1 2 1 560
-preplace netloc loopback_top_0_S_AXI_ARADDR 1 2 1 640
-preplace netloc clk_wiz_0_clk_out1 1 1 2 220 430 550
+preplace netloc clk_wiz_0_clk_out1 1 1 2 220 160 440
 preplace netloc axi_uartlite_0_UART 1 3 1 N
-preplace netloc loopback_top_0_S_AXI_WDATA 1 2 1 620
-preplace netloc axi_uartlite_0_s_axi_wready 1 2 1 590
-preplace netloc loopback_top_0_S_AXI_AWVALID 1 2 1 520
-preplace netloc axi_uartlite_0_s_axi_bresp 1 2 1 N
 preplace netloc reset_1 1 0 1 NJ
-preplace netloc loopback_top_0_S_AXI 1 2 1 N
-preplace netloc axi_uartlite_0_s_axi_rvalid 1 2 1 540
-preplace netloc axi_uartlite_0_s_axi_bvalid 1 2 1 N
-preplace netloc loopback_top_0_S_AXI_AWADDR 1 2 1 630
-levelinfo -pg 1 0 120 370 770 910 -top 0 -bot 460
+preplace netloc loopback_top_0_S_AXI 1 2 1 430
+levelinfo -pg 1 0 120 330 580 700 -top 0 -bot 220
 ",
 }
 
