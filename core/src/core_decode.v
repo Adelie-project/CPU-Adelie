@@ -75,6 +75,8 @@ module core_decode
   output reg I_IN,
   output reg I_OUT,
 
+  output reg I_ROT,
+
   output wire N_INST
 );
 
@@ -97,8 +99,8 @@ module core_decode
     end
   end
 
-  assign RD_NUM = ( ( (INST[6:2] == 5'b10100) && ( (func7 == 7'b1010000) | (func7 == 7'b1100000) ) ) | (INST[6:2] == 5'b01100) | ((INST[6:0] == 7'b1100111) || (INST[6:0] == 7'b0000011) ||(INST[6:0] == 7'b0010011)) | (INST[4:0] == 5'b10111) | (INST[6:0] == 7'b1101111) | (INST[6:0] == 7'b0000001)) ? INST[11:7] : 5'd0;
-  assign RS1_NUM = ( ( (INST[6:2] == 5'b10100) && ((func7 == 7'b1110000) | (func7 == 7'b1101000)) ) | (INST[6:2] == 5'b01100) | ((INST[6:0] == 7'b1100111) || (INST[6:0] == 7'b0000011) ||  (INST[6:0] == 7'b0000111) ||(INST[6:0] == 7'b0010011)) | (INST[6:0] == 7'b0100011) | (INST[6:0] == 7'b0100111) | (INST[6:0] == 7'b1100011)) ? INST[19:15] : 5'd0;
+  assign RD_NUM = ( (INST[6:0] == 7'b0001011) | ( (INST[6:2] == 5'b10100) && ( (func7 == 7'b1010000) | (func7 == 7'b1100000) ) ) | (INST[6:2] == 5'b01100) | ((INST[6:0] == 7'b1100111) || (INST[6:0] == 7'b0000011) ||(INST[6:0] == 7'b0010011)) | (INST[4:0] == 5'b10111) | (INST[6:0] == 7'b1101111) | (INST[6:0] == 7'b0000001)) ? INST[11:7] : 5'd0;
+  assign RS1_NUM = ( (INST[6:0] == 7'b0001011) | ( (INST[6:2] == 5'b10100) && ((func7 == 7'b1110000) | (func7 == 7'b1101000)) ) | (INST[6:2] == 5'b01100) | ((INST[6:0] == 7'b1100111) || (INST[6:0] == 7'b0000011) ||  (INST[6:0] == 7'b0000111) ||(INST[6:0] == 7'b0010011)) | (INST[6:0] == 7'b0100011) | (INST[6:0] == 7'b0100111) | (INST[6:0] == 7'b1100011)) ? INST[19:15] : 5'd0;
   assign RS2_NUM = ((INST[6:2] == 5'b01100) | (INST[6:0] == 7'b0100011) | (INST[6:0] == 7'b1100011) ) ? INST[24:20] : 5'd0;
 
   assign FRD_NUM = (INST[6:0] == 7'b0000111) | ( (INST[6:2] == 5'b10100) && ( (func7 == 7'b0101100) | (func7 == 7'b1101000) | (func7 == 7'b1110000) | (func7 == 7'b0000000) | (func7 == 7'b0000100) | (func7 == 7'b0001000) | (func7 == 7'b0001100) | (func7 == 7'b0010000) ) ) ? INST[11:7] : 5'd0;
@@ -162,6 +164,7 @@ module core_decode
       I_FCVTWS <= 1'b0;
       I_FSQRTS <= 1'b0;
       I_FSGNJXS <= 1'b0;
+      I_ROT <= 1'b0;
       I_IN <= 1'b0;
       I_OUT <= 1'b0;
     end else begin
@@ -232,6 +235,8 @@ module core_decode
 
       // frs1, frd
       I_FSQRTS <= (INST[6:2] == 5'b10100) && (func7 == 7'b0101100);
+
+      I_ROT <= (INST[6:0] == 7'b0001011);
 
       I_IN <= (INST[6:0] == 7'b0000001) && (func3 == 3'b000);
       I_OUT <= (INST[6:0] == 7'b0000001) && (func3 == 3'b001);
