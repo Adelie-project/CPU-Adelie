@@ -18,7 +18,7 @@ fles %r12, %f20, %f21 ; %r12 = 1
 fles %r13, %f21, %f20 ; %r13 = 0
 fles %r14, %f22, %f20 ; %r14 = 1
 fcvtws %r15, %f22 ; %r15 = 3
-fcvtsw %f30, %r5 ; %f30 = 4e808000
+fcvtsw %f30, %r5 ; %f30 = 4e810000
 fsqrts %f31, %f30
 fsgnjxs %f5, %f25, %f24 ; %f5 = -1.0
 fsgnjxs %f6, %f25, %f25 ; %f6 = 1.0
