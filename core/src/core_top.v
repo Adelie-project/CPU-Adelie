@@ -130,7 +130,7 @@ module core_top
   wire i_lui, i_auipc, i_jal, i_jalr, i_beq, i_bne,
        i_blt, i_bge, i_bltu, i_bgeu, i_lb, i_lh, i_lw, i_lbu, i_lhu, i_sb, i_sh,
        i_sw, i_addi, i_slti, i_sltiu, i_xori, i_ori, i_andi, i_slli, i_srli, i_srai,
-       i_add, i_sub, i_sll, i_slt, i_sltu, i_xor, i_srl, i_sra, i_or, i_and;
+       i_add, i_sub, i_sll, i_slt, i_sltu, i_xor, i_srl, i_sra, i_or, i_and, i_rot;
   wire i_flw, i_fsw, i_fadds, i_fsubs, i_fmuls, i_fdivs, i_feqs, i_flts, i_fles, i_fmvsx, i_fcvtsw, i_fcvtws, i_fsqrts, i_fsgnjxs;
   wire i_in, i_out;
   wire n_inst;
@@ -365,6 +365,8 @@ module core_top
     .I_IN (i_in),
     .I_OUT (i_out),
 
+    .I_ROT (i_rot),
+
     .N_INST (n_inst)
 
   );
@@ -416,6 +418,7 @@ module core_top
     .I_FSW (i_fsw),
     .I_FMVSX (i_fmvsx),
     .I_FSGNJXS (i_fsgnjxs),
+    .I_ROT (i_rot),
 
     .RS1 (rs1),
     .RS2 (rs2),

@@ -43,6 +43,7 @@ module core_alu (
   input I_FSW,
   input I_FMVSX,
   input I_FSGNJXS,
+  input I_ROT,
 
   input [31:0]  RS1,
   input [31:0]  RS2,
@@ -88,6 +89,7 @@ module core_alu (
         I_BLTU ? (RS1 < RS2):
         I_FMVSX ? RS1 :
         I_FSGNJXS ? {FRS1[31] ^ FRS2[31], FRS1[30:0]} :
+        I_ROT ? {RS1[7:0], RS1[15:8], RS1[23:16], RS1[31:24]} :
         32'd0;
     end
   end
