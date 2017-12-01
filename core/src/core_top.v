@@ -133,7 +133,6 @@ module core_top
        i_add, i_sub, i_sll, i_slt, i_sltu, i_xor, i_srl, i_sra, i_or, i_and, i_rot;
   wire i_flw, i_fsw, i_fadds, i_fsubs, i_fmuls, i_fdivs, i_feqs, i_flts, i_fles, i_fmvsx, i_fcvtsw, i_fcvtws, i_fsqrts, i_fsgnjxs;
   wire i_in, i_out;
-  wire n_inst;
 
   // IO
   reg [3:0] s_axi_awaddr, s_axi_wstb, s_axi_araddr;
@@ -160,74 +159,73 @@ module core_top
   assign S_AXI_RREADY = s_axi_rready;
 
   // ADDSUB
-  reg [31:0] addsub_a_tdata, addsub_b_tdata,addsub_r_tdata;
+  reg [31:0] addsub_a_tdata, addsub_b_tdata;
   reg [7:0] addsub_op_tdata;
   reg addsub_a_tvalid, addsub_b_tvalid, addsub_op_tvalid, addsub_r_tready;
-  assign ADDSUB_A_TDATA = addsub_a_tdata;
-  assign ADDSUB_B_TDATA = addsub_b_tdata;
+  wire addsub_a_tready, addsub_b_tready, addsub_op_tready, addsub_r_tvalid;
+  assign ADDSUB_A_TDATA = frs1;
+  assign ADDSUB_B_TDATA = frs2; 
   assign ADDSUB_A_TVALID = addsub_a_tvalid;
   assign ADDSUB_B_TVALID = addsub_b_tvalid;
   assign ADDSUB_OP_TDATA = addsub_op_tdata;
   assign ADDSUB_OP_TVALID = addsub_op_tvalid;
   assign ADDSUB_R_TREADY = addsub_r_tready;
-  assign ADDSUB_R_TDATA = addsub_r_tdata;
+
+  assign ADDSUB_A_TREADY = addsub_a_tready;
+  assign ADDSUB_B_TREADY = addsub_b_tready;
+  assign ADDSUB_OP_TREADY = addsub_op_tready;
+  assign ADDSUB_R_TVALID = addsub_r_tvalid;
 
   // MUL
-  reg [31:0] mul_a_tdata, mul_b_tdata,mul_r_tdata;
+  reg [31:0] mul_a_tdata, mul_b_tdata;
   reg mul_a_tvalid, mul_b_tvalid, mul_r_tready;
-  assign MUL_A_TDATA = mul_a_tdata;
-  assign MUL_B_TDATA = mul_b_tdata;
+  assign MUL_A_TDATA = frs1;
+  assign MUL_B_TDATA = frs2;
   assign MUL_A_TVALID = mul_a_tvalid;
   assign MUL_B_TVALID = mul_b_tvalid;
   assign MUL_R_TREADY = mul_r_tready;
-  assign MUL_R_TDATA = mul_r_tdata;
 
   // DIV
-  reg [31:0] div_a_tdata, div_b_tdata,div_r_tdata;
+  reg [31:0] div_a_tdata, div_b_tdata;
   reg div_a_tvalid, div_b_tvalid, div_r_tready;
-  assign DIV_A_TDATA = div_a_tdata;
-  assign DIV_B_TDATA = div_b_tdata;
+  assign DIV_A_TDATA = frs1;
+  assign DIV_B_TDATA = frs2;
   assign DIV_A_TVALID = div_a_tvalid;
   assign DIV_B_TVALID = div_b_tvalid;
   assign DIV_R_TREADY = div_r_tready;
-  assign DIV_R_TDATA = div_r_tdata;
 
   // COMP
-  reg [31:0] comp_a_tdata, comp_b_tdata,comp_r_tdata;
+  reg [31:0] comp_a_tdata, comp_b_tdata;
   reg [7:0] comp_op_tdata;
   reg comp_a_tvalid, comp_b_tvalid, comp_op_tvalid, comp_r_tready;
-  assign COMP_A_TDATA = comp_a_tdata;
-  assign COMP_B_TDATA = comp_b_tdata;
+  assign COMP_A_TDATA = frs1;
+  assign COMP_B_TDATA = frs2;
   assign COMP_A_TVALID = comp_a_tvalid;
   assign COMP_B_TVALID = comp_b_tvalid;
   assign COMP_OP_TDATA = comp_op_tdata;
   assign COMP_OP_TVALID = comp_op_tvalid;
   assign COMP_R_TREADY = comp_r_tready;
-  assign COMP_R_TDATA = comp_r_tdata;
 
   // FCVTSW
-  reg [31:0] fcvtsw_a_tdata, fcvtsw_b_tdata,fcvtsw_r_tdata;
+  reg [31:0] fcvtsw_a_tdata, fcvtsw_b_tdata;
   reg fcvtsw_a_tvalid, fcvtsw_b_tvalid, fcvtsw_r_tready;
-  assign FCVTSW_A_TDATA = fcvtsw_a_tdata;
+  assign FCVTSW_A_TDATA = rs1;
   assign FCVTSW_A_TVALID = fcvtsw_a_tvalid;
   assign FCVTSW_R_TREADY = fcvtsw_r_tready;
-  assign FCVTSW_R_TDATA = fcvtsw_r_tdata;
 
   // FCVTWS
-  reg [31:0] fcvtws_a_tdata, fcvtws_b_tdata,fcvtws_r_tdata;
+  reg [31:0] fcvtws_a_tdata, fcvtws_b_tdata;
   reg fcvtws_a_tvalid, fcvtws_b_tvalid, fcvtws_r_tready;
-  assign FCVTWS_A_TDATA = fcvtws_a_tdata;
+  assign FCVTWS_A_TDATA = frs1;
   assign FCVTWS_A_TVALID = fcvtws_a_tvalid;
   assign FCVTWS_R_TREADY = fcvtws_r_tready;
-  assign FCVTWS_R_TDATA = fcvtws_r_tdata;
 
   // FSQRTS
-  reg [31:0] fsqrts_a_tdata, fsqrts_b_tdata,fsqrts_r_tdata;
+  reg [31:0] fsqrts_a_tdata, fsqrts_b_tdata;
   reg fsqrts_a_tvalid, fsqrts_b_tvalid, fsqrts_r_tready;
-  assign FSQRTS_A_TDATA = fsqrts_a_tdata;
+  assign FSQRTS_A_TDATA = frs1;
   assign FSQRTS_A_TVALID = fsqrts_a_tvalid;
   assign FSQRTS_R_TREADY = fsqrts_r_tready;
-  assign FSQRTS_R_TDATA = fsqrts_r_tdata;
 
   reg stole;
 
@@ -365,10 +363,7 @@ module core_top
     .I_IN (i_in),
     .I_OUT (i_out),
 
-    .I_ROT (i_rot),
-
-    .N_INST (n_inst)
-
+    .I_ROT (i_rot)
   );
   
   // 3. 実行
@@ -434,12 +429,12 @@ module core_top
   // 浮動小数点実行
   // ADD/SUB
   always @(posedge CLK) begin
-    if (i_fadds | i_fsubs) begin
-      addsub_a_tdata <= rs1;
+    addsub_b_tdata <= rs2;
+    addsub_a_tdata <= rs1;
+    addsub_op_tdata <= i_fsubs ? 6'b000001 : 6'b000000;
+    if ((i_fadds | i_fsubs) && (!stole) && !(ADDSUB_R_TREADY) && cpu_state == EXECUTE) begin
       addsub_a_tvalid <= 1'b1;
-      addsub_b_tdata <= rs2;
       addsub_b_tvalid <= 1'b1;
-      addsub_op_tdata <= i_fsubs ? 6'b000001 : 6'b000000;
       addsub_op_tvalid <= 1'b1;
       addsub_r_tready <= 1'b1;
     end else begin
@@ -456,10 +451,10 @@ module core_top
   // 浮動小数点実行
   // MULS
   always @(posedge CLK) begin
-    if (i_fmuls) begin
-      mul_a_tdata <= rs1;
+    mul_a_tdata <= rs1;
+    mul_b_tdata <= rs2;
+    if ((i_fmuls) && (!stole) && !(MUL_R_TREADY) && cpu_state == EXECUTE ) begin
       mul_a_tvalid <= 1'b1;
-      mul_b_tdata <= rs2;
       mul_b_tvalid <= 1'b1;
       mul_r_tready <= 1'b1;
     end else begin
@@ -474,10 +469,10 @@ module core_top
   // 浮動小数点実行
   // DIVS
   always @(posedge CLK) begin
-    if (i_fdivs) begin
-      div_a_tdata <= rs1;
+    div_a_tdata <= rs1;
+    div_b_tdata <= rs2;
+    if ((i_fdivs) && (!stole) && !(DIV_R_TREADY) && cpu_state == EXECUTE ) begin
       div_a_tvalid <= 1'b1;
-      div_b_tdata <= rs2;
       div_b_tvalid <= 1'b1;
       div_r_tready <= 1'b1;
     end else begin
@@ -492,14 +487,14 @@ module core_top
   // 浮動小数点実行
   // COMP
   always @(posedge CLK) begin
-    if (i_feqs | i_flts | i_fles) begin
       comp_a_tdata <= rs1;
-      comp_a_tvalid <= 1'b1;
       comp_b_tdata <= rs2;
-      comp_b_tvalid <= 1'b1;
       comp_op_tdata <= i_feqs ? 6'b010100 :
                        i_flts ? 6'b001100:
                        6'b011100;
+    if ((i_feqs | i_flts | i_fles) && (!stole) && !(COMP_R_TREADY) && cpu_state == EXECUTE ) begin
+      comp_a_tvalid <= 1'b1;
+      comp_b_tvalid <= 1'b1;
       comp_op_tvalid <= 1'b1;
       comp_r_tready <= 1'b1;
     end else begin
@@ -516,8 +511,8 @@ module core_top
   // 浮動小数点実行
   // FCVTSW int to float
   always @(posedge CLK) begin
-    if (i_fcvtsw) begin
-      fcvtsw_a_tdata <= rs1;
+    fcvtsw_a_tdata <= rs1;
+    if ((i_fcvtsw) && (!stole) && !(FCVTSW_R_TREADY) && cpu_state == EXECUTE ) begin
       fcvtsw_a_tvalid <= 1'b1;
       fcvtsw_r_tready <= 1'b1;
     end else begin
@@ -530,8 +525,8 @@ module core_top
   // 浮動小数点実行
   // FCVTWS float to int
   always @(posedge CLK) begin
-    if (i_fcvtws) begin
-      fcvtws_a_tdata <= rs1;
+    fcvtws_a_tdata <= rs1;
+    if ((i_fcvtws) && (!stole) && !(FCVTWS_R_TREADY) && cpu_state == EXECUTE ) begin
       fcvtws_a_tvalid <= 1'b1;
       fcvtws_r_tready <= 1'b1;
     end else begin
@@ -544,8 +539,8 @@ module core_top
   // 浮動小数点実行
   // FSQRTS
   always @(posedge CLK) begin
-    if (i_fsqrts) begin
-      fsqrts_a_tdata <= rs1;
+    fsqrts_a_tdata <= rs1;
+    if ((i_fsqrts) && (!stole) && !(FSQRTS_R_TREADY) && cpu_state == EXECUTE ) begin
       fsqrts_a_tvalid <= 1'b1;
       fsqrts_r_tready <= 1'b1;
     end else begin
@@ -575,18 +570,40 @@ module core_top
     end
   end
 
+  reg tvalid_once;
+  reg addsub_f, mul_f, div_f, comp_f, fcvtsw_f, fcvtws_f, fsqrts_f;
+
   // Stole
   always @(posedge CLK) begin
-      stole <= (i_fadds | i_fsubs) & ADDSUB_R_TVALID ? 0 :
-               (i_fmuls) & MUL_R_TVALID ? 0 :
-               (i_fdivs) & DIV_R_TVALID ? 0 :
-               (i_feqs | i_flts | i_fles) & COMP_R_TVALID ? 0 :
-               (i_fcvtsw) & FCVTSW_R_TVALID ? 0:
-               (i_fcvtws) & FCVTWS_R_TVALID ? 0:
-               (i_fsqrts) & FSQRTS_R_TVALID ? 0:
-               (i_out) && (S_AXI_BRESP == 00) ? 0 :
-               (i_fadds | i_fsubs | i_fmuls | i_fdivs | i_feqs | i_flts | i_fles | i_fcvtsw | i_fcvtws | i_fsqrts | i_out) ? 1 :
+    if (!RST_N) begin
+      stole <= 0;
+      addsub_f <= 0;
+      mul_f <= 0;
+      div_f <= 0;
+      comp_f <= 0;
+      fcvtsw_f <= 0;
+      fcvtws_f <= 0;
+      fsqrts_f <= 0;
+      tvalid_once <= 0;
+    end else begin
+      addsub_f <= ADDSUB_R_TVALID;
+      mul_f <= MUL_R_TVALID;
+      div_f <= DIV_R_TVALID;
+      comp_f <= COMP_R_TVALID;
+      fcvtsw_f <= FCVTSW_R_TVALID;
+      fcvtws_f <= FCVTWS_R_TVALID;
+      fsqrts_f <= FSQRTS_R_TVALID;
+
+      tvalid_once <= (tvalid_once) ? 0 :
+                     ((!addsub_f && ADDSUB_R_TVALID) || (!mul_f && MUL_R_TVALID) || (!div_f && DIV_R_TVALID) || (!comp_f && COMP_R_TVALID) || (!fcvtsw_f && FCVTSW_R_TVALID) || (!fcvtws_f && FCVTWS_R_TVALID) || (!fsqrts_f && FSQRTS_R_TVALID)) ? 1:
+                     0;
+
+      stole <= (stole && !(tvalid_once)) ? 1 :
+               ((cpu_state == EXECUTE) && (stole == 0) && (i_fadds | i_fsubs | i_fmuls | i_fdivs | i_feqs | i_flts | i_fles | i_fcvtsw | i_fcvtws | i_fsqrts)) ? 1:
                0;
+
+    // ((i_out) && (S_AXI_BRESP == 00)) ? 0 :
+  end
   end
 
   // PC
@@ -616,18 +633,18 @@ module core_top
                    (i_sw) ? {rs2}:
                    (i_fsw) ? {frs2}:
                    32'd0;
-  assign MEM_WE = (i_sb | i_sh | i_sw | i_fsw) && (cpu_state == MEMORY);
+  assign MEM_WE = (i_sb | i_sh | i_sw | i_fsw) && (cpu_state == MEMORY && !stole);
  
   // 5. 書き戻し
   
 
   // レジスタ
 
-  assign wr_pc_we = (cpu_state == MEMORY);
+  assign wr_pc_we = (cpu_state == MEMORY && !stole);
   assign wr_pc = (((i_beq | i_bne | i_blt | i_bge | i_bltu | i_bgeu) & (alu_result == 32'd1)) | i_jal) ? pc_add_imm:
                  (i_jalr) ? pc_jalr:
                  pc_add_4;
-  assign wr_we = (cpu_state == WRITEBACK);
+  assign wr_we = (cpu_state == WRITEBACK && !stole);
   assign wr_data = (i_lui) ? imm:
                    (i_lw | i_lh | i_lb | i_lbu | i_lhu | i_flw) ? MEM_IN:
                    (i_auipc) ? pc_add_imm:

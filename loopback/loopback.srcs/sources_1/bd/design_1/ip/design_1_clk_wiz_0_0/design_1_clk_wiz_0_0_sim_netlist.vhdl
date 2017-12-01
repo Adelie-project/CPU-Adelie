@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
 -- Date        : Tue Nov 28 16:28:22 2017
 -- Host        : ispc2016 running 64-bit Ubuntu 14.04.5 LTS
--- Command     : write_vhdl -force -mode funcsim
---               /home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top design_1_clk_wiz_0_0 -prefix
+--               design_1_clk_wiz_0_0_ design_1_clk_wiz_0_0_sim_netlist.vhdl
 -- Design      : design_1_clk_wiz_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -22,8 +22,6 @@ entity design_1_clk_wiz_0_0_design_1_clk_wiz_0_0_clk_wiz is
     clk_in1_p : in STD_LOGIC;
     clk_in1_n : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of design_1_clk_wiz_0_0_design_1_clk_wiz_0_0_clk_wiz : entity is "design_1_clk_wiz_0_0_clk_wiz";
 end design_1_clk_wiz_0_0_design_1_clk_wiz_0_0_clk_wiz;
 
 architecture STRUCTURE of design_1_clk_wiz_0_0_design_1_clk_wiz_0_0_clk_wiz is

@@ -3,6 +3,52 @@ Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
 Running: /opt/Xilinx/Vivado/2016.4/bin/unwrapped/lnx64.o/xelab -wto 52c5caf8345d40d89f79bee052c46740 --debug typical --relax --mt 8 -L xil_defaultlib -L axi_lite_ipif_v3_0_4 -L lib_pkg_v1_0_2 -L lib_srl_fifo_v1_0_2 -L lib_cdc_v1_0_2 -L axi_uartlite_v2_0_15 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot design_1_wrapper_behav xil_defaultlib.design_1_wrapper xil_defaultlib.glbl -log elaborate.log 
 Using 8 slave threads.
 Starting static elaboration
+WARNING: [VRFC 10-278] actual bit length 1 differs from formal bit length 2 for port slot_0_axi_awid [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2100]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_0_axi_awcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2106]
+WARNING: [VRFC 10-278] actual bit length 1 differs from formal bit length 2 for port slot_0_axi_bid [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2115]
+WARNING: [VRFC 10-278] actual bit length 1 differs from formal bit length 2 for port slot_0_axi_arid [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2119]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_0_axi_arcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2124]
+WARNING: [VRFC 10-278] actual bit length 1 differs from formal bit length 2 for port slot_0_axi_rid [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2129]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_1_axi_awcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2150]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_1_axi_arcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2168]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_2_axi_awcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2194]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_2_axi_arcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2212]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_3_axi_awcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2238]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_3_axi_arcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2256]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_4_axi_awcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2282]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_4_axi_arcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2300]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_5_axi_awcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2326]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_5_axi_arcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2344]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_6_axi_awcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2370]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_6_axi_arcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2388]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_7_axi_awcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2414]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_7_axi_arcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2432]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_8_axi_awcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2458]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_8_axi_arcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2476]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_9_axi_awcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2502]
+WARNING: [VRFC 10-278] actual bit length 3 differs from formal bit length 4 for port slot_9_axi_wstrb [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2507]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_9_axi_arcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2520]
+WARNING: [VRFC 10-278] actual bit length 3 differs from formal bit length 4 for port slot_9_axis_tstrb [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2534]
+WARNING: [VRFC 10-278] actual bit length 3 differs from formal bit length 4 for port slot_9_axis_tkeep [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2535]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_10_axi_awcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2546]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_10_axi_arcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2564]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_11_axi_awcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2590]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_11_axi_arcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2608]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_12_axi_awcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2634]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_12_axi_arcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2652]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_13_axi_awcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2678]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_13_axi_arcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2696]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_14_axi_awcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2722]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_14_axi_arcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2740]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_15_axi_awcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2766]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 4 for port slot_15_axi_arcache [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:2784]
+WARNING: [VRFC 10-278] actual bit length 16 differs from formal bit length 1 for port sel [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:3684]
+WARNING: [VRFC 10-278] actual bit length 1 differs from formal bit length 2 for port slot_0_axi_awuser [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:3685]
+WARNING: [VRFC 10-278] actual bit length 1 differs from formal bit length 2 for port slot_0_axi_wuser [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:3686]
+WARNING: [VRFC 10-278] actual bit length 1 differs from formal bit length 2 for port slot_0_axi_buser [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:3687]
+WARNING: [VRFC 10-278] actual bit length 1 differs from formal bit length 2 for port slot_0_axi_aruser [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:3688]
+WARNING: [VRFC 10-278] actual bit length 1 differs from formal bit length 2 for port slot_0_axi_ruser [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:3689]
+WARNING: [VRFC 10-278] actual bit length 1 differs from formal bit length 2 for port slot_0_axi_wid [/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v:3866]
 Completed static elaboration
 Starting simulation data flow analysis
 WARNING: [XSIM 43-4099] "/home/yamaguchi/CPU-Adelie/core/loopback/loopback_top.v" Line 1. Module loopback_top doesn't have a timescale but at least one module in design has a timescale.
@@ -44,14 +90,22 @@ Compiling architecture imp of entity axi_lite_ipif_v3_0_4.address_decoder [\addr
 Compiling architecture imp of entity axi_lite_ipif_v3_0_4.slave_attachment [\slave_attachment(c_ard_addr_ran...]
 Compiling architecture imp of entity axi_lite_ipif_v3_0_4.axi_lite_ipif [\axi_lite_ipif(c_s_axi_addr_widt...]
 Compiling architecture rtl of entity axi_uartlite_v2_0_15.axi_uartlite [\axi_uartlite(c_family="kintexu"...]
-Compiling architecture design_1_axi_uartlite_0_0_arch of entity xil_defaultlib.design_1_axi_uartlite_0_0 [design_1_axi_uartlite_0_0_defaul...]
-Compiling module unisims_ver.IBUF
-Compiling module unisims_ver.MMCME3_ADV(CLKFBOUT_MULT_F=10.0,...
-Compiling module unisims_ver.BUFG
-Compiling module xil_defaultlib.design_1_clk_wiz_0_0_clk_wiz
-Compiling module xil_defaultlib.design_1_clk_wiz_0_0
+Compiling architecture design_1_axi_uartlite_0_1_arch of entity xil_defaultlib.design_1_axi_uartlite_0_1 [design_1_axi_uartlite_0_1_defaul...]
 Compiling module xil_defaultlib.loopback_top
 Compiling module xil_defaultlib.design_1_loopback_top_0_0
+Compiling module xil_defaultlib.sim_clk_gen(CLOCK_PERIOD=10,RESE...
+Compiling module xil_defaultlib.design_1_sim_clk_gen_0_0
+Compiling module xil_defaultlib.bd_384c_g_inst_0_gigantic_mux(C_...
+Compiling module xil_defaultlib.bd_384c_g_inst_0
+Compiling module xil_defaultlib.bd_384c_ila_lib_0
+Compiling module xil_defaultlib.xlconcat_default
+Compiling module xil_defaultlib.bd_384c_slot_0_ar_0
+Compiling module xil_defaultlib.bd_384c_slot_0_aw_0
+Compiling module xil_defaultlib.bd_384c_slot_0_b_0
+Compiling module xil_defaultlib.bd_384c_slot_0_r_0
+Compiling module xil_defaultlib.bd_384c_slot_0_w_0
+Compiling module xil_defaultlib.bd_384c
+Compiling module xil_defaultlib.design_1_system_ila_0
 Compiling module xil_defaultlib.design_1
 Compiling module xil_defaultlib.design_1_wrapper
 Compiling module xil_defaultlib.glbl

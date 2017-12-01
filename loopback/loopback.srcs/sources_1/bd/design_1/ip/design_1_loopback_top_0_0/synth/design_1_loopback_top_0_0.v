@@ -80,7 +80,7 @@ input wire RST_N;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK CLK" *)
 input wire CLK;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI AWADDR" *)
-output wire [3 : 0] S_AXI_AWADDR;
+output wire [31 : 0] S_AXI_AWADDR;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI AWVALID" *)
 output wire S_AXI_AWVALID;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI AWREADY" *)
@@ -100,7 +100,7 @@ output wire S_AXI_BREADY;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI WSTRB" *)
 output wire [3 : 0] S_AXI_WSTRB;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI ARADDR" *)
-output wire [3 : 0] S_AXI_ARADDR;
+output wire [31 : 0] S_AXI_ARADDR;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI ARVALID" *)
 output wire S_AXI_ARVALID;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI ARREADY" *)

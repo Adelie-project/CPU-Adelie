@@ -1,0 +1,18 @@
+{
+   guistr: "# # String gsaved with Nlview 6.6.5b  2016-09-06 bk=1.3687 VDI=39 GEI=35 GUI=JA:1.6
+#  -string -flagsOSRD
+preplace port sysclk_125 -pg 1 -y 90 -defaultsOSRD
+preplace port USB_UART_TX -pg 1 -y 60 -defaultsOSRD
+preplace port USB_UART_RX -pg 1 -y 40 -defaultsOSRD
+preplace port reset -pg 1 -y 110 -defaultsOSRD
+preplace inst uart_loopback_0 -pg 1 -lvl 2 -y 60 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 1 -y 100 -defaultsOSRD
+preplace netloc clk_wiz_0_locked 1 1 1 230
+preplace netloc sysclk_125_1 1 0 1 NJ
+preplace netloc clk_wiz_0_clk_out1 1 1 1 220
+preplace netloc uart_loopback_0_txd 1 2 1 N
+preplace netloc reset_1 1 0 1 NJ
+preplace netloc USB_UART_RX_1 1 0 2 NJ 40 NJ
+levelinfo -pg 1 0 120 320 430 -top 0 -bot 150
+",
+}

@@ -42,7 +42,6 @@ proc step_failed { step } {
   close $ch
 }
 
-set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config -id {HDL 9-1061} -limit 100000
 set_msg_config -id {HDL 9-1654} -limit 100000
 set_msg_config -id {HDL-1065} -limit 10000
@@ -52,6 +51,7 @@ set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
   set_param xicom.use_bs_reader 1
+  set_param tcl.collectionResultDisplayLimit 0
   create_project -in_memory -part xcku040-ffva1156-2-e
   set_property board_part xilinx.com:kcu105:part0:1.1 [current_project]
   set_property design_mode GateLvl [current_fileset]
@@ -60,18 +60,22 @@ set rc [catch {
   set_property parent.project_path /home/yamaguchi/CPU-Adelie/loopback/loopback.xpr [current_project]
   set_property ip_output_repo /home/yamaguchi/CPU-Adelie/loopback/loopback.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
-  set_property XPM_LIBRARIES XPM_CDC [current_project]
+  set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
   add_files -quiet /home/yamaguchi/CPU-Adelie/loopback/loopback.runs/synth_1/design_1_wrapper.dcp
-  add_files -quiet /home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_0/design_1_axi_uartlite_0_0.dcp
-  set_property netlist_only true [get_files /home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_0/design_1_axi_uartlite_0_0.dcp]
   add_files -quiet /home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_loopback_top_0_0/design_1_loopback_top_0_0.dcp
   set_property netlist_only true [get_files /home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_loopback_top_0_0/design_1_loopback_top_0_0.dcp]
+  add_files -quiet /home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_1/design_1_axi_uartlite_0_1.dcp
+  set_property netlist_only true [get_files /home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_1/design_1_axi_uartlite_0_1.dcp]
+  add_files -quiet /home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_system_ila_0/design_1_system_ila_0.dcp
+  set_property netlist_only true [get_files /home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_system_ila_0/design_1_system_ila_0.dcp]
   add_files -quiet /home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.dcp
   set_property netlist_only true [get_files /home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.dcp]
-  read_xdc -prop_thru_buffers -ref design_1_axi_uartlite_0_0 -cells U0 /home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_0/design_1_axi_uartlite_0_0_board.xdc
-  set_property processing_order EARLY [get_files /home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_0/design_1_axi_uartlite_0_0_board.xdc]
-  read_xdc -ref design_1_axi_uartlite_0_0 -cells U0 /home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_0/design_1_axi_uartlite_0_0.xdc
-  set_property processing_order EARLY [get_files /home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_0/design_1_axi_uartlite_0_0.xdc]
+  read_xdc -prop_thru_buffers -ref design_1_axi_uartlite_0_1 -cells U0 /home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_1/design_1_axi_uartlite_0_1_board.xdc
+  set_property processing_order EARLY [get_files /home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_1/design_1_axi_uartlite_0_1_board.xdc]
+  read_xdc -ref design_1_axi_uartlite_0_1 -cells U0 /home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_1/design_1_axi_uartlite_0_1.xdc
+  set_property processing_order EARLY [get_files /home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_1/design_1_axi_uartlite_0_1.xdc]
+  read_xdc -ref bd_384c_ila_lib_0 -cells inst /home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila.xdc
+  set_property processing_order EARLY [get_files /home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila.xdc]
   read_xdc -prop_thru_buffers -ref design_1_clk_wiz_0_0 -cells inst /home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_board.xdc
   set_property processing_order EARLY [get_files /home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_board.xdc]
   read_xdc -ref design_1_clk_wiz_0_0 -cells inst /home/yamaguchi/CPU-Adelie/loopback/loopback.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xdc
@@ -152,7 +156,7 @@ start_step write_bitstream
 set ACTIVE_STEP write_bitstream
 set rc [catch {
   create_msg_db write_bitstream.pb
-  set_property XPM_LIBRARIES XPM_CDC [current_project]
+  set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
   catch { write_mem_info -force design_1_wrapper.mmi }
   write_bitstream -force -no_partial_bitfile design_1_wrapper.bit 
   catch { write_sysdef -hwdef design_1_wrapper.hwdef -bitfile design_1_wrapper.bit -meminfo design_1_wrapper.mmi -file design_1_wrapper.sysdef }
