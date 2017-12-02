@@ -1,7 +1,7 @@
 //Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
-//Date        : Fri Dec  1 19:22:15 2017
+//Date        : Sat Dec  2 22:03:56 2017
 //Host        : ispc2016 running 64-bit Ubuntu 14.04.5 LTS
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=4,numReposBlks=4,numNonXlnxBlks=1,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_board_cnt=5,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=4,numReposBlks=4,numNonXlnxBlks=1,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_board_cnt=8,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
 module design_1
    (reset,
     rs232_uart_rxd,
@@ -26,10 +26,10 @@ module design_1
   wire axi_uartlite_0_UART_TxD;
   wire clk_wiz_0_clk_out1;
   wire clk_wiz_0_locked;
-  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [31:0]loopback_top_0_S_AXI_ARADDR;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [3:0]loopback_top_0_S_AXI_ARADDR;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire loopback_top_0_S_AXI_ARREADY;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire loopback_top_0_S_AXI_ARVALID;
-  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [31:0]loopback_top_0_S_AXI_AWADDR;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [3:0]loopback_top_0_S_AXI_AWADDR;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire loopback_top_0_S_AXI_AWREADY;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire loopback_top_0_S_AXI_AWVALID;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire loopback_top_0_S_AXI_BREADY;
@@ -52,14 +52,14 @@ module design_1
   assign rs232_uart_txd = axi_uartlite_0_UART_TxD;
   assign sysclk_125_1_CLK_N = sysclk_125_clk_n;
   assign sysclk_125_1_CLK_P = sysclk_125_clk_p;
-  design_1_axi_uartlite_0_1 axi_uartlite_0
+  design_1_axi_uartlite_0_0 axi_uartlite_0
        (.rx(axi_uartlite_0_UART_RxD),
         .s_axi_aclk(clk_wiz_0_clk_out1),
-        .s_axi_araddr(loopback_top_0_S_AXI_ARADDR[3:0]),
+        .s_axi_araddr(loopback_top_0_S_AXI_ARADDR),
         .s_axi_aresetn(clk_wiz_0_locked),
         .s_axi_arready(loopback_top_0_S_AXI_ARREADY),
         .s_axi_arvalid(loopback_top_0_S_AXI_ARVALID),
-        .s_axi_awaddr(loopback_top_0_S_AXI_AWADDR[3:0]),
+        .s_axi_awaddr(loopback_top_0_S_AXI_AWADDR),
         .s_axi_awready(loopback_top_0_S_AXI_AWREADY),
         .s_axi_awvalid(loopback_top_0_S_AXI_AWVALID),
         .s_axi_bready(loopback_top_0_S_AXI_BREADY),
@@ -80,26 +80,26 @@ module design_1
         .clk_out1(clk_wiz_0_clk_out1),
         .locked(clk_wiz_0_locked),
         .reset(reset_1));
-  design_1_loopback_top_0_0 loopback_top_0
-       (.CLK(clk_wiz_0_clk_out1),
+  design_1_loopback_top_0_1 loopback_top_0
+       (.ARADDR(loopback_top_0_S_AXI_ARADDR),
+        .ARREADY(loopback_top_0_S_AXI_ARREADY),
+        .ARVALID(loopback_top_0_S_AXI_ARVALID),
+        .AWADDR(loopback_top_0_S_AXI_AWADDR),
+        .AWREADY(loopback_top_0_S_AXI_AWREADY),
+        .AWVALID(loopback_top_0_S_AXI_AWVALID),
+        .BREADY(loopback_top_0_S_AXI_BREADY),
+        .BRESP(loopback_top_0_S_AXI_BRESP),
+        .BVALID(loopback_top_0_S_AXI_BVALID),
+        .CLK(clk_wiz_0_clk_out1),
+        .RDATA(loopback_top_0_S_AXI_RDATA),
+        .RREADY(loopback_top_0_S_AXI_RREADY),
+        .RRESP(loopback_top_0_S_AXI_RRESP),
         .RST_N(clk_wiz_0_locked),
-        .S_AXI_ARADDR(loopback_top_0_S_AXI_ARADDR),
-        .S_AXI_ARREADY(loopback_top_0_S_AXI_ARREADY),
-        .S_AXI_ARVALID(loopback_top_0_S_AXI_ARVALID),
-        .S_AXI_AWADDR(loopback_top_0_S_AXI_AWADDR),
-        .S_AXI_AWREADY(loopback_top_0_S_AXI_AWREADY),
-        .S_AXI_AWVALID(loopback_top_0_S_AXI_AWVALID),
-        .S_AXI_BREADY(loopback_top_0_S_AXI_BREADY),
-        .S_AXI_BRESP(loopback_top_0_S_AXI_BRESP),
-        .S_AXI_BVALID(loopback_top_0_S_AXI_BVALID),
-        .S_AXI_RDATA(loopback_top_0_S_AXI_RDATA),
-        .S_AXI_RREADY(loopback_top_0_S_AXI_RREADY),
-        .S_AXI_RRESP(loopback_top_0_S_AXI_RRESP),
-        .S_AXI_RVALID(loopback_top_0_S_AXI_RVALID),
-        .S_AXI_WDATA(loopback_top_0_S_AXI_WDATA),
-        .S_AXI_WREADY(loopback_top_0_S_AXI_WREADY),
-        .S_AXI_WSTRB(loopback_top_0_S_AXI_WSTRB),
-        .S_AXI_WVALID(loopback_top_0_S_AXI_WVALID));
+        .RVALID(loopback_top_0_S_AXI_RVALID),
+        .WDATA(loopback_top_0_S_AXI_WDATA),
+        .WREADY(loopback_top_0_S_AXI_WREADY),
+        .WSTRB(loopback_top_0_S_AXI_WSTRB),
+        .WVALID(loopback_top_0_S_AXI_WVALID));
   design_1_system_ila_0 system_ila
        (.SLOT_0_AXI_araddr(loopback_top_0_S_AXI_ARADDR),
         .SLOT_0_AXI_arready(loopback_top_0_S_AXI_ARREADY),

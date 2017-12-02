@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2016.4 (64-bit)
+# SW Build 1756540 on Mon Jan 23 19:11:19 MST 2017
+# IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+# Start of session at: Sat Dec  2 22:04:02 2017
+# Process ID: 13771
+# Current directory: /home/yamaguchi/CPU-Adelie/loopback/loopback.runs/design_1_loopback_top_0_1_synth_1
+# Command line: vivado -log design_1_loopback_top_0_1.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_loopback_top_0_1.tcl
+# Log file: /home/yamaguchi/CPU-Adelie/loopback/loopback.runs/design_1_loopback_top_0_1_synth_1/design_1_loopback_top_0_1.vds
+# Journal file: /home/yamaguchi/CPU-Adelie/loopback/loopback.runs/design_1_loopback_top_0_1_synth_1/vivado.jou
+#-----------------------------------------------------------
+source design_1_loopback_top_0_1.tcl -notrace

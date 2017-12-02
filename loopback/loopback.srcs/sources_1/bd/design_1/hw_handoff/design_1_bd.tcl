@@ -238,7 +238,7 @@ CONFIG.SUPPORTS_NARROW_BURST {0} \
 CONFIG.NUM_READ_OUTSTANDING {1} \
 CONFIG.NUM_WRITE_OUTSTANDING {1} \
 CONFIG.MAX_BURST_LENGTH {1} \
- ] [get_bd_intf_pins /loopback_top_0/S_AXI]
+ ] [get_bd_intf_pins /loopback_top_0/interface_aximm]
 
   # Create instance: system_ila, and set properties
   set system_ila [ create_bd_cell -type ip -vlnv xilinx.com:ip:system_ila:1.0 system_ila ]
@@ -261,7 +261,7 @@ CONFIG.C_SLOT_0_INTF_TYPE {xilinx.com:interface:aximm_rtl:1.0} \
 
   # Create interface connections
   connect_bd_intf_net -intf_net axi_uartlite_0_UART [get_bd_intf_ports rs232_uart] [get_bd_intf_pins axi_uartlite_0/UART]
-  connect_bd_intf_net -intf_net loopback_top_0_S_AXI [get_bd_intf_pins axi_uartlite_0/S_AXI] [get_bd_intf_pins loopback_top_0/S_AXI]
+  connect_bd_intf_net -intf_net loopback_top_0_S_AXI [get_bd_intf_pins axi_uartlite_0/S_AXI] [get_bd_intf_pins loopback_top_0/interface_aximm]
 connect_bd_intf_net -intf_net [get_bd_intf_nets loopback_top_0_S_AXI] [get_bd_intf_pins axi_uartlite_0/S_AXI] [get_bd_intf_pins system_ila/SLOT_0_AXI]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
@@ -274,26 +274,25 @@ HDL_ATTRIBUTE.DEBUG {true} \
   connect_bd_net -net reset_1 [get_bd_ports reset] [get_bd_pins clk_wiz_0/reset]
 
   # Create address segments
-  create_bd_addr_seg -range 0x00010000 -offset 0x40600000 [get_bd_addr_spaces loopback_top_0/S_AXI] [get_bd_addr_segs axi_uartlite_0/S_AXI/Reg] SEG_axi_uartlite_0_Reg
 
   # Perform GUI Layout
   regenerate_bd_layout -layout_string {
    guistr: "# # String gsaved with Nlview 6.6.5b  2016-09-06 bk=1.3687 VDI=39 GEI=35 GUI=JA:1.6
 #  -string -flagsOSRD
-preplace port sysclk_125 -pg 1 -y 110 -defaultsOSRD
-preplace port rs232_uart -pg 1 -y 150 -defaultsOSRD
-preplace port reset -pg 1 -y 130 -defaultsOSRD
-preplace inst loopback_top_0 -pg 1 -lvl 2 -y 100 -defaultsOSRD
-preplace inst system_ila -pg 1 -lvl 3 -y 50 -defaultsOSRD
-preplace inst axi_uartlite_0 -pg 1 -lvl 3 -y 160 -defaultsOSRD
-preplace inst clk_wiz_0 -pg 1 -lvl 1 -y 120 -defaultsOSRD
-preplace netloc clk_wiz_0_locked 1 1 2 230 180 N
+preplace port sysclk_125 -pg 1 -y 60 -defaultsOSRD
+preplace port rs232_uart -pg 1 -y 60 -defaultsOSRD
+preplace port reset -pg 1 -y 80 -defaultsOSRD
+preplace inst loopback_top_0 -pg 1 -lvl 2 -y 210 -defaultsOSRD
+preplace inst system_ila -pg 1 -lvl 3 -y 180 -defaultsOSRD
+preplace inst axi_uartlite_0 -pg 1 -lvl 3 -y 70 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 1 -y 70 -defaultsOSRD
+preplace netloc clk_wiz_0_locked 1 1 2 220 440 510
 preplace netloc sysclk_125_1 1 0 1 NJ
-preplace netloc clk_wiz_0_clk_out1 1 1 2 220 160 440
+preplace netloc clk_wiz_0_clk_out1 1 1 2 230 430 490
 preplace netloc axi_uartlite_0_UART 1 3 1 N
 preplace netloc reset_1 1 0 1 NJ
-preplace netloc loopback_top_0_S_AXI 1 2 1 430
-levelinfo -pg 1 0 120 330 580 700 -top 0 -bot 220
+preplace netloc loopback_top_0_S_AXI 1 2 1 500
+levelinfo -pg 1 0 120 360 663 790 -top 0 -bot 450
 ",
 }
 

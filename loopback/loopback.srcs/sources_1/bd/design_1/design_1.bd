@@ -95,9 +95,19 @@
         <spirit:instanceName>axi_uartlite_0</spirit:instanceName>
         <spirit:componentRef spirit:library="ip" spirit:name="axi_uartlite" spirit:vendor="xilinx.com" spirit:version="2.0"/>
         <spirit:configurableElementValues>
-          <spirit:configurableElementValue spirit:referenceId="bd:xciName">design_1_axi_uartlite_0_1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">design_1_axi_uartlite_0_0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="USE_BOARD_FLOW">true</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="UARTLITE_BOARD_INTERFACE">rs232_uart</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>clk_wiz_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="ip" spirit:name="clk_wiz" spirit:vendor="xilinx.com" spirit:version="5.3"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">design_1_clk_wiz_0_0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="USE_BOARD_FLOW">true</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="CLK_IN1_BOARD_INTERFACE">sysclk_125</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="RESET_BOARD_INTERFACE">reset</spirit:configurableElementValue>
         </spirit:configurableElementValues>
       </spirit:componentInstance>
       <spirit:componentInstance>
@@ -122,20 +132,10 @@
         </spirit:configurableElementValues>
       </spirit:componentInstance>
       <spirit:componentInstance>
-        <spirit:instanceName>clk_wiz_0</spirit:instanceName>
-        <spirit:componentRef spirit:library="ip" spirit:name="clk_wiz" spirit:vendor="xilinx.com" spirit:version="5.3"/>
-        <spirit:configurableElementValues>
-          <spirit:configurableElementValue spirit:referenceId="bd:xciName">design_1_clk_wiz_0_0</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="USE_BOARD_FLOW">true</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="CLK_IN1_BOARD_INTERFACE">sysclk_125</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="RESET_BOARD_INTERFACE">reset</spirit:configurableElementValue>
-        </spirit:configurableElementValues>
-      </spirit:componentInstance>
-      <spirit:componentInstance>
         <spirit:instanceName>loopback_top_0</spirit:instanceName>
         <spirit:componentRef spirit:library="module_ref" spirit:name="loopback_top" spirit:vendor="user.org" spirit:version="1.0"/>
         <spirit:configurableElementValues>
-          <spirit:configurableElementValue spirit:referenceId="bd:xciName">design_1_loopback_top_0_0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">design_1_loopback_top_0_1</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="bd:referenceName">loopback_top</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="bd:subInstancePath"></spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="bd:referenceType">hdl</spirit:configurableElementValue>
@@ -146,8 +146,8 @@
     <spirit:interconnections>
       <spirit:interconnection>
         <spirit:name>loopback_top_0_S_AXI</spirit:name>
+        <spirit:activeInterface spirit:busRef="interface_aximm" spirit:componentRef="loopback_top_0"/>
         <spirit:activeInterface spirit:busRef="S_AXI" spirit:componentRef="axi_uartlite_0"/>
-        <spirit:activeInterface spirit:busRef="S_AXI" spirit:componentRef="loopback_top_0"/>
         <bd:hdl_attributes>
           <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
           <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
@@ -155,7 +155,7 @@
       </spirit:interconnection>
       <spirit:monitorInterconnection>
         <spirit:name>loopback_top_0_S_AXI</spirit:name>
-        <spirit:monitoredActiveInterface spirit:busRef="S_AXI" spirit:componentRef="axi_uartlite_0"/>
+        <spirit:monitoredActiveInterface spirit:busRef="interface_aximm" spirit:componentRef="loopback_top_0"/>
         <spirit:monitorInterface spirit:busRef="SLOT_0_AXI" spirit:componentRef="system_ila"/>
       </spirit:monitorInterconnection>
     </spirit:interconnections>
@@ -196,17 +196,10 @@
     <spirit:version>1.0</spirit:version>
     <spirit:addressSpaces>
       <spirit:addressSpace>
-        <spirit:name>S_AXI</spirit:name>
-        <spirit:range>4G</spirit:range>
+        <spirit:name>interface_aximm</spirit:name>
+        <spirit:range>16</spirit:range>
         <spirit:width>32</spirit:width>
-        <spirit:segments>
-          <spirit:segment>
-            <spirit:name>SEG_axi_uartlite_0_Reg</spirit:name>
-            <spirit:displayName>/axi_uartlite_0/S_AXI/Reg</spirit:displayName>
-            <spirit:addressOffset>0x40600000</spirit:addressOffset>
-            <spirit:range>64K</spirit:range>
-          </spirit:segment>
-        </spirit:segments>
+        <spirit:segments/>
       </spirit:addressSpace>
     </spirit:addressSpaces>
   </spirit:component>
