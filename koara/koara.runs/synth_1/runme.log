@@ -12,56 +12,325 @@ source design_1_wrapper.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2016.4/data/ip'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+INFO: [IP_Flow 19-2228] Inferred bus interface 'interface_aximm' of definition 'xilinx.com:interface:aximm:1.0'.
+INFO: [IP_Flow 19-2228] Inferred bus interface 'ADDSUB_A' of definition 'xilinx.com:interface:axis:1.0'.
+INFO: [IP_Flow 19-2228] Inferred bus interface 'ADDSUB_B' of definition 'xilinx.com:interface:axis:1.0'.
+INFO: [IP_Flow 19-2228] Inferred bus interface 'ADDSUB_OP' of definition 'xilinx.com:interface:axis:1.0'.
+INFO: [IP_Flow 19-2228] Inferred bus interface 'ADDSUB_R' of definition 'xilinx.com:interface:axis:1.0'.
+INFO: [IP_Flow 19-2228] Inferred bus interface 'COMP_A' of definition 'xilinx.com:interface:axis:1.0'.
+INFO: [IP_Flow 19-2228] Inferred bus interface 'COMP_B' of definition 'xilinx.com:interface:axis:1.0'.
+INFO: [IP_Flow 19-2228] Inferred bus interface 'COMP_OP' of definition 'xilinx.com:interface:axis:1.0'.
+INFO: [IP_Flow 19-2228] Inferred bus interface 'COMP_R' of definition 'xilinx.com:interface:axis:1.0'.
+INFO: [IP_Flow 19-2228] Inferred bus interface 'DIV_A' of definition 'xilinx.com:interface:axis:1.0'.
+INFO: [IP_Flow 19-2228] Inferred bus interface 'DIV_B' of definition 'xilinx.com:interface:axis:1.0'.
+INFO: [IP_Flow 19-2228] Inferred bus interface 'DIV_R' of definition 'xilinx.com:interface:axis:1.0'.
+INFO: [IP_Flow 19-2228] Inferred bus interface 'FCVTSW_A' of definition 'xilinx.com:interface:axis:1.0'.
+INFO: [IP_Flow 19-2228] Inferred bus interface 'FCVTSW_R' of definition 'xilinx.com:interface:axis:1.0'.
+INFO: [IP_Flow 19-2228] Inferred bus interface 'FCVTWS_A' of definition 'xilinx.com:interface:axis:1.0'.
+INFO: [IP_Flow 19-2228] Inferred bus interface 'FCVTWS_R' of definition 'xilinx.com:interface:axis:1.0'.
+INFO: [IP_Flow 19-2228] Inferred bus interface 'FSQRTS_A' of definition 'xilinx.com:interface:axis:1.0'.
+INFO: [IP_Flow 19-2228] Inferred bus interface 'FSQRTS_R' of definition 'xilinx.com:interface:axis:1.0'.
+INFO: [IP_Flow 19-2228] Inferred bus interface 'MUL_A' of definition 'xilinx.com:interface:axis:1.0'.
+INFO: [IP_Flow 19-2228] Inferred bus interface 'MUL_B' of definition 'xilinx.com:interface:axis:1.0'.
+INFO: [IP_Flow 19-2228] Inferred bus interface 'MUL_R' of definition 'xilinx.com:interface:axis:1.0'.
+INFO: [IP_Flow 19-4753] Inferred signal 'reset' from port 'RST_N' as interface 'RST_N'.
+INFO: [IP_Flow 19-4728] Bus Interface 'RST_N': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
+INFO: [IP_Flow 19-4753] Inferred signal 'clock' from port 'CLK' as interface 'CLK'.
+INFO: [IP_Flow 19-4728] Bus Interface 'CLK': Added interface parameter 'ASSOCIATED_BUSIF' with value 'interface_aximm:ADDSUB_A:ADDSUB_B:ADDSUB_OP:ADDSUB_R:COMP_A:COMP_B:COMP_OP:COMP_R:DIV_A:DIV_B:DIV_R:FCVTSW_A:FCVTSW_R:FCVTWS_A:FCVTWS_R:FSQRTS_A:FSQRTS_R:MUL_A:MUL_B:MUL_R'.
+INFO: [IP_Flow 19-4728] Bus Interface 'CLK': Added interface parameter 'ASSOCIATED_RESET' with value 'RST_N'.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+WARNING: [IP_Flow 19-3664] IP 'design_1_blk_mem_gen_0_0' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_blk_mem_gen_0_0_1/design_1_blk_mem_gen_0_0.dcp'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_blk_mem_gen_0_0' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_blk_mem_gen_0_0_1/design_1_blk_mem_gen_0_0_stub.v'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_blk_mem_gen_0_0' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_blk_mem_gen_0_0_1/design_1_blk_mem_gen_0_0_stub.vhdl'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_blk_mem_gen_0_0' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_blk_mem_gen_0_0_1/design_1_blk_mem_gen_0_0_sim_netlist.v'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_blk_mem_gen_0_0' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_blk_mem_gen_0_0_1/design_1_blk_mem_gen_0_0_sim_netlist.vhdl'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_0_0' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_0/design_1_floating_point_0_0.dcp'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_0_0' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_0/design_1_floating_point_0_0_stub.v'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_0_0' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_0/design_1_floating_point_0_0_stub.vhdl'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_0_0' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_0/design_1_floating_point_0_0_sim_netlist.v'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_0_0' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_0/design_1_floating_point_0_0_sim_netlist.vhdl'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_0_1' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_1/design_1_floating_point_0_1.dcp'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_0_1' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_1/design_1_floating_point_0_1_stub.v'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_0_1' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_1/design_1_floating_point_0_1_stub.vhdl'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_0_1' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_1/design_1_floating_point_0_1_sim_netlist.v'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_0_1' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_1/design_1_floating_point_0_1_sim_netlist.vhdl'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_0_2' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_2/design_1_floating_point_0_2.dcp'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_0_2' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_2/design_1_floating_point_0_2_stub.v'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_0_2' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_2/design_1_floating_point_0_2_stub.vhdl'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_0_2' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_2/design_1_floating_point_0_2_sim_netlist.v'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_0_2' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_2/design_1_floating_point_0_2_sim_netlist.vhdl'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_0_3' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_3/design_1_floating_point_0_3.dcp'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_0_3' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_3/design_1_floating_point_0_3_stub.v'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_0_3' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_3/design_1_floating_point_0_3_stub.vhdl'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_0_3' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_3/design_1_floating_point_0_3_sim_netlist.v'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_0_3' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_3/design_1_floating_point_0_3_sim_netlist.vhdl'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_2_0' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_2_0/design_1_floating_point_2_0.dcp'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_2_0' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_2_0/design_1_floating_point_2_0_stub.v'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_2_0' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_2_0/design_1_floating_point_2_0_stub.vhdl'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_2_0' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_2_0/design_1_floating_point_2_0_sim_netlist.v'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_2_0' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_2_0/design_1_floating_point_2_0_sim_netlist.vhdl'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_4_0' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_4_0/design_1_floating_point_4_0.dcp'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_4_0' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_4_0/design_1_floating_point_4_0_stub.v'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_4_0' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_4_0/design_1_floating_point_4_0_stub.vhdl'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_4_0' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_4_0/design_1_floating_point_4_0_sim_netlist.v'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_4_0' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_4_0/design_1_floating_point_4_0_sim_netlist.vhdl'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_5_0' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_5_0/design_1_floating_point_5_0.dcp'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_5_0' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_5_0/design_1_floating_point_5_0_stub.v'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_5_0' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_5_0/design_1_floating_point_5_0_stub.vhdl'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_5_0' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_5_0/design_1_floating_point_5_0_sim_netlist.v'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_floating_point_5_0' generated file not found '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_5_0/design_1_floating_point_5_0_sim_netlist.vhdl'. Please regenerate to continue.
 Command: synth_design -top design_1_wrapper -part xcku040-ffva1156-2-e
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xcku040'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xcku040'
-INFO: [Common 17-1223] The version limit for your license is '2017.03' and will expire in -242 days. A version limit expiration means that, although you may be able to continue to use the current version of tools or IP with this license, you will not be eligible for any updates or new releases.
+INFO: [Common 17-1223] The version limit for your license is '2017.03' and will expire in -246 days. A version limit expiration means that, although you may be able to continue to use the current version of tools or IP with this license, you will not be eligible for any updates or new releases.
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 20495 
+INFO: Helper process launched with PID 19387 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1197.086 ; gain = 261.711 ; free physical = 7695 ; free virtual = 27836
+Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1205.090 ; gain = 269.711 ; free physical = 8997 ; free virtual = 27964
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'design_1_wrapper' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.v:12]
 INFO: [Synth 8-638] synthesizing module 'design_1' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:13]
-INFO: [Synth 8-638] synthesizing module 'design_1_axi_uartlite_0_0' [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/realtime/design_1_axi_uartlite_0_0_stub.v:6]
-INFO: [Synth 8-256] done synthesizing module 'design_1_axi_uartlite_0_0' (1#1) [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/realtime/design_1_axi_uartlite_0_0_stub.v:6]
-WARNING: [Synth 8-350] instance 'axi_uartlite_0' of module 'design_1_axi_uartlite_0_0' requires 22 connections, but only 21 given [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:120]
-INFO: [Synth 8-638] synthesizing module 'design_1_blk_mem_gen_0_0' [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/realtime/design_1_blk_mem_gen_0_0_stub.v:6]
-INFO: [Synth 8-256] done synthesizing module 'design_1_blk_mem_gen_0_0' (2#1) [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/realtime/design_1_blk_mem_gen_0_0_stub.v:6]
-INFO: [Synth 8-638] synthesizing module 'design_1_blk_mem_gen_1_0' [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/realtime/design_1_blk_mem_gen_1_0_stub.v:6]
-INFO: [Synth 8-256] done synthesizing module 'design_1_blk_mem_gen_1_0' (3#1) [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/realtime/design_1_blk_mem_gen_1_0_stub.v:6]
-INFO: [Synth 8-638] synthesizing module 'design_1_clk_wiz_0_0' [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/realtime/design_1_clk_wiz_0_0_stub.v:5]
-INFO: [Synth 8-256] done synthesizing module 'design_1_clk_wiz_0_0' (4#1) [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/realtime/design_1_clk_wiz_0_0_stub.v:5]
-INFO: [Synth 8-638] synthesizing module 'design_1_core_top_0_0' [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/realtime/design_1_core_top_0_0_stub.v:6]
-INFO: [Synth 8-256] done synthesizing module 'design_1_core_top_0_0' (5#1) [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/realtime/design_1_core_top_0_0_stub.v:6]
-WARNING: [Synth 8-350] instance 'core_top_0' of module 'design_1_core_top_0_0' requires 67 connections, but only 66 given [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:161]
-INFO: [Synth 8-638] synthesizing module 'design_1_core_top_0_axi_periph_0' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:323]
-INFO: [Synth 8-638] synthesizing module 's00_couplers_imp_1T2I6AR' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:513]
-INFO: [Synth 8-256] done synthesizing module 's00_couplers_imp_1T2I6AR' (6#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:513]
-INFO: [Synth 8-256] done synthesizing module 'design_1_core_top_0_axi_periph_0' (7#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:323]
-INFO: [Synth 8-638] synthesizing module 'design_1_floating_point_0_0' [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/realtime/design_1_floating_point_0_0_stub.v:6]
-INFO: [Synth 8-256] done synthesizing module 'design_1_floating_point_0_0' (8#1) [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/realtime/design_1_floating_point_0_0_stub.v:6]
-INFO: [Synth 8-638] synthesizing module 'design_1_floating_point_0_1' [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/realtime/design_1_floating_point_0_1_stub.v:6]
-INFO: [Synth 8-256] done synthesizing module 'design_1_floating_point_0_1' (9#1) [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/realtime/design_1_floating_point_0_1_stub.v:6]
-INFO: [Synth 8-638] synthesizing module 'design_1_floating_point_0_2' [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/realtime/design_1_floating_point_0_2_stub.v:6]
-INFO: [Synth 8-256] done synthesizing module 'design_1_floating_point_0_2' (10#1) [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/realtime/design_1_floating_point_0_2_stub.v:6]
-INFO: [Synth 8-638] synthesizing module 'design_1_floating_point_0_3' [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/realtime/design_1_floating_point_0_3_stub.v:6]
-INFO: [Synth 8-256] done synthesizing module 'design_1_floating_point_0_3' (11#1) [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/realtime/design_1_floating_point_0_3_stub.v:6]
-INFO: [Synth 8-638] synthesizing module 'design_1_xlconstant_0_0' [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/realtime/design_1_xlconstant_0_0_stub.v:5]
-INFO: [Synth 8-256] done synthesizing module 'design_1_xlconstant_0_0' (12#1) [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/realtime/design_1_xlconstant_0_0_stub.v:5]
-INFO: [Synth 8-638] synthesizing module 'design_1_xlconstant_0_1' [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/realtime/design_1_xlconstant_0_1_stub.v:5]
-INFO: [Synth 8-256] done synthesizing module 'design_1_xlconstant_0_1' (13#1) [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/realtime/design_1_xlconstant_0_1_stub.v:5]
-INFO: [Synth 8-256] done synthesizing module 'design_1' (14#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:13]
-INFO: [Synth 8-256] done synthesizing module 'design_1_wrapper' (15#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.v:12]
-WARNING: [Synth 8-3331] design s00_couplers_imp_1T2I6AR has unconnected port M_ACLK
-WARNING: [Synth 8-3331] design s00_couplers_imp_1T2I6AR has unconnected port M_ARESETN
-WARNING: [Synth 8-3331] design s00_couplers_imp_1T2I6AR has unconnected port S_ACLK
-WARNING: [Synth 8-3331] design s00_couplers_imp_1T2I6AR has unconnected port S_ARESETN
-WARNING: [Synth 8-3331] design design_1_core_top_0_axi_periph_0 has unconnected port ACLK
-WARNING: [Synth 8-3331] design design_1_core_top_0_axi_periph_0 has unconnected port ARESETN
+INFO: [Synth 8-638] synthesizing module 'design_1_axi_uartlite_0_1' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_1/synth/design_1_axi_uartlite_0_1.vhd:86]
+INFO: [Synth 8-3491] module 'axi_uartlite' declared at '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:2090' bound to instance 'U0' of component 'axi_uartlite' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_1/synth/design_1_axi_uartlite_0_1.vhd:155]
+INFO: [Synth 8-638] synthesizing module 'axi_uartlite' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:2160]
+INFO: [Synth 8-5534] Detected attribute (* max_fanout = "10000" *) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:2109]
+INFO: [Synth 8-5534] Detected attribute (* max_fanout = "10000" *) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:2110]
+INFO: [Synth 8-638] synthesizing module 'uartlite_core' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:1615]
+INFO: [Synth 8-638] synthesizing module 'baudrate' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:1418]
+INFO: [Synth 8-256] done synthesizing module 'baudrate' (1#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:1418]
+INFO: [Synth 8-3919] null assignment ignored [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:1881]
+INFO: [Synth 8-638] synthesizing module 'uartlite_rx' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:909]
+INFO: [Synth 8-638] synthesizing module 'cdc_sync' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/52cb/hdl/lib_cdc_v1_0_rfs.vhd:106]
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_IN_cdc_to' to cell 'FDR' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/52cb/hdl/lib_cdc_v1_0_rfs.vhd:514]
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d2' to cell 'FDR' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/52cb/hdl/lib_cdc_v1_0_rfs.vhd:545]
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d3' to cell 'FDR' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/52cb/hdl/lib_cdc_v1_0_rfs.vhd:554]
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d4' to cell 'FDR' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/52cb/hdl/lib_cdc_v1_0_rfs.vhd:564]
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d5' to cell 'FDR' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/52cb/hdl/lib_cdc_v1_0_rfs.vhd:574]
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d6' to cell 'FDR' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/52cb/hdl/lib_cdc_v1_0_rfs.vhd:584]
+INFO: [Synth 8-256] done synthesizing module 'cdc_sync' (2#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/52cb/hdl/lib_cdc_v1_0_rfs.vhd:106]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_i_f' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:168]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_i_f' (3#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:168]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_f' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_rbu_f' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-638] synthesizing module 'cntr_incr_decr_addn_f' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:143]
+INFO: [Synth 8-256] done synthesizing module 'cntr_incr_decr_addn_f' (4#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:143]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_f' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_f' (5#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_rbu_f' (6#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_f' (7#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/6039/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-256] done synthesizing module 'uartlite_rx' (8#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:909]
+INFO: [Synth 8-638] synthesizing module 'uartlite_tx' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:408]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_i_f__parameterized0' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:168]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_i_f__parameterized0' (8#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:168]
+INFO: [Synth 8-256] done synthesizing module 'uartlite_tx' (9#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:408]
+INFO: [Synth 8-256] done synthesizing module 'uartlite_core' (10#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:1615]
+INFO: [Synth 8-638] synthesizing module 'axi_lite_ipif' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2948]
+INFO: [Synth 8-638] synthesizing module 'slave_attachment' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2341]
+INFO: [Synth 8-638] synthesizing module 'address_decoder' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1775]
+INFO: [Synth 8-638] synthesizing module 'pselect_f' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1534]
+INFO: [Synth 8-256] done synthesizing module 'pselect_f' (11#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1534]
+INFO: [Synth 8-638] synthesizing module 'pselect_f__parameterized0' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1534]
+INFO: [Synth 8-256] done synthesizing module 'pselect_f__parameterized0' (11#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1534]
+INFO: [Synth 8-638] synthesizing module 'pselect_f__parameterized1' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1534]
+INFO: [Synth 8-256] done synthesizing module 'pselect_f__parameterized1' (11#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1534]
+INFO: [Synth 8-638] synthesizing module 'pselect_f__parameterized2' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1534]
+INFO: [Synth 8-256] done synthesizing module 'pselect_f__parameterized2' (11#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1534]
+INFO: [Synth 8-256] done synthesizing module 'address_decoder' (12#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1775]
+INFO: [Synth 8-226] default block is never used [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2550]
+INFO: [Synth 8-256] done synthesizing module 'slave_attachment' (13#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2341]
+INFO: [Synth 8-256] done synthesizing module 'axi_lite_ipif' (14#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2948]
+INFO: [Synth 8-256] done synthesizing module 'axi_uartlite' (15#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd:2160]
+INFO: [Synth 8-256] done synthesizing module 'design_1_axi_uartlite_0_1' (16#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_1/synth/design_1_axi_uartlite_0_1.vhd:86]
+WARNING: [Synth 8-350] instance 'axi_uartlite_0' of module 'design_1_axi_uartlite_0_1' requires 22 connections, but only 21 given [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:140]
+INFO: [Synth 8-638] synthesizing module 'design_1_blk_mem_gen_0_0' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_blk_mem_gen_0_0_1/synth/design_1_blk_mem_gen_0_0.vhd:69]
+INFO: [Synth 8-3491] module 'blk_mem_gen_v8_3_5' declared at '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/6273/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:195251' bound to instance 'U0' of component 'blk_mem_gen_v8_3_5' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_blk_mem_gen_0_0_1/synth/design_1_blk_mem_gen_0_0.vhd:230]
+INFO: [Synth 8-256] done synthesizing module 'design_1_blk_mem_gen_0_0' (25#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_blk_mem_gen_0_0_1/synth/design_1_blk_mem_gen_0_0.vhd:69]
+INFO: [Synth 8-638] synthesizing module 'design_1_blk_mem_gen_1_0' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_blk_mem_gen_1_0_1/synth/design_1_blk_mem_gen_1_0.vhd:70]
+INFO: [Synth 8-3491] module 'blk_mem_gen_v8_3_5' declared at '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/6273/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:195251' bound to instance 'U0' of component 'blk_mem_gen_v8_3_5' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_blk_mem_gen_1_0_1/synth/design_1_blk_mem_gen_1_0.vhd:232]
+INFO: [Synth 8-256] done synthesizing module 'design_1_blk_mem_gen_1_0' (27#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_blk_mem_gen_1_0_1/synth/design_1_blk_mem_gen_1_0.vhd:70]
+INFO: [Synth 8-638] synthesizing module 'design_1_clk_wiz_0_0' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.v:70]
+INFO: [Synth 8-638] synthesizing module 'design_1_clk_wiz_0_0_clk_wiz' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_clk_wiz.v:68]
+INFO: [Synth 8-638] synthesizing module 'IBUFDS' [/opt/Xilinx/Vivado/2016.4/scripts/rt/data/unisim_comp.v:14161]
+INFO: [Synth 8-256] done synthesizing module 'IBUFDS' (28#1) [/opt/Xilinx/Vivado/2016.4/scripts/rt/data/unisim_comp.v:14161]
+INFO: [Synth 8-638] synthesizing module 'MMCME3_ADV' [/opt/Xilinx/Vivado/2016.4/scripts/rt/data/unisim_comp.v:20605]
+INFO: [Synth 8-256] done synthesizing module 'MMCME3_ADV' (29#1) [/opt/Xilinx/Vivado/2016.4/scripts/rt/data/unisim_comp.v:20605]
+INFO: [Synth 8-638] synthesizing module 'BUFG' [/opt/Xilinx/Vivado/2016.4/scripts/rt/data/unisim_comp.v:607]
+INFO: [Synth 8-256] done synthesizing module 'BUFG' (30#1) [/opt/Xilinx/Vivado/2016.4/scripts/rt/data/unisim_comp.v:607]
+INFO: [Synth 8-256] done synthesizing module 'design_1_clk_wiz_0_0_clk_wiz' (31#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_clk_wiz.v:68]
+INFO: [Synth 8-256] done synthesizing module 'design_1_clk_wiz_0_0' (32#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.v:70]
+INFO: [Synth 8-638] synthesizing module 'design_1_core_top_0_0' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_core_top_0_0_1/synth/design_1_core_top_0_0.v:56]
+INFO: [Synth 8-638] synthesizing module 'core_top' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:1]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:244]
+INFO: [Synth 8-638] synthesizing module 'core_decode' [/home/yamaguchi/CPU-Adelie/core/src/core_decode.v:1]
+INFO: [Synth 8-256] done synthesizing module 'core_decode' (33#1) [/home/yamaguchi/CPU-Adelie/core/src/core_decode.v:1]
+INFO: [Synth 8-638] synthesizing module 'core_alu' [/home/yamaguchi/CPU-Adelie/core/src/core_alu.v:1]
+INFO: [Synth 8-256] done synthesizing module 'core_alu' (34#1) [/home/yamaguchi/CPU-Adelie/core/src/core_alu.v:1]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:566]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:593]
+INFO: [Synth 8-638] synthesizing module 'core_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_reg.v:1]
+INFO: [Synth 8-256] done synthesizing module 'core_reg' (35#1) [/home/yamaguchi/CPU-Adelie/core/src/core_reg.v:1]
+WARNING: [Synth 8-689] width (32) of port connection 'INDATA' does not match port width (8) of module 'core_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:731]
+INFO: [Synth 8-4471] merging register 'addsub_b_tvalid_reg' into 'addsub_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:161]
+INFO: [Synth 8-4471] merging register 'addsub_op_tvalid_reg' into 'addsub_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:163]
+INFO: [Synth 8-4471] merging register 'addsub_r_tready_reg' into 'addsub_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:164]
+INFO: [Synth 8-4471] merging register 'mul_b_tvalid_reg' into 'mul_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:177]
+INFO: [Synth 8-4471] merging register 'mul_r_tready_reg' into 'mul_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:178]
+INFO: [Synth 8-4471] merging register 'div_b_tvalid_reg' into 'div_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:186]
+INFO: [Synth 8-4471] merging register 'div_r_tready_reg' into 'div_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:187]
+INFO: [Synth 8-4471] merging register 'comp_b_tvalid_reg' into 'comp_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:196]
+INFO: [Synth 8-4471] merging register 'comp_op_tvalid_reg' into 'comp_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:198]
+INFO: [Synth 8-4471] merging register 'comp_r_tready_reg' into 'comp_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:199]
+INFO: [Synth 8-4471] merging register 'fcvtsw_r_tready_reg' into 'fcvtsw_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:206]
+INFO: [Synth 8-4471] merging register 'fcvtws_r_tready_reg' into 'fcvtws_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:213]
+INFO: [Synth 8-4471] merging register 'fsqrts_r_tready_reg' into 'fsqrts_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:220]
+WARNING: [Synth 8-3848] Net addsub_r_tvalid in module/entity core_top does not have driver. [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:157]
+WARNING: [Synth 8-3848] Net addsub_a_tready in module/entity core_top does not have driver. [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:157]
+WARNING: [Synth 8-3848] Net addsub_b_tready in module/entity core_top does not have driver. [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:157]
+WARNING: [Synth 8-3848] Net addsub_op_tready in module/entity core_top does not have driver. [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:157]
+INFO: [Synth 8-256] done synthesizing module 'core_top' (36#1) [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:1]
+INFO: [Synth 8-256] done synthesizing module 'design_1_core_top_0_0' (37#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_core_top_0_0_1/synth/design_1_core_top_0_0.v:56]
+INFO: [Synth 8-638] synthesizing module 'design_1_core_top_0_axi_periph_1' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:395]
+INFO: [Synth 8-638] synthesizing module 's00_couplers_imp_1T2I6AR' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:595]
+INFO: [Synth 8-256] done synthesizing module 's00_couplers_imp_1T2I6AR' (38#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:595]
+INFO: [Synth 8-256] done synthesizing module 'design_1_core_top_0_axi_periph_1' (39#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:395]
+INFO: [Synth 8-638] synthesizing module 'design_1_floating_point_0_0' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_0/synth/design_1_floating_point_0_0.vhd:78]
+INFO: [Synth 8-3491] module 'floating_point_v7_1_3' declared at '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/ad02/hdl/floating_point_v7_1_vh_rfs.vhd:91604' bound to instance 'U0' of component 'floating_point_v7_1_3' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_0/synth/design_1_floating_point_0_0.vhd:209]
+INFO: [Synth 8-256] done synthesizing module 'design_1_floating_point_0_0' (58#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_0/synth/design_1_floating_point_0_0.vhd:78]
+INFO: [Synth 8-638] synthesizing module 'design_1_floating_point_0_1' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_1/synth/design_1_floating_point_0_1.vhd:78]
+INFO: [Synth 8-3491] module 'floating_point_v7_1_3' declared at '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/ad02/hdl/floating_point_v7_1_vh_rfs.vhd:91604' bound to instance 'U0' of component 'floating_point_v7_1_3' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_1/synth/design_1_floating_point_0_1.vhd:209]
+INFO: [Synth 8-256] done synthesizing module 'design_1_floating_point_0_1' (62#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_1/synth/design_1_floating_point_0_1.vhd:78]
+INFO: [Synth 8-638] synthesizing module 'design_1_floating_point_0_2' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_2/synth/design_1_floating_point_0_2.vhd:75]
+INFO: [Synth 8-3491] module 'floating_point_v7_1_3' declared at '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/ad02/hdl/floating_point_v7_1_vh_rfs.vhd:91604' bound to instance 'U0' of component 'floating_point_v7_1_3' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_2/synth/design_1_floating_point_0_2.vhd:203]
+INFO: [Synth 8-256] done synthesizing module 'design_1_floating_point_0_2' (71#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_2/synth/design_1_floating_point_0_2.vhd:75]
+INFO: [Synth 8-638] synthesizing module 'design_1_floating_point_0_3' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_3/synth/design_1_floating_point_0_3.vhd:75]
+INFO: [Synth 8-3491] module 'floating_point_v7_1_3' declared at '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/ad02/hdl/floating_point_v7_1_vh_rfs.vhd:91604' bound to instance 'U0' of component 'floating_point_v7_1_3' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_3/synth/design_1_floating_point_0_3.vhd:203]
+INFO: [Synth 8-256] done synthesizing module 'design_1_floating_point_0_3' (81#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_0_3/synth/design_1_floating_point_0_3.vhd:75]
+INFO: [Synth 8-638] synthesizing module 'design_1_floating_point_2_0' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_2_0/synth/design_1_floating_point_2_0.vhd:72]
+INFO: [Synth 8-3491] module 'floating_point_v7_1_3' declared at '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/ad02/hdl/floating_point_v7_1_vh_rfs.vhd:91604' bound to instance 'U0' of component 'floating_point_v7_1_3' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_2_0/synth/design_1_floating_point_2_0.vhd:197]
+INFO: [Synth 8-256] done synthesizing module 'design_1_floating_point_2_0' (88#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_2_0/synth/design_1_floating_point_2_0.vhd:72]
+INFO: [Synth 8-638] synthesizing module 'design_1_floating_point_4_0' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_4_0/synth/design_1_floating_point_4_0.vhd:72]
+INFO: [Synth 8-3491] module 'floating_point_v7_1_3' declared at '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/ad02/hdl/floating_point_v7_1_vh_rfs.vhd:91604' bound to instance 'U0' of component 'floating_point_v7_1_3' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_4_0/synth/design_1_floating_point_4_0.vhd:197]
+INFO: [Synth 8-256] done synthesizing module 'design_1_floating_point_4_0' (92#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_4_0/synth/design_1_floating_point_4_0.vhd:72]
+INFO: [Synth 8-638] synthesizing module 'design_1_floating_point_5_0' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_5_0/synth/design_1_floating_point_5_0.vhd:72]
+INFO: [Synth 8-3491] module 'floating_point_v7_1_3' declared at '/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/ad02/hdl/floating_point_v7_1_vh_rfs.vhd:91604' bound to instance 'U0' of component 'floating_point_v7_1_3' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_5_0/synth/design_1_floating_point_5_0.vhd:197]
+INFO: [Synth 8-256] done synthesizing module 'design_1_floating_point_5_0' (97#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_floating_point_5_0/synth/design_1_floating_point_5_0.vhd:72]
+INFO: [Synth 8-638] synthesizing module 'design_1_xlconstant_0_0' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_xlconstant_0_0/sim/design_1_xlconstant_0_0.v:56]
+INFO: [Synth 8-638] synthesizing module 'xlconstant' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/e147/xlconstant.v:23]
+INFO: [Synth 8-256] done synthesizing module 'xlconstant' (98#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/e147/xlconstant.v:23]
+INFO: [Synth 8-256] done synthesizing module 'design_1_xlconstant_0_0' (99#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_xlconstant_0_0/sim/design_1_xlconstant_0_0.v:56]
+INFO: [Synth 8-638] synthesizing module 'design_1_xlconstant_0_1' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_xlconstant_0_1/sim/design_1_xlconstant_0_1.v:56]
+INFO: [Synth 8-638] synthesizing module 'xlconstant__parameterized0' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/e147/xlconstant.v:23]
+INFO: [Synth 8-256] done synthesizing module 'xlconstant__parameterized0' (99#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ipshared/e147/xlconstant.v:23]
+INFO: [Synth 8-256] done synthesizing module 'design_1_xlconstant_0_1' (100#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_xlconstant_0_1/sim/design_1_xlconstant_0_1.v:56]
+INFO: [Synth 8-256] done synthesizing module 'design_1' (101#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:13]
+INFO: [Synth 8-256] done synthesizing module 'design_1_wrapper' (102#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.v:12]
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized137 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized137 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized137 has unconnected port SINIT
+WARNING: [Synth 8-3331] design flt_dec_op has unconnected port DEC_OP_STATE[11]
+WARNING: [Synth 8-3331] design flt_dec_op has unconnected port DEC_OP_STATE[10]
+WARNING: [Synth 8-3331] design flt_dec_op has unconnected port DEC_OP_STATE[9]
+WARNING: [Synth 8-3331] design flt_dec_op has unconnected port DEC_OP_STATE[8]
+WARNING: [Synth 8-3331] design flt_dec_op has unconnected port DIVIDE_BY_ZERO_IN
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1127 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1127 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1127 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1127 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1127 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1125 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1125 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1125 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1129 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1129 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1129 has unconnected port SINIT
+WARNING: [Synth 8-3331] design carry_chain__parameterized55 has unconnected port B[11]
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1121 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1121 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1121 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1121 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1121 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1119 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1119 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1119 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1119 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1119 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1123 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1123 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1123 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1107 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1107 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1107 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1107 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1107 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1105 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1105 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1105 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1105 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1105 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1103 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1103 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1103 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1101 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1101 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1101 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1117 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1117 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1117 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1117 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1117 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1115 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1115 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1115 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1115 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1115 has unconnected port SINIT
+WARNING: [Synth 8-3331] design flt_round_bit__parameterized1 has unconnected port NORMALIZE[1]
+WARNING: [Synth 8-3331] design flt_round_bit__parameterized1 has unconnected port FIXED_POINT
+WARNING: [Synth 8-3331] design flt_round_bit__parameterized1 has unconnected port FIX_MANT_SIGN
+WARNING: [Synth 8-3331] design flt_round_bit__parameterized1 has unconnected port SIGN
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1113 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1113 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1113 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1113 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1113 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1111 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1111 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1111 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1111 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1111 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1109 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1109 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1109 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1109 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1109 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1099 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1099 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1099 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1099 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1099 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1097 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1097 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1097 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1097 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1097 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1095 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1095 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1095 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1095 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1095 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1093 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1093 has unconnected port CE
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1093 has unconnected port SCLR
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1093 has unconnected port SSET
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1093 has unconnected port SINIT
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1091 has unconnected port CLK
+WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1091 has unconnected port CE
+INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1237.562 ; gain = 302.188 ; free physical = 7652 ; free virtual = 27793
+Finished RTL Elaboration : Time (s): cpu = 00:01:23 ; elapsed = 00:01:23 . Memory (MB): peak = 1469.770 ; gain = 534.391 ; free physical = 8732 ; free virtual = 27694
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -71,73 +340,57 @@ Report Check Netlist:
 |1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
 +------+------------------+-------+---------+-------+------------------+
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1237.562 ; gain = 302.188 ; free physical = 7652 ; free virtual = 27793
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:01:24 ; elapsed = 00:01:24 . Memory (MB): peak = 1469.770 ; gain = 534.391 ; free physical = 8733 ; free virtual = 27694
 ---------------------------------------------------------------------------------
-WARNING: [Project 1-486] Could not resolve non-primitive black box cell 'design_1_axi_uartlite_0_0' instantiated as 'design_1_i/axi_uartlite_0' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:120]
-WARNING: [Project 1-486] Could not resolve non-primitive black box cell 'design_1_blk_mem_gen_0_0' instantiated as 'design_1_i/blk_mem_gen_0' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:142]
-WARNING: [Project 1-486] Could not resolve non-primitive black box cell 'design_1_blk_mem_gen_1_0' instantiated as 'design_1_i/blk_mem_gen_1' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:148]
-WARNING: [Project 1-486] Could not resolve non-primitive black box cell 'design_1_clk_wiz_0_0' instantiated as 'design_1_i/clk_wiz_0' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:155]
-WARNING: [Project 1-486] Could not resolve non-primitive black box cell 'design_1_core_top_0_0' instantiated as 'design_1_i/core_top_0' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:161]
-WARNING: [Project 1-486] Could not resolve non-primitive black box cell 'design_1_floating_point_0_0' instantiated as 'design_1_i/floating_point_0' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:267]
-WARNING: [Project 1-486] Could not resolve non-primitive black box cell 'design_1_floating_point_0_1' instantiated as 'design_1_i/floating_point_1' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:281]
-WARNING: [Project 1-486] Could not resolve non-primitive black box cell 'design_1_floating_point_0_2' instantiated as 'design_1_i/floating_point_2' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:295]
-WARNING: [Project 1-486] Could not resolve non-primitive black box cell 'design_1_floating_point_0_3' instantiated as 'design_1_i/floating_point_3' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:306]
-WARNING: [Project 1-486] Could not resolve non-primitive black box cell 'design_1_xlconstant_0_0' instantiated as 'design_1_i/xlconstant_0' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:317]
-WARNING: [Project 1-486] Could not resolve non-primitive black box cell 'design_1_xlconstant_0_1' instantiated as 'design_1_i/xlconstant_1' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:319]
+INFO: [Netlist 29-17] Analyzing 2699 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Device 21-403] Loading part xcku040-ffva1156-2-e
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp/design_1_core_top_0_0_in_context.xdc] for cell 'design_1_i/core_top_0'
-Finished Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp/design_1_core_top_0_0_in_context.xdc] for cell 'design_1_i/core_top_0'
-Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp_2/design_1_blk_mem_gen_0_0_in_context.xdc] for cell 'design_1_i/blk_mem_gen_0'
-Finished Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp_2/design_1_blk_mem_gen_0_0_in_context.xdc] for cell 'design_1_i/blk_mem_gen_0'
-Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp_3/design_1_blk_mem_gen_1_0_in_context.xdc] for cell 'design_1_i/blk_mem_gen_1'
-Finished Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp_3/design_1_blk_mem_gen_1_0_in_context.xdc] for cell 'design_1_i/blk_mem_gen_1'
-Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp_4/design_1_xlconstant_0_0_in_context.xdc] for cell 'design_1_i/xlconstant_0'
-Finished Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp_4/design_1_xlconstant_0_0_in_context.xdc] for cell 'design_1_i/xlconstant_0'
-Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp_5/design_1_xlconstant_0_1_in_context.xdc] for cell 'design_1_i/xlconstant_1'
-Finished Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp_5/design_1_xlconstant_0_1_in_context.xdc] for cell 'design_1_i/xlconstant_1'
-Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp_6/design_1_floating_point_0_0_in_context.xdc] for cell 'design_1_i/floating_point_0'
-Finished Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp_6/design_1_floating_point_0_0_in_context.xdc] for cell 'design_1_i/floating_point_0'
-Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp_7/design_1_axi_uartlite_0_0_in_context.xdc] for cell 'design_1_i/axi_uartlite_0'
-Finished Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp_7/design_1_axi_uartlite_0_0_in_context.xdc] for cell 'design_1_i/axi_uartlite_0'
-Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp_8/design_1_floating_point_0_1_in_context.xdc] for cell 'design_1_i/floating_point_1'
-Finished Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp_8/design_1_floating_point_0_1_in_context.xdc] for cell 'design_1_i/floating_point_1'
-Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp_9/design_1_floating_point_0_2_in_context.xdc] for cell 'design_1_i/floating_point_2'
-Finished Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp_9/design_1_floating_point_0_2_in_context.xdc] for cell 'design_1_i/floating_point_2'
-Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp_10/design_1_floating_point_0_3_in_context.xdc] for cell 'design_1_i/floating_point_3'
-Finished Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp_10/design_1_floating_point_0_3_in_context.xdc] for cell 'design_1_i/floating_point_3'
-Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp_11/design_1_clk_wiz_0_0_in_context.xdc] for cell 'design_1_i/clk_wiz_0'
-Finished Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp_11/design_1_clk_wiz_0_0_in_context.xdc] for cell 'design_1_i/clk_wiz_0'
+Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_1/design_1_axi_uartlite_0_1_board.xdc] for cell 'design_1_i/axi_uartlite_0/U0'
+Finished Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_1/design_1_axi_uartlite_0_1_board.xdc] for cell 'design_1_i/axi_uartlite_0/U0'
+Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_1/design_1_axi_uartlite_0_1.xdc] for cell 'design_1_i/axi_uartlite_0/U0'
+Finished Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_1/design_1_axi_uartlite_0_1.xdc] for cell 'design_1_i/axi_uartlite_0/U0'
+Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_board.xdc] for cell 'design_1_i/clk_wiz_0/inst'
+Finished Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_board.xdc] for cell 'design_1_i/clk_wiz_0/inst'
+Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xdc] for cell 'design_1_i/clk_wiz_0/inst'
+Finished Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xdc] for cell 'design_1_i/clk_wiz_0/inst'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_wrapper_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/design_1_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Timing 38-2] Deriving generated clocks
 Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/dont_touch.xdc]
 Finished Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/dont_touch.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/dont_touch.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_wrapper_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/design_1_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
 INFO: [Project 1-111] Unisim Transformation Summary:
-No Unisim elements were transformed.
+  A total of 60 instances were transformed.
+  BUFG => BUFGCE: 2 instances
+  DSP48E1 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_M_DATA, DSP_MULTIPLIER, DSP_OUTPUT, DSP_PREADD, DSP_PREADD_DATA): 2 instances
+  DSP48E2 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_M_DATA, DSP_MULTIPLIER, DSP_OUTPUT, DSP_PREADD, DSP_PREADD_DATA): 2 instances
+  FDE => FDRE: 47 instances
+  FDR => FDRE: 6 instances
+  IBUFDS => IBUFDS (DIFFINBUF, IBUFCTRL): 1 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 1652.035 ; gain = 0.000 ; free physical = 7318 ; free virtual = 27459
-WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'design_1_i/blk_mem_gen_0' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
-WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'design_1_i/blk_mem_gen_1' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.03 . Memory (MB): peak = 1817.219 ; gain = 0.000 ; free physical = 8443 ; free virtual = 27404
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1652.035 ; gain = 716.660 ; free physical = 7322 ; free virtual = 27463
+Finished Constraint Validation : Time (s): cpu = 00:01:35 ; elapsed = 00:01:36 . Memory (MB): peak = 1817.219 ; gain = 881.840 ; free physical = 8441 ; free virtual = 27402
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xcku040-ffva1156-2-e
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1652.035 ; gain = 716.660 ; free physical = 7322 ; free virtual = 27463
+Finished Loading Part and Timing Information : Time (s): cpu = 00:01:35 ; elapsed = 00:01:36 . Memory (MB): peak = 1817.219 ; gain = 881.840 ; free physical = 8441 ; free virtual = 27402
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property IO_BUFFER_TYPE = NONE for sysclk_125_clk_n. (constraint file  /home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp_11/design_1_clk_wiz_0_0_in_context.xdc, line 3).
-Applied set_property CLOCK_BUFFER_TYPE = NONE for sysclk_125_clk_n. (constraint file  /home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp_11/design_1_clk_wiz_0_0_in_context.xdc, line 4).
-Applied set_property IO_BUFFER_TYPE = NONE for sysclk_125_clk_p. (constraint file  /home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp_11/design_1_clk_wiz_0_0_in_context.xdc, line 5).
-Applied set_property CLOCK_BUFFER_TYPE = NONE for sysclk_125_clk_p. (constraint file  /home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/.Xil/Vivado-20489-ispc2016/dcp_11/design_1_clk_wiz_0_0_in_context.xdc, line 6).
+Applied set_property DONT_TOUCH = true for design_1_i/axi_uartlite_0/U0. (constraint file  /home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/dont_touch.xdc, line 71).
+Applied set_property DONT_TOUCH = true for design_1_i/clk_wiz_0/inst. (constraint file  /home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/dont_touch.xdc, line 79).
 Applied set_property DONT_TOUCH = true for design_1_i. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for design_1_i/axi_uartlite_0. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for design_1_i/blk_mem_gen_0. (constraint file  auto generated constraint, line ).
@@ -149,13 +402,118 @@ Applied set_property DONT_TOUCH = true for design_1_i/floating_point_0. (constra
 Applied set_property DONT_TOUCH = true for design_1_i/floating_point_1. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for design_1_i/floating_point_2. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for design_1_i/floating_point_3. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for design_1_i/floating_point_4. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for design_1_i/floating_point_5. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for design_1_i/floating_point_6. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for design_1_i/xlconstant_0. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for design_1_i/xlconstant_1. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1652.035 ; gain = 716.660 ; free physical = 7322 ; free virtual = 27463
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:35 ; elapsed = 00:01:36 . Memory (MB): peak = 1817.219 ; gain = 881.840 ; free physical = 8441 ; free virtual = 27402
 ---------------------------------------------------------------------------------
+INFO: [Synth 8-5546] ROM "EN_16x_Baud" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "fifo_full_p1" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "mux_sel_is_zero" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "s_axi_rresp_i" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "s_axi_rresp_i" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "s_axi_bresp_i" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "s_axi_bresp_i" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "RESULT19" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'cpu_state_reg' in module 'core_top'
+INFO: [Synth 8-802] inferred FSM for state register 'read_status_reg' in module 'core_top'
+INFO: [Synth 8-802] inferred FSM for state register 'write_status_reg' in module 'core_top'
+INFO: [Synth 8-5546] ROM "cpu_state" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "read_status" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ARADDR" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "RREADY" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "read_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "read_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "read_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "read_status1" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "write_status" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "AWADDR" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "AWVALID" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "BREADY" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "write_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "write_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "write_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "write_status1" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "cpu_state" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "read_status" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ARADDR" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "RREADY" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "read_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "read_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "read_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "read_status1" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "write_status" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "AWADDR" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "AWVALID" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "BREADY" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "write_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "write_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "write_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "write_status1" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "addsub_op_tdata0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "comp_op_tdata1" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ARVALID0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "RREADY0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "AWVALID0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "WVALID0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "BREADY0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "tvalid_once1" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "exp_over_int" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ip_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "exp_over_int" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ip_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "det_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5545] ROM "chunk_is_zero_ip" won't be mapped to RAM because address size (36) is larger than maximum supported(25)
+INFO: [Synth 8-5546] ROM "exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5545] ROM "chunk_is_zero_ip" won't be mapped to RAM because address size (36) is larger than maximum supported(25)
+INFO: [Synth 8-5546] ROM "flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "state_det" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_det" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_int_up" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "exp_just_over_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "exp_just_over_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "state_int_up" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5545] ROM "chunk_is_zero_ip" won't be mapped to RAM because address size (36) is larger than maximum supported(25)
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+             s_read_wait |                               00 |                             0000
+            s_read_wait2 |                               01 |                             0100
+                  s_read |                               10 |                             0001
+                 s_read2 |                               11 |                             0101
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'read_status_reg' using encoding 'sequential' in module 'core_top'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+            s_write_wait |                              000 |                             0010
+           s_write_wait2 |                              001 |                             0110
+                 s_write |                              010 |                             0011
+                s_write2 |                              011 |                             1000
+                s_write3 |                              100 |                             0111
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'write_status_reg' using encoding 'sequential' in module 'core_top'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1652.035 ; gain = 716.660 ; free physical = 7322 ; free virtual = 27463
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:42 ; elapsed = 00:01:43 . Memory (MB): peak = 1817.219 ; gain = 881.840 ; free physical = 8447 ; free virtual = 27409
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -166,14 +524,12 @@ Report RTL Partitions:
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
-Detailed RTL Component Info : 
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Hierarchical Component Statistics 
 ---------------------------------------------------------------------------------
-Hierarchical RTL Component report 
 ---------------------------------------------------------------------------------
 Finished RTL Hierarchical Component Statistics
 ---------------------------------------------------------------------------------
@@ -189,14 +545,272 @@ Finished Part Resource Summary
 ---------------------------------------------------------------------------------
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-3331] design design_1_core_top_0_axi_periph_0 has unconnected port ACLK
-WARNING: [Synth 8-3331] design design_1_core_top_0_axi_periph_0 has unconnected port ARESETN
-WARNING: [Synth 8-3331] design design_1_core_top_0_axi_periph_0 has unconnected port M00_ACLK
-WARNING: [Synth 8-3331] design design_1_core_top_0_axi_periph_0 has unconnected port M00_ARESETN
-WARNING: [Synth 8-3331] design design_1_core_top_0_axi_periph_0 has unconnected port S00_ACLK
-WARNING: [Synth 8-3331] design design_1_core_top_0_axi_periph_0 has unconnected port S00_ARESETN
+INFO: [Synth 8-5546] ROM "UARTLITE_CORE_I/BAUD_RATE_I/EN_16x_Baud" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "cpu_state" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/COND_DET_A/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/COND_DET_A/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/COND_DET_B/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/COND_DET_B/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/exp_over_int" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/ip_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "DIV_OP.SPD.OP/EXP/COND_DET_A/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "DIV_OP.SPD.OP/EXP/COND_DET_A/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "DIV_OP.SPD.OP/EXP/COND_DET_B/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "DIV_OP.SPD.OP/EXP/COND_DET_B/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "DIV_OP.SPD.OP/EXP/flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "DIV_OP.SPD.OP/EXP/flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/COND_DET_A/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/COND_DET_A/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/COND_DET_B/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/COND_DET_B/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/exp_just_over_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "MULT.OP/EXP/flow_sig" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "FLT_TO_FIX_OP.SPD.OP/COND_DET/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "FLT_TO_FIX_OP.SPD.OP/COND_DET/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "SQRT_OP.SPD.OP/i_mant_calc.EXP/COND_DET_A/exp_all_one_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "SQRT_OP.SPD.OP/i_mant_calc.EXP/COND_DET_A/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-3332] Sequential element (UARTLITE_CORE_I/UARTLITE_RX_I/INPUT_DOUBLE_REGS3/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_s_level_out_d5) is unused and will be removed from module axi_uartlite.
+INFO: [Synth 8-3332] Sequential element (UARTLITE_CORE_I/UARTLITE_RX_I/INPUT_DOUBLE_REGS3/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_s_level_out_d6) is unused and will be removed from module axi_uartlite.
+INFO: [Synth 8-3332] Sequential element (UARTLITE_CORE_I/UARTLITE_RX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/underflow_i_reg) is unused and will be removed from module axi_uartlite.
+INFO: [Synth 8-3332] Sequential element (UARTLITE_CORE_I/UARTLITE_RX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/overflow_i_reg) is unused and will be removed from module axi_uartlite.
+INFO: [Synth 8-3332] Sequential element (UARTLITE_CORE_I/UARTLITE_TX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/underflow_i_reg) is unused and will be removed from module axi_uartlite.
+INFO: [Synth 8-3332] Sequential element (UARTLITE_CORE_I/UARTLITE_TX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/overflow_i_reg) is unused and will be removed from module axi_uartlite.
+INFO: [Synth 8-3332] Sequential element (AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/bus2ip_addr_i_reg[1]) is unused and will be removed from module axi_uartlite.
+INFO: [Synth 8-3332] Sequential element (AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/bus2ip_addr_i_reg[0]) is unused and will be removed from module axi_uartlite.
+INFO: [Synth 8-3886] merging instance 'design_1_i/core_top_0/inst/AWADDR_reg[0]' (FDRE) to 'design_1_i/core_top_0/inst/AWADDR_reg[3]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/core_top_0/inst/AWADDR_reg[1]' (FDRE) to 'design_1_i/core_top_0/inst/AWADDR_reg[3]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/core_top_0/\inst/AWADDR_reg[3] )
+INFO: [Synth 8-3886] merging instance 'design_1_i/core_top_0/inst/ARADDR_reg[0]' (FDRE) to 'design_1_i/core_top_0/inst/ARADDR_reg[1]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/core_top_0/inst/ARADDR_reg[1]' (FDRE) to 'design_1_i/core_top_0/inst/ARADDR_reg[2]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/core_top_0/\inst/ARADDR_reg[2] )
+INFO: [Synth 8-3886] merging instance 'design_1_i/core_top_0/inst/comp_op_tdata_reg[0]' (FD) to 'design_1_i/core_top_0/inst/comp_op_tdata_reg[1]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/core_top_0/\inst/comp_op_tdata_reg[1] )
+INFO: [Synth 8-3886] merging instance 'design_1_i/core_top_0/inst/comp_op_tdata_reg[2]' (FD) to 'design_1_i/core_top_0/inst/comp_a_tvalid_reg'
+INFO: [Synth 8-3886] merging instance 'design_1_i/core_top_0/inst/addsub_op_tdata_reg[1]' (FDR) to 'design_1_i/core_top_0/inst/addsub_op_tdata_reg[7]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/core_top_0/inst/addsub_op_tdata_reg[2]' (FDR) to 'design_1_i/core_top_0/inst/addsub_op_tdata_reg[7]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/core_top_0/inst/addsub_op_tdata_reg[3]' (FDR) to 'design_1_i/core_top_0/inst/addsub_op_tdata_reg[7]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/core_top_0/inst/addsub_op_tdata_reg[4]' (FDR) to 'design_1_i/core_top_0/inst/addsub_op_tdata_reg[7]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/core_top_0/inst/addsub_op_tdata_reg[5]' (FDR) to 'design_1_i/core_top_0/inst/addsub_op_tdata_reg[7]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/core_top_0/inst/addsub_op_tdata_reg[6]' (FDR) to 'design_1_i/core_top_0/inst/addsub_op_tdata_reg[7]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/core_top_0/\inst/addsub_op_tdata_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/core_top_0/\inst/cpu_state_reg[4] )
+INFO: [Synth 8-3332] Sequential element (inst/cpu_state_reg[4]) is unused and will be removed from module design_1_core_top_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/addsub_op_tdata_reg[7]) is unused and will be removed from module design_1_core_top_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/comp_op_tdata_reg[1]) is unused and will be removed from module design_1_core_top_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/ARADDR_reg[2]) is unused and will be removed from module design_1_core_top_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/AWADDR_reg[3]) is unused and will be removed from module design_1_core_top_0_0.
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_0/U0/i_synth/ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.ALIGN_ADD/SUB_ADD_IP_DELAY/i_pipe/opt_has_pipe.first_q_reg[0]' (FDE) to 'design_1_i/floating_point_0/U0/i_synth/ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.ALIGN_ADD/SUB_DELAY/i_pipe/opt_has_pipe.first_q_reg[0]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_0/U0/i_synth/ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/NOT_LOW_LATENCY_NORM_DIST.NORM_EXP_DELAY/i_pipe/opt_has_pipe.first_q_reg[8]' (FDE) to 'design_1_i/floating_point_0/U0/i_synth/ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/NOT_LOW_LATENCY_NORM_DIST.NORM_EXP_DELAY/i_pipe/opt_has_pipe.first_q_reg[9]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_0/U0/i_synth/ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/DEC_STATE_PRE_OP_DELAY/i_pipe/opt_has_pipe.first_q_reg[4]' (FDE) to 'design_1_i/floating_point_0/U0/i_synth/ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/DEC_STATE_PRE_OP_DELAY/i_pipe/opt_has_pipe.first_q_reg[6]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_0/U0/i_synth/ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/DEC_STATE_PRE_OP_DELAY/i_pipe/opt_has_pipe.first_q_reg[6]' (FDE) to 'design_1_i/floating_point_0/U0/i_synth/ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/DEC_STATE_PRE_OP_DELAY/i_pipe/opt_has_pipe.first_q_reg[7]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_0/U0/i_synth/\ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/DEC_STATE_PRE_OP_DELAY/i_pipe/opt_has_pipe.first_q_reg[7] )
+INFO: [Synth 8-3332] Sequential element (ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.NORM_RND/FULL_USAGE_DSP.LOD/NORM_DELAY/i_pipe/opt_has_pipe.first_q_reg[0]) is unused and will be removed from module floating_point_v7_1_3_viv.
+INFO: [Synth 8-3332] Sequential element (ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/DEC_STATE_PRE_OP_DELAY/i_pipe/opt_has_pipe.first_q_reg[7]) is unused and will be removed from module floating_point_v7_1_3_viv.
+INFO: [Synth 8-3332] Sequential element (ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/merged_sub_mux.mux_DELAY/i_pipe/opt_has_pipe.first_q_reg[8]) is unused and will be removed from module floating_point_v7_1_3_viv.
+INFO: [Synth 8-3332] Sequential element (need_combiner.use_3to1.skid_buffer_combiner/gen_has_z_tready.reg1_c_tdata_reg[2]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized1.
+INFO: [Synth 8-3332] Sequential element (need_combiner.use_3to1.skid_buffer_combiner/gen_has_z_tready.reg1_c_tdata_reg[1]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized1.
+INFO: [Synth 8-3332] Sequential element (need_combiner.use_3to1.skid_buffer_combiner/gen_has_z_tready.reg1_c_tdata_reg[0]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized1.
+INFO: [Synth 8-3332] Sequential element (need_combiner.use_3to1.skid_buffer_combiner/gen_has_z_tready.reg2_c_tdata_reg[2]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized1.
+INFO: [Synth 8-3332] Sequential element (need_combiner.use_3to1.skid_buffer_combiner/gen_has_z_tready.reg2_c_tdata_reg[1]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized1.
+INFO: [Synth 8-3332] Sequential element (need_combiner.use_3to1.skid_buffer_combiner/gen_has_z_tready.reg2_c_tdata_reg[0]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized1.
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_2/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/MSB_DEL/i_pipe/opt_has_pipe.first_q_reg[0]' (FDE) to 'design_1_i/floating_point_2/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[1].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[0]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_2/U0/i_synth/DIV_OP.SPD.OP/EXP/NORMALIZE_UP_DEL/i_pipe/opt_has_pipe.first_q_reg[0]' (FDE) to 'design_1_i/floating_point_2/U0/i_synth/DIV_OP.SPD.OP/MANT_DIV/RT[2].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[1]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_2/U0/i_synth/DIV_OP.SPD.OP/EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[8]' (FDE) to 'design_1_i/floating_point_2/U0/i_synth/DIV_OP.SPD.OP/EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[4]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_2/U0/i_synth/DIV_OP.SPD.OP/EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[10]' (FDE) to 'design_1_i/floating_point_2/U0/i_synth/DIV_OP.SPD.OP/EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[4]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_2/U0/i_synth/DIV_OP.SPD.OP/EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[9]' (FDE) to 'design_1_i/floating_point_2/U0/i_synth/DIV_OP.SPD.OP/EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[5]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_2/U0/i_synth/DIV_OP.SPD.OP/EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[11]' (FDE) to 'design_1_i/floating_point_2/U0/i_synth/DIV_OP.SPD.OP/EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_2/U0/i_synth/\DIV_OP.SPD.OP/ROUND/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.first_q_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_2/U0/i_synth/\DIV_OP.SPD.OP/ROUND/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.first_q_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_2/U0/i_synth/\DIV_OP.SPD.OP/EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_2/U0/i_synth/\DIV_OP.SPD.OP/EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[7] )
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[2].pipe_reg[2][3]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[2].pipe_reg[2][2]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[2].pipe_reg[2][1]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[2].pipe_reg[2][0]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[3].pipe_reg[3][3]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[3].pipe_reg[3][2]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[3].pipe_reg[3][1]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[3].pipe_reg[3][0]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[4].pipe_reg[4][3]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[4].pipe_reg[4][2]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[4].pipe_reg[4][1]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[4].pipe_reg[4][0]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[5].pipe_reg[5][3]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[5].pipe_reg[5][2]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[5].pipe_reg[5][1]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[5].pipe_reg[5][0]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[6].pipe_reg[6][3]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[6].pipe_reg[6][2]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[6].pipe_reg[6][1]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[6].pipe_reg[6][0]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[7].pipe_reg[7][3]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[7].pipe_reg[7][2]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[7].pipe_reg[7][1]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[7].pipe_reg[7][0]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[8].pipe_reg[8][3]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[8].pipe_reg[8][2]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[8].pipe_reg[8][1]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[8].pipe_reg[8][0]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[9].pipe_reg[9][3]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[9].pipe_reg[9][2]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[9].pipe_reg[9][1]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[9].pipe_reg[9][0]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[10].pipe_reg[10][3]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[10].pipe_reg[10][2]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[10].pipe_reg[10][1]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[10].pipe_reg[10][0]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[11].pipe_reg[11][3]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[11].pipe_reg[11][2]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[11].pipe_reg[11][1]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[11].pipe_reg[11][0]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[12].pipe_reg[12][3]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[12].pipe_reg[12][2]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[12].pipe_reg[12][1]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[12].pipe_reg[12][0]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[13].pipe_reg[13][3]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[13].pipe_reg[13][2]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[13].pipe_reg[13][1]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[13].pipe_reg[13][0]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[14].pipe_reg[14][3]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[14].pipe_reg[14][2]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[14].pipe_reg[14][1]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[14].pipe_reg[14][0]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[15].pipe_reg[15][3]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[15].pipe_reg[15][2]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[15].pipe_reg[15][1]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[15].pipe_reg[15][0]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[16].pipe_reg[16][3]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[16].pipe_reg[16][2]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[16].pipe_reg[16][1]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[16].pipe_reg[16][0]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[17].pipe_reg[17][3]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[17].pipe_reg[17][2]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[17].pipe_reg[17][1]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[17].pipe_reg[17][0]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[18].pipe_reg[18][3]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[18].pipe_reg[18][2]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[18].pipe_reg[18][1]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[18].pipe_reg[18][0]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[19].pipe_reg[19][3]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[19].pipe_reg[19][2]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[19].pipe_reg[19][1]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[19].pipe_reg[19][0]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[20].pipe_reg[20][3]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[20].pipe_reg[20][2]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[20].pipe_reg[20][1]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[20].pipe_reg[20][0]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[21].pipe_reg[21][3]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[21].pipe_reg[21][2]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.first_q_reg[0]' (FDE) to 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.first_q_reg[1]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.first_q_reg[1]' (FDE) to 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.first_q_reg[2]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.first_q_reg[2]' (FDE) to 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.first_q_reg[3]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.first_q_reg[3]' (FDE) to 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.first_q_reg[4]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.first_q_reg[4]' (FDE) to 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.first_q_reg[5]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.first_q_reg[5]' (FDE) to 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.first_q_reg[6]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.first_q_reg[6]' (FDE) to 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[6]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[8]' (FDE) to 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[4]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[10]' (FDE) to 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[4]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[9]' (FDE) to 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[5]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[11]' (FDE) to 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[5]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.i_pipe[2].pipe_reg[2][0]' (FDE) to 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.i_pipe[2].pipe_reg[2][1]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.i_pipe[2].pipe_reg[2][1]' (FDE) to 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.i_pipe[2].pipe_reg[2][2]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.i_pipe[2].pipe_reg[2][2]' (FDE) to 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.i_pipe[2].pipe_reg[2][3]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.i_pipe[2].pipe_reg[2][3]' (FDE) to 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.i_pipe[2].pipe_reg[2][4]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.i_pipe[2].pipe_reg[2][4]' (FDE) to 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.i_pipe[2].pipe_reg[2][5]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.i_pipe[2].pipe_reg[2][5]' (FDE) to 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.i_pipe[2].pipe_reg[2][6]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[6]' (FDE) to 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[7]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_3/U0/i_synth/\MULT.OP/EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[7] )
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[7]' (FDE) to 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.i_pipe[2].pipe_reg[2][6]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_3/U0/i_synth/\MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.i_pipe[2].pipe_reg[2][6] )
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_4/U0/i_synth/FIX_TO_FLT_OP.SPD.OP/EXP/EXP_MOD_DEL/i_pipe/opt_has_pipe.first_q_reg[6]' (FDE) to 'design_1_i/floating_point_4/U0/i_synth/FIX_TO_FLT_OP.SPD.OP/EXP/EXP_MOD_DEL/i_pipe/opt_has_pipe.first_q_reg[5]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_5/U0/i_synth/FLT_TO_FIX_OP.SPD.OP/ALIGN_DIST_DEL/DEL/i_pipe/opt_has_pipe.first_q_reg[8]' (FDE) to 'design_1_i/floating_point_5/U0/i_synth/FLT_TO_FIX_OP.SPD.OP/ALIGN_DIST_DEL/DEL/i_pipe/opt_has_pipe.first_q_reg[9]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_5/U0/i_synth/FLT_TO_FIX_OP.SPD.OP/ZERO_DET_DIST_DEL/DEL/i_pipe/opt_has_pipe.first_q_reg[1]' (FDE) to 'design_1_i/floating_point_5/U0/i_synth/FLT_TO_FIX_OP.SPD.OP/ALIGN_DIST_DEL/DEL/i_pipe/opt_has_pipe.first_q_reg[1]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_5/U0/i_synth/FLT_TO_FIX_OP.SPD.OP/ZERO_DET_DIST_DEL/DEL/i_pipe/opt_has_pipe.first_q_reg[0]' (FDE) to 'design_1_i/floating_point_5/U0/i_synth/FLT_TO_FIX_OP.SPD.OP/ALIGN_DIST_DEL/DEL/i_pipe/opt_has_pipe.first_q_reg[0]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_5/U0/i_synth/FLT_TO_FIX_OP.SPD.OP/ALIGN_Z_D/MUX_LOOP[0].DEL_Z_D/i_pipe/opt_has_pipe.first_q_reg[7]' (FDE) to 'design_1_i/floating_point_5/U0/i_synth/FLT_TO_FIX_OP.SPD.OP/ALIGN_Z_D/MUX_LOOP[1].DEL_Z_D/i_pipe/opt_has_pipe.first_q_reg[2]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_5/U0/i_synth/FLT_TO_FIX_OP.SPD.OP/ALIGN_Z_D/MUX_LOOP[0].DEL_Z_D/i_pipe/opt_has_pipe.first_q_reg[6]' (FDE) to 'design_1_i/floating_point_5/U0/i_synth/FLT_TO_FIX_OP.SPD.OP/ALIGN_Z_D/MUX_LOOP[1].DEL_Z_D/i_pipe/opt_has_pipe.first_q_reg[2]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_5/U0/i_synth/FLT_TO_FIX_OP.SPD.OP/ALIGN_Z_D/MUX_LOOP[1].DEL_Z_D/i_pipe/opt_has_pipe.first_q_reg[3]' (FDE) to 'design_1_i/floating_point_5/U0/i_synth/FLT_TO_FIX_OP.SPD.OP/ALIGN_Z_D/MUX_LOOP[1].DEL_Z_D/i_pipe/opt_has_pipe.first_q_reg[2]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[0].MA_DEL.MANT_DEL/i_pipe/opt_has_pipe.first_q_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[0].MA_DEL.MANT_DEL/i_pipe/opt_has_pipe.first_q_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[0].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[0].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.EXP/STATE_DEC_DELAY/i_pipe/opt_has_pipe.first_q_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[1].MA_DEL.MANT_DEL/i_pipe/opt_has_pipe.first_q_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[1].MA_DEL.MANT_DEL/i_pipe/opt_has_pipe.first_q_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[1].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[1].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[2].MA_DEL.MANT_DEL/i_pipe/opt_has_pipe.first_q_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[2].MA_DEL.MANT_DEL/i_pipe/opt_has_pipe.first_q_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[2].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[2].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[3].MA_DEL.MANT_DEL/i_pipe/opt_has_pipe.first_q_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[3].MA_DEL.MANT_DEL/i_pipe/opt_has_pipe.first_q_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[3].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[3].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[4].MA_DEL.MANT_DEL/i_pipe/opt_has_pipe.first_q_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[4].MA_DEL.MANT_DEL/i_pipe/opt_has_pipe.first_q_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[4].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[4].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[5].MA_DEL.MANT_DEL/i_pipe/opt_has_pipe.first_q_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[5].MA_DEL.MANT_DEL/i_pipe/opt_has_pipe.first_q_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[5].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[5].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[6].MA_DEL.MANT_DEL/i_pipe/opt_has_pipe.first_q_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[6].MA_DEL.MANT_DEL/i_pipe/opt_has_pipe.first_q_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[6].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[6].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[7].MA_DEL.MANT_DEL/i_pipe/opt_has_pipe.first_q_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[7].MA_DEL.MANT_DEL/i_pipe/opt_has_pipe.first_q_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[7].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[7].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[8].MA_DEL.MANT_DEL/i_pipe/opt_has_pipe.first_q_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[8].MA_DEL.MANT_DEL/i_pipe/opt_has_pipe.first_q_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[8].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[8].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[9] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[9].MA_DEL.MANT_DEL/i_pipe/opt_has_pipe.first_q_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[9].MA_DEL.MANT_DEL/i_pipe/opt_has_pipe.first_q_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[9].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[9] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[9].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[10] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[10].MA_DEL.MANT_DEL/i_pipe/opt_has_pipe.first_q_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[10].MA_DEL.MANT_DEL/i_pipe/opt_has_pipe.first_q_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[10].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[10] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[10].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[11] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[11].MA_DEL.MANT_DEL/i_pipe/opt_has_pipe.first_q_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[11].MA_DEL.MANT_DEL/i_pipe/opt_has_pipe.first_q_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[11].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[11] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[11].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[12] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[12].MA_DEL.MANT_DEL/i_pipe/opt_has_pipe.first_q_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[12].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[12] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[12].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[13] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[13].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[13] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[13].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[14].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[14].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[15].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[15].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[16] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[16].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[16] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[16].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[17] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[17].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[17] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[17].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[18] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[18].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[18] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[18].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[19] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[19].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[19] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[19].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[20] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[20].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[20] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[20].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[21] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[21].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[21] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[21].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[22] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[22].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[22] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[22].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[23] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[23].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[23] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/floating_point_6/U0/i_synth/\SQRT_OP.SPD.OP/i_mant_calc.MANT_SQRT/RT[23].Q_DEL/i_pipe/opt_has_pipe.first_q_reg[24] )
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_5/U0/i_synth/FLT_TO_FIX_OP.SPD.OP/ZERO_DET_DIST_DEL/DEL/i_pipe/opt_has_pipe.first_q_reg[2]' (FDE) to 'design_1_i/floating_point_5/U0/i_synth/FLT_TO_FIX_OP.SPD.OP/ALIGN_DIST_DEL/DEL/i_pipe/opt_has_pipe.first_q_reg[2]'
+INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_5/U0/i_synth/FLT_TO_FIX_OP.SPD.OP/ALIGN_Z_D/MUX_LOOP[1].SKEW_DIST_DEL.DEL_DIST/i_pipe/opt_has_pipe.first_q_reg[0]' (FDE) to 'design_1_i/floating_point_5/U0/i_synth/FLT_TO_FIX_OP.SPD.OP/ALIGN_SHIFT/MUX_LOOP[1].SKEW_DIST_DEL.DEL_DIST/i_pipe/opt_has_pipe.first_q_reg[0]'
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1652.035 ; gain = 716.660 ; free physical = 7307 ; free virtual = 27448
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:01 ; elapsed = 00:02:02 . Memory (MB): peak = 1817.223 ; gain = 881.844 ; free physical = 8428 ; free virtual = 27390
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -210,13 +824,11 @@ Start Timing Optimization
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-5578] Moved timing constraint from pin 'design_1_i/clk_wiz_0/clk_out1' to pin 'design_1_i/clk_wiz_0/bbstub_clk_out1/O'
-INFO: [Synth 8-5819] Moved 1 constraints on hierarchical pins to their respective driving/loading pins
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1859.227 ; gain = 923.852 ; free physical = 7064 ; free virtual = 27205
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:08 ; elapsed = 00:02:09 . Memory (MB): peak = 1999.340 ; gain = 1063.961 ; free physical = 8235 ; free virtual = 27197
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1859.227 ; gain = 923.852 ; free physical = 7064 ; free virtual = 27205
+Finished Timing Optimization : Time (s): cpu = 00:02:16 ; elapsed = 00:02:17 . Memory (MB): peak = 2102.762 ; gain = 1167.383 ; free physical = 8131 ; free virtual = 27092
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -227,8 +839,9 @@ Report RTL Partitions:
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
+INFO: [Synth 8-4765] Removing register instance (\inst/u_core_reg/_WE_reg__0 ) from module (design_1_core_top_0_0) as it is equivalent to (\inst/u_core_reg/_WE_reg ) and driving same net [/home/yamaguchi/CPU-Adelie/core/src/core_reg.v:68]
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1869.242 ; gain = 933.867 ; free physical = 7054 ; free virtual = 27195
+Finished Technology Mapping : Time (s): cpu = 00:02:21 ; elapsed = 00:02:22 . Memory (MB): peak = 2122.777 ; gain = 1187.398 ; free physical = 8108 ; free virtual = 27070
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -248,11 +861,12 @@ Finished Flattening Before IO Insertion
 ---------------------------------------------------------------------------------
 Start Final Netlist Cleanup
 ---------------------------------------------------------------------------------
+INFO: [Synth 8-5365] Flop ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/merged_sub_mux.mux_DELAY/i_pipe/opt_has_pipe.first_q_reg[0] is being inverted and renamed to ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/merged_sub_mux.mux_DELAY/i_pipe/opt_has_pipe.first_q_reg[0]_inv.
 ---------------------------------------------------------------------------------
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1869.246 ; gain = 933.871 ; free physical = 7054 ; free virtual = 27195
+Finished IO Insertion : Time (s): cpu = 00:02:22 ; elapsed = 00:02:23 . Memory (MB): peak = 2122.781 ; gain = 1187.402 ; free physical = 8108 ; free virtual = 27070
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -265,7 +879,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1869.246 ; gain = 933.871 ; free physical = 7054 ; free virtual = 27195
+Finished Renaming Generated Instances : Time (s): cpu = 00:02:22 ; elapsed = 00:02:23 . Memory (MB): peak = 2122.781 ; gain = 1187.402 ; free physical = 8108 ; free virtual = 27070
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -277,93 +891,106 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1869.246 ; gain = 933.871 ; free physical = 7054 ; free virtual = 27195
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:23 ; elapsed = 00:02:24 . Memory (MB): peak = 2122.781 ; gain = 1187.402 ; free physical = 8108 ; free virtual = 27070
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1869.246 ; gain = 933.871 ; free physical = 7054 ; free virtual = 27195
+Finished Renaming Generated Ports : Time (s): cpu = 00:02:23 ; elapsed = 00:02:24 . Memory (MB): peak = 2122.781 ; gain = 1187.402 ; free physical = 8108 ; free virtual = 27070
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1869.246 ; gain = 933.871 ; free physical = 7054 ; free virtual = 27195
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:23 ; elapsed = 00:02:24 . Memory (MB): peak = 2122.781 ; gain = 1187.402 ; free physical = 8108 ; free virtual = 27069
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1869.246 ; gain = 933.871 ; free physical = 7054 ; free virtual = 27195
+Finished Renaming Generated Nets : Time (s): cpu = 00:02:23 ; elapsed = 00:02:24 . Memory (MB): peak = 2122.781 ; gain = 1187.402 ; free physical = 8108 ; free virtual = 27069
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
 ---------------------------------------------------------------------------------
 
 Report BlackBoxes: 
-+------+----------------------------+----------+
-|      |BlackBox name               |Instances |
-+------+----------------------------+----------+
-|1     |design_1_axi_uartlite_0_0   |         1|
-|2     |design_1_blk_mem_gen_0_0    |         1|
-|3     |design_1_blk_mem_gen_1_0    |         1|
-|4     |design_1_clk_wiz_0_0        |         1|
-|5     |design_1_core_top_0_0       |         1|
-|6     |design_1_floating_point_0_0 |         1|
-|7     |design_1_floating_point_0_1 |         1|
-|8     |design_1_floating_point_0_2 |         1|
-|9     |design_1_floating_point_0_3 |         1|
-|10    |design_1_xlconstant_0_0     |         1|
-|11    |design_1_xlconstant_0_1     |         1|
-+------+----------------------------+----------+
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
 
 Report Cell Usage: 
-+------+----------------------------+------+
-|      |Cell                        |Count |
-+------+----------------------------+------+
-|1     |design_1_axi_uartlite_0_0   |     1|
-|2     |design_1_blk_mem_gen_0_0    |     1|
-|3     |design_1_blk_mem_gen_1_0    |     1|
-|4     |design_1_clk_wiz_0_0        |     1|
-|5     |design_1_core_top_0_0       |     1|
-|6     |design_1_floating_point_0_0 |     1|
-|7     |design_1_floating_point_0_1 |     1|
-|8     |design_1_floating_point_0_2 |     1|
-|9     |design_1_floating_point_0_3 |     1|
-|10    |design_1_xlconstant_0_0     |     1|
-|11    |design_1_xlconstant_0_1     |     1|
-|12    |IBUF                        |     2|
-|13    |OBUF                        |     1|
-+------+----------------------------+------+
-
-Report Instance Areas: 
-+------+--------------------------+---------------------------------+------+
-|      |Instance                  |Module                           |Cells |
-+------+--------------------------+---------------------------------+------+
-|1     |top                       |                                 |   664|
-|2     |  design_1_i              |design_1                         |   661|
-|3     |    core_top_0_axi_periph |design_1_core_top_0_axi_periph_0 |     0|
-+------+--------------------------+---------------------------------+------+
++------+----------------+------+
+|      |Cell            |Count |
++------+----------------+------+
+|1     |BUFG            |     2|
+|2     |CARRY8          |    38|
+|3     |DSP48E1         |     2|
+|4     |DSP_ALU         |     1|
+|5     |DSP_ALU_1       |     1|
+|6     |DSP_A_B_DATA    |     1|
+|7     |DSP_A_B_DATA_1  |     1|
+|8     |DSP_C_DATA      |     2|
+|9     |DSP_MULTIPLIER  |     2|
+|10    |DSP_M_DATA      |     2|
+|11    |DSP_OUTPUT      |     1|
+|12    |DSP_OUTPUT_1    |     1|
+|13    |DSP_PREADD      |     2|
+|14    |DSP_PREADD_DATA |     2|
+|15    |LUT1            |    92|
+|16    |LUT2            |   584|
+|17    |LUT3            |  1613|
+|18    |LUT4            |   648|
+|19    |LUT5            |   549|
+|20    |LUT6            |  2477|
+|21    |MMCME3_ADV      |     1|
+|22    |MUXCY           |  1347|
+|23    |MUXF7           |   514|
+|24    |MUXF8           |     1|
+|25    |RAMB36E2        |     1|
+|26    |RAMB36E2_1      |     1|
+|27    |RAMB36E2_2      |     2|
+|28    |SRL16E          |    87|
+|29    |SRLC32E         |    32|
+|30    |XORCY           |  1279|
+|31    |FDE             |    45|
+|32    |FDR             |     4|
+|33    |FDRE            |  6500|
+|34    |FDSE            |    17|
+|35    |IBUF            |     2|
+|36    |IBUFDS          |     1|
+|37    |OBUF            |     1|
++------+----------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1869.246 ; gain = 933.871 ; free physical = 7054 ; free virtual = 27195
+Finished Writing Synthesis Report : Time (s): cpu = 00:02:23 ; elapsed = 00:02:24 . Memory (MB): peak = 2122.781 ; gain = 1187.402 ; free physical = 8108 ; free virtual = 27069
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 6 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1869.246 ; gain = 325.684 ; free physical = 7054 ; free virtual = 27195
-Synthesis Optimization Complete : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1869.250 ; gain = 933.875 ; free physical = 7054 ; free virtual = 27195
+Synthesis finished with 0 errors, 0 critical warnings and 947 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:02:12 ; elapsed = 00:02:13 . Memory (MB): peak = 2122.781 ; gain = 647.238 ; free physical = 8108 ; free virtual = 27069
+Synthesis Optimization Complete : Time (s): cpu = 00:02:23 ; elapsed = 00:02:25 . Memory (MB): peak = 2122.785 ; gain = 1187.406 ; free physical = 8108 ; free virtual = 27070
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 2 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 2685 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 2 instances were transformed.
+  A total of 278 instances were transformed.
+  (CARRY4) => CARRY8: 220 instances
+  BUFG => BUFGCE: 2 instances
+  DSP48E1 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_MULTIPLIER, DSP_M_DATA, DSP_OUTPUT, DSP_PREADD_DATA, DSP_PREADD): 2 instances
+  DSP48E2 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_MULTIPLIER, DSP_M_DATA, DSP_OUTPUT, DSP_PREADD_DATA, DSP_PREADD): 2 instances
+  FDE => FDRE: 45 instances
+  FDR => FDRE: 4 instances
   IBUF => IBUF (IBUFCTRL, INBUF): 2 instances
+  IBUFDS => IBUFDS (DIFFINBUF, IBUFCTRL): 1 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-52 Infos, 27 Warnings, 0 Critical Warnings and 0 Errors encountered.
+547 Infos, 148 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1889.879 ; gain = 820.258 ; free physical = 7033 ; free virtual = 27176
+synth_design: Time (s): cpu = 00:02:25 ; elapsed = 00:02:26 . Memory (MB): peak = 2122.785 ; gain = 1046.160 ; free physical = 8109 ; free virtual = 27071
+INFO: [Common 17-600] The following parameters have non-default value.
+tcl.collectionResultDisplayLimit
 INFO: [Common 17-1381] The checkpoint '/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/design_1_wrapper.dcp' has been generated.
-report_utilization: Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.09 . Memory (MB): peak = 1889.879 ; gain = 0.000 ; free physical = 7031 ; free virtual = 27174
-INFO: [Common 17-206] Exiting Vivado at Tue Nov 28 13:50:53 2017...
+report_utilization: Time (s): cpu = 00:00:00.11 ; elapsed = 00:00:00.14 . Memory (MB): peak = 2146.793 ; gain = 0.000 ; free physical = 8106 ; free virtual = 27070
+INFO: [Common 17-206] Exiting Vivado at Sat Dec  2 23:11:21 2017...

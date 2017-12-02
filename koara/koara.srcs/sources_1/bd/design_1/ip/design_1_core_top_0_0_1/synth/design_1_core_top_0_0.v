@@ -122,23 +122,23 @@ module design_1_core_top_0_0 (
   FSQRTS_R_TDATA,
   FSQRTS_R_TREADY,
   FSQRTS_R_TVALID,
-  S_AXI_AWADDR,
-  S_AXI_AWVALID,
-  S_AXI_AWREADY,
-  S_AXI_WDATA,
-  S_AXI_WSTB,
-  S_AXI_WVALID,
-  S_AXI_WREADY,
-  S_AXI_BRESP,
-  S_AXI_BVALID,
-  S_AXI_BREADY,
-  S_AXI_ARADDR,
-  S_AXI_ARVALID,
-  S_AXI_ARREADY,
-  S_AXI_RDATA,
-  S_AXI_RRESP,
-  S_AXI_RVALID,
-  S_AXI_RREADY
+  ARADDR,
+  ARREADY,
+  ARVALID,
+  AWADDR,
+  AWREADY,
+  AWVALID,
+  BREADY,
+  BRESP,
+  BVALID,
+  RDATA,
+  RREADY,
+  RRESP,
+  RVALID,
+  WDATA,
+  WREADY,
+  WVALID,
+  WSTRB
 );
 
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST_N RST" *)
@@ -271,39 +271,40 @@ input wire [31 : 0] FSQRTS_R_TDATA;
 output wire FSQRTS_R_TREADY;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FSQRTS_R TVALID" *)
 input wire FSQRTS_R_TVALID;
-(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI AWADDR" *)
-output wire [3 : 0] S_AXI_AWADDR;
-(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI AWVALID" *)
-output wire S_AXI_AWVALID;
-(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI AWREADY" *)
-input wire S_AXI_AWREADY;
-(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI WDATA" *)
-output wire [31 : 0] S_AXI_WDATA;
-output wire [3 : 0] S_AXI_WSTB;
-(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI WVALID" *)
-output wire S_AXI_WVALID;
-(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI WREADY" *)
-input wire S_AXI_WREADY;
-(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI BRESP" *)
-input wire [1 : 0] S_AXI_BRESP;
-(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI BVALID" *)
-input wire S_AXI_BVALID;
-(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI BREADY" *)
-output wire S_AXI_BREADY;
-(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI ARADDR" *)
-output wire [3 : 0] S_AXI_ARADDR;
-(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI ARVALID" *)
-output wire S_AXI_ARVALID;
-(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI ARREADY" *)
-input wire S_AXI_ARREADY;
-(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI RDATA" *)
-input wire [31 : 0] S_AXI_RDATA;
-(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI RRESP" *)
-input wire [1 : 0] S_AXI_RRESP;
-(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI RVALID" *)
-input wire S_AXI_RVALID;
-(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI RREADY" *)
-output wire S_AXI_RREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 interface_aximm ARADDR" *)
+output wire [3 : 0] ARADDR;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 interface_aximm ARREADY" *)
+input wire ARREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 interface_aximm ARVALID" *)
+output wire ARVALID;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 interface_aximm AWADDR" *)
+output wire [3 : 0] AWADDR;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 interface_aximm AWREADY" *)
+input wire AWREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 interface_aximm AWVALID" *)
+output wire AWVALID;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 interface_aximm BREADY" *)
+output wire BREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 interface_aximm BRESP" *)
+input wire [1 : 0] BRESP;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 interface_aximm BVALID" *)
+input wire BVALID;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 interface_aximm RDATA" *)
+input wire [31 : 0] RDATA;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 interface_aximm RREADY" *)
+output wire RREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 interface_aximm RRESP" *)
+input wire [1 : 0] RRESP;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 interface_aximm RVALID" *)
+input wire RVALID;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 interface_aximm WDATA" *)
+output wire [31 : 0] WDATA;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 interface_aximm WREADY" *)
+input wire WREADY;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 interface_aximm WVALID" *)
+output wire WVALID;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 interface_aximm WSTRB" *)
+output wire [3 : 0] WSTRB;
 
   core_top inst (
     .RST_N(RST_N),
@@ -374,22 +375,22 @@ output wire S_AXI_RREADY;
     .FSQRTS_R_TDATA(FSQRTS_R_TDATA),
     .FSQRTS_R_TREADY(FSQRTS_R_TREADY),
     .FSQRTS_R_TVALID(FSQRTS_R_TVALID),
-    .S_AXI_AWADDR(S_AXI_AWADDR),
-    .S_AXI_AWVALID(S_AXI_AWVALID),
-    .S_AXI_AWREADY(S_AXI_AWREADY),
-    .S_AXI_WDATA(S_AXI_WDATA),
-    .S_AXI_WSTB(S_AXI_WSTB),
-    .S_AXI_WVALID(S_AXI_WVALID),
-    .S_AXI_WREADY(S_AXI_WREADY),
-    .S_AXI_BRESP(S_AXI_BRESP),
-    .S_AXI_BVALID(S_AXI_BVALID),
-    .S_AXI_BREADY(S_AXI_BREADY),
-    .S_AXI_ARADDR(S_AXI_ARADDR),
-    .S_AXI_ARVALID(S_AXI_ARVALID),
-    .S_AXI_ARREADY(S_AXI_ARREADY),
-    .S_AXI_RDATA(S_AXI_RDATA),
-    .S_AXI_RRESP(S_AXI_RRESP),
-    .S_AXI_RVALID(S_AXI_RVALID),
-    .S_AXI_RREADY(S_AXI_RREADY)
+    .ARADDR(ARADDR),
+    .ARREADY(ARREADY),
+    .ARVALID(ARVALID),
+    .AWADDR(AWADDR),
+    .AWREADY(AWREADY),
+    .AWVALID(AWVALID),
+    .BREADY(BREADY),
+    .BRESP(BRESP),
+    .BVALID(BVALID),
+    .RDATA(RDATA),
+    .RREADY(RREADY),
+    .RRESP(RRESP),
+    .RVALID(RVALID),
+    .WDATA(WDATA),
+    .WREADY(WREADY),
+    .WVALID(WVALID),
+    .WSTRB(WSTRB)
   );
 endmodule
