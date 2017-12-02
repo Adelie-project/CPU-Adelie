@@ -30,6 +30,7 @@ fib_rec_bge1:
   set %r4, $1   ; if (x == 0 || x == 1) return 1
   beq %r0, %r0, fib_rec_ret ; go back
 finish:
+  out %r4
   addi %r0, %r0, $0   ; 終了
 
 
