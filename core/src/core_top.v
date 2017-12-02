@@ -95,27 +95,28 @@ module core_top
     input FSQRTS_R_TVALID,
 
     // In/Out
-    output [3:0] S_AXI_AWADDR,
-    output S_AXI_AWVALID,
-    input S_AXI_AWREADY,
+    output reg [3:0] ARADDR,
+    input wire ARREADY,
+    output reg ARVALID,
 
-    output [31:0] S_AXI_WDATA,
-    output [3:0] S_AXI_WSTB,
-    output S_AXI_WVALID,
-    input S_AXI_WREADY,
+    output reg [3:0] AWADDR,
+    input wire AWREADY,
+    output reg AWVALID,
 
-    input [1:0] S_AXI_BRESP,
-    input S_AXI_BVALID,
-    output S_AXI_BREADY,
+    output reg BREADY,
+    input wire [1:0] BRESP,
+    input wire BVALID,
 
-    output [3:0] S_AXI_ARADDR,
-    output S_AXI_ARVALID,
-    input S_AXI_ARREADY,
+    input wire [31:0] RDATA,
+    output reg RREADY,
+    input wire [1:0] RRESP,
+    input wire RVALID,
 
-    input [31:0] S_AXI_RDATA,
-    input [1:0] S_AXI_RRESP,
-    input S_AXI_RVALID,
-    output S_AXI_RREADY
+    output reg [31:0] WDATA,
+    input wire WREADY,
+    output reg WVALID,
+
+    output reg [3:0] WSTRB
 
   );
 
@@ -134,29 +135,20 @@ module core_top
   wire i_flw, i_fsw, i_fadds, i_fsubs, i_fmuls, i_fdivs, i_feqs, i_flts, i_fles, i_fmvsx, i_fcvtsw, i_fcvtws, i_fsqrts, i_fsgnjxs;
   wire i_in, i_out;
 
-  // IO
-  reg [3:0] s_axi_awaddr, s_axi_wstb, s_axi_araddr;
-  reg [31:0] s_axi_wdata, s_axi_rdata;
-  reg [1:0] s_axi_bresp, s_axi_rresp;
-  reg s_axi_awvalid, s_axi_awready, s_axi_wvalid, s_axi_wready, s_axi_bvalid, s_axi_bready, s_axi_arvalid, s_axi_arready, s_axi_rvalid, s_axi_rready;
+  localparam s_read_wait = 4'b0000;
+  localparam s_read_wait2 = 4'b0100;
+  localparam s_read = 4'b0001;
+  localparam s_read2 = 4'b0101;
 
-  assign S_AXI_AWADDR = s_axi_awaddr;
-  assign S_AXI_AWVALID = s_axi_awvalid;
-  assign S_AXI_AWREADY = s_axi_awready;
-  assign S_AXI_WDATA = s_axi_wdata;
-  assign S_AXI_WSTB = s_axi_wstb;
-  assign S_AXI_WVALID = s_axi_wvalid;
-  assign S_AXI_WREADY = s_axi_wready;
-  assign S_AXI_BRESP = s_axi_bresp;
-  assign S_AXI_BVALID = s_axi_bvalid;
-  assign S_AXI_BREADY = s_axi_bready;
-  assign S_AXI_ARADDR = s_axi_araddr;
-  assign S_AXI_ARVALID = s_axi_arvalid;
-  assign S_AXI_ARREADY = s_axi_arready;
-  assign S_AXI_RDATA = s_axi_rdata;
-  assign S_AXI_RRESP = s_axi_rresp;
-  assign S_AXI_RVALID = s_axi_rvalid;
-  assign S_AXI_RREADY = s_axi_rready;
+  localparam s_write_wait = 4'b0010;
+  localparam s_write_wait2 = 4'b0110;
+  localparam s_write = 4'b0011;
+  localparam s_write2 = 4'b1000;
+  localparam s_write3 = 4'b0111;
+
+  wire ine;
+  reg [3:0] write_status;
+  reg [3:0] read_status;
 
   // ADDSUB
   reg [31:0] addsub_a_tdata, addsub_b_tdata;
@@ -554,20 +546,84 @@ module core_top
   // inならrdに書き込むだけ
   // ineをほげする
   // outならr1からoutする
+
   always @(posedge CLK) begin
-    if (i_out) begin
-      s_axi_awaddr <= 4'b0100;
-      s_axi_awvalid <= 1;
-      s_axi_wdata <= 32'hDEAD;
-      s_axi_wstb <= 4'b1111;
-      s_axi_wvalid <= 1;
-      s_axi_bready <= 1;
+      if (!RST_N) begin
+          read_status <= s_read_wait;
+          write_status <= s_write_wait;
+          ARADDR <= 0;
+          ARVALID <= 0;
+          RREADY <= 0;
+          AWADDR <= 0;
+          AWVALID <= 0;
+          WVALID <= 0;
+          BREADY <= 0;
+          WDATA <= 0;
+          WSTRB <= 0;
+      end else begin
+          WSTRB <= 4'b0001;
+          if (i_in) begin
+          case (read_status)
+              s_read_wait:
+              begin
+                  ARADDR  <= 4'b1000;
+                  ARVALID <= (ARVALID & ARREADY) ? 0 : 1;
+                  read_status  <= (ARVALID & ARREADY) ? s_read_wait2 : s_read_wait;
+
+              end
+              s_read_wait2:
+              begin
+                  RREADY <= (RREADY & RVALID) ? 0 : 1;
+                  read_status <= (RREADY & RVALID) ? (RDATA[0] ? s_read : s_read_wait) : s_read_wait2;
+              end
+              s_read:
+              begin
+                  ARADDR  <= 4'b0000;
+                  ARVALID <= (ARVALID & ARREADY) ? 0 : 1;
+                  read_status  <= (ARVALID & ARREADY) ? s_read2 : s_read;
+              end
+              s_read2:
+              begin
+                  RREADY <= (RREADY & RVALID) ? 0 : 1;
+                  read_status <= (RREADY & RVALID) ? s_read_wait : s_read2;
+              end
+            endcase
+          end
+          if (i_out) begin
+            case (write_status)
+              s_write_wait:
+              begin
+                  ARADDR  <= 4'b1000;
+                  ARVALID <= (ARVALID & ARREADY) ? 0 : 1;
+                  write_status  <= (ARVALID & ARREADY) ? s_write_wait2 : s_write_wait;
+              end
+              s_write_wait2:
+              begin
+                  RREADY <= (RREADY & RVALID) ? 0 : 1;
+                  write_status <= (RREADY & RVALID) ? (RDATA[3] ? s_write_wait : s_write) : s_write_wait2;
+              end
+              s_write:
+              begin
+                  AWADDR  <= 4'b0100;
+                  WDATA   <= rs1[7:0];
+                  AWVALID <= 1;
+                  WVALID <= 1;
+                  write_status <= s_write2;
+              end
+              s_write2:
+              begin
+                  AWVALID <= (AWVALID & !AWREADY) ? 1 : 0;
+                  WVALID  <= (WVALID & !WREADY) ? 1 : 0;
+                  write_status  <= (!AWVALID & !WVALID) ? s_write3 : s_write2;
+              end
+              s_write3:
+              begin
+                  BREADY <= (BREADY & BVALID) ? 0 : 1;
+                  write_status <= (BREADY & BVALID) ? s_write_wait : s_write3;
+              end
+          endcase
+        end
       end
-    else if (i_in) begin
-      s_axi_araddr <= 4'b0000;
-      s_axi_arvalid <= 1;
-      s_axi_rready <= 1;
-    end
   end
 
   reg tvalid_once;
@@ -599,10 +655,10 @@ module core_top
                      0;
 
       stole <= (stole && !(tvalid_once)) ? 1 :
-               ((cpu_state == EXECUTE) && (stole == 0) && (i_fadds | i_fsubs | i_fmuls | i_fdivs | i_feqs | i_flts | i_fles | i_fcvtsw | i_fcvtws | i_fsqrts)) ? 1:
+               (stole && i_in) ? ((RVALID & RREADY) ? 0 : 1) :
+               (stole && i_out) ? ((BVALID & BREADY) ? 0 : 1) :
+               ((cpu_state == EXECUTE) && (stole == 0) && (i_in | i_out | i_fadds | i_fsubs | i_fmuls | i_fdivs | i_feqs | i_flts | i_fles | i_fcvtsw | i_fcvtws | i_fsqrts)) ? 1:
                0;
-
-    // ((i_out) && (S_AXI_BRESP == 00)) ? 0 :
   end
   end
 
@@ -656,10 +712,10 @@ module core_top
                    (i_fcvtsw) ? FCVTSW_R_TDATA :
                    (i_fcvtws) ? FCVTWS_R_TDATA :
                    (i_fsqrts) ? FSQRTS_R_TDATA :
-                   (i_in) ? S_AXI_RDATA:
                      alu_result;
   assign wr_addr = rd_num;
   assign fwr_addr = frd_num;
+  assign ine = (i_in & cpu_state == WRITEBACK);
 
   core_reg u_core_reg
   (
@@ -672,7 +728,7 @@ module core_top
     .WE (wr_we),
     .WDATA (wr_data),
     .INE (ine),
-    .INDATA (S_AXI_RDATA),
+    .INDATA (RDATA),
 
     .RS1ADDR (rs1_num),
     .RS1 (rs1),
