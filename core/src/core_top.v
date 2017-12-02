@@ -135,20 +135,22 @@ module core_top
   wire i_flw, i_fsw, i_fadds, i_fsubs, i_fmuls, i_fdivs, i_feqs, i_flts, i_fles, i_fmvsx, i_fcvtsw, i_fcvtws, i_fsqrts, i_fsgnjxs;
   wire i_in, i_out;
 
-  localparam s_read_wait = 4'b0000;
-  localparam s_read_wait2 = 4'b0100;
-  localparam s_read = 4'b0001;
-  localparam s_read2 = 4'b0101;
+  localparam s_read_wait = 7'b0000001;
+  localparam s_read_wait2 = 7'b0000010;
+  localparam s_read = 7'b0000100;
+  localparam s_read2 = 7'b0001000;
+  localparam s_read3 = 7'b0010000;
 
-  localparam s_write_wait = 4'b0010;
-  localparam s_write_wait2 = 4'b0110;
-  localparam s_write = 4'b0011;
-  localparam s_write2 = 4'b1000;
-  localparam s_write3 = 4'b0111;
+  localparam s_write_wait = 7'b1000001;
+  localparam s_write_wait2 = 7'b1000010;
+  localparam s_write = 7'b1000100;
+  localparam s_write2 = 7'b1001000;
+  localparam s_write3 = 7'b1010000;
+  localparam s_write4 = 7'b1100000;
 
-  wire ine;
-  reg [3:0] write_status;
-  reg [3:0] read_status;
+  (* mark_debug = "true" *) wire ine;
+  (* mark_debug = "true" *) reg [6:0] write_status;
+  (* mark_debug = "true" *) reg [6:0] read_status;
 
   // ADDSUB
   reg [31:0] addsub_a_tdata, addsub_b_tdata;
@@ -219,14 +221,14 @@ module core_top
   assign FSQRTS_A_TVALID = fsqrts_a_tvalid;
   assign FSQRTS_R_TREADY = fsqrts_r_tready;
 
-  reg stole;
+  (* mark_debug = "true" *) reg stole;
 
   // 乗除算はしない
 
   assign r0 = 32'b0;
 
   // CPU state
-  reg [6:0] cpu_state;
+  (* mark_debug = "true" *) reg [6:0] cpu_state;
   localparam IDLE = 7'b0000001;
   localparam FETCH = 7'b0000010;
   localparam DECODE = 7'b0000100;
@@ -562,7 +564,7 @@ module core_top
           WSTRB <= 0;
       end else begin
           WSTRB <= 4'b0001;
-          if (i_in) begin
+          if (i_in && (cpu_state == MEMORY)) begin
           case (read_status)
               s_read_wait:
               begin
@@ -585,11 +587,15 @@ module core_top
               s_read2:
               begin
                   RREADY <= (RREADY & RVALID) ? 0 : 1;
-                  read_status <= (RREADY & RVALID) ? s_read_wait : s_read2;
+                  read_status <= (RREADY & RVALID) ? s_read3 : s_read2;
+              end
+              s_read3:
+              begin
+                  read_status <= s_read_wait;
               end
             endcase
           end
-          if (i_out) begin
+          if (i_out && (cpu_state == MEMORY)) begin
             case (write_status)
               s_write_wait:
               begin
@@ -619,7 +625,11 @@ module core_top
               s_write3:
               begin
                   BREADY <= (BREADY & BVALID) ? 0 : 1;
-                  write_status <= (BREADY & BVALID) ? s_write_wait : s_write3;
+                  write_status <= (BREADY & BVALID) ? s_write4 : s_write3;
+              end
+              s_write4:
+              begin
+                  write_status <= s_write_wait;
               end
           endcase
         end
@@ -654,9 +664,9 @@ module core_top
                      ((!addsub_f && ADDSUB_R_TVALID) || (!mul_f && MUL_R_TVALID) || (!div_f && DIV_R_TVALID) || (!comp_f && COMP_R_TVALID) || (!fcvtsw_f && FCVTSW_R_TVALID) || (!fcvtws_f && FCVTWS_R_TVALID) || (!fsqrts_f && FSQRTS_R_TVALID)) ? 1:
                      0;
 
-      stole <= (stole && !(tvalid_once)) ? 1 :
-               (stole && i_in) ? ((RVALID & RREADY) ? 0 : 1) :
+      stole <= (stole && i_in) ? ((RVALID & RREADY) ? 0 : 1) :
                (stole && i_out) ? ((BVALID & BREADY) ? 0 : 1) :
+               (stole && !(tvalid_once)) ? 1 :
                ((cpu_state == EXECUTE) && (stole == 0) && (i_in | i_out | i_fadds | i_fsubs | i_fmuls | i_fdivs | i_feqs | i_flts | i_fles | i_fcvtsw | i_fcvtws | i_fsqrts)) ? 1:
                0;
   end

@@ -1,7 +1,5 @@
 INFO: [VRFC 10-163] Analyzing VHDL file "/home/yamaguchi/CPU-Adelie/koara/koara.ip_user_files/bd/design_1/ip/design_1_floating_point_0_0/sim/design_1_floating_point_0_0.vhd" into library xil_defaultlib
 INFO: [VRFC 10-307] analyzing entity design_1_floating_point_0_0
-INFO: [VRFC 10-163] Analyzing VHDL file "/home/yamaguchi/CPU-Adelie/koara/koara.ip_user_files/bd/design_1/ip/design_1_axi_uartlite_0_0_1/sim/design_1_axi_uartlite_0_0.vhd" into library xil_defaultlib
-INFO: [VRFC 10-307] analyzing entity design_1_axi_uartlite_0_0
 INFO: [VRFC 10-163] Analyzing VHDL file "/home/yamaguchi/CPU-Adelie/koara/koara.ip_user_files/bd/design_1/ip/design_1_floating_point_0_1/sim/design_1_floating_point_0_1.vhd" into library xil_defaultlib
 INFO: [VRFC 10-307] analyzing entity design_1_floating_point_0_1
 INFO: [VRFC 10-163] Analyzing VHDL file "/home/yamaguchi/CPU-Adelie/koara/koara.ip_user_files/bd/design_1/ip/design_1_floating_point_0_2/sim/design_1_floating_point_0_2.vhd" into library xil_defaultlib
@@ -14,3 +12,5 @@ INFO: [VRFC 10-163] Analyzing VHDL file "/home/yamaguchi/CPU-Adelie/koara/koara.
 INFO: [VRFC 10-307] analyzing entity design_1_floating_point_4_0
 INFO: [VRFC 10-163] Analyzing VHDL file "/home/yamaguchi/CPU-Adelie/koara/koara.ip_user_files/bd/design_1/ip/design_1_floating_point_5_0/sim/design_1_floating_point_5_0.vhd" into library xil_defaultlib
 INFO: [VRFC 10-307] analyzing entity design_1_floating_point_5_0
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/yamaguchi/CPU-Adelie/koara/koara.ip_user_files/bd/design_1/ip/design_1_axi_uartlite_0_1/sim/design_1_axi_uartlite_0_1.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity design_1_axi_uartlite_0_1

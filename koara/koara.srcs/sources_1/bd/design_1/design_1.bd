@@ -103,7 +103,7 @@
           <spirit:configurableElementValue spirit:referenceId="Enable_A">Always_Enabled</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="Register_PortA_Output_of_Memory_Primitives">true</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="Load_Init_File">true</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="Coe_File">../../../../../../../simulator/test/test_f.coe</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="Coe_File">../../../../../../../simulator/test/test_io.coe</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="Fill_Remaining_Memory_Locations">true</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="Use_RSTA_Pin">false</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="use_bram_block">Stand_Alone</spirit:configurableElementValue>
@@ -389,14 +389,14 @@
         <spirit:activeInterface spirit:busRef="FSQRTS_R" spirit:componentRef="core_top_0"/>
       </spirit:interconnection>
       <spirit:interconnection>
-        <spirit:name>core_top_0_interface_aximm</spirit:name>
-        <spirit:activeInterface spirit:busRef="interface_aximm" spirit:componentRef="core_top_0"/>
-        <spirit:activeInterface spirit:busRef="S00_AXI" spirit:componentRef="core_top_0_axi_periph"/>
-      </spirit:interconnection>
-      <spirit:interconnection>
         <spirit:name>core_top_0_axi_periph_M00_AXI</spirit:name>
         <spirit:activeInterface spirit:busRef="M00_AXI" spirit:componentRef="core_top_0_axi_periph"/>
         <spirit:activeInterface spirit:busRef="S_AXI" spirit:componentRef="axi_uartlite_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>core_top_0_interface_aximm</spirit:name>
+        <spirit:activeInterface spirit:busRef="interface_aximm" spirit:componentRef="core_top_0"/>
+        <spirit:activeInterface spirit:busRef="S00_AXI" spirit:componentRef="core_top_0_axi_periph"/>
       </spirit:interconnection>
     </spirit:interconnections>
     <spirit:adHocConnections>
@@ -452,9 +452,9 @@
         <spirit:internalPortReference spirit:componentRef="floating_point_5" spirit:portRef="aclk"/>
         <spirit:internalPortReference spirit:componentRef="floating_point_4" spirit:portRef="aclk"/>
         <spirit:internalPortReference spirit:componentRef="floating_point_6" spirit:portRef="aclk"/>
+        <spirit:internalPortReference spirit:componentRef="axi_uartlite_0" spirit:portRef="s_axi_aclk"/>
         <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="S00_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="ACLK"/>
-        <spirit:internalPortReference spirit:componentRef="axi_uartlite_0" spirit:portRef="s_axi_aclk"/>
         <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="M00_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="core_top_0" spirit:portRef="CLK"/>
       </spirit:adHocConnection>
@@ -468,9 +468,9 @@
         <spirit:internalPortReference spirit:componentRef="floating_point_3" spirit:portRef="aresetn"/>
         <spirit:internalPortReference spirit:componentRef="floating_point_2" spirit:portRef="aresetn"/>
         <spirit:internalPortReference spirit:componentRef="floating_point_1" spirit:portRef="aresetn"/>
+        <spirit:internalPortReference spirit:componentRef="axi_uartlite_0" spirit:portRef="s_axi_aresetn"/>
         <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="S00_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="ARESETN"/>
-        <spirit:internalPortReference spirit:componentRef="axi_uartlite_0" spirit:portRef="s_axi_aresetn"/>
         <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="M00_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="core_top_0" spirit:portRef="RST_N"/>
       </spirit:adHocConnection>

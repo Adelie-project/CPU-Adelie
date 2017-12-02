@@ -1,7 +1,7 @@
 //Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
-//Date        : Sat Dec  2 02:13:48 2017
+//Date        : Sun Dec  3 04:07:27 2017
 //Host        : ispc2016 running 64-bit Ubuntu 14.04.5 LTS
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -9,12 +9,18 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=16,numReposBlks=14,numNonXlnxBlks=1,numHierBlks=2,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=1,da_board_cnt=3,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=16,numReposBlks=14,numNonXlnxBlks=1,numHierBlks=2,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=4,da_board_cnt=6,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
 module design_1
-   (rs232_uart_rxd,
-    rs232_uart_txd);
+   (reset,
+    rs232_uart_rxd,
+    rs232_uart_txd,
+    sysclk_125_clk_n,
+    sysclk_125_clk_p);
+  input reset;
   input rs232_uart_rxd;
   output rs232_uart_txd;
+  input sysclk_125_clk_n;
+  input sysclk_125_clk_p;
 
   wire axi_uartlite_0_UART_RxD;
   wire axi_uartlite_0_UART_TxD;
@@ -63,22 +69,6 @@ module design_1
   wire [7:0]core_top_0_OP_TDATA;
   wire core_top_0_OP_TREADY;
   wire core_top_0_OP_TVALID;
-  wire [3:0]core_top_0_S_AXI_ARADDR;
-  wire core_top_0_S_AXI_ARREADY;
-  wire core_top_0_S_AXI_ARVALID;
-  wire [3:0]core_top_0_S_AXI_AWADDR;
-  wire core_top_0_S_AXI_AWREADY;
-  wire core_top_0_S_AXI_AWVALID;
-  wire core_top_0_S_AXI_BREADY;
-  wire [1:0]core_top_0_S_AXI_BRESP;
-  wire core_top_0_S_AXI_BVALID;
-  wire [31:0]core_top_0_S_AXI_RDATA;
-  wire core_top_0_S_AXI_RREADY;
-  wire [1:0]core_top_0_S_AXI_RRESP;
-  wire core_top_0_S_AXI_RVALID;
-  wire [31:0]core_top_0_S_AXI_WDATA;
-  wire core_top_0_S_AXI_WREADY;
-  wire core_top_0_S_AXI_WVALID;
   wire [3:0]core_top_0_axi_periph_M00_AXI_ARADDR;
   wire core_top_0_axi_periph_M00_AXI_ARREADY;
   wire core_top_0_axi_periph_M00_AXI_ARVALID;
@@ -94,7 +84,25 @@ module design_1
   wire core_top_0_axi_periph_M00_AXI_RVALID;
   wire [31:0]core_top_0_axi_periph_M00_AXI_WDATA;
   wire core_top_0_axi_periph_M00_AXI_WREADY;
+  wire [3:0]core_top_0_axi_periph_M00_AXI_WSTRB;
   wire core_top_0_axi_periph_M00_AXI_WVALID;
+  wire [3:0]core_top_0_interface_aximm_ARADDR;
+  wire core_top_0_interface_aximm_ARREADY;
+  wire core_top_0_interface_aximm_ARVALID;
+  wire [3:0]core_top_0_interface_aximm_AWADDR;
+  wire core_top_0_interface_aximm_AWREADY;
+  wire core_top_0_interface_aximm_AWVALID;
+  wire core_top_0_interface_aximm_BREADY;
+  wire [1:0]core_top_0_interface_aximm_BRESP;
+  wire core_top_0_interface_aximm_BVALID;
+  wire [31:0]core_top_0_interface_aximm_RDATA;
+  wire core_top_0_interface_aximm_RREADY;
+  wire [1:0]core_top_0_interface_aximm_RRESP;
+  wire core_top_0_interface_aximm_RVALID;
+  wire [31:0]core_top_0_interface_aximm_WDATA;
+  wire core_top_0_interface_aximm_WREADY;
+  wire [3:0]core_top_0_interface_aximm_WSTRB;
+  wire core_top_0_interface_aximm_WVALID;
   wire [31:0]floating_point_0_M_AXIS_RESULT_TDATA;
   wire floating_point_0_M_AXIS_RESULT_TREADY;
   wire floating_point_0_M_AXIS_RESULT_TVALID;
@@ -116,14 +124,20 @@ module design_1
   wire [31:0]floating_point_6_M_AXIS_RESULT_TDATA;
   wire floating_point_6_M_AXIS_RESULT_TREADY;
   wire floating_point_6_M_AXIS_RESULT_TVALID;
+  wire reset_1;
   wire sim_clk_gen_0_clk;
   wire sim_clk_gen_0_sync_rst;
+  wire sysclk_125_1_CLK_N;
+  wire sysclk_125_1_CLK_P;
   wire [0:0]xlconstant_0_dout;
   wire [0:0]xlconstant_1_dout;
 
   assign axi_uartlite_0_UART_RxD = rs232_uart_rxd;
+  assign reset_1 = reset;
   assign rs232_uart_txd = axi_uartlite_0_UART_TxD;
-  design_1_axi_uartlite_0_0 axi_uartlite_0
+  assign sysclk_125_1_CLK_N = sysclk_125_clk_n;
+  assign sysclk_125_1_CLK_P = sysclk_125_clk_p;
+  design_1_axi_uartlite_0_1 axi_uartlite_0
        (.rx(axi_uartlite_0_UART_RxD),
         .s_axi_aclk(sim_clk_gen_0_clk),
         .s_axi_araddr(core_top_0_axi_periph_M00_AXI_ARADDR),
@@ -142,7 +156,7 @@ module design_1
         .s_axi_rvalid(core_top_0_axi_periph_M00_AXI_RVALID),
         .s_axi_wdata(core_top_0_axi_periph_M00_AXI_WDATA),
         .s_axi_wready(core_top_0_axi_periph_M00_AXI_WREADY),
-        .s_axi_wstrb({1'b0,1'b0,1'b0,1'b0}),
+        .s_axi_wstrb(core_top_0_axi_periph_M00_AXI_WSTRB),
         .s_axi_wvalid(core_top_0_axi_periph_M00_AXI_WVALID),
         .tx(axi_uartlite_0_UART_TxD));
   design_1_blk_mem_gen_0_0 blk_mem_gen_0
@@ -158,6 +172,12 @@ module design_1
         .douta(blk_mem_gen_1_douta),
         .ena(xlconstant_1_dout),
         .wea(core_top_0_MEM_WE));
+  design_1_clk_wiz_0_0 clk_wiz_0
+       (.clk_in1_n(sysclk_125_1_CLK_N),
+        .clk_in1_p(sysclk_125_1_CLK_P),
+        .clk_out1(sim_clk_gen_0_clk),
+        .locked(sim_clk_gen_0_sync_rst),
+        .reset(reset_1));
   design_1_core_top_0_0 core_top_0
        (.ADDSUB_A_TDATA(core_top_0_A_TDATA),
         .ADDSUB_A_TREADY(core_top_0_A_TREADY),
@@ -171,6 +191,15 @@ module design_1
         .ADDSUB_R_TDATA(floating_point_0_M_AXIS_RESULT_TDATA),
         .ADDSUB_R_TREADY(floating_point_0_M_AXIS_RESULT_TREADY),
         .ADDSUB_R_TVALID(floating_point_0_M_AXIS_RESULT_TVALID),
+        .ARADDR(core_top_0_interface_aximm_ARADDR),
+        .ARREADY(core_top_0_interface_aximm_ARREADY),
+        .ARVALID(core_top_0_interface_aximm_ARVALID),
+        .AWADDR(core_top_0_interface_aximm_AWADDR),
+        .AWREADY(core_top_0_interface_aximm_AWREADY),
+        .AWVALID(core_top_0_interface_aximm_AWVALID),
+        .BREADY(core_top_0_interface_aximm_BREADY),
+        .BRESP(core_top_0_interface_aximm_BRESP),
+        .BVALID(core_top_0_interface_aximm_BVALID),
         .CLK(sim_clk_gen_0_clk),
         .COMP_A_TDATA(core_top_0_COMP_A_TDATA),
         .COMP_A_TREADY(core_top_0_COMP_A_TREADY),
@@ -226,24 +255,16 @@ module design_1
         .MUL_R_TDATA(floating_point_3_M_AXIS_RESULT_TDATA),
         .MUL_R_TREADY(floating_point_3_M_AXIS_RESULT_TREADY),
         .MUL_R_TVALID(floating_point_3_M_AXIS_RESULT_TVALID),
+        .RDATA(core_top_0_interface_aximm_RDATA),
+        .RREADY(core_top_0_interface_aximm_RREADY),
+        .RRESP(core_top_0_interface_aximm_RRESP),
         .RST_N(sim_clk_gen_0_sync_rst),
-        .S_AXI_ARADDR(core_top_0_S_AXI_ARADDR),
-        .S_AXI_ARREADY(core_top_0_S_AXI_ARREADY),
-        .S_AXI_ARVALID(core_top_0_S_AXI_ARVALID),
-        .S_AXI_AWADDR(core_top_0_S_AXI_AWADDR),
-        .S_AXI_AWREADY(core_top_0_S_AXI_AWREADY),
-        .S_AXI_AWVALID(core_top_0_S_AXI_AWVALID),
-        .S_AXI_BREADY(core_top_0_S_AXI_BREADY),
-        .S_AXI_BRESP(core_top_0_S_AXI_BRESP),
-        .S_AXI_BVALID(core_top_0_S_AXI_BVALID),
-        .S_AXI_RDATA(core_top_0_S_AXI_RDATA),
-        .S_AXI_RREADY(core_top_0_S_AXI_RREADY),
-        .S_AXI_RRESP(core_top_0_S_AXI_RRESP),
-        .S_AXI_RVALID(core_top_0_S_AXI_RVALID),
-        .S_AXI_WDATA(core_top_0_S_AXI_WDATA),
-        .S_AXI_WREADY(core_top_0_S_AXI_WREADY),
-        .S_AXI_WVALID(core_top_0_S_AXI_WVALID));
-  design_1_core_top_0_axi_periph_0 core_top_0_axi_periph
+        .RVALID(core_top_0_interface_aximm_RVALID),
+        .WDATA(core_top_0_interface_aximm_WDATA),
+        .WREADY(core_top_0_interface_aximm_WREADY),
+        .WSTRB(core_top_0_interface_aximm_WSTRB),
+        .WVALID(core_top_0_interface_aximm_WVALID));
+  design_1_core_top_0_axi_periph_1 core_top_0_axi_periph
        (.ACLK(sim_clk_gen_0_clk),
         .ARESETN(sim_clk_gen_0_sync_rst),
         .M00_ACLK(sim_clk_gen_0_clk),
@@ -263,25 +284,27 @@ module design_1
         .M00_AXI_rvalid(core_top_0_axi_periph_M00_AXI_RVALID),
         .M00_AXI_wdata(core_top_0_axi_periph_M00_AXI_WDATA),
         .M00_AXI_wready(core_top_0_axi_periph_M00_AXI_WREADY),
+        .M00_AXI_wstrb(core_top_0_axi_periph_M00_AXI_WSTRB),
         .M00_AXI_wvalid(core_top_0_axi_periph_M00_AXI_WVALID),
         .S00_ACLK(sim_clk_gen_0_clk),
         .S00_ARESETN(sim_clk_gen_0_sync_rst),
-        .S00_AXI_araddr(core_top_0_S_AXI_ARADDR),
-        .S00_AXI_arready(core_top_0_S_AXI_ARREADY),
-        .S00_AXI_arvalid(core_top_0_S_AXI_ARVALID),
-        .S00_AXI_awaddr(core_top_0_S_AXI_AWADDR),
-        .S00_AXI_awready(core_top_0_S_AXI_AWREADY),
-        .S00_AXI_awvalid(core_top_0_S_AXI_AWVALID),
-        .S00_AXI_bready(core_top_0_S_AXI_BREADY),
-        .S00_AXI_bresp(core_top_0_S_AXI_BRESP),
-        .S00_AXI_bvalid(core_top_0_S_AXI_BVALID),
-        .S00_AXI_rdata(core_top_0_S_AXI_RDATA),
-        .S00_AXI_rready(core_top_0_S_AXI_RREADY),
-        .S00_AXI_rresp(core_top_0_S_AXI_RRESP),
-        .S00_AXI_rvalid(core_top_0_S_AXI_RVALID),
-        .S00_AXI_wdata(core_top_0_S_AXI_WDATA),
-        .S00_AXI_wready(core_top_0_S_AXI_WREADY),
-        .S00_AXI_wvalid(core_top_0_S_AXI_WVALID));
+        .S00_AXI_araddr(core_top_0_interface_aximm_ARADDR),
+        .S00_AXI_arready(core_top_0_interface_aximm_ARREADY),
+        .S00_AXI_arvalid(core_top_0_interface_aximm_ARVALID),
+        .S00_AXI_awaddr(core_top_0_interface_aximm_AWADDR),
+        .S00_AXI_awready(core_top_0_interface_aximm_AWREADY),
+        .S00_AXI_awvalid(core_top_0_interface_aximm_AWVALID),
+        .S00_AXI_bready(core_top_0_interface_aximm_BREADY),
+        .S00_AXI_bresp(core_top_0_interface_aximm_BRESP),
+        .S00_AXI_bvalid(core_top_0_interface_aximm_BVALID),
+        .S00_AXI_rdata(core_top_0_interface_aximm_RDATA),
+        .S00_AXI_rready(core_top_0_interface_aximm_RREADY),
+        .S00_AXI_rresp(core_top_0_interface_aximm_RRESP),
+        .S00_AXI_rvalid(core_top_0_interface_aximm_RVALID),
+        .S00_AXI_wdata(core_top_0_interface_aximm_WDATA),
+        .S00_AXI_wready(core_top_0_interface_aximm_WREADY),
+        .S00_AXI_wstrb(core_top_0_interface_aximm_WSTRB),
+        .S00_AXI_wvalid(core_top_0_interface_aximm_WVALID));
   design_1_floating_point_0_0 floating_point_0
        (.aclk(sim_clk_gen_0_clk),
         .aresetn(sim_clk_gen_0_sync_rst),
@@ -363,16 +386,13 @@ module design_1
         .s_axis_a_tdata(core_top_0_FSQRTS_A_TDATA),
         .s_axis_a_tready(core_top_0_FSQRTS_A_TREADY),
         .s_axis_a_tvalid(core_top_0_FSQRTS_A_TVALID));
-  design_1_sim_clk_gen_0_0 sim_clk_gen_0
-       (.clk(sim_clk_gen_0_clk),
-        .sync_rst(sim_clk_gen_0_sync_rst));
   design_1_xlconstant_0_0 xlconstant_0
        (.dout(xlconstant_0_dout));
   design_1_xlconstant_0_1 xlconstant_1
        (.dout(xlconstant_1_dout));
 endmodule
 
-module design_1_core_top_0_axi_periph_0
+module design_1_core_top_0_axi_periph_1
    (ACLK,
     ARESETN,
     M00_ACLK,
@@ -392,6 +412,7 @@ module design_1_core_top_0_axi_periph_0
     M00_AXI_rvalid,
     M00_AXI_wdata,
     M00_AXI_wready,
+    M00_AXI_wstrb,
     M00_AXI_wvalid,
     S00_ACLK,
     S00_ARESETN,
@@ -410,6 +431,7 @@ module design_1_core_top_0_axi_periph_0
     S00_AXI_rvalid,
     S00_AXI_wdata,
     S00_AXI_wready,
+    S00_AXI_wstrb,
     S00_AXI_wvalid);
   input ACLK;
   input ARESETN;
@@ -430,6 +452,7 @@ module design_1_core_top_0_axi_periph_0
   input M00_AXI_rvalid;
   output [31:0]M00_AXI_wdata;
   input M00_AXI_wready;
+  output [3:0]M00_AXI_wstrb;
   output M00_AXI_wvalid;
   input S00_ACLK;
   input S00_ARESETN;
@@ -448,6 +471,7 @@ module design_1_core_top_0_axi_periph_0
   output S00_AXI_rvalid;
   input [31:0]S00_AXI_wdata;
   output S00_AXI_wready;
+  input [3:0]S00_AXI_wstrb;
   input S00_AXI_wvalid;
 
   wire S00_ACLK_1;
@@ -469,6 +493,7 @@ module design_1_core_top_0_axi_periph_0
   wire core_top_0_axi_periph_to_s00_couplers_RVALID;
   wire [31:0]core_top_0_axi_periph_to_s00_couplers_WDATA;
   wire core_top_0_axi_periph_to_s00_couplers_WREADY;
+  wire [3:0]core_top_0_axi_periph_to_s00_couplers_WSTRB;
   wire core_top_0_axi_periph_to_s00_couplers_WVALID;
   wire [3:0]s00_couplers_to_core_top_0_axi_periph_ARADDR;
   wire s00_couplers_to_core_top_0_axi_periph_ARREADY;
@@ -485,6 +510,7 @@ module design_1_core_top_0_axi_periph_0
   wire s00_couplers_to_core_top_0_axi_periph_RVALID;
   wire [31:0]s00_couplers_to_core_top_0_axi_periph_WDATA;
   wire s00_couplers_to_core_top_0_axi_periph_WREADY;
+  wire [3:0]s00_couplers_to_core_top_0_axi_periph_WSTRB;
   wire s00_couplers_to_core_top_0_axi_periph_WVALID;
 
   assign M00_AXI_araddr[3:0] = s00_couplers_to_core_top_0_axi_periph_ARADDR;
@@ -494,6 +520,7 @@ module design_1_core_top_0_axi_periph_0
   assign M00_AXI_bready = s00_couplers_to_core_top_0_axi_periph_BREADY;
   assign M00_AXI_rready = s00_couplers_to_core_top_0_axi_periph_RREADY;
   assign M00_AXI_wdata[31:0] = s00_couplers_to_core_top_0_axi_periph_WDATA;
+  assign M00_AXI_wstrb[3:0] = s00_couplers_to_core_top_0_axi_periph_WSTRB;
   assign M00_AXI_wvalid = s00_couplers_to_core_top_0_axi_periph_WVALID;
   assign S00_ACLK_1 = S00_ACLK;
   assign S00_ARESETN_1 = S00_ARESETN;
@@ -514,6 +541,7 @@ module design_1_core_top_0_axi_periph_0
   assign core_top_0_axi_periph_to_s00_couplers_BREADY = S00_AXI_bready;
   assign core_top_0_axi_periph_to_s00_couplers_RREADY = S00_AXI_rready;
   assign core_top_0_axi_periph_to_s00_couplers_WDATA = S00_AXI_wdata[31:0];
+  assign core_top_0_axi_periph_to_s00_couplers_WSTRB = S00_AXI_wstrb[3:0];
   assign core_top_0_axi_periph_to_s00_couplers_WVALID = S00_AXI_wvalid;
   assign s00_couplers_to_core_top_0_axi_periph_ARREADY = M00_AXI_arready;
   assign s00_couplers_to_core_top_0_axi_periph_AWREADY = M00_AXI_awready;
@@ -541,6 +569,7 @@ module design_1_core_top_0_axi_periph_0
         .M_AXI_rvalid(s00_couplers_to_core_top_0_axi_periph_RVALID),
         .M_AXI_wdata(s00_couplers_to_core_top_0_axi_periph_WDATA),
         .M_AXI_wready(s00_couplers_to_core_top_0_axi_periph_WREADY),
+        .M_AXI_wstrb(s00_couplers_to_core_top_0_axi_periph_WSTRB),
         .M_AXI_wvalid(s00_couplers_to_core_top_0_axi_periph_WVALID),
         .S_ACLK(S00_ACLK_1),
         .S_ARESETN(S00_ARESETN_1),
@@ -559,6 +588,7 @@ module design_1_core_top_0_axi_periph_0
         .S_AXI_rvalid(core_top_0_axi_periph_to_s00_couplers_RVALID),
         .S_AXI_wdata(core_top_0_axi_periph_to_s00_couplers_WDATA),
         .S_AXI_wready(core_top_0_axi_periph_to_s00_couplers_WREADY),
+        .S_AXI_wstrb(core_top_0_axi_periph_to_s00_couplers_WSTRB),
         .S_AXI_wvalid(core_top_0_axi_periph_to_s00_couplers_WVALID));
 endmodule
 
@@ -580,6 +610,7 @@ module s00_couplers_imp_1T2I6AR
     M_AXI_rvalid,
     M_AXI_wdata,
     M_AXI_wready,
+    M_AXI_wstrb,
     M_AXI_wvalid,
     S_ACLK,
     S_ARESETN,
@@ -598,6 +629,7 @@ module s00_couplers_imp_1T2I6AR
     S_AXI_rvalid,
     S_AXI_wdata,
     S_AXI_wready,
+    S_AXI_wstrb,
     S_AXI_wvalid);
   input M_ACLK;
   input M_ARESETN;
@@ -616,6 +648,7 @@ module s00_couplers_imp_1T2I6AR
   input M_AXI_rvalid;
   output [31:0]M_AXI_wdata;
   input M_AXI_wready;
+  output [3:0]M_AXI_wstrb;
   output M_AXI_wvalid;
   input S_ACLK;
   input S_ARESETN;
@@ -634,6 +667,7 @@ module s00_couplers_imp_1T2I6AR
   output S_AXI_rvalid;
   input [31:0]S_AXI_wdata;
   output S_AXI_wready;
+  input [3:0]S_AXI_wstrb;
   input S_AXI_wvalid;
 
   wire [3:0]s00_couplers_to_s00_couplers_ARADDR;
@@ -651,6 +685,7 @@ module s00_couplers_imp_1T2I6AR
   wire s00_couplers_to_s00_couplers_RVALID;
   wire [31:0]s00_couplers_to_s00_couplers_WDATA;
   wire s00_couplers_to_s00_couplers_WREADY;
+  wire [3:0]s00_couplers_to_s00_couplers_WSTRB;
   wire s00_couplers_to_s00_couplers_WVALID;
 
   assign M_AXI_araddr[3:0] = s00_couplers_to_s00_couplers_ARADDR;
@@ -660,6 +695,7 @@ module s00_couplers_imp_1T2I6AR
   assign M_AXI_bready = s00_couplers_to_s00_couplers_BREADY;
   assign M_AXI_rready = s00_couplers_to_s00_couplers_RREADY;
   assign M_AXI_wdata[31:0] = s00_couplers_to_s00_couplers_WDATA;
+  assign M_AXI_wstrb[3:0] = s00_couplers_to_s00_couplers_WSTRB;
   assign M_AXI_wvalid = s00_couplers_to_s00_couplers_WVALID;
   assign S_AXI_arready = s00_couplers_to_s00_couplers_ARREADY;
   assign S_AXI_awready = s00_couplers_to_s00_couplers_AWREADY;
@@ -684,5 +720,6 @@ module s00_couplers_imp_1T2I6AR
   assign s00_couplers_to_s00_couplers_RVALID = M_AXI_rvalid;
   assign s00_couplers_to_s00_couplers_WDATA = S_AXI_wdata[31:0];
   assign s00_couplers_to_s00_couplers_WREADY = M_AXI_wready;
+  assign s00_couplers_to_s00_couplers_WSTRB = S_AXI_wstrb[3:0];
   assign s00_couplers_to_s00_couplers_WVALID = S_AXI_wvalid;
 endmodule
