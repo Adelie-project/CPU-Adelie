@@ -184,7 +184,7 @@ CONFIG.USE_BOARD_FLOW {true} \
   set blk_mem_gen_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.3 blk_mem_gen_0 ]
   set_property -dict [ list \
 CONFIG.Byte_Size {9} \
-CONFIG.Coe_File {../../../../../../../simulator/test/test_f.coe} \
+CONFIG.Coe_File {../../../../../../../simulator/test/test_io.coe} \
 CONFIG.Enable_32bit_Address {false} \
 CONFIG.Enable_A {Always_Enabled} \
 CONFIG.Fill_Remaining_Memory_Locations {true} \

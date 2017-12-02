@@ -2,8 +2,8 @@
 # Vivado v2016.4 (64-bit)
 # SW Build 1756540 on Mon Jan 23 19:11:19 MST 2017
 # IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
-# Start of session at: Sat Dec  2 23:08:44 2017
-# Process ID: 19379
+# Start of session at: Sun Dec  3 04:39:02 2017
+# Process ID: 10794
 # Current directory: /home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1
 # Command line: vivado -log design_1_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_wrapper.tcl
 # Log file: /home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/design_1_wrapper.vds
@@ -87,11 +87,11 @@ Command: synth_design -top design_1_wrapper -part xcku040-ffva1156-2-e
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xcku040'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xcku040'
-INFO: [Common 17-1223] The version limit for your license is '2017.03' and will expire in -246 days. A version limit expiration means that, although you may be able to continue to use the current version of tools or IP with this license, you will not be eligible for any updates or new releases.
+INFO: [Common 17-1223] The version limit for your license is '2017.03' and will expire in -247 days. A version limit expiration means that, although you may be able to continue to use the current version of tools or IP with this license, you will not be eligible for any updates or new releases.
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 19387 
+INFO: Helper process launched with PID 10801 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1205.090 ; gain = 269.711 ; free physical = 8997 ; free virtual = 27964
+Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1205.168 ; gain = 269.797 ; free physical = 11894 ; free virtual = 30196
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'design_1_wrapper' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.v:12]
 INFO: [Synth 8-638] synthesizing module 'design_1' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:13]
@@ -165,33 +165,39 @@ INFO: [Synth 8-256] done synthesizing module 'design_1_clk_wiz_0_0_clk_wiz' (31#
 INFO: [Synth 8-256] done synthesizing module 'design_1_clk_wiz_0_0' (32#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.v:70]
 INFO: [Synth 8-638] synthesizing module 'design_1_core_top_0_0' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_core_top_0_0_1/synth/design_1_core_top_0_0.v:56]
 INFO: [Synth 8-638] synthesizing module 'core_top' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:1]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:244]
+INFO: [Synth 8-5534] Detected attribute (* mark_debug = "true" *) [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:151]
+INFO: [Synth 8-5534] Detected attribute (* mark_debug = "true" *) [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:152]
+INFO: [Synth 8-5534] Detected attribute (* mark_debug = "true" *) [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:153]
+INFO: [Synth 8-5534] Detected attribute (* mark_debug = "true" *) [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:224]
+INFO: [Synth 8-5534] Detected attribute (* mark_debug = "true" *) [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:231]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:246]
 INFO: [Synth 8-638] synthesizing module 'core_decode' [/home/yamaguchi/CPU-Adelie/core/src/core_decode.v:1]
 INFO: [Synth 8-256] done synthesizing module 'core_decode' (33#1) [/home/yamaguchi/CPU-Adelie/core/src/core_decode.v:1]
 INFO: [Synth 8-638] synthesizing module 'core_alu' [/home/yamaguchi/CPU-Adelie/core/src/core_alu.v:1]
 INFO: [Synth 8-256] done synthesizing module 'core_alu' (34#1) [/home/yamaguchi/CPU-Adelie/core/src/core_alu.v:1]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:566]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:593]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:568]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:599]
 INFO: [Synth 8-638] synthesizing module 'core_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_reg.v:1]
+INFO: [Synth 8-5534] Detected attribute (* mark_debug = "true" *) [/home/yamaguchi/CPU-Adelie/core/src/core_reg.v:29]
 INFO: [Synth 8-256] done synthesizing module 'core_reg' (35#1) [/home/yamaguchi/CPU-Adelie/core/src/core_reg.v:1]
-WARNING: [Synth 8-689] width (32) of port connection 'INDATA' does not match port width (8) of module 'core_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:731]
-INFO: [Synth 8-4471] merging register 'addsub_b_tvalid_reg' into 'addsub_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:161]
-INFO: [Synth 8-4471] merging register 'addsub_op_tvalid_reg' into 'addsub_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:163]
-INFO: [Synth 8-4471] merging register 'addsub_r_tready_reg' into 'addsub_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:164]
-INFO: [Synth 8-4471] merging register 'mul_b_tvalid_reg' into 'mul_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:177]
-INFO: [Synth 8-4471] merging register 'mul_r_tready_reg' into 'mul_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:178]
-INFO: [Synth 8-4471] merging register 'div_b_tvalid_reg' into 'div_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:186]
-INFO: [Synth 8-4471] merging register 'div_r_tready_reg' into 'div_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:187]
-INFO: [Synth 8-4471] merging register 'comp_b_tvalid_reg' into 'comp_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:196]
-INFO: [Synth 8-4471] merging register 'comp_op_tvalid_reg' into 'comp_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:198]
-INFO: [Synth 8-4471] merging register 'comp_r_tready_reg' into 'comp_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:199]
-INFO: [Synth 8-4471] merging register 'fcvtsw_r_tready_reg' into 'fcvtsw_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:206]
-INFO: [Synth 8-4471] merging register 'fcvtws_r_tready_reg' into 'fcvtws_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:213]
-INFO: [Synth 8-4471] merging register 'fsqrts_r_tready_reg' into 'fsqrts_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:220]
-WARNING: [Synth 8-3848] Net addsub_r_tvalid in module/entity core_top does not have driver. [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:157]
-WARNING: [Synth 8-3848] Net addsub_a_tready in module/entity core_top does not have driver. [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:157]
-WARNING: [Synth 8-3848] Net addsub_b_tready in module/entity core_top does not have driver. [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:157]
-WARNING: [Synth 8-3848] Net addsub_op_tready in module/entity core_top does not have driver. [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:157]
+WARNING: [Synth 8-689] width (32) of port connection 'INDATA' does not match port width (8) of module 'core_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:741]
+INFO: [Synth 8-4471] merging register 'addsub_b_tvalid_reg' into 'addsub_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:163]
+INFO: [Synth 8-4471] merging register 'addsub_op_tvalid_reg' into 'addsub_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:165]
+INFO: [Synth 8-4471] merging register 'addsub_r_tready_reg' into 'addsub_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:166]
+INFO: [Synth 8-4471] merging register 'mul_b_tvalid_reg' into 'mul_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:179]
+INFO: [Synth 8-4471] merging register 'mul_r_tready_reg' into 'mul_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:180]
+INFO: [Synth 8-4471] merging register 'div_b_tvalid_reg' into 'div_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:188]
+INFO: [Synth 8-4471] merging register 'div_r_tready_reg' into 'div_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:189]
+INFO: [Synth 8-4471] merging register 'comp_b_tvalid_reg' into 'comp_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:198]
+INFO: [Synth 8-4471] merging register 'comp_op_tvalid_reg' into 'comp_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:200]
+INFO: [Synth 8-4471] merging register 'comp_r_tready_reg' into 'comp_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:201]
+INFO: [Synth 8-4471] merging register 'fcvtsw_r_tready_reg' into 'fcvtsw_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:208]
+INFO: [Synth 8-4471] merging register 'fcvtws_r_tready_reg' into 'fcvtws_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:215]
+INFO: [Synth 8-4471] merging register 'fsqrts_r_tready_reg' into 'fsqrts_a_tvalid_reg' [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:222]
+WARNING: [Synth 8-3848] Net addsub_r_tvalid in module/entity core_top does not have driver. [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:159]
+WARNING: [Synth 8-3848] Net addsub_a_tready in module/entity core_top does not have driver. [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:159]
+WARNING: [Synth 8-3848] Net addsub_b_tready in module/entity core_top does not have driver. [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:159]
+WARNING: [Synth 8-3848] Net addsub_op_tready in module/entity core_top does not have driver. [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:159]
 INFO: [Synth 8-256] done synthesizing module 'core_top' (36#1) [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:1]
 INFO: [Synth 8-256] done synthesizing module 'design_1_core_top_0_0' (37#1) [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_core_top_0_0_1/synth/design_1_core_top_0_0.v:56]
 INFO: [Synth 8-638] synthesizing module 'design_1_core_top_0_axi_periph_1' [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/hdl/design_1.v:395]
@@ -331,7 +337,7 @@ WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1091 has uncon
 WARNING: [Synth 8-3331] design xbip_pipe_v3_0_3_viv__parameterized1091 has unconnected port CE
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:01:23 ; elapsed = 00:01:23 . Memory (MB): peak = 1469.770 ; gain = 534.391 ; free physical = 8732 ; free virtual = 27694
+Finished RTL Elaboration : Time (s): cpu = 00:01:23 ; elapsed = 00:01:24 . Memory (MB): peak = 1468.848 ; gain = 533.477 ; free physical = 11613 ; free virtual = 29922
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -341,7 +347,7 @@ Report Check Netlist:
 |1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
 +------+------------------+-------+---------+-------+------------------+
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:01:24 ; elapsed = 00:01:24 . Memory (MB): peak = 1469.770 ; gain = 534.391 ; free physical = 8733 ; free virtual = 27694
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:01:24 ; elapsed = 00:01:25 . Memory (MB): peak = 1468.848 ; gain = 533.477 ; free physical = 11612 ; free virtual = 29922
 ---------------------------------------------------------------------------------
 INFO: [Netlist 29-17] Analyzing 2699 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -376,16 +382,16 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   FDR => FDRE: 6 instances
   IBUFDS => IBUFDS (DIFFINBUF, IBUFCTRL): 1 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.03 . Memory (MB): peak = 1817.219 ; gain = 0.000 ; free physical = 8443 ; free virtual = 27404
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.04 . Memory (MB): peak = 1808.297 ; gain = 0.000 ; free physical = 11321 ; free virtual = 29632
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:01:35 ; elapsed = 00:01:36 . Memory (MB): peak = 1817.219 ; gain = 881.840 ; free physical = 8441 ; free virtual = 27402
+Finished Constraint Validation : Time (s): cpu = 00:01:36 ; elapsed = 00:01:36 . Memory (MB): peak = 1808.297 ; gain = 872.926 ; free physical = 11320 ; free virtual = 29631
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xcku040-ffva1156-2-e
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:01:35 ; elapsed = 00:01:36 . Memory (MB): peak = 1817.219 ; gain = 881.840 ; free physical = 8441 ; free virtual = 27402
+Finished Loading Part and Timing Information : Time (s): cpu = 00:01:36 ; elapsed = 00:01:36 . Memory (MB): peak = 1808.297 ; gain = 872.926 ; free physical = 11320 ; free virtual = 29631
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -409,7 +415,7 @@ Applied set_property DONT_TOUCH = true for design_1_i/floating_point_6. (constra
 Applied set_property DONT_TOUCH = true for design_1_i/xlconstant_0. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for design_1_i/xlconstant_1. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:35 ; elapsed = 00:01:36 . Memory (MB): peak = 1817.219 ; gain = 881.840 ; free physical = 8441 ; free virtual = 27402
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:36 ; elapsed = 00:01:36 . Memory (MB): peak = 1808.297 ; gain = 872.926 ; free physical = 11320 ; free virtual = 29631
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5546] ROM "EN_16x_Baud" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "fifo_full_p1" won't be mapped to RAM because it is too sparse
@@ -419,48 +425,33 @@ INFO: [Synth 8-5544] ROM "s_axi_rresp_i" won't be mapped to Block RAM because ad
 INFO: [Synth 8-5544] ROM "s_axi_bresp_i" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "s_axi_bresp_i" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "RESULT19" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-3898] No Re-encoding of one hot register 'cpu_state_reg' in module 'core_top'
-INFO: [Synth 8-802] inferred FSM for state register 'read_status_reg' in module 'core_top'
-INFO: [Synth 8-802] inferred FSM for state register 'write_status_reg' in module 'core_top'
-INFO: [Synth 8-5546] ROM "cpu_state" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5544] ROM "read_status" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "ARADDR" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "RREADY" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "read_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "read_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "read_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "read_status1" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "write_status" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "AWADDR" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "AWVALID" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "BREADY" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "write_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "write_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "write_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "write_status1" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5546] ROM "cpu_state" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5544] ROM "read_status" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "ARADDR" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "RREADY" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "read_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "read_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "read_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "read_status1" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "write_status" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "AWADDR" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "AWVALID" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "BREADY" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "write_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "write_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "write_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "write_status1" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "ARADDR" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "RREADY" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "AWADDR" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "AWVALID" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "BREADY" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ARADDR" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "RREADY" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "AWADDR" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "AWVALID" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "BREADY" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5544] ROM "addsub_op_tdata0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "comp_op_tdata1" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "read_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "read_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "read_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "read_status1" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "write_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "write_status1" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "write_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "write_status0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "ARVALID0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "RREADY0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "AWVALID0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "WVALID0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "BREADY0" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "stole_reg3" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "stole1" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "tvalid_once1" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5546] ROM "exp_all_one_ip" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "exp_all_zero_ip" won't be mapped to RAM because it is too sparse
@@ -494,27 +485,8 @@ INFO: [Synth 8-5546] ROM "exp_all_zero_ip" won't be mapped to RAM because it is 
 INFO: [Synth 8-5546] ROM "exp_all_one_ip" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "exp_all_zero_ip" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "chunk_is_zero_ip" won't be mapped to RAM because address size (36) is larger than maximum supported(25)
----------------------------------------------------------------------------------------------------
-                   State |                     New Encoding |                Previous Encoding 
----------------------------------------------------------------------------------------------------
-             s_read_wait |                               00 |                             0000
-            s_read_wait2 |                               01 |                             0100
-                  s_read |                               10 |                             0001
-                 s_read2 |                               11 |                             0101
----------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 'read_status_reg' using encoding 'sequential' in module 'core_top'
----------------------------------------------------------------------------------------------------
-                   State |                     New Encoding |                Previous Encoding 
----------------------------------------------------------------------------------------------------
-            s_write_wait |                              000 |                             0010
-           s_write_wait2 |                              001 |                             0110
-                 s_write |                              010 |                             0011
-                s_write2 |                              011 |                             1000
-                s_write3 |                              100 |                             0111
----------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 'write_status_reg' using encoding 'sequential' in module 'core_top'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:42 ; elapsed = 00:01:43 . Memory (MB): peak = 1817.219 ; gain = 881.840 ; free physical = 8447 ; free virtual = 27409
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:42 ; elapsed = 00:01:43 . Memory (MB): peak = 1808.297 ; gain = 872.926 ; free physical = 11326 ; free virtual = 29637
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -547,7 +519,6 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5546] ROM "UARTLITE_CORE_I/BAUD_RATE_I/EN_16x_Baud" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "cpu_state" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/COND_DET_A/exp_all_one_ip" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/COND_DET_A/exp_all_zero_ip" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/COND_DET_B/exp_all_one_ip" won't be mapped to RAM because it is too sparse
@@ -595,8 +566,6 @@ INFO: [Synth 8-3886] merging instance 'design_1_i/core_top_0/inst/addsub_op_tdat
 INFO: [Synth 8-3886] merging instance 'design_1_i/core_top_0/inst/addsub_op_tdata_reg[5]' (FDR) to 'design_1_i/core_top_0/inst/addsub_op_tdata_reg[7]'
 INFO: [Synth 8-3886] merging instance 'design_1_i/core_top_0/inst/addsub_op_tdata_reg[6]' (FDR) to 'design_1_i/core_top_0/inst/addsub_op_tdata_reg[7]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/core_top_0/\inst/addsub_op_tdata_reg[7] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_i/core_top_0/\inst/cpu_state_reg[4] )
-INFO: [Synth 8-3332] Sequential element (inst/cpu_state_reg[4]) is unused and will be removed from module design_1_core_top_0_0.
 INFO: [Synth 8-3332] Sequential element (inst/addsub_op_tdata_reg[7]) is unused and will be removed from module design_1_core_top_0_0.
 INFO: [Synth 8-3332] Sequential element (inst/comp_op_tdata_reg[1]) is unused and will be removed from module design_1_core_top_0_0.
 INFO: [Synth 8-3332] Sequential element (inst/ARADDR_reg[2]) is unused and will be removed from module design_1_core_top_0_0.
@@ -703,6 +672,7 @@ INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/op
 INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[20].pipe_reg[20][0]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
 INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[21].pipe_reg[21][3]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
 INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[21].pipe_reg[21][2]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
+INFO: [Synth 8-3332] Sequential element (DIV_OP.SPD.OP/EXP/FLOW_UP_DEL/i_pipe/opt_has_pipe.i_pipe[21].pipe_reg[21][1]) is unused and will be removed from module floating_point_v7_1_3_viv__parameterized3.
 INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.first_q_reg[0]' (FDE) to 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.first_q_reg[1]'
 INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.first_q_reg[1]' (FDE) to 'design_1_i/floating_point_3/U0/i_synth/MULT.OP/R_AND_R/LOGIC.R_AND_R/EXP_IN_DELAY.EXP_OFF_OP_DEL/i_pipe/opt_has_pipe.first_q_reg[2]'
@@ -811,7 +781,7 @@ INFO: [Synth 8-3333] propagating constant 0 across sequential element (design_1_
 INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_5/U0/i_synth/FLT_TO_FIX_OP.SPD.OP/ZERO_DET_DIST_DEL/DEL/i_pipe/opt_has_pipe.first_q_reg[2]' (FDE) to 'design_1_i/floating_point_5/U0/i_synth/FLT_TO_FIX_OP.SPD.OP/ALIGN_DIST_DEL/DEL/i_pipe/opt_has_pipe.first_q_reg[2]'
 INFO: [Synth 8-3886] merging instance 'design_1_i/floating_point_5/U0/i_synth/FLT_TO_FIX_OP.SPD.OP/ALIGN_Z_D/MUX_LOOP[1].SKEW_DIST_DEL.DEL_DIST/i_pipe/opt_has_pipe.first_q_reg[0]' (FDE) to 'design_1_i/floating_point_5/U0/i_synth/FLT_TO_FIX_OP.SPD.OP/ALIGN_SHIFT/MUX_LOOP[1].SKEW_DIST_DEL.DEL_DIST/i_pipe/opt_has_pipe.first_q_reg[0]'
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:01 ; elapsed = 00:02:02 . Memory (MB): peak = 1817.223 ; gain = 881.844 ; free physical = 8428 ; free virtual = 27390
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:01 ; elapsed = 00:02:01 . Memory (MB): peak = 1808.301 ; gain = 872.930 ; free physical = 11298 ; free virtual = 29616
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -826,10 +796,10 @@ Start Timing Optimization
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:08 ; elapsed = 00:02:09 . Memory (MB): peak = 1999.340 ; gain = 1063.961 ; free physical = 8235 ; free virtual = 27197
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:08 ; elapsed = 00:02:09 . Memory (MB): peak = 2009.488 ; gain = 1074.117 ; free physical = 11103 ; free virtual = 29415
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:02:16 ; elapsed = 00:02:17 . Memory (MB): peak = 2102.762 ; gain = 1167.383 ; free physical = 8131 ; free virtual = 27092
+Finished Timing Optimization : Time (s): cpu = 00:02:15 ; elapsed = 00:02:16 . Memory (MB): peak = 2107.910 ; gain = 1172.539 ; free physical = 11008 ; free virtual = 29315
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -840,9 +810,9 @@ Report RTL Partitions:
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-4765] Removing register instance (\inst/u_core_reg/_WE_reg__0 ) from module (design_1_core_top_0_0) as it is equivalent to (\inst/u_core_reg/_WE_reg ) and driving same net [/home/yamaguchi/CPU-Adelie/core/src/core_reg.v:68]
+INFO: [Synth 8-4765] Removing register instance (_WE_reg__0) from module (core_reg) as it is equivalent to (_WE_reg) and driving same net [/home/yamaguchi/CPU-Adelie/core/src/core_reg.v:68]
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:02:21 ; elapsed = 00:02:22 . Memory (MB): peak = 2122.777 ; gain = 1187.398 ; free physical = 8108 ; free virtual = 27070
+Finished Technology Mapping : Time (s): cpu = 00:02:19 ; elapsed = 00:02:21 . Memory (MB): peak = 2115.918 ; gain = 1180.547 ; free physical = 10999 ; free virtual = 29306
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -867,7 +837,7 @@ INFO: [Synth 8-5365] Flop ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.EXP/merg
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:02:22 ; elapsed = 00:02:23 . Memory (MB): peak = 2122.781 ; gain = 1187.402 ; free physical = 8108 ; free virtual = 27070
+Finished IO Insertion : Time (s): cpu = 00:02:20 ; elapsed = 00:02:21 . Memory (MB): peak = 2115.922 ; gain = 1180.551 ; free physical = 10998 ; free virtual = 29307
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -880,7 +850,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:02:22 ; elapsed = 00:02:23 . Memory (MB): peak = 2122.781 ; gain = 1187.402 ; free physical = 8108 ; free virtual = 27070
+Finished Renaming Generated Instances : Time (s): cpu = 00:02:20 ; elapsed = 00:02:21 . Memory (MB): peak = 2115.922 ; gain = 1180.551 ; free physical = 10998 ; free virtual = 29307
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -892,25 +862,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:23 ; elapsed = 00:02:24 . Memory (MB): peak = 2122.781 ; gain = 1187.402 ; free physical = 8108 ; free virtual = 27070
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:21 ; elapsed = 00:02:23 . Memory (MB): peak = 2115.922 ; gain = 1180.551 ; free physical = 10998 ; free virtual = 29307
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:02:23 ; elapsed = 00:02:24 . Memory (MB): peak = 2122.781 ; gain = 1187.402 ; free physical = 8108 ; free virtual = 27070
+Finished Renaming Generated Ports : Time (s): cpu = 00:02:21 ; elapsed = 00:02:23 . Memory (MB): peak = 2115.922 ; gain = 1180.551 ; free physical = 10998 ; free virtual = 29307
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:02:23 ; elapsed = 00:02:24 . Memory (MB): peak = 2122.781 ; gain = 1187.402 ; free physical = 8108 ; free virtual = 27069
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:22 ; elapsed = 00:02:23 . Memory (MB): peak = 2115.922 ; gain = 1180.551 ; free physical = 10988 ; free virtual = 29307
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:02:23 ; elapsed = 00:02:24 . Memory (MB): peak = 2122.781 ; gain = 1187.402 ; free physical = 8108 ; free virtual = 27069
+Finished Renaming Generated Nets : Time (s): cpu = 00:02:22 ; elapsed = 00:02:23 . Memory (MB): peak = 2115.922 ; gain = 1180.551 ; free physical = 10988 ; free virtual = 29307
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -940,12 +910,12 @@ Report Cell Usage:
 |12    |DSP_OUTPUT_1    |     1|
 |13    |DSP_PREADD      |     2|
 |14    |DSP_PREADD_DATA |     2|
-|15    |LUT1            |    92|
-|16    |LUT2            |   584|
-|17    |LUT3            |  1613|
-|18    |LUT4            |   648|
-|19    |LUT5            |   549|
-|20    |LUT6            |  2477|
+|15    |LUT1            |    94|
+|16    |LUT2            |   602|
+|17    |LUT3            |  1612|
+|18    |LUT4            |  1242|
+|19    |LUT5            |   731|
+|20    |LUT6            |  2181|
 |21    |MMCME3_ADV      |     1|
 |22    |MUXCY           |  1347|
 |23    |MUXF7           |   514|
@@ -958,18 +928,18 @@ Report Cell Usage:
 |30    |XORCY           |  1279|
 |31    |FDE             |    45|
 |32    |FDR             |     4|
-|33    |FDRE            |  6500|
-|34    |FDSE            |    17|
+|33    |FDRE            |  6507|
+|34    |FDSE            |    20|
 |35    |IBUF            |     2|
 |36    |IBUFDS          |     1|
 |37    |OBUF            |     1|
 +------+----------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:02:23 ; elapsed = 00:02:24 . Memory (MB): peak = 2122.781 ; gain = 1187.402 ; free physical = 8108 ; free virtual = 27069
+Finished Writing Synthesis Report : Time (s): cpu = 00:02:22 ; elapsed = 00:02:23 . Memory (MB): peak = 2115.922 ; gain = 1180.551 ; free physical = 10988 ; free virtual = 29307
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 947 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:02:12 ; elapsed = 00:02:13 . Memory (MB): peak = 2122.781 ; gain = 647.238 ; free physical = 8108 ; free virtual = 27069
-Synthesis Optimization Complete : Time (s): cpu = 00:02:23 ; elapsed = 00:02:25 . Memory (MB): peak = 2122.785 ; gain = 1187.406 ; free physical = 8108 ; free virtual = 27070
+Synthesis Optimization Runtime : Time (s): cpu = 00:02:10 ; elapsed = 00:02:12 . Memory (MB): peak = 2115.922 ; gain = 648.301 ; free physical = 10988 ; free virtual = 29307
+Synthesis Optimization Complete : Time (s): cpu = 00:02:22 ; elapsed = 00:02:23 . Memory (MB): peak = 2115.926 ; gain = 1180.555 ; free physical = 10988 ; free virtual = 29307
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 2685 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -987,11 +957,9 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   IBUFDS => IBUFDS (DIFFINBUF, IBUFCTRL): 1 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-547 Infos, 148 Warnings, 0 Critical Warnings and 0 Errors encountered.
+534 Infos, 148 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:02:25 ; elapsed = 00:02:26 . Memory (MB): peak = 2122.785 ; gain = 1046.160 ; free physical = 8109 ; free virtual = 27071
-INFO: [Common 17-600] The following parameters have non-default value.
-tcl.collectionResultDisplayLimit
+synth_design: Time (s): cpu = 00:02:24 ; elapsed = 00:02:25 . Memory (MB): peak = 2115.926 ; gain = 1039.223 ; free physical = 10989 ; free virtual = 29308
 INFO: [Common 17-1381] The checkpoint '/home/yamaguchi/CPU-Adelie/koara/koara.runs/synth_1/design_1_wrapper.dcp' has been generated.
-report_utilization: Time (s): cpu = 00:00:00.11 ; elapsed = 00:00:00.14 . Memory (MB): peak = 2146.793 ; gain = 0.000 ; free physical = 8106 ; free virtual = 27070
-INFO: [Common 17-206] Exiting Vivado at Sat Dec  2 23:11:21 2017...
+report_utilization: Time (s): cpu = 00:00:00.19 ; elapsed = 00:00:00.20 . Memory (MB): peak = 2139.934 ; gain = 0.000 ; free physical = 10985 ; free virtual = 29307
+INFO: [Common 17-206] Exiting Vivado at Sun Dec  3 04:41:37 2017...

@@ -37,20 +37,20 @@ vmap lib_srl_fifo_v1_0_2 riviera/lib_srl_fifo_v1_0_2
 vmap lib_cdc_v1_0_2 riviera/lib_cdc_v1_0_2
 vmap axi_uartlite_v2_0_15 riviera/axi_uartlite_v2_0_15
 
-vlog -work xil_defaultlib  -sv2k12 \
+vlog -work xil_defaultlib  -sv2k12 "+incdir+../../../../koara.srcs/sources_1/bd/design_1/ipshared/100a" "+incdir+../../../../koara.srcs/sources_1/bd/design_1/ipshared/100a" \
 "/opt/Xilinx/Vivado/2016.4/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" \
 "/opt/Xilinx/Vivado/2016.4/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
 
 vcom -work xpm -93 \
 "/opt/Xilinx/Vivado/2016.4/data/ip/xpm/xpm_VCOMP.vhd" \
 
-vlog -work xil_defaultlib  -v2k5 \
+vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../koara.srcs/sources_1/bd/design_1/ipshared/100a" "+incdir+../../../../koara.srcs/sources_1/bd/design_1/ipshared/100a" \
 "../../../bd/design_1/ip/design_1_core_top_0_0_1/sim/design_1_core_top_0_0.v" \
 
-vlog -work blk_mem_gen_v8_3_5  -v2k5 \
+vlog -work blk_mem_gen_v8_3_5  -v2k5 "+incdir+../../../../koara.srcs/sources_1/bd/design_1/ipshared/100a" "+incdir+../../../../koara.srcs/sources_1/bd/design_1/ipshared/100a" \
 "../../../../koara.srcs/sources_1/bd/design_1/ipshared/6273/simulation/blk_mem_gen_v8_3.v" \
 
-vlog -work xil_defaultlib  -v2k5 \
+vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../koara.srcs/sources_1/bd/design_1/ipshared/100a" "+incdir+../../../../koara.srcs/sources_1/bd/design_1/ipshared/100a" \
 "../../../bd/design_1/ip/design_1_blk_mem_gen_0_0_1/sim/design_1_blk_mem_gen_0_0.v" \
 "../../../bd/design_1/ip/design_1_blk_mem_gen_1_0_1/sim/design_1_blk_mem_gen_1_0.v" \
 "../../../bd/design_1/hdl/design_1.v" \
@@ -87,6 +87,12 @@ vcom -work floating_point_v7_1_3 -93 \
 
 vcom -work xil_defaultlib -93 \
 "../../../bd/design_1/ip/design_1_floating_point_0_0/sim/design_1_floating_point_0_0.vhd" \
+"../../../bd/design_1/ip/design_1_floating_point_0_1/sim/design_1_floating_point_0_1.vhd" \
+"../../../bd/design_1/ip/design_1_floating_point_0_2/sim/design_1_floating_point_0_2.vhd" \
+"../../../bd/design_1/ip/design_1_floating_point_0_3/sim/design_1_floating_point_0_3.vhd" \
+"../../../bd/design_1/ip/design_1_floating_point_2_0/sim/design_1_floating_point_2_0.vhd" \
+"../../../bd/design_1/ip/design_1_floating_point_4_0/sim/design_1_floating_point_4_0.vhd" \
+"../../../bd/design_1/ip/design_1_floating_point_5_0/sim/design_1_floating_point_5_0.vhd" \
 
 vcom -work axi_lite_ipif_v3_0_4 -93 \
 "../../../../koara.srcs/sources_1/bd/design_1/ipshared/0ba0/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd" \
@@ -104,17 +110,11 @@ vcom -work axi_uartlite_v2_0_15 -93 \
 "../../../../koara.srcs/sources_1/bd/design_1/ipshared/2479/hdl/axi_uartlite_v2_0_vh_rfs.vhd" \
 
 vcom -work xil_defaultlib -93 \
-"../../../bd/design_1/ip/design_1_axi_uartlite_0_0_1/sim/design_1_axi_uartlite_0_0.vhd" \
-"../../../bd/design_1/ip/design_1_floating_point_0_1/sim/design_1_floating_point_0_1.vhd" \
-"../../../bd/design_1/ip/design_1_floating_point_0_2/sim/design_1_floating_point_0_2.vhd" \
-"../../../bd/design_1/ip/design_1_floating_point_0_3/sim/design_1_floating_point_0_3.vhd" \
-"../../../bd/design_1/ip/design_1_floating_point_2_0/sim/design_1_floating_point_2_0.vhd" \
-"../../../bd/design_1/ip/design_1_floating_point_4_0/sim/design_1_floating_point_4_0.vhd" \
-"../../../bd/design_1/ip/design_1_floating_point_5_0/sim/design_1_floating_point_5_0.vhd" \
+"../../../bd/design_1/ip/design_1_axi_uartlite_0_1/sim/design_1_axi_uartlite_0_1.vhd" \
 
-vlog -work xil_defaultlib  -v2k5 \
-"../../../bd/design_1/ipshared/68f7/hdl/sim_clk_gen.v" \
-"../../../bd/design_1/ip/design_1_sim_clk_gen_0_0_1/sim/design_1_sim_clk_gen_0_0.v" \
+vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../koara.srcs/sources_1/bd/design_1/ipshared/100a" "+incdir+../../../../koara.srcs/sources_1/bd/design_1/ipshared/100a" \
+"../../../bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_clk_wiz.v" \
+"../../../bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.v" \
 
 vlog -work xil_defaultlib "glbl.v"
 

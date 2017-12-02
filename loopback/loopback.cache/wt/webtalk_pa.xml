@@ -3,7 +3,7 @@
 <!--The data in this file is primarily intended for consumption by Xilinx tools.
 The structure and the elements are likely to change over the next few releases.
 This means code written to parse this file will need to be revisited each subsequent release.-->
-<application name="pa" timeStamp="Sat Dec  2 22:17:39 2017">
+<application name="pa" timeStamp="Sun Dec  3 01:12:50 2017">
 <section name="Project Information" visible="false">
 <property name="ProjectID" value="2bb9da760da149d29438c0b40af4f136" type="ProjectID"/>
 <property name="ProjectIteration" value="1" type="ProjectIteration"/>
@@ -74,7 +74,7 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="CoreTreeTablePanel_CORE_TREE_TABLE" value="14" type="GuiResourceData"/>
 <property name="FileSetPanel_FILE_SET_PANEL_TREE" value="62" type="GuiResourceData"/>
 <property name="FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE" value="288" type="GuiResourceData"/>
-<property name="GettingStartedView_RECENT_PROJECTS" value="8" type="GuiResourceData"/>
+<property name="GettingStartedView_RECENT_PROJECTS" value="9" type="GuiResourceData"/>
 <property name="GraphicalView_ZOOM_FIT" value="4" type="GuiResourceData"/>
 <property name="GraphicalView_ZOOM_IN" value="41" type="GuiResourceData"/>
 <property name="GraphicalView_ZOOM_OUT" value="10" type="GuiResourceData"/>
@@ -84,8 +84,8 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="HardwareIlaWaveformView_STOP_TRIGGER_FOR_THIS_ILA_CORE" value="6" type="GuiResourceData"/>
 <property name="HardwareIlaWaveformView_TOGGLE_AUTO_RE_TRIGGER_MODE" value="6" type="GuiResourceData"/>
 <property name="MainMenuMgr_EDIT" value="8" type="GuiResourceData"/>
-<property name="MainMenuMgr_FILE" value="34" type="GuiResourceData"/>
-<property name="MainMenuMgr_OPEN_RECENT_PROJECT" value="25" type="GuiResourceData"/>
+<property name="MainMenuMgr_FILE" value="36" type="GuiResourceData"/>
+<property name="MainMenuMgr_OPEN_RECENT_PROJECT" value="27" type="GuiResourceData"/>
 <property name="MainMenuMgr_WINDOW" value="2" type="GuiResourceData"/>
 <property name="MessageWithOptionDialog_DONT_SHOW_THIS_DIALOG_AGAIN" value="7" type="GuiResourceData"/>
 <property name="MsgTreePanel_MESSAGE_VIEW_TREE" value="29" type="GuiResourceData"/>
@@ -151,7 +151,7 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="WaveformView_GOTO_LAST_TIME" value="1" type="GuiResourceData"/>
 </item>
 <item name="Other">
-<property name="GuiMode" value="41" type="GuiMode"/>
+<property name="GuiMode" value="42" type="GuiMode"/>
 <property name="BatchMode" value="0" type="BatchMode"/>
 <property name="TclMode" value="23" type="TclMode"/>
 </item>

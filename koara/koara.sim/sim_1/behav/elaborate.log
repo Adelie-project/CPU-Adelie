@@ -3,7 +3,7 @@ Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
 Running: /opt/Xilinx/Vivado/2016.4/bin/unwrapped/lnx64.o/xelab -wto 8dd88a88723f4be2bff3cff0f7b19799 --debug typical --relax --mt 8 -L xil_defaultlib -L blk_mem_gen_v8_3_5 -L xbip_utils_v3_0_7 -L axi_utils_v2_0_3 -L xbip_pipe_v3_0_3 -L xbip_dsp48_wrapper_v3_0_4 -L xbip_dsp48_addsub_v3_0_3 -L xbip_dsp48_multadd_v3_0_3 -L xbip_bram18k_v3_0_3 -L mult_gen_v12_0_12 -L floating_point_v7_1_3 -L axi_lite_ipif_v3_0_4 -L lib_pkg_v1_0_2 -L lib_srl_fifo_v1_0_2 -L lib_cdc_v1_0_2 -L axi_uartlite_v2_0_15 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot design_1_wrapper_behav xil_defaultlib.design_1_wrapper xil_defaultlib.glbl -log elaborate.log 
 Using 8 slave threads.
 Starting static elaboration
-WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 8 for port INDATA [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:675]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 8 for port INDATA [/home/yamaguchi/CPU-Adelie/core/src/core_top.v:741]
 WARNING: [VRFC 10-1783] select index 62 into current_contents is out of bounds [/wrk/2016.4/nightly/2017_01_23_1756540/packages/customer/vivado/data/ip/xilinx/blk_mem_gen_v8_3/simulation/blk_mem_gen_v8_3.v:2420]
 Completed static elaboration
 Starting simulation data flow analysis
@@ -66,7 +66,7 @@ Compiling architecture imp of entity axi_lite_ipif_v3_0_4.address_decoder [\addr
 Compiling architecture imp of entity axi_lite_ipif_v3_0_4.slave_attachment [\slave_attachment(c_ard_addr_ran...]
 Compiling architecture imp of entity axi_lite_ipif_v3_0_4.axi_lite_ipif [\axi_lite_ipif(c_s_axi_addr_widt...]
 Compiling architecture rtl of entity axi_uartlite_v2_0_15.axi_uartlite [\axi_uartlite(c_family="kintexu"...]
-Compiling architecture design_1_axi_uartlite_0_0_arch of entity xil_defaultlib.design_1_axi_uartlite_0_0 [design_1_axi_uartlite_0_0_defaul...]
+Compiling architecture design_1_axi_uartlite_0_1_arch of entity xil_defaultlib.design_1_axi_uartlite_0_1 [design_1_axi_uartlite_0_1_defaul...]
 Compiling module blk_mem_gen_v8_3_5.blk_mem_gen_v8_3_5_output_stage(...
 Compiling module blk_mem_gen_v8_3_5.blk_mem_gen_v8_3_5_output_stage(...
 Compiling module blk_mem_gen_v8_3_5.blk_mem_gen_v8_3_5_softecc_outpu...
@@ -83,7 +83,7 @@ Compiling module xil_defaultlib.core_reg
 Compiling module xil_defaultlib.core_top
 Compiling module xil_defaultlib.design_1_core_top_0_0
 Compiling module xil_defaultlib.s00_couplers_imp_1T2I6AR
-Compiling module xil_defaultlib.design_1_core_top_0_axi_periph_0
+Compiling module xil_defaultlib.design_1_core_top_0_axi_periph_1
 Compiling architecture xilinx of entity axi_utils_v2_0_3.axi_slave_3to1 [\axi_slave_3to1(c_a_tdata_width=...]
 Compiling architecture muxcy_v of entity unisim.MUXCY [muxcy_default]
 Compiling architecture synth of entity xbip_pipe_v3_0_3.xbip_pipe_v3_0_3_viv [\xbip_pipe_v3_0_3_viv(c_has_ce=1...]

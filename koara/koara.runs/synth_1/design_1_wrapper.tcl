@@ -3,7 +3,6 @@
 # 
 
 set_param xicom.use_bs_reader 1
-set_param tcl.collectionResultDisplayLimit 0
 set_msg_config -id {HDL 9-1061} -limit 100000
 set_msg_config -id {HDL 9-1654} -limit 100000
 set_msg_config -id {HDL-1065} -limit 10000
@@ -24,6 +23,8 @@ set_property ip_cache_permissions {read write} [current_project]
 add_files /home/yamaguchi/CPU-Adelie/core/src/memory.coe
 add_files /home/yamaguchi/CPU-Adelie/simulator/test/fib_rec.coe
 add_files /home/yamaguchi/CPU-Adelie/simulator/test/test_f.coe
+add_files /home/yamaguchi/CPU-Adelie/simulator/test/test_io.coe
+add_files /home/yamaguchi/CPU-Adelie/simulator/test/test_out.coe
 read_verilog -library xil_defaultlib {
   /home/yamaguchi/CPU-Adelie/core/src/core_reg.v
   /home/yamaguchi/CPU-Adelie/core/src/core_alu.v

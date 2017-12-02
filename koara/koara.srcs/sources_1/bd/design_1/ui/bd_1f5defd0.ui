@@ -58,6 +58,6 @@ levelinfo -pg 1 0 120 430 840 1240 1490 1610 -top 0 -bot 1440
 ",
 }
 {
-   da_axi4_cnt: "3",
-   da_board_cnt: "4",
+   da_axi4_cnt: "4",
+   da_board_cnt: "6",
 }
