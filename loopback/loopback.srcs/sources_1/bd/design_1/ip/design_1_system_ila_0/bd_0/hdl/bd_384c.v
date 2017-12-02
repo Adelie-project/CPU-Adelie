@@ -1,7 +1,7 @@
 //Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
-//Date        : Fri Dec  1 19:22:15 2017
+//Date        : Sat Dec  2 22:03:57 2017
 //Host        : ispc2016 running 64-bit Ubuntu 14.04.5 LTS
 //Command     : generate_target bd_384c.bd
 //Design      : bd_384c
@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "bd_384c,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=bd_384c,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=7,numReposBlks=7,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=SBD,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "design_1_system_ila_0.hwdef" *) 
+(* CORE_GENERATION_INFO = "bd_384c,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=bd_384c,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=7,numReposBlks=7,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=SBD,synth_mode=Global}" *) (* HW_HANDOFF = "design_1_system_ila_0.hwdef" *) 
 module bd_384c
    (SLOT_0_AXI_araddr,
     SLOT_0_AXI_arready,
@@ -28,10 +28,10 @@ module bd_384c
     SLOT_0_AXI_wready,
     SLOT_0_AXI_wvalid,
     clk);
-  input [31:0]SLOT_0_AXI_araddr;
+  input [3:0]SLOT_0_AXI_araddr;
   input SLOT_0_AXI_arready;
   input SLOT_0_AXI_arvalid;
-  input [31:0]SLOT_0_AXI_awaddr;
+  input [3:0]SLOT_0_AXI_awaddr;
   input SLOT_0_AXI_awready;
   input SLOT_0_AXI_awvalid;
   input SLOT_0_AXI_bready;
@@ -46,10 +46,10 @@ module bd_384c
   input SLOT_0_AXI_wvalid;
   input clk;
 
-  wire [31:0]Conn_ARADDR;
+  wire [3:0]Conn_ARADDR;
   wire Conn_ARREADY;
   wire Conn_ARVALID;
-  wire [31:0]Conn_AWADDR;
+  wire [3:0]Conn_AWADDR;
   wire Conn_AWREADY;
   wire Conn_AWVALID;
   wire Conn_BREADY;
@@ -64,11 +64,11 @@ module bd_384c
   wire Conn_WVALID;
   wire clk_1;
   wire [1:0]net_slot_0_axi_ar_ctrl;
-  wire [31:0]net_slot_0_axi_araddr;
+  wire [3:0]net_slot_0_axi_araddr;
   wire net_slot_0_axi_arready;
   wire net_slot_0_axi_arvalid;
   wire [1:0]net_slot_0_axi_aw_ctrl;
-  wire [31:0]net_slot_0_axi_awaddr;
+  wire [3:0]net_slot_0_axi_awaddr;
   wire net_slot_0_axi_awready;
   wire net_slot_0_axi_awvalid;
   wire [1:0]net_slot_0_axi_b_ctrl;
@@ -85,10 +85,10 @@ module bd_384c
   wire net_slot_0_axi_wready;
   wire net_slot_0_axi_wvalid;
 
-  assign Conn_ARADDR = SLOT_0_AXI_araddr[31:0];
+  assign Conn_ARADDR = SLOT_0_AXI_araddr[3:0];
   assign Conn_ARREADY = SLOT_0_AXI_arready;
   assign Conn_ARVALID = SLOT_0_AXI_arvalid;
-  assign Conn_AWADDR = SLOT_0_AXI_awaddr[31:0];
+  assign Conn_AWADDR = SLOT_0_AXI_awaddr[3:0];
   assign Conn_AWREADY = SLOT_0_AXI_awready;
   assign Conn_AWVALID = SLOT_0_AXI_awvalid;
   assign Conn_BREADY = SLOT_0_AXI_bready;

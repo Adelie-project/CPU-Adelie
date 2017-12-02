@@ -1,31 +1,9 @@
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yamaguchi/CPU-Adelie/core/loopback/loopback_top.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module loopback_top
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_loopback_top_0_0/sim/design_1_loopback_top_0_0.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module design_1_loopback_top_0_0
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/hdl/design_1.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module design_1
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/hdl/bd_384c.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module bd_384c
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_0/sim/bd_384c_ila_lib_0.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module bd_384c_ila_lib_0
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/bd_384c_g_inst_0_gigantic_mux.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module bd_384c_g_inst_0_gigantic_mux
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/sim/bd_384c_g_inst_0.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module bd_384c_g_inst_0
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ipshared/2e37/xlconcat.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module xlconcat
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_2/sim/bd_384c_slot_0_aw_0.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module bd_384c_slot_0_aw_0
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_3/sim/bd_384c_slot_0_w_0.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module bd_384c_slot_0_w_0
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_4/sim/bd_384c_slot_0_b_0.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module bd_384c_slot_0_b_0
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_5/sim/bd_384c_slot_0_ar_0.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module bd_384c_slot_0_ar_0
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_6/sim/bd_384c_slot_0_r_0.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module bd_384c_slot_0_r_0
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_system_ila_0/sim/design_1_system_ila_0.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module design_1_system_ila_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_loopback_top_0_1/sim/design_1_loopback_top_0_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_loopback_top_0_1
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ipshared/68f7/hdl/sim_clk_gen.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module sim_clk_gen
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_sim_clk_gen_0_0/sim/design_1_sim_clk_gen_0_0.v" into library xil_defaultlib
@@ -34,5 +12,5 @@ INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yamaguchi/CPU-Adelie/loopback
 INFO: [VRFC 10-311] analyzing module design_1_wrapper
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yamaguchi/CPU-Adelie/loopback/loopback.sim/sim_1/behav/glbl.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module glbl
-INFO: [VRFC 10-163] Analyzing VHDL file "/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_axi_uartlite_0_1/sim/design_1_axi_uartlite_0_1.vhd" into library xil_defaultlib
-INFO: [VRFC 10-307] analyzing entity design_1_axi_uartlite_0_1
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_axi_uartlite_0_0/sim/design_1_axi_uartlite_0_0.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity design_1_axi_uartlite_0_0

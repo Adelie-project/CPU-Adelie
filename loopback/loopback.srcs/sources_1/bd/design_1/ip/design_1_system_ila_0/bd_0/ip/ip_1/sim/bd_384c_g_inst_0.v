@@ -95,7 +95,7 @@ input wire aclk;
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 signal_reset RST" *)
 input wire aresetn;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 slot_0_axi AWADDR" *)
-input wire [31 : 0] slot_0_axi_awaddr;
+input wire [3 : 0] slot_0_axi_awaddr;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 slot_0_axi AWVALID" *)
 input wire slot_0_axi_awvalid;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 slot_0_axi AWREADY" *)
@@ -113,7 +113,7 @@ input wire slot_0_axi_bvalid;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 slot_0_axi BREADY" *)
 input wire slot_0_axi_bready;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 slot_0_axi ARADDR" *)
-input wire [31 : 0] slot_0_axi_araddr;
+input wire [3 : 0] slot_0_axi_araddr;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 slot_0_axi ARVALID" *)
 input wire slot_0_axi_arvalid;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 slot_0_axi ARREADY" *)
@@ -127,7 +127,7 @@ input wire slot_0_axi_rvalid;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 slot_0_axi RREADY" *)
 input wire slot_0_axi_rready;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 m_slot_0_axi AWADDR" *)
-output wire [31 : 0] m_slot_0_axi_awaddr;
+output wire [3 : 0] m_slot_0_axi_awaddr;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 m_slot_0_axi AWVALID" *)
 output wire m_slot_0_axi_awvalid;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 m_slot_0_axi AWREADY" *)
@@ -145,7 +145,7 @@ output wire m_slot_0_axi_bvalid;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 m_slot_0_axi BREADY" *)
 output wire m_slot_0_axi_bready;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 m_slot_0_axi ARADDR" *)
-output wire [31 : 0] m_slot_0_axi_araddr;
+output wire [3 : 0] m_slot_0_axi_araddr;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 m_slot_0_axi ARVALID" *)
 output wire m_slot_0_axi_arvalid;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 m_slot_0_axi ARREADY" *)
@@ -1326,7 +1326,7 @@ output wire m_slot_0_axi_rready;
     .C_MUX_PROBE125_WIDTH(1),
     .C_MUX_PROBE126_WIDTH(1),
     .C_MUX_PROBE127_WIDTH(1),
-    .C_SLOT_0_AXI_ADDR_WIDTH(32),
+    .C_SLOT_0_AXI_ADDR_WIDTH(4),
     .C_SLOT_0_AXI_DATA_WIDTH(32),
     .C_SLOT_0_AXI_ID_WIDTH(0),
     .C_SLOT_0_AXI_PROTOCOL("AXI4LITE"),

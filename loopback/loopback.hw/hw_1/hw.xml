@@ -53,6 +53,27 @@
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
         <Option Id="SOURCE" value="user"/>
+        <Option Id="ENUM.No Read Addr Events" value="eq3&apos;b011"/>
+        <Option Id="ENUM.Read Addr End" value="eq3&apos;b010"/>
+        <Option Id="ENUM.Read Addr Start" value="eq3&apos;b001"/>
+        <Option Id="ENUM._" value="eq3&apos;b000"/>
+      </probeOptions>
+      <nets>
+        <net name="Read_Address_Channel_(i1:s0)_(loopback_top_0_interface_aximm)[2]"/>
+        <net name="Read_Address_Channel_(i1:s0)_(loopback_top_0_interface_aximm)[1]"/>
+        <net name="Read_Address_Channel_(i1:s0)_(loopback_top_0_interface_aximm)[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="bus" source="user" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CELL_HINT" value="design_1_i/system_ila/inst/ila_lib"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="MAP" value="virtual[2:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="user"/>
         <Option Id="ENUM.No Read Data Events" value="eq3&apos;b100"/>
         <Option Id="ENUM.Read Data" value="eq3&apos;b001"/>
         <Option Id="ENUM.Read Data First" value="eq3&apos;b010"/>
@@ -75,6 +96,28 @@
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
         <Option Id="SOURCE" value="user"/>
+        <Option Id="ENUM.No Read Data Events" value="eq3&apos;b100"/>
+        <Option Id="ENUM.Read Data" value="eq3&apos;b001"/>
+        <Option Id="ENUM.Read Data First" value="eq3&apos;b010"/>
+        <Option Id="ENUM.Read Data Last" value="eq3&apos;b011"/>
+        <Option Id="ENUM._" value="eq3&apos;b000"/>
+      </probeOptions>
+      <nets>
+        <net name="Read_Data_Channel_(i1:s0)_(loopback_top_0_interface_aximm)[2]"/>
+        <net name="Read_Data_Channel_(i1:s0)_(loopback_top_0_interface_aximm)[1]"/>
+        <net name="Read_Data_Channel_(i1:s0)_(loopback_top_0_interface_aximm)[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="bus" source="user" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CELL_HINT" value="design_1_i/system_ila/inst/ila_lib"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="MAP" value="virtual[2:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="user"/>
         <Option Id="ENUM.No Write Addr Events" value="eq3&apos;b011"/>
         <Option Id="ENUM.Write Addr End" value="eq3&apos;b010"/>
         <Option Id="ENUM.Write Addr Start" value="eq3&apos;b001"/>
@@ -84,6 +127,27 @@
         <net name="Write_Address_Channel_(i1:s0)_(loopback_top_0_S_AXI)[2]"/>
         <net name="Write_Address_Channel_(i1:s0)_(loopback_top_0_S_AXI)[1]"/>
         <net name="Write_Address_Channel_(i1:s0)_(loopback_top_0_S_AXI)[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="bus" source="user" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CELL_HINT" value="design_1_i/system_ila/inst/ila_lib"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="MAP" value="virtual[2:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="user"/>
+        <Option Id="ENUM.No Write Addr Events" value="eq3&apos;b011"/>
+        <Option Id="ENUM.Write Addr End" value="eq3&apos;b010"/>
+        <Option Id="ENUM.Write Addr Start" value="eq3&apos;b001"/>
+        <Option Id="ENUM._" value="eq3&apos;b000"/>
+      </probeOptions>
+      <nets>
+        <net name="Write_Address_Channel_(i1:s0)_(loopback_top_0_interface_aximm)[2]"/>
+        <net name="Write_Address_Channel_(i1:s0)_(loopback_top_0_interface_aximm)[1]"/>
+        <net name="Write_Address_Channel_(i1:s0)_(loopback_top_0_interface_aximm)[0]"/>
       </nets>
     </probe>
     <probe type="ila_data" busType="bus" source="user" spec="ILA_DATA_V2_RT">
@@ -118,6 +182,28 @@
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
         <Option Id="SOURCE" value="user"/>
+        <Option Id="ENUM.No Write Data Events" value="eq3&apos;b100"/>
+        <Option Id="ENUM.Write Data" value="eq3&apos;b001"/>
+        <Option Id="ENUM.Write Data First" value="eq3&apos;b010"/>
+        <Option Id="ENUM.Write Data Last" value="eq3&apos;b011"/>
+        <Option Id="ENUM._" value="eq3&apos;b000"/>
+      </probeOptions>
+      <nets>
+        <net name="Write_Data_Channel_(i1:s0)_(loopback_top_0_interface_aximm)[2]"/>
+        <net name="Write_Data_Channel_(i1:s0)_(loopback_top_0_interface_aximm)[1]"/>
+        <net name="Write_Data_Channel_(i1:s0)_(loopback_top_0_interface_aximm)[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="bus" source="user" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CELL_HINT" value="design_1_i/system_ila/inst/ila_lib"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="MAP" value="virtual[2:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="user"/>
         <Option Id="ENUM.No Write Resp Events" value="eq3&apos;b011"/>
         <Option Id="ENUM.Write Resp End" value="eq3&apos;b010"/>
         <Option Id="ENUM.Write Resp Start" value="eq3&apos;b001"/>
@@ -127,6 +213,27 @@
         <net name="Write_Response_Channel_(i1:s0)_(loopback_top_0_S_AXI)[2]"/>
         <net name="Write_Response_Channel_(i1:s0)_(loopback_top_0_S_AXI)[1]"/>
         <net name="Write_Response_Channel_(i1:s0)_(loopback_top_0_S_AXI)[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila_data" busType="bus" source="user" spec="ILA_DATA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CELL_HINT" value="design_1_i/system_ila/inst/ila_lib"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="MAP" value="virtual[2:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="user"/>
+        <Option Id="ENUM.No Write Resp Events" value="eq3&apos;b011"/>
+        <Option Id="ENUM.Write Resp End" value="eq3&apos;b010"/>
+        <Option Id="ENUM.Write Resp Start" value="eq3&apos;b001"/>
+        <Option Id="ENUM._" value="eq3&apos;b000"/>
+      </probeOptions>
+      <nets>
+        <net name="Write_Response_Channel_(i1:s0)_(loopback_top_0_interface_aximm)[2]"/>
+        <net name="Write_Response_Channel_(i1:s0)_(loopback_top_0_interface_aximm)[1]"/>
+        <net name="Write_Response_Channel_(i1:s0)_(loopback_top_0_interface_aximm)[0]"/>
       </nets>
     </probe>
     <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">

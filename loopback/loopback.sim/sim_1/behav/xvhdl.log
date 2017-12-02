@@ -1,2 +1,2 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_axi_uartlite_0_1/sim/design_1_axi_uartlite_0_1.vhd" into library xil_defaultlib
-INFO: [VRFC 10-307] analyzing entity design_1_axi_uartlite_0_1
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/yamaguchi/CPU-Adelie/loopback/loopback.ip_user_files/bd/design_1/ip/design_1_axi_uartlite_0_0/sim/design_1_axi_uartlite_0_0.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity design_1_axi_uartlite_0_0

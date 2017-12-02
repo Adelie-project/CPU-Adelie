@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<bd:repository xmlns:bd="http://www.xilinx.com/bd" bd:BoundaryCRC="0x508AD70627EAA7D0" bd:device="xcku040-ffva1156-2-e" bd:isValidated="true" bd:synthFlowMode="Hierarchical" bd:tool_version="2016.4" bd:top="design_1" bd:version="1.00.a">
+<bd:repository xmlns:bd="http://www.xilinx.com/bd" bd:BoundaryCRC="0x508AD70627EAA7D0" bd:device="xcku040-ffva1156-2-e" bd:isValidated="true" bd:synthFlowMode="None" bd:tool_version="2016.4" bd:top="design_1" bd:version="1.00.a">
 
   <spirit:component xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009">
     <spirit:vendor>xilinx.com</spirit:vendor>
@@ -397,18 +397,15 @@
         <spirit:internalPortReference spirit:componentRef="floating_point_5" spirit:portRef="aclk"/>
         <spirit:internalPortReference spirit:componentRef="floating_point_4" spirit:portRef="aclk"/>
         <spirit:internalPortReference spirit:componentRef="floating_point_6" spirit:portRef="aclk"/>
+        <spirit:internalPortReference spirit:componentRef="core_top_0" spirit:portRef="CLK"/>
         <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="S00_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="ACLK"/>
         <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="M00_ACLK"/>
-        <spirit:internalPortReference spirit:componentRef="core_top_0" spirit:portRef="CLK"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>sim_clk_gen_0_sync_rst</spirit:name>
         <spirit:internalPortReference spirit:componentRef="sim_clk_gen_0" spirit:portRef="sync_rst"/>
         <spirit:internalPortReference spirit:componentRef="axi_uartlite_0" spirit:portRef="s_axi_aresetn"/>
-        <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="S00_ARESETN"/>
-        <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="ARESETN"/>
-        <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="M00_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="floating_point_0" spirit:portRef="aresetn"/>
         <spirit:internalPortReference spirit:componentRef="floating_point_6" spirit:portRef="aresetn"/>
         <spirit:internalPortReference spirit:componentRef="floating_point_5" spirit:portRef="aresetn"/>
@@ -417,6 +414,9 @@
         <spirit:internalPortReference spirit:componentRef="floating_point_2" spirit:portRef="aresetn"/>
         <spirit:internalPortReference spirit:componentRef="floating_point_1" spirit:portRef="aresetn"/>
         <spirit:internalPortReference spirit:componentRef="core_top_0" spirit:portRef="RST_N"/>
+        <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="S00_ARESETN"/>
+        <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="ARESETN"/>
+        <spirit:internalPortReference spirit:componentRef="core_top_0_axi_periph" spirit:portRef="M00_ARESETN"/>
       </spirit:adHocConnection>
     </spirit:adHocConnections>
     <spirit:hierConnections>
