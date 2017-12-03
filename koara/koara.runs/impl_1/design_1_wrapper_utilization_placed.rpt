@@ -1,7 +1,7 @@
 Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
-| Date         : Sun Dec  3 04:43:02 2017
+| Date         : Sun Dec  3 12:38:00 2017
 | Host         : ispc2016 running 64-bit Ubuntu 14.04.5 LTS
 | Command      : report_utilization -file design_1_wrapper_utilization_placed.rpt -pb design_1_wrapper_utilization_placed.pb
 | Design       : design_1_wrapper
@@ -32,17 +32,17 @@ Table of Contents
 +----------------------------+------+-------+-----------+-------+
 |          Site Type         | Used | Fixed | Available | Util% |
 +----------------------------+------+-------+-----------+-------+
-| CLB LUTs                   | 5866 |     0 |    242400 |  2.42 |
-|   LUT as Logic             | 5747 |     0 |    242400 |  2.37 |
-|   LUT as Memory            |  119 |     0 |    112800 |  0.11 |
-|     LUT as Distributed RAM |    0 |     0 |           |       |
-|     LUT as Shift Register  |  119 |     0 |           |       |
-| CLB Registers              | 6463 |     0 |    484800 |  1.33 |
-|   Register as Flip Flop    | 6463 |     0 |    484800 |  1.33 |
+| CLB LUTs                   | 8434 |     0 |    242400 |  3.48 |
+|   LUT as Logic             | 8098 |     0 |    242400 |  3.34 |
+|   LUT as Memory            |  336 |     0 |    112800 |  0.30 |
+|     LUT as Distributed RAM |   32 |     0 |           |       |
+|     LUT as Shift Register  |  304 |     0 |           |       |
+| CLB Registers              | 8749 |     0 |    484800 |  1.80 |
+|   Register as Flip Flop    | 8749 |     0 |    484800 |  1.80 |
 |   Register as Latch        |    0 |     0 |    484800 |  0.00 |
-| CARRY8                     |  257 |     0 |     30300 |  0.85 |
-| F7 Muxes                   |  512 |     0 |    121200 |  0.42 |
-| F8 Muxes                   |    0 |     0 |     60600 |  0.00 |
+| CARRY8                     |  287 |     0 |     30300 |  0.95 |
+| F7 Muxes                   |  906 |     0 |    121200 |  0.75 |
+| F8 Muxes                   |    1 |     0 |     60600 | <0.01 |
 | F9 Muxes                   |    0 |     0 |     30300 |  0.00 |
 +----------------------------+------+-------+-----------+-------+
 
@@ -59,10 +59,10 @@ Table of Contents
 | 0     |            _ |         Set |            - |
 | 0     |            _ |       Reset |            - |
 | 0     |          Yes |           - |            - |
-| 0     |          Yes |           - |          Set |
-| 0     |          Yes |           - |        Reset |
-| 20    |          Yes |         Set |            - |
-| 6443  |          Yes |       Reset |            - |
+| 40    |          Yes |           - |          Set |
+| 171   |          Yes |           - |        Reset |
+| 29    |          Yes |         Set |            - |
+| 8509  |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -72,24 +72,27 @@ Table of Contents
 +-------------------------------------------+------+-------+-----------+-------+
 |                 Site Type                 | Used | Fixed | Available | Util% |
 +-------------------------------------------+------+-------+-----------+-------+
-| CLB                                       | 1131 |     0 |     30300 |  3.73 |
-|   CLBL                                    |  574 |     0 |           |       |
-|   CLBM                                    |  557 |     0 |           |       |
-| LUT as Logic                              | 5747 |     0 |    242400 |  2.37 |
-|   using O5 output only                    |   42 |       |           |       |
-|   using O6 output only                    | 5078 |       |           |       |
-|   using O5 and O6                         |  627 |       |           |       |
-| LUT as Memory                             |  119 |     0 |    112800 |  0.11 |
-|   LUT as Distributed RAM                  |    0 |     0 |           |       |
-|   LUT as Shift Register                   |  119 |     0 |           |       |
+| CLB                                       | 2039 |     0 |     30300 |  6.73 |
+|   CLBL                                    |  996 |     0 |           |       |
+|   CLBM                                    | 1043 |     0 |           |       |
+| LUT as Logic                              | 8098 |     0 |    242400 |  3.34 |
+|   using O5 output only                    |   96 |       |           |       |
+|   using O6 output only                    | 7227 |       |           |       |
+|   using O5 and O6                         |  775 |       |           |       |
+| LUT as Memory                             |  336 |     0 |    112800 |  0.30 |
+|   LUT as Distributed RAM                  |   32 |     0 |           |       |
 |     using O5 output only                  |    0 |       |           |       |
-|     using O6 output only                  |  119 |       |           |       |
-|     using O5 and O6                       |    0 |       |           |       |
-| LUT Flip Flop Pairs                       | 3125 |     0 |    242400 |  1.29 |
-|   fully used LUT-FF pairs                 |  307 |       |           |       |
-|   LUT-FF pairs with one unused LUT output | 2794 |       |           |       |
-|   LUT-FF pairs with one unused Flip Flop  | 2623 |       |           |       |
-| Unique Control Sets                       |  113 |       |           |       |
+|     using O6 output only                  |    0 |       |           |       |
+|     using O5 and O6                       |   32 |       |           |       |
+|   LUT as Shift Register                   |  304 |     0 |           |       |
+|     using O5 output only                  |    0 |       |           |       |
+|     using O6 output only                  |  164 |       |           |       |
+|     using O5 and O6                       |  140 |       |           |       |
+| LUT Flip Flop Pairs                       | 3870 |     0 |    242400 |  1.60 |
+|   fully used LUT-FF pairs                 |  393 |       |           |       |
+|   LUT-FF pairs with one unused LUT output | 3409 |       |           |       |
+|   LUT-FF pairs with one unused Flip Flop  | 3126 |       |           |       |
+| Unique Control Sets                       |  242 |       |           |       |
 +-------------------------------------------+------+-------+-----------+-------+
 * Note: Review the Control Sets Report for more information regarding control sets.
 
@@ -97,14 +100,15 @@ Table of Contents
 3. BLOCKRAM
 -----------
 
-+-------------------+------+-------+-----------+-------+
-|     Site Type     | Used | Fixed | Available | Util% |
-+-------------------+------+-------+-----------+-------+
-| Block RAM Tile    |    4 |     0 |       600 |  0.67 |
-|   RAMB36/FIFO*    |    4 |     0 |       600 |  0.67 |
-|     RAMB36E2 only |    4 |       |           |       |
-|   RAMB18          |    0 |     0 |      1200 |  0.00 |
-+-------------------+------+-------+-----------+-------+
++-------------------+-------+-------+-----------+-------+
+|     Site Type     |  Used | Fixed | Available | Util% |
++-------------------+-------+-------+-----------+-------+
+| Block RAM Tile    | 421.5 |     0 |       600 | 70.25 |
+|   RAMB36/FIFO*    |   420 |     0 |       600 | 70.00 |
+|     RAMB36E2 only |   420 |       |           |       |
+|   RAMB18          |     3 |     0 |      1200 |  0.25 |
+|     RAMB18E2 only |     3 |       |           |       |
++-------------------+-------+-------+-----------+-------+
 * Note: Each Block RAM Tile only has one FIFO logic available and therefore can accommodate only one FIFO36E2 or one FIFO18E2. However, if a FIFO18E2 occupies a Block RAM Tile, that tile can still accommodate a RAMB18E2
 
 
@@ -152,8 +156,8 @@ Table of Contents
 +----------------------+------+-------+-----------+-------+
 |       Site Type      | Used | Fixed | Available | Util% |
 +----------------------+------+-------+-----------+-------+
-| GLOBAL CLOCK BUFFERs |    2 |     0 |       480 |  0.42 |
-|   BUFGCE             |    2 |     0 |       240 |  0.83 |
+| GLOBAL CLOCK BUFFERs |    3 |     0 |       480 |  0.63 |
+|   BUFGCE             |    3 |     0 |       240 |  1.25 |
 |   BUFGCE_DIV         |    0 |     0 |        40 |  0.00 |
 |   BUFG_GT            |    0 |     0 |       120 |  0.00 |
 |   BUFGCTRL*          |    0 |     0 |        80 |  0.00 |
@@ -185,7 +189,7 @@ Table of Contents
 +-------------+------+-------+-----------+-------+
 |  Site Type  | Used | Fixed | Available | Util% |
 +-------------+------+-------+-----------+-------+
-| BSCANE2     |    0 |     0 |         4 |  0.00 |
+| BSCANE2     |    1 |     0 |         4 | 25.00 |
 | DNA_PORTE2  |    0 |     0 |         1 |  0.00 |
 | EFUSE_USR   |    0 |     0 |         1 |  0.00 |
 | FRAME_ECCE3 |    0 |     0 |         1 |  0.00 |
@@ -200,26 +204,34 @@ Table of Contents
 +------------+------+---------------------+
 |  Ref Name  | Used | Functional Category |
 +------------+------+---------------------+
-| FDRE       | 6443 |            Register |
-| LUT6       | 2138 |                 CLB |
-| LUT3       | 1591 |                 CLB |
-| LUT4       | 1244 |                 CLB |
-| LUT5       |  733 |                 CLB |
-| LUT2       |  610 |                 CLB |
-| MUXF7      |  512 |                 CLB |
-| CARRY8     |  257 |                 CLB |
-| SRL16E     |   87 |                 CLB |
-| LUT1       |   58 |                 CLB |
-| SRLC32E    |   32 |                 CLB |
-| FDSE       |   20 |            Register |
-| RAMB36E2   |    4 |           Block Ram |
+| FDRE       | 8509 |            Register |
+| LUT6       | 3668 |                 CLB |
+| LUT3       | 1856 |                 CLB |
+| LUT4       | 1504 |                 CLB |
+| LUT5       | 1092 |                 CLB |
+| MUXF7      |  906 |                 CLB |
+| LUT2       |  656 |                 CLB |
+| RAMB36E2   |  420 |           Block Ram |
+| CARRY8     |  287 |                 CLB |
+| SRL16E     |  278 |                 CLB |
+| FDCE       |  171 |            Register |
+| SRLC32E    |  164 |                 CLB |
+| LUT1       |   97 |                 CLB |
+| RAMD32     |   56 |                 CLB |
+| FDPE       |   40 |            Register |
+| FDSE       |   29 |            Register |
+| RAMS32     |    8 |                 CLB |
 | DSP48E2    |    4 |          Arithmetic |
+| RAMB18E2   |    3 |           Block Ram |
 | IBUFCTRL   |    3 |              Others |
+| BUFGCE     |    3 |               Clock |
+| SRLC16E    |    2 |                 CLB |
 | INBUF      |    2 |                 I/O |
-| BUFGCE     |    2 |               Clock |
 | OBUF       |    1 |                 I/O |
+| MUXF8      |    1 |                 CLB |
 | MMCME3_ADV |    1 |               Clock |
 | DIFFINBUF  |    1 |                 I/O |
+| BSCANE2    |    1 |       Configuration |
 +------------+------+---------------------+
 
 
@@ -234,8 +246,10 @@ Table of Contents
 11. Instantiated Netlists
 -------------------------
 
-+----------+------+
-| Ref Name | Used |
-+----------+------+
++------------+------+
+|  Ref Name  | Used |
++------------+------+
+| dbg_hub_CV |    1 |
++------------+------+
 
 

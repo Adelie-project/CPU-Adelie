@@ -1,7 +1,7 @@
 //Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
-//Date        : Sun Dec  3 04:39:00 2017
+//Date        : Sun Dec  3 12:26:11 2017
 //Host        : ispc2016 running 64-bit Ubuntu 14.04.5 LTS
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=16,numReposBlks=14,numNonXlnxBlks=1,numHierBlks=2,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=4,da_board_cnt=6,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=17,numReposBlks=15,numNonXlnxBlks=1,numHierBlks=2,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=4,da_board_cnt=7,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
 module design_1
    (reset,
     rs232_uart_rxd,
@@ -86,23 +86,23 @@ module design_1
   wire core_top_0_axi_periph_M00_AXI_WREADY;
   wire [3:0]core_top_0_axi_periph_M00_AXI_WSTRB;
   wire core_top_0_axi_periph_M00_AXI_WVALID;
-  wire [3:0]core_top_0_interface_aximm_ARADDR;
-  wire core_top_0_interface_aximm_ARREADY;
-  wire core_top_0_interface_aximm_ARVALID;
-  wire [3:0]core_top_0_interface_aximm_AWADDR;
-  wire core_top_0_interface_aximm_AWREADY;
-  wire core_top_0_interface_aximm_AWVALID;
-  wire core_top_0_interface_aximm_BREADY;
-  wire [1:0]core_top_0_interface_aximm_BRESP;
-  wire core_top_0_interface_aximm_BVALID;
-  wire [31:0]core_top_0_interface_aximm_RDATA;
-  wire core_top_0_interface_aximm_RREADY;
-  wire [1:0]core_top_0_interface_aximm_RRESP;
-  wire core_top_0_interface_aximm_RVALID;
-  wire [31:0]core_top_0_interface_aximm_WDATA;
-  wire core_top_0_interface_aximm_WREADY;
-  wire [3:0]core_top_0_interface_aximm_WSTRB;
-  wire core_top_0_interface_aximm_WVALID;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [3:0]core_top_0_interface_aximm_ARADDR;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire core_top_0_interface_aximm_ARREADY;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire core_top_0_interface_aximm_ARVALID;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [3:0]core_top_0_interface_aximm_AWADDR;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire core_top_0_interface_aximm_AWREADY;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire core_top_0_interface_aximm_AWVALID;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire core_top_0_interface_aximm_BREADY;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [1:0]core_top_0_interface_aximm_BRESP;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire core_top_0_interface_aximm_BVALID;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [31:0]core_top_0_interface_aximm_RDATA;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire core_top_0_interface_aximm_RREADY;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [1:0]core_top_0_interface_aximm_RRESP;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire core_top_0_interface_aximm_RVALID;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [31:0]core_top_0_interface_aximm_WDATA;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire core_top_0_interface_aximm_WREADY;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [3:0]core_top_0_interface_aximm_WSTRB;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire core_top_0_interface_aximm_WVALID;
   wire [31:0]floating_point_0_M_AXIS_RESULT_TDATA;
   wire floating_point_0_M_AXIS_RESULT_TREADY;
   wire floating_point_0_M_AXIS_RESULT_TVALID;
@@ -160,13 +160,13 @@ module design_1
         .s_axi_wvalid(core_top_0_axi_periph_M00_AXI_WVALID),
         .tx(axi_uartlite_0_UART_TxD));
   design_1_blk_mem_gen_0_0 blk_mem_gen_0
-       (.addra(core_top_0_I_MEM_ADDR[10:0]),
+       (.addra(core_top_0_I_MEM_ADDR[14:0]),
         .clka(sim_clk_gen_0_clk),
         .dina({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .douta(blk_mem_gen_0_douta),
         .wea(xlconstant_0_dout));
   design_1_blk_mem_gen_1_0 blk_mem_gen_1
-       (.addra(core_top_0_MEM_ADDR[10:0]),
+       (.addra(core_top_0_MEM_ADDR[18:0]),
         .clka(sim_clk_gen_0_clk),
         .dina(core_top_0_MEM_DATA),
         .douta(blk_mem_gen_1_douta),
@@ -386,6 +386,24 @@ module design_1
         .s_axis_a_tdata(core_top_0_FSQRTS_A_TDATA),
         .s_axis_a_tready(core_top_0_FSQRTS_A_TREADY),
         .s_axis_a_tvalid(core_top_0_FSQRTS_A_TVALID));
+  design_1_system_ila_0 system_ila
+       (.SLOT_0_AXI_araddr(core_top_0_interface_aximm_ARADDR),
+        .SLOT_0_AXI_arready(core_top_0_interface_aximm_ARREADY),
+        .SLOT_0_AXI_arvalid(core_top_0_interface_aximm_ARVALID),
+        .SLOT_0_AXI_awaddr(core_top_0_interface_aximm_AWADDR),
+        .SLOT_0_AXI_awready(core_top_0_interface_aximm_AWREADY),
+        .SLOT_0_AXI_awvalid(core_top_0_interface_aximm_AWVALID),
+        .SLOT_0_AXI_bready(core_top_0_interface_aximm_BREADY),
+        .SLOT_0_AXI_bresp(core_top_0_interface_aximm_BRESP),
+        .SLOT_0_AXI_bvalid(core_top_0_interface_aximm_BVALID),
+        .SLOT_0_AXI_rdata(core_top_0_interface_aximm_RDATA),
+        .SLOT_0_AXI_rready(core_top_0_interface_aximm_RREADY),
+        .SLOT_0_AXI_rresp(core_top_0_interface_aximm_RRESP),
+        .SLOT_0_AXI_rvalid(core_top_0_interface_aximm_RVALID),
+        .SLOT_0_AXI_wdata(core_top_0_interface_aximm_WDATA),
+        .SLOT_0_AXI_wready(core_top_0_interface_aximm_WREADY),
+        .SLOT_0_AXI_wvalid(core_top_0_interface_aximm_WVALID),
+        .clk(sim_clk_gen_0_clk));
   design_1_xlconstant_0_0 xlconstant_0
        (.dout(xlconstant_0_dout));
   design_1_xlconstant_0_1 xlconstant_1

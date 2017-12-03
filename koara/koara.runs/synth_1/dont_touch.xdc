@@ -49,6 +49,33 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_1_core_t
 # IP: bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_1_clk_wiz_0_0 || ORIG_REF_NAME==design_1_clk_wiz_0_0}]
 
+# IP: bd/design_1/ip/design_1_system_ila_0/design_1_system_ila_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_1_system_ila_0 || ORIG_REF_NAME==design_1_system_ila_0}]
+
+# Block Designs: bd/design_1/ip/design_1_system_ila_0/bd_0/bd_384c.bd
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==bd_384c || ORIG_REF_NAME==bd_384c}]
+
+# IP: bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_0/bd_384c_ila_lib_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==bd_384c_ila_lib_0 || ORIG_REF_NAME==bd_384c_ila_lib_0}]
+
+# IP: bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/bd_384c_g_inst_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==bd_384c_g_inst_0 || ORIG_REF_NAME==bd_384c_g_inst_0}]
+
+# IP: bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_2/bd_384c_slot_0_aw_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==bd_384c_slot_0_aw_0 || ORIG_REF_NAME==bd_384c_slot_0_aw_0}]
+
+# IP: bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_3/bd_384c_slot_0_w_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==bd_384c_slot_0_w_0 || ORIG_REF_NAME==bd_384c_slot_0_w_0}]
+
+# IP: bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_4/bd_384c_slot_0_b_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==bd_384c_slot_0_b_0 || ORIG_REF_NAME==bd_384c_slot_0_b_0}]
+
+# IP: bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_5/bd_384c_slot_0_ar_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==bd_384c_slot_0_ar_0 || ORIG_REF_NAME==bd_384c_slot_0_ar_0}]
+
+# IP: bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_6/bd_384c_slot_0_r_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==bd_384c_slot_0_r_0 || ORIG_REF_NAME==bd_384c_slot_0_r_0}]
+
 # XDC: bd/design_1/ip/design_1_blk_mem_gen_0_0_1/design_1_blk_mem_gen_0_0_ooc.xdc
 
 # XDC: bd/design_1/ip/design_1_blk_mem_gen_1_0_1/design_1_blk_mem_gen_1_0_ooc.xdc
@@ -82,5 +109,14 @@ set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {R
 #dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==design_1_clk_wiz_0_0 || ORIG_REF_NAME==design_1_clk_wiz_0_0}] {/inst }]/inst ]]
 
 # XDC: bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_ooc.xdc
+
+# XDC: bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila.xdc
+set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==bd_384c_ila_lib_0 || ORIG_REF_NAME==bd_384c_ila_lib_0}] {/inst }]/inst ]]
+
+# XDC: bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_0/bd_384c_ila_lib_0_ooc.xdc
+
+# XDC: bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/bd_384c_g_inst_0_ooc.xdc
+
+# XDC: bd/design_1/ip/design_1_system_ila_0/bd_0/bd_384c_ooc.xdc
 
 # XDC: bd/design_1/design_1_ooc.xdc
