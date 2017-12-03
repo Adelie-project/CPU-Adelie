@@ -24,4 +24,10 @@ in %r10
 out %r10
 in %r11
 out %r11
+set %r6, $0x58
+out %r6
+set %r7, $0x59
+out %r7
+set %r7, $0x60
+out %r7
 jal %r0, $0

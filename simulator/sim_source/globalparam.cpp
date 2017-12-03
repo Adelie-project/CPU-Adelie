@@ -19,6 +19,7 @@ void init_param (param_t* param) {
   param->warn = false; // 警告表示
   param->cnt = 0; // 命令数カウント
   param->breakcnt = ULONG_MAX;
+  param->max_mem_no = 0; // 最大使用メモリ番号
   Loop(i, 128) param->call_time[i] = 0;
   fill_n(param->mem, HASHWIDTH, (hash_list_t*)NULL); // バイトアドレス
 }

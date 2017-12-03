@@ -66,6 +66,7 @@ struct param_t {
   unsigned long long cnt;
   unsigned long long breakcnt;
   unsigned call_time[128];
+  unsigned max_mem_no;
 };
 
 enum inst_t {
