@@ -3,7 +3,7 @@ main:
   addi %r2, %r2, $-64 ; SP -= 64
   addi %r3, %r2, $64  ; FP = SP + 64, main()のフレームの出来上がり
   set %r9, $2   ; const int 1
-  set %r5, $10  ; fib_rec(5) を呼びたい
+  set %r5, $35  ; fib_rec(35) を呼びたい
   jal %r1, fib_rec   ; r1 = 7 * pc_interval
   jal %r1, finish
 fib_rec:
@@ -31,7 +31,13 @@ fib_rec_bge1:
   beq %r0, %r0, fib_rec_ret ; go back
 finish:
   out %r4
-  addi %r0, %r0, $0   ; 終了
+  srli %r4, %r4, $8
+  out %r4
+  srli %r4, %r4, $8
+  out %r4
+  srli %r4, %r4, $8
+  out %r4
+  jal %r0, $0   ; 終了
 
 
 /*

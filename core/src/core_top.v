@@ -549,6 +549,7 @@ module core_top
   // ineをほげする
   // outならr1からoutする
 
+  reg [7:0] rdata;
   always @(posedge CLK) begin
       if (!RST_N) begin
           read_status <= s_read_wait;
@@ -562,16 +563,16 @@ module core_top
           BREADY <= 0;
           WDATA <= 0;
           WSTRB <= 0;
+          rdata <= 0;
       end else begin
           WSTRB <= 4'b0001;
           if (i_in && (cpu_state == MEMORY)) begin
-          case (read_status)
+            case (read_status)
               s_read_wait:
               begin
                   ARADDR  <= 4'b1000;
                   ARVALID <= (ARVALID & ARREADY) ? 0 : 1;
                   read_status  <= (ARVALID & ARREADY) ? s_read_wait2 : s_read_wait;
-
               end
               s_read_wait2:
               begin
@@ -588,14 +589,14 @@ module core_top
               begin
                   RREADY <= (RREADY & RVALID) ? 0 : 1;
                   read_status <= (RREADY & RVALID) ? s_read3 : s_read2;
+                  rdata <= RDATA;
               end
               s_read3:
               begin
                   read_status <= s_read_wait;
               end
             endcase
-          end
-          if (i_out && (cpu_state == MEMORY)) begin
+          end else if (i_out && (cpu_state == MEMORY)) begin
             case (write_status)
               s_write_wait:
               begin
@@ -631,8 +632,8 @@ module core_top
               begin
                   write_status <= s_write_wait;
               end
-          endcase
-        end
+            endcase
+          end
       end
   end
 
@@ -664,7 +665,7 @@ module core_top
                      ((!addsub_f && ADDSUB_R_TVALID) || (!mul_f && MUL_R_TVALID) || (!div_f && DIV_R_TVALID) || (!comp_f && COMP_R_TVALID) || (!fcvtsw_f && FCVTSW_R_TVALID) || (!fcvtws_f && FCVTWS_R_TVALID) || (!fsqrts_f && FSQRTS_R_TVALID)) ? 1:
                      0;
 
-      stole <= (stole && i_in) ? ((RVALID & RREADY) ? 0 : 1) :
+      stole <= (stole && i_in) ? (((read_status == s_read2) & RVALID & RREADY) ? 0 : 1) :
                (stole && i_out) ? ((BVALID & BREADY) ? 0 : 1) :
                (stole && !(tvalid_once)) ? 1 :
                ((cpu_state == EXECUTE) && (stole == 0) && (i_in | i_out | i_fadds | i_fsubs | i_fmuls | i_fdivs | i_feqs | i_flts | i_fles | i_fcvtsw | i_fcvtws | i_fsqrts)) ? 1:
@@ -725,7 +726,7 @@ module core_top
                      alu_result;
   assign wr_addr = rd_num;
   assign fwr_addr = frd_num;
-  assign ine = (i_in & cpu_state == WRITEBACK);
+  assign ine = (i_in & (cpu_state == WRITEBACK) & !stole);
 
   core_reg u_core_reg
   (
@@ -738,7 +739,7 @@ module core_top
     .WE (wr_we),
     .WDATA (wr_data),
     .INE (ine),
-    .INDATA (RDATA),
+    .INDATA (rdata),
 
     .RS1ADDR (rs1_num),
     .RS1 (rs1),

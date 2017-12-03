@@ -3,6 +3,7 @@
 # 
 
 set_param xicom.use_bs_reader 1
+set_param tcl.collectionResultDisplayLimit 0
 set_msg_config -id {HDL 9-1061} -limit 100000
 set_msg_config -id {HDL 9-1654} -limit 100000
 set_msg_config -id {HDL-1065} -limit 10000
@@ -25,6 +26,9 @@ add_files /home/yamaguchi/CPU-Adelie/simulator/test/fib_rec.coe
 add_files /home/yamaguchi/CPU-Adelie/simulator/test/test_f.coe
 add_files /home/yamaguchi/CPU-Adelie/simulator/test/test_io.coe
 add_files /home/yamaguchi/CPU-Adelie/simulator/test/test_out.coe
+add_files /home/yamaguchi/CPU-Adelie/simulator/test/test_fcomplex.coe
+add_files /home/yamaguchi/CPU-Adelie/simulator/min-rt/min-rt.coe
+add_files /home/yamaguchi/CPU-Adelie/simulator/test/test_endian.coe
 read_verilog -library xil_defaultlib {
   /home/yamaguchi/CPU-Adelie/core/src/core_reg.v
   /home/yamaguchi/CPU-Adelie/core/src/core_alu.v
@@ -48,6 +52,10 @@ set_property used_in_implementation false [get_files -all /home/yamaguchi/CPU-Ad
 set_property used_in_implementation false [get_files -all /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_board.xdc]
 set_property used_in_implementation false [get_files -all /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xdc]
 set_property used_in_implementation false [get_files -all /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila.xdc]
+set_property used_in_implementation false [get_files -all /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_0/bd_384c_ila_lib_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/bd_384c_g_inst_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_system_ila_0/bd_0/bd_384c_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/design_1_ooc.xdc]
 set_property is_locked true [get_files /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/design_1.bd]
 

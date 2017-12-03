@@ -29,6 +29,7 @@ module core_reg
    (* mark_debug = "true" *) reg [31:0] reg1, reg2, reg3, reg4, reg5, reg6, reg7, reg8, reg9, reg10, reg11, reg12, reg13, reg14, reg15, reg16, reg17, reg18, reg19, reg20, reg21, reg22, reg23, reg24, reg25, reg26, reg27, reg28, reg29, reg30, reg31;
    reg [31:0] freg1, freg2, freg3, freg4, freg5, freg6, freg7, freg8, freg9, freg10, freg11, freg12, freg13, freg14, freg15, freg16, freg17, freg18, freg19, freg20, freg21, freg22, freg23, freg24, freg25, freg26, freg27, freg28, freg29, freg30, freg31;
    reg _WE;
+   reg _INE;
 
    // 整数レジスタ write
    always @(posedge CLK) begin
@@ -66,6 +67,7 @@ module core_reg
 				reg31 <= 0;
       end else begin
         _WE <= WE;
+        _INE <= INE;
         if(_WE && (WADDR == 5'd1)) reg1 <= WDATA;
         if(_WE && (WADDR == 5'd2)) reg2 <= WDATA;
         if(_WE && (WADDR == 5'd3)) reg3 <= WDATA;
@@ -97,37 +99,37 @@ module core_reg
         if(_WE && (WADDR == 5'd29)) reg29 <= WDATA;
         if(_WE && (WADDR == 5'd30)) reg30 <= WDATA;
         if(_WE && (WADDR == 5'd31)) reg31 <= WDATA;
-        if(INE && (WADDR == 5'd1)) reg1 <= {reg1[31:8],INDATA};
-        if(INE && (WADDR == 5'd2)) reg2 <= {reg2[31:8],INDATA};
-        if(INE && (WADDR == 5'd3)) reg3 <= {reg3[31:8],INDATA};
-        if(INE && (WADDR == 5'd4)) reg4 <= {reg4[31:8],INDATA};
-        if(INE && (WADDR == 5'd5)) reg5 <= {reg5[31:8],INDATA};
-        if(INE && (WADDR == 5'd6)) reg6 <= {reg6[31:8],INDATA};
-        if(INE && (WADDR == 5'd7)) reg7 <= {reg7[31:8],INDATA};
-        if(INE && (WADDR == 5'd8)) reg8 <= {reg8[31:8],INDATA};
-        if(INE && (WADDR == 5'd9)) reg9 <= {reg9[31:8],INDATA};
-        if(INE && (WADDR == 5'd10)) reg10 <= {reg10[31:8],INDATA};
-        if(INE && (WADDR == 5'd11)) reg11 <= {reg11[31:8],INDATA};
-        if(INE && (WADDR == 5'd12)) reg12 <= {reg12[31:8],INDATA};
-        if(INE && (WADDR == 5'd13)) reg13 <= {reg13[31:8],INDATA};
-        if(INE && (WADDR == 5'd14)) reg14 <= {reg14[31:8],INDATA};
-        if(INE && (WADDR == 5'd15)) reg15 <= {reg15[31:8],INDATA};
-        if(INE && (WADDR == 5'd16)) reg16 <= {reg16[31:8],INDATA};
-        if(INE && (WADDR == 5'd17)) reg17 <= {reg17[31:8],INDATA};
-        if(INE && (WADDR == 5'd18)) reg18 <= {reg18[31:8],INDATA};
-        if(INE && (WADDR == 5'd19)) reg19 <= {reg19[31:8],INDATA};
-        if(INE && (WADDR == 5'd20)) reg20 <= {reg20[31:8],INDATA};
-        if(INE && (WADDR == 5'd21)) reg21 <= {reg21[31:8],INDATA};
-        if(INE && (WADDR == 5'd22)) reg22 <= {reg22[31:8],INDATA};
-        if(INE && (WADDR == 5'd23)) reg23 <= {reg23[31:8],INDATA};
-        if(INE && (WADDR == 5'd24)) reg24 <= {reg24[31:8],INDATA};
-        if(INE && (WADDR == 5'd25)) reg25 <= {reg25[31:8],INDATA};
-        if(INE && (WADDR == 5'd26)) reg26 <= {reg26[31:8],INDATA};
-        if(INE && (WADDR == 5'd27)) reg27 <= {reg27[31:8],INDATA};
-        if(INE && (WADDR == 5'd28)) reg28 <= {reg28[31:8],INDATA};
-        if(INE && (WADDR == 5'd29)) reg29 <= {reg29[31:8],INDATA};
-        if(INE && (WADDR == 5'd30)) reg30 <= {reg30[31:8],INDATA};
-        if(INE && (WADDR == 5'd31)) reg31 <= {reg31[31:8],INDATA};
+        if(_INE && (WADDR == 5'd1)) reg1 <= {reg1[31:8],INDATA};
+        if(_INE && (WADDR == 5'd2)) reg2 <= {reg2[31:8],INDATA};
+        if(_INE && (WADDR == 5'd3)) reg3 <= {reg3[31:8],INDATA};
+        if(_INE && (WADDR == 5'd4)) reg4 <= {reg4[31:8],INDATA};
+        if(_INE && (WADDR == 5'd5)) reg5 <= {reg5[31:8],INDATA};
+        if(_INE && (WADDR == 5'd6)) reg6 <= {reg6[31:8],INDATA};
+        if(_INE && (WADDR == 5'd7)) reg7 <= {reg7[31:8],INDATA};
+        if(_INE && (WADDR == 5'd8)) reg8 <= {reg8[31:8],INDATA};
+        if(_INE && (WADDR == 5'd9)) reg9 <= {reg9[31:8],INDATA};
+        if(_INE && (WADDR == 5'd10)) reg10 <= {reg10[31:8],INDATA};
+        if(_INE && (WADDR == 5'd11)) reg11 <= {reg11[31:8],INDATA};
+        if(_INE && (WADDR == 5'd12)) reg12 <= {reg12[31:8],INDATA};
+        if(_INE && (WADDR == 5'd13)) reg13 <= {reg13[31:8],INDATA};
+        if(_INE && (WADDR == 5'd14)) reg14 <= {reg14[31:8],INDATA};
+        if(_INE && (WADDR == 5'd15)) reg15 <= {reg15[31:8],INDATA};
+        if(_INE && (WADDR == 5'd16)) reg16 <= {reg16[31:8],INDATA};
+        if(_INE && (WADDR == 5'd17)) reg17 <= {reg17[31:8],INDATA};
+        if(_INE && (WADDR == 5'd18)) reg18 <= {reg18[31:8],INDATA};
+        if(_INE && (WADDR == 5'd19)) reg19 <= {reg19[31:8],INDATA};
+        if(_INE && (WADDR == 5'd20)) reg20 <= {reg20[31:8],INDATA};
+        if(_INE && (WADDR == 5'd21)) reg21 <= {reg21[31:8],INDATA};
+        if(_INE && (WADDR == 5'd22)) reg22 <= {reg22[31:8],INDATA};
+        if(_INE && (WADDR == 5'd23)) reg23 <= {reg23[31:8],INDATA};
+        if(_INE && (WADDR == 5'd24)) reg24 <= {reg24[31:8],INDATA};
+        if(_INE && (WADDR == 5'd25)) reg25 <= {reg25[31:8],INDATA};
+        if(_INE && (WADDR == 5'd26)) reg26 <= {reg26[31:8],INDATA};
+        if(_INE && (WADDR == 5'd27)) reg27 <= {reg27[31:8],INDATA};
+        if(_INE && (WADDR == 5'd28)) reg28 <= {reg28[31:8],INDATA};
+        if(_INE && (WADDR == 5'd29)) reg29 <= {reg29[31:8],INDATA};
+        if(_INE && (WADDR == 5'd30)) reg30 <= {reg30[31:8],INDATA};
+        if(_INE && (WADDR == 5'd31)) reg31 <= {reg31[31:8],INDATA};
       end
    end
 

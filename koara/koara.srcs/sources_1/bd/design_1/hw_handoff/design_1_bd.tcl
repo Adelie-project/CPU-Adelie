@@ -184,7 +184,8 @@ CONFIG.USE_BOARD_FLOW {true} \
   set blk_mem_gen_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.3 blk_mem_gen_0 ]
   set_property -dict [ list \
 CONFIG.Byte_Size {9} \
-CONFIG.Coe_File {../../../../../../../simulator/test/test_io.coe} \
+CONFIG.Coe_File {../../../../../../../simulator/min-rt/min-rt.coe} \
+CONFIG.Disable_Collision_Warnings {false} \
 CONFIG.Enable_32bit_Address {false} \
 CONFIG.Enable_A {Always_Enabled} \
 CONFIG.Fill_Remaining_Memory_Locations {true} \
@@ -379,6 +380,25 @@ CONFIG.Operation_Type {Square_root} \
 CONFIG.Result_Precision_Type {Single} \
  ] $floating_point_6
 
+  # Create instance: system_ila, and set properties
+  set system_ila [ create_bd_cell -type ip -vlnv xilinx.com:ip:system_ila:1.0 system_ila ]
+  set_property -dict [ list \
+CONFIG.C_MON_TYPE {INTERFACE} \
+CONFIG.C_NUM_MONITOR_SLOTS {1} \
+CONFIG.C_SLOT_0_APC_EN {0} \
+CONFIG.C_SLOT_0_AXI_AR_SEL_DATA {1} \
+CONFIG.C_SLOT_0_AXI_AR_SEL_TRIG {1} \
+CONFIG.C_SLOT_0_AXI_AW_SEL_DATA {1} \
+CONFIG.C_SLOT_0_AXI_AW_SEL_TRIG {1} \
+CONFIG.C_SLOT_0_AXI_B_SEL_DATA {1} \
+CONFIG.C_SLOT_0_AXI_B_SEL_TRIG {1} \
+CONFIG.C_SLOT_0_AXI_R_SEL_DATA {1} \
+CONFIG.C_SLOT_0_AXI_R_SEL_TRIG {1} \
+CONFIG.C_SLOT_0_AXI_W_SEL_DATA {1} \
+CONFIG.C_SLOT_0_AXI_W_SEL_TRIG {1} \
+CONFIG.C_SLOT_0_INTF_TYPE {xilinx.com:interface:aximm_rtl:1.0} \
+ ] $system_ila
+
   # Create instance: xlconstant_0, and set properties
   set xlconstant_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0 ]
   set_property -dict [ list \
@@ -409,6 +429,10 @@ CONFIG.CONST_WIDTH {1} \
   connect_bd_intf_net -intf_net core_top_0_OP [get_bd_intf_pins core_top_0/ADDSUB_OP] [get_bd_intf_pins floating_point_0/S_AXIS_OPERATION]
   connect_bd_intf_net -intf_net core_top_0_axi_periph_M00_AXI [get_bd_intf_pins axi_uartlite_0/S_AXI] [get_bd_intf_pins core_top_0_axi_periph/M00_AXI]
   connect_bd_intf_net -intf_net core_top_0_interface_aximm [get_bd_intf_pins core_top_0/interface_aximm] [get_bd_intf_pins core_top_0_axi_periph/S00_AXI]
+connect_bd_intf_net -intf_net [get_bd_intf_nets core_top_0_interface_aximm] [get_bd_intf_pins core_top_0_axi_periph/S00_AXI] [get_bd_intf_pins system_ila/SLOT_0_AXI]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_intf_nets core_top_0_interface_aximm]
   connect_bd_intf_net -intf_net floating_point_0_M_AXIS_RESULT [get_bd_intf_pins core_top_0/ADDSUB_R] [get_bd_intf_pins floating_point_0/M_AXIS_RESULT]
   connect_bd_intf_net -intf_net floating_point_1_M_AXIS_RESULT [get_bd_intf_pins core_top_0/COMP_R] [get_bd_intf_pins floating_point_1/M_AXIS_RESULT]
   connect_bd_intf_net -intf_net floating_point_2_M_AXIS_RESULT [get_bd_intf_pins core_top_0/DIV_R] [get_bd_intf_pins floating_point_2/M_AXIS_RESULT]
@@ -426,7 +450,7 @@ CONFIG.CONST_WIDTH {1} \
   connect_bd_net -net core_top_0_MEM_DATA [get_bd_pins blk_mem_gen_1/dina] [get_bd_pins core_top_0/MEM_DATA]
   connect_bd_net -net core_top_0_MEM_WE [get_bd_pins blk_mem_gen_1/wea] [get_bd_pins core_top_0/MEM_WE]
   connect_bd_net -net reset_1 [get_bd_ports reset] [get_bd_pins clk_wiz_0/reset]
-  connect_bd_net -net sim_clk_gen_0_clk [get_bd_pins axi_uartlite_0/s_axi_aclk] [get_bd_pins blk_mem_gen_0/clka] [get_bd_pins blk_mem_gen_1/clka] [get_bd_pins clk_wiz_0/clk_out1] [get_bd_pins core_top_0/CLK] [get_bd_pins core_top_0_axi_periph/ACLK] [get_bd_pins core_top_0_axi_periph/M00_ACLK] [get_bd_pins core_top_0_axi_periph/S00_ACLK] [get_bd_pins floating_point_0/aclk] [get_bd_pins floating_point_1/aclk] [get_bd_pins floating_point_2/aclk] [get_bd_pins floating_point_3/aclk] [get_bd_pins floating_point_4/aclk] [get_bd_pins floating_point_5/aclk] [get_bd_pins floating_point_6/aclk]
+  connect_bd_net -net sim_clk_gen_0_clk [get_bd_pins axi_uartlite_0/s_axi_aclk] [get_bd_pins blk_mem_gen_0/clka] [get_bd_pins blk_mem_gen_1/clka] [get_bd_pins clk_wiz_0/clk_out1] [get_bd_pins core_top_0/CLK] [get_bd_pins core_top_0_axi_periph/ACLK] [get_bd_pins core_top_0_axi_periph/M00_ACLK] [get_bd_pins core_top_0_axi_periph/S00_ACLK] [get_bd_pins floating_point_0/aclk] [get_bd_pins floating_point_1/aclk] [get_bd_pins floating_point_2/aclk] [get_bd_pins floating_point_3/aclk] [get_bd_pins floating_point_4/aclk] [get_bd_pins floating_point_5/aclk] [get_bd_pins floating_point_6/aclk] [get_bd_pins system_ila/clk]
   connect_bd_net -net sim_clk_gen_0_sync_rst [get_bd_pins axi_uartlite_0/s_axi_aresetn] [get_bd_pins clk_wiz_0/locked] [get_bd_pins core_top_0/RST_N] [get_bd_pins core_top_0_axi_periph/ARESETN] [get_bd_pins core_top_0_axi_periph/M00_ARESETN] [get_bd_pins core_top_0_axi_periph/S00_ARESETN] [get_bd_pins floating_point_0/aresetn] [get_bd_pins floating_point_1/aresetn] [get_bd_pins floating_point_2/aresetn] [get_bd_pins floating_point_3/aresetn] [get_bd_pins floating_point_4/aresetn] [get_bd_pins floating_point_5/aresetn] [get_bd_pins floating_point_6/aresetn]
   connect_bd_net -net xlconstant_0_dout [get_bd_pins blk_mem_gen_0/wea] [get_bd_pins xlconstant_0/dout]
   connect_bd_net -net xlconstant_1_dout [get_bd_pins blk_mem_gen_1/ena] [get_bd_pins xlconstant_1/dout]
@@ -448,6 +472,7 @@ preplace inst core_top_0_axi_periph -pg 1 -lvl 4 -y 540 -defaultsOSRD
 preplace inst floating_point_2 -pg 1 -lvl 2 -y 500 -defaultsOSRD
 preplace inst xlconstant_1 -pg 1 -lvl 3 -y 940 -defaultsOSRD
 preplace inst floating_point_3 -pg 1 -lvl 2 -y 1080 -defaultsOSRD
+preplace inst system_ila -pg 1 -lvl 4 -y 380 -defaultsOSRD
 preplace inst floating_point_4 -pg 1 -lvl 2 -y 650 -defaultsOSRD
 preplace inst floating_point_5 -pg 1 -lvl 2 -y 1380 -defaultsOSRD
 preplace inst blk_mem_gen_0 -pg 1 -lvl 4 -y 1020 -defaultsOSRD
@@ -457,9 +482,9 @@ preplace inst axi_uartlite_0 -pg 1 -lvl 5 -y 560 -defaultsOSRD
 preplace inst clk_wiz_0 -pg 1 -lvl 1 -y 140 -defaultsOSRD
 preplace netloc floating_point_3_M_AXIS_RESULT 1 2 1 660
 preplace netloc core_top_0_OP 1 1 3 270 220 NJ 220 1000
-preplace netloc xlconstant_1_dout 1 3 1 1100J
+preplace netloc xlconstant_1_dout 1 3 1 1110J
 preplace netloc core_top_0_MEM_ADDR 1 3 1 N
-preplace netloc sim_clk_gen_0_sync_rst 1 1 4 220 730 620 150 1100 150 1380
+preplace netloc sim_clk_gen_0_sync_rst 1 1 4 220 730 620 150 1110 150 1430
 preplace netloc core_top_0_MEM_WE 1 3 1 1040
 preplace netloc blk_mem_gen_1_douta 1 2 2 680 870 1050J
 preplace netloc core_top_0_FCVTWS_A 1 1 3 250 990 NJ 990 1020
@@ -474,23 +499,23 @@ preplace netloc core_top_0_FCVTSW_A 1 1 3 270 580 600J 430 1030
 preplace netloc floating_point_4_M_AXIS_RESULT 1 2 1 630
 preplace netloc floating_point_1_M_AXIS_RESULT 1 2 1 640
 preplace netloc core_top_0_A 1 1 3 250 200 NJ 200 1020
-preplace netloc sim_clk_gen_0_clk 1 1 4 230 720 590 130 1090 130 1390
+preplace netloc sim_clk_gen_0_clk 1 1 4 230 720 590 130 1100 130 1440
 preplace netloc xlconstant_0_dout 1 3 1 NJ
 preplace netloc core_top_0_COMP_A 1 1 3 220 10 NJ 10 1080
 preplace netloc core_top_0_B 1 1 3 260 210 NJ 210 1010
 preplace netloc axi_uartlite_0_UART 1 5 1 N
 preplace netloc core_top_0_COMP_B 1 1 3 270 20 NJ 20 1070
 preplace netloc core_top_0_DIV_A 1 1 3 260 410 NJ 410 1050
-preplace netloc core_top_0_I_MEM_ADDR 1 3 1 1070
-preplace netloc blk_mem_gen_0_douta 1 2 2 670 1010 1060J
+preplace netloc core_top_0_I_MEM_ADDR 1 3 1 1060
+preplace netloc blk_mem_gen_0_douta 1 2 2 670 1010 1070J
 preplace netloc core_top_0_FSQRTS_A 1 1 3 270 1160 NJ 1160 1030
 preplace netloc core_top_0_DIV_B 1 1 3 270 420 NJ 420 1040
 preplace netloc floating_point_0_M_AXIS_RESULT 1 2 1 630
-preplace netloc core_top_0_interface_aximm 1 3 1 N
+preplace netloc core_top_0_interface_aximm 1 3 1 1090
 preplace netloc floating_point_6_M_AXIS_RESULT 1 2 1 650
 preplace netloc reset_1 1 0 1 NJ
 preplace netloc floating_point_2_M_AXIS_RESULT 1 2 1 610
-levelinfo -pg 1 0 120 430 840 1240 1490 1610 -top 0 -bot 1440
+levelinfo -pg 1 0 120 430 840 1290 1540 1660 -top 0 -bot 1440
 ",
 }
 
