@@ -128,7 +128,7 @@ inline void preprocess_of_run(param_t* param) {
       }
       else print_standard_reg(param);
       printf("\n\nreach end of file.\n");
-      printf("cnt = %lld\n", param->cnt);
+      printf("cnt = %lld, max_mem_no = %u\n", param->cnt, param->max_mem_no);
       print_call_time(param);
       fclose(param->fp);
       exit(EXIT_SUCCESS);
@@ -145,7 +145,7 @@ inline void postprocess_of_run(param_t* param) {
     }
     else print_standard_reg(param);
     printf("\n\nprogram infinitely loops at pc %d, simulation stops.\n", param->pc);
-    printf("cnt = %lld\n", param->cnt);
+    printf("cnt = %lld, max_mem_no = %u\n", param->cnt, param->max_mem_no);
     print_call_time(param);
     fclose(param->fp);
     exit(EXIT_SUCCESS);

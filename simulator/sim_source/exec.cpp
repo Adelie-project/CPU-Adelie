@@ -11,6 +11,7 @@ inline int hash_func(unsigned k) {
 }
 
 inline unsigned read_hash_list(param_t* param, unsigned k) {
+  param->max_mem_no = max(param->max_mem_no, k);
   hash_list_t* p = param->mem[hash_func(k)];
   while(p != NULL) {
     if(k == p->key) return p->val;
@@ -20,6 +21,7 @@ inline unsigned read_hash_list(param_t* param, unsigned k) {
 }
 
 inline void write_hash_list(param_t* param, unsigned k, unsigned int v) {
+  param->max_mem_no = max(param->max_mem_no, k);
   hash_list_t** p = &(param->mem[hash_func(k)]);
   while(*p != NULL) {
     if(k == (*p)->key) {
