@@ -121,19 +121,34 @@ module core_top
   );
 
   // PC
-  wire [31:0] pc;
-  wire [4:0] rd_num, rs1_num, rs2_num;
-  wire [31:0] rs1, rs2, imm;
-  wire [4:0] frd_num, frs1_num, frs2_num;
-  wire [31:0] frs1, frs2;
+ (* mark_debug = "true" *) wire [31:0] pc;
+ (* mark_debug = "true" *) wire [4:0] rd_num, rs1_num, rs2_num;
+ (* mark_debug = "true" *) wire [31:0] rs1, rs2, imm;
+ (* mark_debug = "true" *) wire [4:0] frd_num, frs1_num, frs2_num;
+ (* mark_debug = "true" *) wire [31:0] frs1, frs2;
 
-  wire [31:0] alu_result;
-  wire i_lui, i_auipc, i_jal, i_jalr, i_beq, i_bne,
+ (* mark_debug = "true" *) wire [31:0] alu_result;
+ (* mark_debug = "true" *) wire i_lui, i_auipc, i_jal, i_jalr, i_beq, i_bne,
        i_blt, i_bge, i_bltu, i_bgeu, i_lb, i_lh, i_lw, i_lbu, i_lhu, i_sb, i_sh,
        i_sw, i_addi, i_slti, i_sltiu, i_xori, i_ori, i_andi, i_slli, i_srli, i_srai,
        i_add, i_sub, i_sll, i_slt, i_sltu, i_xor, i_srl, i_sra, i_or, i_and, i_rot;
-  wire i_flw, i_fsw, i_fadds, i_fsubs, i_fmuls, i_fdivs, i_feqs, i_flts, i_fles, i_fmvsx, i_fcvtsw, i_fcvtws, i_fsqrts, i_fsgnjxs;
-  wire i_in, i_out;
+ (* mark_debug = "true" *) wire i_flw, i_fsw, i_fadds, i_fsubs, i_fmuls, i_fdivs, i_feqs, i_flts, i_fles, i_fmvsx, i_fcvtsw, i_fcvtws, i_fsqrts, i_fsgnjxs;
+ (* mark_debug = "true" *) wire i_in, i_out;
+
+ (* mark_debug = "true" *) reg stole;
+
+ (* mark_debug = "true" *) reg [7:0] rdata;
+
+  // 乗除算はしない
+
+  assign r0 = 32'b0;
+
+  // CPU state
+  (* mark_debug = "true" *) reg [6:0] cpu_state;
+
+  (* mark_debug = "true" *) wire ine;
+  (* mark_debug = "true" *) reg [6:0] write_status;
+  (* mark_debug = "true" *) reg [6:0] read_status;
 
   localparam s_read_wait = 7'b0000001;
   localparam s_read_wait2 = 7'b0000010;
@@ -147,10 +162,6 @@ module core_top
   localparam s_write2 = 7'b1001000;
   localparam s_write3 = 7'b1010000;
   localparam s_write4 = 7'b1100000;
-
-  (* mark_debug = "true" *) wire ine;
-  (* mark_debug = "true" *) reg [6:0] write_status;
-  (* mark_debug = "true" *) reg [6:0] read_status;
 
   // ADDSUB
   reg [31:0] addsub_a_tdata, addsub_b_tdata;
@@ -221,14 +232,6 @@ module core_top
   assign FSQRTS_A_TVALID = fsqrts_a_tvalid;
   assign FSQRTS_R_TREADY = fsqrts_r_tready;
 
-  (* mark_debug = "true" *) reg stole;
-
-  // 乗除算はしない
-
-  assign r0 = 32'b0;
-
-  // CPU state
-  (* mark_debug = "true" *) reg [6:0] cpu_state;
   localparam IDLE = 7'b0000001;
   localparam FETCH = 7'b0000010;
   localparam DECODE = 7'b0000100;
@@ -549,7 +552,6 @@ module core_top
   // ineをほげする
   // outならr1からoutする
 
-  reg [7:0] rdata;
   always @(posedge CLK) begin
       if (!RST_N) begin
           read_status <= s_read_wait;
@@ -607,7 +609,7 @@ module core_top
               s_write_wait2:
               begin
                   RREADY <= (RREADY & RVALID) ? 0 : 1;
-                  write_status <= (RREADY & RVALID) ? (RDATA[3] ? s_write_wait : s_write) : s_write_wait2;
+                  write_status <= (RREADY & RVALID) ? (RDATA[3] ? s_write_wait : s_write): s_write_wait2;
               end
               s_write:
               begin
@@ -637,8 +639,8 @@ module core_top
       end
   end
 
-  reg tvalid_once;
-  reg addsub_f, mul_f, div_f, comp_f, fcvtsw_f, fcvtws_f, fsqrts_f;
+ (* mark_debug = "true" *) reg tvalid_once;
+ (* mark_debug = "true" *) reg addsub_f, mul_f, div_f, comp_f, fcvtsw_f, fcvtws_f, fsqrts_f;
 
   // Stole
   always @(posedge CLK) begin
@@ -674,7 +676,7 @@ module core_top
   end
 
   // PC
-  reg [31:0] pc_add_imm, pc_add_4, pc_jalr, pc_before;
+ (* mark_debug = "true" *) reg [31:0] pc_add_imm, pc_add_4, pc_jalr, pc_before;
   always @(posedge CLK) begin
     pc_add_imm <= pc_before + imm; // AUIPC, BRANCH, JAL
     pc_jalr <= rs1 + imm;
@@ -684,13 +686,13 @@ module core_top
   
   // メモリアクセスの前に実行と切り分ける
 
-  wire [4:0] wr_addr;
-  wire [4:0] fwr_addr;
-  wire  wr_we;
-  wire [31:0] wr_data;
+ (* mark_debug = "true" *) wire [4:0] wr_addr;
+ (* mark_debug = "true" *) wire [4:0] fwr_addr;
+ (* mark_debug = "true" *) wire  wr_we;
+ (* mark_debug = "true" *) wire [31:0] wr_data;
 
-  wire wr_pc_we;
-  wire [31:0] wr_pc;
+ (* mark_debug = "true" *) wire wr_pc_we;
+ (* mark_debug = "true" *) wire [31:0] wr_pc;
 
   // 4. メモリアクセス
 

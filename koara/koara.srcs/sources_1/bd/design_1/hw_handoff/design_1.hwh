@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Dec  3 12:26:16 2017" VIVADOVERSION="2016.4">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Dec  4 05:38:05 2017" VIVADOVERSION="2016.4">
 
   <SYSTEMINFO ARCH="kintexu" BOARD="xilinx.com:kcu105:part0:1.1" DEVICE="xcku040" NAME="design_1" PACKAGE="ffva1156" SPEEDGRADE="-2"/>
 
@@ -1194,7 +1194,7 @@
             <CONNECTION INSTANCE="core_top_0_axi_periph" PORT="S00_ACLK"/>
             <CONNECTION INSTANCE="core_top_0_axi_periph" PORT="ACLK"/>
             <CONNECTION INSTANCE="core_top_0_axi_periph" PORT="M00_ACLK"/>
-            <CONNECTION INSTANCE="system_ila" PORT="clk"/>
+            <CONNECTION INSTANCE="system_ila1" PORT="clk"/>
             <CONNECTION INSTANCE="core_top_0" PORT="CLK"/>
           </CONNECTIONS>
         </PORT>
@@ -4296,7 +4296,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE BD="design_1_system_ila_0" BDTYPE="SBD" DRIVERMODE="MIXED" FULLNAME="/system_ila" HWVERSION="1.0" INSTANCE="system_ila" IPTYPE="MONITOR" IS_ENABLE="1" MODCLASS="MONITOR" MODTYPE="system_ila" VLNV="xilinx.com:ip:system_ila:1.0">
+    <MODULE BD="design_1_system_ila1_0" BDTYPE="SBD" DRIVERMODE="MIXED" FULLNAME="/system_ila1" HWVERSION="1.0" INSTANCE="system_ila1" IPTYPE="MONITOR" IS_ENABLE="1" MODCLASS="MONITOR" MODTYPE="system_ila" VLNV="xilinx.com:ip:system_ila:1.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=system_ila;v=v1_0;d=pg261-system-ila.pdf"/>
       </DOCUMENTS>
@@ -4352,7 +4352,7 @@
         <PARAMETER NAME="C_SLOT_13_APC_EN" VALUE="0"/>
         <PARAMETER NAME="C_SLOT_14_APC_EN" VALUE="0"/>
         <PARAMETER NAME="C_SLOT_15_APC_EN" VALUE="0"/>
-        <PARAMETER NAME="C_BRAM_CNT" VALUE="0.5"/>
+        <PARAMETER NAME="C_BRAM_CNT" VALUE="6"/>
         <PARAMETER NAME="C_SLOT_0_AXI_AW_SEL_DATA" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXI_W_SEL_DATA" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXI_B_SEL_DATA" VALUE="1"/>
@@ -6675,7 +6675,7 @@
         <PARAMETER NAME="C_DATA_DEPTH" VALUE="1024"/>
         <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="1"/>
         <PARAMETER NAME="C_XLNX_HW_PROBE_INFO" VALUE="DEFAULT"/>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_system_ila_0"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_system_ila1_0"/>
         <PARAMETER NAME="C_PROBE70_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_TRIGOUT_EN" VALUE="false"/>
         <PARAMETER NAME="C_EN_STRG_QUAL" VALUE="0"/>
