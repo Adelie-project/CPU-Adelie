@@ -29,6 +29,7 @@ add_files /home/yamaguchi/CPU-Adelie/simulator/test/test_out.coe
 add_files /home/yamaguchi/CPU-Adelie/simulator/test/test_fcomplex.coe
 add_files /home/yamaguchi/CPU-Adelie/simulator/min-rt/min-rt.coe
 add_files /home/yamaguchi/CPU-Adelie/simulator/test/test_endian.coe
+add_files /home/yamaguchi/CPU-Adelie/simulator/test/mandelbrot.coe
 read_verilog -library xil_defaultlib {
   /home/yamaguchi/CPU-Adelie/core/src/core_reg.v
   /home/yamaguchi/CPU-Adelie/core/src/core_alu.v
@@ -52,16 +53,19 @@ set_property used_in_implementation false [get_files -all /home/yamaguchi/CPU-Ad
 set_property used_in_implementation false [get_files -all /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_board.xdc]
 set_property used_in_implementation false [get_files -all /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xdc]
 set_property used_in_implementation false [get_files -all /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila.xdc]
-set_property used_in_implementation false [get_files -all /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_0/bd_384c_ila_lib_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_1/bd_384c_g_inst_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_system_ila_0/bd_0/bd_384c_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_system_ila1_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila.xdc]
+set_property used_in_implementation false [get_files -all /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_system_ila1_0/bd_0/ip/ip_0/bd_cc75_ila_lib_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_system_ila1_0/bd_0/ip/ip_1/bd_cc75_g_inst_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_system_ila1_0/bd_0/bd_cc75_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/design_1_ooc.xdc]
 set_property is_locked true [get_files /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/design_1.bd]
 
 foreach dcp [get_files -quiet -all *.dcp] {
   set_property used_in_implementation false $dcp
 }
+read_xdc /home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc
+set_property used_in_implementation false [get_files /home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc]
+
 read_xdc dont_touch.xdc
 set_property used_in_implementation false [get_files dont_touch.xdc]
 
