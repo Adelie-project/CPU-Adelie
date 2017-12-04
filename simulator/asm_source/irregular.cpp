@@ -93,17 +93,20 @@ void pre_parse_irregular(param_t* param) {
       int imm = strtol((param->buf[2]).substr(1, (param->buf[2]).size()-1).c_str(), NULL, 0);
       unsigned imm_upper = (unsigned)imm & 0xfffff000, imm_lower = (unsigned)imm & 0xfff;
       stringstream ss_u, ss_l;
-      if(imm_lower <= 0x7ff) {
-        ss_u << "0x" << hex << imm_upper;
-        ss_l << "0x" << hex << imm_lower;
+      if(imm_lower > 0x7ff) imm_upper += 0x1000;
+      ss_u << "0x" << hex << imm_upper;
+      ss_l << "0x" << hex << imm_lower;
+      if (imm_lower == 0) {
+        param->irregular[param->pc] = { "lui %r" + to_string(rd) + ", $" + ss_u.str(), false };
+      }
+      else if (imm_upper == 0) {
+        param->irregular[param->pc] = { "addi %r" + to_string(rd) + ", %r0, $" + ss_l.str(), false};
       }
       else {
-        ss_u << "0x" << hex << (imm_upper + 0x1000);
-        ss_l << "0x" << hex << imm_lower;
+        param->irregular[param->pc] = { "lui %r" + to_string(rd) + ", $" + ss_u.str(), true };
+        param->pc += param->pc_interval;
+        param->irregular[param->pc] = { "addi %r" + to_string(rd) + ", %r" + to_string(rd) + ", $" + ss_l.str(), false};
       }
-      param->irregular[param->pc] = { "lui %r" + to_string(rd) + ", $" + ss_u.str(), true };
-      param->pc += param->pc_interval;
-      param->irregular[param->pc] = { "addi %r" + to_string(rd) + ", %r" + to_string(rd) + ", $" + ss_l.str(), false};
     }
     else {
         param->irregular[param->pc] = { "lui %r" + to_string(rd) + ", " + param->buf[2], true };

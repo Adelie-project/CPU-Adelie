@@ -115,6 +115,30 @@ inline void warn_nan(param_t* param) {
   }
 }
 
+
+inline int float_to_int(float x) {
+  // ties to even
+  int ret;
+  int n = x;
+  if (x >= 0) {
+    if (x - n == 0.5) {
+      if (n % 2 == 1) ret = n + 1;
+      else ret = n;
+    }
+    else if (x - n < 0.5) ret = n;
+    else ret = n + 1;
+  }
+  else {
+    if (n - x == 0.5) {
+      if (n % 2 == -1) ret = n - 1;
+      else ret = n;
+    }
+    else if (n - x < 0.5) ret = n;
+    else ret = n - 1;
+  }
+  return ret;
+}
+
 void exec_main(param_t* param) {
   param->cnt++;
   if(param->trace <= param->cnt) {
@@ -435,7 +459,7 @@ void exec_main(param_t* param) {
     case FCVTWS:
       set_r_type(param, &rd, &rs1, &rs2);
       if(param->step) printf("fcvtws %%r%d, %%f%d\n", rd, rs1);
-      if(rd != 0) param->reg[rd] = param->freg[rs1];
+      if(rd != 0) param->reg[rd] = float_to_int(param->freg[rs1]);
       pc_inclement(param);
       return;
     case FSQRTS:
