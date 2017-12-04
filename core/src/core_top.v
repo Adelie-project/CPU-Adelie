@@ -150,6 +150,8 @@ module core_top
   (* mark_debug = "true" *) reg [6:0] write_status;
   (* mark_debug = "true" *) reg [6:0] read_status;
 
+  (* mark_debug = "true" *) reg [63:0] total_cnt;
+
   localparam s_read_wait = 7'b0000001;
   localparam s_read_wait2 = 7'b0000010;
   localparam s_read = 7'b0000100;
@@ -242,6 +244,7 @@ module core_top
   always @(posedge CLK) begin
     if(!RST_N) begin
       cpu_state <= IDLE;
+      total_cnt <= 0;
     end else begin
       if (stole) begin
         cpu_state <= cpu_state;
@@ -254,6 +257,7 @@ module core_top
           FETCH:
           begin
             cpu_state <= DECODE;
+            total_cnt <= total_cnt + 1;
           end
           DECODE:
           begin
