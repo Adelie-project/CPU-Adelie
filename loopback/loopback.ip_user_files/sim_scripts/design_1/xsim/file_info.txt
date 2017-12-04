@@ -1,6 +1,0 @@
-design_1.v,verilog,xil_defaultlib,../../../bd/design_1/hdl/design_1.v,
-design_1_axi_uartlite_0_0.vhd,vhdl,xil_defaultlib,../../../bd/design_1/ip/design_1_axi_uartlite_0_0/sim/design_1_axi_uartlite_0_0.vhd,
-design_1_loopback_top_0_1.v,verilog,xil_defaultlib,../../../bd/design_1/ip/design_1_loopback_top_0_1/sim/design_1_loopback_top_0_1.v,
-sim_clk_gen.v,verilog,xil_defaultlib,../../../bd/design_1/ipshared/68f7/hdl/sim_clk_gen.v,
-design_1_sim_clk_gen_0_0.v,verilog,xil_defaultlib,../../../bd/design_1/ip/design_1_sim_clk_gen_0_0/sim/design_1_sim_clk_gen_0_0.v,
-glbl.v,Verilog,xil_defaultlib,glbl.v
