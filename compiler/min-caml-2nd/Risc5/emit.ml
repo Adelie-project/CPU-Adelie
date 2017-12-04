@@ -66,7 +66,7 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | NonTail(x), Addi(y, z') -> Printf.fprintf oc "\taddi\t%s, %s, $%s\n" x y (pp_id_or_imm z')
   | NonTail(x), Sub(y, z') -> Printf.fprintf oc "\tsub\t%s, %s, %s\n" x y (pp_id_or_imm z')
   | NonTail(x), Mul(y, z') -> (*Printf.fprintf oc "\tmul\t%s, %s, %s\n" x y (pp_id_or_imm z')*)Printf.fprintf oc "\tslli\t%s, %s, $2\n" x y(*ちょっと危険だが多分大丈夫*)
-  | NonTail(x), Div(y, z') -> (*Printf.fprintf oc "\tdiv\t%s, %s, %s\n" x y (pp_id_or_imm z')*)Printf.fprintf oc "\tsrli\t%s, %s, $1\n" x y
+  | NonTail(x), Div(y, z') -> (*Printf.fprintf oc "\tdiv\t%s, %s, %s\n" x y (pp_id_or_imm z')*)Printf.fprintf oc "\tsrai\t%s, %s, $1\n" x y
   | NonTail(x), SLL(y, z') -> Printf.fprintf oc "\tslli\t%s, %s, $%s\n" x y (pp_id_or_imm z') (*virtual.mlのC(2)のときしかないので*)
   | NonTail(x), Ld(y, z') ->
       (match z' with
@@ -152,7 +152,7 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       g' oc (NonTail(fregs.(0)), exp);
       Printf.fprintf oc "\tjalr\t%%r0, %s, $0\n" reg_lnk;
       (*Printf.fprintf oc "\tnop\n"*)
-  | Tail, (Restore(x) as exp) ->
+  | Tail, (Restore(x) as exp) -> (*なんか怪しい*)
       (match locate x with
       | [i] -> g' oc (NonTail(regs.(0)), exp)
       | [i; j] when i + 1 = j -> g' oc (NonTail(fregs.(0)), exp)
@@ -298,6 +298,7 @@ let f oc (Prog(data, fundefs, e)) =
   (*Printf.fprintf oc ".global\tmin_caml_start\n";*)
   Printf.fprintf oc "min_caml_start:\n";
   Printf.fprintf oc "\tset\t%s, $2047 ; ad hoc\n" reg_hp;
+  (*Printf.fprintf oc "\tset\t%%r4, $0xaa\n\tout\t%%r4 ; for contest server\n";*)
   (*Printf.fprintf oc "\tsave\t%%sp, -112, %%sp\n"; (* from gcc; why 112? *)*)
   stackset := S.empty;
   stackmap := [];
