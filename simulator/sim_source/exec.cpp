@@ -249,19 +249,19 @@ void exec_main(param_t* param) {
     case XORI:
       set_i_type(param, &rd, &rs1, &imm);
       if(param->step) printf("xori %%r%d, %%r%d, $%d\n", rd, rs1, imm);
-      if(rd != 0) param->reg[rd] = param->reg[rs1] ^ (imm & 0xfff);
+      if(rd != 0) param->reg[rd] = param->reg[rs1];
       pc_inclement(param);
       return;
     case ORI:
       set_i_type(param, &rd, &rs1, &imm);
       if(param->step) printf("ori %%r%d, %%r%d, $%d\n", rd, rs1, imm);
-      if(rd != 0) param->reg[rd] = param->reg[rs1] | (imm & 0xfff);
+      if(rd != 0) param->reg[rd] = param->reg[rs1];
       pc_inclement(param);
       return;
     case ANDI:
       set_i_type(param, &rd, &rs1, &imm);
       if(param->step) printf("andi %%r%d, %%r%d, $%d\n", rd, rs1, imm);
-      if(rd != 0) param->reg[rd] = param->reg[rs1] & (imm & 0xfff);
+      if(rd != 0) param->reg[rd] = param->reg[rs1];
       pc_inclement(param);
       return;
     case SLLI:

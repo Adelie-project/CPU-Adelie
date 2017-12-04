@@ -59,7 +59,7 @@ void parse(param_t *param) {
     while(1) {
       param->readline = param->irregular[param->pc].first;
       divide(param);
-      parce_irregular(param);
+      parse_irregular(param);
       result = encoding(param);
       write_result(param, result);
       if (param->irregular[param->pc].second) param->pc += param->pc_interval;
@@ -82,7 +82,7 @@ void pre_parse(param_t *param) {
     return;
   }
   //特殊処理
-  pre_parce_irregular(param);
+  pre_parse_irregular(param);
   param->pc += param->pc_interval;
   return;
 }
