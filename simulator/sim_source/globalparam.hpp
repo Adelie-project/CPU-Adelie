@@ -25,7 +25,7 @@
 
 using namespace std;
 
-#define RBUFSIZE 16384
+#define RBUFSIZE 65536
 #define HASHWIDTH 1000003
 
 #define Loop(i, n) for(int i = 0; i < (int)n; i++)
