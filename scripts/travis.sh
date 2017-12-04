@@ -11,5 +11,6 @@ make -j2 VERBOSE=1
 # Test build the compiler
 cd "$DIR/.."
 cd compiler/min-caml-2nd/
+ocaml -version
 ./to_risc5
 make top
