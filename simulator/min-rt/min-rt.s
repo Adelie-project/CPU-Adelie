@@ -1,4 +1,3 @@
-	addi %r0, %r0, $0
 min_caml_start:
 	set	%r3, $2047 ; ad hoc
 	set	%r4, $1
