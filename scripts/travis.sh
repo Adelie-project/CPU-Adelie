@@ -6,13 +6,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Test build simulator
 cd "$DIR/.."
 cd simulator/
-rm -rf build
-mkdir build
-cd build
-cmake -DCMAKE_BUILD_TYPE=Debug -Dsanitize=On ..
 make -j2 VERBOSE=1
-cd ..
-
 
 # Fun each bin file through the simulator and check the command line output.
 for f in test/*.bin
@@ -36,9 +30,8 @@ do
     fi
 done
 
-
 # Test build the compiler
 cd "$DIR/.."
-cd compiler/min-caml/
-bash ./to_x86
-make -j2
+cd compiler/min-caml-2nd/
+./to_risc5
+make top
