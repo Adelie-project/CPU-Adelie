@@ -25,10 +25,118 @@ Finished Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1
 Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xdc] for cell 'design_1_i/clk_wiz_0/inst'
 INFO: [Timing 38-35] Done setting XDC timing constraints. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xdc:57]
 INFO: [Timing 38-2] Deriving generated clocks [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xdc:57]
-get_clocks: Time (s): cpu = 00:00:18 ; elapsed = 00:00:09 . Memory (MB): peak = 1862.750 ; gain = 347.500 ; free physical = 8329 ; free virtual = 26965
+get_clocks: Time (s): cpu = 00:00:19 ; elapsed = 00:00:11 . Memory (MB): peak = 1862.754 ; gain = 347.504 ; free physical = 1416 ; free virtual = 18528
 Finished Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xdc] for cell 'design_1_i/clk_wiz_0/inst'
-Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila.xdc] for cell 'design_1_i/system_ila/inst/ila_lib/inst'
-Finished Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila.xdc] for cell 'design_1_i/system_ila/inst/ila_lib/inst'
+Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_system_ila1_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila.xdc] for cell 'design_1_i/system_ila1/inst/ila_lib/inst'
+Finished Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_system_ila1_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila.xdc] for cell 'design_1_i/system_ila1/inst/ila_lib/inst'
+Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[0]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[1]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[2]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[3]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[4]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[5]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[6]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[7]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[8]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[9]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[10]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[11]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[12]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[13]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[14]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[15]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[16]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[17]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[18]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[19]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[20]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[21]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[22]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[23]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[24]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[25]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[26]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[27]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[28]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[29]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[30]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg31[31]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+CRITICAL WARNING: [Vivado 12-1419] Debug core 'u_ila_0' was not found. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:1]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[0]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[1]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[2]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[3]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[4]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[5]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[6]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[7]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[8]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[9]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[10]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[11]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[12]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[13]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[14]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[15]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[16]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[17]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[18]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[19]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[20]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[21]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[22]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[23]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[24]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[25]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[26]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[27]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[28]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[29]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[30]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg21[31]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+CRITICAL WARNING: [Vivado 12-1419] Debug core 'u_ila_0' was not found. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:2]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[0]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[1]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[2]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[3]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[4]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[5]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[6]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[7]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[8]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[9]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[10]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[11]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[12]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[13]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[14]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[15]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[16]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[17]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[18]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[19]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[20]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[21]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[22]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[23]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[24]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[25]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[26]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[27]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[28]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[29]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[30]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/u_core_reg/reg11[31]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+CRITICAL WARNING: [Vivado 12-1419] Debug core 'u_ila_0' was not found. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:3]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/write_status__0[0]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:4]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/write_status__0[1]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:4]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/write_status__0[2]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:4]
+WARNING: [Vivado 12-507] No nets matched 'design_1_i/core_top_0/inst/write_status__0[3]'. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:4]
+INFO: [Common 17-14] Message 'Vivado 12-507' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:4]
+CRITICAL WARNING: [Vivado 12-1419] Debug core 'u_ila_0' was not found. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:4]
+CRITICAL WARNING: [Vivado 12-1419] Debug core 'u_ila_0' was not found. [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc:5]
+Finished Parsing XDC File [/home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc]
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 107 instances were transformed.
@@ -38,13 +146,13 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   IBUF => IBUF (IBUFCTRL, INBUF): 2 instances
   IBUFDS => IBUFDS (DIFFINBUF, IBUFCTRL): 1 instances
 
-link_design: Time (s): cpu = 00:00:27 ; elapsed = 00:00:17 . Memory (MB): peak = 1866.754 ; gain = 863.875 ; free physical = 8329 ; free virtual = 26958
+link_design: Time (s): cpu = 00:00:30 ; elapsed = 00:00:21 . Memory (MB): peak = 1868.754 ; gain = 865.875 ; free physical = 1421 ; free virtual = 18521
 INFO: [Common 17-600] The following parameters have non-default value.
 tcl.collectionResultDisplayLimit
 Command: opt_design
 Attempting to get a license for feature 'Implementation' and/or device 'xcku040'
 INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xcku040'
-INFO: [Common 17-1223] The version limit for your license is '2017.03' and will expire in -247 days. A version limit expiration means that, although you may be able to continue to use the current version of tools or IP with this license, you will not be eligible for any updates or new releases.
+INFO: [Common 17-1223] The version limit for your license is '2017.03' and will expire in -248 days. A version limit expiration means that, although you may be able to continue to use the current version of tools or IP with this license, you will not be eligible for any updates or new releases.
 Running DRC as a precondition to command opt_design
 
 Starting DRC Task
@@ -52,7 +160,7 @@ INFO: [DRC 23-27] Running DRC with 4 threads
 INFO: [Project 1-461] DRC finished with 0 Errors
 INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.84 . Memory (MB): peak = 1906.773 ; gain = 32.020 ; free physical = 8325 ; free virtual = 26954
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:00.92 . Memory (MB): peak = 1908.773 ; gain = 32.020 ; free physical = 1421 ; free virtual = 18519
 INFO: [Timing 38-35] Done setting XDC timing constraints.
 
 Starting Logic Optimization Task
@@ -62,47 +170,50 @@ INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2016.4/data/ip'.
 INFO: [IP_Flow 19-3806] Processing IP xilinx.com:ip:xsdbm:2.0 for cell dbg_hub_CV.
-INFO: [Chipscope 16-220] Re-using generated and synthesized IP, "xilinx.com:ip:xsdbm:2.0", from Vivado IP cache entry "b00049c7f18ae2bf".
-Netlist sorting complete. Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.05 . Memory (MB): peak = 2044.668 ; gain = 0.000 ; free physical = 8171 ; free virtual = 26802
-Phase 1 Generate And Synthesize Debug Cores | Checksum: 20b32512c
+INFO: [Chipscope 16-220] Re-using generated and synthesized IP, "xilinx.com:ip:xsdbm:2.0", from Vivado IP cache entry "5884a648305e2d65".
+get_clocks: Time (s): cpu = 00:00:14 ; elapsed = 00:00:06 . Memory (MB): peak = 2049.676 ; gain = 5.000 ; free physical = 1236 ; free virtual = 18377
+INFO: [IP_Flow 19-3806] Processing IP xilinx.com:ip:ila:6.2 for cell u_ila_0_CV.
+Netlist sorting complete. Time (s): cpu = 00:00:00.12 ; elapsed = 00:00:00.12 . Memory (MB): peak = 2074.730 ; gain = 0.000 ; free physical = 1439 ; free virtual = 18401
+Phase 1 Generate And Synthesize Debug Cores | Checksum: 28b5c0b51
 
-Time (s): cpu = 00:00:34 ; elapsed = 00:00:24 . Memory (MB): peak = 2044.668 ; gain = 130.898 ; free physical = 8171 ; free virtual = 26802
-Implement Debug Cores | Checksum: 261799105
+Time (s): cpu = 00:03:51 ; elapsed = 00:03:44 . Memory (MB): peak = 2074.730 ; gain = 159.961 ; free physical = 1446 ; free virtual = 18401
+Implement Debug Cores | Checksum: 2adace301
+INFO: [Timing 38-35] Done setting XDC timing constraints.
 
 Phase 2 Retarget
-INFO: [Opt 31-138] Pushed 8 inverter(s) to 2371 load pin(s).
+INFO: [Opt 31-138] Pushed 11 inverter(s) to 2464 load pin(s).
 INFO: [Opt 31-49] Retargeted 0 cell(s).
-Phase 2 Retarget | Checksum: 20c97b0e3
+Phase 2 Retarget | Checksum: 1c87b323f
 
-Time (s): cpu = 00:00:36 ; elapsed = 00:00:26 . Memory (MB): peak = 2044.668 ; gain = 130.898 ; free physical = 8170 ; free virtual = 26800
+Time (s): cpu = 00:04:10 ; elapsed = 00:03:53 . Memory (MB): peak = 2134.730 ; gain = 219.961 ; free physical = 1415 ; free virtual = 18370
 
 Phase 3 Constant propagation
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-INFO: [Opt 31-10] Eliminated 142 cells.
-Phase 3 Constant propagation | Checksum: 1097e6095
+INFO: [Opt 31-10] Eliminated 115 cells.
+Phase 3 Constant propagation | Checksum: 161e5f870
 
-Time (s): cpu = 00:00:37 ; elapsed = 00:00:27 . Memory (MB): peak = 2044.668 ; gain = 130.898 ; free physical = 8165 ; free virtual = 26796
+Time (s): cpu = 00:04:12 ; elapsed = 00:03:55 . Memory (MB): peak = 2134.730 ; gain = 219.961 ; free physical = 1411 ; free virtual = 18367
 
 Phase 4 Sweep
-INFO: [Opt 31-12] Eliminated 1867 unconnected nets.
-INFO: [Opt 31-11] Eliminated 211 unconnected cells.
-Phase 4 Sweep | Checksum: 18ca89026
+INFO: [Opt 31-12] Eliminated 2039 unconnected nets.
+INFO: [Opt 31-11] Eliminated 210 unconnected cells.
+Phase 4 Sweep | Checksum: 19420d69d
 
-Time (s): cpu = 00:00:38 ; elapsed = 00:00:29 . Memory (MB): peak = 2044.668 ; gain = 130.898 ; free physical = 8165 ; free virtual = 26796
+Time (s): cpu = 00:04:14 ; elapsed = 00:03:57 . Memory (MB): peak = 2134.730 ; gain = 219.961 ; free physical = 1412 ; free virtual = 18367
 
 Phase 5 BUFG optimization
 INFO: [Opt 31-12] Eliminated 0 unconnected nets.
 INFO: [Opt 31-11] Eliminated 0 unconnected cells.
-Phase 5 BUFG optimization | Checksum: 2333af0cf
+Phase 5 BUFG optimization | Checksum: 1de255962
 
-Time (s): cpu = 00:00:41 ; elapsed = 00:00:32 . Memory (MB): peak = 2044.668 ; gain = 130.898 ; free physical = 8165 ; free virtual = 26796
+Time (s): cpu = 00:04:18 ; elapsed = 00:04:01 . Memory (MB): peak = 2134.730 ; gain = 219.961 ; free physical = 1413 ; free virtual = 18368
 
 Starting Connectivity Check Task
 
-Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2044.668 ; gain = 0.000 ; free physical = 8165 ; free virtual = 26796
-Ending Logic Optimization Task | Checksum: 2333af0cf
+Time (s): cpu = 00:00:00.07 ; elapsed = 00:00:00.07 . Memory (MB): peak = 2134.730 ; gain = 0.000 ; free physical = 1413 ; free virtual = 18368
+Ending Logic Optimization Task | Checksum: 1de255962
 
-Time (s): cpu = 00:00:41 ; elapsed = 00:00:32 . Memory (MB): peak = 2044.668 ; gain = 130.898 ; free physical = 8165 ; free virtual = 26796
+Time (s): cpu = 00:04:18 ; elapsed = 00:04:01 . Memory (MB): peak = 2134.730 ; gain = 219.961 ; free physical = 1413 ; free virtual = 18368
 
 Starting Power Optimization Task
 INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
@@ -115,34 +226,35 @@ INFO: [Pwropt 34-10] Applying ODC optimizations ...
 
 
 Starting PowerOpt Patch Enables Task
-INFO: [Pwropt 34-162] WRITE_MODE attribute of 0 BRAM(s) out of a total of 423 has been updated to save power. Run report_power_opt to get a complete listing of the BRAMs updated.
+INFO: [Pwropt 34-162] WRITE_MODE attribute of 0 BRAM(s) out of a total of 440 has been updated to save power. Run report_power_opt to get a complete listing of the BRAMs updated.
 INFO: [Pwropt 34-201] Structural ODC has moved 0 WE to EN ports
-Number of BRAM Ports augmented: 1 newly gated: 369 Total Ports: 846
-Ending PowerOpt Patch Enables Task | Checksum: 1d8694826
+Number of BRAM Ports augmented: 3 newly gated: 385 Total Ports: 880
+Ending PowerOpt Patch Enables Task | Checksum: 1b958e8ab
 
-Time (s): cpu = 00:00:00.44 ; elapsed = 00:00:00.43 . Memory (MB): peak = 2659.719 ; gain = 0.000 ; free physical = 7608 ; free virtual = 26239
-Ending Power Optimization Task | Checksum: 1d8694826
+Time (s): cpu = 00:00:00.65 ; elapsed = 00:00:00.64 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 769 ; free virtual = 17731
+Ending Power Optimization Task | Checksum: 1b958e8ab
 
-Time (s): cpu = 00:00:50 ; elapsed = 00:00:30 . Memory (MB): peak = 2659.719 ; gain = 615.051 ; free physical = 7608 ; free virtual = 26239
+Time (s): cpu = 00:01:04 ; elapsed = 00:00:39 . Memory (MB): peak = 2811.602 ; gain = 676.871 ; free physical = 769 ; free virtual = 17731
 INFO: [Common 17-83] Releasing license: Implementation
-39 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+44 Infos, 100 Warnings, 5 Critical Warnings and 0 Errors encountered.
 opt_design completed successfully
-opt_design: Time (s): cpu = 00:01:48 ; elapsed = 00:01:07 . Memory (MB): peak = 2659.719 ; gain = 792.961 ; free physical = 7608 ; free virtual = 26239
+opt_design: Time (s): cpu = 00:05:39 ; elapsed = 00:04:46 . Memory (MB): peak = 2811.602 ; gain = 942.844 ; free physical = 769 ; free virtual = 17731
 INFO: [Common 17-600] The following parameters have non-default value.
 tcl.collectionResultDisplayLimit
 Writing placer database...
 Writing XDEF routing.
 Writing XDEF routing logical nets.
 Writing XDEF routing special nets.
-Write XDEF Complete: Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2659.719 ; gain = 0.000 ; free physical = 7606 ; free virtual = 26240
+Write XDEF Complete: Time (s): cpu = 00:00:00.08 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 766 ; free virtual = 17731
 INFO: [Common 17-1381] The checkpoint '/home/yamaguchi/CPU-Adelie/koara/koara.runs/impl_1/design_1_wrapper_opt.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:09 ; elapsed = 00:00:06 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 769 ; free virtual = 17728
 INFO: [DRC 23-27] Running DRC with 4 threads
 INFO: [Coretcl 2-168] The results of DRC are in file /home/yamaguchi/CPU-Adelie/koara/koara.runs/impl_1/design_1_wrapper_drc_opted.rpt.
 INFO: [Chipscope 16-240] Debug cores have already been implemented
 Command: place_design
 Attempting to get a license for feature 'Implementation' and/or device 'xcku040'
 INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xcku040'
-INFO: [Common 17-1223] The version limit for your license is '2017.03' and will expire in -247 days. A version limit expiration means that, although you may be able to continue to use the current version of tools or IP with this license, you will not be eligible for any updates or new releases.
+INFO: [Common 17-1223] The version limit for your license is '2017.03' and will expire in -248 days. A version limit expiration means that, although you may be able to continue to use the current version of tools or IP with this license, you will not be eligible for any updates or new releases.
 INFO: [DRC 23-27] Running DRC with 4 threads
 INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
 INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
@@ -155,84 +267,84 @@ Starting Placer Task
 INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 4 CPUs
 
 Phase 1 Placer Initialization
-Netlist sorting complete. Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.06 . Memory (MB): peak = 2659.719 ; gain = 0.000 ; free physical = 7600 ; free virtual = 26237
+Netlist sorting complete. Time (s): cpu = 00:00:00.11 ; elapsed = 00:00:00.12 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 763 ; free virtual = 17722
 INFO: [Timing 38-35] Done setting XDC timing constraints.
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2659.719 ; gain = 0.000 ; free physical = 7600 ; free virtual = 26237
+Netlist sorting complete. Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.06 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 764 ; free virtual = 17724
 
 Phase 1.1 IO Placement/ Clock Placement/ Build Placer Device
 INFO: [Timing 38-35] Done setting XDC timing constraints.
-Phase 1.1 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 12e44b5cb
+Phase 1.1 IO Placement/ Clock Placement/ Build Placer Device | Checksum: ff54ac7f
 
-Time (s): cpu = 00:00:53 ; elapsed = 00:00:37 . Memory (MB): peak = 2711.559 ; gain = 51.840 ; free physical = 7485 ; free virtual = 26122
+Time (s): cpu = 00:01:09 ; elapsed = 00:00:54 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 452 ; free virtual = 17682
 
 Phase 1.2 Build Placer Netlist Model
-Phase 1.2 Build Placer Netlist Model | Checksum: 1d9e161a9
+Phase 1.2 Build Placer Netlist Model | Checksum: efde500e
 
-Time (s): cpu = 00:01:04 ; elapsed = 00:00:44 . Memory (MB): peak = 2711.559 ; gain = 51.840 ; free physical = 7482 ; free virtual = 26119
+Time (s): cpu = 00:01:26 ; elapsed = 00:01:03 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 442 ; free virtual = 17673
 
 Phase 1.3 Constrain Clocks/Macros
-Phase 1.3 Constrain Clocks/Macros | Checksum: 1d9e161a9
+Phase 1.3 Constrain Clocks/Macros | Checksum: efde500e
 
-Time (s): cpu = 00:01:05 ; elapsed = 00:00:44 . Memory (MB): peak = 2711.559 ; gain = 51.840 ; free physical = 7482 ; free virtual = 26119
-Phase 1 Placer Initialization | Checksum: 1d9e161a9
+Time (s): cpu = 00:01:26 ; elapsed = 00:01:03 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 440 ; free virtual = 17672
+Phase 1 Placer Initialization | Checksum: efde500e
 
-Time (s): cpu = 00:01:05 ; elapsed = 00:00:44 . Memory (MB): peak = 2711.559 ; gain = 51.840 ; free physical = 7482 ; free virtual = 26119
+Time (s): cpu = 00:01:26 ; elapsed = 00:01:04 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 440 ; free virtual = 17672
 
 Phase 2 Global Placement
-Phase 2 Global Placement | Checksum: 12cd7c3c8
+Phase 2 Global Placement | Checksum: 72fbb82b
 
-Time (s): cpu = 00:01:36 ; elapsed = 00:01:03 . Memory (MB): peak = 2735.566 ; gain = 75.848 ; free physical = 7464 ; free virtual = 26101
+Time (s): cpu = 00:02:09 ; elapsed = 00:01:30 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 400 ; free virtual = 17629
 
 Phase 3 Detail Placement
 
 Phase 3.1 Commit Multi Column Macros
-Phase 3.1 Commit Multi Column Macros | Checksum: 12cd7c3c8
+Phase 3.1 Commit Multi Column Macros | Checksum: 72fbb82b
 
-Time (s): cpu = 00:01:37 ; elapsed = 00:01:03 . Memory (MB): peak = 2735.566 ; gain = 75.848 ; free physical = 7464 ; free virtual = 26101
+Time (s): cpu = 00:02:10 ; elapsed = 00:01:30 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 376 ; free virtual = 17631
 
 Phase 3.2 Commit Most Macros & LUTRAMs
-Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 21970f0c5
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 11563755d
 
-Time (s): cpu = 00:01:41 ; elapsed = 00:01:06 . Memory (MB): peak = 2735.566 ; gain = 75.848 ; free physical = 7464 ; free virtual = 26101
+Time (s): cpu = 00:02:17 ; elapsed = 00:01:35 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 390 ; free virtual = 17625
 
 Phase 3.3 Area Swap Optimization
-Phase 3.3 Area Swap Optimization | Checksum: 22ec39455
+Phase 3.3 Area Swap Optimization | Checksum: da7ad70c
 
-Time (s): cpu = 00:01:41 ; elapsed = 00:01:06 . Memory (MB): peak = 2735.566 ; gain = 75.848 ; free physical = 7464 ; free virtual = 26101
+Time (s): cpu = 00:02:18 ; elapsed = 00:01:36 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 385 ; free virtual = 17620
 
 Phase 3.4 Pipeline Register Optimization
-Phase 3.4 Pipeline Register Optimization | Checksum: 24b3f117a
+Phase 3.4 Pipeline Register Optimization | Checksum: 18672bfd8
 
-Time (s): cpu = 00:01:42 ; elapsed = 00:01:06 . Memory (MB): peak = 2735.566 ; gain = 75.848 ; free physical = 7464 ; free virtual = 26101
+Time (s): cpu = 00:02:18 ; elapsed = 00:01:36 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 384 ; free virtual = 17619
 
 Phase 3.5 IO Cut Optimizer
-Phase 3.5 IO Cut Optimizer | Checksum: 1bd12f4f6
+Phase 3.5 IO Cut Optimizer | Checksum: c88d0bf3
 
-Time (s): cpu = 00:01:42 ; elapsed = 00:01:07 . Memory (MB): peak = 2735.566 ; gain = 75.848 ; free physical = 7464 ; free virtual = 26101
+Time (s): cpu = 00:02:19 ; elapsed = 00:01:37 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 382 ; free virtual = 17620
 
 Phase 3.6 Timing Path Optimizer
-Phase 3.6 Timing Path Optimizer | Checksum: 1bd12f4f6
+Phase 3.6 Timing Path Optimizer | Checksum: c88d0bf3
 
-Time (s): cpu = 00:01:42 ; elapsed = 00:01:07 . Memory (MB): peak = 2735.566 ; gain = 75.848 ; free physical = 7464 ; free virtual = 26101
+Time (s): cpu = 00:02:19 ; elapsed = 00:01:37 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 389 ; free virtual = 17619
 
 Phase 3.7 Small Shape Detail Placement
-Phase 3.7 Small Shape Detail Placement | Checksum: 1a08070ac
+Phase 3.7 Small Shape Detail Placement | Checksum: 10306ed30
 
-Time (s): cpu = 00:01:51 ; elapsed = 00:01:11 . Memory (MB): peak = 2735.566 ; gain = 75.848 ; free physical = 7463 ; free virtual = 26100
+Time (s): cpu = 00:02:34 ; elapsed = 00:01:43 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 399 ; free virtual = 17619
 
 Phase 3.8 Re-assign LUT pins
-Phase 3.8 Re-assign LUT pins | Checksum: 154c21e40
+Phase 3.8 Re-assign LUT pins | Checksum: 536bc2bd
 
-Time (s): cpu = 00:01:52 ; elapsed = 00:01:11 . Memory (MB): peak = 2735.566 ; gain = 75.848 ; free physical = 7463 ; free virtual = 26100
+Time (s): cpu = 00:02:35 ; elapsed = 00:01:44 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 406 ; free virtual = 17617
 
 Phase 3.9 Pipeline Register Optimization
-Phase 3.9 Pipeline Register Optimization | Checksum: 154c21e40
+Phase 3.9 Pipeline Register Optimization | Checksum: 11b74ee01
 
-Time (s): cpu = 00:01:53 ; elapsed = 00:01:12 . Memory (MB): peak = 2735.566 ; gain = 75.848 ; free physical = 7463 ; free virtual = 26100
-Phase 3 Detail Placement | Checksum: 154c21e40
+Time (s): cpu = 00:02:35 ; elapsed = 00:01:45 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 406 ; free virtual = 17618
+Phase 3 Detail Placement | Checksum: 11b74ee01
 
-Time (s): cpu = 00:01:53 ; elapsed = 00:01:12 . Memory (MB): peak = 2735.566 ; gain = 75.848 ; free physical = 7463 ; free virtual = 26100
+Time (s): cpu = 00:02:36 ; elapsed = 00:01:45 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 408 ; free virtual = 17617
 
 Phase 4 Post Placement Optimization and Clean-Up
 
@@ -240,51 +352,52 @@ Phase 4.1 Post Commit Optimization
 INFO: [Timing 38-35] Done setting XDC timing constraints.
 
 Phase 4.1.1 Post Placement Optimization
-INFO: [Place 30-746] Post Placement Timing Summary WNS=2.158. For the most accurate timing information please run report_timing.
-Phase 4.1.1 Post Placement Optimization | Checksum: 16198446c
+INFO: [Place 30-746] Post Placement Timing Summary WNS=1.461. For the most accurate timing information please run report_timing.
+Phase 4.1.1 Post Placement Optimization | Checksum: 1aa9603ed
 
-Time (s): cpu = 00:02:17 ; elapsed = 00:01:22 . Memory (MB): peak = 2735.566 ; gain = 75.848 ; free physical = 7449 ; free virtual = 26086
-Phase 4.1 Post Commit Optimization | Checksum: 16198446c
+Time (s): cpu = 00:03:09 ; elapsed = 00:01:59 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 411 ; free virtual = 17616
+Phase 4.1 Post Commit Optimization | Checksum: 1aa9603ed
 
-Time (s): cpu = 00:02:18 ; elapsed = 00:01:22 . Memory (MB): peak = 2735.566 ; gain = 75.848 ; free physical = 7449 ; free virtual = 26086
+Time (s): cpu = 00:03:09 ; elapsed = 00:02:00 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 411 ; free virtual = 17617
 
 Phase 4.2 Post Placement Cleanup
-Phase 4.2 Post Placement Cleanup | Checksum: 16198446c
+Phase 4.2 Post Placement Cleanup | Checksum: 1aa9603ed
 
-Time (s): cpu = 00:02:18 ; elapsed = 00:01:23 . Memory (MB): peak = 2735.566 ; gain = 75.848 ; free physical = 7449 ; free virtual = 26086
+Time (s): cpu = 00:03:10 ; elapsed = 00:02:00 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 412 ; free virtual = 17618
 
 Phase 4.3 Placer Reporting
-Phase 4.3 Placer Reporting | Checksum: 24457049c
+Phase 4.3 Placer Reporting | Checksum: 1d001725d
 
-Time (s): cpu = 00:02:19 ; elapsed = 00:01:24 . Memory (MB): peak = 2735.566 ; gain = 75.848 ; free physical = 7449 ; free virtual = 26086
+Time (s): cpu = 00:03:12 ; elapsed = 00:02:02 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 415 ; free virtual = 17619
 
 Phase 4.4 Final Placement Cleanup
-Phase 4.4 Final Placement Cleanup | Checksum: 220e3416e
+Phase 4.4 Final Placement Cleanup | Checksum: 1a6f854ad
 
-Time (s): cpu = 00:02:19 ; elapsed = 00:01:24 . Memory (MB): peak = 2735.566 ; gain = 75.848 ; free physical = 7449 ; free virtual = 26086
-Phase 4 Post Placement Optimization and Clean-Up | Checksum: 220e3416e
+Time (s): cpu = 00:03:12 ; elapsed = 00:02:02 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 413 ; free virtual = 17617
+Phase 4 Post Placement Optimization and Clean-Up | Checksum: 1a6f854ad
 
-Time (s): cpu = 00:02:20 ; elapsed = 00:01:24 . Memory (MB): peak = 2735.566 ; gain = 75.848 ; free physical = 7449 ; free virtual = 26086
-Ending Placer Task | Checksum: 1bd5096b9
+Time (s): cpu = 00:03:12 ; elapsed = 00:02:03 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 417 ; free virtual = 17617
+Ending Placer Task | Checksum: e7488309
 
-Time (s): cpu = 00:02:20 ; elapsed = 00:01:24 . Memory (MB): peak = 2735.566 ; gain = 75.848 ; free physical = 7449 ; free virtual = 26086
+Time (s): cpu = 00:03:12 ; elapsed = 00:02:03 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 419 ; free virtual = 17619
 INFO: [Common 17-83] Releasing license: Implementation
-59 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+64 Infos, 100 Warnings, 5 Critical Warnings and 0 Errors encountered.
 place_design completed successfully
-place_design: Time (s): cpu = 00:02:25 ; elapsed = 00:01:26 . Memory (MB): peak = 2735.566 ; gain = 75.848 ; free physical = 7449 ; free virtual = 26086
+place_design: Time (s): cpu = 00:03:20 ; elapsed = 00:02:05 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 419 ; free virtual = 17619
 Writing placer database...
 Writing XDEF routing.
 Writing XDEF routing logical nets.
 Writing XDEF routing special nets.
-Write XDEF Complete: Time (s): cpu = 00:00:05 ; elapsed = 00:00:02 . Memory (MB): peak = 2735.566 ; gain = 0.000 ; free physical = 7421 ; free virtual = 26088
+Write XDEF Complete: Time (s): cpu = 00:00:07 ; elapsed = 00:00:02 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 383 ; free virtual = 17621
 INFO: [Common 17-1381] The checkpoint '/home/yamaguchi/CPU-Adelie/koara/koara.runs/impl_1/design_1_wrapper_placed.dcp' has been generated.
-report_io: Time (s): cpu = 00:00:00.20 ; elapsed = 00:00:00.24 . Memory (MB): peak = 2735.566 ; gain = 0.000 ; free physical = 7441 ; free virtual = 26087
-report_utilization: Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2735.566 ; gain = 0.000 ; free physical = 7440 ; free virtual = 26086
-report_control_sets: Time (s): cpu = 00:00:00.08 ; elapsed = 00:00:00.11 . Memory (MB): peak = 2735.566 ; gain = 0.000 ; free physical = 7440 ; free virtual = 26086
+write_checkpoint: Time (s): cpu = 00:00:12 ; elapsed = 00:00:06 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 409 ; free virtual = 17618
+report_io: Time (s): cpu = 00:00:00.23 ; elapsed = 00:00:00.27 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 408 ; free virtual = 17617
+report_utilization: Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 410 ; free virtual = 17619
+report_control_sets: Time (s): cpu = 00:00:00.14 ; elapsed = 00:00:00.19 . Memory (MB): peak = 2811.602 ; gain = 0.000 ; free physical = 410 ; free virtual = 17620
 Command: route_design
 Attempting to get a license for feature 'Implementation' and/or device 'xcku040'
 INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xcku040'
-INFO: [Common 17-1223] The version limit for your license is '2017.03' and will expire in -247 days. A version limit expiration means that, although you may be able to continue to use the current version of tools or IP with this license, you will not be eligible for any updates or new releases.
+INFO: [Common 17-1223] The version limit for your license is '2017.03' and will expire in -248 days. A version limit expiration means that, although you may be able to continue to use the current version of tools or IP with this license, you will not be eligible for any updates or new releases.
 Running DRC as a precondition to command route_design
 INFO: [DRC 23-27] Running DRC with 4 threads
 INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
@@ -293,139 +406,139 @@ INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more in
 
 Starting Routing Task
 INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 4 CPUs
-Checksum: PlaceDB: 6954c511 ConstDB: 0 ShapeSum: 713d1178 RouteDB: e2bec030
+Checksum: PlaceDB: b351d8c6 ConstDB: 0 ShapeSum: e8b3bd3 RouteDB: 256b6e70
 
 Phase 1 Build RT Design
-Phase 1 Build RT Design | Checksum: e36e48db
+Phase 1 Build RT Design | Checksum: 122223c92
 
-Time (s): cpu = 00:00:42 ; elapsed = 00:00:25 . Memory (MB): peak = 2872.316 ; gain = 136.750 ; free physical = 7279 ; free virtual = 25925
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:30 . Memory (MB): peak = 2985.645 ; gain = 174.043 ; free physical = 161 ; free virtual = 17376
 
 Phase 2 Router Initialization
 
 Phase 2.1 Create Timer
-Phase 2.1 Create Timer | Checksum: 108094611
+Phase 2.1 Create Timer | Checksum: 1eeec750c
 
-Time (s): cpu = 00:00:43 ; elapsed = 00:00:25 . Memory (MB): peak = 2872.320 ; gain = 136.754 ; free physical = 7279 ; free virtual = 25925
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:31 . Memory (MB): peak = 2985.648 ; gain = 174.047 ; free physical = 159 ; free virtual = 17375
 
 Phase 2.2 Fix Topology Constraints
-Phase 2.2 Fix Topology Constraints | Checksum: 108094611
+Phase 2.2 Fix Topology Constraints | Checksum: 1eeec750c
 
-Time (s): cpu = 00:00:43 ; elapsed = 00:00:25 . Memory (MB): peak = 2872.320 ; gain = 136.754 ; free physical = 7279 ; free virtual = 25925
+Time (s): cpu = 00:00:49 ; elapsed = 00:00:31 . Memory (MB): peak = 2985.648 ; gain = 174.047 ; free physical = 158 ; free virtual = 17374
 
 Phase 2.3 Pre Route Cleanup
-Phase 2.3 Pre Route Cleanup | Checksum: 108094611
+Phase 2.3 Pre Route Cleanup | Checksum: 1eeec750c
 
-Time (s): cpu = 00:00:43 ; elapsed = 00:00:26 . Memory (MB): peak = 2872.320 ; gain = 136.754 ; free physical = 7279 ; free virtual = 25925
+Time (s): cpu = 00:00:49 ; elapsed = 00:00:31 . Memory (MB): peak = 2985.648 ; gain = 174.047 ; free physical = 158 ; free virtual = 17374
 
 Phase 2.4 Global Clock Net Routing
  Number of Nodes with overlaps = 0
-Phase 2.4 Global Clock Net Routing | Checksum: 71ef2c45
+Phase 2.4 Global Clock Net Routing | Checksum: 197874ae9
 
-Time (s): cpu = 00:00:45 ; elapsed = 00:00:28 . Memory (MB): peak = 2942.684 ; gain = 207.117 ; free physical = 7208 ; free virtual = 25854
+Time (s): cpu = 00:00:52 ; elapsed = 00:00:34 . Memory (MB): peak = 3056.012 ; gain = 244.410 ; free physical = 178 ; free virtual = 17307
 
 Phase 2.5 Update Timing
-Phase 2.5 Update Timing | Checksum: 1ff04c411
+Phase 2.5 Update Timing | Checksum: 2b86e8d7c
 
-Time (s): cpu = 00:01:24 ; elapsed = 00:00:44 . Memory (MB): peak = 2945.684 ; gain = 210.117 ; free physical = 7191 ; free virtual = 25837
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=2.439  | TNS=0.000  | WHS=-0.112 | THS=-1.753 |
+Time (s): cpu = 00:01:43 ; elapsed = 00:00:57 . Memory (MB): peak = 3065.801 ; gain = 254.199 ; free physical = 168 ; free virtual = 17288
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=1.591  | TNS=0.000  | WHS=-0.136 | THS=-4.850 |
 
-Phase 2 Router Initialization | Checksum: 1b38fd8e3
+Phase 2 Router Initialization | Checksum: 30df0fdef
 
-Time (s): cpu = 00:01:31 ; elapsed = 00:00:47 . Memory (MB): peak = 2945.684 ; gain = 210.117 ; free physical = 7191 ; free virtual = 25837
+Time (s): cpu = 00:01:53 ; elapsed = 00:01:01 . Memory (MB): peak = 3065.801 ; gain = 254.199 ; free physical = 168 ; free virtual = 17289
 
 Phase 3 Initial Routing
-Phase 3 Initial Routing | Checksum: 142aa6a08
+Phase 3 Initial Routing | Checksum: 30fa15ff4
 
-Time (s): cpu = 00:01:48 ; elapsed = 00:00:53 . Memory (MB): peak = 3007.770 ; gain = 272.203 ; free physical = 7128 ; free virtual = 25774
+Time (s): cpu = 00:02:15 ; elapsed = 00:01:09 . Memory (MB): peak = 3126.324 ; gain = 314.723 ; free physical = 165 ; free virtual = 17244
 
 Phase 4 Rip-up And Reroute
 
 Phase 4.1 Global Iteration 0
- Number of Nodes with overlaps = 2674
- Number of Nodes with overlaps = 145
- Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 4421
+ Number of Nodes with overlaps = 268
+ Number of Nodes with overlaps = 14
  Number of Nodes with overlaps = 1
  Number of Nodes with overlaps = 0
 
 Phase 4.1.1 Update Timing
-Phase 4.1.1 Update Timing | Checksum: 19878b93e
+Phase 4.1.1 Update Timing | Checksum: 1fa7b77ec
 
-Time (s): cpu = 00:02:22 ; elapsed = 00:01:06 . Memory (MB): peak = 3007.773 ; gain = 272.207 ; free physical = 7127 ; free virtual = 25773
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.043 | TNS=-0.043 | WHS=0.004  | THS=0.000  |
+Time (s): cpu = 00:03:21 ; elapsed = 00:01:35 . Memory (MB): peak = 3126.328 ; gain = 314.727 ; free physical = 164 ; free virtual = 17240
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.035 | TNS=-0.067 | WHS=0.004  | THS=0.000  |
 
 
 Phase 4.1.2 GlobIterForTiming
 
 Phase 4.1.2.1 Update Timing
-Phase 4.1.2.1 Update Timing | Checksum: 19878b93e
+Phase 4.1.2.1 Update Timing | Checksum: 1fa7b77ec
 
-Time (s): cpu = 00:02:25 ; elapsed = 00:01:08 . Memory (MB): peak = 3007.773 ; gain = 272.207 ; free physical = 7126 ; free virtual = 25772
+Time (s): cpu = 00:03:25 ; elapsed = 00:01:37 . Memory (MB): peak = 3126.328 ; gain = 314.727 ; free physical = 164 ; free virtual = 17240
 
 Phase 4.1.2.2 Fast Budgeting
-Phase 4.1.2.2 Fast Budgeting | Checksum: 1a7acb8c1
+Phase 4.1.2.2 Fast Budgeting | Checksum: 27790b7e6
 
-Time (s): cpu = 00:02:26 ; elapsed = 00:01:09 . Memory (MB): peak = 3007.773 ; gain = 272.207 ; free physical = 7127 ; free virtual = 25773
-Phase 4.1.2 GlobIterForTiming | Checksum: 1645fa1a5
+Time (s): cpu = 00:03:27 ; elapsed = 00:01:38 . Memory (MB): peak = 3126.328 ; gain = 314.727 ; free physical = 163 ; free virtual = 17239
+Phase 4.1.2 GlobIterForTiming | Checksum: 26a696b42
 
-Time (s): cpu = 00:02:27 ; elapsed = 00:01:09 . Memory (MB): peak = 3007.773 ; gain = 272.207 ; free physical = 7127 ; free virtual = 25773
-Phase 4.1 Global Iteration 0 | Checksum: 1645fa1a5
+Time (s): cpu = 00:03:30 ; elapsed = 00:01:42 . Memory (MB): peak = 3126.328 ; gain = 314.727 ; free physical = 163 ; free virtual = 17239
+Phase 4.1 Global Iteration 0 | Checksum: 26a696b42
 
-Time (s): cpu = 00:02:27 ; elapsed = 00:01:09 . Memory (MB): peak = 3007.773 ; gain = 272.207 ; free physical = 7127 ; free virtual = 25773
+Time (s): cpu = 00:03:30 ; elapsed = 00:01:42 . Memory (MB): peak = 3126.328 ; gain = 314.727 ; free physical = 162 ; free virtual = 17239
 
 Phase 4.2 Global Iteration 1
- Number of Nodes with overlaps = 20
+ Number of Nodes with overlaps = 33
  Number of Nodes with overlaps = 0
 
 Phase 4.2.1 Update Timing
-Phase 4.2.1 Update Timing | Checksum: 1f152de2c
+Phase 4.2.1 Update Timing | Checksum: 1b29efe19
 
-Time (s): cpu = 00:02:29 ; elapsed = 00:01:10 . Memory (MB): peak = 3007.773 ; gain = 272.207 ; free physical = 7127 ; free virtual = 25773
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.185  | TNS=0.000  | WHS=N/A    | THS=N/A    |
+Time (s): cpu = 00:03:35 ; elapsed = 00:01:44 . Memory (MB): peak = 3126.328 ; gain = 314.727 ; free physical = 162 ; free virtual = 17238
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.221  | TNS=0.000  | WHS=N/A    | THS=N/A    |
 
-Phase 4.2 Global Iteration 1 | Checksum: 1f152de2c
+Phase 4.2 Global Iteration 1 | Checksum: 1b29efe19
 
-Time (s): cpu = 00:02:29 ; elapsed = 00:01:10 . Memory (MB): peak = 3007.773 ; gain = 272.207 ; free physical = 7127 ; free virtual = 25773
-Phase 4 Rip-up And Reroute | Checksum: 1f152de2c
+Time (s): cpu = 00:03:35 ; elapsed = 00:01:44 . Memory (MB): peak = 3126.328 ; gain = 314.727 ; free physical = 162 ; free virtual = 17238
+Phase 4 Rip-up And Reroute | Checksum: 1b29efe19
 
-Time (s): cpu = 00:02:29 ; elapsed = 00:01:11 . Memory (MB): peak = 3007.773 ; gain = 272.207 ; free physical = 7127 ; free virtual = 25773
+Time (s): cpu = 00:03:35 ; elapsed = 00:01:44 . Memory (MB): peak = 3126.328 ; gain = 314.727 ; free physical = 162 ; free virtual = 17238
 
 Phase 5 Delay and Skew Optimization
 
 Phase 5.1 Delay CleanUp
-Phase 5.1 Delay CleanUp | Checksum: 1f152de2c
+Phase 5.1 Delay CleanUp | Checksum: 1b29efe19
 
-Time (s): cpu = 00:02:30 ; elapsed = 00:01:11 . Memory (MB): peak = 3007.773 ; gain = 272.207 ; free physical = 7127 ; free virtual = 25773
+Time (s): cpu = 00:03:36 ; elapsed = 00:01:45 . Memory (MB): peak = 3126.328 ; gain = 314.727 ; free physical = 162 ; free virtual = 17239
 
 Phase 5.2 Clock Skew Optimization
-Phase 5.2 Clock Skew Optimization | Checksum: 1f152de2c
+Phase 5.2 Clock Skew Optimization | Checksum: 1b29efe19
 
-Time (s): cpu = 00:02:30 ; elapsed = 00:01:11 . Memory (MB): peak = 3007.773 ; gain = 272.207 ; free physical = 7127 ; free virtual = 25773
-Phase 5 Delay and Skew Optimization | Checksum: 1f152de2c
+Time (s): cpu = 00:03:36 ; elapsed = 00:01:45 . Memory (MB): peak = 3126.328 ; gain = 314.727 ; free physical = 162 ; free virtual = 17239
+Phase 5 Delay and Skew Optimization | Checksum: 1b29efe19
 
-Time (s): cpu = 00:02:30 ; elapsed = 00:01:11 . Memory (MB): peak = 3007.773 ; gain = 272.207 ; free physical = 7127 ; free virtual = 25773
+Time (s): cpu = 00:03:36 ; elapsed = 00:01:45 . Memory (MB): peak = 3126.328 ; gain = 314.727 ; free physical = 163 ; free virtual = 17238
 
 Phase 6 Post Hold Fix
 
 Phase 6.1 Hold Fix Iter
 
 Phase 6.1.1 Update Timing
-Phase 6.1.1 Update Timing | Checksum: 277021f0c
+Phase 6.1.1 Update Timing | Checksum: 1ea3c888f
 
-Time (s): cpu = 00:02:36 ; elapsed = 00:01:14 . Memory (MB): peak = 3007.773 ; gain = 272.207 ; free physical = 7127 ; free virtual = 25773
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.185  | TNS=0.000  | WHS=0.004  | THS=0.000  |
+Time (s): cpu = 00:03:45 ; elapsed = 00:01:50 . Memory (MB): peak = 3126.328 ; gain = 314.727 ; free physical = 162 ; free virtual = 17237
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.221  | TNS=0.000  | WHS=0.004  | THS=0.000  |
 
-Phase 6.1 Hold Fix Iter | Checksum: 1521c9571
+Phase 6.1 Hold Fix Iter | Checksum: 20e7ebec6
 
-Time (s): cpu = 00:02:36 ; elapsed = 00:01:15 . Memory (MB): peak = 3007.773 ; gain = 272.207 ; free physical = 7127 ; free virtual = 25773
-Phase 6 Post Hold Fix | Checksum: 1521c9571
+Time (s): cpu = 00:03:45 ; elapsed = 00:01:50 . Memory (MB): peak = 3126.328 ; gain = 314.727 ; free physical = 161 ; free virtual = 17237
+Phase 6 Post Hold Fix | Checksum: 20e7ebec6
 
-Time (s): cpu = 00:02:36 ; elapsed = 00:01:15 . Memory (MB): peak = 3007.773 ; gain = 272.207 ; free physical = 7127 ; free virtual = 25773
+Time (s): cpu = 00:03:45 ; elapsed = 00:01:50 . Memory (MB): peak = 3126.328 ; gain = 314.727 ; free physical = 161 ; free virtual = 17237
 
 Phase 7 Route finalize
 
 Router Utilization Summary
-  Global Vertical Routing Utilization    = 1.97434 %
-  Global Horizontal Routing Utilization  = 1.64089 %
+  Global Vertical Routing Utilization    = 2.36069 %
+  Global Horizontal Routing Utilization  = 2.09805 %
   Routable Net Status*
   *Does not include unroutable nets such as driverless and loadless.
   Run report_route_status for detailed report.
@@ -434,72 +547,75 @@ Router Utilization Summary
   Number of Partially Routed Nets     = 0
   Number of Node Overlaps             = 0
 
-Phase 7 Route finalize | Checksum: 21601c53d
+Phase 7 Route finalize | Checksum: 29aa1c5e5
 
-Time (s): cpu = 00:02:40 ; elapsed = 00:01:16 . Memory (MB): peak = 3007.773 ; gain = 272.207 ; free physical = 7127 ; free virtual = 25773
+Time (s): cpu = 00:03:49 ; elapsed = 00:01:52 . Memory (MB): peak = 3126.328 ; gain = 314.727 ; free physical = 161 ; free virtual = 17236
 
 Phase 8 Verifying routed nets
 
  Verification completed successfully
-Phase 8 Verifying routed nets | Checksum: 21601c53d
+Phase 8 Verifying routed nets | Checksum: 29aa1c5e5
 
-Time (s): cpu = 00:02:40 ; elapsed = 00:01:16 . Memory (MB): peak = 3007.773 ; gain = 272.207 ; free physical = 7127 ; free virtual = 25773
+Time (s): cpu = 00:03:49 ; elapsed = 00:01:52 . Memory (MB): peak = 3126.328 ; gain = 314.727 ; free physical = 160 ; free virtual = 17235
 
 Phase 9 Depositing Routes
-Phase 9 Depositing Routes | Checksum: 21601c53d
+Phase 9 Depositing Routes | Checksum: 29aa1c5e5
 
-Time (s): cpu = 00:02:41 ; elapsed = 00:01:17 . Memory (MB): peak = 3007.773 ; gain = 272.207 ; free physical = 7127 ; free virtual = 25773
+Time (s): cpu = 00:03:51 ; elapsed = 00:01:54 . Memory (MB): peak = 3126.328 ; gain = 314.727 ; free physical = 160 ; free virtual = 17236
 
 Phase 10 Post Router Timing
 
 Phase 10.1 Update Timing
-Phase 10.1 Update Timing | Checksum: 24b90afa2
+Phase 10.1 Update Timing | Checksum: 2423e7aae
 
-Time (s): cpu = 00:02:47 ; elapsed = 00:01:21 . Memory (MB): peak = 3007.773 ; gain = 272.207 ; free physical = 7126 ; free virtual = 25772
-INFO: [Route 35-57] Estimated Timing Summary | WNS=0.185  | TNS=0.000  | WHS=0.004  | THS=0.000  |
+Time (s): cpu = 00:04:00 ; elapsed = 00:01:59 . Memory (MB): peak = 3126.328 ; gain = 314.727 ; free physical = 156 ; free virtual = 17233
+INFO: [Route 35-57] Estimated Timing Summary | WNS=0.221  | TNS=0.000  | WHS=0.004  | THS=0.000  |
 
 INFO: [Route 35-327] The final timing numbers are based on the router estimated timing analysis. For a complete and accurate timing signoff, please run report_timing_summary.
-Phase 10 Post Router Timing | Checksum: 24b90afa2
+Phase 10 Post Router Timing | Checksum: 2423e7aae
 
-Time (s): cpu = 00:02:47 ; elapsed = 00:01:21 . Memory (MB): peak = 3007.773 ; gain = 272.207 ; free physical = 7126 ; free virtual = 25772
+Time (s): cpu = 00:04:00 ; elapsed = 00:01:59 . Memory (MB): peak = 3126.328 ; gain = 314.727 ; free physical = 156 ; free virtual = 17233
 WARNING: [Route 35-426] Router was unable to fix hold violation on unroutable pins. The router cannot add routing detours to improve hold time because the pins are part of one or more of the following unroutable types: partition pins, fixed routes and intra-site connections.
 Resolution: Run report_timing_summary to analyze the hold violations.
 INFO: [Route 35-16] Router Completed Successfully
 
-Time (s): cpu = 00:02:52 ; elapsed = 00:01:24 . Memory (MB): peak = 3007.773 ; gain = 272.207 ; free physical = 7126 ; free virtual = 25772
+Time (s): cpu = 00:04:07 ; elapsed = 00:02:03 . Memory (MB): peak = 3126.328 ; gain = 314.727 ; free physical = 157 ; free virtual = 17232
 
 Routing Is Done.
 INFO: [Common 17-83] Releasing license: Implementation
-74 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+79 Infos, 101 Warnings, 5 Critical Warnings and 0 Errors encountered.
 route_design completed successfully
-route_design: Time (s): cpu = 00:02:58 ; elapsed = 00:01:26 . Memory (MB): peak = 3007.773 ; gain = 272.207 ; free physical = 7126 ; free virtual = 25772
+route_design: Time (s): cpu = 00:04:14 ; elapsed = 00:02:06 . Memory (MB): peak = 3126.328 ; gain = 314.727 ; free physical = 157 ; free virtual = 17232
 Writing placer database...
 Writing XDEF routing.
 Writing XDEF routing logical nets.
 Writing XDEF routing special nets.
-Write XDEF Complete: Time (s): cpu = 00:00:04 ; elapsed = 00:00:01 . Memory (MB): peak = 3015.777 ; gain = 0.004 ; free physical = 7088 ; free virtual = 25774
+Write XDEF Complete: Time (s): cpu = 00:00:08 ; elapsed = 00:00:03 . Memory (MB): peak = 3134.332 ; gain = 0.004 ; free physical = 162 ; free virtual = 17227
 INFO: [Common 17-1381] The checkpoint '/home/yamaguchi/CPU-Adelie/koara/koara.runs/impl_1/design_1_wrapper_routed.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:13 ; elapsed = 00:00:06 . Memory (MB): peak = 3134.332 ; gain = 8.004 ; free physical = 229 ; free virtual = 17225
 INFO: [DRC 23-27] Running DRC with 4 threads
 INFO: [Coretcl 2-168] The results of DRC are in file /home/yamaguchi/CPU-Adelie/koara/koara.runs/impl_1/design_1_wrapper_drc_routed.rpt.
+report_drc: Time (s): cpu = 00:00:14 ; elapsed = 00:00:05 . Memory (MB): peak = 3142.336 ; gain = 8.004 ; free physical = 226 ; free virtual = 17222
 INFO: [Timing 38-35] Done setting XDC timing constraints.
 INFO: [DRC 23-133] Running Methodology with 4 threads
 INFO: [Coretcl 2-1520] The results of Report Methodology are in file /home/yamaguchi/CPU-Adelie/koara/koara.runs/impl_1/design_1_wrapper_methodology_drc_routed.rpt.
-report_methodology: Time (s): cpu = 00:00:22 ; elapsed = 00:00:09 . Memory (MB): peak = 3023.781 ; gain = 0.000 ; free physical = 7112 ; free virtual = 25770
+report_methodology: Time (s): cpu = 00:00:32 ; elapsed = 00:00:13 . Memory (MB): peak = 3164.332 ; gain = 21.996 ; free physical = 209 ; free virtual = 17198
 INFO: [Timing 38-35] Done setting XDC timing constraints.
 INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -2, Temperature grade: E, Delay Type: min_max.
 INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 4 CPUs
 INFO: [Timing 38-35] Done setting XDC timing constraints.
+report_timing_summary: Time (s): cpu = 00:00:17 ; elapsed = 00:00:07 . Memory (MB): peak = 3189.676 ; gain = 25.344 ; free physical = 175 ; free virtual = 17164
 Command: report_power -file design_1_wrapper_power_routed.rpt -pb design_1_wrapper_power_summary_routed.pb -rpx design_1_wrapper_power_routed.rpx
 Running Vector-less Activity Propagation...
 
 Finished Running Vector-less Activity Propagation
-84 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+89 Infos, 101 Warnings, 5 Critical Warnings and 0 Errors encountered.
 report_power completed successfully
-report_power: Time (s): cpu = 00:00:13 ; elapsed = 00:00:08 . Memory (MB): peak = 3077.824 ; gain = 54.043 ; free physical = 7064 ; free virtual = 25734
+report_power: Time (s): cpu = 00:00:19 ; elapsed = 00:00:12 . Memory (MB): peak = 3267.727 ; gain = 78.051 ; free physical = 166 ; free virtual = 17103
 Command: write_bitstream -force -no_partial_bitfile design_1_wrapper.bit
 Attempting to get a license for feature 'Implementation' and/or device 'xcku040'
 INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xcku040'
-INFO: [Common 17-1223] The version limit for your license is '2017.03' and will expire in -247 days. A version limit expiration means that, although you may be able to continue to use the current version of tools or IP with this license, you will not be eligible for any updates or new releases.
+INFO: [Common 17-1223] The version limit for your license is '2017.03' and will expire in -248 days. A version limit expiration means that, although you may be able to continue to use the current version of tools or IP with this license, you will not be eligible for any updates or new releases.
 Running DRC as a precondition to command write_bitstream
 INFO: [DRC 23-27] Running DRC with 4 threads
 WARNING: [DRC 23-20] Rule violation (CFGBVS-1) Missing CFGBVS and CONFIG_VOLTAGE Design Properties - Neither the CFGBVS nor CONFIG_VOLTAGE voltage property is set in the current_design.  Configuration bank voltage select (CFGBVS) must be set to VCCO or GND, and CONFIG_VOLTAGE must be set to the correct configuration voltage, in order to determine the I/O voltage support for the pins in bank 0.  It is suggested to specify these either using the 'Edit Device Properties' function in the GUI or directly in the XDC file using the following syntax:
@@ -511,7 +627,7 @@ WARNING: [DRC 23-20] Rule violation (CFGBVS-1) Missing CFGBVS and CONFIG_VOLTAGE
  #where value2 is the voltage provided to configuration bank 0
 
 Refer to the device configuration user guide for more information.
-WARNING: [DRC 23-20] Rule violation (RTSTAT-10) No routable loads - 31 net(s) have no routable loads. The problem bus(es) and/or net(s) are dbg_hub/inst/RUNTEST, dbg_hub/inst/TCK, dbg_hub/inst/TMS, dbg_hub/inst/UPDATE_temp_i, dbg_hub/inst/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v2_0_2_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/aempty_fwft_i, dbg_hub/inst/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_CTL/ctl_reg[2:0], dbg_hub/inst/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD1/ctl_reg_en_2[1], dbg_hub/inst/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_CTL/ctl_reg_en_2[1], dbg_hub/inst/SWITCH_N_EXT_BSCAN.bscan_switch/m_bscan_capture[0], dbg_hub/inst/SWITCH_N_EXT_BSCAN.bscan_switch/m_bscan_drck[0], dbg_hub/inst/SWITCH_N_EXT_BSCAN.bscan_switch/m_bscan_flags[7:0], dbg_hub/inst/SWITCH_N_EXT_BSCAN.bscan_switch/m_bscan_runtest[0], dbg_hub/inst/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v2_0_2_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_i, dbg_hub/inst/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v2_0_2_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_i, dbg_hub/inst/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v2_0_2_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg[0] (the first 15 of 22 listed).
+WARNING: [DRC 23-20] Rule violation (RTSTAT-10) No routable loads - 35 net(s) have no routable loads. The problem bus(es) and/or net(s) are dbg_hub/inst/RUNTEST, dbg_hub/inst/TCK, dbg_hub/inst/TMS, dbg_hub/inst/UPDATE_temp_i, dbg_hub/inst/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v2_0_2_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/aempty_fwft_i, dbg_hub/inst/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_CTL/ctl_reg[2:0], dbg_hub/inst/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD1/ctl_reg_en_2[1], dbg_hub/inst/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_CTL/ctl_reg_en_2[1], dbg_hub/inst/SWITCH_N_EXT_BSCAN.bscan_switch/m_bscan_capture[0], dbg_hub/inst/SWITCH_N_EXT_BSCAN.bscan_switch/m_bscan_drck[0], dbg_hub/inst/SWITCH_N_EXT_BSCAN.bscan_switch/m_bscan_flags[7:0], dbg_hub/inst/SWITCH_N_EXT_BSCAN.bscan_switch/m_bscan_runtest[0], dbg_hub/inst/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v2_0_2_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_i, dbg_hub/inst/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v2_0_2_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_i, dbg_hub/inst/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v2_0_2_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg[0] (the first 15 of 26 listed).
 INFO: [DRC 23-20] Rule violation (AVAL-155) enum_AMULTSEL_BMULTSEL_enum_DREG_ADREG_0_connects_CED_CEAD_RSTD_GND - design_1_i/floating_point_0/U0/i_synth/ADDSUB_OP.ADDSUB/SPEED_OP.DSP.OP/DSP48E1_BODY.NORM_RND/FULL_USAGE_DSP.SHIFT_RND/DSP: DSP48E2 is not using the D port (AMULTSEL = A and BMULTSEL = B). For improved power characteristics, set DREG and ADREG to '1', tie CED, CEAD, and RSTD to logic '0'.
 INFO: [Vivado 12-3199] DRC finished with 0 Errors, 2 Warnings, 1 Advisories
 INFO: [Vivado 12-3200] Please refer to the DRC report (report_drc) for more information.
@@ -524,9 +640,9 @@ Creating bitstream...
 Writing bitstream ./design_1_wrapper.bit...
 INFO: [Vivado 12-1842] Bitgen Completed Successfully.
 INFO: [Project 1-118] WebTalk data collection is enabled (User setting is ON. Install Setting is ON.).
-INFO: [Common 17-186] '/home/yamaguchi/CPU-Adelie/koara/koara.runs/impl_1/usage_statistics_webtalk.xml' has been successfully sent to Xilinx on Sun Dec  3 12:40:46 2017. For additional details about this file, please refer to the WebTalk help file at /opt/Xilinx/Vivado/2016.4/doc/webtalk_introduction.html.
+INFO: [Common 17-186] '/home/yamaguchi/CPU-Adelie/koara/koara.runs/impl_1/usage_statistics_webtalk.xml' has been successfully sent to Xilinx on Mon Dec  4 05:59:14 2017. For additional details about this file, please refer to the WebTalk help file at /opt/Xilinx/Vivado/2016.4/doc/webtalk_introduction.html.
 INFO: [Common 17-83] Releasing license: Implementation
-94 Infos, 3 Warnings, 0 Critical Warnings and 0 Errors encountered.
+99 Infos, 103 Warnings, 5 Critical Warnings and 0 Errors encountered.
 write_bitstream completed successfully
-write_bitstream: Time (s): cpu = 00:00:49 ; elapsed = 00:00:46 . Memory (MB): peak = 3439.383 ; gain = 361.559 ; free physical = 6702 ; free virtual = 25389
-INFO: [Common 17-206] Exiting Vivado at Sun Dec  3 12:40:47 2017...
+write_bitstream: Time (s): cpu = 00:00:59 ; elapsed = 00:00:58 . Memory (MB): peak = 3635.047 ; gain = 367.320 ; free physical = 202 ; free virtual = 16719
+INFO: [Common 17-206] Exiting Vivado at Mon Dec  4 05:59:17 2017...

@@ -70,8 +70,9 @@ set rc [catch {
   set_property processing_order EARLY [get_files /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_board.xdc]
   read_xdc -ref design_1_clk_wiz_0_0 -cells inst /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xdc
   set_property processing_order EARLY [get_files /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xdc]
-  read_xdc -ref bd_384c_ila_lib_0 -cells inst /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila.xdc
-  set_property processing_order EARLY [get_files /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_system_ila_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila.xdc]
+  read_xdc -ref bd_cc75_ila_lib_0 -cells inst /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_system_ila1_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila.xdc
+  set_property processing_order EARLY [get_files /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_system_ila1_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila.xdc]
+  read_xdc /home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc
   link_design -top design_1_wrapper -part xcku040-ffva1156-2-e
   write_hwdef -file design_1_wrapper.hwdef
   close_msg_db -file init_design.pb
