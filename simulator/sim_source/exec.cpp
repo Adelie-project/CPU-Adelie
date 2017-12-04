@@ -118,7 +118,6 @@ inline void warn_nan(param_t* param) {
 
 inline int float_to_int(float x) {
   // ties to even
-  /*
   int ret;
   int n = x;
   if (x >= 0) {
@@ -137,8 +136,6 @@ inline int float_to_int(float x) {
     else if (n - x < 0.5) ret = n;
     else ret = n - 1;
   }
-  */
-  int ret = x + (x < 0 ? -0.5 : 0.5);
   return ret;
 }
 
