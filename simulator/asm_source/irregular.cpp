@@ -70,38 +70,45 @@ void type_i_irregular(param_t *param, unsigned k, int digit, string inst) {
   if(imms.first == -1) return;
   else {
     stringstream ss_u, ss_l;
-    ss_u << "0x" << hex << imms.first;
-    ss_l << "0x" << hex << imms.second;
+    if(imms.second <= 0x7ff) {
+      ss_u << "0x" << hex << imms.first;
+      ss_l << "0x" << hex << imms.second;
+    }
+    else {
+      ss_u << "0x" << hex << (imms.first + 0x1000);
+      ss_l << "0x" << hex << imms.second;
+    }
     param->irregular[param->pc] = { "lui %r31, $" + ss_u.str(), true };
     param->pc += param->pc_interval;
-    param->irregular[param->pc] = { "ori %r31, %r31, $" + ss_l.str(), true };
+    param->irregular[param->pc] = { "addi %r31, %r31, $" + ss_l.str(), true};
     param->pc += param->pc_interval;
     param->irregular[param->pc] = { inst + " " + param->buf[1] + ", " + param->buf[2] + ", " + "%r31", false };
   }
 }
 
-void pre_parce_irregular(param_t* param) {
+void pre_parse_irregular(param_t* param) {
   if(param->buf[0] == "set") {
     unsigned rd = set_regn(param, 1, STD);
     if(param->buf[2][0] == '$') {
       int imm = strtol((param->buf[2]).substr(1, (param->buf[2]).size()-1).c_str(), NULL, 0);
-      int imm_upper = imm & 0xfffff000, imm_lower = imm & 0xfff;
+      unsigned imm_upper = (unsigned)imm & 0xfffff000, imm_lower = (unsigned)imm & 0xfff;
       stringstream ss_u, ss_l;
-      ss_u << "0x" << hex << imm_upper;
-      ss_l << "0x" << hex << imm_lower;
-      if(imm_upper == 0) param->irregular[param->pc] = { "ori %r" + to_string(rd) + ", %r0, $" + ss_l.str(), false };
-      else if(imm_lower == 0) param->irregular[param->pc] = { "lui %r" + to_string(rd) + ", $" + ss_u.str(), false };
-      else if(imm_upper == (int)0xfffff000 && (imm_lower & 0x800)) param->irregular[param->pc] = { "addi %r" + to_string(rd) + ", %r0, $" + to_string(imm), false };
-      else  {
-        param->irregular[param->pc] = { "lui %r" + to_string(rd) + ", $" + ss_u.str(), true };
-        param->pc += param->pc_interval;
-        param->irregular[param->pc] = { "ori %r" + to_string(rd) + ", %r" + to_string(rd) + ", $" + ss_l.str(), false };
+      if(imm_lower <= 0x7ff) {
+        ss_u << "0x" << hex << imm_upper;
+        ss_l << "0x" << hex << imm_lower;
       }
+      else {
+        ss_u << "0x" << hex << (imm_upper + 0x1000);
+        ss_l << "0x" << hex << imm_lower;
+      }
+      param->irregular[param->pc] = { "lui %r" + to_string(rd) + ", $" + ss_u.str(), true };
+      param->pc += param->pc_interval;
+      param->irregular[param->pc] = { "addi %r" + to_string(rd) + ", %r" + to_string(rd) + ", $" + ss_l.str(), false};
     }
     else {
         param->irregular[param->pc] = { "lui %r" + to_string(rd) + ", " + param->buf[2], true };
         param->pc += param->pc_interval;
-        param->irregular[param->pc] = { "ori %r" + to_string(rd) + ", %r" + to_string(rd) + ", " + param->buf[2], false };
+        param->irregular[param->pc] = { "addi %r" + to_string(rd) + ", %r" + to_string(rd) + ", " + param->buf[2], false };
     }
   }
   else if (param->buf[0] == "addi") type_i_irregular(param, 3, 12, "add");
@@ -112,17 +119,21 @@ void pre_parce_irregular(param_t* param) {
   else if (param->buf[0] == "andi") type_i_irregular(param, 3, 12, "and");
 }
 
-void parce_irregular(param_t* param) {
+void parse_irregular(param_t* param) {
   if ((param->buf).back()[0] != '$' && (param->buf).back()[0] != '%') {
     //絶対アドレスの検索
     auto itr = (param->labels).find(param->buf.back());
     if (itr == (param->labels).end()) { printf("\x1b[31merror\x1b[39m: could not find the label: %s used in line %d\n", (param->buf.back()).c_str(), param->lineno); exit(EXIT_FAILURE); }
     else {
-      if (param->buf[0] == "lui") param->buf.back() = '$' + to_string(itr->second & 0xfffff000);
+      if (param->buf[0] == "lui") {
+        unsigned a = itr->second & 0xfffff000;
+        if ((itr->second & 0xfff) > 0x7ff) a += 0x1000;
+        param->buf.back() = "$" + to_string(a);
+      }
       else {
-        int a = itr->second & 0xfff;
-        if (a & 0x800) a = a | 0xfffff000;
-        param->buf.back() = '$' + to_string(a);
+        unsigned a = itr->second & 0xfff;
+        if (a & 0x800) a |= 0xfffff000;
+        param->buf.back() = "$" + to_string(a);
       }
     }
   }
