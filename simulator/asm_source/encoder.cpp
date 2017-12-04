@@ -116,7 +116,7 @@ inline int set_imm(param_t *param, unsigned k, int digit) {
     //それ以外は10進数とみなす
     imm = strtol((param->buf[k]).substr(1, (param->buf[k]).size()-1).c_str(), NULL, 10);
     if (digit != 32 && (imm >= (1 << (digit - 1)) || imm < -1 * (1 << (digit - 1)))) {
-      printf("\x1b[35mwarning\x1b[39m: immediate is out of range (%d bit) in line %d\n", digit, param->lineno);
+      printf("\x1b[35mwarning\x1b[39m: immediate %d is out of range (%d bit) in line %d\n", imm, digit, param->lineno);
     }
   }
   return imm;
