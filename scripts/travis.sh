@@ -8,28 +8,6 @@ cd "$DIR/.."
 cd simulator/
 make -j2 VERBOSE=1
 
-# Fun each bin file through the simulator and check the command line output.
-for f in test/*.bin
-do
-    # This tests takes really long, let's skip it for now...
-    if [[ $f == "test/fib_rec.bin" ]]; then
-      continue
-    fi
-    echo "Running test $f"
-    test_out="`basename $f`.output"
-    test_expected="test/outputs/`basename $f`.expected"
-    # Uncommend this line to update the reference files:
-    # test_out="$test_expected"
-    echo "r" | /usr/bin/time -v ./build/sim "$f" | tee "$test_out"
-    diff -U1 "$test_out" "$test_expected"
-    if [ $? -eq 0 ]; then
-        echo "Test $f passed"
-    else
-        echo "Test $f failed"
-        exit 1
-    fi
-done
-
 # Test build the compiler
 cd "$DIR/.."
 cd compiler/min-caml-2nd/
