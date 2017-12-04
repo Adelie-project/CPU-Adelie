@@ -4,7 +4,8 @@ in %r5
 slli %r5, %r5, $8
 in %r5
 slli %r5, %r5, $8
-in %r5 ;$0x40400000 にしてみよう
+in %r5
+rot %r5, %r5 ;$0x40400000 にしてみよう
 fmvsx %f20, %r5  ; %f20 = 3.0
 in %r5
 slli %r5, %r5, $8
@@ -12,7 +13,8 @@ in %r5
 slli %r5, %r5, $8
 in %r5
 slli %r5, %r5, $8
-in %r5 ;$0x40800000 にしてみよう
+in %r5
+rot %r5, %r5 ;$0x40800000 にしてみよう
 fmvsx %f21, %r5  ; %f21 = 4.0
 fsw %r0, %f20, $100 ; M[100] = 3.0
 flw %f22, %r0, $100 ; %f22 = 3.0
@@ -38,10 +40,11 @@ fsgnjxs %f7, %f27, %f27 ; %f7 = 12.0
 fsgnjxs %f8, %f24, %f25 ; %f8 = -7.0
 set %r20, $0x12345678
 rot %r1, %r20
-fcvtws %r20, %f20
-fcvtws %r21, %f21
-fcvtws %r22, %f22
-fcvtws %r23, %f23
+set %r2, $0x00000100
+fsw %r2, %f20, $0
+fsw %r2, %r21, $4
+fsw %r2, %f22, $8
+fsw %r23, %f23
 fcvtws %r24, %f24
 fcvtws %r25, %f25
 fcvtws %r26, %f26
