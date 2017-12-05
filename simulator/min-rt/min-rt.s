@@ -1380,8 +1380,8 @@ read_screen_settings.2770:
 	lw	%r6, %r30, $12
 	lw	%r7, %r30, $8
 	lw	%r8, %r30, $4
-	set %r31, $0xaa
-	out %r31
+  set %r31, $0xaa
+  out %r31
 	in	%r9
 	slli	%r9, %r9, $8
 	in	%r9
