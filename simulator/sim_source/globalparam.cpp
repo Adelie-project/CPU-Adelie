@@ -22,7 +22,7 @@ void init_param (param_t* param) {
   param->breakcnt = ULONG_MAX;
   param->max_mem_no = 0; // 最大使用メモリ番号
   Loop(i, 128) param->call_time[i] = 0;
-  fill_n(param->mem, HASHWIDTH, (hash_list_t*)NULL); // バイトアドレス
+  fill_n(param->mem, MEM_LIMIT, 0); // バイトアドレス
 }
 
 void exit_message(param_t* param) {
