@@ -6,6 +6,8 @@ external getlo : float -> int32 = "getlo"
 *)
 external getf : float -> int32 = "getf"
 
+let cflag = ref 1 (*for out 0xaa*)
+
 let stackset = ref S.empty (* すでにSaveされた変数の集合 (caml2html: emit_stackset) *)
 let stackmap = ref [] (* Saveされた変数の、スタックにおける位置 (caml2html: emit_stackmap) *)
 let save x =
@@ -133,7 +135,9 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       let exit = Id.genid("create_float_array_exit") in
       Printf.fprintf oc "%s:\n\tbeq\t%s, %%r0, %s\n\tfsw\t%s, %s, $0\n\taddi\t%s, %s, $-1\n\taddi\t%s, %s, $4\n\tjal\t%%r0, %s\n%s:\n\tadd\t%s, %%r0, %s\n" loop x exit reg_hp y x x reg_hp reg_hp loop exit w z
   | NonTail(_), Out(x) -> Printf.fprintf oc "\tout\t%s\n" x
-  | NonTail(x), In -> Printf.fprintf oc "\tin\t%s\n\tslli\t%s, %s, $8\n\tin\t%s\n\tslli\t%s, %s, $8\n\tin\t%s\n\tslli\t%s, %s, $8\n\tin\t%s\n\trot\t%s, %s\n" x x x x x x x x x x x x
+  | NonTail(x), In ->
+    if !cflag = 1 then (Printf.fprintf oc "\tset\t%%r31, $0xaa\n\tout\t%%r31\n"; cflag := 0);
+    Printf.fprintf oc "\tin\t%s\n\tslli\t%s, %s, $8\n\tin\t%s\n\tslli\t%s, %s, $8\n\tin\t%s\n\tslli\t%s, %s, $8\n\tin\t%s\n\trot\t%s, %s\n" x x x x x x x x x x x x
   | NonTail(x), Fabs(y) -> Printf.fprintf oc "\tfsgnjxs\t%s, %s, %s\n" x y y
   | NonTail(x), Fsqrt(y) -> Printf.fprintf oc "\tfsqrts\t%s, %s\n" x y
   | NonTail(x), Fcvtsw(y) -> Printf.fprintf oc "\tfcvtsw\t%s, %s\n" x y
@@ -297,7 +301,7 @@ let f oc (Prog(data, fundefs, e)) =
 
   (*Printf.fprintf oc ".global\tmin_caml_start\n";*)
   Printf.fprintf oc "min_caml_start:\n";
-  Printf.fprintf oc "\tset\t%s, $2047 ; ad hoc\n" reg_hp;
+  Printf.fprintf oc "\tset\t%s, $2044 ; ad hoc\n" reg_hp;
   (*Printf.fprintf oc "\tset\t%%r4, $0xaa\n\tout\t%%r4 ; for contest server\n";*)
   (*Printf.fprintf oc "\tsave\t%%sp, -112, %%sp\n"; (* from gcc; why 112? *)*)
   stackset := S.empty;

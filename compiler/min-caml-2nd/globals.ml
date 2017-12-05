@@ -104,7 +104,7 @@ let rec floor x =
   else round -. 1. in
 let rec int_of_float x =
   fcvtws x in
-(*
+(*min-rt.mlでは使わないので削除
 let rec truncate x =
   fcvtws (x +. 0.5) - 1 in
   *)
