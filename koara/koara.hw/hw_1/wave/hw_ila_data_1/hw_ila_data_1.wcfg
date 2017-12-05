@@ -15,221 +15,285 @@
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="257"></NameColumnWidth>
-      <ValueColumnWidth column_width="365"></ValueColumnWidth>
+      <ValueColumnWidth column_width="363"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="11" />
+   <WVObjectSize size="32" />
    <wave_markers>
    </wave_markers>
-   <wvobject type="group" fp_name="group171">
-      <obj_property name="label">slot_0 : core_top_0_interface_aximm : Read Address Channel Signal Group</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
+   <wvobject type="array" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_ar_ctrl">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_ar_ctrl[1:0]</obj_property>
+      <obj_property name="ObjectShortName">net_slot_0_axi_ar_ctrl[1:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
    </wvobject>
-   <wvobject type="group" fp_name="group176">
-      <obj_property name="label">slot_0 : core_top_0_interface_aximm : Read Data Channel Signal Group</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
+   <wvobject type="array" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_araddr">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_araddr[3:0]</obj_property>
+      <obj_property name="ObjectShortName">net_slot_0_axi_araddr[3:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
    </wvobject>
-   <wvobject type="group" fp_name="group182">
-      <obj_property name="label">slot_0 : core_top_0_interface_aximm : Write Address Channel Signal Group</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
+   <wvobject type="array" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_aw_ctrl">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_aw_ctrl[1:0]</obj_property>
+      <obj_property name="ObjectShortName">net_slot_0_axi_aw_ctrl[1:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
    </wvobject>
-   <wvobject type="group" fp_name="group187">
-      <obj_property name="label">slot_0 : core_top_0_interface_aximm : Write Data Channel Signal Group</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
+   <wvobject type="array" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_awaddr">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_awaddr[3:0]</obj_property>
+      <obj_property name="ObjectShortName">net_slot_0_axi_awaddr[3:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
    </wvobject>
-   <wvobject type="group" fp_name="group192">
-      <obj_property name="label">slot_0 : core_top_0_interface_aximm : Write Response Channel Signal Group</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-      <wvobject type="array" fp_name="Read_Address_Channel_(i1:s0)_(core_top_0_interface_aximm)">
-         <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="ElementShortName">Read_Address_Channel_(i1:s0)_(core_top_0_interface_aximm)[2:0]</obj_property>
-         <obj_property name="ObjectShortName">Read_Address_Channel_(i1:s0)_(core_top_0_interface_aximm)[2:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-         <obj_property name="LABELRADIX">true</obj_property>
-         <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
-         <obj_property name="EnumTransactionColorTable">0=blank</obj_property>
-         <obj_property name="CustomSignalColor">Yellow</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-         <obj_property name="label"> :  : Read Address Channel  Events</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="Read_Data_Channel_(i1:s0)_(core_top_0_interface_aximm)">
-         <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="ElementShortName">Read_Data_Channel_(i1:s0)_(core_top_0_interface_aximm)[2:0]</obj_property>
-         <obj_property name="ObjectShortName">Read_Data_Channel_(i1:s0)_(core_top_0_interface_aximm)[2:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-         <obj_property name="LABELRADIX">true</obj_property>
-         <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
-         <obj_property name="EnumTransactionColorTable">0=blank</obj_property>
-         <obj_property name="CustomSignalColor">Gold</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-         <obj_property name="label"> :  : Read Data Channel  Events</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="Write_Address_Channel_(i1:s0)_(core_top_0_interface_aximm)">
-         <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="ElementShortName">Write_Address_Channel_(i1:s0)_(core_top_0_interface_aximm)[2:0]</obj_property>
-         <obj_property name="ObjectShortName">Write_Address_Channel_(i1:s0)_(core_top_0_interface_aximm)[2:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-         <obj_property name="LABELRADIX">true</obj_property>
-         <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
-         <obj_property name="EnumTransactionColorTable">0=blank</obj_property>
-         <obj_property name="CustomSignalColor">MediumTurquoise</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-         <obj_property name="label"> :  : Write Address Channel  Events</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="Write_Data_Channel_(i1:s0)_(core_top_0_interface_aximm)">
-         <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="ElementShortName">Write_Data_Channel_(i1:s0)_(core_top_0_interface_aximm)[2:0]</obj_property>
-         <obj_property name="ObjectShortName">Write_Data_Channel_(i1:s0)_(core_top_0_interface_aximm)[2:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-         <obj_property name="LABELRADIX">true</obj_property>
-         <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
-         <obj_property name="EnumTransactionColorTable">0=blank</obj_property>
-         <obj_property name="CustomSignalColor">Teal</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-         <obj_property name="label"> :  : Write Data Channel  Events</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="Write_Response_Channel_(i1:s0)_(core_top_0_interface_aximm)">
-         <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="ElementShortName">Write_Response_Channel_(i1:s0)_(core_top_0_interface_aximm)[2:0]</obj_property>
-         <obj_property name="ObjectShortName">Write_Response_Channel_(i1:s0)_(core_top_0_interface_aximm)[2:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-         <obj_property name="LABELRADIX">true</obj_property>
-         <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
-         <obj_property name="EnumTransactionColorTable">0=blank</obj_property>
-         <obj_property name="CustomSignalColor">SteelBlue</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-         <obj_property name="label"> :  : Write Response Channel  Events</obj_property>
-      </wvobject>
+   <wvobject type="array" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_b_ctrl">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_b_ctrl[1:0]</obj_property>
+      <obj_property name="ObjectShortName">net_slot_0_axi_b_ctrl[1:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
    </wvobject>
-   <wvobject fp_name="divider1151" type="divider">
+   <wvobject type="array" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_bresp">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_bresp[1:0]</obj_property>
+      <obj_property name="ObjectShortName">net_slot_0_axi_bresp[1:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_r_ctrl">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_r_ctrl[1:0]</obj_property>
+      <obj_property name="ObjectShortName">net_slot_0_axi_r_ctrl[1:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_rdata">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">net_slot_0_axi_rdata[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_rresp">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_rresp[1:0]</obj_property>
+      <obj_property name="ObjectShortName">net_slot_0_axi_rresp[1:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_w_ctrl">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_w_ctrl[1:0]</obj_property>
+      <obj_property name="ObjectShortName">net_slot_0_axi_w_ctrl[1:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_wdata">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_wdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">net_slot_0_axi_wdata[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_arready">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_arready</obj_property>
+      <obj_property name="ObjectShortName">net_slot_0_axi_arready</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_arvalid">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_arvalid</obj_property>
+      <obj_property name="ObjectShortName">net_slot_0_axi_arvalid</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_awready">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_awready</obj_property>
+      <obj_property name="ObjectShortName">net_slot_0_axi_awready</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_awvalid">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_awvalid</obj_property>
+      <obj_property name="ObjectShortName">net_slot_0_axi_awvalid</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_bready">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_bready</obj_property>
+      <obj_property name="ObjectShortName">net_slot_0_axi_bready</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_bvalid">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_bvalid</obj_property>
+      <obj_property name="ObjectShortName">net_slot_0_axi_bvalid</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_rready">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_rready</obj_property>
+      <obj_property name="ObjectShortName">net_slot_0_axi_rready</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_rvalid">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_rvalid</obj_property>
+      <obj_property name="ObjectShortName">net_slot_0_axi_rvalid</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_wready">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_wready</obj_property>
+      <obj_property name="ObjectShortName">net_slot_0_axi_wready</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_wvalid">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_wvalid</obj_property>
+      <obj_property name="ObjectShortName">net_slot_0_axi_wvalid</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider153" type="divider">
       <obj_property name="label">slot_0 : core_top_0_interface_aximm : Interface</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="BkColor">khaki</obj_property>
    </wvobject>
-   <wvobject type="group" fp_name="group1153">
+   <wvobject type="array" fp_name="Read_Address_Channel_(i1:s0)_(core_top_0_interface_aximm)">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">Read_Address_Channel_(i1:s0)_(core_top_0_interface_aximm)[2:0]</obj_property>
+      <obj_property name="ObjectShortName">Read_Address_Channel_(i1:s0)_(core_top_0_interface_aximm)[2:0]</obj_property>
+      <obj_property name="label"> :  : Read Address Channel  Events</obj_property>
+      <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+      <obj_property name="EnumTransactionColorTable">0=blank</obj_property>
+      <obj_property name="CustomSignalColor">Yellow</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group155">
       <obj_property name="label">slot_0 : core_top_0_interface_aximm : Read Address Channel Signal Group</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <wvobject type="logic" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_arvalid">
-         <obj_property name="DisplayName">FullPathName</obj_property>
          <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_arvalid</obj_property>
          <obj_property name="ObjectShortName">net_slot_0_axi_arvalid</obj_property>
-         <obj_property name="LABELRADIX">true</obj_property>
       </wvobject>
       <wvobject type="logic" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_arready">
-         <obj_property name="DisplayName">FullPathName</obj_property>
          <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_arready</obj_property>
          <obj_property name="ObjectShortName">net_slot_0_axi_arready</obj_property>
-         <obj_property name="LABELRADIX">true</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_araddr">
-         <obj_property name="DisplayName">FullPathName</obj_property>
          <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_araddr[3:0]</obj_property>
          <obj_property name="ObjectShortName">net_slot_0_axi_araddr[3:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-         <obj_property name="LABELRADIX">true</obj_property>
       </wvobject>
    </wvobject>
-   <wvobject type="group" fp_name="group1158">
+   <wvobject type="array" fp_name="Read_Data_Channel_(i1:s0)_(core_top_0_interface_aximm)">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">Read_Data_Channel_(i1:s0)_(core_top_0_interface_aximm)[2:0]</obj_property>
+      <obj_property name="ObjectShortName">Read_Data_Channel_(i1:s0)_(core_top_0_interface_aximm)[2:0]</obj_property>
+      <obj_property name="label"> :  : Read Data Channel  Events</obj_property>
+      <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+      <obj_property name="EnumTransactionColorTable">0=blank</obj_property>
+      <obj_property name="CustomSignalColor">Gold</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group160">
       <obj_property name="label">slot_0 : core_top_0_interface_aximm : Read Data Channel Signal Group</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <wvobject type="array" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_rresp">
-         <obj_property name="DisplayName">FullPathName</obj_property>
          <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_rresp[1:0]</obj_property>
          <obj_property name="ObjectShortName">net_slot_0_axi_rresp[1:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-         <obj_property name="LABELRADIX">true</obj_property>
       </wvobject>
       <wvobject type="logic" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_rvalid">
-         <obj_property name="DisplayName">FullPathName</obj_property>
          <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_rvalid</obj_property>
          <obj_property name="ObjectShortName">net_slot_0_axi_rvalid</obj_property>
-         <obj_property name="LABELRADIX">true</obj_property>
       </wvobject>
       <wvobject type="logic" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_rready">
-         <obj_property name="DisplayName">FullPathName</obj_property>
          <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_rready</obj_property>
          <obj_property name="ObjectShortName">net_slot_0_axi_rready</obj_property>
-         <obj_property name="LABELRADIX">true</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_rdata">
-         <obj_property name="DisplayName">FullPathName</obj_property>
          <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_rdata[31:0]</obj_property>
          <obj_property name="ObjectShortName">net_slot_0_axi_rdata[31:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-         <obj_property name="LABELRADIX">true</obj_property>
       </wvobject>
    </wvobject>
-   <wvobject type="group" fp_name="group1164">
+   <wvobject type="array" fp_name="Write_Address_Channel_(i1:s0)_(core_top_0_interface_aximm)">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">Write_Address_Channel_(i1:s0)_(core_top_0_interface_aximm)[2:0]</obj_property>
+      <obj_property name="ObjectShortName">Write_Address_Channel_(i1:s0)_(core_top_0_interface_aximm)[2:0]</obj_property>
+      <obj_property name="label"> :  : Write Address Channel  Events</obj_property>
+      <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+      <obj_property name="EnumTransactionColorTable">0=blank</obj_property>
+      <obj_property name="CustomSignalColor">MediumTurquoise</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group166">
       <obj_property name="label">slot_0 : core_top_0_interface_aximm : Write Address Channel Signal Group</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <wvobject type="logic" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_awvalid">
-         <obj_property name="DisplayName">FullPathName</obj_property>
          <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_awvalid</obj_property>
          <obj_property name="ObjectShortName">net_slot_0_axi_awvalid</obj_property>
-         <obj_property name="LABELRADIX">true</obj_property>
       </wvobject>
       <wvobject type="logic" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_awready">
-         <obj_property name="DisplayName">FullPathName</obj_property>
          <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_awready</obj_property>
          <obj_property name="ObjectShortName">net_slot_0_axi_awready</obj_property>
-         <obj_property name="LABELRADIX">true</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_awaddr">
-         <obj_property name="DisplayName">FullPathName</obj_property>
          <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_awaddr[3:0]</obj_property>
          <obj_property name="ObjectShortName">net_slot_0_axi_awaddr[3:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-         <obj_property name="LABELRADIX">true</obj_property>
       </wvobject>
    </wvobject>
-   <wvobject type="group" fp_name="group1169">
+   <wvobject type="array" fp_name="Write_Data_Channel_(i1:s0)_(core_top_0_interface_aximm)">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">Write_Data_Channel_(i1:s0)_(core_top_0_interface_aximm)[2:0]</obj_property>
+      <obj_property name="ObjectShortName">Write_Data_Channel_(i1:s0)_(core_top_0_interface_aximm)[2:0]</obj_property>
+      <obj_property name="label"> :  : Write Data Channel  Events</obj_property>
+      <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+      <obj_property name="EnumTransactionColorTable">0=blank</obj_property>
+      <obj_property name="CustomSignalColor">Teal</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group171">
       <obj_property name="label">slot_0 : core_top_0_interface_aximm : Write Data Channel Signal Group</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <wvobject type="logic" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_wvalid">
-         <obj_property name="DisplayName">FullPathName</obj_property>
          <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_wvalid</obj_property>
          <obj_property name="ObjectShortName">net_slot_0_axi_wvalid</obj_property>
-         <obj_property name="LABELRADIX">true</obj_property>
       </wvobject>
       <wvobject type="logic" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_wready">
-         <obj_property name="DisplayName">FullPathName</obj_property>
          <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_wready</obj_property>
          <obj_property name="ObjectShortName">net_slot_0_axi_wready</obj_property>
-         <obj_property name="LABELRADIX">true</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_wdata">
-         <obj_property name="DisplayName">FullPathName</obj_property>
          <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_wdata[31:0]</obj_property>
          <obj_property name="ObjectShortName">net_slot_0_axi_wdata[31:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-         <obj_property name="LABELRADIX">true</obj_property>
       </wvobject>
    </wvobject>
-   <wvobject type="group" fp_name="group1174">
+   <wvobject type="array" fp_name="Write_Response_Channel_(i1:s0)_(core_top_0_interface_aximm)">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">Write_Response_Channel_(i1:s0)_(core_top_0_interface_aximm)[2:0]</obj_property>
+      <obj_property name="ObjectShortName">Write_Response_Channel_(i1:s0)_(core_top_0_interface_aximm)[2:0]</obj_property>
+      <obj_property name="label"> :  : Write Response Channel  Events</obj_property>
+      <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+      <obj_property name="EnumTransactionColorTable">0=blank</obj_property>
+      <obj_property name="CustomSignalColor">SteelBlue</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group176">
       <obj_property name="label">slot_0 : core_top_0_interface_aximm : Write Response Channel Signal Group</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <wvobject type="array" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_bresp">
-         <obj_property name="DisplayName">FullPathName</obj_property>
          <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_bresp[1:0]</obj_property>
          <obj_property name="ObjectShortName">net_slot_0_axi_bresp[1:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-         <obj_property name="LABELRADIX">true</obj_property>
       </wvobject>
       <wvobject type="logic" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_bvalid">
-         <obj_property name="DisplayName">FullPathName</obj_property>
          <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_bvalid</obj_property>
          <obj_property name="ObjectShortName">net_slot_0_axi_bvalid</obj_property>
-         <obj_property name="LABELRADIX">true</obj_property>
       </wvobject>
       <wvobject type="logic" fp_name="design_1_i/system_ila1/inst/net_slot_0_axi_bready">
-         <obj_property name="DisplayName">FullPathName</obj_property>
          <obj_property name="ElementShortName">design_1_i/system_ila1/inst/net_slot_0_axi_bready</obj_property>
          <obj_property name="ObjectShortName">net_slot_0_axi_bready</obj_property>
-         <obj_property name="LABELRADIX">true</obj_property>
       </wvobject>
    </wvobject>
 </wave_config>
