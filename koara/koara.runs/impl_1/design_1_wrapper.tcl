@@ -44,12 +44,13 @@ proc step_failed { step } {
 
 set_msg_config -id {HDL 9-1061} -limit 100000
 set_msg_config -id {HDL 9-1654} -limit 100000
-set_msg_config -id {HDL-1065} -limit 10000
 
 start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
+  set_param xicom.use_bs_reader 1
+  set_param tcl.collectionResultDisplayLimit 0
   create_project -in_memory -part xcku040-ffva1156-2-e
   set_property board_part xilinx.com:kcu105:part0:1.1 [current_project]
   set_property design_mode GateLvl [current_fileset]
@@ -64,12 +65,10 @@ set rc [catch {
   set_property processing_order EARLY [get_files /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_1/design_1_axi_uartlite_0_1_board.xdc]
   read_xdc -ref design_1_axi_uartlite_0_1 -cells U0 /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_1/design_1_axi_uartlite_0_1.xdc
   set_property processing_order EARLY [get_files /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_1/design_1_axi_uartlite_0_1.xdc]
-  read_xdc -prop_thru_buffers -ref design_1_clk_wiz_0_0 -cells inst /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_board.xdc
-  set_property processing_order EARLY [get_files /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_board.xdc]
-  read_xdc -ref design_1_clk_wiz_0_0 -cells inst /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xdc
-  set_property processing_order EARLY [get_files /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xdc]
-  read_xdc -ref bd_cc75_ila_lib_0 -cells inst /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_system_ila1_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila.xdc
-  set_property processing_order EARLY [get_files /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_system_ila1_0/bd_0/ip/ip_0/ila_v6_2/constraints/ila.xdc]
+  read_xdc -prop_thru_buffers -ref design_1_clk_wiz_0_1 -cells inst /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_1/design_1_clk_wiz_0_1_board.xdc
+  set_property processing_order EARLY [get_files /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_1/design_1_clk_wiz_0_1_board.xdc]
+  read_xdc -ref design_1_clk_wiz_0_1 -cells inst /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_1/design_1_clk_wiz_0_1.xdc
+  set_property processing_order EARLY [get_files /home/yamaguchi/CPU-Adelie/koara/koara.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_1/design_1_clk_wiz_0_1.xdc]
   read_xdc /home/yamaguchi/CPU-Adelie/koara/koara.srcs/constrs_1/new/design_1_wrapper.xdc
   link_design -top design_1_wrapper -part xcku040-ffva1156-2-e
   write_hwdef -file design_1_wrapper.hwdef

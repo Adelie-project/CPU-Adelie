@@ -1,7 +1,7 @@
 Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
-| Date         : Mon Dec  4 20:59:51 2017
+| Date         : Tue Dec  5 09:39:01 2017
 | Host         : ispc2016 running 64-bit Ubuntu 14.04.5 LTS
 | Command      : report_utilization -file design_1_wrapper_utilization_synth.rpt -pb design_1_wrapper_utilization_synth.pb
 | Design       : design_1_wrapper
@@ -31,17 +31,17 @@ Table of Contents
 +----------------------------+------+-------+-----------+-------+
 |          Site Type         | Used | Fixed | Available | Util% |
 +----------------------------+------+-------+-----------+-------+
-| CLB LUTs*                  | 8330 |     0 |    242400 |  3.44 |
-|   LUT as Logic             | 7986 |     0 |    242400 |  3.29 |
-|   LUT as Memory            |  344 |     0 |    112800 |  0.30 |
+| CLB LUTs*                  | 7257 |     0 |    242400 |  2.99 |
+|   LUT as Logic             | 7138 |     0 |    242400 |  2.94 |
+|   LUT as Memory            |  119 |     0 |    112800 |  0.11 |
 |     LUT as Distributed RAM |    0 |     0 |           |       |
-|     LUT as Shift Register  |  344 |     0 |           |       |
-| CLB Registers              | 8308 |     0 |    484800 |  1.71 |
-|   Register as Flip Flop    | 8308 |     0 |    484800 |  1.71 |
+|     LUT as Shift Register  |  119 |     0 |           |       |
+| CLB Registers              | 6691 |     0 |    484800 |  1.38 |
+|   Register as Flip Flop    | 6691 |     0 |    484800 |  1.38 |
 |   Register as Latch        |    0 |     0 |    484800 |  0.00 |
-| CARRY8                     |  289 |     0 |     30300 |  0.95 |
-| F7 Muxes                   |  907 |     0 |    121200 |  0.75 |
-| F8 Muxes                   |    2 |     0 |     60600 | <0.01 |
+| CARRY8                     |  266 |     0 |     30300 |  0.88 |
+| F7 Muxes                   |  897 |     0 |    121200 |  0.74 |
+| F8 Muxes                   |    1 |     0 |     60600 | <0.01 |
 | F9 Muxes                   |    0 |     0 |     30300 |  0.00 |
 +----------------------------+------+-------+-----------+-------+
 * Warning! The Final LUT count, after physical optimizations and full implementation, is typically lower. Run opt_design after synthesis, if not already completed, for a more realistic count.
@@ -61,23 +61,23 @@ Table of Contents
 | 0     |          Yes |           - |            - |
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
-| 29    |          Yes |         Set |            - |
-| 8279  |          Yes |       Reset |            - |
+| 20    |          Yes |         Set |            - |
+| 6671  |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
 2. BLOCKRAM
 -----------
 
-+-------------------+-------+-------+-----------+-------+
-|     Site Type     |  Used | Fixed | Available | Util% |
-+-------------------+-------+-------+-----------+-------+
-| Block RAM Tile    | 421.5 |     0 |       600 | 70.25 |
-|   RAMB36/FIFO*    |   420 |     0 |       600 | 70.00 |
-|     RAMB36E2 only |   420 |       |           |       |
-|   RAMB18          |     3 |     0 |      1200 |  0.25 |
-|     RAMB18E2 only |     3 |       |           |       |
-+-------------------+-------+-------+-----------+-------+
++-------------------+------+-------+-----------+-------+
+|     Site Type     | Used | Fixed | Available | Util% |
++-------------------+------+-------+-----------+-------+
+| Block RAM Tile    |  419 |     0 |       600 | 69.83 |
+|   RAMB36/FIFO*    |  418 |     0 |       600 | 69.67 |
+|     RAMB36E2 only |  418 |       |           |       |
+|   RAMB18          |    2 |     0 |      1200 |  0.17 |
+|     RAMB18E2 only |    2 |       |           |       |
++-------------------+------+-------+-----------+-------+
 * Note: Each Block RAM Tile only has one FIFO logic available and therefore can accommodate only one FIFO36E2 or one FIFO18E2. However, if a FIFO18E2 occupies a Block RAM Tile, that tile can still accommodate a RAMB18E2
 
 
@@ -156,27 +156,26 @@ Table of Contents
 +------------+------+---------------------+
 |  Ref Name  | Used | Functional Category |
 +------------+------+---------------------+
-| FDRE       | 8279 |            Register |
-| LUT6       | 3596 |                 CLB |
-| LUT3       | 1862 |                 CLB |
-| LUT4       | 1445 |                 CLB |
-| LUT5       |  984 |                 CLB |
-| MUXF7      |  907 |                 CLB |
-| LUT2       |  638 |                 CLB |
-| RAMB36E2   |  420 |           Block Ram |
-| CARRY8     |  289 |                 CLB |
-| SRL16E     |  278 |                 CLB |
-| LUT1       |  191 |                 CLB |
-| SRLC32E    |  164 |                 CLB |
-| FDSE       |   29 |            Register |
+| FDRE       | 6671 |            Register |
+| LUT6       | 3103 |                 CLB |
+| LUT3       | 1747 |                 CLB |
+| LUT4       | 1268 |                 CLB |
+| MUXF7      |  897 |                 CLB |
+| LUT5       |  863 |                 CLB |
+| LUT2       |  587 |                 CLB |
+| RAMB36E2   |  418 |           Block Ram |
+| CARRY8     |  266 |                 CLB |
+| LUT1       |  171 |                 CLB |
+| SRL16E     |   87 |                 CLB |
+| SRLC32E    |   32 |                 CLB |
+| FDSE       |   20 |            Register |
 | DSP48E2    |    4 |          Arithmetic |
-| RAMB18E2   |    3 |           Block Ram |
 | IBUFCTRL   |    3 |              Others |
-| SRLC16E    |    2 |                 CLB |
-| MUXF8      |    2 |                 CLB |
+| RAMB18E2   |    2 |           Block Ram |
 | INBUF      |    2 |                 I/O |
 | BUFGCE     |    2 |               Clock |
 | OBUF       |    1 |                 I/O |
+| MUXF8      |    1 |                 CLB |
 | MMCME3_ADV |    1 |               Clock |
 | DIFFINBUF  |    1 |                 I/O |
 +------------+------+---------------------+
@@ -185,11 +184,9 @@ Table of Contents
 9. Black Boxes
 --------------
 
-+------------+------+
-|  Ref Name  | Used |
-+------------+------+
-| dbg_hub_CV |    1 |
-+------------+------+
++----------+------+
+| Ref Name | Used |
++----------+------+
 
 
 10. Instantiated Netlists
