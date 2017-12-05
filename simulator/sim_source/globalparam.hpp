@@ -26,7 +26,7 @@
 using namespace std;
 
 #define RBUFSIZE 65536
-#define HASHWIDTH 1000003
+#define MEM_LIMIT 675000
 
 #define Loop(i, n) for(int i = 0; i < (int)n; i++)
 #define Loop1(i, n) for(int i = 1; i <= (int)n; i++)
@@ -63,7 +63,7 @@ struct param_t {
   bool contest;
   int reg[32];
   float freg[32];
-  hash_list_t *mem[HASHWIDTH];
+  unsigned mem[MEM_LIMIT];
   unsigned long long cnt;
   unsigned long long breakcnt;
   unsigned call_time[128];

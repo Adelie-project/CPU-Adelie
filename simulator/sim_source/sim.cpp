@@ -19,8 +19,6 @@ inline void preprocess_of_run(param_t* param);
 inline void postprocess_of_run(param_t* param);
 inline void update_wave1(param_t* param);
 inline void update_wave2(param_t* param);
-inline int hash_func(int k);
-inline unsigned read_hash_list(param_t* param, unsigned k);
 void run(param_t* param);
 void run_break(param_t* param);
 void run_wave(param_t* param);
@@ -30,13 +28,8 @@ void print_standard_reg(param_t* param);
 void print_call_time(param_t* param);
 
 void sigsegv_handler(int signo) {
-  printf("\nPC = %08X, cnt = %lld\n", param->pc, param->cnt);
-  if(param->wave) {
-    print_wave(0);
-    print_wave(1);
-  }
-  else print_standard_reg(param);
   printf("\n\nerror: segmentation fault\n\n");
+  exit_message(param);
   exit(EXIT_FAILURE);
 }
 
@@ -213,19 +206,6 @@ void run_wave(param_t* param) {
   return;
 }
 
-inline int hash_func(int k) {
-  return k % HASHWIDTH;
-}
-
-inline unsigned read_hash_list(param_t* param, unsigned k) {
-  hash_list_t* p = param->mem[hash_func(k)];
-  while(p != NULL) {
-    if(k == p->key) return p->val;
-    else p = p->next_p;
-  }
-  return 0;
-}
-
 void run_step(param_t* param){
   param->step = true;
   while(1) {
@@ -269,7 +249,7 @@ void run_step(param_t* param){
             printf("error: invalid argument, please redo");
             continue;
           }
-          printf("M[%d]:%08X", a, read_hash_list(param, a));
+          printf("M[%d]:%08X", a, param->mem[a]);
         }
       }
       else {
