@@ -84,6 +84,11 @@ inline void warn_nan(param_t* param) {
   }
 }
 
+unsigned check_mem_addr(param_t* param, unsigned addr) {
+  param->max_mem_no = max(param->max_mem_no, addr);
+  if(addr % 4 != 0) printf("\x1b[35mwarning\x1b[39m: memory access is not in 4 bytes align, when PC = %d, cnt = %lld\n", param->pc, param->cnt);
+  return addr;
+}
 
 inline int float_to_int(float x) {
   // ties to even
@@ -168,31 +173,28 @@ void exec_main(param_t* param) {
     case LB:
       set_i_type(param, &rd, &rs1, &imm);
       if(param->step) printf("lb %%r%d, %%r%d, $%d\n", rd, rs1, imm);
-      evac = param->reg[rs1] + imm;
-      param->max_mem_no = max(param->max_mem_no, evac);
+      evac = check_mem_addr(param, param->reg[rs1] + imm);
       if(rd != 0) param->reg[rd] = (char)(0x000000ff & param->mem[evac]);
       pc_inclement(param);
       return;
     case LH:
       set_i_type(param, &rd, &rs1, &imm);
       if(param->step) printf("lh %%r%d, %%r%d, $%d\n", rd, rs1, imm);
-      evac = param->reg[rs1] + imm;
-      param->max_mem_no = max(param->max_mem_no, evac);
+      evac = check_mem_addr(param, param->reg[rs1] + imm);
       if(rd != 0) param->reg[rd] = (short)(0x0000ffff & param->mem[evac]);
       pc_inclement(param);
       return;
     case LW:
       set_i_type(param, &rd, &rs1, &imm);
       if(param->step) printf("lw %%r%d, %%r%d, $%d\n", rd, rs1, imm);
-      evac = param->reg[rs1] + imm;
-      param->max_mem_no = max(param->max_mem_no, evac);
+      evac = check_mem_addr(param, param->reg[rs1] + imm);
       if(rd != 0) param->reg[rd] = (int)(param->mem[evac]);
       pc_inclement(param);
       return;
     case LBU:
       set_i_type(param, &rd, &rs1, &imm);
       if(param->step) printf("lbu %%r%d, %%r%d, $%d\n", rd, rs1, imm);
-      evac = param->reg[rs1] + imm;
+      evac = check_mem_addr(param, param->reg[rs1] + imm);
       param->max_mem_no = max(param->max_mem_no, evac);
       if(rd != 0) param->reg[rd] = (0x000000ff & param->mem[evac]);
       pc_inclement(param);
@@ -200,32 +202,28 @@ void exec_main(param_t* param) {
     case LHU:
       set_i_type(param, &rd, &rs1, &imm);
       if(param->step) printf("lhu %%r%d, %%r%d, $%d\n", rd, rs1, imm);
-      evac = param->reg[rs1] + imm;
-      param->max_mem_no = max(param->max_mem_no, evac);
+      evac = check_mem_addr(param, param->reg[rs1] + imm);
       if(rd != 0) param->reg[rd] = (0x0000ffff & param->mem[evac]);
       pc_inclement(param);
       return;
     case SB:
       set_s_type(param, &rs1, &rs2, &imm);
       if(param->step) printf("sb %%r%d, %%r%d, $%d\n", rs1, rs2, imm);
-      evac = param->reg[rs1] + imm;
-      param->max_mem_no = max(param->max_mem_no, evac);
+      evac = check_mem_addr(param, param->reg[rs1] + imm);
       param->mem[evac] = 0x000000ff & param->reg[rs2];
       pc_inclement(param);
       return;
     case SH:
       set_s_type(param, &rs1, &rs2, &imm);
       if(param->step) printf("sh %%r%d, %%r%d, $%d\n", rs1, rs2, imm);
-      evac = param->reg[rs1] + imm;
-      param->max_mem_no = max(param->max_mem_no, evac);
+      evac = check_mem_addr(param, param->reg[rs1] + imm);
       param->mem[evac] = 0x0000ffff & param->reg[rs2];
       pc_inclement(param);
       return;
     case SW:
       set_s_type(param, &rs1, &rs2, &imm);
       if(param->step) printf("sw %%r%d, %%r%d, $%d\n", rs1, rs2, imm);
-      evac = param->reg[rs1] + imm;
-      param->max_mem_no = max(param->max_mem_no, evac);
+      evac = check_mem_addr(param, param->reg[rs1] + imm);
       param->mem[evac] = param->reg[rs2];
       pc_inclement(param);
       return;
@@ -358,8 +356,7 @@ void exec_main(param_t* param) {
     case FLW:
       set_i_type(param, &rd, &rs1, &imm);
       if(param->step) printf("flw %%f%d, %%r%d, $%d\n", rd, rs1, imm);
-      evac = param->reg[rs1] + imm;
-      param->max_mem_no = max(param->max_mem_no, evac);
+      evac = check_mem_addr(param, param->reg[rs1] + imm);
       ifm.u = param->mem[evac];
       if(rd != 0) { param->freg[rd] = ifm.f; warn_nan(param); }
       pc_inclement(param);
@@ -367,8 +364,7 @@ void exec_main(param_t* param) {
     case FSW:
       set_s_type(param, &rs1, &rs2, &imm);
       if(param->step) printf("fsw %%r%d, %%f%d, $%d\n", rs1, rs2, imm);
-      evac = param->reg[rs1] + imm;
-      param->max_mem_no = max(param->max_mem_no, evac);
+      evac = check_mem_addr(param, param->reg[rs1] + imm);
       ifm.f = param->freg[rs2];
       param->mem[evac] = ifm.u;
       pc_inclement(param);

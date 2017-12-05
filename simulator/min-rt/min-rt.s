@@ -1,5 +1,5 @@
 min_caml_start:
-	set	%r3, $2047 ; ad hoc
+	set	%r3, $2044 ; ad hoc
 	set	%r4, $1
 	set	%r5, $0
 	add	%r6, %r0, %r3
@@ -1380,8 +1380,6 @@ read_screen_settings.2770:
 	lw	%r6, %r30, $12
 	lw	%r7, %r30, $8
 	lw	%r8, %r30, $4
-  set %r31, $0xaa
-  out %r31
 	in	%r9
 	slli	%r9, %r9, $8
 	in	%r9

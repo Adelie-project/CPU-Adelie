@@ -59,7 +59,6 @@ struct param_t {
   unsigned pc;
   unsigned prepc;
   bool f_display;
-  bool warn;
   bool contest;
   int reg[32];
   float freg[32];

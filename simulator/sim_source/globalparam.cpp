@@ -16,9 +16,8 @@ void init_param (param_t* param) {
   param->pc = 0; // 大域プログラムカウンタ、0から pc_interval ずつスタート
   param->prepc = UINT_MAX; // 直前のプログラムカウンタ、pc = prepcとなったときシミュレータは終了
   param->f_display = false; // 浮動小数点表示
-  param->warn = false; // 警告表示
   param->cnt = 0; // 命令数カウント
-  param->contest = true;
+  param->contest = false;
   param->breakcnt = ULONG_MAX;
   param->max_mem_no = 0; // 最大使用メモリ番号
   Loop(i, 128) param->call_time[i] = 0;
