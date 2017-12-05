@@ -65,6 +65,9 @@ int main(int argc, char *argv[]) {
     else if (strbuf == "-warn") {
       param->warn = true;
     }
+    else if (strbuf == "-contest") {
+      param->contest = true;
+    }
     else if (strbuf == "-f") {
       param->f_display = true;
     }
