@@ -6,7 +6,6 @@
 using namespace std;
 
 #define TRACE_SIZE 1e6
-#define MEM_LIMIT 675000
 
 void exec_jmp_fread(param_t*, unsigned newpc);
 

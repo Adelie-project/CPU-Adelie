@@ -6,38 +6,6 @@ inline void pc_inclement(param_t* param){
   (param->pc) += (param->pc_interval);
 }
 
-inline int hash_func(unsigned k) {
-  return k % HASHWIDTH;
-}
-
-inline unsigned read_hash_list(param_t* param, unsigned k) {
-  param->max_mem_no = max(param->max_mem_no, k);
-  hash_list_t* p = param->mem[hash_func(k)];
-  while(p != NULL) {
-    if(k == p->key) return p->val;
-    else p = p->next_p;
-  }
-  return 0;
-}
-
-inline void write_hash_list(param_t* param, unsigned k, unsigned int v) {
-  param->max_mem_no = max(param->max_mem_no, k);
-  hash_list_t** p = &(param->mem[hash_func(k)]);
-  while(*p != NULL) {
-    if(k == (*p)->key) {
-      (*p)->val = v;
-      return;
-    }
-    else *p = (*p)->next_p;
-  }
-  (*p) = (hash_list_t*)malloc(sizeof(hash_list_t));
-  if((*p) == NULL) { perror("malloc error"); exit_message(param); }
-  (*p)->key = k;
-  (*p)->val = v;
-  (*p)->next_p = NULL;
-  return;
-}
-
 void exec_jmp_fread(param_t* param, unsigned newpc) {
   if (param->rbuf_begin * param->pc_interval <= newpc && newpc < (param->rbuf_begin + RBUFSIZE) * param->pc_interval) {
     param->rbuf_p = newpc  / param->pc_interval - param->rbuf_begin;
@@ -104,13 +72,14 @@ inline void set_uj_type(param_t* param, unsigned* rd, int* imm) {
 }
 
 //param->rbuf_p
-int imm, evac;
+int imm;
+unsigned evac;
 unsigned rs1, rs2, rd;
 int_float_mover ifm, ifm2;
 unsigned char in_data, out_data;
 
 inline void warn_nan(param_t* param) {
-  if (isnanf(param->freg[rd]) && param->warn) {
+  if (isnanf(param->freg[rd])) {
     printf("\x1b[35mwarning\x1b[39m: nan is written in freg[%d], when PC = %d, cnt = %lld\n", rd, param->pc, param->cnt);
   }
 }
@@ -200,56 +169,64 @@ void exec_main(param_t* param) {
       set_i_type(param, &rd, &rs1, &imm);
       if(param->step) printf("lb %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       evac = param->reg[rs1] + imm;
-      if(rd != 0) param->reg[rd] = (char)(0x000000ff & read_hash_list(param, evac));
+      param->max_mem_no = max(param->max_mem_no, evac);
+      if(rd != 0) param->reg[rd] = (char)(0x000000ff & param->mem[evac]);
       pc_inclement(param);
       return;
     case LH:
       set_i_type(param, &rd, &rs1, &imm);
       if(param->step) printf("lh %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       evac = param->reg[rs1] + imm;
-      if(rd != 0) param->reg[rd] = (short)(0x0000ffff & read_hash_list(param, evac));
+      param->max_mem_no = max(param->max_mem_no, evac);
+      if(rd != 0) param->reg[rd] = (short)(0x0000ffff & param->mem[evac]);
       pc_inclement(param);
       return;
     case LW:
       set_i_type(param, &rd, &rs1, &imm);
       if(param->step) printf("lw %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       evac = param->reg[rs1] + imm;
-      if(rd != 0) param->reg[rd] = (int)(read_hash_list(param, evac));
+      param->max_mem_no = max(param->max_mem_no, evac);
+      if(rd != 0) param->reg[rd] = (int)(param->mem[evac]);
       pc_inclement(param);
       return;
     case LBU:
       set_i_type(param, &rd, &rs1, &imm);
       if(param->step) printf("lbu %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       evac = param->reg[rs1] + imm;
-      if(rd != 0) param->reg[rd] = (0x000000ff & read_hash_list(param, evac));
+      param->max_mem_no = max(param->max_mem_no, evac);
+      if(rd != 0) param->reg[rd] = (0x000000ff & param->mem[evac]);
       pc_inclement(param);
       return;
     case LHU:
       set_i_type(param, &rd, &rs1, &imm);
       if(param->step) printf("lhu %%r%d, %%r%d, $%d\n", rd, rs1, imm);
       evac = param->reg[rs1] + imm;
-      if(rd != 0) param->reg[rd] = (0x0000ffff & read_hash_list(param, evac));
+      param->max_mem_no = max(param->max_mem_no, evac);
+      if(rd != 0) param->reg[rd] = (0x0000ffff & param->mem[evac]);
       pc_inclement(param);
       return;
     case SB:
       set_s_type(param, &rs1, &rs2, &imm);
       if(param->step) printf("sb %%r%d, %%r%d, $%d\n", rs1, rs2, imm);
       evac = param->reg[rs1] + imm;
-      write_hash_list(param, evac, 0x000000ff & param->reg[rs2]);
+      param->max_mem_no = max(param->max_mem_no, evac);
+      param->mem[evac] = 0x000000ff & param->reg[rs2];
       pc_inclement(param);
       return;
     case SH:
       set_s_type(param, &rs1, &rs2, &imm);
       if(param->step) printf("sh %%r%d, %%r%d, $%d\n", rs1, rs2, imm);
       evac = param->reg[rs1] + imm;
-      write_hash_list(param, evac, 0x0000ffff & param->reg[rs2]);
+      param->max_mem_no = max(param->max_mem_no, evac);
+      param->mem[evac] = 0x0000ffff & param->reg[rs2];
       pc_inclement(param);
       return;
     case SW:
       set_s_type(param, &rs1, &rs2, &imm);
       if(param->step) printf("sw %%r%d, %%r%d, $%d\n", rs1, rs2, imm);
       evac = param->reg[rs1] + imm;
-      write_hash_list(param, evac, param->reg[rs2]);
+      param->max_mem_no = max(param->max_mem_no, evac);
+      param->mem[evac] = param->reg[rs2];
       pc_inclement(param);
       return;
     case ADDI:
@@ -382,7 +359,8 @@ void exec_main(param_t* param) {
       set_i_type(param, &rd, &rs1, &imm);
       if(param->step) printf("flw %%f%d, %%r%d, $%d\n", rd, rs1, imm);
       evac = param->reg[rs1] + imm;
-      ifm.u = (read_hash_list(param, evac));
+      param->max_mem_no = max(param->max_mem_no, evac);
+      ifm.u = param->mem[evac];
       if(rd != 0) { param->freg[rd] = ifm.f; warn_nan(param); }
       pc_inclement(param);
       return;
@@ -390,8 +368,9 @@ void exec_main(param_t* param) {
       set_s_type(param, &rs1, &rs2, &imm);
       if(param->step) printf("fsw %%r%d, %%f%d, $%d\n", rs1, rs2, imm);
       evac = param->reg[rs1] + imm;
+      param->max_mem_no = max(param->max_mem_no, evac);
       ifm.f = param->freg[rs2];
-      write_hash_list(param, evac, ifm.u);
+      param->mem[evac] = ifm.u;
       pc_inclement(param);
       return;
     case FADDS:
