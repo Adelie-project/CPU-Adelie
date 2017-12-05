@@ -1,0 +1,2 @@
+*.psd filter=lfs diff=lfs merge=lfs -text
+[[:space:]]koara/koara.sim/sim_1/behav/xsim.dir/design_1_wrapper_behav/design_1_wrapper_behav_2022_1512325384.btree filter=lfs diff=lfs merge=lfs -text

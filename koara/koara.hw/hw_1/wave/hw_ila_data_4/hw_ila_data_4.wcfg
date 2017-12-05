@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="/home/yamaguchi/CPU-Adelie/koara/koara.hw/hw_1/wave/hw_ila_data_4/hw_ila_data_4.wdb" id="1">
+         <top_modules>
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="1012766fs"></ZoomStartTime>
+      <ZoomEndTime time="1026247fs"></ZoomEndTime>
+      <Cursor1Time time="1014000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="322"></NameColumnWidth>
+      <ValueColumnWidth column_width="112"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="37" />
+   <wave_markers>
+   </wave_markers>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg9">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg9[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg9[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg8">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg8[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg8[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg7">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg7[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg7[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg6">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg6[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg6[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg5">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg5[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg5[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg4">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg4[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg4[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg31">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg31[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg31[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg30">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg30[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg30[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg3">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg3[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg3[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg29">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg29[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg29[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg28">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg28[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg28[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg27">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg27[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg27[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg26">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg26[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg26[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg25">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg25[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg25[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg24">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg24[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg24[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg23">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg23[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg23[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg22">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg22[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg22[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg21">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg21[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg21[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg20">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg20[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg20[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg2">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg2[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg19">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg19[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg19[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg18">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg18[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg18[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg17">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg17[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg17[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg16">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg16[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg16[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg15">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg15[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg15[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg14">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg14[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg14[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg13">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg13[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg13[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg12">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg12[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg12[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg11">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg11[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg11[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg10">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg10[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg10[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/u_core_reg/reg1">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/u_core_reg/reg1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg1[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/write_status__0">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/write_status__0[6:0]</obj_property>
+      <obj_property name="ObjectShortName">write_status__0[6:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/read_status__0">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/read_status__0[6:0]</obj_property>
+      <obj_property name="ObjectShortName">read_status__0[6:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="design_1_i/core_top_0/inst/cpu_state">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/cpu_state[6:0]</obj_property>
+      <obj_property name="ObjectShortName">cpu_state[6:0]</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="u_ila_0_core_top_0_interface_aximm_WSTRB">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">u_ila_0_core_top_0_interface_aximm_WSTRB[0:0]</obj_property>
+      <obj_property name="ObjectShortName">u_ila_0_core_top_0_interface_aximm_WSTRB[0:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="design_1_i/core_top_0/inst/ine">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/ine</obj_property>
+      <obj_property name="ObjectShortName">ine</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="design_1_i/core_top_0/inst/stole">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/core_top_0/inst/stole</obj_property>
+      <obj_property name="ObjectShortName">stole</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+   </wvobject>
+</wave_config>
