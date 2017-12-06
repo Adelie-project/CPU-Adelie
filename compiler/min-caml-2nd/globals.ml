@@ -127,10 +127,12 @@ let rec taylor_sin x =
 in
 (* 0付近の値のみ使うように最適化して、打ち切り誤差を減らす *)
 let rec cos x =
-	if x >= 0.0 then
-		if x >  6.28318548202514 then
+  let x = fabs x in
+  let x = x -. floor (x /. 6.28318548202514) *. 6.28318548202514 in
+	(*if x >= 0.0 then*)
+		(*if x >  6.28318548202514 then
 			cos (x -.  6.28318548202514)
-		else
+		else*)
 			if x < 3.1415927410 then
 				if x < 1.5707963705 then
 					if x < 0.785398185 then
@@ -154,14 +156,15 @@ let rec cos x =
 							taylor_sin (y -. 1.5707963705)
 						else
 							taylor_cos (3.1415927410 -. y)
-	else
-		cos (0.0 -. x)
+	(*else
+		cos (0.0 -. x)*)
 in
 let rec sin x =
     if x >= 0.0 then
-        if x >  6.28318548202514 then
+        let x = x -. floor (x /. 6.28318548202514) *. 6.28318548202514 in
+        (*if x >  6.28318548202514 then
             sin (x -.  6.28318548202514)
-        else
+        else*)
             if x < 3.1415927410 then
                 if x < 1.5707963705 then
                     if x < 0.785398185 then
@@ -186,7 +189,36 @@ let rec sin x =
                         else
                             0.0 -. taylor_sin (3.1415927410 -. y)
     else
-        0.0 -. sin (0.0 -. x)
+        let x = fabs x in
+        let tmp =
+            let x = x -. floor (x /. 6.28318548202514) *. 6.28318548202514 in
+            (*if x >  6.28318548202514 then
+                sin (x -.  6.28318548202514)
+            else*)
+                if x < 3.1415927410 then
+                    if x < 1.5707963705 then
+                        if x < 0.785398185 then
+                            taylor_sin x
+                        else
+                            taylor_cos (1.5707963705 -. x)
+                    else
+                        if x < 2.35619455 then
+                            taylor_cos (x -. 1.5707963705)
+                        else
+                            taylor_sin (3.1415927410 -. x)
+                else
+                    let y = x -. 3.1415927410 in
+                        if y < 1.5707963705 then
+                            if y < 0.785398185 then
+                                0.0 -. taylor_sin y
+                            else
+                                0.0 -. taylor_cos (1.5707963705 -. y)
+                        else
+                            if y < 2.35619455 then
+                                0.0 -. taylor_cos (y -. 1.5707963705)
+                            else
+                                0.0 -. taylor_sin (3.1415927410 -. y) in
+        0.0 -. tmp
 in
 let rec taylor_atan x =
     let x2 = x *. x in
