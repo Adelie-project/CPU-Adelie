@@ -13,6 +13,7 @@ vector<deque<int>> record_reg(32);
 vector<deque<float>> record_freg(32);
 //各種パラメータ
 param_t *param = new param_t;
+struct timeval ts, tf;
 
 //functions
 inline void preprocess_of_run(param_t* param);
@@ -92,7 +93,7 @@ int main(int argc, char *argv[]) {
   if (param->fp == NULL) { printf("error: specify a file\n"); exit(EXIT_FAILURE); }
   //0バイト目から読んで初期化
   exec_jmp_fread(param, 0);
-
+  gettimeofday(&ts, NULL);
   if (param->step) run_step(param);
   else {
     if (param->wave > 0) {
@@ -124,6 +125,8 @@ inline void preprocess_of_run(param_t* param) {
       printf("cnt = %lld, max_mem_no = %u\n", param->cnt, param->max_mem_no);
       print_call_time(param);
       fclose(param->fp);
+      gettimeofday(&tf, NULL);
+      printf("elapsed time: %lf s\n", (tf.tv_sec - ts.tv_sec) + (double)(tf.tv_usec - ts.tv_usec) / 1000000);
       exit(EXIT_SUCCESS);
     }
   }
@@ -141,6 +144,8 @@ inline void postprocess_of_run(param_t* param) {
     printf("cnt = %lld, max_mem_no = %u\n", param->cnt, param->max_mem_no);
     print_call_time(param);
     fclose(param->fp);
+    gettimeofday(&tf, NULL);
+    printf("elapsed time: %lf s\n", (tf.tv_sec - ts.tv_sec) + (double)(tf.tv_usec - ts.tv_usec) / 1000000);
     exit(EXIT_SUCCESS);
   }
 }
